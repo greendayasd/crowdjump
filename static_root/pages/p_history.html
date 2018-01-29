@@ -1,0 +1,41 @@
+<div ng-controller="VersionCtrl" ng-init="test">
+
+    <h1> Previous Versions and Patchnotes  </h1>
+    <h4>
+        Here you can find the features that got implemented, as well as the user who submitted the idea. <br>
+        You want your own special feature? Submit your own on <a href="{% url "website:ideas" %}">Ideas </a><br><br>
+    </h4>
+</div>
+
+{#{% if version_list %}#}
+{##}
+{##}
+{#    <div class="container">#}
+{#        <table class="table table-striped table-hover">#}
+{#            <thead class= "thead-dark">#}
+{#              <tr>#}
+{#                  <th scope="col">Version</th>#}
+{#                  <th scope="col">Change</th>#}
+{#                  <th scope="col">User</th>#}
+{#                  <th scope="col">Date</th>#}
+{#              </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#                {% for version in version_list %}#}
+{#                    <tr>#}
+{#                        <td>{{ version.label }}</td>#}
+{#                        <td>{{ version.change }}</td>#}
+{#                        <td>{{ version.submitter.user.username}}</td>#}
+{#                        <td>{{ version.pub_date}}</td>#}
+{#                    </tr>#}
+{#                {% endfor %}#}
+{##}
+{#            </tbody>#}
+{##}
+{#        </table>#}
+{#    </div>#}
+{##}
+{##}
+{#{% else %}#}
+{#    <p>No history available.</p>#}
+{#{% endif %}#}
