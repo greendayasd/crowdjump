@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from website.models import Version
+from website.models import Version, WebsiteInfo, GameInfo
 
 
 class AccountManager(BaseUserManager):

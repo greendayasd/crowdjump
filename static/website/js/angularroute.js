@@ -12,7 +12,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/home',
-            templateUrl: '/static_root/pages/p_index.html'
+            templateUrl: '/static/templates/p_index.html'
         })
 
         .state('about', {
@@ -23,12 +23,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         .state('history', {
             url: '/history',
-            templateUrl: '/static_root/pages/p_history.html'
+            templateUrl: '/static/templates/p_history.html'
 
         })
         .state('ideas', {
             url: '/ideas',
-            templateUrl: '/static_root/pages/p_ideas.html'
+            templateUrl: '/static/templates/p_ideas.html'
 
         });
 
@@ -40,7 +40,7 @@ angular.module('app.menu', [])
         $stateProvider
             .state('menu', {
                 url: '/menu',
-                templateUrl: '/static_root/pages/p_main.html',
+                templateUrl: '/static/templates/p_main.html',
                 // controller: 'MenuController'
             });
     });
@@ -51,7 +51,7 @@ angular.module('app.game', [])
             .state('game', {
                 url: '/game',
                 abstract: false,
-                templateUrl: '/static_root/pages/p_game.html',
+                templateUrl: '/static/templates/p_game.html',
                 // template: '<div id="gameCanvas"><h1>test3</h1><button ng-click="createPGame()">Click2</button></div>',
                 controller: 'GameController',
             })

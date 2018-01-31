@@ -18,9 +18,10 @@ from django.urls import path, include
 from django.conf.urls import url
 from website import views
 from rest_framework import routers
+from website.views import IndexView
 from website.views import UserList, UserDetail, IdeaList, CurrentIdeaList, IdeaDetail, UserIdeaList, VoteList, VersionList
 
-from authentication.views import AccountViewSet
+from authentication.views import AccountViewSet, LoginView, LogoutView
 
 
 router = routers.SimpleRouter()
@@ -28,6 +29,8 @@ router.register(r'accounts', AccountViewSet)
 
 urlpatterns = [
     url(r'^api/v1/', include(router.urls)),
+    url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
+    url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 
     url('^.*$', IndexView.as_view(), name='index'),
 ]

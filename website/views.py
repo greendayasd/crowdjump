@@ -4,10 +4,21 @@ from .serializers import UserSerializer, IdeaSerializer, VersionSerializer, Vote
 from django.shortcuts import render, redirect, render_to_response
 from .permissions import *
 from authentication.models import Account
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.generic.base import TemplateView
+from django.utils.decorators import method_decorator
+
+#
+# def homepage(request):
+#     return render(request, 'website/home.html')
 
 
-def homepage(request):
-    return render(request, 'website/home.html')
+class IndexView(TemplateView):
+    template_name = 'index.html'
+
+    @method_decorator(ensure_csrf_cookie)
+    def dispatch(self, *args, **kwargs):
+        return super(IndexView, self).dispatch(*args, **kwargs)
 
 
 class UserList(generics.ListCreateAPIView):

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="crowdjump">
+<head>
+  <title>Crowdjump</title>
+
+  <base href="/" />
+
+  {% include 'stylesheets.html' %}
+    {% load staticfiles %}
+</head>
+
+<body>
+  {% include 'navbar.html' %}
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 ng-view"></div>
+    </div>
+  </div>
+    <div class="container-fluid">
+
+        <h1>test3</h1>
+    </div>
+  {% include 'javascripts.html' %}
+</body>
+</html>
