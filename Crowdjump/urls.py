@@ -17,18 +17,25 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from website import views
-from rest_framework import routers
-from website.views import IndexView
-from website.views import UserList, UserDetail, IdeaList, CurrentIdeaList, IdeaDetail, UserIdeaList, VoteList, VersionList
+from rest_framework_nested import routers
+from website.views import IndexView, HistoryViewSet
+from ideas.views import IdeaViewSet, AccountIdeasViewSet
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
 
-
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
+router.register(r'ideas', IdeaViewSet)
+router.register(r'website', HistoryViewSet)
+
+accounts_router = routers.NestedSimpleRouter(
+    router, r'accounts', lookup='account'
+)
+accounts_router.register(r'ideas', AccountIdeasViewSet)
 
 urlpatterns = [
     url(r'^api/v1/', include(router.urls)),
+    url(r'^api/v1/', include(accounts_router.urls)),
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 

@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from website.models import Version, WebsiteInfo, GameInfo
+from website.models import Version
 
 
 class AccountManager(BaseUserManager):
@@ -78,3 +78,28 @@ class Account(AbstractBaseUser):
         ver = Version.objects.all().order_by('-id')[0]
         current = GameInfo.objects.all().filter(version=ver,user=self.user)
         return current.rounds_won >= 1
+
+
+class GameInfo(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='gameinfo')
+    version = models.ForeignKey(Version, on_delete=models.CASCADE, null=True, related_name='gameinfo')
+    rounds_started = models.IntegerField(default=0)
+    rounds_won = models.IntegerField(default=0)
+    rounds_lost = models.IntegerField(default=0)
+    enemies_killed = models.IntegerField(default=0)
+    coins_collected = models.IntegerField(default=0)
+    highscore = models.IntegerField(default=-1)
+
+    def __str__(self):
+        return self.version.label + '  ' + self.user.username + '  ' + self.rounds_won + ...
+        '/' + (self.rounds_won + self.rounds_lost)
+
+
+class WebsiteInfo(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='websiteinfo')
+    version = models.ForeignKey(Version, on_delete=models.CASCADE, null=True, related_name='websiteinfo')
+    time_spent_game = models.IntegerField(default=0)
+    time_spent_ideas = models.IntegerField(default=0)
+    time_spent_index = models.IntegerField(default=0)
+    time_spent_history = models.IntegerField(default=0)
+    time_spent_chat = models.IntegerField(default=0)

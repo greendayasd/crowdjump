@@ -1,0 +1,15 @@
+.no-ideas-here {
+  text-align: center;
+}
+
+.idea {}
+
+.idea .idea__meta {
+  font-weight: bold;
+  text-align: right;
+  padding-bottom: 19px;
+}
+
+.idea .idea__meta a:hover {
+  text-decoration: none;
+}

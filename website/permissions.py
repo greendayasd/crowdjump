@@ -27,5 +27,5 @@ class IdeaAuthorCanEditPermission(SafeMethodsOnlyPermission):
             # Either a list or a create, so no author
             can_edit = True
         else:
-            can_edit = request.user == obj.author
+            can_edit = request.user == obj.user
         return can_edit or super(IdeaAuthorCanEditPermission, self).has_object_permission(request, view, obj)

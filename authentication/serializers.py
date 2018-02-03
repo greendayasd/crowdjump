@@ -2,7 +2,7 @@ from django.contrib.auth import update_session_auth_hash
 
 from rest_framework import serializers
 
-from authentication.models import Account
+from authentication.models import Account, GameInfo, WebsiteInfo
 
 
 class AccountSerializer(serializers.ModelSerializer):
@@ -35,3 +35,15 @@ class AccountSerializer(serializers.ModelSerializer):
             update_session_auth_hash(self.context.get('request'), instance)
 
             return instance
+
+
+class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = GameInfo
+        fields = '__all__'
+
+
+class WebsiteInfoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = WebsiteInfo
+        fields = '__all__'

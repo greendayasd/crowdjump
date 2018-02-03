@@ -7,6 +7,8 @@
             'crowdjump.routes',
             'crowdjump.authentication',
             'crowdjump.layout',
+            'crowdjump.ideas',
+            'crowdjump.utils',
         ]);
 
     angular
