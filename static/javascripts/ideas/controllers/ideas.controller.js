@@ -46,15 +46,18 @@
         function calculateNumberOfColumns() {
             var width = $(window).width();
 
-            if (width >= 1200) {
-                return 4;
-            } else if (width >= 992) {
-                return 3;
-            } else if (width >= 768) {
-                return 2;
-            } else {
-                return 1;
-            }
+            // if (width >= 1200) {
+            //     return 4;
+            // } else if (width >= 992) {
+            //     return 3;
+            // } else if (width >= 768) {
+            //     return 2;
+            // } else {
+            //     return 1;
+            // }
+
+            //immer vor 1 column vorerst
+            return 1;
         }
 
 
@@ -76,14 +79,21 @@
              * @returns The approximately normalized height of a given column
              */
             function columnMapFn(column) {
-                // var keys = column.keys;
-                // var lenghts = keys.length;
-                var lengths = column.map(function (element) {
-                  return element.content.length;
-                });
+                var collen = column.length
+                var lenghts = [collen];
+                for (var i = 0; i < collen; i++) {
+                    // var contentLength = vm.columns.get('content.length')
+                    // lenghts[i] = contentLength;
+                    lenghts[i] = 0;
+                };
 
-                return lengths.reduce(sum, 0) * column.length;
-                // return 200* column.length
+                // var lengths = column.map(function (element) {
+                //   return element.content.length;
+                // });
+                if (collen > 0) {
+                    return lenghts.reduce(sum, 0) * column.length;
+                };
+                return 0;
             }
 
 

@@ -21,7 +21,7 @@
     var directive = {
       restrict: 'E',
       scope: {
-        post: '='
+        idea: '='
       },
       templateUrl: '/static/templates/ideas/idea.html'
     };
