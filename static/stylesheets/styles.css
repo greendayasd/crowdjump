@@ -1,21 +1,28 @@
 .no-ideas-here {
-  text-align: center;
+    text-align: center;
 }
 
-.idea {}
+.idea {
+}
 
 .idea .idea__meta {
-  font-weight: bold;
-  text-align: right;
-  padding-bottom: 19px;
+    font-weight: bold;
+    text-align: right;
+    padding-bottom: 19px;
 }
 
 .idea .idea__meta a:hover {
-  text-decoration: none;
+    text-decoration: none;
+}
+
+.idea .idea__estimated time {
+    font-weight: bold;
+    color: red;
+    font-size: large;
 }
 
 .btn-add-new-idea {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }
