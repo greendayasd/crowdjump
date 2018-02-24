@@ -8,6 +8,14 @@
 .idea .idea__meta {
     font-weight: bold;
     text-align: right;
+    padding-bottom: 0px;
+}
+
+.idea .idea__time {
+    font-weight: bold;
+    float:left;
+    clear: both;
+    text-align: left;
     padding-bottom: 19px;
 }
 
@@ -15,7 +23,7 @@
     text-decoration: none;
 }
 
-.idea .idea__estimated time {
+.idea .idea__estimated_time {
     font-weight: bold;
     color: red;
     font-size: large;

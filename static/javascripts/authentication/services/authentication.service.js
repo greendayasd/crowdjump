@@ -160,7 +160,7 @@
          * @memberOf crowdjump.authentication.services.Authentication
          */
         function isAuthenticated() {
-            return !!$cookies.authenticatedAccount;
+            return $cookies.authenticatedAccount;
         }
 
         /**
