@@ -44,7 +44,7 @@ urlpatterns = [
 
     url('^.*$', IndexView.as_view(), name='index'),
 
-    url(r'^favicon.ico$',
+    url(r'^favicon.ico/$',
         RedirectView.as_view( # the redirecting function
             url=staticfiles_storage.url('website/images/favicon.ico'),
         ),
