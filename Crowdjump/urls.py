@@ -22,6 +22,9 @@ from website.views import IndexView, HistoryViewSet
 from ideas.views import IdeaViewSet, AccountIdeasViewSet
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
+from django.views.generic.base import RedirectView
+from django.contrib.staticfiles.storage import staticfiles_storage
+
 
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
@@ -40,6 +43,13 @@ urlpatterns = [
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 
     url('^.*$', IndexView.as_view(), name='index'),
+
+    url(r'^favicon.ico$',
+        RedirectView.as_view( # the redirecting function
+            url=staticfiles_storage.url('website/images/favicon.ico'),
+        ),
+        name="favicon"
+    ),
 ]
 
 # urlpatterns = [
