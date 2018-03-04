@@ -3,11 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/settings.py" afterPath="$PROJECT_DIR$/Crowdjump/settings.py" />
       <change beforePath="$PROJECT_DIR$/Crowdjump/urls.py" afterPath="$PROJECT_DIR$/Crowdjump/urls.py" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/static/templates/authentication/login.html" afterPath="$PROJECT_DIR$/static/templates/authentication/login.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/authentication/register.html" afterPath="$PROJECT_DIR$/static/templates/authentication/register.html" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" afterPath="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" />
+      <change beforePath="$PROJECT_DIR$/static/templates/layout/history.html" afterPath="$PROJECT_DIR$/static/templates/layout/history.html" />
+      <change beforePath="$PROJECT_DIR$/static/website/js/angularroute.js" afterPath="$PROJECT_DIR$/static/website/js/angularroute.js" />
+      <change beforePath="$PROJECT_DIR$/static_root/templates/layout/history.html" afterPath="$PROJECT_DIR$/static_root/templates/layout/history.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,21 +48,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
+          <file leaf-file-name="history.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/static/templates/layout/history.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="473">
-                  <caret line="54" column="1" lean-forward="false" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+                <state relative-caret-position="204">
+                  <caret line="12" column="18" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
           <file leaf-file-name="history.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/static/templates/layout/history.html">
+            <entry file="file://$PROJECT_DIR$/static_root/templates/layout/history.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="153">
-                  <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+                <state relative-caret-position="340">
+                  <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
                   <folding />
                 </state>
               </provider>
@@ -71,38 +71,8 @@
           <file leaf-file-name="p_history.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/static_root/templates/p_history.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="16" column="43" lean-forward="false" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="version.controller.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/static/javascripts/version/controllers/version.controller.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="idea.directive.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/directives/idea.directive.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="22" column="14" lean-forward="false" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="navbar.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/templates/navbar.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="92" />
+                <state relative-caret-position="136">
+                  <caret line="8" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -111,18 +81,38 @@
           <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+                <state relative-caret-position="377">
+                  <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="new-idea.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="crowdjump.routes.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/static/javascripts/crowdjump.routes.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="136">
+                  <caret line="8" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="46" selection-end-column="5" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="angularroute.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/static/website/js/angularroute.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="new-idea.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/static/templates/ideas/new-idea.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+                <state relative-caret-position="51">
+                  <caret line="3" column="38" lean-forward="false" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
                   <folding />
                 </state>
               </provider>
@@ -131,8 +121,8 @@
           <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Crowdjump/settings.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="394">
-                  <caret line="149" column="49" lean-forward="false" selection-start-line="149" selection-start-column="44" selection-end-line="149" selection-end-column="49" />
+                <state relative-caret-position="55">
+                  <caret line="149" column="51" lean-forward="false" selection-start-line="149" selection-start-column="51" selection-end-line="149" selection-end-column="51" />
                   <folding />
                 </state>
               </provider>
@@ -146,7 +136,7 @@
             <entry file="file://$PROJECT_DIR$/static/templates/authentication/login.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="272">
-                  <caret line="16" column="107" lean-forward="true" selection-start-line="16" selection-start-column="107" selection-end-line="17" selection-end-column="66" />
+                  <caret line="16" column="107" lean-forward="false" selection-start-line="16" selection-start-column="107" selection-end-line="17" selection-end-column="66" />
                   <folding />
                 </state>
               </provider>
@@ -178,9 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>posts</find>
-      <find>post</find>
-      <find>conte</find>
       <find>isauthen</find>
       <find>isAuthenticat</find>
       <find>{% if</find>
@@ -208,6 +195,9 @@
       <find>crowdjumo</find>
       <find>Versionctrl</find>
       <find>previous versions and</find>
+      <find>static/templates/p_history.html</find>
+      <find>compress_roo</find>
+      <find>/static/templates/p_history.html</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -227,9 +217,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js" />
-        <option value="$PROJECT_DIR$/static/stylesheets/styles.css" />
-        <option value="$PROJECT_DIR$/static/templates/ideas/new-idea.html" />
         <option value="$PROJECT_DIR$/static/templates/ideas/idea.html" />
         <option value="$PROJECT_DIR$/static/bower_components/underscore/bower.json" />
         <option value="$PROJECT_DIR$/static/templates/home.html" />
@@ -248,7 +235,6 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/website/views.py" />
         <option value="$PROJECT_DIR$/templates/navbar.html" />
-        <option value="$PROJECT_DIR$/static/templates/layout/history.html" />
         <option value="$PROJECT_DIR$/static/javascripts/history/controllers/history.controller.js" />
         <option value="$PROJECT_DIR$/website/models.py" />
         <option value="$PROJECT_DIR$/ideas/views.py" />
@@ -257,7 +243,6 @@
         <option value="$PROJECT_DIR$/static/templates/p_ideas.html" />
         <option value="$PROJECT_DIR$/static/templates/layout/index.html" />
         <option value="$PROJECT_DIR$/static/javascripts/layout/controllers/index.controller.js" />
-        <option value="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" />
         <option value="$PROJECT_DIR$/static/javascripts/version/controllers/version.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/ideas/services/ideas.service.js" />
         <option value="$PROJECT_DIR$/static/javascripts/history/history.module.js" />
@@ -274,10 +259,15 @@
         <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
         <option value="$PROJECT_DIR$/static/templates/p_history.html" />
         <option value="$PROJECT_DIR$/static_root/templates/p_history.html" />
-        <option value="$PROJECT_DIR$/Crowdjump/urls.py" />
-        <option value="$PROJECT_DIR$/Crowdjump/settings.py" />
         <option value="$PROJECT_DIR$/static/templates/authentication/login.html" />
         <option value="$PROJECT_DIR$/static/templates/authentication/register.html" />
+        <option value="$PROJECT_DIR$/Crowdjump/urls.py" />
+        <option value="$PROJECT_DIR$/static/templates/layout/history.html" />
+        <option value="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" />
+        <option value="$PROJECT_DIR$/static/website/js/angularroute.js" />
+        <option value="$PROJECT_DIR$/Crowdjump/settings.py" />
+        <option value="$PROJECT_DIR$/static_root/templates/layout/history.html" />
+        <option value="$PROJECT_DIR$/static_root/javascripts/crowdjump.routes.js" />
       </list>
     </option>
   </component>
@@ -298,10 +288,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-3" />
-    <option name="y" value="10" />
-    <option name="width" value="1885" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="y" value="16" />
+    <option name="width" value="1641" />
     <option name="height" value="1027" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -357,21 +347,13 @@
               <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
               <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
               <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="authentication" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
-              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="ideas" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
@@ -379,6 +361,11 @@
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+              <item name="static_root" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
@@ -559,7 +546,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="10" width="1885" height="1027" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -568,9 +555,9 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960325" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17549492" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17083333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="manage.py@Crowdjump" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2822757" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="manage.py@Crowdjump" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26246184" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949877" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858709" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -631,30 +618,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ideas/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-115">
-          <caret line="3" column="49" lean-forward="false" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/version/version.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/p_main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -721,14 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/crowdjump.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -979,34 +934,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/history.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static_root/templates/p_history.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="43" lean-forward="false" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1022,15 +953,7 @@
     <entry file="file://$PROJECT_DIR$/static/templates/authentication/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="107" lean-forward="true" selection-start-line="16" selection-start-column="107" selection-end-line="17" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Crowdjump/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="149" column="49" lean-forward="false" selection-start-line="149" selection-start-column="44" selection-end-line="149" selection-end-column="49" />
+          <caret line="16" column="107" lean-forward="false" selection-start-line="16" selection-start-column="107" selection-end-line="17" selection-end-column="66" />
           <folding />
         </state>
       </provider>
@@ -1045,8 +968,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/ideas/new-idea.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="51">
+          <caret line="3" column="38" lean-forward="false" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static_root/templates/p_history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crowdjump/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="149" column="51" lean-forward="false" selection-start-line="149" selection-start-column="51" selection-end-line="149" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="18" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static_root/templates/layout/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/crowdjump.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="46" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static_root/javascripts/crowdjump.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="17" column="73" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="46" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/angularroute.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>

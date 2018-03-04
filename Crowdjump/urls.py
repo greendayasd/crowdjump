@@ -48,28 +48,6 @@ urlpatterns = [
 
 ]
 
-# urlpatterns = [
-#     url(r'^$', views.homepage, name='home'),
-#     path('website/', include('website.urls')),
-#     path('admin/', admin.site.urls),
-#
-# ]
-#
-# user_urls = [url(r'^/2(?P<username>[0-9a-zA-Z_-]+)$', UserDetail.as_view(), name='user-detail'),
-#              url(r'^$', UserList.as_view(), name='user-list')
-#              ]
-#
-# idea_urls = [url(r'^$', IdeaList.as_view(), name='idea-list'),
-#              url(r'^$', CurrentIdeaList.as_view(), name='currentidea-list'),
-#              url(r'^/(?P<pk>\d+)$', IdeaDetail.as_view(), name='idea-detail'),
-#              url(r'^/(?P<username>[0-9a-zA-Z_-]+)/ideas$', UserIdeaList.as_view(), name='useridea-list'),
-#              ]
-#
-# info_urls = []
-#
-# vote_urls = [url(r'^/(?P<pk>\d+/votes)$', VoteList.as_view(), name='vote-list'),
-#              ]
-#
 # urlpatterns += [url(r'^users', include(user_urls)),
 #                 url(r'^ideas', include(idea_urls)),
 #                 # url(r'^info', include(info_urls)),

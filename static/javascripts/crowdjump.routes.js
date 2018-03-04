@@ -30,7 +30,7 @@
         }).when('/history', {
             controller: 'HistoryController',
             controllerAs: 'vm',
-            templateUrl: '/static/templates/p_history.html'
+            templateUrl: '/static/templates/layout/history.html'
 
         }).when('/game', {
             controller: 'GameController',

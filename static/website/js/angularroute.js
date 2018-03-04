@@ -23,7 +23,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
         .state('history', {
             url: '/history',
-            templateUrl: '/static/templates/p_history.html'
+            templateUrl: '/static/templates/layout/history.html'
 
         })
         .state('ideas', {
