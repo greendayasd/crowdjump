@@ -1,0 +1,36 @@
+.no-ideas-here {
+    text-align: center;
+}
+
+.idea {
+}
+
+.idea .idea__meta {
+    font-weight: bold;
+    text-align: right;
+    padding-bottom: 0px;
+}
+
+.idea .idea__time {
+    font-weight: bold;
+    float:left;
+    clear: both;
+    text-align: left;
+    padding-bottom: 19px;
+}
+
+.idea .idea__meta a:hover {
+    text-decoration: none;
+}
+
+.idea .idea__estimated_time {
+    font-weight: bold;
+    color: red;
+    font-size: large;
+}
+
+.btn-add-new-idea {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
