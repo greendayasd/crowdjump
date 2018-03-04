@@ -43,7 +43,7 @@ urlpatterns = [
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 
-    url('^.*$', IndexView.as_view(), name='index'),
+    url('^$', IndexView.as_view(), name='index'),
     url('^.*ideas', IdeasView.as_view(), name='ideas'),
 
     # url(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/favicon.ico')),
@@ -54,7 +54,7 @@ urlpatterns = [
     #     ),
     #     name="favicon"
     # ),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
 
 # urlpatterns = [
 #     url(r'^$', views.homepage, name='home'),
