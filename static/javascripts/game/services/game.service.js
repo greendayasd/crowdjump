@@ -12,6 +12,7 @@
     var Ideas = {
       all: all,
       create: create,
+      get: get
     };
 
     return Ideas;

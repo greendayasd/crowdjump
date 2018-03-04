@@ -1,7 +1,3 @@
-/**
- * IdeasController
- * @namespace crowdjump.ideas.controllers
- */
 (function () {
     'use strict';
 
@@ -11,9 +7,6 @@
 
     IdeasController.$inject = ['$scope'];
 
-    /**
-     * @namespace IdeasController
-     */
     function IdeasController($scope) {
         var vm = this;
 
@@ -21,12 +14,6 @@
 
         activate();
 
-
-        /**
-         * @name activate
-         * @desc Actions to be performed when this controller is instantiated
-         * @memberOf crowdjump.ideas.controllers.IdeasController
-         */
         function activate() {
             $scope.$watchCollection(function () {
                 return $scope.ideas;
@@ -36,13 +23,6 @@
             }, render);
         }
 
-
-        /**
-         * @name calculateNumberOfColumns
-         * @desc Calculate number of columns based on screen width
-         * @returns {Number} The number of columns containing Ideas
-         * @memberOf crowdjump.ideas.controllers.IdeasControllers
-         */
         function calculateNumberOfColumns() {
             var width = $(window).width();
 
@@ -60,13 +40,6 @@
             return 1;
         }
 
-
-        /**
-         * @name approximateShortestColumn
-         * @desc An algorithm for approximating which column is shortest
-         * @returns The index of the shortest column
-         * @memberOf crowdjump.ideas.controllers.IdeasController
-         */
         function approximateShortestColumn() {
             var scores = vm.columns.map(columnMapFn);
 
@@ -96,14 +69,6 @@
                 return 0;
             }
 
-
-            /**
-             * @name sum
-             * @desc Sums two numbers
-             * @params {Number} m The first number to be summed
-             * @params {Number} n The second number to be summed
-             * @returns The sum of two numbers
-             */
             function sum(m, n) {
                 return m + n;
             }

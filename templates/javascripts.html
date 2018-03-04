@@ -3,7 +3,8 @@
 
 {% compress js %}
     <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {#    <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>#}
     <script type="text/javascript"
             src="{% static 'bower_components/bootstrap-material-design/dist/js/material.js' %}"></script>
     <script type="text/javascript"
@@ -39,14 +40,14 @@
     {#    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>#}
 
     {##}
-        <script src="/static/website/js/phaser.js"></script>
+    <script src="/static/website/js/phaser.js"></script>
 
-        <script src="/static/website/js/startmenu.js"></script>
-        <script src="/static/website/js/game.js"></script>
-        <script src="/static/website/js/endscreen.js"></script>
-        <script src="/static/website/js/boot.js"></script>
-        <script src="/static/website/js/preloader.js"></script>
-        <script src="/static/website/js/main.js"></script>
+    <script src="/static/website/js/startmenu.js"></script>
+    <script src="/static/website/js/game.js"></script>
+    <script src="/static/website/js/endscreen.js"></script>
+    <script src="/static/website/js/boot.js"></script>
+    <script src="/static/website/js/preloader.js"></script>
+    <script src="/static/website/js/main.js"></script>
 
 
 
@@ -64,13 +65,26 @@
             src="{% static 'javascripts/authentication/controllers/login.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/layout/layout.module.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/layout/controllers/navbar.controller.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/ideas/ideas.module.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/ideas/services/ideas.service.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/layout/controllers/index.controller.js' %}"></script>
+
     <script type="text/javascript" src="{% static 'javascripts/utils/utils.module.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/utils/services/snackbar.service.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/layout/controllers/index.controller.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'javascripts/ideas/ideas.module.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/ideas/services/ideas.service.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/ideas/directives/ideas.directive.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/ideas/controllers/ideas.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/ideas/directives/idea.directive.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/ideas/controllers/ideas.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/ideas/controllers/new-idea.controller.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'javascripts/version/version.module.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/version/controllers/version.controller.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'javascripts/history/history.module.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/history/services/history.service.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/history/controllers/history.controller.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'javascripts/game/game.module.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/game/services/game.service.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/game/controllers/game.controller.js' %}"></script>
 {% endcompress %}

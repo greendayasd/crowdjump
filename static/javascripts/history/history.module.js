@@ -4,12 +4,12 @@
   angular
     .module('crowdjump.history', [
       'crowdjump.history.controllers',
-      'crowdjump.authentication.services'
+      'crowdjump.history.services'
     ]);
 
   angular
     .module('crowdjump.history.controllers', []);
 
   angular
-    .module('crowdjump.history.services', ['ngCookies']);
+    .module('crowdjump.history.services', []);
 })();

@@ -4,8 +4,7 @@
     angular
         .module('crowdjump.game.controllers')
         .controller('GameController', GameController);
-.
-    directive('gameCanvas', gameCanvas);
+
 
     GameController.$inject = ['$scope'];
 
@@ -32,15 +31,4 @@
 
     }
 
-    gameCanvas.$inject = ['$scope', '$injector'];
-
-    function gameCanvas($injector) {
-        return {
-            scope: {},
-            template: '<div id="gameCanvas"><h1>TestCanvas</h1></div>',
-            link: function () {
-                createGame("gameCanvas");
-            }
-        }
-    }
 })();

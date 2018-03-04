@@ -54,7 +54,7 @@ urlpatterns = [
     #     ),
     #     name="favicon"
     # ),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
 
 # urlpatterns = [
 #     url(r'^$', views.homepage, name='home'),

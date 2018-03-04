@@ -10,8 +10,8 @@
             'crowdjump.ideas',
             'crowdjump.utils',
             'crowdjump.history',
-            'crowdjumo.game',
-            'crowdjumo.version',
+            'crowdjump.game',
+            'crowdjump.version',
         ]);
 
     angular
