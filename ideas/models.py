@@ -91,3 +91,13 @@ class CommentVote(models.Model):
 
     #     -1 = downvote, 0 = no vote, 1 = upvote
     vote = models.IntegerField(default=0)
+
+
+# class History(models.Model):
+#     idea = models.ForeignKey(Idea, on_delete=models.CASCADE, related_name='history')
+#
+#     request_text = models.CharField(max_length=40)
+#     description = models.CharField(max_length=500)
+#
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)

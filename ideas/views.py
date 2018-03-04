@@ -1,6 +1,7 @@
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
 from website.models import Version
+from website.serializers import VersionSerializer
 
 from ideas.models import Idea, CommentVote, IdeaVote, Comment
 from ideas.permissions import IsCreaterOfIdea
@@ -31,3 +32,12 @@ class AccountIdeasViewSet(viewsets.ViewSet):
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)
+
+
+class HistoryViewSet(viewsets.ModelViewSet):
+    model = Version
+    queryset = Version.objects.order_by('-created_at')
+    serializer_class = VersionSerializer
+    permission_classes = [
+        permissions.AllowAny
+    ]

@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls import url
 from website import views
 from rest_framework_nested import routers
-from website.views import IndexView, HistoryViewSet
+from website.views import IndexView, HistoryViewSet, IdeasView
 from ideas.views import IdeaViewSet, AccountIdeasViewSet
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
@@ -43,7 +43,7 @@ urlpatterns = [
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 
     url('^.*$', IndexView.as_view(), name='index'),
-    url('^.*$', IndexView.as_view(), name='index'),
+    url('^.*ideas', IdeasView.as_view(), name='ideas'),
 
     # url(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/favicon.ico')),
     #

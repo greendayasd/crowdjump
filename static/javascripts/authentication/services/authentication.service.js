@@ -9,13 +9,13 @@
         .module('crowdjump.authentication.services')
         .factory('Authentication', Authentication);
 
-    Authentication.$inject = ['$cookies', '$http'];
+    Authentication.$inject = ['$cookies', '$rootScope', '$http'];
 
     /**
      * @namespace Authentication
      * @returns {Factory}
      */
-    function Authentication($cookies, $http) {
+    function Authentication($cookies, $rootScope, $http) {
         /**
          * @name Authentication
          * @desc The Factory to be returned
@@ -72,7 +72,9 @@
              * @desc Log "Epic failure!" to the console
              */
             function registerErrorFn(data, status, headers, config) {
-                console.error('Registration failed!');
+                var msg = 'Registration failed!';
+                console.error(msg);
+                $rootScope.error = msg;
             }
         }
 
@@ -104,7 +106,9 @@
              * @desc Log "Epic failure!" to the console
              */
             function loginErrorFn(data, status, headers, config) {
-                console.error('Login failed!');
+                var msg = 'Login failed! Email or password is wrong!';
+                console.error(msg);
+                $rootScope.error = msg;
             }
         }
 
@@ -134,7 +138,9 @@
              * @desc Log "Epic failure!" to the console
              */
             function logoutErrorFn(data, status, headers, config) {
-                console.error('Epic failure!');
+                var msg = 'Logout failed!';
+                console.error(msg);
+                $rootScope.error = msg;
             }
         }
 
