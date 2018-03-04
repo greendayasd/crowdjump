@@ -1,0 +1,64 @@
+{% load staticfiles %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Crowdjump </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <style>
+        .navbar {
+            border-radius: 0;
+        }
+    </style>
+
+{#    <!-- jQuery library -->#}
+{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
+{##}
+{#    <!-- Popper JS -->#}
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>#}
+{##}
+{#    <!-- CSS (load bootstrap) -->#}
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">#}
+{##}
+{#    <!-- Latest compiled JavaScript -->#}
+{#    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>#}
+{##}
+{#    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>#}
+{#    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-route.js"></script>#}
+{#    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>#}
+{##}
+{#        <script type="text/javascript" src="{% static 'website/js/myangular.js' %}"></script>#}
+    {##}
+    {#    <script src="/static/website/js/phaser.js"></script>#}
+    {##}
+    {#    <script src="/static/website/js/startmenu.js"></script>#}
+    {#    <script src="/static/website/js/game.js"></script>#}
+    {#    <script src="/static/website/js/endscreen.js"></script>#}
+    {#    <script src="/static/website/js/boot.js"></script>#}
+    {#    <script src="/static/website/js/preloader.js"></script>#}
+    {#    <script src="/static/website/js/main.js"></script>#}
+
+
+</head>
+
+<body ng-app="{% block ng_app %}example.app.static{% endblock %}">
+<div class="content" ng-controller="{% block ng_controller %}AppController{% endblock %}">{% block content %}
+    {% verbatim %}
+    <div class="panel" ng-repeat="idea in ideas">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title">{{ idea.request_text }}</h3>
+            <user class="pull-right">{{ idea.user.username }}</user>
+        </div>
+        <p class="well">{{ post.body }}</p>
+    </div>
+    {% endverbatim %}
+{% endblock %}</div>
+<script src="{% static "underscore/underscore.js" %}"></script>
+<script src="{% static "angular/angular.js" %}"></script>
+<script src="{% static "angular-resource/angular-resource.js" %}"></script>
+<script src="{% static "js/script.js" %}"></script>
+</body>
+</html>
