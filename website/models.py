@@ -22,31 +22,6 @@ class Version(models.Model):
         return False
 
 
-# class Idea(models.Model):
-#     user = models.ForeignKey('authentication.Account', on_delete=models.CASCADE, related_name='ideas')
-#     version = models.ForeignKey(Version, on_delete=models.CASCADE, null=True, related_name='ideas')
-#     request_text = models.CharField(max_length=40)
-#     description = models.CharField(max_length=500)
-#     pub_date = models.DateTimeField('date published', default=datetime.now)
-#     estimated_time = models.CharField(max_length=50, null=True, default='')
-#     upvotes = models.IntegerField(default=0)
-#     downvotes = models.IntegerField(default=0)
-#
-#     #
-#     # votes = models.IntegerField(default=0)
-#     #
-#
-#     def __str__(self):
-#         return self.request_text
-#
-#     def was_published_recently(self):
-#         now = timezone.now()
-#         return now - datetime.timedelta(days=1) <= self.pub_date <= now
-#
-#     def is_newest_version(self):
-#         return self.version == ver
-
-
 # class GameInfo(models.Model):
 #     user = models.ForeignKey('authentication.Account', on_delete=models.CASCADE, related_name='gameinfo')
 #     version = models.ForeignKey(Version, on_delete=models.CASCADE, null=True, related_name='gameinfo')

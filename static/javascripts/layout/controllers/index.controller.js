@@ -1,60 +1,34 @@
 /**
-* IndexController
-* @namespace crowdjump.layout.controllers
-*/
+ * IndexController
+ * @namespace crowdjump.layout.controllers
+ */
 (function () {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('crowdjump.layout.controllers')
-    .controller('IndexController', IndexController);
+    angular
+        .module('crowdjump.layout.controllers')
+        .controller('IndexController', IndexController);
 
-  IndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Snackbar'];
-
-  /**
-  * @namespace IndexController
-  */
-  function IndexController($scope, Authentication, Ideas, Snackbar) {
-    var vm = this;
-
-    vm.isAuthenticated = Authentication.isAuthenticated();
-    vm.ideas = [];
-
-    activate();
+    IndexController.$inject = ['$scope', 'Authentication', 'Snackbar'];
 
     /**
-    * @name activate
-    * @desc Actions to be performed when this controller is instantiated
-    * @memberOf crowdjump.layout.controllers.IndexController
-    */
-    function activate() {
-      Ideas.all().then(ideasSuccessFn, ideasErrorFn);
+     * @namespace IndexController
+     */
+    function IndexController($scope, Authentication, Ideas, Snackbar) {
+        var vm = this;
 
-      $scope.$on('idea.created', function (event, idea) {
-        vm.ideas.unshift(idea);
-      });
+        vm.isAuthenticated = Authentication.isAuthenticated();
+        vm.ideas = [];
 
-      $scope.$on('idea.created.error', function () {
-        vm.ideas.shift();
-      });
+        activate();
 
+        /**
+         * @name activate
+         * @desc Actions to be performed when this controller is instantiated
+         * @memberOf crowdjump.layout.controllers.IndexController
+         */
+        function activate() {
 
-      /**
-      * @name ideasSuccessFn
-      * @desc Update ideas array on view
-      */
-      function ideasSuccessFn(data, status, headers, config) {
-        vm.ideas = data.data;
-      }
-
-
-      /**
-      * @name ideasErrorFn
-      * @desc Show snackbar with error
-      */
-      function ideasErrorFn(data, status, headers, config) {
-        Snackbar.error(data.error);
-      }
+        }
     }
-  }
 })();

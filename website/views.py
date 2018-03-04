@@ -23,6 +23,14 @@ class IndexView(TemplateView):
         return super(IndexView, self).dispatch(*args, **kwargs)
 
 
+class IdeasView(TemplateView):
+    template_name = 'idea_index.html'
+
+    @method_decorator(ensure_csrf_cookie)
+    def dispatch(self, *args, **kwargs):
+        return super(IdeasView, self).dispatch(*args, **kwargs)
+
+
 class HistoryViewSet(viewsets.ModelViewSet):
     model = Version
     queryset = Version.objects.order_by('-created_at')
