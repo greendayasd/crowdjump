@@ -24,7 +24,8 @@ from ideas.views import IdeaViewSet, AccountIdeasViewSet
 from authentication.views import AccountViewSet, LoginView, LogoutView
 from django.views.generic.base import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
@@ -53,7 +54,7 @@ urlpatterns = [
     #     ),
     #     name="favicon"
     # ),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # urlpatterns = [
 #     url(r'^$', views.homepage, name='home'),
