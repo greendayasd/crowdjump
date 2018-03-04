@@ -147,7 +147,7 @@ LOGIN_REDIRECT_URL = '/'
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 # STATIC_ROOT = 'staticfiles'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 # STATICFILES_DIRS = [
 #     'C:/Users/nicolas/PycharmProjects/Crowdjump/website/static',
 # ]

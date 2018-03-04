@@ -46,14 +46,6 @@ urlpatterns = [
     url('^$', IndexView.as_view(), name='index'),
     url('^.*ideas', IdeasView.as_view(), name='ideas'),
 
-    # url(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/favicon.ico')),
-    #
-    # url(r'^favicon.ico/$',
-    #     RedirectView.as_view( # the redirecting function
-    #         url=staticfiles_storage.url('website/images/favicon.ico'),
-    #     ),
-    #     name="favicon"
-    # ),
 ]
 
 # urlpatterns = [
