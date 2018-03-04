@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/urls.py" afterPath="$PROJECT_DIR$/Crowdjump/urls.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static_root/bower_components/angular/angular-csp.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static_root/bower_components/angular/angular.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static_root/bower_components/angular/angular.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static_root/bower_components/angular/angular.min.js.gzip" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static_root/favicon.ico" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -78,7 +81,7 @@
             <entry file="file://$PROJECT_DIR$/ideas/models.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="1581">
-                  <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+                  <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#28#0" expanded="true" />
                   </folding>
@@ -973,7 +976,7 @@
     <entry file="file://$PROJECT_DIR$/ideas/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1581">
-          <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
