@@ -49,16 +49,16 @@ Crowdjump.Endscreen.prototype = {
     },
 
     ideas: function () {
-        $.ajax({
-            type: 'POST',
-            url: '/api/v1/accounts/',
-            data: {
-                username: "phaser",
-                password: "asdasd123",
-                email: "phaser@phaser.de"
-            }
-        });
-        // window.location.href = "/";
+        // $.ajax({
+        //     type: 'POST',
+        //     url: '/api/v1/accounts/',
+        //     data: {
+        //         username: "phaser",
+        //         password: "asdasd123",
+        //         email: "phaser@phaser.de"
+        //     }
+        // });
+        window.location.href = "/";
 
     }
 }
