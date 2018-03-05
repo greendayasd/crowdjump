@@ -129,7 +129,7 @@
                     var column = approximateShortestColumn();
 
                     vm.columns[column].push(current[i]);
-                    console.error("Zeile" + i + ": " + current[i]);
+                    // console.error("Zeile" + i + ": " + current[i]);
                 }
             }
         }

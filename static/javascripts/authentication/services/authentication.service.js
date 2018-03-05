@@ -43,15 +43,6 @@
          * @returns {Promise}
          * @memberOf crowdjump.authentication.services.Authentication
          */
-        /**
-         * @name register
-         * @desc Try to register a new user
-         * @param {string} email The email entered by the user
-         * @param {string} password The password entered by the user
-         * @param {string} username The username entered by the user
-         * @returns {Promise}
-         * @memberOf crowdjump.authentication.services.Authentication
-         */
         function register(email, password, username) {
             return $http.post('/api/v1/accounts/', {
                 username: username,
@@ -64,7 +55,7 @@
              * @desc Log the new user in
              */
             function registerSuccessFn(data, status, headers, config) {
-                Authentication.login(username, password);
+                Authentication.login(email, password);
             }
 
             /**
@@ -72,7 +63,7 @@
              * @desc Log "Epic failure!" to the console
              */
             function registerErrorFn(data, status, headers, config) {
-                var msg = 'Registration failed!';
+                var msg = 'Registration failed! Please try another username/email'
                 console.error(msg);
                 $rootScope.error = msg;
             }

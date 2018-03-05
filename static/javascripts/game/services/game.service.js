@@ -3,29 +3,27 @@
   'use strict';
 
   angular
-    .module('crowdjump.history.services')
-    .factory('History', History);
+    .module('crowdjump.game.services')
+    .factory('Game', Game);
 
-  History.$inject = ['$http'];
+  Game.$inject = ['$http'];
 
-  function History($http) {
-    var Ideas = {
-      all: all,
-      create: create,
-      get: get
+  function Game($http) {
+    var GameInfo = {
+      addWin: addWin,
+      addTry: addTry,
     };
 
-    return Ideas;
+    return GameInfo;
 
-    /**
-    * @desc Get all History
-    */
-    function all() {
-      return $http.get('/api/v1/history/');
+    function addWin(content) {
+      return $http.post('/api/v1/game/', {
+        content: content
+      });
     }
 
-    function create(content) {
-      return $http.post('/api/v1/history/', {
+    function addTry(content) {
+      return $http.post('/api/v1/game/', {
         content: content
       });
     }

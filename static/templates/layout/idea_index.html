@@ -43,20 +43,17 @@
         </div>
     </div>
     <div class="container">
-        <ideas ideas="vm.ideas" ng-show="vm.isAuthenticated">
+        <ideas ideas="vm.ideas">
         </ideas>
-
     </div>
+    <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-idea"
+       ng-dialog-controller="NewIdeaController as vm"
+       href="javascript:void(0)"
+       ng-dialog="/static/templates/ideas/new-idea.html">
+        Submit a new Idea
+    </a>
 </div>
 
-
-<a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-idea"
-   ng-dialog-controller="NewIdeaController as vm"
-   href="javascript:void(0)"
-        {# ng-show="!vm.isAuthenticated" #}
-   ng-dialog="/static/templates/ideas/new-idea.html">
-    Submit a new Idea
-</a>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br>
