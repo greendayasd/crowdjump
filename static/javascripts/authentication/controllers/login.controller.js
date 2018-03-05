@@ -2,8 +2,7 @@
 * LoginController
 * @namespace crowdjump.authentication.controllers
 */
-(function () {
-  'use strict';
+'use strict';
 
   angular
     .module('crowdjump.authentication.controllers')
@@ -42,4 +41,3 @@
       Authentication.login(vm.email, vm.password);
     }
   }
-})();

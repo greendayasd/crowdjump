@@ -35,7 +35,7 @@
         }).when('/game', {
             controller: 'GameController',
             controllerAs: 'vm',
-            templateUrl: '/static/templates/layout/p_main.html'
+            templateUrl: '/static/templates/layout/game.html'
 
         }).when('/ideas', {
             controller: 'IdeasIndexController',

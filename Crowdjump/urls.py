@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls import url
 from website import views
 from rest_framework_nested import routers
-from website.views import IndexView, HistoryViewSet, IdeasView
+from website.views import IndexView, HistoryViewSet, IdeasView, GameViewSet
 from ideas.views import IdeaViewSet, AccountIdeasViewSet
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
@@ -27,6 +27,7 @@ router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'ideas', IdeaViewSet)
 router.register(r'history', HistoryViewSet)
+router.register(r'game', GameViewSet)
 
 accounts_router = routers.NestedSimpleRouter(
     router, r'accounts', lookup='account'

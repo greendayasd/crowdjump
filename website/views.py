@@ -31,12 +31,29 @@ class IdeasView(TemplateView):
         return super(IdeasView, self).dispatch(*args, **kwargs)
 
 
-class HistoryView(TemplateView):
-    template_name = 'history.html'
+# class HistoryView(TemplateView):
+#     template_name = 'history.html'
+#
+#     @method_decorator(ensure_csrf_cookie)
+#     def dispatch(self, *args, **kwargs):
+#         return super(HistoryView, self).dispatch(*args, **kwargs)
+#
+#
+# class GameView(TemplateView):
+#     template_name = 'game.html'
+#
+#     @method_decorator(ensure_csrf_cookie)
+#     def dispatch(self, *args, **kwargs):
+#         return super(GameView, self).dispatch(*args, **kwargs)
 
-    @method_decorator(ensure_csrf_cookie)
-    def dispatch(self, *args, **kwargs):
-        return super(HistoryView, self).dispatch(*args, **kwargs)
+
+class GameViewSet(viewsets.ModelViewSet):
+    model = Version
+    queryset = Version.objects.order_by('-created_at')
+    serializer_class = VersionSerializer
+    permission_classes = [
+        permissions.AllowAny
+    ]
 
 
 class HistoryViewSet(viewsets.ModelViewSet):
