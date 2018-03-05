@@ -1,4 +1,4 @@
-<div ng-controller="VersionController" ng-init="test">
+<div class="container" ng-controller="VersionController">
 
     <h1> Previous Versions and Patchnotes </h1>
     <h4>
@@ -8,27 +8,27 @@
 </div>
 
 <div class="container">
-        <table class="table table-striped table-hover">
-            <thead class= "thead-dark">
-              <tr>
-                  <th scope="col">Version</th>
-                  <th scope="col">Change</th>
-                  <th scope="col">User</th>
-                  <th scope="col">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-                {% for version in version_list %}
-                    <tr>
-                        <td>{{ version.label }}</td>
-                        <td>{{ version.change }}</td>
-                        <td>{{ version.submitter.user.username}}</td>
-                        <td>{{ version.pub_date}}</td>
-                    </tr>
-                {% endfor %}
 
-            </tbody>
+    <h4>There is no history available at the moment! In the future you can see, what features got implemented<br></h4>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Version</th>
+            <th scope="col">Change</th>
+            <th scope="col">User</th>
+            <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>0.01</td>
+            <td>Here is the change</td>
+            <td>Username</td>
+            <td>5.03.2018</td>
+        </tr>
 
-        </table>
-    </div>
+        </tbody>
+
+    </table>
+</div>
 

@@ -31,6 +31,14 @@ class IdeasView(TemplateView):
         return super(IdeasView, self).dispatch(*args, **kwargs)
 
 
+class HistoryView(TemplateView):
+    template_name = 'history.html'
+
+    @method_decorator(ensure_csrf_cookie)
+    def dispatch(self, *args, **kwargs):
+        return super(HistoryView, self).dispatch(*args, **kwargs)
+
+
 class HistoryViewSet(viewsets.ModelViewSet):
     model = Version
     queryset = Version.objects.order_by('-created_at')
@@ -111,23 +119,3 @@ class HistoryViewSet(viewsets.ModelViewSet):
 #
 # # gameinfo
 # # websiteinfo
-#
-#
-# class IdeaMixin(object):
-#     model = Idea
-#     queryset = Idea.objects.all()
-#     serializer_class = IdeaSerializer
-#     permission_classes = [
-#         IdeaAuthorCanEditPermission
-#     ]
-#
-#     def perform_create(self, serializer):
-#         serializer.save(user=self.request.user)
-#
-#
-# class IdeaList(IdeaMixin, generics.ListCreateAPIView):
-#     pass
-#
-#
-# class IdeaDetail(IdeaMixin, generics.RetrieveUpdateDestroyAPIView):
-#     pass

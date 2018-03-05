@@ -25,7 +25,7 @@
     * @memberOf crowdjump.ideas.controllers.NewIdeaController
     */
     function submit() {
-      $rootScope.$broadcast('idea.created', {
+      $scope.$broadcast('idea.created', {
         description: vm.description,
         request_text: vm.request_text,
         user: {

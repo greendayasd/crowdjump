@@ -1,21 +1,25 @@
+/**
+ * IndexController
+ * @namespace crowdjump.layout.controllers
+ */
 (function () {
     'use strict';
 
     angular
-        .module('crowdjump.layout.controllers')
-        .controller('IndexController', IndexController);
+        .module('crowdjump.ideas.controllers')
+        .controller('IdeasIndexController', IdeasIndexController);
 
-    IndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Snackbar', '$cookies'];
+    IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Snackbar', '$cookies'];
 
-    function IndexController($scope, Authentication, Ideas, Snackbar, $cookies) {
+    function IdeasIndexController($scope, Authentication, Ideas, Snackbar, $cookies) {
         var vm = this;
 
         vm.isAuthenticated = Authentication.isAuthenticated();
-        // console.error(vm.isAuthenticated || false);
+        // console.error("ideas " + vm.isAuthenticated || false);
         vm.cookie = $cookies.getObject('authenticatedAccount');
         vm.ideas = [];
         activate();
-        // console.error("index");
+        // console.error("ideas");
 
         function activate() {
             Ideas.all().then(ideasSuccessFn, ideasErrorFn);
@@ -30,10 +34,12 @@
 
             function ideasSuccessFn(data, status, headers, config) {
                 vm.ideas = data.data;
+                // console.error("data " + data.data);
             }
 
             function ideasErrorFn(data, status, headers, config) {
                 Snackbar.error(data.error);
+                console.error(data.error);
             }
         }
     }

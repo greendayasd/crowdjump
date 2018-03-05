@@ -32,30 +32,31 @@
             </ul>
         </div>
     </h4>
-    <br> <br>
-    <div class="alert alert-info">
-        <strong>
-            {% if user.is_authenticated %}
-                {#                 <a style="font-size: 28px" style="margin-left: 90px" href="{% url 'website:idea_new'%}"> Submit your own Idea! </a>#}
-            {% else %}
+    <br>
+
+    <div ng-controller="IndexController as vm" ng-show="!vm.isAuthenticated">
+        <div class="alert alert-info">
+            <strong>
                 <a style="font-size: 28px" style="margin-top: 45px" href="/login?next={{ request.path }}">Login to
                     submit your own Idea!</a>
-            {% endif %}
-        </strong>
+            </strong>
+        </div>
     </div>
-    <div ng-controller="IndexController as vm">
-        test <br>
-        {{ user.username }} <br>
-        {{ vm.username }}  <br>
-        test2 <br>
+    <div class="container">
+        <ideas ideas="vm.ideas" ng-show="vm.isAuthenticated">
+        </ideas>
 
     </div>
 </div>
 
-<ideas ideas="vm.ideas" ng-show="vm.ideas && vm.ideas.length"></ideas>
+
 <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-idea"
+   ng-dialog-controller="NewIdeaController as vm"
    href="javascript:void(0)"
-{#          ng-show="!vm.isAuthenticated"#}
-   ng-dialog="/static/templates/ideas/new-idea.html"
-   ng-dialog-controller="NewIdeaController as vm">
+        {# ng-show="!vm.isAuthenticated" #}
+   ng-dialog="/static/templates/ideas/new-idea.html">
+    Submit a new Idea
 </a>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>

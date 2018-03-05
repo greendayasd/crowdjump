@@ -38,7 +38,7 @@
             templateUrl: '/static/templates/layout/p_main.html'
 
         }).when('/ideas', {
-            controller: 'IdeasController',
+            controller: 'IdeasIndexController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/idea_index.html'
         })

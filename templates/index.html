@@ -6,24 +6,16 @@
   <base href="/" />
   {% include 'stylesheets.html' %}
     {% load staticfiles %}
-
-{#    <link rel="icon" href="http://example.com/img/icon.png">#}
-{#    <link rel="icon" href="data:;base64,iVBORw0KGgo=">#}
-{#    <link rel="shortcut icon" href="">#}
     <link rel="icon" href="{% static 'website/images/favicon.ico' %}">
 </head>
 
 <body>
   {% include 'navbar.html' %}
-
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12 ng-view"></div>
+      <div ng-view ng-app="crowdjump" autoscroll="true"></div>
     </div>
   </div>
-    <div class="container-fluid">
-{#        <img src="{% static 'website/images/logo.png' %}">#}
-    </div>
   {% include 'javascripts.html' %}
 </body>
 </html>

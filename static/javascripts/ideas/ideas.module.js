@@ -9,11 +9,11 @@
     ]);
 
   angular
-    .module('crowdjump.ideas.controllers', []);
+    .module('crowdjump.ideas.controllers', ['ngCookies']);
 
   angular
     .module('crowdjump.ideas.directives', ['ngDialog']);
 
   angular
-    .module('crowdjump.ideas.services', []);
+    .module('crowdjump.ideas.services', ['ngCookies']);
 })();

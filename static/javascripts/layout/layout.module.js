@@ -7,5 +7,5 @@
     ]);
 
   angular
-    .module('crowdjump.layout.controllers', []);
+    .module('crowdjump.layout.controllers', ['ngCookies']);
 })();

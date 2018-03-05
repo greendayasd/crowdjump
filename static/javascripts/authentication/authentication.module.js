@@ -8,7 +8,7 @@
     ]);
 
   angular
-    .module('crowdjump.authentication.controllers', []);
+    .module('crowdjump.authentication.controllers', ['ngCookies']);
 
   angular
     .module('crowdjump.authentication.services', ['ngCookies']);

@@ -97,7 +97,7 @@
              */
             function loginSuccessFn(data, status, headers, config) {
                 Authentication.setAuthenticatedAccount(data.data);
-
+                // console.error("authenticated? " + Authentication.isAuthenticated())
                 window.location = '/';
             }
 
@@ -152,11 +152,11 @@
          * @memberOf crowdjump.authentication.services.Authentication
          */
         function getAuthenticatedAccount() {
-            if (!$cookies.authenticatedAccount) {
+            if (!$cookies.getObject("authenticatedAccount")) {
                 return;
             }
 
-            return JSON.parse($cookies.authenticatedAccount);
+            return $cookies.getObject("authenticatedAccount");//JSON.parse($cookies.authenticatedAccount);
         }
 
         /**
@@ -166,7 +166,11 @@
          * @memberOf crowdjump.authentication.services.Authentication
          */
         function isAuthenticated() {
-            return $cookies.authenticatedAccount;
+            // console.error("isAuthenticated " + $cookies.getObject("authenticatedAccount"));
+            if ($cookies.getObject("authenticatedAccount") != null){
+                return true;
+            }
+            return false;
         }
 
         /**
@@ -177,7 +181,7 @@
          * @memberOf crowdjump.authentication.services.Authentication
          */
         function setAuthenticatedAccount(account) {
-            $cookies.authenticatedAccount = JSON.stringify(account);
+            $cookies.put("authenticatedAccount", JSON.stringify(account));
         }
 
         /**
@@ -187,7 +191,7 @@
          * @memberOf crowdjump.authentication.services.Authentication
          */
         function unauthenticate() {
-            delete $cookies.authenticatedAccount;
+            $cookies.remove("authenticatedAccount");
         }
     }
 })();
