@@ -26,8 +26,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'crowdjump.win', 'testserver']
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'crowdjump.win', '185.170.112.100']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'crowdjump.win', '185.170.112.100', 'testserver']
 
 # Application definition
 
