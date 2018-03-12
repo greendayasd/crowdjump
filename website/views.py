@@ -25,8 +25,7 @@ class IndexView(TemplateView):
 
 
 class IdeasView(TemplateView):
-    # template_name = 'idea_index.html'
-    template_name = static('templates/layout/idea_index.html')
+    template_name = 'index.html'
 
     @method_decorator(ensure_csrf_cookie)
     def dispatch(self, *args, **kwargs):

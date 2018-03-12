@@ -3,8 +3,6 @@
 
 {% compress js %}
     <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
 
     <script type="text/javascript"
             src="{% static 'bower_components/bootstrap-material-design/dist/js/material.js' %}"></script>
@@ -18,7 +16,9 @@
     <script type="text/javascript" src="{% static 'lib/angular-1.6.7/angular-resource.js' %}"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-animate.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-sanitize.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{#    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>#}
+    <script type="text/javascript" src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
 
     <script type="text/javascript" src="{% static 'bower_components/ngDialog/js/ngDialog.js' %}"></script>
     <script type="text/javascript" src="{% static 'lib/snackbarjs/snackbar.min.js' %}"></script>
@@ -52,7 +52,6 @@
 
     <script type="text/javascript" src="{% static 'javascripts/utils/utils.module.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/utils/services/snackbar.service.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/utils/controllers/pagi.js' %}"></script>
 
     <script type="text/javascript" src="{% static 'javascripts/ideas/ideas.module.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/ideas/services/ideas.service.js' %}"></script>
@@ -69,11 +68,11 @@
     <script type="text/javascript" src="{% static 'javascripts/history/services/history.service.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/history/controllers/history.controller.js' %}"></script>
 
-{#    <script type="text/javascript" src="{% static 'javascripts/game/game.module.js' %}"></script>#}
-{#    <script type="text/javascript" src="{% static 'javascripts/game/menu.module.js' %}"></script>#}
-{#    <script type="text/javascript" src="{% static 'javascripts/game/services/game.service.js' %}"></script>#}
-{#    <script type="text/javascript" src="{% static 'javascripts/game/services/menu.service.js' %}"></script>#}
-{#    <script type="text/javascript" src="{% static 'javascripts/game/states/menu.states.js' %}"></script>#}
-{#    <script type="text/javascript" src="{% static 'javascripts/game/states/menu.states.js' %}"></script>#}
-{#    <script type="text/javascript" src="{% static 'javascripts/game/controllers/game.controller.js' %}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'javascripts/game/game.module.js' %}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'javascripts/game/menu.module.js' %}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'javascripts/game/services/game.service.js' %}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'javascripts/game/services/menu.service.js' %}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'javascripts/game/states/menu.states.js' %}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'javascripts/game/states/menu.states.js' %}"></script>#}
+    {#    <script type="text/javascript" src="{% static 'javascripts/game/controllers/game.controller.js' %}"></script>#}
 {% endcompress %}

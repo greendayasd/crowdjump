@@ -23,11 +23,13 @@ from ideas.views import IdeaViewSet, AccountIdeasViewSet, AccountGameInfoViewSet
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
+
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'ideas', IdeaViewSet)
 router.register(r'gameinfo', GameInfoViewSet)
-
 
 mainrouter = routers.SimpleRouter()
 mainrouter.register(r'history', HistoryViewSet)
@@ -45,14 +47,20 @@ urlpatterns = [
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 
-    url(r'^ideas/$', IdeasView.as_view()),
+    url(r'^ideas/$', IndexView.as_view()),
+    url(r'^game/$', IndexView.as_view()),
+    url(r'^history/$', IndexView.as_view()),
+    url(r'^login/$', IndexView.as_view()),
+    url(r'^register/$', IndexView.as_view()),
+
     # url(r'^game/$', GameView.as_view()),
     # url(r'^gameinfo/$', GameInfoView.as_view()),
-
     url('^$', IndexView.as_view(), name='index'),
 
-
 ]
+
+# this connects STATIC_URL to STATIC_ROOT
+urlpatterns += staticfiles_urlpatterns()
 
 # urlpatterns += [url(r'^users', include(user_urls)),
 #                 url(r'^ideas', include(idea_urls)),

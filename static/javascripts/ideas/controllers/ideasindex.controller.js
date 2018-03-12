@@ -25,6 +25,7 @@
         activate();
           $scope.viewby = 3;
           $scope.totalItems = $scope.ideas.length;
+          console.error($scope.totalItems);
           $scope.currentPage = 1;
           $scope.itemsPerPage = $scope.viewby;
           $scope.maxSize = 5; //Number of pager buttons to show

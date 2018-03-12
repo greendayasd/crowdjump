@@ -1,11 +1,11 @@
 (function () {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('crowdjump.layout', [
-      'crowdjump.layout.controllers'
-    ]);
+    angular
+        .module('crowdjump.layout', [
+            'crowdjump.layout.controllers'
+        ]);
 
-  angular
-    .module('crowdjump.layout.controllers', ['ngCookies']);
+    angular
+        .module('crowdjump.layout.controllers', ['ngCookies']);
 })();
