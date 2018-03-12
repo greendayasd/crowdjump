@@ -38,9 +38,16 @@ class AccountSerializer(serializers.ModelSerializer):
 
 
 class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
+    user = AccountSerializer(read_only=True, required=False)
+
     class Meta:
         model = GameInfo
         fields = '__all__'
+
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(GameInfoSerializer, self).get_validation_exclusions()
+
+        return exclusions + ['user']
 
 
 class WebsiteInfoSerializer(serializers.HyperlinkedModelSerializer):

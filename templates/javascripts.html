@@ -3,38 +3,36 @@
 
 {% compress js %}
     <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    {#    <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>#}
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript"
             src="{% static 'bower_components/bootstrap-material-design/dist/js/material.js' %}"></script>
     <script type="text/javascript"
             src="{% static 'bower_components/bootstrap-material-design/dist/js/ripples.js' %}"></script>
     <script type="text/javascript" src="{% static 'bower_components/underscore/underscore.js' %}"></script>
 
-    {#        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>#}
-    {#    <script type="text/javascript" src="{% static 'bower_components/angular/angular.js' %}"></script>#}
-    {#    <script type="text/javascript" src="{% static 'bower_components/angular-route/angular-route.js' %}"></script>#}
-    {#    <script type="text/javascript" src="{% static 'bower_components/angular-cookies/angular-cookies.js' %}"></script>#}
     <script type="text/javascript" src="{% static 'lib/angular-1.6.7/angular.js' %}"></script>
     <script type="text/javascript" src="{% static 'lib/angular-1.6.7/angular-cookies.js' %}"></script>
     <script type="text/javascript" src="{% static 'lib/angular-1.6.7/angular-route.js' %}"></script>
     <script type="text/javascript" src="{% static 'lib/angular-1.6.7/angular-resource.js' %}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
 
     <script type="text/javascript" src="{% static 'bower_components/ngDialog/js/ngDialog.js' %}"></script>
     <script type="text/javascript" src="{% static 'lib/snackbarjs/snackbar.min.js' %}"></script>
 
-{#    <script src="/static/website/js/phaser.js"></script>#}
-{##}
-{#    <script src="/static/website/js/startmenu.js"></script>#}
-{#    <script src="/static/website/js/game.js"></script>#}
-{#    <script src="/static/website/js/endscreen.js"></script>#}
-{#    <script src="/static/website/js/boot.js"></script>#}
-{#    <script src="/static/website/js/preloader.js"></script>#}
-{#    <script src="/static/website/js/main.js"></script>#}
 
 
+    <script type="text/javascript" src="/static/website/js/phaser.js"></script>
 
-    {#    <script type="text/javascript" src="{% static 'website/js/myangular.js' %}"></script>#}
+    <script type="text/javascript" src="/static/website/js/main.js"></script>
+    <script type="text/javascript" src="/static/website/js/boot.js"></script>
+    <script type="text/javascript" src="/static/website/js/preloader.js"></script>
+    <script type="text/javascript" src="/static/website/js/startmenu.js"></script>
+    <script type="text/javascript" src="/static/website/js/game.js"></script>
+    <script type="text/javascript" src="/static/website/js/endscreen.js"></script>
+
+
 
     <script type="text/javascript" src="{% static 'javascripts/crowdjump.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/crowdjump.config.js' %}"></script>
@@ -52,6 +50,7 @@
 
     <script type="text/javascript" src="{% static 'javascripts/utils/utils.module.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/utils/services/snackbar.service.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/utils/controllers/pagination.controller.js' %}"></script>
 
     <script type="text/javascript" src="{% static 'javascripts/ideas/ideas.module.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/ideas/services/ideas.service.js' %}"></script>

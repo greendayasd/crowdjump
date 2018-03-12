@@ -43,7 +43,7 @@ class Account(AbstractBaseUser):
     email_confirmed = models.BooleanField(default=False)
 
     is_admin = models.BooleanField(default=False)
-    # is_activated = models.BooleanField(default=False)
+    is_activated = models.BooleanField(default=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -85,7 +85,7 @@ class GameInfo(models.Model):
     version = models.ForeignKey(Version, on_delete=models.CASCADE, null=True, related_name='gameinfo')
     rounds_started = models.IntegerField(default=0)
     rounds_won = models.IntegerField(default=0)
-    rounds_lost = models.IntegerField(default=0)
+    # rounds_lost = models.IntegerField(default=0)
     enemies_killed = models.IntegerField(default=0)
     coins_collected = models.IntegerField(default=0)
     highscore = models.IntegerField(default=-1)

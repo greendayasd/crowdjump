@@ -8,14 +8,6 @@ Crowdjump.Game = function(game){
     var second_jump = true;
 }
 
-        const CONST_DOUBLE_JUMP = false;
-    const CONST_COINS = false;
-    const CONST_ENEMIES = false;
-    const CONST_ANIMATE_CHARACTER = false;
-    const CONST_TIME = false;
-    const CONST_BUBBLE = true;
-    const CONST_PAUSE = false;
-    const CONST_LEVEL = 1;
 Crowdjump.Game = {};
 
 // =============================================================================
@@ -222,6 +214,9 @@ Crowdjump.Game.create = function () {
 
     this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.restart, this);
     this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer,this);
+
+    setInfo();
+    updateInfo();
 };
 
 Crowdjump.Game.update = function () {
@@ -355,6 +350,8 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
     if (hero.body.velocity.y > 0) { // kill enemies when hero is falling
         hero.bounce();
         enemy.die();
+        this.enemiesDefeatedCount++;
+
         this.sfx.stomp.play();
     }
     else { // game over -> restart the game
@@ -445,6 +442,25 @@ Crowdjump.Game.resumed = function(){
 };
 
 Crowdjump.Game.restart = function() {
+    setInfo();
+    updateInfo();
     this.state.restart();
     this.game.time.reset();
 };
+
+
+function setInfo(){
+        var old_rounds = 0;
+        old_rounds += gameinfo["rounds_started"];
+        gameinfo["rounds_started"] = old_rounds + 1;
+
+        var old_coins = 0;
+        old_coins += gameinfo["coins_collected"];
+        gameinfo["coins_collected"] = old_coins + this.coinPickupCount;
+
+        var old_enemies = 0;
+        old_enemies += gameinfo["enemies_killed"];
+        gameinfo["enemies_killed"] = old_enemies + this.enemiesDefeatedCount;
+
+        console.error("rounds info: " + JSON.stringify(gameinfo));
+}

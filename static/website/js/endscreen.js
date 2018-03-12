@@ -7,14 +7,8 @@ Crowdjump.Endscreen = function (game) {
     var bubble;
 };
 
-const CONST_DOUBLE_JUMP = false;
-const CONST_COINS = false;
-const CONST_ENEMIES = false;
-const CONST_ANIMATE_CHARACTER = false;
-const CONST_TIME = false;
-const CONST_BUBBLE = true;
-const CONST_PAUSE = false;
-const CONST_LEVEL = 1;
+
+
 Crowdjump.Endscreen.prototype = {
     create: function () {
         if (CONST_TIME) {
@@ -39,6 +33,7 @@ Crowdjump.Endscreen.prototype = {
 
 
         this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.replay, this);
+    console.error("Gameinfo!: " + Crowdjump.gameinfo);
 
     },
 
@@ -49,16 +44,27 @@ Crowdjump.Endscreen.prototype = {
     },
 
     ideas: function () {
-        // $.ajax({
-        //     type: 'POST',
-        //     url: '/api/v1/accounts/',
-        //     data: {
-        //         username: "phaser",
-        //         password: "asdasd123",
-        //         email: "phaser@phaser.de"
-        //     }
-        // });
-        window.location.href = "/";
 
-    }
+        setInfo();
+
+        updateInfo();
+        // window.location.href = '/ideas';
+
+    },
+
+}
+
+function setInfo(){
+        var old_time = 0;
+        console.error("highscore: " + this.gameinfo["highscore"]);
+        old_time += this.gameinfo["highscore"];
+        console.error(this.gameinfo["highscore"]);
+
+        var new_besttime = Math.min(old_time,game.timeElapsed);
+        this.gameinfo["highscore"] = new_besttime;
+
+        var rounds_won = this.gameinfo["rounds_won"] + 1;
+        this.gameinfo["rounds_won"] = rounds_won + 1;
+
+        console.error("endscreen info: " + JSON.stringify(this.gameinfo));
 }

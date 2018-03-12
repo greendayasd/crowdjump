@@ -5,6 +5,7 @@ from django.utils.decorators import method_decorator
 from .models import Version
 from .serializers import VersionSerializer
 from rest_framework import permissions, viewsets
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from ideas.models import Idea
 from rest_framework.response import Response
 
@@ -24,27 +25,28 @@ class IndexView(TemplateView):
 
 
 class IdeasView(TemplateView):
-    template_name = 'idea_index.html'
+    # template_name = 'idea_index.html'
+    template_name = static('templates/layout/idea_index.html')
 
     @method_decorator(ensure_csrf_cookie)
     def dispatch(self, *args, **kwargs):
         return super(IdeasView, self).dispatch(*args, **kwargs)
 
 
-# class HistoryView(TemplateView):
-#     template_name = 'history.html'
-#
-#     @method_decorator(ensure_csrf_cookie)
-#     def dispatch(self, *args, **kwargs):
-#         return super(HistoryView, self).dispatch(*args, **kwargs)
-#
-#
-# class GameView(TemplateView):
-#     template_name = 'game.html'
-#
-#     @method_decorator(ensure_csrf_cookie)
-#     def dispatch(self, *args, **kwargs):
-#         return super(GameView, self).dispatch(*args, **kwargs)
+class GameView(TemplateView):
+    template_name = static('templates/layout/game.html')
+
+    @method_decorator(ensure_csrf_cookie)
+    def dispatch(self, *args, **kwargs):
+        return super(GameView, self).dispatch(*args, **kwargs)
+
+
+class GameInfoView(TemplateView):
+    template_name = 'idea_index.html'
+
+    @method_decorator(ensure_csrf_cookie)
+    def dispatch(self, *args, **kwargs):
+        return super(GameInfoView, self).dispatch(*args, **kwargs)
 
 
 class GameViewSet(viewsets.ModelViewSet):
@@ -64,75 +66,3 @@ class HistoryViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
 
-
-# class UserList(generics.ListCreateAPIView):
-#     model = Account
-#     queryset = Account.objects.all()
-#     serializer_class = UserSerializer
-#     permission_classes = [
-#         permissions.AllowAny
-#     ]
-#     # permission_classes = (IsAdminUser,)
-#
-#
-# class UserDetail(generics.RetrieveAPIView):
-#     model = Account
-#     queryset = Account.objects.all()
-#     serializer_class = UserSerializer
-#     lookup_field = 'username'
-#
-#
-# class IdeaList(generics.ListCreateAPIView):
-#     model = Idea
-#     queryset = Idea.objects.all()
-#     serializer_class = IdeaSerializer
-#     permission_classes = [
-#         permissions.AllowAny
-#     ]
-#
-#
-# class CurrentIdeaList(generics.ListCreateAPIView):
-#     model = Idea
-#     serializer_class = IdeaSerializer
-#     permission_classes = [
-#         permissions.AllowAny
-#     ]
-#
-#     def get_queryset(self):
-#         ver = Version.objects.all().order_by('-id')[0]
-#         return Idea.objects.filter(version=ver)
-#
-#
-# class IdeaDetail(generics.RetrieveUpdateDestroyAPIView):
-#     model = Idea
-#     queryset = Idea.objects.all()
-#     serializer_class = IdeaSerializer
-#     permission_classes = [
-#         permissions.AllowAny
-#     ]
-#
-#
-# class UserIdeaList(generics.ListAPIView):
-#     model = Idea
-#     queryset = Idea.objects.all()
-#     serializer_class = IdeaSerializer
-#
-#     # permission_classes = IsOwnerOrReadOnly
-#
-#     def get_queryset(self):
-#         queryset = super(UserIdeaList, self).get_queryset()
-#         return queryset.filter(user__username=self.kwargs.get('username'))
-#
-#
-# class VoteList(generics.ListCreateAPIView):
-#     # todo
-#     model = Vote
-#     queryset = Vote.objects.all()
-#     serializer_class = VoteSerializer
-#     permission_classes = [
-#         permissions.AllowAny
-#     ]
-#
-#
-# # gameinfo
-# # websiteinfo

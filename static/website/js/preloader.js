@@ -1,13 +1,5 @@
 var Crowdjump = Crowdjump || {};
 
-    const CONST_DOUBLE_JUMP = false;
-    const CONST_COINS = false;
-    const CONST_ENEMIES = false;
-    const CONST_ANIMATE_CHARACTER = false;
-    const CONST_TIME = false;
-    const CONST_BUBBLE = true;
-    const CONST_PAUSE = false;
-    const CONST_LEVEL = 1;
 
 Crowdjump.Preloader = function(game){
     this.ready = false;
@@ -101,7 +93,9 @@ Crowdjump.Preloader.prototype = {
             text.setText('');
             // console.log('fertig geladen');
             // this.state.start('Startmenu');
+
             this.state.start('Game');
+            // this.state.start('Endscreen');
         }
     }
 

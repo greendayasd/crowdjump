@@ -1,7 +1,4 @@
-/**
-* Snackbar
-* @namespace crowdjump.utils.services
-*/
+
 (function ($, _) {
   'use strict';
 
@@ -9,14 +6,9 @@
     .module('crowdjump.utils.services')
     .factory('Snackbar', Snackbar);
 
-  /**
-  * @namespace Snackbar
-  */
+
   function Snackbar() {
-    /**
-    * @name Snackbar
-    * @desc The factory to be returned
-    */
+
     var Snackbar = {
       error: error,
       show: show

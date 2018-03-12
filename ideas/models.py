@@ -2,19 +2,23 @@ from django.db import models
 from authentication.models import Account
 from django.utils import timezone
 from datetime import datetime
-from website.models import Version
 
 
 class Idea(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='ideas')
-    version = models.ForeignKey(Version, on_delete=models.CASCADE, related_name='ideas',
-                                default=Version.objects.all().order_by('-id')[0])
-    request_text = models.CharField(max_length=40)
+    # version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='ideas',
+    #                              default=0) #Version.objects.all().order_by('-id')[0]
+    version = models.CharField(max_length= 25, default="0,01")
+    request_text = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    manageable = models.BooleanField(default=True)
+    implemented = models.BooleanField(default=False)
+
+    admin_comment = models.CharField(max_length=50, null=True, default='')
     estimated_time = models.CharField(max_length=50, null=True, default='')
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
@@ -29,10 +33,6 @@ class Idea(models.Model):
     def was_updated_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.updated_at <= now
-
-    def is_newest_version(self):
-        ver = Version.objects.all().order_by('-id')[0]
-        return self.version == ver
 
     def vote(self, v):
         if v < 0:
@@ -91,13 +91,3 @@ class CommentVote(models.Model):
 
     #     -1 = downvote, 0 = no vote, 1 = upvote
     vote = models.IntegerField(default=0)
-
-
-# class History(models.Model):
-#     idea = models.ForeignKey(Idea, on_delete=models.CASCADE, related_name='history')
-#
-#     request_text = models.CharField(max_length=40)
-#     description = models.CharField(max_length=500)
-#
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)

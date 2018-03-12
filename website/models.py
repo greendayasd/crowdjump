@@ -5,22 +5,25 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Version(models.Model):
-    label = models.CharField(max_length=20,unique=True)
+    label = models.CharField(max_length=25, unique=True)
     change = models.CharField(max_length=200)
     created_at = models.DateTimeField('date published', default=datetime.now)
+
     submitter = models.ForeignKey('authentication.Account', on_delete=models.DO_NOTHING, null=True)
 
     def __unicode__(self):
         return self.label
 
     def __str__(self):
-        return self.label
+        return self
 
     def is_newest(self):
         if self == Version.objects.latest():
             return True
         return False
 
+    def get_newest(pos):
+        return Version.objects.all().order_by('-id')[pos]
 
 # class GameInfo(models.Model):
 #     user = models.ForeignKey('authentication.Account', on_delete=models.CASCADE, related_name='gameinfo')

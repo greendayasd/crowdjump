@@ -18,21 +18,26 @@ from django.urls import path, include
 from django.conf.urls import url
 from website import views
 from rest_framework_nested import routers
-from website.views import IndexView, HistoryViewSet, IdeasView, GameViewSet
-from ideas.views import IdeaViewSet, AccountIdeasViewSet
+from website.views import IndexView, HistoryViewSet, IdeasView, GameViewSet, GameInfoView, GameView
+from ideas.views import IdeaViewSet, AccountIdeasViewSet, AccountGameInfoViewSet, GameInfoViewSet
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
 
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'ideas', IdeaViewSet)
-router.register(r'history', HistoryViewSet)
-router.register(r'game', GameViewSet)
+router.register(r'gameinfo', GameInfoViewSet)
+
+
+mainrouter = routers.SimpleRouter()
+mainrouter.register(r'history', HistoryViewSet)
+mainrouter.register(r'game', GameViewSet)
 
 accounts_router = routers.NestedSimpleRouter(
     router, r'accounts', lookup='account'
 )
 accounts_router.register(r'ideas', AccountIdeasViewSet)
+# accounts_router.register(r'gameinfo', AccountGameInfoViewSet)
 
 urlpatterns = [
     url(r'^api/v1/', include(router.urls)),
@@ -40,8 +45,12 @@ urlpatterns = [
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 
+    url(r'^ideas/$', IdeasView.as_view()),
+    # url(r'^game/$', GameView.as_view()),
+    # url(r'^gameinfo/$', GameInfoView.as_view()),
+
     url('^$', IndexView.as_view(), name='index'),
-    url('^.*ideas', IdeasView.as_view(), name='ideas'),
+
 
 ]
 
