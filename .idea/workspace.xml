@@ -2,46 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/authentication/migrations/0003_remove_gameinfo_rounds_lost.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/authentication/migrations/0004_account_is_activated.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ideas/migrations/0002_auto_20180311_1431.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ideas/migrations/0003_idea_version.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ideas/migrations/0004_auto_20180311_2308.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ideas/migrations/0005_auto_20180311_2310.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ideas/migrations/0006_auto_20180312_0248.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ideas/migrations/0007_auto_20180312_0249.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/javascripts/utils/controllers/pagination.controller.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/website/migrations/0002_auto_20180311_1431.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/urls.py" afterPath="$PROJECT_DIR$/Crowdjump/urls.py" />
-      <change beforePath="$PROJECT_DIR$/authentication/models.py" afterPath="$PROJECT_DIR$/authentication/models.py" />
-      <change beforePath="$PROJECT_DIR$/authentication/serializers.py" afterPath="$PROJECT_DIR$/authentication/serializers.py" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/ideas/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/ideas/migrations/0001_initial.py" />
-      <change beforePath="$PROJECT_DIR$/ideas/migrations/0002_auto_20180131_1949.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ideas/models.py" afterPath="$PROJECT_DIR$/ideas/models.py" />
-      <change beforePath="$PROJECT_DIR$/ideas/serializers.py" afterPath="$PROJECT_DIR$/ideas/serializers.py" />
-      <change beforePath="$PROJECT_DIR$/ideas/views.py" afterPath="$PROJECT_DIR$/ideas/views.py" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/layout/controllers/index.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/layout/controllers/index.controller.js" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/utils/services/snackbar.service.js" afterPath="$PROJECT_DIR$/static/javascripts/utils/services/snackbar.service.js" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/utils/utils.module.js" afterPath="$PROJECT_DIR$/static/javascripts/utils/utils.module.js" />
-      <change beforePath="$PROJECT_DIR$/static/lib/snackbarjs/snackbar.min.css" afterPath="$PROJECT_DIR$/static/lib/snackbarjs/snackbar.min.css" />
-      <change beforePath="$PROJECT_DIR$/static/stylesheets/styles.css" afterPath="$PROJECT_DIR$/static/stylesheets/styles.css" />
-      <change beforePath="$PROJECT_DIR$/static/templates/ideas/idea.html" afterPath="$PROJECT_DIR$/static/templates/ideas/idea.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/ideas/ideas.html" afterPath="$PROJECT_DIR$/static/templates/ideas/ideas.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/ideas/new-idea.html" afterPath="$PROJECT_DIR$/static/templates/ideas/new-idea.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/game.html" afterPath="$PROJECT_DIR$/static/templates/layout/game.html" />
       <change beforePath="$PROJECT_DIR$/static/templates/layout/history.html" afterPath="$PROJECT_DIR$/static/templates/layout/history.html" />
       <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/endscreen.js" afterPath="$PROJECT_DIR$/static/website/js/endscreen.js" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/game.js" afterPath="$PROJECT_DIR$/static/website/js/game.js" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/main.js" afterPath="$PROJECT_DIR$/static/website/js/main.js" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/preloader.js" afterPath="$PROJECT_DIR$/static/website/js/preloader.js" />
-      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" afterPath="$PROJECT_DIR$/templates/javascripts.html" />
-      <change beforePath="$PROJECT_DIR$/templates/navbar.html" afterPath="$PROJECT_DIR$/templates/navbar.html" />
-      <change beforePath="$PROJECT_DIR$/website/models.py" afterPath="$PROJECT_DIR$/website/models.py" />
-      <change beforePath="$PROJECT_DIR$/website/serializers.py" afterPath="$PROJECT_DIR$/website/serializers.py" />
-      <change beforePath="$PROJECT_DIR$/website/views.py" afterPath="$PROJECT_DIR$/website/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -80,7 +43,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ideas.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ideas.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/templates/ideas/ideas.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -93,18 +56,8 @@
       <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="42" column="14" lean-forward="false" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="history.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/templates/layout/history.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="336">
+              <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -150,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="idea.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="idea.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/ideas/idea.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+              <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -266,14 +219,14 @@
         <option value="$PROJECT_DIR$/static/lib/snackbarjs/snackbar.min.css" />
         <option value="$PROJECT_DIR$/ideas/serializers.py" />
         <option value="$PROJECT_DIR$/ideas/models.py" />
-        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
         <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/javascripts/layout/controllers/index.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/utils/controllers/pagination.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/utils/utils.module.js" />
-        <option value="$PROJECT_DIR$/static/templates/layout/history.html" />
         <option value="$PROJECT_DIR$/static/stylesheets/styles.css" />
         <option value="$PROJECT_DIR$/static/templates/ideas/idea.html" />
+        <option value="$PROJECT_DIR$/static/templates/layout/history.html" />
+        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
       </list>
     </option>
   </component>
@@ -1044,26 +997,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="52" column="105" lean-forward="false" selection-start-line="52" selection-start-column="105" selection-end-line="52" selection-end-column="105" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/stylesheets/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
           <caret line="18" column="9" lean-forward="false" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/history.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1076,26 +1013,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/ideas/ideas.html">
+    <entry file="file://$PROJECT_DIR$/static/templates/ideas/idea.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        <state relative-caret-position="102">
+          <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="52" column="105" lean-forward="false" selection-start-line="52" selection-start-column="105" selection-end-line="52" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="42" column="14" lean-forward="false" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+        <state relative-caret-position="336">
+          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/ideas/idea.html">
+    <entry file="file://$PROJECT_DIR$/static/templates/ideas/ideas.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        <state relative-caret-position="204">
+          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
           <folding />
         </state>
       </provider>
