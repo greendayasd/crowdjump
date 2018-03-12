@@ -45,10 +45,10 @@ Crowdjump.Endscreen.prototype = {
 
     ideas: function () {
 
-        setInfo();
-
-        updateInfo();
-        // window.location.href = '/ideas';
+        // setInfo();
+        //
+        // updateInfo();
+        window.location.href = '/ideas';
 
     },
 
