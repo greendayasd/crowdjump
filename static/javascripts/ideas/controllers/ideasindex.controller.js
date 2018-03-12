@@ -19,7 +19,7 @@
 
         vm.isAuthenticated = Authentication.isAuthenticated();
         // console.error("ideas " + vm.isAuthenticated || false);
-        vm.cookie = $cookies.getObject('authenticatedAccount');
+        vm.cookie = $cookies.getObject('Authentication');
             $scope.ideas = [];
 
         activate();

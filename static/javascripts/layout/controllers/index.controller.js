@@ -12,7 +12,7 @@
 
         vm.isAuthenticated = Authentication.isAuthenticated();
         // console.error(vm.isAuthenticated || false);
-        vm.cookie = $cookies.getObject('authenticatedAccount');
+        vm.cookie = $cookies.getObject('Authentication');
         vm.ideas = [];
         activate();
         // console.error("index");
