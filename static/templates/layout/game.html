@@ -1,15 +1,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="viewport" content="minimal-ui">
 
-    <script src="/static/website/js/phaser.js"></script>
-
-    <script src="/static/website/js/main.js"></script>
-    <script src="/static/website/js/startmenu.js"></script>
-    <script src="/static/website/js/game.js"></script>
-    <script src="/static/website/js/endscreen.js"></script>
-    <script src="/static/website/js/boot.js"></script>
-    <script src="/static/website/js/preloader.js"></script>
-
 <style>
     #instructions {
         background-color: #2c21cb;
@@ -21,23 +12,26 @@
     }
 </style>
 
+<div class="container">
 <div class="col-md-12" id="gameCanvas">
 
 </div>
-<br>
-<!--<img class="img-fluid" src="/static/website/images/logo.png" alt="Crowdjump"> -->
 <div class="col-md-12" id="instructions">
 
     <h4>
+        <br>
         The goal is simple: Control the alien by using the arrow keys
         to move (or space to jump) to get to the flag. <br>
         If you get stuck, you can reset the game pressing R.
     </h4>
 
-    <div class="col-md-12 text-center">
+    <div class="col-md-10 text-center">
         <button id="btn-create" ng-controller="GameController" ng-click="createPGame()" class="btn btn-primary btn-lg">Start
             Game
         </button>
+        <br>
     </div>
+
+</div>
 
 </div>

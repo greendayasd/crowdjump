@@ -3,18 +3,26 @@
         <div class="well">
             <div class="idea">
                 <div class="idea__time">
-                    {{ idea.created_at | date : "d. MM. y HH:mm" }}
+                    {{ idea.created_at | date : "dd. MM. y HH:mm" }}
                 </div>
                 <div class="idea__meta">
-                    {{ idea.user.username }}
+                    User: {{ idea.user.username }}
                 </div>
                 <br>
                 <div class="idea__content">
-                    {{ idea.request_text }} <br>
-                    {{ idea.description }} <br>
+                    <b>Title </b><br>
+                    {{ idea.request_text }} <br><br>
+                    <b>Description </b><br>
+                    {{ idea.description }} <br><br>
                 </div>
-                <div class="idea__estimated_time">
-                    {{ idea.estimated_time }}
+                <div class="idea__estimated_time" ng-if="idea.estimated_time != Null">
+                    Estimated time: <b>{{ idea.estimated_time }}</b> days<br>
+                </div>
+                <div class="idea__estimated_time" ng-if="idea.estimated_time == Null">
+                    No estimated time yet <br>
+                </div>
+                <div class="idea__admin_comment">
+                   {{ idea.admin_comment }}
                 </div>
             </div>
         </div>

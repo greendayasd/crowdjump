@@ -30,6 +30,8 @@
 
             function ideasSuccessFn(data, status, headers, config) {
                 vm.ideas = data.data;
+                Snackbar.show('Test');
+                console.error('Test');
             }
 
             function ideasErrorFn(data, status, headers, config) {

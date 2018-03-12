@@ -3,20 +3,24 @@
         <label for="idea__description">New Idea</label>
         <textarea class="form-control"
                   id="idea__request_text"
-                  rows="3"
+                  rows="1"
                   placeholder="The title of your idea"
+                  minlength="5"
+                  maxlength="50"
                   ng-model="vm.request_text">
         </textarea>
         <textarea class="form-control"
                   id="idea__description"
                   rows="3"
                   placeholder="Describe what feature you want in the game!"
+                  minlength="10"
+                  maxlength="500"
                   ng-model="vm.description">
         </textarea>
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" value="Check">
             Submit
         </button>
     </div>

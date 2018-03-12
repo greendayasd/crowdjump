@@ -25,6 +25,12 @@
 
 .idea .idea__estimated_time {
     font-weight: bold;
+    color: orange;
+    font-size: large;
+}
+
+.idea .idea__admin_comment {
+    font-weight: bold;
     color: red;
     font-size: large;
 }
