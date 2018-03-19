@@ -46,7 +46,7 @@
          * @memberOf crowdjump.ideas.services.Ideas
          */
         function create(content) {
-            console.error("Content: " + content["upvotes"]);
+            // console.error("Content: " + content["upvotes"]);
             return $http.post('/api/v1/ideas/', {
                 version: content["version"],
                 request_text: content["request_text"],

@@ -9,9 +9,9 @@
         .module('crowdjump.ideas.controllers')
         .controller('IdeasIndexController', IdeasIndexController);
 
-    IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Snackbar', '$cookies'];
+    IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Snackbar', '$cookies', 'ngDialog', '$controller'];
 
-    function IdeasIndexController($scope, Authentication, Ideas, Snackbar, $cookies) {
+    function IdeasIndexController($scope, Authentication, Ideas, Snackbar, $cookies, ngDialog, $controller) {
         var vm = this;
 
         $scope.isAuthenticated = Authentication.isAuthenticated();
@@ -27,6 +27,20 @@
 
         activate();
 
+
+        vm.openDialog = function (idea_id) {
+
+            $scope.id = idea_id;
+            // alert("scope id " + $scope.id);
+            ngDialog.open({
+                template: '/static/templates/ideas/delete-idea.html',
+                scope: $scope,
+                controller: $controller('DeleteIdeaController', {
+                    $scope: $scope,
+                    id: idea_id
+                })
+            });
+        }
 
         $scope.setPage = function (pageNo) {
             $scope.currentPage = pageNo;

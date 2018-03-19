@@ -17,7 +17,6 @@
         vm.submit = submit;
 
         function submit() {
-            alert("???");
             $scope.$broadcast('idea.created', {
                 description: vm.description,
                 request_text: vm.request_text,

@@ -1,8 +1,8 @@
-<form role="form" ng-submit="vm.submit()">
+<form role="form" ng-submit="submit()">
     <p> Are you sure you want to delete idea {{ id }}?</p>
-    {{ this }}
+
     <div class="form-group">
-        <button type="submit">Delete Idea
+        <button type="submit" ng-click="closeThisDialog()">Delete Idea
         </button>
     </div>
 </form>

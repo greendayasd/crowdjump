@@ -1,6 +1,6 @@
 /* SnackbarJS - MIT LICENSE (https://github.com/FezVrasta/snackbarjs/blob/master/LICENSE.md) */
 #snackbar-container {
-    position: fixed;
+    /*position: fixed;*/
     left: 50%;
     bottom: 20;
     z-index: 99999
