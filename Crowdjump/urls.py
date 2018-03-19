@@ -30,9 +30,9 @@ router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'ideas', IdeaViewSet)
 router.register(r'gameinfo', GameInfoViewSet)
+router.register(r'history', HistoryViewSet)
 
 mainrouter = routers.SimpleRouter()
-mainrouter.register(r'history', HistoryViewSet)
 mainrouter.register(r'game', GameViewSet)
 
 accounts_router = routers.NestedSimpleRouter(
@@ -47,6 +47,8 @@ urlpatterns = [
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 
+
+    #redirects
     url(r'^ideas/$', IndexView.as_view()),
     url(r'^game/$', IndexView.as_view()),
     url(r'^history/$', IndexView.as_view()),

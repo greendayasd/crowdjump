@@ -11,6 +11,13 @@ class Version(models.Model):
 
     submitter = models.ForeignKey('authentication.Account', on_delete=models.DO_NOTHING, null=True)
 
+    #current state of the game
+    features_game = models.CharField(max_length=200, default="")
+    features_design = models.CharField(max_length=200, default="")
+    features_selection = models.CharField(max_length=200, default="")
+    features_website = models.CharField(max_length=200, default="")
+
+
     def __unicode__(self):
         return self.label
 

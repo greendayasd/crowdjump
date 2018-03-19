@@ -9,22 +9,15 @@
         .module('crowdjump.ideas.controllers')
         .controller('NewIdeaController', NewIdeaController);
 
-    NewIdeaController.$inject = ['$rootScope', '$scope', 'Authentication', 'Snackbar', 'Ideas'];
+    NewIdeaController.$inject = ['$rootScope', '$route', '$scope', 'Authentication', 'Snackbar', 'Ideas'];
 
-    /**
-     * @namespace NewIdeaController
-     */
-    function NewIdeaController($rootScope, $scope, Authentication, Snackbar, Ideas) {
+    function NewIdeaController($rootScope, $route, $scope, Authentication, Snackbar, Ideas) {
         var vm = this;
 
         vm.submit = submit;
 
-        /**
-         * @name submit
-         * @desc Create a new Idea
-         * @memberOf crowdjump.ideas.controllers.NewIdeaController
-         */
         function submit() {
+            alert("???");
             $scope.$broadcast('idea.created', {
                 description: vm.description,
                 request_text: vm.request_text,
@@ -44,20 +37,11 @@
             }
             Ideas.create(content).then(createIdeaSuccessFn, createIdeaErrorFn);
 
-
-            /**
-             * @name createIdeaSuccessFn
-             * @desc Show snackbar with success message
-             */
             function createIdeaSuccessFn(data, status, headers, config) {
                 Snackbar.show('Success! New Idea submitted.');
+                $route.reload();
             }
 
-
-            /**
-             * @name createIdeaErrorFn
-             * @desc Propogate error event and show snackbar with error message
-             */
             function createIdeaErrorFn(data, status, headers, config) {
                 $rootScope.$broadcast('idea.created.error');
                 Snackbar.error(data.error);

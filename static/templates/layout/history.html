@@ -5,14 +5,15 @@
         Here you can find the features that got implemented, as well as the user who submitted the idea. <br>
         You want your own special feature? Submit your own on.
         <div class="btn-group">
-        <a href="ideas" class="btn btn-info">
-            <i aria-hidden="true"></i> Ideas
-        </a>
-    </div><br><br>
+            <a href="ideas" class="btn btn-info">
+                <i aria-hidden="true"></i> Ideas
+            </a>
+        </div>
+        <br><br>
     </h4>
 </div>
 
-<div class="container">
+<div class="container" ng-controller="HistoryIndexController">
 
     <table class="table table-striped table-hover">
         <thead class="thead-dark">
@@ -23,12 +24,33 @@
             <th scope="col">Date</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td>0.01</td>
-            <td>Here is the change</td>
-            <td>Username</td>
-            <td>05.03.2018</td>
+        <tbody ng-repeat="change in history" data-ng-switch on="historyCollapse[$index]">
+        <tr class="clickableRow" title="Click to show more information about the version."
+            data-ng-click="selectTableRow($index)">
+            <td>{{ change.label }}</td>
+            <td>{{ change.change }}</td>
+            <td>{{ change.submitter.username }}</td>
+            <td>{{ change.created_at | date : "dd.MM.y HH:mm" }}</td>
+        </tr>
+        <tr data-ng-switch-when="true">
+            <td colspan="9">
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td>{{ change.features_game }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ change.features_design }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ change.features_selection }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ change.features_website }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
         </tr>
 
         </tbody>

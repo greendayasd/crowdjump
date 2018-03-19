@@ -21,12 +21,12 @@
          * @desc The Factory to be returned
          */
         var Authentication = {
-            getAuthentication: getAuthentication,
+            getAuthenticatedAccount: getAuthenticatedAccount,
             isAuthenticated: isAuthenticated,
             login: login,
             logout:logout,
             register: register,
-            setAuthentication: setAuthentication,
+            setAuthenticatedAccount: setAuthenticatedAccount,
             unauthenticate: unauthenticate
         };
 
@@ -87,7 +87,7 @@
              * @desc Set the authenticated account and redirect to index
              */
             function loginSuccessFn(data, status, headers, config) {
-                Authentication.setAuthentication(data.data);
+                Authentication.setAuthenticatedAccount(data.data);
                 // console.error("authenticated? " + Authentication.isAuthenticated())
                 window.location = '/';
             }
@@ -137,17 +137,17 @@
 
 
         /**
-         * @name getAuthentication
+         * @name getAuthenticatedAccount
          * @desc Return the currently authenticated account
          * @returns {object|undefined} Account if authenticated, else `undefined`
          * @memberOf crowdjump.authentication.services.Authentication
          */
-        function getAuthentication() {
-            if (!$cookies.getObject("Authentication")) {
+        function getAuthenticatedAccount() {
+            if (!$cookies.getObject("authenticatedAccount")) {
                 return;
             }
 
-            return $cookies.getObject("Authentication");//JSON.parse($cookies.Authentication);
+            return $cookies.getObject("authenticatedAccount");//JSON.parse($cookies.authenticatedAccount);
         }
 
         /**
@@ -157,22 +157,22 @@
          * @memberOf crowdjump.authentication.services.Authentication
          */
         function isAuthenticated() {
-            // console.error("isAuthenticated " + $cookies.getObject("Authentication"));
-            if ($cookies.getObject("Authentication") != null){
+            // console.error("isAuthenticated " + $cookies.getObject("authenticatedAccount"));
+            if ($cookies.getObject("authenticatedAccount") != null){
                 return true;
             }
             return false;
         }
 
         /**
-         * @name setAuthentication
+         * @name setAuthenticatedAccount
          * @desc Stringify the account object and store it in a cookie
          * @param {Object} user The account object to be stored
          * @returns {undefined}
          * @memberOf crowdjump.authentication.services.Authentication
          */
-        function setAuthentication(account) {
-            $cookies.put("Authentication", JSON.stringify(account));
+        function setAuthenticatedAccount(account) {
+            $cookies.put("authenticatedAccount", JSON.stringify(account));
         }
 
         /**
@@ -182,7 +182,7 @@
          * @memberOf crowdjump.authentication.services.Authentication
          */
         function unauthenticate() {
-            $cookies.remove("Authentication");
+            $cookies.remove("authenticatedAccount");
         }
     }
 })();

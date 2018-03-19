@@ -14,9 +14,14 @@
 .idea .idea__time {
     font-weight: bold;
     float:left;
+    font-size: 75%;
     clear: both;
     text-align: left;
-    padding-bottom: 19px;
+    padding-bottom: 0px;
+}
+
+.idea .idea__content{
+    text-align: left;
 }
 
 .idea .idea__meta a:hover {
@@ -35,8 +40,25 @@
     font-size: large;
 }
 
+.idea .idea__delete{
+
+}
+
+.clickableRow {
+    cursor: pointer;
+}
+
 .btn-add-new-idea {
     position: fixed;
     bottom: 20px;
     right: 20px;
+}
+
+.btn-delete-idea {
+    color: white;
+    background: red;
+}
+.btn-delete-idea:hover {
+    color: white;
+    background: darkred;
 }

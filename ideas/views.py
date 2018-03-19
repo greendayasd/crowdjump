@@ -21,7 +21,6 @@ class IdeaViewSet(viewsets.ModelViewSet):
         return (permissions.IsAuthenticated(), IsCreaterOfIdea(),)
 
     def perform_create(self, serializer):
-
         instance = serializer.save(user=self.request.user)
         return super(IdeaViewSet, self).perform_create(serializer)
 
@@ -40,6 +39,7 @@ class AccountIdeasViewSet(viewsets.ViewSet):
 class GameInfoViewSet(viewsets.ModelViewSet):
     queryset = GameInfo.objects
     serializer_class = GameInfoSerializer
+
     #
     # def get_permissions(self):
     #     if self.request.method in permissions.SAFE_METHODS:
@@ -47,7 +47,6 @@ class GameInfoViewSet(viewsets.ModelViewSet):
     #     return (permissions.IsAuthenticated(), IsCreaterOfIdea(),)
 
     def perform_create(self, serializer):
-
         instance = serializer.save(user=self.request.user)
         return super(GameInfoViewSet, self).perform_create(serializer)
 
@@ -64,9 +63,12 @@ class AccountGameInfoViewSet(viewsets.ViewSet):
 
 
 class HistoryViewSet(viewsets.ModelViewSet):
-    model = Version
     queryset = Version.objects.order_by('-created_at')
     serializer_class = VersionSerializer
-    permission_classes = [
-        permissions.AllowAny
-    ]
+
+    def get_permissions(self):
+        return permissions.AllowAny()
+
+    def perform_create(self, serializer):
+        instance = serializer.save(user=self.request.user)
+        return super(HistoryViewSet, self).perform_create(serializer)

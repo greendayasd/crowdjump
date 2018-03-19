@@ -8,7 +8,7 @@
     ]);
 
   angular
-    .module('crowdjump.history.controllers', []);
+    .module('crowdjump.history.controllers', ['ui.bootstrap']);
 
   angular
     .module('crowdjump.history.services', []);

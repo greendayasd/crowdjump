@@ -9,12 +9,12 @@
   History.$inject = ['$http'];
 
   function History($http) {
-    var Ideas = {
+    var History = {
       all: all,
       create: create,
     };
 
-    return Ideas;
+    return History;
 
     /**
     * @desc Get all History
