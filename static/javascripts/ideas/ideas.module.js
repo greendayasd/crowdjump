@@ -9,7 +9,7 @@
     ]);
 
   angular
-    .module('crowdjump.ideas.controllers', ['ngCookies', 'ui.bootstrap']);
+    .module('crowdjump.ideas.controllers', ['ngCookies', 'ui.bootstrap', 'ngDialog', 'ngMaterial', 'ngMessages',]);
 
   angular
     .module('crowdjump.ideas.directives', ['ngDialog']);

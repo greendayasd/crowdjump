@@ -12,6 +12,7 @@
 
         Current state of the game:<br><br>
 
+
         <div>
             <ul class="list-group">
 
@@ -44,6 +45,7 @@
     </div>
 
     <div ng-controller="IdeasIndexController as vm">
+
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
             View <select ng-model="viewby" ng-change="setItemsPerPage(viewby)" id="itemsPerPageSelector">
@@ -87,14 +89,9 @@
 
                                 <div class="idea__delete" ng-if="idea.user.username == username2">
                                     <br>
-                                    <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-delete-idea" ng-click="vm.openDialog(idea.id)">
-                                        Delete this idea
-                                    </a>
                                     <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-delete-idea"
-                                       ng-dialog-controller="DeleteIdeaController as vm"
-                                       href="javascript:void(0)"
-                                       ng-dialog="/static/templates/ideas/delete-idea.html">
-                                        old
+                                       ng-click="vm.openDialog(idea.id)">
+                                        Delete this idea
                                     </a>
                                 </div>
 
@@ -111,10 +108,7 @@
                 boundary-links="true" rotate="false" items-per-page="itemsPerPage"></ul>
         </div>
     </div>
-</div>
-
-
-<div ng-controller="IndexController as vm" ng-show="vm.isAuthenticated">
+    <div ng-controller="IndexController as vm" ng-show="vm.isAuthenticated">
     <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-idea"
        ng-dialog-controller="NewIdeaController as vm"
        href="javascript:void(0)"
@@ -122,5 +116,9 @@
         Submit a new Idea
     </a>
 </div>
+
+</div>
+
+
 
 <br> <br> <br>
