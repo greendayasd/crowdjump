@@ -47,16 +47,13 @@
     <div ng-controller="IdeasIndexController as vm">
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-            View <select ng-model="viewby" ng-change="setItemsPerPage(viewby)" id="itemsPerPageSelector">
-            <option>3</option>
-            <option>5</option>
-            <option>10</option>
-            <option>20</option>
-            <option>30</option>
-            <option>40</option>
-            <option>50</option>
-        </select> records at a time. <br>
+            View
+            <select ng-model="selector.config"
+                    ng-options="template.value for template in selector.configs track by template.name"
+                    ng-change="setItemsPerPage(selector.config.value)"
+                    >
+            </select>
+            records at a time. <br>
 
             <div ng-repeat="idea in ideas.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
                 <div class="row">
@@ -109,16 +106,15 @@
         </div>
     </div>
     <div ng-controller="IndexController as vm" ng-show="vm.isAuthenticated">
-    <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-idea"
-       ng-dialog-controller="NewIdeaController as vm"
-       href="javascript:void(0)"
-       ng-dialog="/static/templates/ideas/new-idea.html">
-        Submit a new Idea
-    </a>
-</div>
+        <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-idea"
+           ng-dialog-controller="NewIdeaController as vm"
+           href="javascript:void(0)"
+           ng-dialog="/static/templates/ideas/new-idea.html">
+            Submit a new Idea
+        </a>
+    </div>
 
 </div>
-
 
 
 <br> <br> <br>

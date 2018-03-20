@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'authentication',
     'compressor',
     'ideas',
-    'channels',
 ]
 
 MIDDLEWARE = [
@@ -178,3 +177,14 @@ REST_FRAMEWORK = {
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('localhost', 6379)],
+        },
+        'ROUTING': 'chantest.routing.channel_routing',
+    }
+}

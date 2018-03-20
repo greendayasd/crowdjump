@@ -37,21 +37,6 @@
                 }
             }
 
-            // vm.openDialog2 = function (idea_id) {
-            //
-            //     $scope.id = idea_id;
-            //     // alert("scope id " + $scope.id);
-            //     ngDialog.open({
-            //         template: '/static/templates/ideas/delete-idea.html',
-            //         scope: $scope,
-            //         controller: $controller('DeleteIdeaController', {
-            //             $scope: $scope,
-            //             // id: idea_id
-            //         })
-            //     });
-            // }
-
-
             function submit(idea_id) {
                 // alert("delete " + this.id);
 
@@ -89,6 +74,20 @@
                 }
             }
 
+            $scope.selector = {};
+            $scope.selector.configs = [
+                                 {'name': 3,
+                                  'value': 3},
+                                 {'name': 5,
+                                  'value': 5},
+                                 {'name': 10,
+                                  'value': 10},
+                                 {'name': 20,
+                                  'value': 20}
+                               ];
+
+            $scope.selector.config  = $scope.selector.configs[1];
+
             $scope.setPage = function (pageNo) {
                 $scope.currentPage = pageNo;
             };
@@ -98,6 +97,7 @@
             };
 
             $scope.setItemsPerPage = function (num) {
+                console.error(num);
                 $scope.itemsPerPage = num;
                 $scope.currentPage = 1; //reset to first page
             }
@@ -115,14 +115,13 @@
 
                 function ideasSuccessFn(data, status, headers, config) {
                     $scope.ideas = data.data;
-                    $scope.viewby = 3;
+                    $scope.viewby = 5;
                     $scope.totalItems = $scope.ideas.length;
                     $scope.currentPage = 1;
                     $scope.itemsPerPage = $scope.viewby;
                     $scope.maxSize = 5; //Number of pager buttons to show
                     // console.error("data " + data.data);
 
-                    $scope.setItemsPerPage(5);
                 }
 
                 function ideasErrorFn(data, status, headers, config) {
