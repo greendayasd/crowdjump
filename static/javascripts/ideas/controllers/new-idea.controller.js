@@ -28,7 +28,7 @@
 
             $scope.closeThisDialog();
             var content = {
-                "version": 1,
+                "version": "0,01",
                 "request_text": vm.request_text,
                 "description": vm.description,
                 "estimated_time": null,

@@ -74,19 +74,28 @@
                 }
             }
 
+
             $scope.selector = {};
             $scope.selector.configs = [
-                                 {'name': 3,
-                                  'value': 3},
-                                 {'name': 5,
-                                  'value': 5},
-                                 {'name': 10,
-                                  'value': 10},
-                                 {'name': 20,
-                                  'value': 20}
-                               ];
+                {
+                    'name': 3,
+                    'value': 3
+                },
+                {
+                    'name': 5,
+                    'value': 5
+                },
+                {
+                    'name': 10,
+                    'value': 10
+                },
+                {
+                    'name': 20,
+                    'value': 20
+                }
+            ];
 
-            $scope.selector.config  = $scope.selector.configs[1];
+            $scope.selector.config = $scope.selector.configs[1];
 
             $scope.setPage = function (pageNo) {
                 $scope.currentPage = pageNo;

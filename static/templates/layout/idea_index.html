@@ -51,18 +51,54 @@
             <select ng-model="selector.config"
                     ng-options="template.value for template in selector.configs track by template.name"
                     ng-change="setItemsPerPage(selector.config.value)"
-                    >
+            >
             </select>
             records at a time. <br>
+            <hr>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Version</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td class="col-sm-2"><input class="col-sm-12" ng-model="search.request_text"></td>
+                    <td class="col-sm-2"><input class="col-sm-12" ng-model="search.description"></td>
+                    <td class="col-sm-2"><input class="col-sm-12" ng-model="search.user.username"></td>
+                    <td class="col-sm-2">
+                        <select ng-model="selector.config"
+                                ng-options="template.value for template in selector.configs track by template.name"
+                                ng-change="setItemsPerPage(selector.config.value)"
+                        >
+                            <option>all</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
 
-            <div ng-repeat="idea in ideas.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+            <div class="btn-group mr-4" data-toggle="buttons">
+                <label class="btn btn-primary form-check-label">
+                    <input type="checkbox" class="form-check-input" ng-model="search.manageable">Manageable
+                </label>
+                <label class="btn btn-primary form-check-label">
+                    <input type="checkbox" class="form-check-input" ng-model="search.implemented">Already Implemented
+                </label>
+            </div>
+
+            <br><br>
+            <div ng-repeat="idea in ideas.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter:search"
+                 id="searchObjResults">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="well">
                             <div class="idea">
                                 <div class="idea__time">
-                                    Idea: <span style="color:Tomato">{{ idea.id }} </span> <br>
-                                    created at {{ idea.created_at | date : "dd.MM.y HH:mm" }}<br>
+                                    Idea: <span style="color:Blue">{{ idea.id }} </span> <br>
+                                    created at {{ idea.created_at | date : "dd.MM.y HH:mm" }} on Version <span
+                                        style="color:Blue"> {{ idea.version }}<br>
                                 </div>
                                 <div class="idea__meta">
                                     User: {{ idea.user.username }}
