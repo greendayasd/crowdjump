@@ -5,12 +5,12 @@ from authentication.models import Account, GameInfo, WebsiteInfo
 
 
 class VersionSerializer(serializers.ModelSerializer):
-
     submitter = AccountSerializer(read_only=True, required=False)
 
     class Meta:
         model = Version
-        fields = ('id', 'label', 'change', 'submitter', 'features_game', 'features_design', 'features_selection', 'features_website','created_at',)
+        fields = ('id', 'label', 'change', 'submitter', 'features_game', 'features_design', 'features_selection',
+                  'features_website', 'created_at',)
         # read_only_fields = ()
 
     def get_validation_exclusions(self, *args, **kwargs):

@@ -22,7 +22,7 @@ class Version(models.Model):
         return self.label
 
     def __str__(self):
-        return self
+        return self.label
 
     def is_newest(self):
         if self == Version.objects.latest():

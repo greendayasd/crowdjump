@@ -2,13 +2,14 @@ from django.db import models
 from authentication.models import Account
 from django.utils import timezone
 from datetime import datetime
+from website.models import Version
 
 
 class Idea(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='ideas')
-    # version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='ideas',
-    #                              default=0) #Version.objects.all().order_by('-id')[0]
-    version = models.CharField(max_length= 25, default="0,01")
+    user = models.ForeignKey('authentication.Account', on_delete=models.CASCADE, related_name='ideas')
+    version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='ideas')
+                                 #default=Version.objects.all().order_by('-id')[0])
+    # version = models.CharField(max_length= 25, default="0,01")
     request_text = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
 

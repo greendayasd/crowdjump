@@ -45,6 +45,8 @@ class Account(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     is_activated = models.BooleanField(default=True)
 
+    survey_status = models.IntegerField(default=0)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -99,6 +101,7 @@ class GameInfo(models.Model):
 class WebsiteInfo(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='websiteinfo')
     version = models.ForeignKey(Version, on_delete=models.CASCADE, null=True, related_name='websiteinfo')
+
     time_spent_ideas = models.IntegerField(default=0)
     time_spent_index = models.IntegerField(default=0)
     time_spent_history = models.IntegerField(default=0)

@@ -9,15 +9,16 @@
             .module('crowdjump.ideas.controllers')
             .controller('IdeasIndexController', IdeasIndexController);
 
-        IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Snackbar', '$cookies', 'ngDialog', '$controller', '$mdToast', '$window', '$route'];
+        IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'History', 'Snackbar', '$cookies', 'ngDialog', '$controller', '$mdToast', '$window', '$route'];
 
-        function IdeasIndexController($scope, Authentication, Ideas, Snackbar, $cookies, ngDialog, $controller, $mdToast, $window, $route) {
+        function IdeasIndexController($scope, Authentication, Ideas, History, Snackbar, $cookies, ngDialog, $controller, $mdToast, $window, $route) {
             var vm = this;
             var canDelete = true;
 
             $scope.isAuthenticated = Authentication.isAuthenticated();
             // console.error("ideas " + vm.isAuthenticated || false);
             $scope.ideas = [];
+            $scope.versions = [];
 
             $scope.username2 = "asd";
             if ($scope.isAuthenticated) {
@@ -28,6 +29,7 @@
 
 
             activate();
+            get_versions();
 
             vm.openDialog = function (idea_id) {
                 var deleteUser = $window.confirm('Are you absolutely sure you want to delete this idea?');
@@ -134,6 +136,23 @@
                 }
 
                 function ideasErrorFn(data, status, headers, config) {
+                    Snackbar.error(data.error);
+                    console.error(data.error);
+                }
+            }
+
+            function get_versions() {
+                History.all().then(historySuccessFn, historyErrorFn);
+
+                function historySuccessFn(data, status, headers, config) {
+                    $scope.versions = data.data;
+                    $scope.newestVersion = $scope.versions[0];
+                    console.error("data " + data.data);
+                    console.error("v  " + $scope.newestVersion.label);
+
+                }
+
+                function historyErrorFn(data, status, headers, config) {
                     Snackbar.error(data.error);
                     console.error(data.error);
                 }

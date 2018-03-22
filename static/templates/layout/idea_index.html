@@ -98,7 +98,7 @@
                                 <div class="idea__time">
                                     Idea: <span style="color:Blue">{{ idea.id }} </span> <br>
                                     created at {{ idea.created_at | date : "dd.MM.y HH:mm" }} on Version <span
-                                        style="color:Blue"> {{ idea.version }}<br>
+                                        style="color:Blue"> {{ idea.version.label }}</span><br>
                                 </div>
                                 <div class="idea__meta">
                                     User: {{ idea.user.username }}

@@ -9,13 +9,14 @@ class IdeaSerializer(serializers.ModelSerializer):
     user = AccountSerializer(read_only=True, required=False)
     # votes = serializers.HyperlinkedIdentityField('vote', lookup_field='username')
 
-    # version = VersionSerializer(read_only=True, required=False)
+    version = VersionSerializer(read_only=True, required=False)
 
     class Meta:
         model = Idea
 
         fields = ('id', 'user', 'version', 'request_text', 'description',
                   'created_at', 'updated_at', 'estimated_time', 'admin_comment',
+                  'manageable', 'implemented',
                   'upvotes', 'downvotes')
 
         read_only_fields = ('id', 'created_at', 'updated_at')
