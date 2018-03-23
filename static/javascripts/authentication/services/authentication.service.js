@@ -187,7 +187,9 @@
          * @memberOf crowdjump.authentication.services.Authentication
          */
         function setAuthenticatedAccount(account) {
-            $cookies.put("authenticatedAccount", JSON.stringify(account));
+            var expireDate = new Date();
+            expireDate.setDate(expireDate.getDate() + 1);
+            $cookies.put("authenticatedAccount", JSON.stringify(account), {'expires': expireDate});
         }
 
         /**
@@ -197,7 +199,8 @@
          * @memberOf crowdjump.authentication.services.Authentication
          */
         function unauthenticate() {
-            $cookies.delete("authenticatedAccount");
+            $cookies.remove("authenticatedAccount");
         }
+
     }
 })();
