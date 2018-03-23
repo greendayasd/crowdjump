@@ -129,6 +129,7 @@
              * @desc Unauthenticate and redirect to index with page reload
              */
             function logoutSuccessFn(data, status, headers, config) {
+                console.error("success??");
                 Authentication.unauthenticate();
 
                 window.location = '/';
