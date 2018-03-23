@@ -64,11 +64,11 @@
              */
             function registerErrorFn(data, status, headers, config) {
                 var msg = 'Registration failed! Please try another username/email'
-                console.error(msg);
+                // console.error(msg);
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent("Logout failed!")
-                        .hideDelay(2000)
+                        .textContent(msg)
+                        .hideDelay(4000)
                 );
                 // $rootScope.error = msg;
             }
@@ -103,8 +103,13 @@
              */
             function loginErrorFn(data, status, headers, config) {
                 var msg = 'Login failed! Email or password is wrong!';
-                console.error(msg);
-                $rootScope.error = msg;
+                // console.error(msg);
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent(msg)
+                        .hideDelay(4000)
+                );
+                // $rootScope.error = msg;
             }
         }
 
@@ -135,8 +140,13 @@
              */
             function logoutErrorFn(data, status, headers, config) {
                 var msg = 'Logout failed!';
-                console.error(msg);
-                $rootScope.error = msg;
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent(msg)
+                        .hideDelay(4000)
+                );
+                // console.error(msg);
+                // $rootScope.error = msg;
             }
         }
 
@@ -187,7 +197,7 @@
          * @memberOf crowdjump.authentication.services.Authentication
          */
         function unauthenticate() {
-            $cookies.remove("authenticatedAccount");
+            $cookies.delete("authenticatedAccount");
         }
     }
 })();
