@@ -46,7 +46,8 @@
                     idea.version.id >= $scope.search.version.id_min &&
                     idea.version.id <= $scope.search.version.id_max &&
                     idea.feasible != $scope.search.not_feasible &&
-                    idea.implemented == $scope.search.implemented) {// || $scope.search.version.label == "all") {
+                    idea.implemented == $scope.search.implemented &&
+                    idea.deleted == false) {// || $scope.search.version.label == "all") {
                     return idea;
 
                     // if (idea.feasible && idea.feasible != $scope.search.not_feasible) {

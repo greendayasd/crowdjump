@@ -20,6 +20,8 @@ class Idea(models.Model):
     feasible = models.BooleanField(default=True)
     implemented = models.BooleanField(default=False)
 
+    deleted = models.BooleanField(default=False)
+
     admin_comment = models.CharField(max_length=50, null=True, default='')
     estimated_time = models.CharField(max_length=50, null=True, default='')
 

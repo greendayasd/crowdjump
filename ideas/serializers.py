@@ -16,7 +16,7 @@ class IdeaSerializer(serializers.ModelSerializer):
 
         fields = ('id', 'user', 'version', 'request_text', 'description',
                   'created_at', 'updated_at', 'estimated_time', 'admin_comment',
-                  'feasible', 'implemented',
+                  'feasible', 'implemented', 'deleted',
                   'upvotes', 'downvotes')
 
         read_only_fields = ('id', 'created_at', 'updated_at')
