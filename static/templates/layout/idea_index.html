@@ -69,27 +69,30 @@
                     <td class="col-sm-2"><input class="col-sm-12" ng-model="search.description"></td>
                     <td class="col-sm-2"><input class="col-sm-12" ng-model="search.user.username"></td>
                     <td class="col-sm-2">
-                        <select ng-model="selector.config"
-                                ng-options="template.value for template in selector.configs track by template.name"
-                                ng-change="setItemsPerPage(selector.config.value)"
+                        <select ng-model="newestVersion"
+                                ng-options="template.label for template in versions track by template.id"
+                                ng-change="versionFilter(newestVersion.label)"
                         >
-                            <option>all</option>
                         </select>
                     </td>
                 </tr>
             </table>
 
             <div class="btn-group mr-4" data-toggle="buttons">
-                <label class="btn btn-primary form-check-label">
-                    <input type="checkbox" class="form-check-input" ng-model="search.manageable">Manageable
-                </label>
-                <label class="btn btn-primary form-check-label">
-                    <input type="checkbox" class="form-check-input" ng-model="search.implemented">Already Implemented
-                </label>
+                <button type="button" class="btn btn-primary" ng-model="search.manageable" uib-btn-checkbox
+                        btn-checkbox-true="1" btn-checkbox-false="0"> Not Feasible
+                </button>
+                <button type="button" class="btn btn-primary" ng-model="search.implemented" uib-btn-checkbox
+                        btn-checkbox-true="1" btn-checkbox-false="0"> Not Feasible
+                </button>
+                <button class="btn btn-primary" ng-click="filterReset()">ResetFilter</button>
+                <input type="checkbox"
+                       ng-model="search.manageable"> Manageable
+
             </div>
 
             <br><br>
-            <div ng-repeat="idea in ideas.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter:search"
+            <div ng-repeat="idea in ideas.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter:customFilter"
                  id="searchObjResults">
                 <div class="row">
                     <div class="col-lg-12">
