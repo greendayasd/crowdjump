@@ -102,8 +102,11 @@
                     $route.reload();
 
                 } else {
-                    // alert("You can't delete your ideas at the moment, the next implementation is chosen soon!");
-                    console.error("cant delete");
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent("You can't delete your ideas at the moment, the next implementation is chosen soon!")
+                            .hideDelay(2000)
+                    );
                     $route.reload();
                 }
 
@@ -113,7 +116,7 @@
                     // Snackbar.show("Post deleted");
                     $mdToast.show(
                         $mdToast.simple()
-                            .textContent("Post deleted")
+                            .textContent("Idea deleted")
                             .hideDelay(2000)
                     );
                     // $route.reload();
@@ -123,10 +126,10 @@
                     // Snackbar.error(data.error);
                     $mdToast.show(
                         $mdToast.simple()
-                            .textContent(data.error)
+                            .textContent("There was an error, the idea has not been deleted!")
                             .hideDelay(2000)
                     );
-                    console.error(data.error);
+                    // console.error(data.error);
 
                 }
             }
