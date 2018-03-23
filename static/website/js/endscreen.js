@@ -33,7 +33,7 @@ Crowdjump.Endscreen.prototype = {
 
 
         this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.replay, this);
-    console.error("Gameinfo!: " + Crowdjump.gameinfo);
+    // console.error("Gameinfo!: " + Crowdjump.gameinfo);
 
     },
 
@@ -56,15 +56,15 @@ Crowdjump.Endscreen.prototype = {
 
 function setInfo(){
         var old_time = 0;
-        console.error("highscore: " + this.gameinfo["highscore"]);
+        // console.error("highscore: " + this.gameinfo["highscore"]);
         old_time += this.gameinfo["highscore"];
-        console.error(this.gameinfo["highscore"]);
+        // console.error(this.gameinfo["highscore"]);
 
         var new_besttime = Math.min(old_time,game.timeElapsed);
-        this.gameinfo["highscore"] = new_besttime;
+        // this.gameinfo["highscore"] = new_besttime;
 
         var rounds_won = this.gameinfo["rounds_won"] + 1;
-        this.gameinfo["rounds_won"] = rounds_won + 1;
+        // this.gameinfo["rounds_won"] = rounds_won + 1;
 
-        console.error("endscreen info: " + JSON.stringify(this.gameinfo));
+        // console.error("endscreen info: " + JSON.stringify(this.gameinfo));
 }

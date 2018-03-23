@@ -216,7 +216,7 @@ Crowdjump.Game.create = function () {
     this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer,this);
 
     setInfo();
-    updateInfo();
+    // updateInfo();
 };
 
 Crowdjump.Game.update = function () {

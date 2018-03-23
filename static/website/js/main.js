@@ -51,14 +51,14 @@ function getInfo() {
 
     jQuery.get('/api/v1/gameinfo/1/?format=json', function (data) {
         this.gameinfo = data;
-        console.error("gameinfo 0: " + JSON.stringify(this.gameinfo));
+        // console.error("gameinfo 0: " + JSON.stringify(this.gameinfo));
         // console.error("gameinfo 0: " + JSON.stringify(data));
     })
 }
 
 function updateInfo(){
 
-        console.error("update: " + JSON.stringify(this.gameinfo));
+        // console.error("update: " + JSON.stringify(this.gameinfo));
 
         $.ajax({
             type: 'PUT',

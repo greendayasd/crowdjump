@@ -13,25 +13,30 @@
 </style>
 
 <div class="container">
-<div class="col-md-12" id="gameCanvas">
+    <div class="row">
+        <div class="col-md-12" id="gameCanvas">
 
-</div>
-<div class="col-md-12" id="instructions">
+        </div>
 
-    <h4 style="color: white">
-        <br>
-        The goal is simple: Control the alien by using the arrow keys
-        to move (or space to jump) to get to the flag. <br>
-        If you get stuck, you can reset the game pressing R.
-    </h4>
-
-    <div class="col-md-10 text-center">
-        <button id="btn-create" ng-controller="GameController" ng-click="createPGame()" class="btn btn-primary btn-lg">Start
-            Game
-        </button>
-        <br>
     </div>
+    <div class="row">
+        <div class="col-md-12" id="instructions">
 
-</div>
+            <h4 style="color: white">
+                <br>
+                The goal is simple: Control the alien by using the arrow keys
+                to move (or space to jump) to get to the flag. <br>
+                If you get stuck, you can reset the game pressing R.
+            </h4>
+
+            <div class="col-md-10 text-center">
+                <button id="btn-create" ng-controller="GameController" ng-click="createPGame()"
+                        class="btn btn-primary btn-lg">Start
+                    Game
+                </button>
+                <br>
+            </div>
+        </div>
+    </div>
 
 </div>
