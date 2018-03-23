@@ -9,13 +9,13 @@
         .module('crowdjump.authentication.services')
         .factory('Authentication', Authentication);
 
-    Authentication.$inject = ['$cookies', '$rootScope', '$http'];
+    Authentication.$inject = ['$cookies', '$rootScope', '$http', '$mdToast'];
 
     /**
      * @namespace Authentication
      * @returns {Factory}
      */
-    function Authentication($cookies, $rootScope, $http) {
+    function Authentication($cookies, $rootScope, $http, $mdToast) {
         /**
          * @name Authentication
          * @desc The Factory to be returned
@@ -24,7 +24,7 @@
             getAuthenticatedAccount: getAuthenticatedAccount,
             isAuthenticated: isAuthenticated,
             login: login,
-            logout:logout,
+            logout: logout,
             register: register,
             setAuthenticatedAccount: setAuthenticatedAccount,
             unauthenticate: unauthenticate
@@ -65,7 +65,12 @@
             function registerErrorFn(data, status, headers, config) {
                 var msg = 'Registration failed! Please try another username/email'
                 console.error(msg);
-                $rootScope.error = msg;
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent("Logout failed!")
+                        .hideDelay(2000)
+                );
+                // $rootScope.error = msg;
             }
         }
 
@@ -158,7 +163,7 @@
          */
         function isAuthenticated() {
             // console.error("isAuthenticated " + $cookies.getObject("authenticatedAccount"));
-            if ($cookies.getObject("authenticatedAccount") != null){
+            if ($cookies.getObject("authenticatedAccount") != null) {
                 return true;
             }
             return false;

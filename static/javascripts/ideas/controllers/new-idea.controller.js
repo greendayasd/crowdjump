@@ -18,7 +18,6 @@
         // get_versions();
 
         function submit() {
-            alert(vm.description);
             if (vm.description == undefined && vm.request_text == undefined){
                 $scope.closeThisDialog();
                 return;
