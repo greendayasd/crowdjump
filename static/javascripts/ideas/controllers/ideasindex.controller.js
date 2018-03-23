@@ -196,7 +196,7 @@
                             .textContent(data.error)
                             .hideDelay(2000)
                     );
-                    console.error(data.error);
+                    // console.error(data.error);
                 }
             }
 
