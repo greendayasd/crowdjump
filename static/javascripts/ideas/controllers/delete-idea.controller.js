@@ -29,11 +29,15 @@
 
             if (canDelete) {
                 Ideas.deleteIdea(this.id).then(deleteSuccessFn, deleteErrorFn);
-                console.error("delete");
+                // console.error("delete");
 
             } else {
-                // alert("You can't delete your ideas at the moment, the next implementation is chosen soon!");
-                console.error("cant delete");
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent("You can't delete your ideas at the moment, the next implementation is chosen soon!")
+                        .hideDelay(2000)
+                );
+                // alert();
                 $route.reload();
             }
 
@@ -43,20 +47,18 @@
             // Snackbar.show("Post deleted");
 
             function deleteSuccessFn(data, status, headers, config) {
-                Snackbar.show("Post deleted");
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent("Post deleted")
+                        .textContent("Idea deleted")
                         .hideDelay(2000)
                 );
                 // $route.reload();
             }
 
             function deleteErrorFn(data, status, headers, config) {
-                Snackbar.error(data.error);
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent("data.error")
+                        .textContent("Idea was not deleted!")
                         .hideDelay(2000)
                 );
                 console.error(data.error);

@@ -14,22 +14,52 @@
         function IdeasIndexController($scope, Authentication, Ideas, History, Snackbar, $cookies, ngDialog, $controller, $mdToast, $window, $route) {
             var vm = this;
             var canDelete = true;
+            $scope.filterReset = function () {
+                $scope.search = {
+                    not_feasible: false,
+                    implemented: false,
+                    request_text: "",
+                    description: "",
+                    user: {username: ""},
+                    version: {label: "", id_min: 1, id_max: $scope.newestVersion.id}
+                };
+                this.versionFilterMin(1);
+                this.versionFilterMax($scope.newestVersion.id);
+            }
 
             $scope.search = {
                 not_feasible: false,
-                implemented: false
+                implemented: false,
+                request_text: "",
+                description: "",
+                user: {username: ""},
+                version: {label: "", id_min: 1, id_max: 999999}
             };
-            $scope.search.version = {};
-            $scope.search.version.label = "";
-            $scope.search.request_text = "";
 
             $scope.customFilter = function (idea) {
-                alert(idea.manageable);
-                if (idea.manageable && idea.manageable !== $scope.search.not_feasible) {
-                    return idea;
-                } else if (!idea.manageable && idea.manageable === $scope.search.not_feasible) {
-                    return idea;
+                // console.error("idea " + idea.request_text + "   search " + $scope.search.request_text.toLowerCase() );
+                // console.error("idea " + idea.version.id + "  search "+ $scope.search.version.id_min)
+                if (idea.request_text.toLowerCase().match($scope.search.request_text.toLowerCase()) &&
+                    idea.description.toLowerCase().match($scope.search.description.toLowerCase()) &&
+                    idea.user.username.toLowerCase().match($scope.search.user.username.toLowerCase()) &&
+                    idea.version.id >= $scope.search.version.id_min &&
+                    idea.version.id <= $scope.search.version.id_max) {// || $scope.search.version.label == "all") {
+
+                    if (idea.feasible && idea.feasible != $scope.search.not_feasible) {
+                        if (idea.implemented && idea.implemented != $scope.search.implemented) {
+                            return idea;
+                        } else if (!idea.implemented && idea.implemented == $scope.search.implemented) {
+                            return idea;
+                        }
+                    } else if (!idea.feasible && idea.feasible == $scope.search.not_feasible) {
+                        if (idea.implemented && idea.implemented != $scope.search.implemented) {
+                            return idea;
+                        } else if (!idea.implemented && idea.implemented == $scope.search.implemented) {
+                            return idea;
+                        }
+                    }
                 }
+                // return idea;
             };
 
             $scope.isAuthenticated = Authentication.isAuthenticated();
@@ -37,7 +67,6 @@
             $scope.ideas = [];
             $scope.versions = [];
 
-            $scope.username2 = "asd";
             if ($scope.isAuthenticated) {
                 $scope.cookie = $cookies.getObject('authenticatedAccount');
                 $scope.username2 = $scope.cookie["username"]
@@ -121,31 +150,21 @@
             };
 
             $scope.pageChanged = function () {
-                console.log('Page changed to: ' + $scope.currentPage);
+                // console.log('Page changed to: ' + $scope.currentPage);
             };
 
             $scope.setItemsPerPage = function (num) {
-                console.error(num);
+                // console.error(num);
                 $scope.itemsPerPage = num;
                 $scope.currentPage = 1; //reset to first page
             }
 
-            $scope.versionFilter = function (label) {
-                $scope.search.version.label = label;
+            $scope.versionFilterMin = function (id) {
+                $scope.search.version.id_min = id;
             }
 
-
-            $scope.clickManageable = function () {
-                if ($scope.search.manageable == false) {
-                    $scope.search.manageable == true;
-                } else {
-                    $scope.search.manageable == false;
-                }
-                alert($scope.search.manageable);
-            }
-
-            $scope.filterReset = function () {
-                $scope.search = {};
+            $scope.versionFilterMax = function (id) {
+                $scope.search.version.id_max = id;
             }
 
             function activate() {
@@ -165,7 +184,8 @@
                     $scope.currentPage = 1;
                     $scope.itemsPerPage = 5;
                     $scope.maxSize = 5; //Number of pager buttons to show
-                    // console.error("data " + data.data);
+                    $scope.displayItems = $scope.ideas.slice(0, $scope.itemsPerPage);
+                    // console.error("data " + data.data[0].description);
 
                 }
 
@@ -185,7 +205,11 @@
 
                 function historySuccessFn(data, status, headers, config) {
                     $scope.versions = data.data;
+                    $scope.versions_max = data.data;
+                    // $scope.versions.unshift({id: -1, label: "all"});
                     $scope.newestVersion = $scope.versions[0];
+                    $scope.oldestVersion = $scope.versions_max[$scope.versions_max.length - 1]
+
                     // console.error("data " + data.data);
                     // console.error("v  " + $scope.newestVersion.label);
 

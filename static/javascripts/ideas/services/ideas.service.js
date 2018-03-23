@@ -9,13 +9,13 @@
         .module('crowdjump.ideas.services')
         .factory('Ideas', Ideas);
 
-    Ideas.$inject = ['$http'];
+    Ideas.$inject = ['$http', 'History'];
 
     /**
      * @namespace Ideas
      * @returns {Factory}
      */
-    function Ideas($http) {
+    function Ideas($http, History) {
         var Ideas = {
             all: all,
             create: create,

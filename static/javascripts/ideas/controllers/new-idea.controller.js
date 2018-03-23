@@ -15,9 +15,14 @@
         var vm = this;
 
         vm.submit = submit;
-        get_versions();
+        // get_versions();
 
         function submit() {
+            alert(vm.description);
+            if (vm.description == undefined && vm.request_text == undefined){
+                $scope.closeThisDialog();
+                return;
+            }
             $scope.$broadcast('idea.created', {
                 description: vm.description,
                 request_text: vm.request_text,
@@ -27,8 +32,9 @@
             });
 
             $scope.closeThisDialog();
+            // console.error($scope.newestVersion.label);
             var content = {
-                "version": $scope.newestVersion.label,
+                // "version": $scope.newestVersion.label,
                 "request_text": vm.request_text,
                 "description": vm.description,
                 "estimated_time": null,
@@ -52,7 +58,7 @@
 
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent(data.error)
+                        .textContent("There was an error, the idea was not created!")
                         .hideDelay(2000)
                 );
                 // Snackbar.error(data.error);
@@ -65,8 +71,8 @@
             function historySuccessFn(data, status, headers, config) {
                 $scope.versions = data.data;
                 $scope.newestVersion = $scope.versions[0];
-                console.error("data " + data.data);
-                console.error("v  " + $scope.newestVersion.label);
+                // console.error("data " + data.data);
+                // console.error("v  " + $scope.newestVersion.label);
 
             }
 

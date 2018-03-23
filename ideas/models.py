@@ -6,21 +6,23 @@ from website.models import Version
 
 
 class Idea(models.Model):
-    user = models.ForeignKey('authentication.Account', on_delete=models.CASCADE, related_name='ideas')
-    version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='ideas')
-                                 #default=Version.objects.all().order_by('-id')[0])
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='ideas')
+    version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='ideas'
+                                , default=Version.objects.all().order_by('-id')[0].id)
     # version = models.CharField(max_length= 25, default="0,01")
+    # version = models.CharField(max_length=25, default=Version.objects.all().order_by('-id')[0].label)
     request_text = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    manageable = models.BooleanField(default=True)
+    feasible = models.BooleanField(default=True)
     implemented = models.BooleanField(default=False)
 
     admin_comment = models.CharField(max_length=50, null=True, default='')
     estimated_time = models.CharField(max_length=50, null=True, default='')
+
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
 

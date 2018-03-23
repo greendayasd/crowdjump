@@ -16,10 +16,11 @@ class IdeaSerializer(serializers.ModelSerializer):
 
         fields = ('id', 'user', 'version', 'request_text', 'description',
                   'created_at', 'updated_at', 'estimated_time', 'admin_comment',
-                  'manageable', 'implemented',
+                  'feasible', 'implemented',
                   'upvotes', 'downvotes')
 
         read_only_fields = ('id', 'created_at', 'updated_at')
+
 
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(IdeaSerializer, self).get_validation_exclusions()
