@@ -78,7 +78,7 @@
 
 
         function deleteIdea(id){
-            return $http.delete('/api/v1/ideas/' + id);
+            return $http.delete('/api/v1/ideas/' + id +'/');
         }
 
     }
