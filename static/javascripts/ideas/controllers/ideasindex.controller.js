@@ -37,29 +37,38 @@
             };
 
             $scope.customFilter = function (idea) {
-                // console.error("idea " + idea.request_text + "   search " + $scope.search.request_text.toLowerCase() );
-                // console.error("idea " + idea.version.id + "  search "+ $scope.search.version.id_min)
+                // console.error(idea.id + " idea f " + idea.feasible + "   search " + $scope.search.not_feasible + "  i "
+                //     + idea.implemented + "  search " + $scope.search.implemented)
+
                 if (idea.request_text.toLowerCase().match($scope.search.request_text.toLowerCase()) &&
                     idea.description.toLowerCase().match($scope.search.description.toLowerCase()) &&
                     idea.user.username.toLowerCase().match($scope.search.user.username.toLowerCase()) &&
                     idea.version.id >= $scope.search.version.id_min &&
-                    idea.version.id <= $scope.search.version.id_max) {// || $scope.search.version.label == "all") {
+                    idea.version.id <= $scope.search.version.id_max &&
+                    idea.feasible != $scope.search.not_feasible &&
+                    idea.implemented == $scope.search.implemented) {// || $scope.search.version.label == "all") {
+                    return idea;
 
-                    if (idea.feasible && idea.feasible != $scope.search.not_feasible) {
-                        if (idea.implemented && idea.implemented != $scope.search.implemented) {
-                            return idea;
-                        } else if (!idea.implemented && idea.implemented == $scope.search.implemented) {
-                            return idea;
-                        }
-                    } else if (!idea.feasible && idea.feasible == $scope.search.not_feasible) {
-                        if (idea.implemented && idea.implemented != $scope.search.implemented) {
-                            return idea;
-                        } else if (!idea.implemented && idea.implemented == $scope.search.implemented) {
-                            return idea;
-                        }
-                    }
+                    // if (idea.feasible && idea.feasible != $scope.search.not_feasible) {
+                    //     console.error(idea.id + "feasible");
+                    //     if (idea.implemented && idea.implemented == $scope.search.implemented) {
+                    //         console.error(idea.id + "implemented");
+                    //         return idea;
+                    //     } else if (!idea.implemented && idea.implemented == $scope.search.implemented) {
+                    //         console.error(idea.id + " not implemented");
+                    //         return idea;
+                    //     }
+                    // } else if (!idea.feasible && idea.feasible == $scope.search.not_feasible) {
+                    //     console.error(idea.id + " not feasible");
+                    //     if (idea.implemented && idea.implemented == $scope.search.implemented) {
+                    //         console.error(idea.id + "implemented");
+                    //         return idea;
+                    //     } else if (!idea.implemented && !idea.implemented == $scope.search.implemented) {
+                    //         console.error(idea.id + "not implemented");
+                    //         return idea;
+                    //     }
+                    // }
                 }
-                // return idea;
             };
 
             $scope.isAuthenticated = Authentication.isAuthenticated();
