@@ -4,11 +4,11 @@ from website.models import Version
 from website.serializers import VersionSerializer
 
 from ideas.models import Idea, CommentVote, IdeaVote, Comment
-from ideas.permissions import IsCreaterOfIdea
-from ideas.serializers import IdeaSerializer
+from ideas.permissions import IsCreaterOfIdea, IsOwnerOfInfo
+from ideas.serializers import IdeaSerializer, GameInfoSerializer
 
 from authentication.models import GameInfo
-from authentication.serializers import GameInfoSerializer
+from authentication.serializers import AccountSerializer
 
 
 class IdeaViewSet(viewsets.ModelViewSet):
@@ -37,14 +37,14 @@ class AccountIdeasViewSet(viewsets.ViewSet):
 
 
 class GameInfoViewSet(viewsets.ModelViewSet):
-    queryset = GameInfo.objects
+    queryset = GameInfo.objects.all()
     serializer_class = GameInfoSerializer
 
-    #
-    # def get_permissions(self):
-    #     if self.request.method in permissions.SAFE_METHODS:
-    #         return (permissions.AllowAny(),)
-    #     return (permissions.IsAuthenticated(), IsCreaterOfIdea(),)
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+        return (permissions.IsAuthenticated(), IsOwnerOfInfo(),)
 
     def perform_create(self, serializer):
         instance = serializer.save(user=self.request.user)
@@ -60,6 +60,11 @@ class AccountGameInfoViewSet(viewsets.ViewSet):
         serializer = self.serializer_class(queryset, many=True)
 
         return Response(serializer.data)
+
+    # def get(self, request, format=None):
+    #     gameinfo = GameInfo.objects.select_related('user').all()
+    #     serializer = AccountSerializer(gameinfo, many=True)
+    #     return Response(serializer.data)
 
 
 class HistoryViewSet(viewsets.ModelViewSet):

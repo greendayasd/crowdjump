@@ -55,6 +55,11 @@
              * @desc Log the new user in
              */
             function registerSuccessFn(data, status, headers, config) {
+
+                // $http.post('api/v1/gameinfo',{
+                //     user: 3,
+                //     version: 3
+                // })
                 Authentication.login(email, password);
             }
 

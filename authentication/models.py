@@ -62,7 +62,7 @@ class Account(AbstractBaseUser):
         return ' '.join([self.first_name, self.last_name])
 
     def get_short_name(self):
-        return self.first_name
+        return self.first_names
 
     def user_set_requests(self, new_requests):
         self.requests_left = new_requests
@@ -84,7 +84,8 @@ class Account(AbstractBaseUser):
 
 class GameInfo(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='gameinfo')
-    version = models.ForeignKey(Version, on_delete=models.CASCADE, null=True, related_name='gameinfo')
+    version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='gameinfo'
+                                , default=Version.objects.all().order_by('-id')[0].id)
     rounds_started = models.IntegerField(default=0)
     rounds_won = models.IntegerField(default=0)
     # rounds_lost = models.IntegerField(default=0)
@@ -96,6 +97,10 @@ class GameInfo(models.Model):
     def __str__(self):
         return self.version.label + '  ' + self.user.username + '  ' + self.rounds_won + ...
         '/' + self.rounds_started
+
+
+    def __unicode__(self):
+        return '{0}'.format(self.description)
 
 
 class WebsiteInfo(models.Model):

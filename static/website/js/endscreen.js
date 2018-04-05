@@ -13,7 +13,7 @@ Crowdjump.Endscreen.prototype = {
     create: function () {
         if (CONST_TIME) {
             var scoreText = "Congratulations, you beat the level in " + game.timeElapsed + " seconds!";
-            score = this.add.text(this.world.centerX, 40, scoreText);
+            score = this.add.text(this.world.centerX, 60, scoreText, {fill: '#dbdbdb'});
             score.anchor.set(0.5);
         }
 
@@ -26,7 +26,7 @@ Crowdjump.Endscreen.prototype = {
         }
 
         replay = this.add.text(this.world.centerX,
-            this.world.centerY, 'Replay?', {fill: '#000000'});
+            this.world.centerY, 'Replay?', {fill: '#dbdbdb'});
         replay.anchor.set(0.5, -5);
         replay.inputEnabled = true;
         replay.events.onInputDown.add(this.replay, this);

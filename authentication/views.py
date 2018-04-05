@@ -22,7 +22,7 @@ class AccountViewSet(viewsets.ModelViewSet):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     def create(self, request):
-        serializer = self.serializer_class(data=request.data)
+        serializer = self.serializer_class(data=request.data, context={'request': request})
 
         if serializer.is_valid():
             Account.objects.create_user(**serializer.validated_data)
@@ -33,6 +33,11 @@ class AccountViewSet(viewsets.ModelViewSet):
             'status': 'Bad request',
             'message': 'Account could not be created with received data.'
         }, status=status.HTTP_400_BAD_REQUEST)
+
+    def get(self, request, format=None):
+        users = Account.objects.all()
+        serializer = AccountSerializer(users, many=True, context={'request': request})
+        return Response(serializer.data)
 
 
 class LoginView(views.APIView):

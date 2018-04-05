@@ -62,3 +62,8 @@
     color: white;
     background: darkred;
 }
+
+.btn:focus,.btn:active {
+   outline: red !important;
+   box-shadow: red !important;
+}

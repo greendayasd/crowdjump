@@ -2,12 +2,12 @@
 
     const CONST_DOUBLE_JUMP = false;
     const CONST_COINS = false;
-    const CONST_ENEMIES = false;
+    const CONST_ENEMIES = true;
     const CONST_ANIMATE_CHARACTER = false;
-    const CONST_TIME = false;
+    const CONST_TIME = true;
     const CONST_BUBBLE = true;
     const CONST_PAUSE = false;
-    const CONST_LEVEL = 1;
+    const CONST_LEVEL = 3;
 
     var game;
 
@@ -25,7 +25,8 @@ window.createGame = function (canvas, scope) {
     });
 
 
-    game = new Phaser.Game(960, 600, Phaser.AUTO, canvas);
+    game = new Phaser.Game(1060, 600, Phaser.AUTO, canvas);
+    // game.world.setBounds(0,0,1500,600);
 
     game.global = {
         coinPickupCount: 0,

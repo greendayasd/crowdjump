@@ -35,22 +35,3 @@ class AccountSerializer(serializers.ModelSerializer):
             update_session_auth_hash(self.context.get('request'), instance)
 
             return instance
-
-
-class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
-    user = AccountSerializer(read_only=True, required=False)
-
-    class Meta:
-        model = GameInfo
-        fields = '__all__'
-
-    def get_validation_exclusions(self, *args, **kwargs):
-        exclusions = super(GameInfoSerializer, self).get_validation_exclusions()
-
-        return exclusions + ['user']
-
-
-class WebsiteInfoSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = WebsiteInfo
-        fields = '__all__'

@@ -39,7 +39,7 @@ accounts_router = routers.NestedSimpleRouter(
     router, r'accounts', lookup='account'
 )
 accounts_router.register(r'ideas', AccountIdeasViewSet)
-# accounts_router.register(r'gameinfo', AccountGameInfoViewSet)
+accounts_router.register(r'gameinfo', AccountGameInfoViewSet, base_name='gameinfo')
 
 urlpatterns = [
     url(r'^api/v1/', include(router.urls)),

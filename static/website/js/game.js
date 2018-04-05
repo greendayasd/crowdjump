@@ -105,9 +105,6 @@ Hero.prototype._getAnimationName = function () {
 };
 
 
-//
-// Spider (enemy)
-//
 function Spider(game, x, y) {
     Phaser.Sprite.call(this, game, x, y, 'spider');
 
@@ -172,6 +169,7 @@ Crowdjump.Game.init = function (data) {
 
     this.keys.up.onDown.add(jump, this);
     this.keys.space.onDown.add(jump, this);
+    this.game.camera.follow(this.hero);
 
     if (typeof  data !== 'undefined'){
         this.level =  data.level;
@@ -363,7 +361,7 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
 Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     this.sfx.flag.play();
     if (this.level < CONST_LEVEL -1){
-        console.log(this.level);
+        console.log(this.level + ' level');
        this.game.state.restart(true, false, { level: this.level + 1 });
     }else{
       this.state.start('Endscreen');

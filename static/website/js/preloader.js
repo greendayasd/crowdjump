@@ -36,6 +36,8 @@ Crowdjump.Preloader.prototype = {
         // }
         this.load.json('level:0', level + 'level0.json');
         this.load.json('level:1', level + 'level1.json');
+        this.load.json('level:2', level + 'level2.json');
+        // this.load.json('level:2', level + 'leve12.json');
 
         //files
         this.load.image('background', files + 'background.png');

@@ -40,7 +40,7 @@ angular.module('app.menu', [])
         $stateProvider
             .state('menu', {
                 url: '/menu',
-                templateUrl: '/static/templates/layout/p_main.html',
+                templateUrl: '/static/templates/alt/p_main.html',
                 // controller: 'MenuController'
             });
     });
@@ -51,7 +51,7 @@ angular.module('app.game', [])
             .state('game', {
                 url: '/game',
                 abstract: false,
-                templateUrl: '/static/templates/layout/p_game.html',
+                templateUrl: '/static/templates/alt/p_game.html',
                 // template: '<div id="gameCanvas"><h1>test3</h1><button ng-click="createPGame()">Click2</button></div>',
                 controller: 'GameController',
             })

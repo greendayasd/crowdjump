@@ -3,6 +3,7 @@ from rest_framework import serializers
 from authentication.serializers import AccountSerializer
 from website.serializers import VersionSerializer
 from ideas.models import Idea, CommentVote, IdeaVote, Comment
+from authentication.models import GameInfo, WebsiteInfo
 
 
 class IdeaSerializer(serializers.ModelSerializer):
@@ -21,9 +22,22 @@ class IdeaSerializer(serializers.ModelSerializer):
 
         read_only_fields = ('id', 'created_at', 'updated_at')
 
-
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(IdeaSerializer, self).get_validation_exclusions()
+
+        return exclusions + ['user']
+
+
+class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
+    user = AccountSerializer(read_only=True, required=False)
+    version = VersionSerializer(read_only=True, required=False)
+
+    class Meta:
+        model = GameInfo
+        fields = ('id', 'user', 'version')
+
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(GameInfoSerializer, self).get_validation_exclusions()
 
         return exclusions + ['user']
 
@@ -64,7 +78,7 @@ class IdeaVoteSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         old_v = self.vote
         new_v = instance.vote
-        self.idea.update_vote(self,old_v,new_v)
+        self.idea.update_vote(self, old_v, new_v)
 
 
 class CommentVoteSerializer(serializers.ModelSerializer):
@@ -75,3 +89,9 @@ class CommentVoteSerializer(serializers.ModelSerializer):
         model = CommentVote
 
         fields = ('id', 'user', 'comment', 'vote')
+
+
+class WebsiteInfoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = WebsiteInfo
+        fields = '__all__'
