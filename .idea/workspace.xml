@@ -2,67 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/cached_property-1.4.0.dist-info/DESCRIPTION.rst" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/cached_property-1.4.0.dist-info/INSTALLER" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/cached_property-1.4.0.dist-info/METADATA" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/cached_property-1.4.0.dist-info/RECORD" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/cached_property-1.4.0.dist-info/WHEEL" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/cached_property-1.4.0.dist-info/metadata.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/cached_property-1.4.0.dist-info/top_level.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/cached_property.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/django_url_filter-0.3.5.dist-info/DESCRIPTION.rst" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/django_url_filter-0.3.5.dist-info/INSTALLER" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/django_url_filter-0.3.5.dist-info/METADATA" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/django_url_filter-0.3.5.dist-info/RECORD" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/django_url_filter-0.3.5.dist-info/WHEEL" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/django_url_filter-0.3.5.dist-info/metadata.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/django_url_filter-0.3.5.dist-info/top_level.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/enum_compat-0.0.2.dist-info/DESCRIPTION.rst" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/enum_compat-0.0.2.dist-info/INSTALLER" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/enum_compat-0.0.2.dist-info/METADATA" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/enum_compat-0.0.2.dist-info/RECORD" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/enum_compat-0.0.2.dist-info/WHEEL" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/enum_compat-0.0.2.dist-info/metadata.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/enum_compat-0.0.2.dist-info/top_level.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/backends/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/backends/base.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/backends/django.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/backends/plain.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/backends/sqlalchemy.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/exceptions.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/fields.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/filters.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/filtersets/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/filtersets/base.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/filtersets/django.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/filtersets/plain.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/filtersets/sqlalchemy.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/forms.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/integrations/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/integrations/drf.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/utils.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/url_filter/validators.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/settings.py" afterPath="$PROJECT_DIR$/Crowdjump/settings.py" />
-      <change beforePath="$PROJECT_DIR$/ideas/views.py" afterPath="$PROJECT_DIR$/ideas/views.py" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/services/ideas.service.js" afterPath="$PROJECT_DIR$/static/javascripts/ideas/services/ideas.service.js" />
       <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/djangorestframework_filters-0.10.2.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/djangorestframework_filters-0.10.2.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/djangorestframework_filters-0.10.2.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/djangorestframework_filters-0.10.2.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/djangorestframework_filters-0.10.2.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/djangorestframework_filters-0.10.2.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/djangorestframework_filters-0.10.2.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/rest_framework_filters/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/rest_framework_filters/backends.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/rest_framework_filters/compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/rest_framework_filters/filters.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/rest_framework_filters/filterset.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/rest_framework_filters/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/rest_framework_filters/utils.py" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -114,8 +54,8 @@
       <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="94" column="24" lean-forward="true" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
+            <state relative-caret-position="153">
+              <caret line="83" column="33" lean-forward="true" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -147,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -1047,7 +987,7 @@
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -1056,8 +996,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="94" column="24" lean-forward="true" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
+        <state relative-caret-position="153">
+          <caret line="83" column="33" lean-forward="true" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="33" />
           <folding />
         </state>
       </provider>

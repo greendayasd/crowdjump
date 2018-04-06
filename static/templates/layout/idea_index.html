@@ -93,6 +93,8 @@
                 <label type="button" class="btn btn-primary" ng-model="search.implemented" uib-btn-checkbox
                         btn-checkbox-true="1" btn-checkbox-false="0"> Already Implemented
                 </label>
+                <button class="btn btn-primary" ng-click="filterReset()">Reset Filter</button>
+
 
             </div>
 
@@ -115,8 +117,7 @@
                                 <br>
                                 <div class="idea__content">
                                     <b>Title </b><br>
-                                    {{ idea.request_text }} <span style="color:#2e8020; font-weight: bold"
-                                                                  ng-if="idea.implemented == true"> (already implemented) </span>
+                                    {{ idea.request_text }} <span style="color:#2e8020; font-weight: bold"  ng-if="idea.implemented == true"> (already implemented) </span>
                                     <br><br>
                                     <b>Description </b><br>
                                     {{ idea.description }} <br><br>
@@ -128,8 +129,7 @@
                                     No estimated time yet <br>
                                 </div>
                                 <div class="idea__admin_comment">
-                                    <span style="font-weight: bold"
-                                          ng-if="idea.feasible == false"> Not feasible <br></span>
+                                    <span style="font-weight: bold"  ng-if="idea.feasible == false"> Not feasible <br></span>
                                     {{ idea.admin_comment }}
                                 </div>
 
@@ -150,8 +150,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             </div>
 
-            <ul uib-pagination total-items="filterData.length" ng-model="currentPage" max-size="maxSize"
-                class="pagination-sm"
+            <ul uib-pagination total-items="filterData.length" ng-model="currentPage" max-size="maxSize" class="pagination-sm"
                 boundary-links="true" rotate="false" items-per-page="itemsPerPage"></ul>
         </div>
     </div>
