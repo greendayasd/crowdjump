@@ -8,14 +8,15 @@ from ideas.permissions import IsCreaterOfIdea, IsOwnerOfInfo
 from ideas.serializers import IdeaSerializer, GameInfoSerializer
 
 from authentication.models import GameInfo
-import django_filters.rest_framework
+from url_filter.integrations.drf import DjangoFilterBackend
 
 
 class IdeaViewSet(viewsets.ModelViewSet):
     queryset = Idea.objects.order_by('-created_at')
     serializer_class = IdeaSerializer
-    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
-    ordering_fields = ('description')
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['deleted']
+
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:

@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'website',
     'rest_framework',
-    'rest_framework_filters',
     'authentication',
     'compressor',
     'ideas',
@@ -174,7 +173,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
     ),
-    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    # 'PAGE_SIZE': 100
 }
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
@@ -190,6 +190,3 @@ CHANNEL_LAYERS = {
     }
 }
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
-# }

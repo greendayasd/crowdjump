@@ -34,7 +34,7 @@
          * @memberOf crowdjump.ideas.services.Ideas
          */
         function all() {
-            return $http.get('/api/v1/ideas/');
+            return $http.get('/api/v1/ideas?deleted=false');
         }
 
 

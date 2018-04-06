@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html ng-app="crowdjump">
+<html ng-app="crowdjump" class="ng-scope" style="height: 100%">
+
 <head>
   <title>Crowdjump</title>
 
@@ -10,10 +11,11 @@
 </head>
 
 <body>
+
   {% include 'navbar.html' %}
   <div class="container-fluid">
     <div class="row">
-      <div ng-view ng-app="crowdjump" autoscroll="true"></div>
+      <div ng-view></div>
     </div>
   </div>
   {% include 'javascripts.html' %}
