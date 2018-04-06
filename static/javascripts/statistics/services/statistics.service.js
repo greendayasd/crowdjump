@@ -3,35 +3,40 @@
     'use strict';
 
     angular
-        .module('crowdjump.ideas.services')
-        .factory('Ideas', Ideas);
+        .module('crowdjump.statistics.services')
+        .factory('Statistics', Statistics);
 
-    Ideas.$inject = ['$http', 'History'];
+    Statistics.$inject = ['$http', 'History'];
 
-    function Ideas($http, History) {
-        var Ideas = {
+    function Statistics($http, History) {
+        var Statistics = {
             all: all,
+            top: top,
             create: create,
             get: get,
-            deleteIdea: deleteIdea,
         };
 
-        return Ideas;
+        return Statistics;
 
         function all() {
-            return $http.get('/api/v1/ideas/');
+            return $http.get('/api/v1/gameinfo/');
+        }
+
+        function top(x){
+
         }
 
         function create(content) {
-            // console.error("Content: " + content["upvotes"]);
-            return $http.post('/api/v1/ideas/', {
+            return $http.post('/api/v1/gameinfo/', {
                 version: content["version"],
-                request_text: content["request_text"],
-                description: content["description"],
-                estimated_time: content["estimated_time"],
-                upvotes: content["upvotes"],
-                downvotes: content["downvotes"],
+                rounds_started: content["rounds_started"],
+                rounds_won: content["rounds_won"],
+                enemies_killed: content["enemies_killed"],
+                coins_collected: content["coins_collected"],
+                highscore: content["highscore"],
+                time_spent_game: content["time_spent_game"],
             });
+
             //   return $http.post('/api/v1/ideas/', {
             //     "version": content["version"],
             //     "request_text": content["request_text"],
@@ -43,7 +48,7 @@
         }
 
         function get(username) {
-            return $http.get('/api/v1/gameinfo/' + username + '/ideas/');
+            return $http.get('/api/v1/accounts/' + username + '/gameinfo/');
         }
 
 

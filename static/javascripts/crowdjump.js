@@ -13,6 +13,7 @@
             'crowdjump.game',
             'crowdjump.menu',
             'crowdjump.version',
+            'crowdjump.statistics',
         ]);
 
     angular
