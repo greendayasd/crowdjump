@@ -13,6 +13,7 @@
             all: all,
             top: top,
             create: create,
+            newVersion: newVersion,
             get: get,
         };
 
@@ -23,9 +24,12 @@
         }
 
         function top(x){
-
+            return $http.get('/api/v1/gameinfo/?version__id=3&highscore__gt=0&limit=' + x);
         }
 
+        function newVersion(){
+            return
+        }
         function create(content) {
             return $http.post('/api/v1/gameinfo/', {
                 version: content["version"],
@@ -36,15 +40,6 @@
                 highscore: content["highscore"],
                 time_spent_game: content["time_spent_game"],
             });
-
-            //   return $http.post('/api/v1/ideas/', {
-            //     "version": content["version"],
-            //     "request_text": content["request_text"],
-            //     "description": content["description"],
-            //     "estimated_time": null,
-            //     "upvotes": 0,
-            //     "downvotes": 0,
-            // });
         }
 
         function get(username) {

@@ -18,7 +18,7 @@
 
 
         function activate() {
-            Statistics.all().then(statisticsSuccessFn, statisticsErrorFn);
+            Statistics.top(2).then(statisticsSuccessFn, statisticsErrorFn);
 
             $scope.$on('statistics.created', function (event, statistics) {
                 $scope.history.unshift(statistics);
@@ -29,7 +29,7 @@
             });
 
             function statisticsSuccessFn(data, status, headers, config) {
-                $scope.statistics = data.data;
+                $scope.statistics = data.data["results"];
                 // console.error("data " + data.data);
 
             }

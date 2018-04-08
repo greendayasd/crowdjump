@@ -1,4 +1,3 @@
-
 (function () {
     'use strict';
 
@@ -6,13 +5,35 @@
         .module('crowdjump.history.controllers')
         .controller('HistoryController', HistoryController);
 
-    HistoryController.$inject = ['$scope'];
+    HistoryController.$inject = ['$scope', 'Authentication', 'History', 'Snackbar', '$cookies'];
 
-    function HistoryController($scope) {
+    function HistoryController($scope, Authentication, History, Snackbar, $cookies) {
         var vm = this;
 
-        vm.columns = [];
+        $scope.history = [];
+        $scope.version = '';
 
+        getVersion();
 
+        function getVersion() {
+            History.newest().then(historySuccessFn, historyErrorFn);
+
+            $scope.$on('history.created', function (event, history) {
+                $scope.history.unshift(history);
+            });
+
+            $scope.$on('history.created.error', function () {
+                $scope.history.shift();
+            });
+
+            function historySuccessFn(data, status, headers, config) {
+                $scope.history = data.data;
+                $scope.version = data.data["results"][0];          }
+
+            function historyErrorFn(data, status, headers, config) {
+                Snackbar.error(data.error);
+                console.error(data.error);
+            }
+        }
     }
 })();

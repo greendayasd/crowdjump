@@ -9,13 +9,13 @@
         .module('crowdjump.authentication.services')
         .factory('Authentication', Authentication);
 
-    Authentication.$inject = ['$cookies', '$rootScope', '$http', '$mdToast'];
+    Authentication.$inject = ['$cookies', '$rootScope', '$http', '$mdToast', 'Statistics'];
 
     /**
      * @namespace Authentication
      * @returns {Factory}
      */
-    function Authentication($cookies, $rootScope, $http, $mdToast) {
+    function Authentication($cookies, $rootScope, $http, $mdToast, Statistics) {
         /**
          * @name Authentication
          * @desc The Factory to be returned
@@ -55,11 +55,10 @@
              * @desc Log the new user in
              */
             function registerSuccessFn(data, status, headers, config) {
-
-                // $http.post('api/v1/gameinfo',{
-                //     user: 3,
-                //     version: 3
-                // })
+                /**
+                 * Bei Registrierung Statistik für neuste Version anlegen
+                 */
+                Statistics.create();
                 Authentication.login(email, password);
             }
 

@@ -1,7 +1,3 @@
-/**
- * IndexController
- * @namespace crowdjump.layout.controllers
- */
 (function () {
     'use strict';
 

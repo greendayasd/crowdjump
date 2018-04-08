@@ -15,8 +15,7 @@ class IdeaViewSet(viewsets.ModelViewSet):
     queryset = Idea.objects.order_by('-created_at')
     serializer_class = IdeaSerializer
     filter_backends = [DjangoFilterBackend]
-    filter_fields = ['deleted']
-
+    filter_fields = ['deleted', 'version', 'user', 'id']
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
@@ -40,8 +39,10 @@ class AccountIdeasViewSet(viewsets.ViewSet):
 
 
 class GameInfoViewSet(viewsets.ModelViewSet):
-    queryset = GameInfo.objects.all()
+    queryset = GameInfo.objects.order_by('highscore')
     serializer_class = GameInfoSerializer
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['highscore', 'version', 'user', 'id']
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:

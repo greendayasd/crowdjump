@@ -25,8 +25,8 @@
     }
 
     function newest(){
-      var newest_id = 2;
-      return $http.get('/api/v1/history/' + newest_id + '/');
+      // return $http.get('/api/v1/history/' + newest_id + '/');
+      return $http.get('/api/v1/history/?limit=1');
     }
     function create(content) {
       return $http.post('/api/v1/history/', {
