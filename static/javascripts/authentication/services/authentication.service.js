@@ -47,7 +47,8 @@
             return $http.post('/api/v1/accounts/', {
                 username: username,
                 password: password,
-                email: email
+                email: email,
+
             }).then(registerSuccessFn, registerErrorFn);
 
             /**
@@ -58,7 +59,6 @@
                 /**
                  * Bei Registrierung Statistik für neuste Version anlegen
                  */
-                Statistics.create();
                 Authentication.login(email, password);
             }
 
@@ -97,8 +97,19 @@
              */
             function loginSuccessFn(data, status, headers, config) {
                 Authentication.setAuthenticatedAccount(data.data);
-                // console.error("authenticated? " + Authentication.isAuthenticated())
+                console.error("authenticated? " + Authentication.isAuthenticated());
+                Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
                 window.location = '/';
+            }
+
+            function createStatisticsSuccessFn(data, status, headers, config) {
+                console.error("succ");
+
+            }
+
+            function createStatisticsErrorFn(data, status, headers, config) {
+                console.error("error" + data.error);
+
             }
 
             /**

@@ -31,7 +31,6 @@ Crowdjump.Menu.prototype = {
     },
 
     phasergame: function () {
-
         game.state.start('Game');
     },
 

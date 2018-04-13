@@ -3,7 +3,7 @@ var Crowdjump = Crowdjump || {};
 // =============================================================================
 // globals
 // =============================================================================
-Crowdjump.Game = function(game){
+Crowdjump.Game = function (game) {
 
     var second_jump = true;
 }
@@ -54,15 +54,17 @@ Hero.prototype.jump = function () {
     const JUMP_SPEED = 700;
     let canJump = this.body.touching.down;
 
-    if (this.body.touching.down){
+    if (this.body.touching.down) {
         second_jump = true;
     }
 
     if (canJump) {
         this.body.velocity.y = -JUMP_SPEED;
-    } else{
-        if(second_jump && CONST_DOUBLE_JUMP){
-            this.body.velocity.y = -(JUMP_SPEED*0.8);
+        game.jumps++;
+    } else {
+        if (second_jump && CONST_DOUBLE_JUMP) {
+            this.body.velocity.y = -(JUMP_SPEED * 0.8);
+            game.jumps++;
             second_jump = false;
             return true;
         }
@@ -78,7 +80,7 @@ Hero.prototype.bounce = function () {
 
 Hero.prototype.update = function () {
     // update sprite animation, if it needs changing
-    if (CONST_ANIMATE_CHARACTER){
+    if (CONST_ANIMATE_CHARACTER) {
         let animationName = this._getAnimationName();
         if (this.animations.name !== animationName) {
             this.animations.play(animationName);
@@ -163,7 +165,7 @@ Crowdjump.Game.init = function (data) {
     jump = function () {
         let didJump = this.hero.jump();
         if (didJump) {
-            this.sfx.jump.play("",0,0.3,false,true);
+            this.sfx.jump.play("", 0, 0.3, false, true);
         }
     };
 
@@ -171,11 +173,17 @@ Crowdjump.Game.init = function (data) {
     this.keys.space.onDown.add(jump, this);
     this.game.camera.follow(this.hero);
 
-    if (typeof  data !== 'undefined'){
-        this.level =  data.level;
+    if (typeof  data !== 'undefined') {
+        this.level = data.level;
 
-    }else{
-        this.level =  0;
+    } else {
+        this.level = 0;
+
+    }
+
+    if (this.level == 0 && game.authenticated) {
+        game.gameInfo["rounds_started"] = game.gameInfo["rounds_started"] + 1;
+        // console.error("started " + game.gameInfo["rounds_started"]);
 
     }
 };
@@ -200,8 +208,8 @@ Crowdjump.Game.create = function () {
     this._createHud();
     this._createTimerHud();
 
-    if (CONST_PAUSE){
-        this.pausedIndicator = this.add.text(0, 0, 'paused', {fill: 'black', font: '48px sans-serif'});
+    if (CONST_PAUSE) {
+        this.pausedIndicator = this.add.text(0, 0, 'paused', {fill: 'black', font: '48px san    s-serif'});
         this.pausedIndicator.alignIn(this.world.bounds, Phaser.CENTER);
         this.pausedIndicator.exists = false;
 
@@ -211,19 +219,17 @@ Crowdjump.Game.create = function () {
 
 
     this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.restart, this);
-    this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer,this);
+    this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
 
-    setInfo();
-    // updateInfo();
 };
 
 Crowdjump.Game.update = function () {
     this._handleCollisions();
     this._handleInput();
 
-    var elapsedTime = Math.floor(this.game.time.totalElapsedSeconds());
+    // var elapsedTime = Math.floor(this.game.time.totalElapsedSeconds());
 
-    var seconds = Math.abs(game.timeElapsed / 1 );
+    var seconds = Math.abs(Math.floor(game.timeElapsed / 1));
     this.timeFont.text = `${seconds}`;
     this.coinFont.text = `x${this.coinPickupCount}`;
 };
@@ -278,8 +284,8 @@ Crowdjump.Game._loadLevel = function (data) {
 
 
     // spawn important objects
-    if (CONST_COINS){
-      data.coins.forEach(this._spawnCoin, this);
+    if (CONST_COINS) {
+        data.coins.forEach(this._spawnCoin, this);
     }
 
     this._spawnFlag(data.flag.x, data.flag.y);
@@ -348,23 +354,25 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
     if (hero.body.velocity.y > 0) { // kill enemies when hero is falling
         hero.bounce();
         enemy.die();
-        this.enemiesDefeatedCount++;
+        game.enemiesDefeatedCount++;
+        // console.error("enemy " + game.enemiesDefeatedCount);
 
         this.sfx.stomp.play();
     }
     else { // game over -> restart the game
         this.sfx.stomp.play();
+        game.deaths ++;
         this.game.state.restart(true, false, {level: this.level});
     }
 };
 
 Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     this.sfx.flag.play();
-    if (this.level < CONST_LEVEL -1){
-        console.log(this.level + ' level');
-       this.game.state.restart(true, false, { level: this.level + 1 });
-    }else{
-      this.state.start('Endscreen');
+    if (this.level < CONST_LEVEL - 1) {
+        // console.log(this.level + ' level');
+        this.game.state.restart(true, false, {level: this.level + 1});
+    } else {
+        this.state.start('Endscreen');
     }
 
 };
@@ -381,7 +389,7 @@ Crowdjump.Game._createHud = function () {
     coinScoreImg.anchor.set(0, 0.5);
 
     this.hud = this.game.add.group();
-    if (CONST_COINS){
+    if (CONST_COINS) {
         this.hud.add(coinIcon);
         this.hud.add(coinScoreImg);
     }
@@ -389,28 +397,26 @@ Crowdjump.Game._createHud = function () {
     this.hud.position.set(10, 10);
 };
 
-
-Crowdjump.Game._createTimerHud = function(){
+Crowdjump.Game._createTimerHud = function () {
     const NUMBERS_STR = '0123456789X ';
 
     this.timeFont = this.game.add.retroFont('font:numbers', 20, 26,
         NUMBERS_STR, 6);
 
     this.timehud = this.game.add.group();
-    if (CONST_TIME){
-        let timeImg = this.game.make.image(20,20, this.timeFont);
+    if (CONST_TIME) {
+        let timeImg = this.game.make.image(20, 20, this.timeFont);
         timeImg.anchor.set(0.5, 0);
 
         this.timehud.add(timeImg);
-        this.timehud.position.set(game.world.centerX,5);
+        this.timehud.position.set(game.world.centerX, 5);
 
     }
 };
 
-Crowdjump.Game.updateTimer = function(){
+Crowdjump.Game.updateTimer = function () {
 
-    var new_elapsed = this.game.time.totalElapsedSeconds();
-    game.timeElapsed = Math.floor(new_elapsed);
+    game.timeElapsed = this.game.time.totalElapsedSeconds();
 
 };
 
@@ -422,16 +428,16 @@ Crowdjump.Game._spawnFlag = function (x, y) {
     this.flag.body.allowGravity = false;
 };
 
-Crowdjump.Game.paused = function(){
-    if(CONST_PAUSE){
+Crowdjump.Game.paused = function () {
+    if (CONST_PAUSE) {
         this.pausedIndicator.exists = true;
         this.world.alpha = 0.5;
         //roundTimer.pause();
     }
 };
 
-Crowdjump.Game.resumed = function(){
-    if(CONST_PAUSE){
+Crowdjump.Game.resumed = function () {
+    if (CONST_PAUSE) {
         this.pausedIndicator.exists = false;
         this.world.alpha = 1;
         //roundTimer.resume();
@@ -439,26 +445,10 @@ Crowdjump.Game.resumed = function(){
 
 };
 
-Crowdjump.Game.restart = function() {
-    setInfo();
+Crowdjump.Game.restart = function () {
+    // game.gameInfo["rounds_started"] = game.gameInfo["rounds_started"] + 1;
+    game.restarts ++;
     updateInfo();
     this.state.restart();
     this.game.time.reset();
 };
-
-
-function setInfo(){
-        var old_rounds = 0;
-        old_rounds += gameinfo["rounds_started"];
-        gameinfo["rounds_started"] = old_rounds + 1;
-
-        var old_coins = 0;
-        old_coins += gameinfo["coins_collected"];
-        gameinfo["coins_collected"] = old_coins + this.coinPickupCount;
-
-        var old_enemies = 0;
-        old_enemies += gameinfo["enemies_killed"];
-        gameinfo["enemies_killed"] = old_enemies + this.enemiesDefeatedCount;
-
-        console.error("rounds info: " + JSON.stringify(gameinfo));
-}

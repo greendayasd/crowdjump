@@ -45,6 +45,8 @@ class Account(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     is_activated = models.BooleanField(default=True)
 
+    #weight = created_at -01.03 / 3 = vote_weight
+    vote_weight = models.IntegerField(default=-1)
     survey_status = models.IntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -93,6 +95,9 @@ class GameInfo(models.Model):
     coins_collected = models.IntegerField(default=0)
     highscore = models.IntegerField(default=-1)
     time_spent_game = models.IntegerField(default=0)
+    jumps = models.IntegerField(default=0)
+    deaths = models.IntegerField(default=0)
+    restarts = models.IntegerField(default=0)
 
     def __str__(self):
         return self.version.label + '  ' + self.user.username + '  ' + self.rounds_won + ...
@@ -105,7 +110,8 @@ class GameInfo(models.Model):
 
 class WebsiteInfo(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='websiteinfo')
-    # version = models.ForeignKey(Version, on_delete=models.CASCADE, null=True, related_name='websiteinfo')
+    version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='websiteinfo'
+                                , default=Version.objects.all().order_by('-id')[0].id)
 
     time_spent_ideas = models.IntegerField(default=0)
     time_spent_index = models.IntegerField(default=0)

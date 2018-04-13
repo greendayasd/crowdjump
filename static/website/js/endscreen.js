@@ -5,17 +5,49 @@ Crowdjump.Endscreen = function (game) {
     var score;
     var info;
     var bubble;
+    var time_score;
+    var old_time;
 };
-
 
 
 Crowdjump.Endscreen.prototype = {
     create: function () {
         if (CONST_TIME) {
-            var scoreText = "Congratulations, you beat the level in " + game.timeElapsed + " seconds!";
-            score = this.add.text(this.world.centerX, 60, scoreText, {fill: '#dbdbdb'});
-            score.anchor.set(0.5);
+            time_score = game.timeElapsed.toFixed(3);
+            // console.error("gameinfo 0: " + JSON.stringify(game.gameInfo));
+            // console.error(game.gameInfo["highscore"]);
+            // console.error(game.gameInfo["highscore"] + 0);
         }
+        old_time = -2;
+
+        if (game.authenticated) {
+            if (game.gameInfo["highscore"] == null || game.gameInfo["highscore"] == 0 || game.gameInfo["highscore"] == NaN || isNaN(game.gameInfo["highscore"])) {
+                game.gameInfo["highscore"] = -1;
+            }
+            old_time = (game.gameInfo["highscore"] + 0);
+        }
+        // console.error("old_time " + old_time);
+        // console.error("new_time " + time_score);
+        var highscore_text = '';
+        if (old_time == -2) {
+            highscore_text = 'Login to save your score!';
+        }
+        else if (old_time == -1) {
+            highscore_text = 'This is a new highscore!';
+            game.gameInfo["highscore"] = time_score * 1000;
+        } else {
+            // old_time = old_time / 1000;
+            if (old_time > time_score * 1000) {
+                highscore_text = 'This is a new highscore, your previous highscore was ' + (old_time/1000) + ' seconds!';
+
+                game.gameInfo["highscore"] = time_score * 1000;
+            } else {
+                highscore_text = 'Your highscore is ' + old_time + ' seconds!';
+            }
+        }
+        var scoreText = "Congratulations, you beat the level in " + time_score + " seconds! \n" + highscore_text;
+        score = this.add.text(this.world.centerX, 60, scoreText, {fill: '#dbdbdb'});
+        score.anchor.set(0.5);
 
 
         if (CONST_BUBBLE) {
@@ -33,7 +65,10 @@ Crowdjump.Endscreen.prototype = {
 
 
         this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.replay, this);
-    // console.error("Gameinfo!: " + Crowdjump.gameinfo);
+        // console.error("Gameinfo!: " + gameinfo);
+
+
+        setInfo();
 
     },
 
@@ -44,27 +79,15 @@ Crowdjump.Endscreen.prototype = {
     },
 
     ideas: function () {
-
-        // setInfo();
-        //
-        // updateInfo();
         window.location.href = '/ideas';
-
     },
 
 }
 
-function setInfo(){
-        var old_time = 0;
-        // console.error("highscore: " + this.gameinfo["highscore"]);
-        old_time += this.gameinfo["highscore"];
-        // console.error(this.gameinfo["highscore"]);
+function setInfo() {
+    if (game.authenticated) {
+        game.gameInfo["rounds_won"] = game.gameInfo["rounds_won"] + 1;
+    }
 
-        var new_besttime = Math.min(old_time,game.timeElapsed);
-        // this.gameinfo["highscore"] = new_besttime;
-
-        var rounds_won = this.gameinfo["rounds_won"] + 1;
-        // this.gameinfo["rounds_won"] = rounds_won + 1;
-
-        // console.error("endscreen info: " + JSON.stringify(this.gameinfo));
+    updateInfo();
 }

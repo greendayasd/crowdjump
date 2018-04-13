@@ -18,7 +18,7 @@
 
 
         function activate() {
-            Statistics.top(2).then(statisticsSuccessFn, statisticsErrorFn);
+            Statistics.top(5).then(statisticsSuccessFn, statisticsErrorFn);
 
             $scope.$on('statistics.created', function (event, statistics) {
                 $scope.history.unshift(statistics);

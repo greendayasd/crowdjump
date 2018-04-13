@@ -189,4 +189,4 @@ CHANNEL_LAYERS = {
         'ROUTING': 'chantest.routing.channel_routing',
     }
 }
-
+REST_SESSION_LOGIN = False

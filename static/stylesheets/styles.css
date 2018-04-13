@@ -44,6 +44,14 @@
 
 }
 
+.idea .idea__votes{
+    text-align: right;
+    padding-bottom: 0px;
+
+}.idea .idea__comments{
+
+}
+
 .clickableRow {
     cursor: pointer;
 }

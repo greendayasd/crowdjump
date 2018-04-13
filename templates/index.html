@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html ng-app="crowdjump" class="ng-scope" style="height: 100%">
+<html ng-app="crowdjump" style="height: 100%">
 
-<head>
-  <title>Crowdjump</title>
+<head style="height: 100%">
+    <title>Crowdjump</title>
 
-  <base href="/" />
-  {% include 'stylesheets.html' %}
+    <base href="/"/>
+    {% include 'stylesheets.html' %}
     {% load staticfiles %}
     <link rel="icon" href="{% static 'website/images/favicon.ico' %}">
 </head>
 
-<body>
+<body class="ng-scope" style="height: 100%; min-height: 100%">
 
-  {% include 'navbar.html' %}
-  <div class="container-fluid">
-    <div class="row">
-      <div ng-view></div>
+{% include 'navbar.html' %}
+
+    <div class="container-fluid ng-scope" style="height: 100%; min-height: 100%">
+        <div class="row">
+                <div ng-view>
+
     </div>
-  </div>
-  {% include 'javascripts.html' %}
+        </div>
+    </div>
+    {% include 'javascripts.html' %}
 </body>
 </html>

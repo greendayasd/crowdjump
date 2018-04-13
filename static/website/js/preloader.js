@@ -1,7 +1,7 @@
 var Crowdjump = Crowdjump || {};
 
 
-Crowdjump.Preloader = function(game){
+Crowdjump.Preloader = function (game) {
     this.ready = false;
     var text;
 };
@@ -9,10 +9,10 @@ Crowdjump.Preloader = function(game){
 
 Crowdjump.Preloader.prototype = {
 
-    create:function () {
+    create: function () {
     },
-    preload: function(){
-        this.preloadBar =  this.add.sprite(this.world.centerX,this.world.centerY,'preloadbar');
+    preload: function () {
+        this.preloadBar = this.add.sprite(this.world.centerX, this.world.centerY, 'preloadbar');
         this.preloadBar.anchor.set(0.5);
         this.load.setPreloadSprite(this.preloadBar);
 
@@ -20,7 +20,6 @@ Crowdjump.Preloader.prototype = {
         var level = '/static/website/level/';
         var audio = '/static/website/audio/';
         var images = '/static/website/images/';
-
 
 
         this.load.image('logo', images + 'logo.png');
@@ -51,10 +50,10 @@ Crowdjump.Preloader.prototype = {
         this.load.image('icon:coin', files + 'coin_icon.png');
 
         //character
-        if (CONST_ANIMATE_CHARACTER){
-           this.load.spritesheet('hero', files + 'hero.png', 36, 42);
+        if (CONST_ANIMATE_CHARACTER) {
+            this.load.spritesheet('hero', files + 'hero.png', 36, 42);
         }
-        else{
+        else {
             this.load.image('hero', files + 'hero_stopped.png');
         }
 
@@ -76,26 +75,27 @@ Crowdjump.Preloader.prototype = {
         // this.load.audio('myMusic2', audio + 'Test2.mp3');
         // this.load.audio('myMusic3', audio + 'Test3.mp3');
 
-        this.load.onLoadStart.add(this.loadStart,this);
+        this.load.onLoadStart.add(this.loadStart, this);
         this.load.onLoadComplete.add(this.loadComplete, this);
 
 
     },
-    loadStart:function(){
-        text = this.add.text(this.world.centerX,this.world.centerY - 30,'Loading. . . ');
+    loadStart: function () {
+        text = this.add.text(this.world.centerX, this.world.centerY - 30, 'Loading. . . ');
         text.anchor.set(0.5);
     },
-    loadComplete:function(){
+    loadComplete: function () {
         this.ready = true;
     },
-    update: function(){
-        if (this.ready === true)
-        {
+    update: function () {
+        if (this.ready === true) {
             this.ready = false;
             text.setText('');
             // console.log('fertig geladen');
             // this.state.start('Startmenu');
 
+            game.gameInfo = g_gameinfo;
+            // console.error(game.gameInfo);
             this.state.start('Game');
             // this.state.start('Endscreen');
         }

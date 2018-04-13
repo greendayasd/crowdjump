@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="well">
+            <div class="idea">
+                <div class="comment__time">
+                    {{ comment.created_at | date : "dd. MM. y HH:mm" }}
+                </div>
+                <div class="comment__meta">
+                    User: {{ comment.user.username }}
+                </div>
+                <br>
+                <div class="comment__content">
+                    {{ idea.request_text }} <br>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

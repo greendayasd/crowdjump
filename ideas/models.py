@@ -8,6 +8,7 @@ class Idea(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='ideas')
     version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='ideas'
                                 , default=Version.objects.all().order_by('-id')[0].id)
+
     # version = models.CharField(max_length= 25, default="0,01")
     # version = models.CharField(max_length=25, default=Version.objects.all().order_by('-id')[0].label)
     request_text = models.CharField(max_length=50)
@@ -66,6 +67,8 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    status = models.IntegerField(default=-1)
+
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
 
@@ -87,6 +90,7 @@ class IdeaVote(models.Model):
 
     #     -1 = downvote, 0 = no vote, 1 = upvote
     vote = models.IntegerField(default=0)
+    multiplier = models.IntegerField(default=1)
 
 
 class CommentVote(models.Model):

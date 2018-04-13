@@ -3,10 +3,16 @@ li a {
     color: green;
 }
 
-body {
-    background: white url("../images/background.png");
-    
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: white;
+    /*background: white url("../website/images/background.png");*/
 }
+
+/*.ng-scope { border: 1px solid red; }*/
 
 ul.errorlist {
     padding-left: 0;
