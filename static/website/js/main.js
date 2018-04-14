@@ -7,7 +7,7 @@ const CONST_ANIMATE_CHARACTER = false;
 const CONST_TIME = true;
 const CONST_BUBBLE = true;
 const CONST_PAUSE = false;
-const CONST_LEVEL = 3;
+const CONST_LEVEL = 4;
 
 var game;
 var g_gameinfo = '';
@@ -86,6 +86,7 @@ window.createGame = function (canvas, scope) {
 function getInfo() {
 
     var account = JSON.parse(getCookie('authenticatedAccount'));
+    console.error("account" + account);
 
     if (account == '' || account == null) {
         return '';
@@ -98,6 +99,7 @@ function getInfo() {
     // var path2 = '/api/v1/gameinfo/10/?format=json';
     jQuery.get(path, function (data) {
         g_gameinfo = data[0];
+        console.error("gameinfo " + g_gameinfo);
         // console.error("getinfo gameinfo : " + JSON.stringify(temp_gameinfo));
     })
 }
