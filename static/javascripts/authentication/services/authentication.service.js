@@ -97,18 +97,18 @@
              */
             function loginSuccessFn(data, status, headers, config) {
                 Authentication.setAuthenticatedAccount(data.data);
-                console.error("authenticated? " + Authentication.isAuthenticated());
+                // console.error("authenticated? " + Authentication.isAuthenticated());
                 Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
                 window.location = '/';
             }
 
             function createStatisticsSuccessFn(data, status, headers, config) {
-                console.error("succ");
+                // console.error("succ");
 
             }
 
             function createStatisticsErrorFn(data, status, headers, config) {
-                console.error("error" + data.error);
+                // console.error("error" + data.error);
 
             }
 

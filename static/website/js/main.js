@@ -77,6 +77,7 @@ window.createGame = function (canvas, scope) {
     game.authenticated = true;
 
     if (g_gameinfo == '') {
+        console.error("nicht auth");
         game.authenticated = false;
     }
     return
