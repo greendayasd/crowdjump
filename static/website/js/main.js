@@ -7,7 +7,7 @@ const CONST_ANIMATE_CHARACTER = false;
 const CONST_TIME = true;
 const CONST_BUBBLE = true;
 const CONST_PAUSE = false;
-const CONST_LEVEL = 2;
+const CONST_LEVEL = 3;
 
 var game;
 var g_gameinfo = '';

@@ -36,7 +36,7 @@ Crowdjump.Preloader.prototype = {
         this.load.json('level:0', level + 'level0.json');
         this.load.json('level:1', level + 'level1.json');
         this.load.json('level:2', level + 'level2.json');
-        // this.load.json('level:2', level + 'leve12.json');
+        this.load.json('level:3', level + 'level3.json');
 
         //files
         this.load.image('background', files + 'background.png');
@@ -46,6 +46,10 @@ Crowdjump.Preloader.prototype = {
         this.load.image('grass:4x1', files + 'grass_4x1.png');
         this.load.image('grass:2x1', files + 'grass_2x1.png');
         this.load.image('grass:1x1', files + 'grass_1x1.png');
+        this.load.image('invisible:8x1', files + 'invisible_8x1.png');
+        this.load.image('invisible:4x1', files + 'invisible_4x1.png');
+        this.load.image('invisible:2x1', files + 'invisible_2x1.png');
+        this.load.image('invisible:1x1', files + 'invisible_1x1.png');
         this.load.image('invisible-wall', files + 'invisible_wall.png');
         this.load.image('icon:coin', files + 'coin_icon.png');
 
