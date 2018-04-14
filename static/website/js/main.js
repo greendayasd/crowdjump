@@ -73,13 +73,6 @@ window.createGame = function (canvas, scope) {
     game.state.add('Endscreen', Crowdjump.Endscreen);
     game.state.start('Boot');
 
-
-    game.authenticated = true;
-
-    if (g_gameinfo == '') {
-        console.error("nicht auth");
-        game.authenticated = false;
-    }
     return
 }
 

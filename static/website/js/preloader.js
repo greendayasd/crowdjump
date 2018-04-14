@@ -99,6 +99,13 @@ Crowdjump.Preloader.prototype = {
             // this.state.start('Startmenu');
 
             game.gameInfo = g_gameinfo;
+
+            game.authenticated = true;
+
+            if (game.gameInfo == '') {
+                console.error("nicht auth");
+                game.authenticated = false;
+            }
             // console.error(game.gameInfo);
             this.state.start('Game');
             // this.state.start('Endscreen');
