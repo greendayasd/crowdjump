@@ -67,10 +67,11 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    status = models.IntegerField(default=-1)
+    status = models.IntegerField(default=-1, null=True)
+    deleted = models.BooleanField(default=False)
 
-    upvotes = models.IntegerField(default=0)
-    downvotes = models.IntegerField(default=0)
+    upvotes = models.IntegerField(default=0, null=True)
+    downvotes = models.IntegerField(default=0, null=True)
 
     def __unicode__(self):
         return '{0}'.format(self.description)

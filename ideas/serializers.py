@@ -46,13 +46,13 @@ class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     user = AccountSerializer(read_only=True, required=False)
-    idea = IdeaSerializer(read_only=True, required=False)
+    # idea = IdeaSerializer(read_only=True)#(read_only=True, required=False)
 
     class Meta:
         model = Comment
 
-        fields = ('id', 'user', 'idea', 'text',
-                  'created_at', 'updated_at',
+        fields = ('id', 'user','idea', 'text',
+                  'created_at', 'updated_at','status',
                   'upvotes', 'downvotes')
 
         read_only_fields = ('id', 'created_at', 'updated_at')
@@ -60,19 +60,19 @@ class CommentSerializer(serializers.ModelSerializer):
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(CommentSerializer, self).get_validation_exclusions()
 
-        return exclusions + ['user'] + ['idea']
+        return exclusions + ['user']
 
 
 class IdeaVoteSerializer(serializers.ModelSerializer):
     user = AccountSerializer(read_only=True, required=False)
-    idea = IdeaSerializer(read_only=False, required=False)
+    # idea = IdeaSerializer(read_only=False, required=False)
 
-    vote = serializers.IntegerField()
+    # vote = serializers.IntegerField()
 
     class Meta:
         model = IdeaVote
 
-        fields = ('id', 'user', 'idea', 'vote')
+        fields = ('id', 'user', 'idea', 'vote', 'multiplier')
 
     def create(self, validated_data):
         self.idea.vote(self.idea, self.vote)

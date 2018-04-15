@@ -1,7 +1,4 @@
-/**
- * Ideas
- * @namespace crowdjump.ideas.services
- */
+
 (function () {
     'use strict';
 
@@ -11,10 +8,7 @@
 
     Ideas.$inject = ['$http', 'History'];
 
-    /**
-     * @namespace Ideas
-     * @returns {Factory}
-     */
+
     function Ideas($http, History) {
         var Ideas = {
             all: all,
@@ -25,26 +19,11 @@
 
         return Ideas;
 
-        ////////////////////
 
-        /**
-         * @name all
-         * @desc Get all Ideas
-         * @returns {Promise}
-         * @memberOf crowdjump.ideas.services.Ideas
-         */
         function all() {
             return $http.get('/api/v1/ideas?deleted=false');
         }
 
-
-        /**
-         * @name create
-         * @desc Create a new Idea
-         * @param {string} content The content of the new Idea
-         * @returns {Promise}
-         * @memberOf crowdjump.ideas.services.Ideas
-         */
         function create(content) {
             // console.error("Content: " + content["upvotes"]);
             return $http.post('/api/v1/ideas/', {
@@ -65,13 +44,6 @@
             // });
         }
 
-        /**
-         * @name get
-         * @desc Get the Ideas of a given user
-         * @param {string} username The username to get Ideas for
-         * @returns {Promise}
-         * @memberOf crowdjump.ideas.services.Ideas
-         */
         function get(username) {
             return $http.get('/api/v1/accounts/' + username + '/ideas/');
         }

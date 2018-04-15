@@ -5,7 +5,7 @@ from website.serializers import VersionSerializer
 
 from ideas.models import Idea, CommentVote, IdeaVote, Comment
 from ideas.permissions import IsCreaterOfIdea, IsOwnerOfInfo
-from ideas.serializers import IdeaSerializer, GameInfoSerializer
+from ideas.serializers import IdeaSerializer, GameInfoSerializer, CommentSerializer, IdeaVoteSerializer
 
 from authentication.models import GameInfo
 from url_filter.integrations.drf import DjangoFilterBackend
@@ -80,3 +80,35 @@ class HistoryViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         instance = serializer.save(user=self.request.user)
         return super(HistoryViewSet, self).perform_create(serializer)
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.order_by('id')
+    serializer_class = CommentSerializer
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['deleted', 'idea']
+
+    # def get_permissions(self):
+    #     if self.request.method in permissions.SAFE_METHODS:
+    #         return (permissions.AllowAny(),)
+    #     return (permissions.IsAuthenticated(), IsOwnerOfInfo(),)
+
+    def perform_create(self, serializer):
+        instance = serializer.save(user=self.request.user)
+        return super(CommentViewSet, self).perform_create(serializer)
+
+
+class IdeaVoteViewSet(viewsets.ModelViewSet):
+    queryset = IdeaVote.objects.order_by('id')
+    serializer_class = IdeaVoteSerializer
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['idea']
+
+    # def get_permissions(self):
+    #     if self.request.method in permissions.SAFE_METHODS:
+    #         return (permissions.AllowAny(),)
+    #     return (permissions.IsAuthenticated(), IsOwnerOfInfo(),)
+
+    def perform_create(self, serializer):
+        instance = serializer.save(user=self.request.user)
+        return super(CommentViewSet, self).perform_create(serializer)

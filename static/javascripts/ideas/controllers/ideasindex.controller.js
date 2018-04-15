@@ -9,9 +9,9 @@
             .module('crowdjump.ideas.controllers')
             .controller('IdeasIndexController', IdeasIndexController);
 
-        IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'History', 'Snackbar', '$cookies', 'ngDialog', '$controller', '$mdToast', '$window', '$route'];
+        IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Comments', 'History', 'Snackbar', '$cookies', 'ngDialog', '$controller', '$mdToast', '$window', '$route'];
 
-        function IdeasIndexController($scope, Authentication, Ideas, History, Snackbar, $cookies, ngDialog, $controller, $mdToast, $window, $route) {
+        function IdeasIndexController($scope, Authentication, Ideas, Comments, History, Snackbar, $cookies, ngDialog, $controller, $mdToast, $window, $route) {
             var vm = this;
             var canDelete = true;
             $scope.filterReset = function () {
