@@ -128,19 +128,23 @@
             function loginSuccessFn(data, status, headers, config) {
                 Authentication.setAuthenticatedAccount(data.data);
                 if (firstlogin) {
-                    console.error(firstlogin);
+                    // console.error(firstlogin);
                     Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
+                } else {
+                    window.location = '/';
+
                 }
-                window.location = '/';
             }
 
             function createStatisticsSuccessFn(data, status, headers, config) {
                 console.error("succ");
+                window.location = '/';
 
             }
 
             function createStatisticsErrorFn(data, status, headers, config) {
                 console.error("error " + data.error + ' ' + status);
+                window.location = '/';
 
             }
 
