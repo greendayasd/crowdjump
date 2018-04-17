@@ -9,13 +9,13 @@
         .module('crowdjump.authentication.services')
         .factory('Authentication', Authentication);
 
-    Authentication.$inject = ['$cookies', '$rootScope', '$http', '$mdToast', 'Statistics'];
+    Authentication.$inject = ['$cookies', 'History', '$rootScope', '$http', '$mdToast', 'Statistics'];
 
     /**
      * @namespace Authentication
      * @returns {Factory}
      */
-    function Authentication($cookies, $rootScope, $http, $mdToast, Statistics) {
+    function Authentication($cookies, History, $rootScope, $http, $mdToast, Statistics) {
         /**
          * @name Authentication
          * @desc The Factory to be returned
@@ -44,10 +44,40 @@
          * @memberOf crowdjump.authentication.services.Authentication
          */
         function register(email, password, username) {
+
+            // var vote_weight = 3;
+            // History.newest().then(historySuccessFn, historyErrorFn);
+            //
+            // function historySuccessFn(data, status, headers, config) {
+            //     var version = data.data["results"][0];
+            //     // vote_weight = version["vote_weight"];
+            //     console.error(vote_weight);
+            //
+            //     return $http.post('/api/v1/accounts/', {
+            //         username: username,
+            //         password: password,
+            //         email: email,
+            //
+            //
+            //     }).then(registerSuccessFn, registerErrorFn);
+            // }
+            //
+            // function historyErrorFn(data, status, headers, config) {
+            //     // Snackbar.error(data.error);
+            //     // console.error(data.error);
+            //
+            //     return $http.post('/api/v1/accounts/', {
+            //         username: username,
+            //         password: password,
+            //         email: email,
+            //
+            //     }).then(registerSuccessFn, registerErrorFn);
+            // }
             return $http.post('/api/v1/accounts/', {
                 username: username,
                 password: password,
                 email: email,
+
 
             }).then(registerSuccessFn, registerErrorFn);
 
@@ -59,7 +89,7 @@
                 /**
                  * Bei Registrierung Statistik für neuste Version anlegen
                  */
-                Authentication.login(email, password);
+                Authentication.login(email, password, true);
             }
 
             /**
@@ -86,7 +116,7 @@
          * @returns {Promise}
          * @memberOf crowdjump.authentication.services.Authentication
          */
-        function login(email, password) {
+        function login(email, password, firstlogin) {
             return $http.post('/api/v1/auth/login/', {
                 email: email, password: password
             }).then(loginSuccessFn, loginErrorFn);
@@ -97,18 +127,20 @@
              */
             function loginSuccessFn(data, status, headers, config) {
                 Authentication.setAuthenticatedAccount(data.data);
-                // console.error("authenticated? " + Authentication.isAuthenticated());
-                Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
+                if (firstlogin) {
+                    console.error(firstlogin);
+                    Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
+                }
                 window.location = '/';
             }
 
             function createStatisticsSuccessFn(data, status, headers, config) {
-                // console.error("succ");
+                console.error("succ");
 
             }
 
             function createStatisticsErrorFn(data, status, headers, config) {
-                // console.error("error" + data.error);
+                console.error("error " + data.error + ' ' + status);
 
             }
 

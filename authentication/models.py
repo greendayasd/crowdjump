@@ -38,6 +38,7 @@ class Account(AbstractBaseUser):
     last_name = models.CharField(max_length=40, blank=True)
     tagline = models.CharField(max_length=140, blank=True)
 
+
     requests_left = models.IntegerField(default=1)
     votes_left = models.IntegerField(default=1)
     email_confirmed = models.BooleanField(default=False)
@@ -46,7 +47,7 @@ class Account(AbstractBaseUser):
     is_activated = models.BooleanField(default=True)
 
     #weight = created_at -01.03 / 3 = vote_weight
-    vote_weight = models.IntegerField(default=-1)
+    vote_weight = models.IntegerField(default=3)
     survey_status = models.IntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)

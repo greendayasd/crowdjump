@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('crowdjump.comments.services')
+        .module('crowdjump.ideas.services')
         .factory('Comments', Comments);
 
     Comments.$inject = ['$http', 'History'];

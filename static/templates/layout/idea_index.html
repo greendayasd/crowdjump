@@ -135,10 +135,10 @@
                                     {{ idea.admin_comment }}
                                 </div>
                                 <div class="idea__votes">
-                                    <input id="upvote_button" type="image"
-                                           src="/static/website/images/upvote%20trans.png"/> {{ idea.upvotes }}
-                                    <input id="downvote_button" type="image"
-                                           src="/static/website/images/downvote%20trans.png"/> {{ idea.downvotes }}
+                                    <input ng-attr-id="upvote_button{{ idea.id}}" type="image"
+                                           src="/static/website/images/upvote%20trans.png" ng-click="upvote(idea.id)"/> {{ idea.upvotes }}
+                                    <input ng-attr-id="downvote_button{{ idea.id }}" type="image"
+                                           src="/static/website/images/downvote%20trans%20dark.png" ng-click="downvote(idea.id)"/> {{ idea.downvotes }}
 
                                 </div>
 
