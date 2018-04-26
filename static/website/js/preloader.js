@@ -103,7 +103,7 @@ Crowdjump.Preloader.prototype = {
             game.authenticated = true;
 
             if (game.gameInfo == '') {
-                console.error("nicht auth");
+                // console.error("nicht auth");
                 game.authenticated = false;
             }
             // console.error(game.gameInfo);

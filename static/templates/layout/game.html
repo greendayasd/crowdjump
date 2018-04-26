@@ -38,6 +38,14 @@
             </div>
         </div>
     </div>
+    <div class="row" ng-controller="IndexController as vm" ng-show="!vm.isAuthenticated">
+        <br>
+        <div class="alert alert-info">
+            <strong>
+                <a style="font-size: 28px" style="margin-top: 45px" href="/login?next={{ request.path }}">Remember to login before you play, so your score is saved!</a>
+            </strong>
+        </div>
+    </div>
     <div class="row">
         <span ng-controller="HighscoreController as vm" id="scoreboard">
             <br>
@@ -64,6 +72,6 @@
                 </tbody>
 
             </table>
-        </div>
     </div>
+</div>
 </div>

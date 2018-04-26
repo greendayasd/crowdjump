@@ -94,9 +94,18 @@ class IdeaVote(models.Model):
     multiplier = models.IntegerField(default=1)
 
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
 class CommentVote(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='commentvotes')
     comment = models.ForeignKey(Idea, on_delete=models.CASCADE, related_name='commentvotes')
 
     #     -1 = downvote, 0 = no vote, 1 = upvote
     vote = models.IntegerField(default=0)
+    multiplier = models.IntegerField(default=1)
+
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

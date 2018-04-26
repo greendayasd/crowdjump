@@ -19,7 +19,7 @@ from django.conf.urls import url
 from website import views
 from rest_framework_nested import routers
 from website.views import IndexView, HistoryViewSet, IdeasView, GameViewSet, GameInfoView, GameView
-from ideas.views import IdeaViewSet, AccountIdeasViewSet, AccountGameInfoViewSet, GameInfoViewSet, CommentViewSet, IdeaVoteViewSet
+from ideas.views import IdeaViewSet, IdeaVotePermissionViewSet, AccountIdeasViewSet, AccountGameInfoViewSet, GameInfoViewSet, CommentViewSet, IdeaVoteViewSet
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
 
@@ -29,6 +29,7 @@ from django.conf.urls.static import static
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'ideas', IdeaViewSet)
+router.register(r'ideasvoting', IdeaVotePermissionViewSet)
 router.register(r'gameinfo', GameInfoViewSet)
 router.register(r'history', HistoryViewSet)
 router.register(r'comments', CommentViewSet)

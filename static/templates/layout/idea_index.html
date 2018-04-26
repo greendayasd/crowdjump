@@ -47,6 +47,7 @@
     <div ng-controller="IdeasIndexController as vm">
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <span> {{ text_vote_weight }} <br></span>
             View
             <select ng-model="selector.config"
                     ng-options="template.value for template in selector.configs track by template.name"
@@ -136,9 +137,11 @@
                                 </div>
                                 <div class="idea__votes">
                                     <input ng-attr-id="upvote_button{{ idea.id}}" type="image"
-                                           src="/static/website/images/upvote%20trans.png" ng-click="upvote(idea.id)"/> {{ idea.upvotes }}
+                                           src="/static/website/images/upvote%20trans.png" ng-click="upvote(idea.id, idea.upvotes, idea.downvotes)"/> <span ng-attr-id="upvote_count{{ idea.id }}">{{ idea.upvotes }}</span>
                                     <input ng-attr-id="downvote_button{{ idea.id }}" type="image"
-                                           src="/static/website/images/downvote%20trans%20dark.png" ng-click="downvote(idea.id)"/> {{ idea.downvotes }}
+                                           src="/static/website/images/downvote%20trans%20dark.png" ng-click="downvote(idea.id, idea.upvotes, idea.downvotes)"/> {{ idea.downvotes }}
+                                    <input  type="image"
+                                           src="/static/website/images/downvote%20trans%20dark.png" ng-click="test()"/> Test
 
                                 </div>
 

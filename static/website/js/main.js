@@ -73,14 +73,14 @@ window.createGame = function (canvas, scope) {
     game.state.add('Endscreen', Crowdjump.Endscreen);
     game.state.start('Boot');
 
-    return
+    return;
 }
 
 
 function getInfo() {
 
     var account = JSON.parse(getCookie('authenticatedAccount'));
-    console.error("account" + account);
+    // console.error("account" + account);
 
     if (account == '' || account == null) {
         return '';
@@ -93,7 +93,7 @@ function getInfo() {
     // var path2 = '/api/v1/gameinfo/10/?format=json';
     jQuery.get(path, function (data) {
         g_gameinfo = data[0];
-        console.error("gameinfo " + g_gameinfo);
+        // console.error("gameinfo " + g_gameinfo);
         // console.error("getinfo gameinfo : " + JSON.stringify(temp_gameinfo));
     })
 }

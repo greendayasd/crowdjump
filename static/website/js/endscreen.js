@@ -38,17 +38,21 @@ Crowdjump.Endscreen.prototype = {
         } else {
             // old_time = old_time / 1000;
             if (old_time > time_score * 1000) {
-                highscore_text = 'This is a new highscore, your previous highscore was ' + (old_time/1000) + ' seconds!';
+                highscore_text = 'This is a new highscore, your previous highscore was ' + (old_time / 1000) + ' seconds!';
 
                 game.gameInfo["highscore"] = time_score * 1000;
             } else {
-                highscore_text = 'Your highscore is ' + old_time + ' seconds!';
+                highscore_text = 'Your highscore is ' + (old_time / 1000) + ' seconds!';
             }
         }
         var scoreText = "Congratulations, you beat the level in " + time_score + " seconds! \n" + highscore_text;
         score = this.add.text(this.world.centerX, 60, scoreText, {fill: '#dbdbdb'});
         score.anchor.set(0.5);
 
+        if (old_time == -2) {
+            score.inputEnabled = true;
+            score.events.onInputDown.add(this.login, this);
+        }
 
         if (CONST_BUBBLE) {
             bubble = this.add.sprite(this.world.centerX, this.world.centerY, 'bubble');
@@ -80,6 +84,10 @@ Crowdjump.Endscreen.prototype = {
 
     ideas: function () {
         window.location.href = '/ideas';
+    },
+
+    login: function () {
+        window.location.href = '/login';
     },
 
 }

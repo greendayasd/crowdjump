@@ -9,9 +9,9 @@
             .module('crowdjump.ideas.controllers')
             .controller('IdeasIndexController', IdeasIndexController);
 
-        IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Comments', 'History', 'Snackbar', '$cookies', 'ngDialog', '$controller', '$mdToast', '$window', '$route'];
+        IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Comments', 'Votes', 'History', 'Snackbar', '$cookies', 'ngDialog', '$controller', '$mdToast', '$window', '$route'];
 
-        function IdeasIndexController($scope, Authentication, Ideas, Comments, History, Snackbar, $cookies, ngDialog, $controller, $mdToast, $window, $route) {
+        function IdeasIndexController($scope, Authentication, Ideas, Comments, Votes, History, Snackbar, $cookies, ngDialog, $controller, $mdToast, $window, $route) {
             var vm = this;
             var canDelete = true;
             $scope.filterReset = function () {
@@ -79,9 +79,11 @@
 
             if ($scope.isAuthenticated) {
                 $scope.cookie = $cookies.getObject('authenticatedAccount');
-                $scope.username2 = $scope.cookie["username"]
+                $scope.userid = $scope.cookie["id"];
+                // console.error($scope.userid);
+                $scope.username2 = $scope.cookie["username"];
             }
-            ;
+
 
             activate();
             get_versions();
@@ -222,8 +224,13 @@
                     $scope.newestVersion = $scope.versions[0];
                     $scope.oldestVersion = $scope.versions_max[$scope.versions_max.length - 1]
 
-                    // console.error("data " + data.data);
-                    // console.error("v  " + $scope.newestVersion.label);
+                    if ($scope.isAuthenticated) {
+                        $scope.temp_vote_weight = $scope.cookie["vote_weight"];
+                        $scope.vote_weight = $scope.newestVersion["vote_weight"] - $scope.temp_vote_weight + 1;
+                        $scope.multiplier = 1;
+                        $scope.vote = $scope.newestVersion.vote_weight - $scope.vote_weight + 1;
+                        $scope.text_vote_weight = "Calculated from your playing time, one of your votes is worth " + $scope.vote + " points. Play more to increase this amount!"
+                    }
 
                 }
 
@@ -233,53 +240,70 @@
                 }
             }
 
+            $scope.test = function(){
+                Votes.test();
+            }
+
+
 
             //Voting
-            $scope.upvote = function (id) {
-                var upvote_img = document.getElementById('upvote_button'+id);
-                var downvote_img = document.getElementById('downvote_button'+id);
+            $scope.upvote = function (idea_id, upvotes, downvotes) {
+                var upvote_img = document.getElementById('upvote_button' + idea_id);
+                var downvote_img = document.getElementById('downvote_button' + idea_id);
+
+                var upvote_count = document.getElementById('upvote_count' + idea_id);
+                var downvote_count = document.getElementById('downvote_count' + idea_id);
+
 
                 if (downvote_img.src.match("/static/website/images/downvote%20trans.png")) {
                     downvote_img.src = "/static/website/images/downvote%20trans%20dark.png";
-                    $scope.undo_downvote(id);
+                    upvote_img.src = "/static/website/images/upvote%20trans%20bright.png";
+                    Votes.down_to_up(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+                    downvote_count.textContent = upvotes - $scope.vote;
+                    upvote_count.textContent = upvotes + $scope.vote;
                 }
 
                 if (upvote_img.src.match("/static/website/images/upvote%20trans.png")) {
                     upvote_img.src = "/static/website/images/upvote%20trans%20bright.png";
+                    console.error("upvotes? " + upvotes);
+                    Votes.upvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+                    upvote_count.textContent = upvotes + $scope.vote;
 
                 } else {
-                    $scope.undo_upvote(id);
+                    Votes.upvote(idea_id, $scope.userid, upvotes, downvotes, -$scope.vote, $scope.multiplier);
                     upvote_img.src = "/static/website/images/upvote%20trans.png";
+                    upvote_count.textContent = upvotes - $scope.vote;
                 }
             }
 
 
-            $scope.downvote = function (id) {
-                var upvote_img = document.getElementById('upvote_button'+id);
-                var downvote_img = document.getElementById('downvote_button'+id);
+            $scope.downvote = function (idea_id, upvotes, downvotes) {
+                var upvote_img = document.getElementById('upvote_button' + idea_id);
+                var downvote_img = document.getElementById('downvote_button' + idea_id);
+
+                var upvote_count = document.getElementById('upvote_count' + idea_id);
+                var downvote_count = document.getElementById('upvote_count' + idea_id);
 
 
                 if (upvote_img.src.match("/static/website/images/upvote%20trans%20bright.png")) {
-                    $scope.undo_upvote(id);
                     upvote_img.src = "/static/website/images/upvote%20trans.png";
+                    downvote_img.src = "/static/website/images/downvote%20trans.png";
+                    Votes.up_to_down(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+                    downvote_count.textContent = upvotes + $scope.vote;
+                    upvote_count.textContent = upvotes - $scope.vote;
                 }
 
 
                 if (downvote_img.src.match("/static/website/images/downvote%20trans%20dark.png")) {
                     downvote_img.src = "/static/website/images/downvote%20trans.png";
-                    $scope.undo_downvote(id);
+                    Votes.downvote(idea_id, $scope.userid, upvotes, downvotes, -$scope.vote, $scope.multiplier);
+                    downvote_count.textContent = upvotes + $scope.vote;
                 } else {
                     downvote_img.src = "/static/website/images/downvote%20trans%20dark.png";
-                    Comments
+                    Votes.downvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+                    downvote_count.textContent = upvotes - $scope.vote;
+
                 }
-            }
-
-            $scope.undo_upvote = function(id) {
-
-            }
-
-            $scope.undo_downvote = function(id) {
-
             }
         }
     }

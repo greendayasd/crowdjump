@@ -384,7 +384,7 @@ Crowdjump.Game._onHeroVsCoin = function (hero, coin) {
 };
 
 Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
-    if (hero.body.velocity.y > 0) { // kill enemies when hero is falling
+    if (hero.body.velocity.y > 0 && hero.body.position.y < enemy.body.position.y) { // kill enemies when hero is falling
         hero.bounce();
         enemy.die();
         game.enemiesDefeatedCount++;

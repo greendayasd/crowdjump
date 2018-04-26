@@ -28,6 +28,25 @@ class IdeaSerializer(serializers.ModelSerializer):
         return exclusions + ['user']
 
 
+class IdeaVotingPermissionSerializer(serializers.ModelSerializer):
+    user = AccountSerializer(read_only=True, required=False)
+    # votes = serializers.HyperlinkedIdentityField('vote', lookup_field='username')
+
+    version = VersionSerializer(read_only=True, required=False)
+
+    class Meta:
+        model = Idea
+
+        fields = ('id', 'user', 'version', 'upvotes', 'downvotes', 'created_at', 'updated_at', 'deleted',)
+        read_only_fields = ('id', 'user', 'version', 'created_at', 'updated_at', 'deleted')
+
+
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(IdeaSerializer, self).get_validation_exclusions()
+
+        return exclusions + ['user']
+
+
 class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
     user = AccountSerializer(read_only=True, required=False)
     version = VersionSerializer(read_only=True, required=False)
@@ -72,15 +91,21 @@ class IdeaVoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = IdeaVote
 
-        fields = ('id', 'user', 'idea', 'vote', 'multiplier')
+        fields = ('id', 'user', 'idea', 'vote', 'multiplier', 'created_at', 'updated_at')
+        read_only_fields = ('id', 'created_at', 'updated_at')
 
-    def create(self, validated_data):
-        self.idea.vote(self.idea, self.vote)
+    # def create(self, validated_data):
+    #     self.idea.vote(self.idea, self.vote)
+    #
+    # def update(self, instance, validated_data):
+    #     old_v = self.vote
+    #     new_v = instance.vote
+    #     self.idea.update_vote(self, old_v, new_v)
 
-    def update(self, instance, validated_data):
-        old_v = self.vote
-        new_v = instance.vote
-        self.idea.update_vote(self, old_v, new_v)
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(IdeaVoteSerializer, self).get_validation_exclusions()
+
+        return exclusions + ['user']
 
 
 class CommentVoteSerializer(serializers.ModelSerializer):
@@ -90,7 +115,13 @@ class CommentVoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommentVote
 
-        fields = ('id', 'user', 'comment', 'vote')
+        fields = ('id', 'user', 'comment', 'vote', 'created_at', 'updated_at')
+        read_only_fields = ('id', 'created_at', 'updated_at')
+
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(CommentVoteSerializer, self).get_validation_exclusions()
+
+        return exclusions + ['user']
 
 
 class WebsiteInfoSerializer(serializers.HyperlinkedModelSerializer):

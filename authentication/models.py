@@ -46,8 +46,9 @@ class Account(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     is_activated = models.BooleanField(default=True)
 
-    #weight = created_at -01.03 / 3 = vote_weight
+    #weight
     vote_weight = models.IntegerField(default=3)
+    vote_multiplier = models.DecimalField(default=1)
     survey_status = models.IntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)
