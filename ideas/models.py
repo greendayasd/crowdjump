@@ -25,6 +25,8 @@ class Idea(models.Model):
     admin_comment = models.CharField(max_length=50, null=True, default='')
     estimated_time = models.CharField(max_length=50, null=True, default='')
 
+    newest_comment = models.IntegerField(default=-1)
+
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
 

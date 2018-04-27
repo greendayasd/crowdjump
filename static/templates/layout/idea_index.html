@@ -117,7 +117,7 @@
                             <div class="idea">
                                 <div class="idea__time">
                                     Idea: <span style="color:Blue">{{ idea.id }} </span> <br>
-                                    created at {{ idea.created_at | date : "dd.MM.y HH:mm" }} on Version <span
+                                    created at {{ idea.created_at | date : "dd.MM.y HH:mm" }} on Version <span>
                                         style="color:Blue"> {{ idea.version.label }}</span><br>
                                 </div>
                                 <div class="idea__meta">
@@ -145,11 +145,17 @@
                                 </div>
                                 <div class="idea__votes" ng-show="isAuthenticated">
                                     <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
-                                           ng-src="{{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png'  }}"
+                                           ng-src="
+
+
+                                                   {{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png'  }}"
                                            ng-click="upvote(idea.id, idea.upvotes, idea.downvotes)"/> <span
                                         ng-attr-id="upvote_count{{ idea.id }}">{{ idea.upvotes }}</span>
                                     <input ng-attr-id="downvote_button{{ idea.id }}" type="image"
-                                           ng-src="{{ idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png'  }}"
+                                           ng-src="
+
+
+                                                   {{ idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png'  }}"
                                            ng-click="downvote(idea.id, idea.upvotes, idea.downvotes)"/> {{ idea.downvotes }}
 
                                 </div>
@@ -162,8 +168,29 @@
                                     </a>
                                 </div>
                                 <div class="idea__comments">
-                                    <label class="btn btn-primary" btn-checkbox-false="0"> Show Comments
+                                    <div class="newest_comment" ng-show="idea.hasLatestComment">
+                                        <div class="idea__time">
+                                            created at {{ idea.newest_comment.created_at | date : "dd.MM.y HH:mm" }}
+                                        </div>
+                                        <div class="idea__meta">
+                                            User: {{ idea.newest_commentuser.username }}
+                                        </div>
+                                        <br>
+                                        <div class="idea__content">
+                                            {{ idea.newest_comment.comment }}
+                                            <br><br>
+                                        </div>
+                                    </div>
+                                    <label class="btn btn-primary" btn-checkbox-false="0"> Show all Comments
                                     </label>
+                                    <br><br>
+                                    <textarea ng-show="isAuthenticated"
+                                              rows="1"
+                                              placeholder="Type in your comment"
+                                              minlength="1"
+                                              maxlength="150">
+                                    </textarea>
+                                    <button class="btn btn-primary" ng-click="publishComment(idea.id)">Comment</button>
                                 </div>
 
                             </div>

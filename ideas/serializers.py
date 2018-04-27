@@ -17,7 +17,7 @@ class IdeaSerializer(serializers.ModelSerializer):
 
         fields = ('id', 'user', 'version', 'request_text', 'description',
                   'created_at', 'updated_at', 'estimated_time', 'admin_comment',
-                  'feasible', 'implemented', 'deleted',
+                  'feasible', 'implemented', 'deleted', 'newest_comment',
                   'upvotes', 'downvotes')
 
         read_only_fields = ('id', 'created_at', 'updated_at')
@@ -45,7 +45,26 @@ class IdeaVotingPermissionSerializer(serializers.ModelSerializer):
         exclusions = super(IdeaSerializer, self).get_validation_exclusions()
 
         return exclusions + ['user']
+        return exclusions + ['user']
 
+
+class IdeaNewestCommentPermissionSerializer(serializers.ModelSerializer):
+    user = AccountSerializer(read_only=True, required=False)
+    # votes = serializers.HyperlinkedIdentityField('vote', lookup_field='username')
+
+    version = VersionSerializer(read_only=True, required=False)
+
+    class Meta:
+        model = Idea
+
+        fields = ('id', 'user', 'version', 'newest_comment', 'created_at', 'updated_at', 'deleted',)
+        read_only_fields = ('id', 'user', 'version', 'created_at', 'updated_at', 'deleted')
+
+
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(IdeaSerializer, self).get_validation_exclusions()
+
+        return exclusions + ['user']
 
 class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
     user = AccountSerializer(read_only=True, required=False)
