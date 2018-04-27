@@ -117,7 +117,7 @@
                             <div class="idea">
                                 <div class="idea__time">
                                     Idea: <span style="color:Blue">{{ idea.id }} </span> <br>
-                                    created at {{ idea.created_at | date : "dd.MM.y HH:mm" }} on Version <span>
+                                    created at {{ idea.created_at | date : "dd.MM.y HH:mm" }} on Version <span
                                         style="color:Blue"> {{ idea.version.label }}</span><br>
                                 </div>
                                 <div class="idea__meta">
@@ -130,13 +130,13 @@
                                                                   ng-if="idea.implemented == true"> (already implemented) </span>
                                     <br><br>
                                     <b>Description </b><br>
-                                    {{ idea.description }} <br><br>
+                                    {{ idea.description }} <br>
                                 </div>
                                 <div class="idea__estimated_time" ng-if="idea.estimated_time != Null">
-                                    Estimated time: <b>{{ idea.estimated_time }}</b> days<br>
+                                    Estimated time: <b>{{ idea.estimated_time }}</b> days
                                 </div>
                                 <div class="idea__estimated_time" ng-if="idea.estimated_time == Null">
-                                    No estimated time yet <br>
+                                    No estimated time yet
                                 </div>
                                 <div class="idea__admin_comment">
                                     <span style="font-weight: bold"
@@ -145,17 +145,11 @@
                                 </div>
                                 <div class="idea__votes" ng-show="isAuthenticated">
                                     <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
-                                           ng-src="
-
-
-                                                   {{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png'  }}"
+                                           ng-src="{{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png' }}"
                                            ng-click="upvote(idea.id, idea.upvotes, idea.downvotes)"/> <span
                                         ng-attr-id="upvote_count{{ idea.id }}">{{ idea.upvotes }}</span>
                                     <input ng-attr-id="downvote_button{{ idea.id }}" type="image"
-                                           ng-src="
-
-
-                                                   {{ idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png'  }}"
+                                           ng-src="{{ idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png' }}"
                                            ng-click="downvote(idea.id, idea.upvotes, idea.downvotes)"/> {{ idea.downvotes }}
 
                                 </div>
@@ -163,39 +157,72 @@
                                 <div class="idea__delete" ng-if="idea.user.username == username2">
                                     <br>
                                     <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-delete-idea"
-                                       ng-click="vm.openDialog(idea.id)">
+                                       ng-click="vm.openDialogDeleteIdea(idea.id)">
                                         Delete this idea
                                     </a>
-                                </div>
-                                <div class="idea__comments">
-                                    <div class="newest_comment" ng-show="idea.hasLatestComment">
-                                        <div class="idea__time">
-                                            created at {{ idea.newest_comment.created_at | date : "dd.MM.y HH:mm" }}
-                                        </div>
-                                        <div class="idea__meta">
-                                            User: {{ idea.newest_commentuser.username }}
-                                        </div>
-                                        <br>
-                                        <div class="idea__content">
-                                            {{ idea.newest_comment.comment }}
-                                            <br><br>
-                                        </div>
-                                    </div>
-                                    <label class="btn btn-primary" btn-checkbox-false="0"> Show all Comments
-                                    </label>
-                                    <br><br>
-                                    <textarea ng-show="isAuthenticated"
-                                              rows="1"
-                                              placeholder="Type in your comment"
-                                              minlength="1"
-                                              maxlength="150">
-                                    </textarea>
-                                    <button class="btn btn-primary" ng-click="publishComment(idea.id)">Comment</button>
                                 </div>
 
                             </div>
                         </div>
+                        <div class="well" style="background-color: #3ebfe8;">
+                            <div class="comment">
+                                <div class="comment__comments">
+                                    <div ng-repeat="comment in commentOrdering = (idea.comments | orderBy:'created_at':false)">
+                                        <div class="comment__time">
+                                            created at {{ comment.created_at | date : "dd.MM.y HH:mm" }}
+                                        </div>
+                                        <div class="comment__meta">
+                                            User: {{ comment.user.username }}
+                                        </div>
+                                        <br>
+                                        <div class="comment__content">
+                                            {{ comment.text }}
+                                            <br><hr>
+                                        </div>
+                                        <div class="comment__delete" ng-if="idea.newest_comment.username == username2">
+                                            <br>
+                                            <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-delete-idea"
+                                               ng-click="vm.openDialogDeleteComment(idea.newest_comment.ide)">
+                                                Delete this comment?
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <label class="btn btn-primary" btn-checkbox-false="0"> Show all Comments
+                                </label>
+                                <br><br>
+                                <div class="comment__newest_comment" ng-show="idea.newest_comment.id > 0">
+                                    <div class="comment__time">
+                                        created at {{ idea.newest_comment.created_at | date : "dd.MM.y HH:mm" }}
+                                    </div>
+                                    <div class="comment__meta">
+                                        User: {{ idea.newest_comment_user }}
+                                    </div>
+                                    <br>
+                                    <div class="comment__content">
+                                        {{ idea.newest_comment.text }}
+                                        <br><br>
+                                    </div>
+                                    <div class="comment__delete" ng-if="idea.newest_comment.username == username2">
+                                        <br>
+                                        <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-delete-idea"
+                                           ng-click="vm.openDialogDeleteComment(idea.newest_comment.ide)">
+                                            Delete this comment?
+                                        </a>
+                                    </div>
+
+                                </div>
+                                    <br>
+                                <form name="form" ng-submit="addNewComment(idea.id)" novalidate ng-show="isAuthenticated">
+                                                <textarea placeholder="Type in your comment"
+                                                          style="resize: none; width: 85%; height: 15%"></textarea>
+                                    <button type="submit" class="btn btn-primary" style="width: 14%; height: 15%">Comment</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
 
             </div>

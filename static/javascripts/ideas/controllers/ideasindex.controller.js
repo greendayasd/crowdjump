@@ -53,7 +53,6 @@
                 }
             };
 
-
             $scope.sortType = 'upvotes';
             $scope.sortReverse = false;
 
@@ -74,6 +73,7 @@
             // console.error("ideas " + vm.isAuthenticated || false);
             $scope.ideas = [];
             $scope.versions = [];
+            $scope.comments = [];
 
             if ($scope.isAuthenticated) {
                 $scope.cookie = $cookies.getObject('authenticatedAccount');
@@ -83,19 +83,28 @@
             }
 
             get_ideavotes();
+            get_comments();
 
             activate();
             get_versions();
 
-            vm.openDialog = function (idea_id) {
+            vm.openDialogDeleteIdea = function (idea_id) {
                 var deleteUser = $window.confirm('Are you absolutely sure you want to delete this idea?');
 
                 if (deleteUser) {
-                    submit(idea_id);
+                    submitDeleteIdea(idea_id);
                 }
             }
 
-            function submit(idea_id) {
+            vm.openDialogDeleteComment = function (comment_id) {
+                var deleteUser = $window.confirm('Are you absolutely sure you want to delete this comment?');
+
+                if (deleteUser) {
+                    submitDeleteComment(comment_id);
+                }
+            }
+
+            function submitDeleteIdea(idea_id) {
                 // alert("delete " + this.id);
 
                 if (canDelete) {
@@ -135,6 +144,45 @@
                 }
             }
 
+
+            function submitDeleteComment(comment_id) {
+                // alert("delete " + this.id);
+
+                if (canDelete) {
+                    Comments.deleteComment(comment_id).then(deleteSuccessFn, deleteErrorFn);
+                    $route.reload();
+
+                } else {
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent("You can't delete your comments at the moment, the next implementation is chosen soon!")
+                            .hideDelay(2000)
+                    );
+                    $route.reload();
+                }
+
+
+                function deleteSuccessFn(data, status, headers, config) {
+                    // Snackbar.show("Post deleted");
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent("Comment deleted")
+                            .hideDelay(2000)
+                    );
+                    // $route.reload();
+                }
+
+                function deleteErrorFn(data, status, headers, config) {
+                    // Snackbar.error(data.error);
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent("There was an error, the comment has not been deleted!")
+                            .hideDelay(2000)
+                    );
+                    // console.error(data.error);
+
+                }
+            }
 
             $scope.selector = {};
             $scope.selector.configs = [
@@ -184,21 +232,25 @@
             function get_ideavotes() {
                 Votes.all_user($scope.userid).then(ideavotesSuccessFn, ideavotesErrorFn);
 
-
                 function ideavotesSuccessFn(data, status, headers, config) {
                     $scope.ideavotes = data.data;
                     // console.error("data " + data.data[0].description);
-
                 }
 
                 function ideavotesErrorFn(data, status, headers, config) {
-                    // Snackbar.error(data.error);
-                    // $mdToast.show(
-                    //     $mdToast.simple()
-                    //         .textContent(data.error)
-                    //         .hideDelay(2000)
-                    // );
-                    // console.error(data.error);
+                }
+            }
+
+
+            function get_comments() {
+                Comments.all().then(commentsSuccessFn, commentsErrorFn);
+
+                function commentsSuccessFn(data, status, headers, config) {
+                    $scope.comments = data.data;
+                    // console.error("data " + data.data[0].description);
+                }
+
+                function commentsErrorFn(data, status, headers, config) {
                 }
             }
 
@@ -216,6 +268,7 @@
                 function ideasSuccessFn(data, status, headers, config) {
                     $scope.ideas_tmp = data.data;
 
+                    //find own votes for ideas
                     $scope.ideas = $.map($scope.ideas_tmp, function (idea) {
                         var vote = $.grep($scope.ideavotes, function (ideavote) {
                             return ideavote.idea === idea.id;
@@ -229,6 +282,28 @@
                             // console.log("0!");
                             idea.uservote = 0;
                         }
+
+                        var comments = $.grep($scope.comments, function (comment) {
+                           return comment.idea === idea.id;
+                        });
+
+                        if (typeof comments !== 'undefined') {
+                            // console.log(vote);
+                            idea.comments = comments;
+                            idea.newest_comment = comments[0];
+                            if (typeof idea.newest_comment !== 'undefined'){
+                                // console.error(idea.newest_comment["user"]["username"]);
+                                idea.newest_comment_user = idea.newest_comment["user"]["username"];
+
+                            }
+                            // console.error(idea.newest_comment);
+
+                        } else {
+                            idea.comments = {'id':-1};
+                            idea.newest_comment = {'id':-1};
+                        }
+
+
                         return idea;
                     });
 
@@ -348,6 +423,13 @@
                     downvote_count.textContent = downvotes - $scope.vote;
 
                 }
+            }
+
+
+            //Comments
+
+            $scope.addNewComment = function (idea_id) {
+
             }
         }
     }

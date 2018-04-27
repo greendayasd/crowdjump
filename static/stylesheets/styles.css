@@ -32,6 +32,7 @@
     font-weight: bold;
     color: orange;
     font-size: large;
+    padding-bottom: 0px;
 }
 
 .idea .idea__admin_comment {
@@ -44,12 +45,40 @@
 
 }
 
-.idea .idea__votes{
+.idea .idea__votes {
     text-align: right;
     padding-bottom: 0px;
+}
 
-}.idea .idea__comments{
+.comment {
+}
 
+.comment .comment__meta {
+    font-weight: bold;
+    text-align: right;
+    padding-bottom: 0px;
+}
+
+.comment .comment__time {
+    font-weight: bold;
+    float:left;
+    font-size: 75%;
+    clear: both;
+    text-align: left;
+    padding-bottom: 0px;
+}
+
+.comment .comment__content{
+    text-align: left;
+}
+
+.comment .comment__meta a:hover {
+    text-decoration: none;
+}
+
+.comment .comment__newest_comment{
+
+    outline: grey;
 }
 
 .clickableRow {

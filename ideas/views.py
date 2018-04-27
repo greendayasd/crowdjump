@@ -97,7 +97,7 @@ class HistoryViewSet(viewsets.ModelViewSet):
 
 
 class CommentViewSet(viewsets.ModelViewSet):
-    queryset = Comment.objects.order_by('id')
+    queryset = Comment.objects.order_by('-created_at')
     serializer_class = CommentSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ['deleted', 'idea', 'user']
