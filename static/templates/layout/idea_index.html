@@ -88,6 +88,15 @@
             </table>
 
             <div class="btn-group mr-4" data-toggle="buttons">
+                <button class="btn btn-primary" ng-click="orderUpvotes()">Most Upvotes First</button>
+                <button class="btn btn-primary" ng-click="orderDownvotes()">Most Downvotes First</button>
+                <button class="btn btn-primary" ng-click="orderOldest()">Oldest First</button>
+                <label type="button" class="btn btn-primary" ng-model="sortReverse" uib-btn-checkbox
+                       btn-checkbox-true="1" btn-checkbox-false="0"> Reverse Ordering
+                </label>
+            </div>
+            <br><br>
+            <div class="btn-group mr-4" data-toggle="buttons">
                 <label type="button" class="btn btn-primary" ng-model="search.not_feasible" uib-btn-checkbox
                        btn-checkbox-true="1" btn-checkbox-false="0"> Not Feasible
                 </label>
@@ -96,12 +105,11 @@
                 </label>
                 <button class="btn btn-primary" ng-click="filterReset()">Reset Filter</button>
 
-
             </div>
 
             <br><br>
             <!--<div ng-repeat="idea in ideas.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter:customFilter" -->
-            <div ng-repeat="idea in filterData = (ideas | filter : customFilter) | limitTo:itemsPerPage:itemsPerPage*(currentPage-1)"
+            <div ng-repeat="idea in filterData = (ideas | filter : customFilter) | limitTo:itemsPerPage:itemsPerPage*(currentPage-1) | orderBy:sortType:sortReverse"
                  id="searchObjResults">
                 <div class="row">
                     <div class="col-lg-12">
@@ -135,12 +143,13 @@
                                           ng-if="idea.feasible == false"> Not feasible <br></span>
                                     {{ idea.admin_comment }}
                                 </div>
-                                <div class="idea__votes"  ng-show="isAuthenticated">
-                                    <input ng-attr-id="upvote_button{{ idea.id}}" type="image"
-                                           ng-src="{{idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png'  }}"
-                                           ng-click="upvote(idea.id, idea.upvotes, idea.downvotes)"/> <span ng-attr-id="upvote_count{{ idea.id }}">{{ idea.upvotes }}</span>
+                                <div class="idea__votes" ng-show="isAuthenticated">
+                                    <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
+                                           ng-src="{{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png'  }}"
+                                           ng-click="upvote(idea.id, idea.upvotes, idea.downvotes)"/> <span
+                                        ng-attr-id="upvote_count{{ idea.id }}">{{ idea.upvotes }}</span>
                                     <input ng-attr-id="downvote_button{{ idea.id }}" type="image"
-                                           ng-src="{{idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png'  }}"
+                                           ng-src="{{ idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png'  }}"
                                            ng-click="downvote(idea.id, idea.upvotes, idea.downvotes)"/> {{ idea.downvotes }}
 
                                 </div>

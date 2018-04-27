@@ -27,6 +27,7 @@
                 this.versionFilterMax($scope.newestVersion.id);
             }
 
+
             $scope.search = {
                 not_feasible: false,
                 implemented: false,
@@ -49,28 +50,25 @@
                     idea.implemented == $scope.search.implemented &&
                     idea.deleted == false) {// || $scope.search.version.label == "all") {
                     return idea;
-
-                    // if (idea.feasible && idea.feasible != $scope.search.not_feasible) {
-                    //     console.error(idea.id + "feasible");
-                    //     if (idea.implemented && idea.implemented == $scope.search.implemented) {
-                    //         console.error(idea.id + "implemented");
-                    //         return idea;
-                    //     } else if (!idea.implemented && idea.implemented == $scope.search.implemented) {
-                    //         console.error(idea.id + " not implemented");
-                    //         return idea;
-                    //     }
-                    // } else if (!idea.feasible && idea.feasible == $scope.search.not_feasible) {
-                    //     console.error(idea.id + " not feasible");
-                    //     if (idea.implemented && idea.implemented == $scope.search.implemented) {
-                    //         console.error(idea.id + "implemented");
-                    //         return idea;
-                    //     } else if (!idea.implemented && !idea.implemented == $scope.search.implemented) {
-                    //         console.error(idea.id + "not implemented");
-                    //         return idea;
-                    //     }
-                    // }
                 }
             };
+
+
+            $scope.sortType = 'upvotes';
+            $scope.sortReverse = false;
+
+
+            $scope.orderUpvotes = function () {
+                $scope.sortType = 'upvotes';
+            }
+
+            $scope.orderDownvotes = function () {
+                $scope.sortType = 'downvotes';
+            }
+
+            $scope.orderOldest = function () {
+                $scope.sortType = 'created_at';
+            }
 
             $scope.isAuthenticated = Authentication.isAuthenticated();
             // console.error("ideas " + vm.isAuthenticated || false);
