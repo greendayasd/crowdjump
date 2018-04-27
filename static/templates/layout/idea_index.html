@@ -135,13 +135,13 @@
                                           ng-if="idea.feasible == false"> Not feasible <br></span>
                                     {{ idea.admin_comment }}
                                 </div>
-                                <div class="idea__votes">
+                                <div class="idea__votes"  ng-show="isAuthenticated">
                                     <input ng-attr-id="upvote_button{{ idea.id}}" type="image"
-                                           src="/static/website/images/upvote%20trans.png" ng-click="upvote(idea.id, idea.upvotes, idea.downvotes)"/> <span ng-attr-id="upvote_count{{ idea.id }}">{{ idea.upvotes }}</span>
+                                           ng-src="{{idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png'  }}"
+                                           ng-click="upvote(idea.id, idea.upvotes, idea.downvotes)"/> <span ng-attr-id="upvote_count{{ idea.id }}">{{ idea.upvotes }}</span>
                                     <input ng-attr-id="downvote_button{{ idea.id }}" type="image"
-                                           src="/static/website/images/downvote%20trans%20dark.png" ng-click="downvote(idea.id, idea.upvotes, idea.downvotes)"/> {{ idea.downvotes }}
-                                    <input  type="image"
-                                           src="/static/website/images/downvote%20trans%20dark.png" ng-click="test()"/> Test
+                                           ng-src="{{idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png'  }}"
+                                           ng-click="downvote(idea.id, idea.upvotes, idea.downvotes)"/> {{ idea.downvotes }}
 
                                 </div>
 

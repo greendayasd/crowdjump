@@ -84,6 +84,7 @@
                 $scope.username2 = $scope.cookie["username"];
             }
 
+            get_ideavotes();
 
             activate();
             get_versions();
@@ -181,6 +182,28 @@
                 $scope.search.version.id_max = id;
             }
 
+
+            function get_ideavotes() {
+                Votes.all_user($scope.userid).then(ideavotesSuccessFn, ideavotesErrorFn);
+
+
+                function ideavotesSuccessFn(data, status, headers, config) {
+                    $scope.ideavotes = data.data;
+                    // console.error("data " + data.data[0].description);
+
+                }
+
+                function ideavotesErrorFn(data, status, headers, config) {
+                    // Snackbar.error(data.error);
+                    // $mdToast.show(
+                    //     $mdToast.simple()
+                    //         .textContent(data.error)
+                    //         .hideDelay(2000)
+                    // );
+                    // console.error(data.error);
+                }
+            }
+
             function activate() {
                 Ideas.all().then(ideasSuccessFn, ideasErrorFn);
 
@@ -193,13 +216,38 @@
                 });
 
                 function ideasSuccessFn(data, status, headers, config) {
-                    $scope.ideas = data.data;
+                    $scope.ideas_tmp = data.data;
+
+                    $scope.ideas = $.map($scope.ideas_tmp, function (idea) {
+                        var vote = $.grep($scope.ideavotes, function (ideavote) {
+                            return ideavote.idea === idea.id;
+                        })[0];
+                        if (typeof vote !== 'undefined') {
+                            // console.log(vote);
+
+                            idea.uservote = vote.vote;
+
+                        } else {
+                            // console.log("0!");
+                            idea.uservote = 0;
+                        }
+                        return idea;
+                    });
+
                     $scope.totalItems = $scope.ideas.length;
                     $scope.currentPage = 1;
                     $scope.itemsPerPage = 5;
                     $scope.maxSize = 5; //Number of pager buttons to show
                     $scope.displayItems = $scope.ideas.slice(0, $scope.itemsPerPage);
                     // console.error("data " + data.data[0].description);
+
+                    // console.log($.map($scope.ideavotes, function (ideavote) {
+                    //     var idea = $.grep($scope.ideas, function (idea) {
+                    //         return ideavote.idea === idea.id;
+                    //     })[0];
+                    //
+                    //     return ideavote;
+                    // }));
 
                 }
 
@@ -225,10 +273,9 @@
                     $scope.oldestVersion = $scope.versions_max[$scope.versions_max.length - 1]
 
                     if ($scope.isAuthenticated) {
-                        $scope.temp_vote_weight = $scope.cookie["vote_weight"];
-                        $scope.vote_weight = $scope.newestVersion["vote_weight"] - $scope.temp_vote_weight + 1;
-                        $scope.multiplier = 1;
-                        $scope.vote = $scope.newestVersion.vote_weight - $scope.vote_weight + 1;
+                        $scope.vote_weight = $scope.cookie["vote_weight"];
+                        $scope.multiplier = $scope.cookie["vote_multiplier"];
+                        $scope.vote = Math.abs(($scope.newestVersion.vote_weight - $scope.vote_weight + 1) * $scope.multiplier);
                         $scope.text_vote_weight = "Calculated from your playing time, one of your votes is worth " + $scope.vote + " points. Play more to increase this amount!"
                     }
 
@@ -240,10 +287,9 @@
                 }
             }
 
-            $scope.test = function(){
+            $scope.test = function () {
                 Votes.test();
             }
-
 
 
             //Voting
@@ -265,12 +311,12 @@
 
                 if (upvote_img.src.match("/static/website/images/upvote%20trans.png")) {
                     upvote_img.src = "/static/website/images/upvote%20trans%20bright.png";
-                    console.error("upvotes? " + upvotes);
+                    // console.error("upvotes? " + upvotes);
                     Votes.upvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
                     upvote_count.textContent = upvotes + $scope.vote;
 
                 } else {
-                    Votes.upvote(idea_id, $scope.userid, upvotes, downvotes, -$scope.vote, $scope.multiplier);
+                    Votes.undo_upvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
                     upvote_img.src = "/static/website/images/upvote%20trans.png";
                     upvote_count.textContent = upvotes - $scope.vote;
                 }
@@ -282,26 +328,26 @@
                 var downvote_img = document.getElementById('downvote_button' + idea_id);
 
                 var upvote_count = document.getElementById('upvote_count' + idea_id);
-                var downvote_count = document.getElementById('upvote_count' + idea_id);
+                var downvote_count = document.getElementById('downvote_count' + idea_id);
 
 
                 if (upvote_img.src.match("/static/website/images/upvote%20trans%20bright.png")) {
                     upvote_img.src = "/static/website/images/upvote%20trans.png";
                     downvote_img.src = "/static/website/images/downvote%20trans.png";
                     Votes.up_to_down(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
-                    downvote_count.textContent = upvotes + $scope.vote;
-                    upvote_count.textContent = upvotes - $scope.vote;
+                    downvote_count.textContent = downvotes + $scope.vote;
+                    upvote_count.textContent = upvotes + $scope.vote;
                 }
 
 
                 if (downvote_img.src.match("/static/website/images/downvote%20trans%20dark.png")) {
                     downvote_img.src = "/static/website/images/downvote%20trans.png";
-                    Votes.downvote(idea_id, $scope.userid, upvotes, downvotes, -$scope.vote, $scope.multiplier);
-                    downvote_count.textContent = upvotes + $scope.vote;
+                    Votes.downvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+                    downvote_count.textContent = downvotes + $scope.vote;
                 } else {
                     downvote_img.src = "/static/website/images/downvote%20trans%20dark.png";
-                    Votes.downvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
-                    downvote_count.textContent = upvotes - $scope.vote;
+                    Votes.undo_downvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+                    downvote_count.textContent = downvotes - $scope.vote;
 
                 }
             }

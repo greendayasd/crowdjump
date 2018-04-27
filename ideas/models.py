@@ -91,7 +91,7 @@ class IdeaVote(models.Model):
 
     #     -1 = downvote, 0 = no vote, 1 = upvote
     vote = models.IntegerField(default=0)
-    multiplier = models.IntegerField(default=1)
+    multiplier = models.DecimalField(default=1, max_digits=5, decimal_places=2)
 
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -104,7 +104,7 @@ class CommentVote(models.Model):
 
     #     -1 = downvote, 0 = no vote, 1 = upvote
     vote = models.IntegerField(default=0)
-    multiplier = models.IntegerField(default=1)
+    multiplier = models.DecimalField(default=1, max_digits=5, decimal_places=2)
 
 
     created_at = models.DateTimeField(auto_now_add=True)
