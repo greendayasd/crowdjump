@@ -66,6 +66,7 @@ class IdeaNewestCommentPermissionSerializer(serializers.ModelSerializer):
 
         return exclusions + ['user']
 
+
 class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
     user = AccountSerializer(read_only=True, required=False)
     version = VersionSerializer(read_only=True, required=False)
@@ -91,7 +92,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
         fields = ('id', 'user','idea', 'text',
                   'created_at', 'updated_at','status',
-                  'upvotes', 'downvotes')
+                  'upvotes', 'downvotes', 'deleted')
 
         read_only_fields = ('id', 'created_at', 'updated_at')
 

@@ -29,17 +29,19 @@ Crowdjump.Endscreen.prototype = {
         // console.error("old_time " + old_time);
         // console.error("new_time " + time_score);
         var highscore_text = '';
+        var isHighscore = false;
         if (old_time == -2) {
             highscore_text = 'Login to save your score!';
         }
         else if (old_time == -1) {
             highscore_text = 'This is a new highscore!';
+            isHighscore = true;
             game.gameInfo["highscore"] = time_score * 1000;
         } else {
             // old_time = old_time / 1000;
             if (old_time > time_score * 1000) {
                 highscore_text = 'This is a new highscore, your previous highscore was ' + (old_time / 1000) + ' seconds!';
-
+                isHighscore = true;
                 game.gameInfo["highscore"] = time_score * 1000;
             } else {
                 highscore_text = 'Your highscore is ' + (old_time / 1000) + ' seconds!';
@@ -72,7 +74,7 @@ Crowdjump.Endscreen.prototype = {
         // console.error("Gameinfo!: " + gameinfo);
 
 
-        setInfo();
+        setInfo(isHighscore);
 
     },
 
@@ -92,10 +94,10 @@ Crowdjump.Endscreen.prototype = {
 
 }
 
-function setInfo() {
+function setInfo(isHighscore) {
     if (game.authenticated) {
         game.gameInfo["rounds_won"] = game.gameInfo["rounds_won"] + 1;
     }
 
-    updateInfo();
+    updateInfo(isHighscore);
 }

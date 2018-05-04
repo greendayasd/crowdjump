@@ -481,7 +481,7 @@ Crowdjump.Game.resumed = function () {
 Crowdjump.Game.restart = function () {
     // game.gameInfo["rounds_started"] = game.gameInfo["rounds_started"] + 1;
     game.restarts++;
-    updateInfo();
+    updateInfo(false);
     last_second = 0;
 
     this.state.restart();

@@ -2,10 +2,10 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 
 
-class IdeaConsumer(AsyncWebsocketConsumer):
+class GameConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
-        self.room_group_name = 'ideas'
+        self.room_group_name = 'website'
 
         # Join room group
         await self.channel_layer.group_add(
@@ -31,8 +31,6 @@ class IdeaConsumer(AsyncWebsocketConsumer):
             text_data_json
         )
 
-    async def idea_broadcast(self, event):
+    async def highscore_broadcast(self, event):
         await self.send(text_data=json.dumps(event))
 
-    async def comment_broadcast(self, event):
-        await self.send(text_data=json.dumps(event))

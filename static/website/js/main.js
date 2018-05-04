@@ -7,11 +7,11 @@ const CONST_ANIMATE_CHARACTER = false;
 const CONST_TIME = true;
 const CONST_BUBBLE = true;
 const CONST_PAUSE = false;
-const CONST_LEVEL = 4;
+const CONST_LEVEL = 1;
 
 var game;
 var g_gameinfo = '';
-
+var highscoreSocket;
 
 
 function csrfSafeMethod(method) {
@@ -39,6 +39,13 @@ window.createGame = function (canvas, scope) {
     scope.$on('$destroy', function () {
         game.destroy(); // Clean up the game when we leave this scope
     });
+
+    highscoreSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/website/');
+    highscoreSocket.onclose = function (e) {
+        console.error('Chat socket closed unexpectedly');
+    };
 
 
     getInfo();
@@ -98,7 +105,8 @@ function getInfo() {
     })
 }
 
-function updateInfo() {
+
+function updateInfo(isHighscore) {
 
     if (game.authenticated) {
         if (game.gameInfo["coins_collected"] == null || game.gameInfo["coins_collected"] == NaN || isNaN(game.gameInfo["coins_collected"])) {
@@ -139,7 +147,16 @@ function updateInfo() {
             processData: false,
             contentType: "application/json",
             success: function (data) {
-                // console.error(data);
+                if (isHighscore || true) {
+
+                    var content = data;
+                    // console.log(data);
+                    content["type"] = 'highscore_broadcast';
+                    highscoreSocket.send(JSON.stringify(content));
+                    // console.log(JSON.stringify(content));
+
+
+                }
             },
             error: function (xhr, status, error) {
                 console.error('xhr ' + JSON.stringify(xhr) + '  Error ' + error);

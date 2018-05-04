@@ -14,6 +14,8 @@
         function IdeasIndexController($scope, Authentication, Ideas, Comments, Votes, History, Snackbar, $cookies, ngDialog, $controller, $mdToast, $window, $route) {
             var vm = this;
             var canDelete = true;
+
+            //Filter/Ordering
             $scope.filterReset = function () {
                 $scope.search = {
                     not_feasible: false,
@@ -54,8 +56,8 @@
             };
 
             $scope.sortType = 'created_at';
-            $scope.compareType = parseInt;
-            $scope.sortReverse = false;
+            $scope.compareType = '';
+            $scope.sortReverse = 1;
 
             var sort_by = function (field, reverse, primer) {
 
@@ -75,6 +77,7 @@
             }
 
             $scope.sort_all = function () {
+                // console.log($scope.sortType + '    ' + $scope.sortReverse);
                 if ($scope.sortType == 'upvotes' || $scope.sortType == 'downvotes') {
                     $scope.ideas.sort(sort_by($scope.sortType, !$scope.sortReverse, $scope.compareType))
                 } else {
@@ -126,102 +129,8 @@
             activate();
             get_versions();
 
-            vm.openDialogDeleteIdea = function (idea_id) {
-                var deleteUser = $window.confirm('Are you absolutely sure you want to delete this idea?');
 
-                if (deleteUser) {
-                    submitDeleteIdea(idea_id);
-                }
-            }
-
-            vm.openDialogDeleteComment = function (comment_id) {
-                var deleteUser = $window.confirm('Are you absolutely sure you want to delete this comment?');
-
-                if (deleteUser) {
-                    submitDeleteComment(comment_id);
-                }
-            }
-
-            function submitDeleteIdea(idea_id) {
-                // alert("delete " + this.id);
-
-                if (canDelete) {
-                    Ideas.deleteIdea(idea_id).then(deleteSuccessFn, deleteErrorFn);
-                    $route.reload();
-
-                } else {
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent("You can't delete your ideas at the moment, the next implementation is chosen soon!")
-                            .hideDelay(2000)
-                    );
-                    $route.reload();
-                }
-
-                // Snackbar.show("Post deleted");
-
-                function deleteSuccessFn(data, status, headers, config) {
-                    // Snackbar.show("Post deleted");
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent("Idea deleted")
-                            .hideDelay(2000)
-                    );
-                    // $route.reload();
-                }
-
-                function deleteErrorFn(data, status, headers, config) {
-                    // Snackbar.error(data.error);
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent("There was an error, the idea has not been deleted!")
-                            .hideDelay(2000)
-                    );
-                    // console.error(data.error);
-
-                }
-            }
-
-
-            function submitDeleteComment(comment_id) {
-                // alert("delete " + this.id);
-
-                if (canDelete) {
-                    Comments.deleteComment(comment_id).then(deleteSuccessFn, deleteErrorFn);
-                    $route.reload();
-
-                } else {
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent("You can't delete your comments at the moment, the next implementation is chosen soon!")
-                            .hideDelay(2000)
-                    );
-                    $route.reload();
-                }
-
-
-                function deleteSuccessFn(data, status, headers, config) {
-                    // Snackbar.show("Post deleted");
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent("Comment deleted")
-                            .hideDelay(2000)
-                    );
-                    // $route.reload();
-                }
-
-                function deleteErrorFn(data, status, headers, config) {
-                    // Snackbar.error(data.error);
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent("There was an error, the comment has not been deleted!")
-                            .hideDelay(2000)
-                    );
-                    // console.error(data.error);
-
-                }
-            }
-
+            //Pagination
             $scope.selector = {};
             $scope.selector.configs = [
                 {
@@ -364,11 +273,16 @@
 
                 function ideasErrorFn(data, status, headers, config) {
                     // Snackbar.error(data.error);
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent(data.error)
-                            .hideDelay(2000)
-                    );
+
+                    var toast = $mdToast.simple().textContent(msg)
+                        .parent($("#toast-container"));
+                    $mdToast.show(toast);
+
+                    // $mdToast.show(
+                    //     $mdToast.simple()
+                    //         .textContent(data.error)
+                    //         .hideDelay(2000)
+                    // );
                     // console.error(data.error);
                 }
             }
@@ -398,6 +312,57 @@
                 }
             }
 
+            function submitDeleteIdea(idea_id) {
+                // alert("delete " + this.id);
+
+                if (canDelete) {
+                    Ideas.deleteIdea(idea_id).then(deleteSuccessFn, deleteErrorFn);
+                    $route.reload();
+
+                } else {
+                    msg = "You can't delete your ideas at the moment, the next implementation is chosen soon!";
+                    // $mdToast.show(
+                    //     $mdToast.simple()
+                    //         .textContent("You can't delete your ideas at the moment, the next implementation is chosen soon!")
+                    //         .hideDelay(2000)
+                    // );
+
+                    var toast = $mdToast.simple().textContent(msg)
+                        .parent($("#toast-container"));
+                    $mdToast.show(toast);
+                    $route.reload();
+                }
+
+                // Snackbar.show("Post deleted");
+
+                function deleteSuccessFn(data, status, headers, config) {
+                    msg = "Idea deleted";
+                    // $mdToast.show(
+                    //     $mdToast.simple()
+                    //         .textContent("Idea deleted")
+                    //         .hideDelay(2000));
+
+                    var toast = $mdToast.simple().textContent(msg)
+                        .parent($("#toast-container"));
+                    $mdToast.show(toast);
+                    // $route.reload();
+                }
+
+                function deleteErrorFn(data, status, headers, config) {
+                    msg = "There was an error, the idea has not been deleted!";
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent("There was an error, the idea has not been deleted!")
+                            .hideDelay(2000)
+                    );
+
+                    var toast = $mdToast.simple().textContent(msg)
+                        .parent($("#toast-container"));
+                    $mdToast.show(toast);
+                    // console.error(data.error);
+
+                }
+            }
 
             //Voting
             $scope.upvote = function (idea_id, upvotes, downvotes) {
@@ -428,7 +393,6 @@
                     upvote_count.textContent = upvotes - $scope.vote;
                 }
             }
-
 
             $scope.downvote = function (idea_id, upvotes, downvotes) {
                 var upvote_img = document.getElementById('upvote_button' + idea_id);
@@ -461,22 +425,116 @@
 
 
             //Comments
+            // $scope.comment_text = '';
+            $scope.addNewComment = function (idea_id) {
+                var comment_text_field = document.getElementById('comment_text' + idea_id);
+                var comment_text = comment_text_field.value;
+                var content = {
+                    'idea': "" + idea_id + "",
+                    'text': "" + comment_text + ""
+                }
+                // console.log(content);
+                Comments.create(content).then(createCommentSuccessFn, createCommentErrorFn);
 
-            $scope.addNewComment = function (idea_id, comment) {
-                broadcast_comment();
+                function createCommentSuccessFn(data, status, headers, config) {
+
+                    broadcast_comment();
+                    comment_text_field.value = '';
+                }
+
+                function createCommentErrorFn(data, status, headers, config) {
+                    $scope.$broadcast('idea.created.error');
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent("There was an error, the comment was not posted!")
+                            .hideDelay(2000)
+                    );
+                }
+
+            }
+
+            vm.openDialogDeleteIdea = function (idea_id) {
+                var deleteUser = $window.confirm('Are you absolutely sure you want to delete this idea?');
+
+                if (deleteUser) {
+                    submitDeleteIdea(idea_id);
+                }
+            }
+
+            vm.openDialogDeleteComment = function (comment_id) {
+                var deleteUser = $window.confirm('Are you absolutely sure you want to delete this comment?');
+
+                if (deleteUser) {
+                    submitDeleteComment(comment_id);
+                }
+            }
+
+            function submitDeleteComment(comment_id) {
+                // alert("delete " + this.id);
+                // console.log(comment_id);
+                if (canDelete) {
+                    Comments.deleteComment(comment_id).then(deleteSuccessFn, deleteErrorFn);
+                    $route.reload();
+
+                } else {
+                    msg = "You can't delete your comments at the moment, the next implementation is chosen soon!";
+                    // $mdToast.show(
+                    //     $mdToast.simple()
+                    //         .textContent("You can't delete your comments at the moment, the next implementation is chosen soon!")
+                    //         .hideDelay(2000)
+                    // );
+
+                    var toast = $mdToast.simple().textContent(msg)
+                        .parent($("#toast-container"));
+                    $mdToast.show(toast);
+                    $route.reload();
+                }
+
+
+                function deleteSuccessFn(data, status, headers, config) {
+                    // Snackbar.show("Post deleted");
+                    // $mdToast.show(
+                    //     $mdToast.simple()
+                    //         .textContent("Comment deleted")
+                    //         .hideDelay(2000)
+                    // );
+                    // $route.reload();
+                }
+
+                function deleteErrorFn(data, status, headers, config) {
+                    msg = "There was an error, the comment has not been deleted!";
+                    // $mdToast.show(
+                    //     $mdToast.simple()
+                    //         .textContent("There was an error, the comment has not been deleted!")
+                    //         .hideDelay(2000)
+                    // );
+
+                    var toast = $mdToast.simple().textContent(msg)
+                        .parent($("#toast-container"));
+                    $mdToast.show(toast);
+                    // console.error(data.error);
+
+                }
             }
 
 
             //Websocket
-
-
             var ideaSocket = new WebSocket(
                 'ws://' + window.location.host +
                 '/ws/ideas/');
 
             ideaSocket.onmessage = function (e) {
                 var data = JSON.parse(e.data);
-                receive_idea(data);
+                // console.log("type " + data["type"]);
+                if (data["type"] == 'idea_broadcast') {
+                    receive_idea(data);
+                }
+                if (data["type"] == 'comment_broadcast') {
+                    receive_comment(data);
+                }
+
+
             };
 
             //can't delete, User could be already commenting the idea
@@ -489,7 +547,6 @@
                 // console.log('deleted')
             }
 
-
             function broadcast_vote() {
 
             }
@@ -499,6 +556,24 @@
             }
 
             function receive_idea(data) {
+                // console.log(data);
+                msg = "A new idea was published!";
+                $scope.ideas.push(data);
+                $scope.sort_all();
+                $scope.$apply();
+                // $mdToast.show(
+                //     $mdToast.simple()
+                //         .textContent("A new idea was published!")
+                //         .hideDelay(2000)
+                // );
+
+                var toast = $mdToast.simple().textContent(msg)
+                    .parent($("#toast-container"));
+                $mdToast.show(toast);
+
+            }
+
+            function receive_comment(data) {
                 // console.log(data);
                 $scope.ideas.push(data);
                 $scope.sort_all();

@@ -12,9 +12,7 @@
 
         $scope.statistics = [];
 
-
         activate();
-
 
 
         function activate() {
@@ -38,6 +36,74 @@
                 Snackbar.error(data.error);
                 console.error(data.error);
             }
+        }
+
+
+        //sorting
+        var sort_by = function (field, reverse, primer) {
+
+            var key = primer ?
+                function (x) {
+                    return primer(x[field])
+                } :
+                function (x) {
+                    return x[field]
+                };
+
+            reverse = !reverse ? 1 : -1;
+
+            return function (a, b) {
+                return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+            }
+        }
+
+        $scope.sort_all = function () {
+            $scope.statistics.sort(sort_by("highscore",false,parseInt));
+
+        }
+
+        //Websocket
+        var highscoreSocket = new WebSocket(
+            'ws://' + window.location.host +
+            '/ws/website/');
+
+        highscoreSocket.onmessage = function (e) {
+            var data = JSON.parse(e.data);
+            // console.log("type " + data["type"]);
+            if (data["type"] == 'highscore_broadcast') {
+                receive_highscore(data);
+            }
+
+        };
+
+        function receive_highscore(data) {
+            // console.log(data);
+            var user = data["user"]["username"];
+            var highscore = data["highscore"];
+            // console.log(user);
+            // console.log(highscore);
+            var found = false;
+            //is player already in highscore list?
+            for (var i = 0; i < $scope.statistics.length; i++) {
+                if ($scope.statistics[i].user.username == user) {
+                    found = true;
+                    $scope.statistics[i].highscore = highscore;
+                    $scope.sort_all();
+                    $scope.$apply();
+                    return;
+                }
+            }
+            if (!found) {
+                $scope.statistics.push(data);
+                console.log("1 " + JSON.stringify($scope.statistics));
+                $scope.sort_all();
+                console.log("2 " + JSON.stringify($scope.statistics));
+                $scope.$apply();
+                $scope.statistics.pop();
+
+
+            }
+
         }
     }
 })();

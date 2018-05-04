@@ -45,10 +45,10 @@
 
             function createIdeaSuccessFn(data, status, headers, config) {
                 // Snackbar.show('Success! New Idea submitted.');
-                var id = data["data"]["id"];
-                content["id"] = id;
+                var content = data["data"];
+                content["type"] = 'idea_broadcast';
                 // broadcast_idea(content);
-                broadcast_idea(data["data"]);
+                broadcast_idea(content);
                 // $route.reload();
                 $mdToast.show(
                     $mdToast.simple()
@@ -59,13 +59,15 @@
 
             function createIdeaErrorFn(data, status, headers, config) {
                 $rootScope.$broadcast('idea.created.error');
-
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent("There was an error, the idea was not created!")
-                        .hideDelay(2000)
-                );
-                // Snackbar.error(data.error);
+                msg = "There was an error, the idea was not created!";
+                // $mdToast.show(
+                //     $mdToast.simple()
+                //         .textContent("There was an error, the idea was not created!")
+                //         .hideDelay(2000)
+                // );
+                var toast = $mdToast.simple().textContent(msg)
+                    .parent($("#toast-container"));
+                $mdToast.show(toast);
             }
 
         }
@@ -75,17 +77,12 @@
             'ws://' + window.location.host +
             '/ws/ideas/');
 
-        // chatSocket.onmessage = function (e) {
-        //     var data = JSON.parse(e.data);
-        //     var message = data['message'];
-        //     console.log(message);
-        // };
-
         function broadcast_idea(content) {
 
             ideaSocket.onclose = function (e) {
                 console.error('Chat socket closed unexpectedly');
             };
+
             ideaSocket.send(JSON.stringify(content));
 
         }
