@@ -53,20 +53,58 @@
                 }
             };
 
-            $scope.sortType = 'upvotes';
+            $scope.sortType = 'created_at';
+            $scope.compareType = parseInt;
             $scope.sortReverse = false;
+
+            var sort_by = function (field, reverse, primer) {
+
+                var key = primer ?
+                    function (x) {
+                        return primer(x[field])
+                    } :
+                    function (x) {
+                        return x[field]
+                    };
+
+                reverse = !reverse ? 1 : -1;
+
+                return function (a, b) {
+                    return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+                }
+            }
+
+            $scope.sort_all = function () {
+                if ($scope.sortType == 'upvotes' || $scope.sortType == 'downvotes') {
+                    $scope.ideas.sort(sort_by($scope.sortType, !$scope.sortReverse, $scope.compareType))
+                } else {
+                    $scope.ideas.sort(sort_by($scope.sortType, $scope.sortReverse, $scope.compareType))
+                }
+            }
 
 
             $scope.orderUpvotes = function () {
                 $scope.sortType = 'upvotes';
+                $scope.compareType = parseInt;
+                $scope.sort_all()
             }
 
             $scope.orderDownvotes = function () {
                 $scope.sortType = 'downvotes';
+                $scope.compareType = parseInt;
+                $scope.sort_all()
             }
 
             $scope.orderOldest = function () {
                 $scope.sortType = 'created_at';
+                $scope.compareType = '';
+                $scope.sort_all()
+            }
+
+            $scope.sort_new = function () {
+                $scope.sortType = 'id';
+                $scope.compareType = parseInt;
+                $scope.sort_all()
             }
 
             $scope.isAuthenticated = Authentication.isAuthenticated();
@@ -284,14 +322,14 @@
                         }
 
                         var comments = $.grep($scope.comments, function (comment) {
-                           return comment.idea === idea.id;
+                            return comment.idea === idea.id;
                         });
 
                         if (typeof comments !== 'undefined') {
                             // console.log(vote);
                             idea.comments = comments;
                             idea.newest_comment = comments[0];
-                            if (typeof idea.newest_comment !== 'undefined'){
+                            if (typeof idea.newest_comment !== 'undefined') {
                                 // console.error(idea.newest_comment["user"]["username"]);
                                 idea.newest_comment_user = idea.newest_comment["user"]["username"];
 
@@ -299,8 +337,8 @@
                             // console.error(idea.newest_comment);
 
                         } else {
-                            idea.comments = {'id':-1};
-                            idea.newest_comment = {'id':-1};
+                            idea.comments = {'id': -1};
+                            idea.newest_comment = {'id': -1};
                         }
 
 
@@ -358,10 +396,6 @@
                     Snackbar.error(data.error);
                     console.error(data.error);
                 }
-            }
-
-            $scope.test = function () {
-                Votes.test();
             }
 
 
@@ -428,9 +462,49 @@
 
             //Comments
 
-            $scope.addNewComment = function (idea_id) {
+            $scope.addNewComment = function (idea_id, comment) {
+                broadcast_comment();
+            }
+
+
+            //Websocket
+
+
+            var ideaSocket = new WebSocket(
+                'ws://' + window.location.host +
+                '/ws/ideas/');
+
+            ideaSocket.onmessage = function (e) {
+                var data = JSON.parse(e.data);
+                receive_idea(data);
+            };
+
+            //can't delete, User could be already commenting the idea
+            function broadcast_delete(message) {
+
+                // ideaSocket.onclose = function (e) {
+                //     console.error('Chat socket closed unexpectedly');
+                // };
+
+                // console.log('deleted')
+            }
+
+
+            function broadcast_vote() {
 
             }
+
+            function broadcast_comment() {
+
+            }
+
+            function receive_idea(data) {
+                // console.log(data);
+                $scope.ideas.push(data);
+                $scope.sort_all();
+
+            }
+
         }
     }
 

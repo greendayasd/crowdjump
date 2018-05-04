@@ -1,0 +1,49 @@
+<div class="container">
+    <div ng-controller="ChatController as vm" ng-show="vm.isAuthenticated">
+        <textarea id="chat-log" cols="96" rows="20" size="100" style="resize: none"></textarea><br/>
+        <input id="chat-message-input" type="text" size="99"/><br/>
+        <input id="chat-message-submit" type="button" class="btn-primary" value="Send"/>
+    </div>
+    <div ng-controller="ChatController as vm" ng-show="!vm.isAuthenticated">
+        <div class="alert alert-info">
+            <strong>
+                <a style="font-size: 28px" style="margin-top: 45px" href="/login?next={{ request.path }}">Login to
+                    chat!</a>
+            </strong>
+        </div>
+    </div>
+</div>
+<script>
+
+    var roomName = '123';
+
+    var chatSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/chat/' + roomName + '/');
+
+    chatSocket.onmessage = function (e) {
+        var data = JSON.parse(e.data);
+        var message = data['message'];
+        document.querySelector('#chat-log').value += (message + '\n');
+    };
+
+    chatSocket.onclose = function (e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function (e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function (e) {
+        var messageInputDom = document.querySelector('#chat-message-input');
+        var message = messageInputDom.value;
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }));
+
+        messageInputDom.value = '';
+    };
+</script>

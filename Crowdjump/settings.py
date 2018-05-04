@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'authentication',
     'compressor',
     'ideas',
+    'chat',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -180,13 +182,13 @@ REST_FRAMEWORK = {
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+ASGI_APPLICATION = 'Crowdjump.routing.application'
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('localhost', 6379)],
+            "hosts": [('127.0.0.1', 6379)],
         },
-        'ROUTING': 'chantest.routing.channel_routing',
-    }
+    },
 }
 REST_SESSION_LOGIN = False

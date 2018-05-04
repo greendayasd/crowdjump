@@ -9,6 +9,7 @@
             'crowdjump.layout',
             'crowdjump.ideas',
             'crowdjump.utils',
+            'crowdjump.chat',
             'crowdjump.history',
             'crowdjump.game',
             'crowdjump.menu',

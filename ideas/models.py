@@ -4,6 +4,7 @@ from django.utils import timezone
 from datetime import datetime
 from website.models import Version
 
+
 class Idea(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='ideas')
     version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='ideas'

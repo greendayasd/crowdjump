@@ -37,6 +37,16 @@
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/game.html'
 
+        }).when('/chat', {
+            controller: 'ChatController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/layout/chat.html'
+
+        }).when('/chat/:roomname', {
+            controller: 'ChatController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/chat/room.html'
+
         }).when('/ideas', {
             controller: 'IdeasIndexController',
             controllerAs: 'vm',

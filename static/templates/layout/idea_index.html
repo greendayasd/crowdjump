@@ -1,7 +1,6 @@
 <div class="container">
 
     <h1> Current Ideas </h1>
-
     <h4>
         Here are the current ideas for new features, all submitted by players like you! <br>
         At the moment, every X days a random request will be implemented. If you want to have more control
@@ -45,6 +44,7 @@
     </div>
 
     <div ng-controller="IdeasIndexController as vm">
+        <button class="btn btn-primary" ng-click="sort_new()">Test</button>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <span> {{ text_vote_weight }} <br></span>
@@ -92,7 +92,7 @@
                 <button class="btn btn-primary" ng-click="orderDownvotes()">Most Downvotes First</button>
                 <button class="btn btn-primary" ng-click="orderOldest()">Oldest First</button>
                 <label type="button" class="btn btn-primary" ng-model="sortReverse" uib-btn-checkbox
-                       btn-checkbox-true="1" btn-checkbox-false="0"> Reverse Ordering
+                       btn-checkbox-true="1" btn-checkbox-false="0" ng-click="sort_all()"> Reverse Ordering
                 </label>
             </div>
             <br><br>
@@ -109,7 +109,7 @@
 
             <br><br>
             <!--<div ng-repeat="idea in ideas.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter:customFilter" -->
-            <div ng-repeat="idea in filterData = (ideas | filter : customFilter) | limitTo:itemsPerPage:itemsPerPage*(currentPage-1) | orderBy:sortType:sortReverse"
+            <div ng-repeat="idea in filterData = (ideas | filter : customFilter) | limitTo:itemsPerPage:itemsPerPage*(currentPage-1) "
                  id="searchObjResults">
                 <div class="row">
                     <div class="col-lg-12">
@@ -146,11 +146,12 @@
                                 <div class="idea__votes" ng-show="isAuthenticated">
                                     <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
                                            ng-src="{{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png' }}"
-                                           ng-click="upvote(idea.id, idea.upvotes, idea.downvotes)"/> <span
-                                        ng-attr-id="upvote_count{{ idea.id }}">{{ idea.upvotes }}</span>
+                                           ng-click="upvote(idea.id, idea.upvotes, idea.downvotes)"/>
+                                    <span ng-attr-id="upvote_count{{ idea.id }}">{{ idea.upvotes }}</span>
                                     <input ng-attr-id="downvote_button{{ idea.id }}" type="image"
                                            ng-src="{{ idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png' }}"
-                                           ng-click="downvote(idea.id, idea.upvotes, idea.downvotes)"/> {{ idea.downvotes }}
+                                           ng-click="downvote(idea.id, idea.upvotes, idea.downvotes)"/>
+                                    <span ng-attr-id="downvote_count{{ idea.id }}">{{ idea.downvotes }}</span>
 
                                 </div>
 
@@ -177,7 +178,8 @@
                                         <br>
                                         <div class="comment__content">
                                             {{ comment.text }}
-                                            <br><hr>
+                                            <br>
+                                            <hr>
                                         </div>
                                         <div class="comment__delete" ng-if="idea.newest_comment.username == username2">
                                             <br>
@@ -213,11 +215,14 @@
                                     </div>
 
                                 </div>
-                                    <br>
-                                <form name="form" ng-submit="addNewComment(idea.id)" novalidate ng-show="isAuthenticated">
+                                <br>
+                                <form name="form" ng-submit="addNewComment(idea.id)" novalidate
+                                      ng-show="isAuthenticated">
                                                 <textarea placeholder="Type in your comment"
                                                           style="resize: none; width: 85%; height: 15%"></textarea>
-                                    <button type="submit" class="btn btn-primary" style="width: 14%; height: 15%">Comment</button>
+                                    <button type="submit" class="btn btn-primary" style="width: 14%; height: 15%">
+                                        Comment
+                                    </button>
                                 </form>
                             </div>
                         </div>

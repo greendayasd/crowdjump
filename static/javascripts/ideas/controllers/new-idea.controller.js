@@ -13,12 +13,13 @@
 
     function NewIdeaController($rootScope, $route, $scope, Authentication, Snackbar, Ideas, History, $mdToast) {
         var vm = this;
-
+        var content;
         vm.submit = submit;
+
         // get_versions();
 
         function submit() {
-            if (vm.description == undefined && vm.request_text == undefined){
+            if (vm.description == undefined && vm.request_text == undefined) {
                 $scope.closeThisDialog();
                 return;
             }
@@ -32,7 +33,7 @@
 
             $scope.closeThisDialog();
             // console.error($scope.newestVersion.label);
-            var content = {
+            content = {
                 // "version": $scope.newestVersion.label,
                 "request_text": vm.request_text,
                 "description": vm.description,
@@ -44,7 +45,11 @@
 
             function createIdeaSuccessFn(data, status, headers, config) {
                 // Snackbar.show('Success! New Idea submitted.');
-                $route.reload();
+                var id = data["data"]["id"];
+                content["id"] = id;
+                // broadcast_idea(content);
+                broadcast_idea(data["data"]);
+                // $route.reload();
                 $mdToast.show(
                     $mdToast.simple()
                         .textContent("Idea created")
@@ -62,6 +67,27 @@
                 );
                 // Snackbar.error(data.error);
             }
+
+        }
+
+
+        var ideaSocket = new WebSocket(
+            'ws://' + window.location.host +
+            '/ws/ideas/');
+
+        // chatSocket.onmessage = function (e) {
+        //     var data = JSON.parse(e.data);
+        //     var message = data['message'];
+        //     console.log(message);
+        // };
+
+        function broadcast_idea(content) {
+
+            ideaSocket.onclose = function (e) {
+                console.error('Chat socket closed unexpectedly');
+            };
+            ideaSocket.send(JSON.stringify(content));
+
         }
 
         function get_versions() {

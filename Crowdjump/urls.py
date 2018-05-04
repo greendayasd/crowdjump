@@ -20,6 +20,7 @@ from website import views
 from rest_framework_nested import routers
 from website.views import IndexView, HistoryViewSet, IdeasView, GameViewSet, GameInfoView, GameView
 from ideas.views import IdeaViewSet, IdeaVotePermissionViewSet, AccountIdeasViewSet, AccountGameInfoViewSet, GameInfoViewSet, CommentViewSet, IdeaVoteViewSet
+from chat.views import room, index
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
 
@@ -61,6 +62,11 @@ urlpatterns = [
     # url(r'^game/$', GameView.as_view()),
     # url(r'^gameinfo/$', GameInfoView.as_view()),
     url('^$', IndexView.as_view(), name='index'),
+
+    url(r'^chat/$', IndexView.as_view()),
+    url(r'^chat/(?P<room_name>[^/]+)/$', IndexView.as_view()),
+    # url(r'^chat2/$', index, name='index'),
+    # url(r'^chat2/(?P<room_name>[^/]+)/$', room, name='room'),
 
 ]
 
