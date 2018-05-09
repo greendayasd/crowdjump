@@ -315,7 +315,7 @@
 
                 function ideasErrorFn(data, status, headers, config) {
                     // Snackbar.error(data.error);
-
+                    var msg = "could not get ideas";
                     var toast = $mdToast.simple().textContent(msg)
                         .parent($("#toast-container"));
                     $mdToast.show(toast);

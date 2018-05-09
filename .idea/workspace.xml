@@ -2,6 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Database 13.04/auth/migrations/0001_initial.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/auth/migrations/0002_websiteinfo_version.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/auth/migrations/0003_filtersettings.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/auth/migrations/0004_remove_websiteinfo_version.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/auth/migrations/0005_auto_20180404_2217.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/auth/migrations/0006_gameinfo_jumps.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/auth/migrations/0007_account_vote_weight.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/auth/migrations/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/ideas/migrations/0001_initial.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/ideas/migrations/0002_auto_20180323_0326.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/ideas/migrations/0003_auto_20180323_0634.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/ideas/migrations/0004_auto_20180323_0710.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/ideas/migrations/0005_auto_20180323_0714.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/ideas/migrations/0006_auto_20180323_0726.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/ideas/migrations/0007_idea_deleted.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/ideas/migrations/0008_ideavote_multiplier.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/ideas/migrations/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/website/migrations/0001_initial.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/website/migrations/0002_version_submitter.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/website/migrations/0003_remove_version_submitter.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Database 13.04/website/migrations/__init__.py" afterPath="" />
       <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
       <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
     </list>
@@ -55,14 +76,14 @@
       <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="74" lean-forward="false" selection-start-line="4" selection-start-column="70" selection-end-line="4" selection-end-column="74" />
+            <state relative-caret-position="219">
+              <caret line="46" column="79" lean-forward="false" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#12209#13619#0#HTML" expanded="false" />
+                <element signature="e#12217#13627#0#HTML" expanded="false" />
                 <element signature="n#style#0;n#textarea#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -73,8 +94,8 @@
       <file leaf-file-name="ideasindex.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="345" column="50" lean-forward="true" selection-start-line="345" selection-start-column="50" selection-end-line="345" selection-end-column="50" />
+            <state relative-caret-position="85">
+              <caret line="558" column="28" lean-forward="false" selection-start-line="558" selection-start-column="28" selection-end-line="558" selection-end-column="28" />
               <folding>
                 <element signature="e#746#1203#0" expanded="false" />
                 <element signature="e#1234#1491#0" expanded="false" />
@@ -89,13 +110,12 @@
                 <element signature="e#7429#7518#0" expanded="false" />
                 <element signature="e#7573#7732#0" expanded="false" />
                 <element signature="e#7906#7972#0" expanded="false" />
-                <element signature="e#8903#12388#0" expanded="false" />
-                <element signature="e#14141#15898#0" expanded="false" />
-                <element signature="e#22112#22334#0" expanded="false" />
-                <element signature="e#23926#24503#0" expanded="false" />
-                <element signature="e#25599#25808#0" expanded="false" />
-                <element signature="e#26278#26650#0" expanded="false" />
-                <element signature="e#26692#27274#0" expanded="false" />
+                <element signature="e#14193#15950#0" expanded="false" />
+                <element signature="e#22164#22386#0" expanded="false" />
+                <element signature="e#23978#24555#0" expanded="false" />
+                <element signature="e#25651#25860#0" expanded="false" />
+                <element signature="e#26330#26702#0" expanded="false" />
+                <element signature="e#26744#27326#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -115,7 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>admin.0001</find>
       <find>version.objects.a</find>
       <find>get_newest</find>
       <find>gameinfo</find>
@@ -141,10 +160,11 @@
       <find>uservote</find>
       <find>filterda</find>
       <find>submit</find>
-      <find>test</find>
       <find>undefin</find>
       <find>play</find>
       <find>newestVer</find>
+      <find>vote_wei</find>
+      <find>test</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -1102,14 +1122,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="74" lean-forward="false" selection-start-line="4" selection-start-column="70" selection-end-line="4" selection-end-column="74" />
+        <state relative-caret-position="219">
+          <caret line="46" column="79" lean-forward="false" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#12209#13619#0#HTML" expanded="false" />
+            <element signature="e#12217#13627#0#HTML" expanded="false" />
             <element signature="n#style#0;n#textarea#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
@@ -1118,8 +1138,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="345" column="50" lean-forward="true" selection-start-line="345" selection-start-column="50" selection-end-line="345" selection-end-column="50" />
+        <state relative-caret-position="85">
+          <caret line="558" column="28" lean-forward="false" selection-start-line="558" selection-start-column="28" selection-end-line="558" selection-end-column="28" />
           <folding>
             <element signature="e#746#1203#0" expanded="false" />
             <element signature="e#1234#1491#0" expanded="false" />
@@ -1134,13 +1154,12 @@
             <element signature="e#7429#7518#0" expanded="false" />
             <element signature="e#7573#7732#0" expanded="false" />
             <element signature="e#7906#7972#0" expanded="false" />
-            <element signature="e#8903#12388#0" expanded="false" />
-            <element signature="e#14141#15898#0" expanded="false" />
-            <element signature="e#22112#22334#0" expanded="false" />
-            <element signature="e#23926#24503#0" expanded="false" />
-            <element signature="e#25599#25808#0" expanded="false" />
-            <element signature="e#26278#26650#0" expanded="false" />
-            <element signature="e#26692#27274#0" expanded="false" />
+            <element signature="e#14193#15950#0" expanded="false" />
+            <element signature="e#22164#22386#0" expanded="false" />
+            <element signature="e#23978#24555#0" expanded="false" />
+            <element signature="e#25651#25860#0" expanded="false" />
+            <element signature="e#26330#26702#0" expanded="false" />
+            <element signature="e#26744#27326#0" expanded="false" />
           </folding>
         </state>
       </provider>
