@@ -73,7 +73,7 @@
 
 
         var ideaSocket = new WebSocket(
-            'ws://' + window.location.host +
+            'wss://' + window.location.host +
             '/ws/ideas/');
 
         function broadcast_idea(content) {

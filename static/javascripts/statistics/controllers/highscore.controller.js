@@ -64,7 +64,7 @@
 
         //Websocket
         var highscoreSocket = new WebSocket(
-            'ws://' + window.location.host +
+            'wss://' + window.location.host +
             '/ws/website/');
 
         highscoreSocket.onmessage = function (e) {

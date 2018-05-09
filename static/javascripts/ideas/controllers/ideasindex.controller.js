@@ -594,11 +594,11 @@
 
             //Websocket
             var ideaSocket = new WebSocket(
-                'ws://' + window.location.host +
+                'wss://' + window.location.host +
                 '/ws/ideas/');
 
             var voteSocket = new WebSocket(
-                'ws://' + window.location.host +
+                'wss://' + window.location.host +
                 '/ws/votes/');
 
 
