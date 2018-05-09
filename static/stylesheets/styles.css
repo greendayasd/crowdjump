@@ -30,6 +30,8 @@
 
 .idea .idea__estimated_time {
     font-weight: bold;
+    text-align: left;
+    float:left;
     color: orange;
     font-size: large;
     padding-bottom: 0px;
@@ -37,8 +39,10 @@
 
 .idea .idea__admin_comment {
     font-weight: bold;
+    text-align: left;
     color: red;
     font-size: large;
+    padding-bottom: 0px;
 }
 
 .idea .idea__delete{

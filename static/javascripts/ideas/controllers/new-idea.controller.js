@@ -47,7 +47,6 @@
                 // Snackbar.show('Success! New Idea submitted.');
                 var content = data["data"];
                 content["type"] = 'idea_broadcast';
-                // broadcast_idea(content);
                 broadcast_idea(content);
                 // $route.reload();
                 $mdToast.show(
@@ -80,7 +79,7 @@
         function broadcast_idea(content) {
 
             ideaSocket.onclose = function (e) {
-                console.error('Chat socket closed unexpectedly');
+                console.error('Chat socket closed unexpectedly ' + e);
             };
 
             ideaSocket.send(JSON.stringify(content));

@@ -36,7 +36,7 @@
             }
 
             function all_user(user_id) {
-                return $http.get('/api/v1/ideavotes/?user__userid=' + user_id);
+                return $http.get('/api/v1/ideavotes/?user__id=' + user_id);
             }
 
             function vote(idea_id, user_id, vote, multiplier) {
@@ -84,6 +84,13 @@
                     downvotes: downvotes + downvote,
                 }).then(function (result) {
                     // console.error("new Ideavoting");
+
+                    var content = {
+                        "upvotes": upvotes + upvote,
+                        "downvotes": downvotes + downvote,
+                        "type": "vote_broadcast"
+                    };
+                    // broadcast_vote(content);
                     return result;
                 }).catch(function (error) {
                     console.error("Error in correct_votes " + JSON.stringify(error));
@@ -141,13 +148,14 @@
             }
 
             function calculate_vote_power(username) {
-                $http.get('/api/v1/accounts/' + idea_id + '/');
+                $http.get('/api/v1/accounts/' + username + '/');
             }
 
 
             function refresh_vote_power(username) {
                 // return $http.get('/api/v1/ideavotes/?idea=' + idea_id);
             }
+
         }
     }
 

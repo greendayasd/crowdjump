@@ -57,7 +57,7 @@
 
             $scope.sortType = 'created_at';
             $scope.compareType = '';
-            $scope.sortReverse = 1;
+            $scope.sortReverse = true;
 
             var sort_by = function (field, reverse, primer) {
 
@@ -89,18 +89,28 @@
             $scope.orderUpvotes = function () {
                 $scope.sortType = 'upvotes';
                 $scope.compareType = parseInt;
+                $scope.sortReverse = false;
                 $scope.sort_all()
             }
 
             $scope.orderDownvotes = function () {
                 $scope.sortType = 'downvotes';
                 $scope.compareType = parseInt;
+                $scope.sortReverse = false;
                 $scope.sort_all()
             }
 
             $scope.orderOldest = function () {
                 $scope.sortType = 'created_at';
                 $scope.compareType = '';
+                $scope.sortReverse = false;
+                $scope.sort_all()
+            }
+
+            $scope.orderNewest = function () {
+                $scope.sortType = 'created_at';
+                $scope.compareType = '';
+                $scope.sortReverse = true;
                 $scope.sort_all()
             }
 
@@ -365,64 +375,95 @@
             }
 
             //Voting
-            $scope.upvote = function (idea_id, upvotes, downvotes) {
+            $scope.upvote = function (idea_id) {
+                var index = get_IdeaIndex(idea_id);
                 var upvote_img = document.getElementById('upvote_button' + idea_id);
                 var downvote_img = document.getElementById('downvote_button' + idea_id);
+                // var upvote_count = document.getElementById('upvote_count' + idea_id);
+                // var downvote_count = document.getElementById('downvote_count' + idea_id);
 
-                var upvote_count = document.getElementById('upvote_count' + idea_id);
-                var downvote_count = document.getElementById('downvote_count' + idea_id);
+                var upvotes = $scope.ideas[index].upvotes + 0;
+                var downvotes = $scope.ideas[index].downvotes + 0;
 
 
                 if (downvote_img.src.match("/static/website/images/downvote%20trans.png")) {
                     downvote_img.src = "/static/website/images/downvote%20trans%20dark.png";
                     upvote_img.src = "/static/website/images/upvote%20trans%20bright.png";
                     Votes.down_to_up(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
-                    downvote_count.textContent = upvotes - $scope.vote;
-                    upvote_count.textContent = upvotes + $scope.vote;
+                    downvotes = downvotes - $scope.vote;
+                    upvotes = upvotes + $scope.vote;
                 }
 
-                if (upvote_img.src.match("/static/website/images/upvote%20trans.png")) {
+                else if (upvote_img.src.match("/static/website/images/upvote%20trans.png")) {
                     upvote_img.src = "/static/website/images/upvote%20trans%20bright.png";
                     // console.error("upvotes? " + upvotes);
                     Votes.upvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
-                    upvote_count.textContent = upvotes + $scope.vote;
+                    upvotes = upvotes + $scope.vote;
 
                 } else {
                     Votes.undo_upvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
                     upvote_img.src = "/static/website/images/upvote%20trans.png";
-                    upvote_count.textContent = upvotes - $scope.vote;
+                    upvotes = upvotes - $scope.vote;
                 }
+                // console.log(upvotes + " , " + downvotes);
+
+
+                var content = {};
+                content["idea_id"] = idea_id;
+                content["upvotes"] = upvotes;
+                content["downvotes"] = downvotes;
+                content["type"] = "vote_broadcast";
+                broadcast_vote(content);
+                $scope.ideas[index].upvotes = upvotes;
+                $scope.ideas[index].downvotes = downvotes;
+                // upvote_count.textContent = upvotes;
+                // downvote_count.textContent = downvotes;
+                // $scope.$apply();
             }
 
-            $scope.downvote = function (idea_id, upvotes, downvotes) {
+            $scope.downvote = function (idea_id) {
+                var index = get_IdeaIndex(idea_id);
                 var upvote_img = document.getElementById('upvote_button' + idea_id);
                 var downvote_img = document.getElementById('downvote_button' + idea_id);
 
-                var upvote_count = document.getElementById('upvote_count' + idea_id);
-                var downvote_count = document.getElementById('downvote_count' + idea_id);
-
+                // var upvote_count = document.getElementById('upvote_count' + idea_id);
+                // var downvote_count = document.getElementById('downvote_count' + idea_id);
+                var upvotes = $scope.ideas[index].upvotes + 0;
+                var downvotes = $scope.ideas[index].downvotes + 0;
+                // console.log("downvote " + upvotes + " , " + downvotes);
 
                 if (upvote_img.src.match("/static/website/images/upvote%20trans%20bright.png")) {
                     upvote_img.src = "/static/website/images/upvote%20trans.png";
                     downvote_img.src = "/static/website/images/downvote%20trans.png";
                     Votes.up_to_down(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
-                    downvote_count.textContent = downvotes + $scope.vote;
-                    upvote_count.textContent = upvotes + $scope.vote;
+                    downvotes = downvotes + $scope.vote;
+                    upvotes = upvotes - $scope.vote;
                 }
 
 
-                if (downvote_img.src.match("/static/website/images/downvote%20trans%20dark.png")) {
+                else if (downvote_img.src.match("/static/website/images/downvote%20trans%20dark.png")) {
                     downvote_img.src = "/static/website/images/downvote%20trans.png";
                     Votes.downvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
-                    downvote_count.textContent = downvotes + $scope.vote;
+                    downvotes = downvotes + $scope.vote;
                 } else {
                     downvote_img.src = "/static/website/images/downvote%20trans%20dark.png";
                     Votes.undo_downvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
-                    downvote_count.textContent = downvotes - $scope.vote;
+                    downvotes = downvotes - $scope.vote;
 
                 }
-            }
 
+                var content = {};
+                content["idea_id"] = idea_id;
+                content["upvotes"] = upvotes;
+                content["downvotes"] = downvotes;
+                content["type"] = "vote_broadcast";
+                broadcast_vote(content);
+                // console.log("downvote " + upvotes + " , " + downvotes);
+                $scope.ideas[index].upvotes = upvotes;
+                $scope.ideas[index].downvotes = downvotes;
+                // upvote_count.textContent = upvotes;
+                // downvote_count.textContent = downvotes;
+            }
 
             //Comments
             // $scope.comment_text = '';
@@ -438,7 +479,9 @@
 
                 function createCommentSuccessFn(data, status, headers, config) {
 
-                    broadcast_comment();
+                    var content = data["data"];
+                    content["type"] = 'comment_broadcast';
+                    broadcast_comment(content);
                     comment_text_field.value = '';
                 }
 
@@ -524,6 +567,11 @@
                 'ws://' + window.location.host +
                 '/ws/ideas/');
 
+            var voteSocket = new WebSocket(
+                'ws://' + window.location.host +
+                '/ws/votes/');
+
+
             ideaSocket.onmessage = function (e) {
                 var data = JSON.parse(e.data);
                 // console.log("type " + data["type"]);
@@ -533,9 +581,16 @@
                 if (data["type"] == 'comment_broadcast') {
                     receive_comment(data);
                 }
-
-
             };
+
+            voteSocket.onmessage = function (e) {
+                var data = JSON.parse(e.data);
+                // console.log("type " + data["type"]);
+                if (data["type"] == 'vote_broadcast') {
+                    receive_vote(data);
+                }
+            };
+
 
             //can't delete, User could be already commenting the idea
             function broadcast_delete(message) {
@@ -547,17 +602,40 @@
                 // console.log('deleted')
             }
 
-            function broadcast_vote() {
+            function broadcast_comment(content) {
+
+                try {
+                    ideaSocket.onclose = function (e) {
+                        console.error('Chat socket closed unexpectedly ' + e);
+                    };
+
+                    ideaSocket.send(JSON.stringify(content));
+                }
+                catch (err) {
+                    console.log(err.message);
+                }
 
             }
 
-            function broadcast_comment() {
+
+            function broadcast_vote(content) {
+
+                try {
+                    voteSocket.onclose = function (e) {
+                        console.error('Chat socket closed unexpectedly ' + e);
+                    };
+
+                    voteSocket.send(JSON.stringify(content));
+                }
+                catch (err) {
+                    console.log(err.message);
+                }
 
             }
 
             function receive_idea(data) {
                 // console.log(data);
-                msg = "A new idea was published!";
+                var msg = "A new idea was published!";
                 $scope.ideas.push(data);
                 $scope.sort_all();
                 $scope.$apply();
@@ -574,12 +652,49 @@
             }
 
             function receive_comment(data) {
-                // console.log(data);
-                $scope.ideas.push(data);
+                var msg = "An idea was commented!";
+                console.log(data);
+                var index = get_IdeaIndex(data["idea"]);
+                console.log(index);
+                $scope.ideas[index].comments.unshift(data);
+                // $scope.ideas[index].newest_comment = $scope.ideas[index].comments.length -1;
                 $scope.sort_all();
+                $scope.$apply();
 
             }
 
+            function receive_vote(data) {
+                var msg = "The vote of an idea was modified!";
+                var index = get_IdeaIndex(data["idea_id"]);
+
+                $scope.ideas[index].upvotes = data["upvotes"];
+                $scope.ideas[index].downvotes = data["downvotes"];
+
+                // $scope.ideas.push(data);
+                $scope.sort_all();
+                $scope.$apply();
+
+            }
+
+            //utility
+            function get_IdeaIndex(idea_id) {
+                for (var i = $scope.ideas.length - 1; i >= 0; i--) {
+                    if ($scope.ideas[i].id == idea_id) {
+                        return i;
+                    }
+                }
+            }
+
+            $scope.test = function () {
+                var index = get_IdeaIndex(46);
+
+                var upvotes = $scope.ideas[index].upvotes + 0;
+                var downvotes = $scope.ideas[index].downvotes + 0;
+                var uservote = $scope.ideas[index].uservote;
+                console.log(index);
+                console.log(upvotes + " , " + downvotes);
+                console.log(uservote);
+            }
         }
     }
 
