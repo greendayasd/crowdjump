@@ -43,11 +43,12 @@
         var messageInputDom = document.querySelector('#chat-message-input');
         var message = messageInputDom.value;
         var datetime = new Date().format('d-m-Y h:i:s');
+        var username = 'test'; //{{ user.id }};
 
         chatSocket.send(JSON.stringify({
             'message': message,
             'datetime': datetime,
-            'username':
+            'username': username
         }));
 
         messageInputDom.value = '';
