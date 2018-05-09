@@ -175,10 +175,10 @@
 
                             </div>
                         </div>
-                        <div class="well" style="background-color: #76cce8;" ng-show="idea.newest_comment.id > 0 || isAuthenticated">
+                        <div class="well" style="background-color: #76cce8;" ng-show="idea.comments.length > 0 || isAuthenticated">
                             <div class="comment">
                                 <div class="comment__comments">
-                                    <div ng-repeat="comment in commentOrdering = (idea.comments | orderBy:'created_at':false)"  ng-show="idea.show_comments"  style="background-color: #f5f5f5;" class="well">
+                                    <div ng-repeat="comment in commentOrdering = (idea.comments | filter : customCommentFilter | orderBy:'created_at':false)"  style="background-color: #f5f5f5;" class="well">
                                         <div class="comment__time">
                                             created at {{ comment.created_at | date : "dd.MM.y HH:mm" }}
                                         </div>
@@ -192,14 +192,14 @@
                                         <div class="comment__delete" ng-if="comment.user.username == username2 && isAuthenticated">
                                         <br>
                                             <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-delete-idea"
-                                               ng-click="vm.openDialogDeleteComment(comment.id)">
+                                               ng-click="vm.openDialogDeleteComment( comment.idea, comment.id)">
                                                 Delete this comment?
                                             </a>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="comment__newest_comment well" ng-show="idea.newest_comment.id > 0 && !idea.show_comments"  style="background-color: #f5f5f5;">
+                                <!--<div class="comment__newest_comment well" ng-show="idea.newest_comment.id > 0 && !idea.show_comments"  style="background-color: #f5f5f5;">
                                     <div class="comment__time">
                                         created at {{ idea.newest_comment.created_at | date : "dd.MM.y HH:mm" }}
                                     </div>
@@ -219,8 +219,8 @@
                                         </a>
                                     </div>
 
-                                </div>
-                                <div ng-show="idea.newest_comment.id > 0 && !idea.show_comments">
+                                </div> -->
+                                <div ng-show="idea.comments.length > 0 && !idea.show_comments">
                                     <label class="btn btn-primary" btn-checkbox-false="0" ng-click="idea.show_comments=true"  > Show all Comments
                                     </label>
                                     <br>

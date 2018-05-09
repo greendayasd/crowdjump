@@ -55,6 +55,37 @@
                 }
             };
 
+            $scope.customCommentFilter = function (comment) {
+                // console.error(idea.id + " idea f " + idea.feasible + "   search " + $scope.search.not_feasible + "  i "
+                //     + idea.implemented + "  search " + $scope.search.implemented)
+                var index = get_IdeaIndex(comment.idea);
+                var show_comments = false;
+                if (typeof $scope.ideas[index] == 'undefined') {
+                    return;
+                }
+                if (typeof $scope.ideas[index].show_comments != 'undefined') {
+                    if ($scope.ideas[index].show_comments) {
+                        show_comments = true;
+                    }
+                }
+
+                if (show_comments) {
+                    if (comment.idea == 43) {
+                        // console.log("alle" + JSON.stringify(comment) + '  ' + show_comments);
+                    }
+                    return comment;
+                }
+
+                var length = $scope.ideas[index].comments.length;
+                if (get_CommentIndex(index, comment.id) == 0) {
+                    if (comment.idea == 43) {
+                        // console.log("einzeln" + JSON.stringify(comment) + '  ' + show_comments);
+                    }
+                    return comment;
+                }
+            };
+
+
             $scope.sortType = 'created_at';
             $scope.compareType = '';
             $scope.sortReverse = true;
@@ -246,6 +277,7 @@
 
                         if (typeof comments !== 'undefined') {
                             // console.log(vote);
+                            idea.show_comments = false;
                             idea.comments = comments;
                             idea.newest_comment = comments[0];
                             if (typeof idea.newest_comment !== 'undefined') {
@@ -310,8 +342,15 @@
                     if ($scope.isAuthenticated) {
                         $scope.vote_weight = $scope.cookie["vote_weight"];
                         $scope.multiplier = $scope.cookie["vote_multiplier"];
-                        $scope.vote = Math.abs(($scope.newestVersion.vote_weight - $scope.vote_weight + 1) * $scope.multiplier);
-                        $scope.text_vote_weight = "Calculated from your playing time, one of your votes is worth " + $scope.vote + " points. Play more to increase this amount!"
+
+                        // multiplier per version:
+                        // <15 games played: 0,3
+                        // >20 games played, >5 games won: 0,5
+                        // >25 games played, >10 games won: 0,7
+                        // >30 games played, >15 games won: 1
+                        // final multiplier: (sum(multiplier)+ 2*multiplier last version) / (versions played + 2)
+                        $scope.vote = Math.abs(($scope.newestVersion.vote_weight - $scope.vote_weight) * $scope.multiplier)  + 1;
+                        $scope.text_vote_weight = "Calculated from your playing time, one of your votes is worth " + $scope.vote + " points. Play more to increase this amount when the next version is live!"
                     }
 
                 }
@@ -327,34 +366,29 @@
 
                 if (canDelete) {
                     Ideas.deleteIdea(idea_id).then(deleteSuccessFn, deleteErrorFn);
-                    $route.reload();
+
 
                 } else {
-                    msg = "You can't delete your ideas at the moment, the next implementation is chosen soon!";
-                    // $mdToast.show(
-                    //     $mdToast.simple()
-                    //         .textContent("You can't delete your ideas at the moment, the next implementation is chosen soon!")
-                    //         .hideDelay(2000)
-                    // );
+                    var msg = "You can't delete your ideas at the moment, the next implementation is chosen soon!";
 
                     var toast = $mdToast.simple().textContent(msg)
                         .parent($("#toast-container"));
                     $mdToast.show(toast);
-                    $route.reload();
+                    // $route.reload();
                 }
 
                 // Snackbar.show("Post deleted");
 
                 function deleteSuccessFn(data, status, headers, config) {
-                    msg = "Idea deleted";
-                    // $mdToast.show(
-                    //     $mdToast.simple()
-                    //         .textContent("Idea deleted")
-                    //         .hideDelay(2000));
+                    var msg = "Idea deleted";
 
                     var toast = $mdToast.simple().textContent(msg)
                         .parent($("#toast-container"));
                     $mdToast.show(toast);
+                    var index = get_IdeaIndex(idea_id);
+                    $scope.ideas.splice(index, 1);
+                    $scope.sort_all();
+                    // $scope.$apply();
                     // $route.reload();
                 }
 
@@ -505,44 +539,40 @@
                 }
             }
 
-            vm.openDialogDeleteComment = function (comment_id) {
+            vm.openDialogDeleteComment = function (idea_id, comment_id) {
                 var deleteUser = $window.confirm('Are you absolutely sure you want to delete this comment?');
 
                 if (deleteUser) {
-                    submitDeleteComment(comment_id);
+                    submitDeleteComment(idea_id, comment_id);
                 }
             }
 
-            function submitDeleteComment(comment_id) {
+            function submitDeleteComment(idea_id, comment_id) {
                 // alert("delete " + this.id);
                 // console.log(comment_id);
                 if (canDelete) {
                     Comments.deleteComment(comment_id).then(deleteSuccessFn, deleteErrorFn);
-                    $route.reload();
 
                 } else {
-                    msg = "You can't delete your comments at the moment, the next implementation is chosen soon!";
-                    // $mdToast.show(
-                    //     $mdToast.simple()
-                    //         .textContent("You can't delete your comments at the moment, the next implementation is chosen soon!")
-                    //         .hideDelay(2000)
-                    // );
+                    var msg = "You can't delete your comments at the moment, the next implementation is chosen soon!";
 
                     var toast = $mdToast.simple().textContent(msg)
                         .parent($("#toast-container"));
                     $mdToast.show(toast);
-                    $route.reload();
+                    // $route.reload();
                 }
 
 
                 function deleteSuccessFn(data, status, headers, config) {
-                    // Snackbar.show("Post deleted");
-                    // $mdToast.show(
-                    //     $mdToast.simple()
-                    //         .textContent("Comment deleted")
-                    //         .hideDelay(2000)
-                    // );
-                    // $route.reload();
+                    var msg = "Comment deleted";
+
+                    var toast = $mdToast.simple().textContent(msg)
+                        .parent($("#toast-container"));
+                    $mdToast.show(toast);
+                    var idea_index = get_IdeaIndex(idea_id);
+                    var index = get_CommentIndex(idea_index, comment_id);
+                    $scope.ideas[idea_index].comments.splice(index, 1);
+                    $scope.sort_all();
                 }
 
                 function deleteErrorFn(data, status, headers, config) {
@@ -653,9 +683,11 @@
 
             function receive_comment(data) {
                 var msg = "An idea was commented!";
-                console.log(data);
                 var index = get_IdeaIndex(data["idea"]);
-                console.log(index);
+
+                if (typeof $scope.ideas[index].comments == 'undefined'){
+                    $scope.ideas[index].comments = [];
+                }
                 $scope.ideas[index].comments.unshift(data);
                 // $scope.ideas[index].newest_comment = $scope.ideas[index].comments.length -1;
                 $scope.sort_all();
@@ -684,6 +716,24 @@
                     }
                 }
             }
+
+            function get_CommentIndex(idea_index, comment_id) {
+                for (var i = $scope.ideas[idea_index].comments.length - 1; i >= 0; i--) {
+                    if ($scope.ideas[idea_index].comments[i].id == comment_id) {
+                        return i;
+                    }
+                }
+            }
+
+            // function get_CommentIndex(comment_id) {
+            //     for (var idea = 0; idea < $scope.ideas.length; idea++) {
+            //         for (var i = $scope.ideas[idea].comments.length - 1; i >= 0; i--) {
+            //             if ($scope.ideas[idea].comments[i].id == comment_id) {
+            //                 return i;
+            //             }
+            //         }
+            //     }
+            // }
 
             $scope.test = function () {
                 var index = get_IdeaIndex(46);
