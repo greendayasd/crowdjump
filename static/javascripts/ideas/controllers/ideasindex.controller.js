@@ -591,7 +591,7 @@
                 }
             }
 
-            var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+            var ws_scheme = "ws"; //window.location.protocol == "https:" ? "wss" : "ws";
             var port = ':8001';
             //Websocket
             var ideaSocket = new WebSocket(

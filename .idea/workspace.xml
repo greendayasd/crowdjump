@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/asgi.py" afterPath="$PROJECT_DIR$/Crowdjump/asgi.py" />
       <change beforePath="$PROJECT_DIR$/chat/templates/chat/room.html" afterPath="$PROJECT_DIR$/chat/templates/chat/room.html" />
       <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
       <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js" />
@@ -41,8 +39,8 @@
       <file leaf-file-name="room.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/chat/room.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+            <state relative-caret-position="153">
+              <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -51,18 +49,18 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="46" column="57" lean-forward="false" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
+            <state relative-caret-position="221">
+              <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="room.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="room.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chat/templates/chat/room.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="231">
+              <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -71,8 +69,8 @@
       <file leaf-file-name="ideasindex.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="593" column="80" lean-forward="true" selection-start-line="593" selection-start-column="80" selection-end-line="594" selection-end-column="31" />
+            <state relative-caret-position="231">
+              <caret line="597" column="16" lean-forward="false" selection-start-line="597" selection-start-column="16" selection-end-line="597" selection-end-column="16" />
               <folding>
                 <element signature="e#746#1203#0" expanded="false" />
                 <element signature="e#1234#1491#0" expanded="false" />
@@ -90,8 +88,8 @@
                 <element signature="e#14193#15950#0" expanded="false" />
                 <element signature="e#22164#22386#0" expanded="false" />
                 <element signature="e#23978#24555#0" expanded="false" />
-                <element signature="e#25797#26006#0" expanded="false" />
-                <element signature="e#26890#27472#0" expanded="false" />
+                <element signature="e#25805#26014#0" expanded="false" />
+                <element signature="e#26898#27480#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -123,17 +121,17 @@
         <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
-              <caret line="75" column="25" lean-forward="false" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
+              <caret line="73" column="33" lean-forward="false" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="highscore.controller.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="highscore.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="66" column="30" lean-forward="false" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
+            <state relative-caret-position="95">
+              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding>
                 <element signature="e#1293#1689#0" expanded="false" />
               </folding>
@@ -175,7 +173,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get</find>
       <find>vote_we</find>
       <find>search.im</find>
       <find>comment</find>
@@ -205,6 +202,7 @@
       <find>wss:</find>
       <find>ideavotes</find>
       <find>new websoc</find>
+      <find>ws_scheme</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -269,13 +267,13 @@
         <option value="$PROJECT_DIR$/chat/routing.py" />
         <option value="$PROJECT_DIR$/ideas/routing.py" />
         <option value="$PROJECT_DIR$/static/javascripts/ideas/services/votes.service.js" />
-        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
         <option value="$PROJECT_DIR$/Crowdjump/asgi.py" />
+        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
+        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js" />
         <option value="$PROJECT_DIR$/chat/templates/chat/room.html" />
         <option value="$PROJECT_DIR$/static/templates/chat/room.html" />
         <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
-        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js" />
       </list>
     </option>
   </component>
@@ -853,6 +851,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="49" column="72" lean-forward="false" selection-start-line="49" selection-start-column="72" selection-end-line="49" selection-end-column="72" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1099,8 +1098,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="593" column="80" lean-forward="true" selection-start-line="593" selection-start-column="80" selection-end-line="594" selection-end-column="31" />
+        <state relative-caret-position="231">
+          <caret line="597" column="16" lean-forward="false" selection-start-line="597" selection-start-column="16" selection-end-line="597" selection-end-column="16" />
           <folding>
             <element signature="e#746#1203#0" expanded="false" />
             <element signature="e#1234#1491#0" expanded="false" />
@@ -1118,24 +1117,16 @@
             <element signature="e#14193#15950#0" expanded="false" />
             <element signature="e#22164#22386#0" expanded="false" />
             <element signature="e#23978#24555#0" expanded="false" />
-            <element signature="e#25797#26006#0" expanded="false" />
-            <element signature="e#26890#27472#0" expanded="false" />
+            <element signature="e#25805#26014#0" expanded="false" />
+            <element signature="e#26898#27480#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="46" column="57" lean-forward="false" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/chat/room.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="23" column="35" lean-forward="false" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+        <state relative-caret-position="221">
+          <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1143,26 +1134,34 @@
     <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="75" column="25" lean-forward="false" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
+          <caret line="73" column="33" lean-forward="false" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chat/templates/chat/room.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="15" column="29" lean-forward="false" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/chat/room.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="66" column="30" lean-forward="false" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
+        <state relative-caret-position="95">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
             <element signature="e#1293#1689#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chat/templates/chat/room.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>

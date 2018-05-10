@@ -39,7 +39,7 @@ window.createGame = function (canvas, scope) {
     scope.$on('$destroy', function () {
         game.destroy(); // Clean up the game when we leave this scope
     });
-    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+    var ws_scheme =  "ws"; //window.location.protocol == "https:" ? "wss" : "ws";
 
     var port = ':8001';
 
