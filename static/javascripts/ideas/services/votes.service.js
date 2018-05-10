@@ -48,7 +48,7 @@
                     if (result["data"]["count"] > 0) {
                         // console.error("vorhanden");
                         vote_id = result["data"]["results"][0]["id"];
-                        $http.put('/api/v1/ideavotes/' + vote_id + '/', {
+                        $http.patch('/api/v1/ideavotes/' + vote_id + '/', {
                             "idea": idea_id,
                             "vote": vote,
                             "multiplier": multiplier
