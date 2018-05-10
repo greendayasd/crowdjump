@@ -71,9 +71,9 @@
 
         }
 
-
+        var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
         var ideaSocket = new WebSocket(
-            'wss://' + window.location.host +
+            ws_scheme + '://' + window.location.host +
             '/ws/ideas/');
 
         function broadcast_idea(content) {

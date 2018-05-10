@@ -591,14 +591,14 @@
                 }
             }
 
-
+            var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
             //Websocket
             var ideaSocket = new WebSocket(
-                'wss://' + window.location.host +
+                ws_scheme + '://' + window.location.host +
                 '/ws/ideas/');
 
             var voteSocket = new WebSocket(
-                'wss://' + window.location.host +
+                ws_scheme + '://' + window.location.host +
                 '/ws/votes/');
 
 

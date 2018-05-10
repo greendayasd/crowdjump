@@ -61,10 +61,10 @@
             $scope.statistics.sort(sort_by("highscore",false,parseInt));
 
         }
-
+        var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
         //Websocket
         var highscoreSocket = new WebSocket(
-            'wss://' + window.location.host +
+            ws_scheme + '://' + window.location.host +
             '/ws/website/');
 
         highscoreSocket.onmessage = function (e) {

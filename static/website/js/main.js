@@ -39,9 +39,10 @@ window.createGame = function (canvas, scope) {
     scope.$on('$destroy', function () {
         game.destroy(); // Clean up the game when we leave this scope
     });
+    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 
     highscoreSocket = new WebSocket(
-        'wss://' + window.location.host +
+        ws_scheme + '://' + window.location.host +
         '/ws/website/');
     highscoreSocket.onclose = function (e) {
         console.error('Chat socket closed unexpectedly');
