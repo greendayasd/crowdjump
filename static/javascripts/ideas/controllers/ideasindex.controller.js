@@ -598,7 +598,7 @@
                 '/ws/ideas/');
 
             var voteSocket = new WebSocket(
-                ws_scheme + '://' + window.location.host +
+                ws_scheme + '://' + window.location.host + ':8001' + 
                 '/ws/votes/');
 
 
