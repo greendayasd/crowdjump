@@ -41,8 +41,10 @@ window.createGame = function (canvas, scope) {
     });
     var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 
+    var port = ':8001';
+
     highscoreSocket = new WebSocket(
-        ws_scheme + '://' + window.location.host +
+        ws_scheme + '://' + window.location.host + port +
         '/ws/website/');
     highscoreSocket.onclose = function (e) {
         console.error('Chat socket closed unexpectedly');

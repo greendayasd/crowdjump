@@ -62,9 +62,10 @@
 
         }
         var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+            var port = ':8001';
         //Websocket
         var highscoreSocket = new WebSocket(
-            ws_scheme + '://' + window.location.host +
+            ws_scheme + '://' + window.location.host + port +
             '/ws/website/');
 
         highscoreSocket.onmessage = function (e) {

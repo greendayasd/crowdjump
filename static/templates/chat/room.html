@@ -1,6 +1,7 @@
 <div class="container">
     <div ng-controller="ChatController as vm" ng-show="vm.isAuthenticated">
-        <textarea id="chat-log" cols="96" rows="20" size="100" style="resize: none; width: 70%;height: 30%"></textarea><br/>
+        <textarea id="chat-log" cols="96" rows="20" size="100"
+                  style="resize: none; width: 70%;height: 30%"></textarea><br/>
         <input id="chat-message-input" type="text" style="width: 70%;height: 30%"/><br/>
         <input id="chat-message-submit" type="button" class="btn-primary" value="Send"/>
     </div>
@@ -19,8 +20,9 @@
 
     var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 
+    var port = ':8001';
     var chatSocket = new WebSocket(
-        ws_scheme + '://' + window.location.host +
+        ws_scheme + '://' + window.location.host + port +
         '/ws/chat/' + roomName + '/');
 
     chatSocket.onmessage = function (e) {

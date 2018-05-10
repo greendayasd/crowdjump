@@ -592,13 +592,14 @@
             }
 
             var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+            var port = ':8001';
             //Websocket
             var ideaSocket = new WebSocket(
-                ws_scheme + '://' + window.location.host +
+                ws_scheme + '://' + window.location.host + port +
                 '/ws/ideas/');
 
             var voteSocket = new WebSocket(
-                ws_scheme + '://' + window.location.host + ':8001' + 
+                ws_scheme + '://' + window.location.host + port +
                 '/ws/votes/');
 
 
