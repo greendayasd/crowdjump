@@ -9,9 +9,9 @@
             .module('crowdjump.ideas.controllers')
             .controller('IdeasIndexController', IdeasIndexController);
 
-        IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Comments', 'Votes', 'History', 'Snackbar', '$cookies', 'ngDialog', '$controller', '$mdToast', '$window', '$route'];
+        IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Comments', 'Votes', 'History', '$cookies', 'ngDialog', '$controller', '$mdToast', '$window', '$route'];
 
-        function IdeasIndexController($scope, Authentication, Ideas, Comments, Votes, History, Snackbar, $cookies, ngDialog, $controller, $mdToast, $window, $route) {
+        function IdeasIndexController($scope, Authentication, Ideas, Comments, Votes, History, $cookies, ngDialog, $controller, $mdToast, $window, $route) {
             var vm = this;
             var canDelete = true;
 
@@ -296,7 +296,6 @@
                 }
 
                 function ideasErrorFn(data, status, headers, config) {
-                    // Snackbar.error(data.error);
                     var msg = "could not get ideas";
                     toast(msg);
                 }
@@ -329,7 +328,6 @@
                 }
 
                 function historyErrorFn(data, status, headers, config) {
-                    Snackbar.error(data.error);
                     console.error(data.error);
                 }
             }

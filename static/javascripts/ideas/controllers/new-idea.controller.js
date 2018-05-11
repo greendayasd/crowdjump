@@ -9,9 +9,9 @@
         .module('crowdjump.ideas.controllers')
         .controller('NewIdeaController', NewIdeaController);
 
-    NewIdeaController.$inject = ['$rootScope', '$route', '$scope', 'Authentication', 'Snackbar', 'Ideas', 'History', '$mdToast'];
+    NewIdeaController.$inject = ['$rootScope', '$route', '$scope', 'Authentication', 'Ideas', 'History', '$mdToast'];
 
-    function NewIdeaController($rootScope, $route, $scope, Authentication, Snackbar, Ideas, History, $mdToast) {
+    function NewIdeaController($rootScope, $route, $scope, Authentication, Ideas, History, $mdToast) {
         var vm = this;
         var content;
         vm.submit = submit;
@@ -32,9 +32,8 @@
             });
 
             $scope.closeThisDialog();
-            // console.error($scope.newestVersion.label);
+
             content = {
-                // "version": $scope.newestVersion.label,
                 "request_text": vm.request_text,
                 "description": vm.description,
                 "estimated_time": null,
@@ -44,29 +43,16 @@
             Ideas.create(content).then(createIdeaSuccessFn, createIdeaErrorFn);
 
             function createIdeaSuccessFn(data, status, headers, config) {
-                // Snackbar.show('Success! New Idea submitted.');
                 var content = data["data"];
                 content["type"] = 'idea_broadcast';
                 broadcast_idea(content);
-                // $route.reload();
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent("Idea created")
-                        .hideDelay(2000)
-                );
+                toast("Idea created");
             }
 
             function createIdeaErrorFn(data, status, headers, config) {
                 $rootScope.$broadcast('idea.created.error');
                 msg = "There was an error, the idea was not created!";
-                // $mdToast.show(
-                //     $mdToast.simple()
-                //         .textContent("There was an error, the idea was not created!")
-                //         .hideDelay(2000)
-                // );
-                var toast = $mdToast.simple().textContent(msg)
-                    .parent($("#toast-container"));
-                $mdToast.show(toast);
+                toast(msg);
             }
 
         }
@@ -98,15 +84,18 @@
             function historySuccessFn(data, status, headers, config) {
                 $scope.versions = data.data;
                 $scope.newestVersion = $scope.versions[0];
-                // console.error("data " + data.data);
-                // console.error("v  " + $scope.newestVersion.label);
 
             }
 
             function historyErrorFn(data, status, headers, config) {
-                Snackbar.error(data.error);
                 console.error(data.error);
             }
+        }
+
+        function toast(msg) {
+            var toast = $mdToast.simple().textContent(msg)
+                .parent($("#toast-container"));
+            $mdToast.show(toast);
         }
     }
 })();

@@ -63,7 +63,6 @@
             // }
             //
             // function historyErrorFn(data, status, headers, config) {
-            //     // Snackbar.error(data.error);
             //     // console.error(data.error);
             //
             //     return $http.post('/api/v1/accounts/', {
@@ -98,13 +97,7 @@
              */
             function registerErrorFn(data, status, headers, config) {
                 var msg = 'Registration failed! Please try another username/email'
-                // console.error(msg);
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent(msg)
-                        .hideDelay(4000)
-                );
-                // $rootScope.error = msg;
+                toast(msg);
             }
         }
 
@@ -154,13 +147,7 @@
              */
             function loginErrorFn(data, status, headers, config) {
                 var msg = 'Login failed! Email or password is wrong!';
-                // console.error(msg);
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent(msg)
-                        .hideDelay(4000)
-                );
-                // $rootScope.error = msg;
+                toast(msg);
             }
         }
 
@@ -180,7 +167,6 @@
              * @desc Unauthenticate and redirect to index with page reload
              */
             function logoutSuccessFn(data, status, headers, config) {
-                // console.error("success??");
                 Authentication.unauthenticate();
 
                 window.location = '/';
@@ -192,13 +178,7 @@
              */
             function logoutErrorFn(data, status, headers, config) {
                 var msg = 'Logout failed!';
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent(msg)
-                        .hideDelay(4000)
-                );
-                // console.error(msg);
-                // $rootScope.error = msg;
+                toast(msg);
             }
         }
 
@@ -254,5 +234,11 @@
             $cookies.remove("authenticatedAccount");
         }
 
+
+        function toast(msg) {
+            var toast = $mdToast.simple().textContent(msg)
+                .parent($("#toast-container"));
+            $mdToast.show(toast);
+        }
     }
 })();
