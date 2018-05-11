@@ -322,7 +322,7 @@
                         // >30 games played, >15 games won: 1
                         // final multiplier: (sum(multiplier)+ 2*multiplier last version) / (versions played + 2)
                         $scope.vote = Math.abs(($scope.newestVersion.vote_weight - $scope.vote_weight) * $scope.multiplier) + 1;
-                        var plural;
+                        var plural = '';
                         if ($scope.vote > 1){
                             plural = 's';
                         }
