@@ -80,10 +80,6 @@
 
             }).then(registerSuccessFn, registerErrorFn);
 
-            /**
-             * @name registerSuccessFn
-             * @desc Log the new user in
-             */
             function registerSuccessFn(data, status, headers, config) {
                 /**
                  * Bei Registrierung Statistik für neuste Version anlegen
@@ -91,10 +87,6 @@
                 Authentication.login(email, password, true);
             }
 
-            /**
-             * @name registerErrorFn
-             * @desc Log "Epic failure!" to the console
-             */
             function registerErrorFn(data, status, headers, config) {
                 var msg = 'Registration failed! Please try another username/email'
                 toast(msg);
@@ -141,23 +133,12 @@
 
             }
 
-            /**
-             * @name loginErrorFn
-             * @desc Log "Epic failure!" to the console
-             */
             function loginErrorFn(data, status, headers, config) {
                 var msg = 'Login failed! Email or password is wrong!';
                 toast(msg);
             }
         }
 
-
-        /**
-         * @name logout
-         * @desc Try to log the user out
-         * @returns {Promise}
-         * @memberOf crowdjump.authentication.services.Authentication
-         */
         function logout() {
             return $http.post('/api/v1/auth/logout/')
                 .then(logoutSuccessFn, logoutErrorFn);
@@ -172,23 +153,13 @@
                 window.location = '/';
             }
 
-            /**
-             * @name logoutErrorFn
-             * @desc Log "Epic failure!" to the console
-             */
             function logoutErrorFn(data, status, headers, config) {
                 var msg = 'Logout failed!';
-                toast(msg);
+                $route.reload();
+                // toast(msg);
             }
         }
 
-
-        /**
-         * @name getAuthenticatedAccount
-         * @desc Return the currently authenticated account
-         * @returns {object|undefined} Account if authenticated, else `undefined`
-         * @memberOf crowdjump.authentication.services.Authentication
-         */
         function getAuthenticatedAccount() {
             if (!$cookies.getObject("authenticatedAccount")) {
                 return;
@@ -197,12 +168,6 @@
             return $cookies.getObject("authenticatedAccount");//JSON.parse($cookies.authenticatedAccount);
         }
 
-        /**
-         * @name isAuthenticated
-         * @desc Check if the current user is authenticated
-         * @returns {boolean} True is user is authenticated, else false.
-         * @memberOf crowdjump.authentication.services.Authentication
-         */
         function isAuthenticated() {
             // console.error("isAuthenticated " + $cookies.getObject("authenticatedAccount"));
             if ($cookies.getObject("authenticatedAccount") != null) {
