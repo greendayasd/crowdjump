@@ -40,8 +40,6 @@
             };
 
             $scope.customFilter = function (idea) {
-                // console.error(idea.id + " idea f " + idea.feasible + "   search " + $scope.search.not_feasible + "  i "
-                //     + idea.implemented + "  search " + $scope.search.implemented)
 
                 if (idea.request_text.toLowerCase().match($scope.search.request_text.toLowerCase()) &&
                     idea.description.toLowerCase().match($scope.search.description.toLowerCase()) &&
@@ -152,7 +150,6 @@
             }
 
             $scope.isAuthenticated = Authentication.isAuthenticated();
-            // console.error("ideas " + vm.isAuthenticated || false);
             $scope.ideas = [];
             $scope.versions = [];
             $scope.comments = [];
@@ -160,7 +157,6 @@
             if ($scope.isAuthenticated) {
                 $scope.cookie = $cookies.getObject('authenticatedAccount');
                 $scope.userid = $scope.cookie["id"];
-                // console.error($scope.userid);
                 $scope.username2 = $scope.cookie["username"];
             }
 
@@ -222,7 +218,6 @@
 
                 function ideavotesSuccessFn(data, status, headers, config) {
                     $scope.ideavotes = data.data;
-                    // console.error("data " + data.data[0].description);
                 }
 
                 function ideavotesErrorFn(data, status, headers, config) {
@@ -235,7 +230,6 @@
 
                 function commentsSuccessFn(data, status, headers, config) {
                     $scope.comments = data.data;
-                    // console.error("data " + data.data[0].description);
                 }
 
                 function commentsErrorFn(data, status, headers, config) {
@@ -262,12 +256,10 @@
                             return ideavote.idea === idea.id;
                         })[0];
                         if (typeof vote !== 'undefined') {
-                            // console.log(vote);
 
                             idea.uservote = vote.vote;
 
                         } else {
-                            // console.log("0!");
                             idea.uservote = 0;
                         }
 
@@ -285,7 +277,6 @@
                                 idea.newest_comment_user = idea.newest_comment["user"]["username"];
 
                             }
-                            // console.error(idea.newest_comment);
 
                         } else {
                             idea.comments = {'id': -1};
@@ -301,31 +292,13 @@
                     $scope.itemsPerPage = 5;
                     $scope.maxSize = 5; //Number of pager buttons to show
                     $scope.displayItems = $scope.ideas.slice(0, $scope.itemsPerPage);
-                    // console.error("data " + data.data[0].description);
-
-                    // console.log($.map($scope.ideavotes, function (ideavote) {
-                    //     var idea = $.grep($scope.ideas, function (idea) {
-                    //         return ideavote.idea === idea.id;
-                    //     })[0];
-                    //
-                    //     return ideavote;
-                    // }));
 
                 }
 
                 function ideasErrorFn(data, status, headers, config) {
                     // Snackbar.error(data.error);
                     var msg = "could not get ideas";
-                    var toast = $mdToast.simple().textContent(msg)
-                        .parent($("#toast-container"));
-                    $mdToast.show(toast);
-
-                    // $mdToast.show(
-                    //     $mdToast.simple()
-                    //         .textContent(data.error)
-                    //         .hideDelay(2000)
-                    // );
-                    // console.error(data.error);
+                    toast(msg);
                 }
             }
 
@@ -349,7 +322,7 @@
                         // >25 games played, >10 games won: 0,7
                         // >30 games played, >15 games won: 1
                         // final multiplier: (sum(multiplier)+ 2*multiplier last version) / (versions played + 2)
-                        $scope.vote = Math.abs(($scope.newestVersion.vote_weight - $scope.vote_weight) * $scope.multiplier)  + 1;
+                        $scope.vote = Math.abs(($scope.newestVersion.vote_weight - $scope.vote_weight) * $scope.multiplier) + 1;
                         $scope.text_vote_weight = "Calculated from your playing time, one of your votes is worth " + $scope.vote + " points. Play more to increase this amount when the next version is live!"
                     }
 
@@ -370,39 +343,23 @@
 
                 } else {
                     var msg = "You can't delete your ideas at the moment, the next implementation is chosen soon!";
-
-                    var toast = $mdToast.simple().textContent(msg)
-                        .parent($("#toast-container"));
-                    $mdToast.show(toast);
-                    // $route.reload();
+                    toast(msg);
                 }
 
-                // Snackbar.show("Post deleted");
 
                 function deleteSuccessFn(data, status, headers, config) {
                     var msg = "Idea deleted";
 
-                    var toast = $mdToast.simple().textContent(msg)
-                        .parent($("#toast-container"));
-                    $mdToast.show(toast);
+                    toast(msg);
                     var index = get_IdeaIndex(idea_id);
                     $scope.ideas.splice(index, 1);
                     $scope.sort_all();
                     // $scope.$apply();
-                    // $route.reload();
                 }
 
                 function deleteErrorFn(data, status, headers, config) {
                     msg = "There was an error, the idea has not been deleted!";
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent("There was an error, the idea has not been deleted!")
-                            .hideDelay(2000)
-                    );
-
-                    var toast = $mdToast.simple().textContent(msg)
-                        .parent($("#toast-container"));
-                    $mdToast.show(toast);
+                    toast(msg);
                     // console.error(data.error);
 
                 }
@@ -499,6 +456,13 @@
                 // downvote_count.textContent = downvotes;
             }
 
+            $scope.vote_impossible = function () {
+
+                var msg = "You can't vote for this idea anymore!";
+                toast(msg);
+
+            }
+
             //Comments
             // $scope.comment_text = '';
             $scope.addNewComment = function (idea_id) {
@@ -522,11 +486,8 @@
                 function createCommentErrorFn(data, status, headers, config) {
                     $scope.$broadcast('idea.created.error');
 
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent("There was an error, the comment was not posted!")
-                            .hideDelay(2000)
-                    );
+                    var msg = "There was an error, the comment was not posted!";
+                    toast(msg);
                 }
 
             }
@@ -555,20 +516,14 @@
 
                 } else {
                     var msg = "You can't delete your comments at the moment, the next implementation is chosen soon!";
-
-                    var toast = $mdToast.simple().textContent(msg)
-                        .parent($("#toast-container"));
-                    $mdToast.show(toast);
-                    // $route.reload();
+                    toast(msg);
                 }
 
 
                 function deleteSuccessFn(data, status, headers, config) {
                     var msg = "Comment deleted";
+                    toast(msg);
 
-                    var toast = $mdToast.simple().textContent(msg)
-                        .parent($("#toast-container"));
-                    $mdToast.show(toast);
                     var idea_index = get_IdeaIndex(idea_id);
                     var index = get_CommentIndex(idea_index, comment_id);
                     $scope.ideas[idea_index].comments.splice(index, 1);
@@ -577,23 +532,15 @@
 
                 function deleteErrorFn(data, status, headers, config) {
                     msg = "There was an error, the comment has not been deleted!";
-                    // $mdToast.show(
-                    //     $mdToast.simple()
-                    //         .textContent("There was an error, the comment has not been deleted!")
-                    //         .hideDelay(2000)
-                    // );
 
-                    var toast = $mdToast.simple().textContent(msg)
-                        .parent($("#toast-container"));
-                    $mdToast.show(toast);
-                    // console.error(data.error);
+                    toast(msg);
 
                 }
             }
 
             var ws_scheme = 'wss'; //window.location.protocol == "https:" ? "wss" : "ws";
             var port = ':8001';
-            if (window.location.host =="localhost:8000"){
+            if (window.location.host == "localhost:8000") {
                 ws_scheme = 'ws';
                 port = '';
             }
@@ -674,15 +621,7 @@
                 $scope.ideas.push(data);
                 $scope.sort_all();
                 $scope.$apply();
-                // $mdToast.show(
-                //     $mdToast.simple()
-                //         .textContent("A new idea was published!")
-                //         .hideDelay(2000)
-                // );
-
-                var toast = $mdToast.simple().textContent(msg)
-                    .parent($("#toast-container"));
-                $mdToast.show(toast);
+                toast(msg);
 
             }
 
@@ -690,7 +629,7 @@
                 var msg = "An idea was commented!";
                 var index = get_IdeaIndex(data["idea"]);
 
-                if (typeof $scope.ideas[index].comments == 'undefined'){
+                if (typeof $scope.ideas[index].comments == 'undefined') {
                     $scope.ideas[index].comments = [];
                 }
                 $scope.ideas[index].comments.unshift(data);
@@ -749,6 +688,12 @@
                 console.log(index);
                 console.log(upvotes + " , " + downvotes);
                 console.log(uservote);
+            }
+
+            function toast(msg) {
+                var toast = $mdToast.simple().textContent(msg)
+                    .parent($("#toast-container"));
+                $mdToast.show(toast);
             }
         }
     }

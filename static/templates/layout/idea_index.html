@@ -149,14 +149,24 @@
                                            ng-click="downvote(idea.id)"/>
                                     <span ng-attr-id="downvote_count{{ idea.id }}">{{ idea.downvotes }}</span>
                                 </div>
-                                <div class="idea__votes" ng-show="!isAuthenticated || !idea.feasible || idea.implemented">
+                                <div class="idea__votes" ng-show="!isAuthenticated">
                                     <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
-                                           ng-src="{{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png' }}"
+                                           ng-src="/static/website/images/upvote%20trans.png"
                                            ng-click=""/>
                                     <span ng-attr-id="upvote_count{{ idea.id }}">{{ idea.upvotes }}</span>
                                     <input ng-attr-id="downvote_button{{ idea.id }}" type="image"
-                                           ng-src="{{ idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png' }}"
+                                           ng-src="/static/website/images/downvote%20trans%20dark.png"
                                            ng-click=""/>
+                                    <span ng-attr-id="downvote_count{{ idea.id }}">{{ idea.downvotes }}</span>
+                                </div>
+                                <div class="idea__votes" ng-show="!idea.feasible || idea.implemented">
+                                    <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
+                                           ng-src="{{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png' }}"
+                                           ng-click="vote_impossible()"/>
+                                    <span ng-attr-id="upvote_count{{ idea.id }}">{{ idea.upvotes }}</span>
+                                    <input ng-attr-id="downvote_button{{ idea.id }}" type="image"
+                                           ng-src="{{ idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png' }}"
+                                           ng-click="vote_impossible()"/>
                                     <span ng-attr-id="downvote_count{{ idea.id }}">{{ idea.downvotes }}</span>
                                 </div>
                                 <div class="idea__admin_comment">
@@ -199,27 +209,6 @@
 
                                     </div>
                                 </div>
-                                <!--<div class="comment__newest_comment well" ng-show="idea.newest_comment.id > 0 && !idea.show_comments"  style="background-color: #f5f5f5;">
-                                    <div class="comment__time">
-                                        created at {{ idea.newest_comment.created_at | date : "dd.MM.y HH:mm" }}
-                                    </div>
-                                    <div class="comment__meta">
-                                        User: {{ idea.newest_comment_user }}
-                                    </div>
-                                    <br>
-                                    <div class="comment__content">
-                                        {{ idea.newest_comment.text }}
-                                        <br>
-                                    </div>
-                                    <div class="comment__delete" ng-if="idea.newest_comment_user == username2 && isAuthenticated">
-                                        <br>
-                                        <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-delete-idea"
-                                           ng-click="vm.openDialogDeleteComment(idea.newest_comment.id)">
-                                            Delete this comment?
-                                        </a>
-                                    </div>
-
-                                </div> -->
                                 <div ng-show="idea.comments.length > 1 && !idea.show_comments">
                                     <label class="btn btn-primary" btn-checkbox-false="0" ng-click="idea.show_comments=true"  > Show all {{ idea.comments.length }} Comments
                                     </label>
