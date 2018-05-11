@@ -122,7 +122,6 @@
             }
 
             function createStatisticsSuccessFn(data, status, headers, config) {
-                console.error("succ");
                 window.location = '/';
 
             }
