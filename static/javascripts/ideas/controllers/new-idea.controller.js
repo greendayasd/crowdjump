@@ -46,7 +46,7 @@
                 var content = data["data"];
                 content["type"] = 'idea_broadcast';
                 broadcast_idea(content);
-                toast("Idea created");
+                // toast("Idea created"); //websocket
             }
 
             function createIdeaErrorFn(data, status, headers, config) {
