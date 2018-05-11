@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js" afterPath="$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ideasindex.controller.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ideasindex.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="689" column="0" lean-forward="false" selection-start-line="689" selection-start-column="0" selection-end-line="694" selection-end-column="13" />
+            <state relative-caret-position="323">
+              <caret line="330" column="0" lean-forward="true" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
               <folding>
                 <element signature="e#724#1181#0" expanded="false" />
                 <element signature="e#1212#1469#0" expanded="false" />
@@ -71,11 +70,11 @@
                 <element signature="e#7080#7169#0" expanded="false" />
                 <element signature="e#7224#7383#0" expanded="false" />
                 <element signature="e#7557#7623#0" expanded="false" />
-                <element signature="e#12605#13591#0" expanded="false" />
-                <element signature="e#19844#20066#0" expanded="false" />
-                <element signature="e#21351#21487#0" expanded="false" />
-                <element signature="e#22873#23082#0" expanded="false" />
-                <element signature="e#23966#24212#0" expanded="false" />
+                <element signature="e#12768#13754#0" expanded="false" />
+                <element signature="e#20007#20229#0" expanded="false" />
+                <element signature="e#21514#21650#0" expanded="false" />
+                <element signature="e#23036#23245#0" expanded="false" />
+                <element signature="e#24129#24375#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -99,29 +98,6 @@
               <folding>
                 <element signature="n#style#0;n#textarea#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new-idea.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="48" column="53" lean-forward="false" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="authentication.service.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="129" column="68" lean-forward="true" selection-start-line="129" selection-start-column="68" selection-end-line="129" selection-end-column="68" />
-              <folding>
-                <element signature="e#3232#3576#0" expanded="false" />
-                <element signature="e#3799#3927#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -165,12 +141,12 @@
       <find>var port =</find>
       <find>localhost:8000</find>
       <find>window.location.host</find>
-      <find>show a</find>
       <find>console.</find>
-      <find>snackbar</find>
       <find>$mdt</find>
-      <find>snack</find>
       <find>succ</find>
+      <find>snack</find>
+      <find>snackbar</find>
+      <find>show a</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -239,9 +215,9 @@
         <option value="$PROJECT_DIR$/static/templates/chat/room.html" />
         <option value="$PROJECT_DIR$/chat/templates/chat/room.html" />
         <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
-        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js" />
+        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
       </list>
     </option>
   </component>
@@ -1085,6 +1061,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="129" column="68" lean-forward="true" selection-start-line="129" selection-start-column="68" selection-end-line="129" selection-end-column="68" />
+          <folding>
+            <element signature="e#3232#3576#0" expanded="false" />
+            <element signature="e#3799#3927#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="48" column="53" lean-forward="false" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="597">
@@ -1098,8 +1093,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="689" column="0" lean-forward="false" selection-start-line="689" selection-start-column="0" selection-end-line="694" selection-end-column="13" />
+        <state relative-caret-position="323">
+          <caret line="330" column="0" lean-forward="true" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
           <folding>
             <element signature="e#724#1181#0" expanded="false" />
             <element signature="e#1212#1469#0" expanded="false" />
@@ -1114,30 +1109,11 @@
             <element signature="e#7080#7169#0" expanded="false" />
             <element signature="e#7224#7383#0" expanded="false" />
             <element signature="e#7557#7623#0" expanded="false" />
-            <element signature="e#12605#13591#0" expanded="false" />
-            <element signature="e#19844#20066#0" expanded="false" />
-            <element signature="e#21351#21487#0" expanded="false" />
-            <element signature="e#22873#23082#0" expanded="false" />
-            <element signature="e#23966#24212#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="48" column="53" lean-forward="false" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="129" column="68" lean-forward="true" selection-start-line="129" selection-start-column="68" selection-end-line="129" selection-end-column="68" />
-          <folding>
-            <element signature="e#3232#3576#0" expanded="false" />
-            <element signature="e#3799#3927#0" expanded="false" />
+            <element signature="e#12768#13754#0" expanded="false" />
+            <element signature="e#20007#20229#0" expanded="false" />
+            <element signature="e#21514#21650#0" expanded="false" />
+            <element signature="e#23036#23245#0" expanded="false" />
+            <element signature="e#24129#24375#0" expanded="false" />
           </folding>
         </state>
       </provider>

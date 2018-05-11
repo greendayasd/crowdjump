@@ -322,7 +322,11 @@
                         // >30 games played, >15 games won: 1
                         // final multiplier: (sum(multiplier)+ 2*multiplier last version) / (versions played + 2)
                         $scope.vote = Math.abs(($scope.newestVersion.vote_weight - $scope.vote_weight) * $scope.multiplier) + 1;
-                        $scope.text_vote_weight = "Calculated from your playing time, one of your votes is worth " + $scope.vote + " points. Play more to increase this amount when the next version is live!"
+                        var plural;
+                        if ($scope.vote > 1){
+                            plural = 's';
+                        }
+                        $scope.text_vote_weight = "Calculated from your playing time, one of your votes is worth " + $scope.vote + " point" + plural + ". Play more to increase this amount when the next version is live!"
                     }
 
                 }
