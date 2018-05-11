@@ -593,6 +593,10 @@
 
             var ws_scheme = 'wss'; //window.location.protocol == "https:" ? "wss" : "ws";
             var port = ':8001';
+            if (window.location.host =="localhost:8000"){
+                ws_scheme = 'ws';
+                port = '';
+            }
             //Websocket
             var ideaSocket = new WebSocket(
                 ws_scheme + '://' + window.location.host + port +

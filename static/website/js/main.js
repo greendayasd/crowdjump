@@ -39,9 +39,13 @@ window.createGame = function (canvas, scope) {
     scope.$on('$destroy', function () {
         game.destroy(); // Clean up the game when we leave this scope
     });
-    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+    var ws_scheme = 'wss'; //.location.protocol == "https:" ? "wss" : "ws";
 
     var port = ':8001';
+    if (window.location.host == "localhost:8000") {
+        ws_scheme = 'ws';
+        port = '';
+    }
 
     highscoreSocket = new WebSocket(
         ws_scheme + '://' + window.location.host + port +

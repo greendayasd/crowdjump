@@ -58,11 +58,14 @@
         }
 
         $scope.sort_all = function () {
-            $scope.statistics.sort(sort_by("highscore",false,parseInt));
+            $scope.statistics.sort(sort_by("highscore", false, parseInt));
 
         }
-        var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-            var port = ':8001';
+        var ws_scheme = 'wss'; //window.location.protocol == "https:" ? "wss" : "ws";
+        var port = ':8001';
+        if (window.location.host == "localhost:8000") {
+            port = '';
+        }
         //Websocket
         var highscoreSocket = new WebSocket(
             ws_scheme + '://' + window.location.host + port +

@@ -139,7 +139,7 @@
                                 <div class="idea__estimated_time" ng-if="idea.estimated_time == Null">
                                     No estimated time yet
                                 </div>
-                                <div class="idea__votes" ng-show="isAuthenticated">
+                                <div class="idea__votes" ng-show="isAuthenticated && idea.feasible && !idea.implemented">
                                     <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
                                            ng-src="{{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png' }}"
                                            ng-click="upvote(idea.id)"/>
@@ -149,7 +149,7 @@
                                            ng-click="downvote(idea.id)"/>
                                     <span ng-attr-id="downvote_count{{ idea.id }}">{{ idea.downvotes }}</span>
                                 </div>
-                                <div class="idea__votes" ng-show="!isAuthenticated">
+                                <div class="idea__votes" ng-show="!isAuthenticated || !idea.feasible || idea.implemented">
                                     <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
                                            ng-src="{{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png' }}"
                                            ng-click=""/>
