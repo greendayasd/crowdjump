@@ -1,0 +1,22 @@
+{
+    "platforms": [
+        {"image": "ground", "x": 0, "y": 546},
+        {"image": "grass:2x1", "x": 598, "y": 84},
+        {"image": "grass:8x1", "x": 306, "y": 399},
+        {"image": "grass:4x1", "x": 94, "y": 252},
+        {"image": "grass:4x1", "x": 346, "y": 168}
+    ],
+    "decoration": [
+    ],
+    "coins": [
+        {"x": 231, "y": 524}, {"x": 273, "y": 524}, {"x": 315, "y": 524}, {"x": 357, "y": 524}
+    ],
+    "hero": {"x": 21, "y": 525},
+    "spiders": [{"x": 600, "y": 362}, {"x": 300, "y": 152}],
+    "flag": {"x": 870, "y": 87},
+    "repeats": true,
+    "repeat_spiders": [
+        {"x": 241, "y":21, "spawns":10, "interval": 2, "offset": 1},
+        {"x": 534, "y":21, "spawns":10, "interval": 2, "offset": 0}
+    ]
+}

@@ -384,7 +384,9 @@ Crowdjump.Game._onHeroVsCoin = function (hero, coin) {
 };
 
 Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
-    if (hero.body.velocity.y > 0 && hero.body.position.y < enemy.body.position.y) { // kill enemies when hero is falling
+    // if (hero.body.velocity.y > 0 && hero.body.position.y < enemy.body.position.y) {  // kill enemies when hero is falling
+    if ((hero.body.velocity.y > 0 && hero.body.position.y +5 < enemy.body.position.y)||  hero.body.position.y + 10 < enemy.body.position.y){
+        // console.log("enemy killed: hero: " + hero.body.position.y + "  spider: " + enemy.body.position.y);
         hero.bounce();
         enemy.die();
         game.enemiesDefeatedCount++;
@@ -393,6 +395,7 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
         this.sfx.stomp.play();
     }
     else { // game over -> restart the game
+        // console.log("killed: hero: " + hero.body.position.y + "  velocity: " + hero.body.velocity.y + "  spider: " + enemy.body.position.y);
         this.sfx.stomp.play();
         game.deaths++;
         this.game.state.restart(true, false, {level: this.level});
