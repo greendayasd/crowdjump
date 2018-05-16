@@ -9,6 +9,13 @@ Crowdjump.Game = function (game) {
     var level_data;
     var last_second = 0;
     var seconds_last_level = 0;
+    var zhonya_activated = false;
+    var zhonya_cooldown = false;
+    var time_zhonya_activated = 0;
+    var time_zhonya_cooldown = 0;
+    var nextFire = 0;
+    var bulletsprite;
+    var bullets;
 }
 
 Crowdjump.Game = {};
@@ -33,6 +40,7 @@ function Hero(game, x, y) {
     this.animations.add('run', [1, 2], 8, true); // 8fps looped
     this.animations.add('jump', [3]);
     this.animations.add('fall', [4]);
+    this.animations.add('zhonya', [6]);
 }
 
 
@@ -104,6 +112,9 @@ Hero.prototype._getAnimationName = function () {
     }
     else if (this.body.velocity.x !== 0 && this.body.touching.down) {
         name = 'run';
+    }
+    if (zhonya_activated) {
+        name = 'zhonya';
     }
 
     return name;
@@ -188,7 +199,9 @@ Crowdjump.Game.init = function (data) {
         game.gameInfo["rounds_started"] = game.gameInfo["rounds_started"] + 1;
         // console.error("started " + game.gameInfo["rounds_started"]);
     }
+    second_jump = true;
     last_second = 0;
+    nextFire = 0;
 
 };
 
@@ -204,9 +217,15 @@ Crowdjump.Game.create = function () {
         coin: this.game.add.audio('sfx:coin'),
         stomp: this.game.add.audio('sfx:stomp'),
         flag: this.game.add.audio('sfx:flag'),
+        zhonyas: this.game.add.audio('sfx:zhonya'),
+        shoot: this.game.add.audio('sfx:shoot'),
     };
 
     this.game.add.image(0, 0, 'background');
+    zhonya_activated = false;
+    zhonya_cooldown = false;
+    time_zhonya_activated = 0;
+    time_zhonya_cooldown = 0;
     level_data = this.game.cache.getJSON(`level:${this.level}`);
     this._loadLevel(level_data);
 
@@ -222,8 +241,19 @@ Crowdjump.Game.create = function () {
         this.stage.addChild(this.pausedIndicator);
     }
 
+    // this.game.physics.startSystem(Phaser.Physics.ARCADE);
+    bullets = this.game.add.group();
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+    bullets.createMultiple(50, 'bullet');
+    bullets.setAll('checkWorldBounds', true);
+    bullets.setAll('outOfBoundsKill', true);
+
+    // this.game.physics.enable(bulletsprite, Phaser.Physics.ARCADE);
 
     this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.restart, this);
+    this.input.keyboard.addKey(Phaser.KeyCode.F).onUp.add(this.activate_Zhonyas, this);
     this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
 
 };
@@ -243,14 +273,41 @@ Crowdjump.Game.update = function () {
     }
     this.timeFont.text = `${seconds}`;
     this.coinFont.text = `x${this.coinPickupCount}`;
+
+
+    if (zhonya_activated) {
+        var zhonya_time = CONST_ZHONYA_DURATION - Math.abs(Math.floor((game.timeElapsed - time_zhonya_activated) / 1));
+        this.zhonyaFont.text = `${zhonya_time}`;
+        this.zhonyaFont.setStyle({fill: '#bda73b'});
+    }
+    if (zhonya_cooldown) {
+        var zhonya_time = CONST_ZHONYA_COOLDOWN - Math.abs(Math.floor((game.timeElapsed - time_zhonya_cooldown) / 1));
+        this.zhonyaFont.text = `${zhonya_time}`;
+        this.zhonyaFont.setStyle({fill: '#364bbd'});
+    }
+    if (!zhonya_activated && !zhonya_cooldown) {
+        this.zhonyaFont.text = 'ready!';
+        this.zhonyaFont.setStyle({fill: '#000000'});
+    }
+
+
+    if (this.game.input.activePointer.isDown) {
+        this.fire_Bullet();
+    }
 };
 
 Crowdjump.Game._handleCollisions = function () {
     this.game.physics.arcade.collide(this.spiders, this.platforms);
     this.game.physics.arcade.collide(this.spiders, this.enemyWalls);
     this.game.physics.arcade.collide(this.hero, this.platforms);
+    // this.game.physics.arcade.collide(this.spiders, bullets);
+    // this.game.physics.arcade.collide(bullets, this.platforms);
 
     this.game.physics.arcade.overlap(this.hero, this.coins, this._onHeroVsCoin,
+        null, this);
+    this.game.physics.arcade.overlap(bullets, this.spiders, this._onBulletVsEnemy,
+        null, this);
+    this.game.physics.arcade.overlap(bullets, this.platforms, this._onBulletVsPlatform,
         null, this);
     this.game.physics.arcade.overlap(this.hero, this.spiders,
         this._onHeroVsEnemy, null, this);
@@ -334,11 +391,11 @@ Crowdjump.Game._spawnEnemyWall = function (x, y, side) {
 
 Crowdjump.Game._spawnCharacters = function (data) {
 
-
     if (CONST_ENEMIES) {
         // spawn spiders
         data.spiders.forEach(function (spider) {
             let sprite = new Spider(this.game, spider.x, spider.y);
+            // sprite.anchor.set(0.5,0.5);
             this.spiders.add(sprite);
         }, this);
     }
@@ -354,7 +411,7 @@ Crowdjump.Game._newSpawns = function (data) {
         data.spiders.forEach(function (spider) {
             // console.error(seconds_this_game + " offset " + spider.offset + " spawns " + spider.spawns + " interval " + spider.interval);
             if (seconds_this_game >= spider.offset) {
-                if (spider.spawns * spider.interval  + spider.offset > seconds_this_game) {
+                if (spider.spawns * spider.interval + spider.offset > seconds_this_game) {
                     if ((seconds_this_game + spider.offset) % spider.interval == 0) {
                         let sprite = new Spider(this.game, spider.x, spider.y);
                         this.spiders.add(sprite);
@@ -385,7 +442,13 @@ Crowdjump.Game._onHeroVsCoin = function (hero, coin) {
 
 Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
     // if (hero.body.velocity.y > 0 && hero.body.position.y < enemy.body.position.y) {  // kill enemies when hero is falling
-    if ((hero.body.velocity.y > 0 && hero.body.position.y +5 < enemy.body.position.y)||  hero.body.position.y + 10 < enemy.body.position.y){
+    if (CONST_ZHONYA && zhonya_activated) {
+        enemy.die();
+        game.enemiesDefeatedCount++;
+        this.sfx.stomp.play();
+        return;
+    }
+    if ((hero.body.velocity.y > 0 && hero.body.position.y + 5 < enemy.body.position.y) || hero.body.position.y + 10 < enemy.body.position.y) {
         // console.log("enemy killed: hero: " + hero.body.position.y + "  spider: " + enemy.body.position.y);
         hero.bounce();
         enemy.die();
@@ -402,8 +465,20 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
     }
 };
 
+Crowdjump.Game._onBulletVsEnemy = function (bullet, enemy) {
+    enemy.die();
+    bullet.reset();
+};
+
+Crowdjump.Game._onBulletVsPlatform = function (bullet, platform) {
+    bullet.reset();
+};
+
 Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     this.sfx.flag.play();
+    if (zhonya_activated) {
+        this.sfx.zhonyas.stop();
+    }
     if (this.level < CONST_LEVEL - 1) {
         // console.log(this.level + ' level');
         this.game.state.restart(true, false, {level: this.level + 1});
@@ -415,9 +490,13 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
 
 Crowdjump.Game._createHud = function () {
     const NUMBERS_STR = '0123456789X ';
+    // const TEXT_STR = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!?,:';
 
     this.coinFont = this.game.add.retroFont('font:numbers', 20, 26,
         NUMBERS_STR, 6);
+    // this.zhonyaFont = this.game.add.retroFont('font:numbers', 20, 26,
+    //     TEXT_STR + NUMBERS_STR, 6);
+    // this.zhonyaFont.fixedToCamera = true;
 
     let coinIcon = this.game.make.image(0, 0, 'icon:coin');
     let coinScoreImg = this.game.make.image(coinIcon.x + coinIcon.width,
@@ -428,6 +507,15 @@ Crowdjump.Game._createHud = function () {
     if (CONST_COINS) {
         this.hud.add(coinIcon);
         this.hud.add(coinScoreImg);
+    }
+
+    if (CONST_ZHONYA) {
+        var y_distance = (CONST_COINS ? coinIcon.height : 5) + 5;
+        this.zhonyaFont = this.game.add.text(20, y_distance, '');
+        // let zhonyaImg = this.game.make.image(10, y_distance, this.zhonyaFont);
+        // zhonyaImg.anchor.set(0.5, 0.5);
+
+        this.hud.add(this.zhonyaFont);
     }
 
     this.hud.position.set(10, 10);
@@ -480,6 +568,53 @@ Crowdjump.Game.resumed = function () {
     }
 
 };
+
+Crowdjump.Game.activate_Zhonyas = function () {
+    if (zhonya_activated || zhonya_cooldown) {
+        return;
+    }
+    this.sfx.zhonyas.play();
+
+    zhonya_activated = true;
+    // Phaser.Sprite.call(this.hero, game, x, y, 'hero_zhonya');
+    // this.hero.texture.loadTexture('hero_zhonya');
+    game.time.events.add(Phaser.Timer.SECOND * CONST_ZHONYA_DURATION, this.cooldown_Zhonyas, this);
+    time_zhonya_activated = game.timeElapsed;
+
+};
+
+Crowdjump.Game.cooldown_Zhonyas = function () {
+
+    zhonya_activated = false;
+    zhonya_cooldown = true;
+    game.time.events.add(Phaser.Timer.SECOND * CONST_ZHONYA_COOLDOWN, this.ready_Zhonyas, this);
+    time_zhonya_cooldown = game.timeElapsed;
+
+};
+
+Crowdjump.Game.ready_Zhonyas = function () {
+
+    zhonya_cooldown = false;
+
+};
+
+Crowdjump.Game.fire_Bullet = function () {
+
+    if (this.game.time.now > nextFire && bullets.countDead() > 0) {
+        this.sfx.shoot.play();
+        nextFire = this.game.time.now + CONST_FIRERATE;
+
+        var bullet = bullets.getFirstDead();
+
+        bullet.reset(this.hero.position.x - 8, this.hero.position.y - 8);
+        // console.log("fire " + nextFire);
+
+        this.game.physics.arcade.moveToPointer(bullet, CONST_BULLETSPEED);
+    }
+    zhonya_cooldown = false;
+
+};
+
 
 Crowdjump.Game.restart = function () {
     // game.gameInfo["rounds_started"] = game.gameInfo["rounds_started"] + 1;

@@ -3,11 +3,17 @@
 const CONST_DOUBLE_JUMP = false;
 const CONST_COINS = false;
 const CONST_ENEMIES = true;
-const CONST_ANIMATE_CHARACTER = false;
+const CONST_ANIMATE_CHARACTER = true;
 const CONST_TIME = true;
 const CONST_BUBBLE = true;
 const CONST_PAUSE = false;
 const CONST_LEVEL = 4;
+const CONST_ZHONYA = true;
+const CONST_ZHONYA_DURATION = 2;
+const CONST_ZHONYA_COOLDOWN = 4;
+const CONST_SHOOTING = true;
+const CONST_FIRERATE = 500;
+const CONST_BULLETSPEED = 800;
 
 var game;
 var g_gameinfo = '';

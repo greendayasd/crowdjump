@@ -21,7 +21,7 @@ Crowdjump.Preloader.prototype = {
         var audio = '/static/website/audio/';
         var images = '/static/website/images/';
 
-
+        //Ui
         this.load.image('logo', images + 'logo.png');
         this.load.image('play', images + 'play.png');
         this.load.image('bubble', images + 'ideabubble.png');
@@ -55,7 +55,11 @@ Crowdjump.Preloader.prototype = {
 
         //character
         if (CONST_ANIMATE_CHARACTER) {
-            this.load.spritesheet('hero', files + 'hero.png', 36, 42);
+            if (CONST_ZHONYA) {
+                this.load.spritesheet('hero', files + 'zhonya template.png', 34, 42);
+            } else {
+                this.load.spritesheet('hero', files + 'hero.png', 36, 42);
+            }
         }
         else {
             this.load.image('hero', files + 'hero_stopped.png');
@@ -66,11 +70,14 @@ Crowdjump.Preloader.prototype = {
         this.load.audio('sfx:coin', audio + 'coin.wav');
         this.load.audio('sfx:stomp', audio + 'stomp.wav');
         this.load.audio('sfx:flag', audio + 'flag.wav');
+        this.load.audio('sfx:zhonya', audio + 'zhonya.wav');
+        this.load.audio('sfx:shoot', audio + 'shoot.mp3');
 
         //sprites
         this.load.spritesheet('coin', files + 'coin_animated.png', 22, 22);
         this.load.spritesheet('spider', files + 'spider.png', 42, 32);
         this.load.spritesheet('flag', files + 'flag.png', 42, 66);
+        this.load.image('bullet', files + 'bullet.png');
 
         //fonts
         this.load.image('font:numbers', files + 'numbers.png');
@@ -95,7 +102,6 @@ Crowdjump.Preloader.prototype = {
         if (this.ready === true) {
             this.ready = false;
             text.setText('');
-            // console.log('fertig geladen');
             // this.state.start('Startmenu');
 
             game.gameInfo = g_gameinfo;
@@ -106,7 +112,6 @@ Crowdjump.Preloader.prototype = {
                 // console.error("nicht auth");
                 game.authenticated = false;
             }
-            // console.error(game.gameInfo);
             this.state.start('Game');
             // this.state.start('Endscreen');
         }
