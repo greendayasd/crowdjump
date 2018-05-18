@@ -67,8 +67,15 @@ ul.errorlist > li {
     background: #89a3d5;
     color: #000000;
     transition: all 0.3s;
+    padding-left: 2px;
 }
 
+#messageCounter {
+    font-size: 80%;
+    float: left;
+    text-align: left;
+    padding-left: 0px;
+}
 #sidebar.active {
     margin-left: -20%;
 }
