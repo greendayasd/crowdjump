@@ -34,9 +34,9 @@ class IndexView(generic.View):
 
 
 class ChatMessageViewSet(viewsets.ModelViewSet):
-    # filter_backends = [DjangoFilterBackend]
-    # filter_fields = ['user', 'id']
-    queryset = ChatMessage.objects.order_by('-created')[:20]
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['user', 'id']
+    queryset = ChatMessage.objects.order_by('-created')
     serializer_class = ChatMessageSerializer
     # def get(self, request):
     #

@@ -17,11 +17,11 @@
         activate();
 
         function activate() {
-            Chat.all().then(chatSuccessFn, chatErrorFn);
+            Chat.newestX(18).then(chatSuccessFn, chatErrorFn);
 
             function chatSuccessFn(data, status, headers, config) {
-                $scope.chatMessages = data.data;
-                // console.log($scope.chatMessages[0]);
+                $scope.chatMessages = data.data.results.reverse();
+                // console.log($scope.chatMessages);
 
             }
 

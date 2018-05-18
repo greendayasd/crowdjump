@@ -42,6 +42,17 @@ ul.errorlist > li {
     align-items: stretch;
 }
 
+.chatcontainer{
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 #sidebar {
     /*min-width: 250px;*/
     /*max-width: 250px;*/
