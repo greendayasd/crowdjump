@@ -35,3 +35,50 @@ ul.errorlist > li {
   margin-right: auto;
   margin-left: auto;
 }
+
+.wrapper {
+    display: flex;
+    /*flex-direction: row-reverse;*/
+    align-items: stretch;
+}
+
+#sidebar {
+    /*min-width: 250px;*/
+    /*max-width: 250px;*/
+    min-width: 20%;
+    max-width: 20%;
+    background: #7386D5;
+    transition: all 0.3s;
+}
+#sidebarCollapse {
+    min-width: 27px;
+    max-width: 27px;
+    background: #89a3d5;
+    color: #000000;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -20%;
+}
+
+#sidebar .sidebar-header {
+    padding: 5px;
+    background: #6d7fcc;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 0.6em;
+}
+a[aria-expanded="true"]::before {
+    content: '\e260';
+}

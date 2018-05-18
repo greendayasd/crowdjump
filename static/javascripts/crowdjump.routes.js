@@ -40,12 +40,17 @@
         }).when('/chat', {
             controller: 'ChatController',
             controllerAs: 'vm',
-            templateUrl: '/static/templates/layout/chat.html'
+            templateUrl: '/static/templates/chat.html'
 
         }).when('/chat/:roomname', {
             controller: 'ChatController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/chat/room.html'
+
+        }).when('/chatroom', {
+            controller: 'ChatController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/chatroom.html'
 
         }).when('/ideas', {
             controller: 'IdeasIndexController',

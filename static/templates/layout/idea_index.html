@@ -149,6 +149,7 @@
                                            ng-click="downvote(idea.id)"/>
                                     <span ng-attr-id="downvote_count{{ idea.id }}">{{ idea.downvotes }}</span>
                                 </div>
+
                                 <div class="idea__votes" ng-show="!isAuthenticated">
                                     <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
                                            ng-src="/static/website/images/upvote%20trans.png"

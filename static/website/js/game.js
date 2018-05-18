@@ -249,8 +249,12 @@ Crowdjump.Game.create = function () {
     bullets.createMultiple(50, 'bullet');
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
+    if (!CONST_BULLETDROP) {
+        bullets.setAll('body.allowGravity', false);
 
-    // this.game.physics.enable(bulletsprite, Phaser.Physics.ARCADE);
+    }
+
+    // this.game.physics.enable(bullets, Phaser.Physics.ARCADE);
 
     this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.restart, this);
     this.input.keyboard.addKey(Phaser.KeyCode.F).onUp.add(this.activate_Zhonyas, this);
@@ -290,7 +294,6 @@ Crowdjump.Game.update = function () {
         this.zhonyaFont.setStyle({fill: '#000000'});
     }
 
-
     if (this.game.input.activePointer.isDown) {
         this.fire_Bullet();
     }
@@ -309,8 +312,12 @@ Crowdjump.Game._handleCollisions = function () {
         null, this);
     this.game.physics.arcade.overlap(bullets, this.platforms, this._onBulletVsPlatform,
         null, this);
-    this.game.physics.arcade.overlap(this.hero, this.spiders,
-        this._onHeroVsEnemy, null, this);
+
+
+    if (!CONST_ZHONYA || !zhonya_activated || CONST_KILL_IN_ZHONYA) {
+        this.game.physics.arcade.overlap(this.hero, this.spiders,
+            this._onHeroVsEnemy, null, this);
+    }
 
     this.game.physics.arcade.overlap(this.hero, this.flag, this._onHeroVsFlag,
         // ignore if there is no key or the player is on air
@@ -443,6 +450,9 @@ Crowdjump.Game._onHeroVsCoin = function (hero, coin) {
 Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
     // if (hero.body.velocity.y > 0 && hero.body.position.y < enemy.body.position.y) {  // kill enemies when hero is falling
     if (CONST_ZHONYA && zhonya_activated) {
+        if (!CONST_KILL_IN_ZHONYA) {
+            return;
+        }
         enemy.die();
         game.enemiesDefeatedCount++;
         this.sfx.stomp.play();
@@ -600,6 +610,12 @@ Crowdjump.Game.ready_Zhonyas = function () {
 
 Crowdjump.Game.fire_Bullet = function () {
 
+    if (CONST_ZHONYA && zhonya_activated && !CONST_SHOOT_IN_ZHONYA) {
+        return;
+    }
+    if (!CONST_SHOOTING) {
+        return;
+    }
     if (this.game.time.now > nextFire && bullets.countDead() > 0) {
         this.sfx.shoot.play();
         nextFire = this.game.time.now + CONST_FIRERATE;
@@ -611,7 +627,6 @@ Crowdjump.Game.fire_Bullet = function () {
 
         this.game.physics.arcade.moveToPointer(bullet, CONST_BULLETSPEED);
     }
-    zhonya_cooldown = false;
 
 };
 

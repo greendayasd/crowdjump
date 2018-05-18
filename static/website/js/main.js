@@ -9,11 +9,14 @@ const CONST_BUBBLE = true;
 const CONST_PAUSE = false;
 const CONST_LEVEL = 4;
 const CONST_ZHONYA = true;
+const CONST_KILL_IN_ZHONYA = false;
 const CONST_ZHONYA_DURATION = 2;
 const CONST_ZHONYA_COOLDOWN = 4;
 const CONST_SHOOTING = true;
 const CONST_FIRERATE = 500;
 const CONST_BULLETSPEED = 800;
+const CONST_BULLETDROP = false;
+const CONST_SHOOT_IN_ZHONYA = false;
 
 var game;
 var g_gameinfo = '';

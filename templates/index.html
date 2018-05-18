@@ -14,14 +14,37 @@
 
 {% include 'navbar.html' %}
 
-    <div class="container-fluid ng-scope" style="height: 100%; min-height: 100%">
-        <div class="row">
-                <div ng-view>
+<div class="wrapper" style="height: 100%; min-height: 100%">
 
-    </div>
+{#                {% include 'chatroom.html' %}#}
+    {% if user.is_authenticated %}
+        <div id="sidebar">
+            <div class="sidebar-header">
+                <h2>Chat</h2>
+            </div>
+                {% include 'chatcolumn.html' %}
+        </div>
+        <button type="button" id="sidebarCollapse" class="btn-btn">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span></span>
+        </button>
+    {% else %}
+
+    {% endif %}
+    <div class="container-fluid ng-scope">
+        <div ng-view>
+
         </div>
     </div>
     {% include 'javascripts.html' %}
-<div id="toast-container"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <div id="toast-container"></div>
+</div>
 </body>
 </html>

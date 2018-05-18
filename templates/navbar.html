@@ -21,13 +21,16 @@
                 <li><a class="nav-link" href="ideas">Ideas</a></li>
                 <li><a class="nav-link" href="history">History</a></li>
                 {% if user.is_authenticated %}
-{#                    <li><a class="nav-link" href="chat/lobby">Chat</a></li>#}
+                    {#                    <li><a class="nav-link" href="chat/lobby">Chat</a></li>#}
                     <li><a>Welcome, {{ user.username }}</a></li>
                     {#                    <li><a href="/+{{ user.username }}/settings">Settings</a></li>#}
                     <li><a href="javascript:void(0)" ng-click="vm.logout()">Logout</a></li>
                 {% else %}
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>
+                    <li>
+                    </li>
+
                 {% endif %}
             </ul>
         </div> <!-- /.collapse.navbar-collapse -->
