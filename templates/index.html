@@ -16,13 +16,12 @@
 
 <div class="wrapper" style="height: 100%; min-height: 100%">
 
-{#                {% include 'chatroom.html' %}#}
     {% if user.is_authenticated %}
         <div id="sidebar">
             <div class="sidebar-header">
                 <h2>Chat</h2>
             </div>
-                {% include 'chatcolumn.html' %}
+            {% include 'chatcolumn.html' %}
         </div>
         <button type="button" id="sidebarCollapse" class="btn-btn">
             <i class="glyphicon glyphicon-align-left"></i>
