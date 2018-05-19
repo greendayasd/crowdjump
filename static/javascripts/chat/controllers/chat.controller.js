@@ -11,30 +11,11 @@
         var vm = this;
         $scope.chatMessages = [];
         $scope.unreadMessages = 0;
+        $scope.unreadMessagesNotZero = true;
 
         vm.isAuthenticated = Authentication.isAuthenticated();
         // console.error(vm.isAuthenticated || false);
         // vm.cookie = $cookies.getObject('authenticatedAccount');
-        activate();
-
-        function activate() {
-            Chat.newestX(10).then(chatSuccessFn, chatErrorFn);
-
-            function chatSuccessFn(data, status, headers, config) {
-                $scope.chatMessages = data.data.results.reverse();
-                // console.log($scope.chatMessages);
-
-            }
-
-            function chatErrorFn(data, status, headers, config) {
-                console.error(data.error);
-            }
-
-        }
-
-        function test() {
-            console.log("test " + $scope.unreadMessages);
-        }
 
 
         var roomName = '123';
@@ -50,6 +31,38 @@
             ws_scheme + '://' + window.location.host + port +
             '/ws/chat/' + roomName + '/');
 
+        activate();
+
+        function activate() {
+            Chat.newestX(12).then(chatSuccessFn, chatErrorFn);
+
+            function chatSuccessFn(data, status, headers, config) {
+                $scope.chatMessages = data.data.results.reverse();
+                // console.log($scope.chatMessages);
+
+            }
+
+            function chatErrorFn(data, status, headers, config) {
+                console.error(data.error);
+            }
+
+            window.setTimeout(function () {
+                scrollChat();
+            }, 100);
+
+        }
+
+        function scrollChat() {
+            document.getElementById('scroll').scrollIntoView();
+        }
+
+        $scope.resetUnread = function () {
+            $scope.unreadMessages = 0;
+            $scope.unreadMessagesNotZero = false;
+        }
+        $scope.test = function () {
+            document.getElementById('scroll').scrollIntoView();
+        }
 
         chatSocket.onmessage = function (message) {
 
@@ -59,7 +72,8 @@
 
             var data = JSON.parse(message.data);
             var chat = $("#all_messages")
-            var ele = $('<div [innerHTML]="text" style="background-color: white"></div>')
+            var date = data.datetime;
+            var ele = $('<div [innerHTML]="text" style="background-color: white" title=data.datetime></div>')
 
             ele.append(
                 ' <strong>' + data.username + ': </strong> ')
@@ -72,11 +86,12 @@
             $('#all_messages').scrollTop($('#all_messages')[$('#all_messages').length - 1].scrollHeight);
 
             //notify
-            var open = document.querySelector('#sidebar.active');
-            if (open == null) {
+            var closed = document.querySelector('#sidebar.active');
+            if (closed != null) {
                 $scope.unreadMessages += 1;
-                var counter = document.getElementById('messageCounter');
-                counter.text = $scope.unreadMessages;
+                $scope.$apply(function () {
+                    $scope.unreadMessagesNotZero = false;
+                });
             }
         };
 

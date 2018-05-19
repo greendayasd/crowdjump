@@ -1,12 +1,14 @@
 {% verbatim %}
-<div class="container chatcontainer" ng-controller="ChatController as vm" ng-show="vm.isAuthenticated" style="width: 100%">
+<div class="container chatcontainer" ng-show="vm.isAuthenticated"
+     style="width: 100%; height: 50%">
     <div class="row">
-        <div class="col-md-12 pre-scrollable" id="all_messages" onload="
-                $('#all_messages').scrollTop($('#all_messages')[17].scrollHeight)">
+        <div class="col-md-12 pre-scrollable well" id="all_messages" style="background-color: white;">
             <div ng-repeat="message in chatMessages" id="chat">
-                <div [innerHTML]="text" style="background-color: white">
+                <div [innerHTML]="text" style="background-color: white;"   ng-attr-title="{{ message.created | date : 'dd.MM.y HH:mm:ss' }}">
                     <strong>{{ message.user.username }}:</strong> {{ message.message_html }}
                 </div>
+            </div>
+            <div id="scroll">
             </div>
         </div>
     </div>
@@ -14,20 +16,16 @@
         <div id="no_messages">No messages here</div>
     </div>
     <div class="row">
-        <form id="chatform">
-            <div class="col-md-12">
+            <form id="chatform">
                 <input id="chat-message-input" type="text" class="form-control input-lg"
                        placeholder="Type message here"
                        required>
-            </div>
-            <div class="col-xs-2 col-sm-1">
-                <button id="chat-message-submit" type="button" class="btn btn-primary input-lg" value="Send"
-                        style="visibility:hidden">Submit
-                </button>
-            </div>
+                    <button id="chat-message-submit" type="button" class="btn btn-primary input-lg" value="Send"
+                            style="visibility:hidden; height: 1px">Submit
+                    </button>
 
-        </form>
-    </div>
+            </form>
+        </div>
 </div>
 
 <script>

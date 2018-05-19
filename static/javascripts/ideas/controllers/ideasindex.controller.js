@@ -682,14 +682,7 @@
             // }
 
             $scope.test = function () {
-                var index = get_IdeaIndex(46);
-
-                var upvotes = $scope.ideas[index].upvotes + 0;
-                var downvotes = $scope.ideas[index].downvotes + 0;
-                var uservote = $scope.ideas[index].uservote;
-                console.log(index);
-                console.log(upvotes + " , " + downvotes);
-                console.log(uservote);
+                document.getElementById( 'pagination' ).scrollIntoView();
             }
 
             function toast(msg) {

@@ -16,23 +16,28 @@
 {% include 'navbar.html' %}
 
 <div class="wrapper" style="height: 100%; min-height: 100%; width: 100%">
+    {#<div class="wrapper" style="">#}
 
     {% if user.is_authenticated %}
-        <div class="container" id="sidebar">
-            <div class="sidebar-header">
-                <h2>Chat</h2>
+        <div ng-controller="ChatController as vm">
+        {% verbatim %}
+            <button type="button" id="sidebarCollapse" class="btn-btn" ng-click="resetUnread()">
+                <i class="glyphicon glyphicon-align-left"><span ng-show=" {{ unreadMessagesNotZero}}">{{ unreadMessages }}</span></i>
+
+            </button>
+            <button class="btn btn-primary" ng-click="test()">Test</button>
+        {% endverbatim %}
+            <div class="container col-md-6 well" id="sidebar">
+                <div class="sidebar-header">
+                    <h1>Chat</h1>
+                </div>
+                {% include 'chatcolumn.html' %}
             </div>
-            {% include 'chatcolumn.html' %}
         </div>
-        <button type="button" id="sidebarCollapse" class="btn-btn">
-            <i class="glyphicon glyphicon-align-left"></i>
-            <span></span>
-        </button><br>
-        <span id="messageCounter"></span>
     {% else %}
 
     {% endif %}
-    <div class="container-fluid ng-scope" style=" width: 100%">
+    <div class="ng-scope col-l-12" id="content" style=" width: 100%">
         <div ng-view>
 
         </div>
@@ -41,6 +46,7 @@
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
+                $('#content').toggleClass('active');
             });
         });
     </script>
