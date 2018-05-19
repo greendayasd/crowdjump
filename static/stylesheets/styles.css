@@ -13,14 +13,14 @@
 
 .idea .idea__time {
     font-weight: bold;
-    float:left;
+    float: left;
     font-size: 75%;
     clear: both;
     text-align: left;
     padding-bottom: 0px;
 }
 
-.idea .idea__content{
+.idea .idea__content {
     text-align: left;
 }
 
@@ -31,7 +31,7 @@
 .idea .idea__estimated_time {
     font-weight: bold;
     text-align: left;
-    float:left;
+    float: left;
     color: orange;
     font-size: large;
     padding-bottom: 0px;
@@ -45,7 +45,7 @@
     padding-bottom: 0px;
 }
 
-.idea .idea__delete{
+.idea .idea__delete {
 
 }
 
@@ -65,14 +65,14 @@
 
 .comment .comment__time {
     font-weight: bold;
-    float:left;
+    float: left;
     font-size: 75%;
     clear: both;
     text-align: left;
     padding-bottom: 0px;
 }
 
-.comment .comment__content{
+.comment .comment__content {
     text-align: left;
 }
 
@@ -80,7 +80,7 @@
     text-decoration: none;
 }
 
-.comment .comment__newest_comment{
+.comment .comment__newest_comment {
 
     outline: grey;
 }
@@ -99,20 +99,20 @@
     color: white;
     background: red;
 }
+
 .btn-delete-idea:hover {
     color: white;
     background: darkred;
 }
 
-.btn:focus,.btn:active {
-   outline: red !important;
-   box-shadow: red !important;
+.btn:focus, .btn:active {
+    outline: red !important;
+    box-shadow: red !important;
 }
 
-#toast-container
-{
-  position: fixed;
-  bottom: 0;
-  z-index: 999;
-  overflow: visible !important;
+#toast-container {
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    overflow: visible !important;
 }

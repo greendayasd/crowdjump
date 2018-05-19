@@ -28,7 +28,7 @@ ul.errorlist > li {
 
 .center_div{
     margin: 0 auto;
-    width:80% /* value of your choice which suits your alignment */
+    width:100% /* value of your choice which suits your alignment */
 }
 .center-block {
   display: block;
@@ -65,41 +65,69 @@ ul.errorlist > li {
     /*padding-left: 7px;*/
     z-index: 2; /* Stay on top */
     top: 0; /* Stay at the top */
-    left: 0;
+    right: 10px;
     overflow-x: hidden; /* Disable horizontal scroll */
     overflow: visible;
 }
 
 #sidebar {
-    /*min-width: 250px;*/
-    /*max-width: 250px;*/
     min-width: 20%;
     max-width: 20%;
-    margin-top: 60px;
-    background: #7386D5;
-    transition: all 0.3s;
-    position: fixed;
+    margin-left: -120%;
+    background: #7bc7e8;
+    position:fixed;
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
-    left: 0;
     overflow-x: hidden; /* Disable horizontal scroll */
+    margin-top: 60px;
 }
 
 #sidebar.active {
-    margin-left: -20%;
-    margin-top: 60px;
-    margin-bottom:30px;
-    position: fixed;
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    overflow-x: hidden; /* Disable horizontal scroll */
+    margin-left: 00%;
+    right:0;
 }
+
+#hsidebar {
+    min-width: 20%;
+    max-width: 20%;
+    margin-left: -120%;
+    margin-top: 10px;
+}
+
+#hsidebar.active {
+    margin-left: 00%;
+    visibility: visible;
+    right:0;
+}
+
+/*#sidebar {*/
+    /*!*min-width: 250px;*!*/
+    /*!*max-width: 250px;*!*/
+    /*min-width: 20%;*/
+    /*max-width: 20%;*/
+    /*margin-top: 60px;*/
+    /*background: #7bc7e8;*/
+    /*!*transition: all 0.3s;*!*/
+    /*margin-left: -120%;*/
+    /*!*right: -20%;*!*/
+    /*position: fixed;*/
+    /*!*z-index: 1; !* Stay on top *!*!*/
+    /*!*top: 0; !* Stay at the top *!*!*/
+    /*overflow-x: hidden; !* Disable horizontal scroll *!*/
+/*}*/
+
+/*#sidebar.active {*/
+    /*margin-left: 20%;*/
+    /*margin-top: 60px;*/
+    /*margin-bottom:30px;*/
+    /*!*right: 0;*!*/
+/*}*/
 
 #sidebar .sidebar-header {
     padding: 0px;
     /*background: #6d7fcc;*/
-    background: #7386D5;
+    background: #7bc7e8;
+    /*background: #7386D5;*/
     text-align: center;
 }
 
@@ -111,11 +139,12 @@ ul.errorlist > li {
 }
 
 #content {
-    margin-left: 20%;
+    /*margin-left: 10%;*/
 }
 
 #content.active{
-    margin-left: 0%;
+    /*margin-left: -0%;*/
+    max-width: 80%;
 }
 
 a[data-toggle="collapse"] {

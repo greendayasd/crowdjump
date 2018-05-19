@@ -186,7 +186,7 @@
 
                             </div>
                         </div>
-                        <div class="well" style="background-color: #76cce8;" ng-show="idea.comments.length > 0 || isAuthenticated">
+                        <div class="commentContainer well" style="background-color: #7bc7e8;" ng-show="idea.comments.length > 0 || isAuthenticated">
                             <div class="comment">
                                 <div class="comment__comments">
                                     <div ng-repeat="comment in commentOrdering = (idea.comments | filter : customCommentFilter | orderBy:'created_at':false)"  style="background-color: #f5f5f5;" class="well">

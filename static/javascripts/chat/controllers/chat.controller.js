@@ -10,7 +10,8 @@
     function ChatController($scope, Authentication, Chat) {
         var vm = this;
         $scope.chatMessages = [];
-        $scope.unreadMessages = 0;
+        $scope.unreadMessages = '';
+        $scope.messageCounter = 0;
         $scope.unreadMessagesNotZero = true;
 
         vm.isAuthenticated = Authentication.isAuthenticated();
@@ -34,7 +35,7 @@
         activate();
 
         function activate() {
-            Chat.newestX(12).then(chatSuccessFn, chatErrorFn);
+            Chat.newestX(16).then(chatSuccessFn, chatErrorFn);
 
             function chatSuccessFn(data, status, headers, config) {
                 $scope.chatMessages = data.data.results.reverse();
@@ -57,7 +58,8 @@
         }
 
         $scope.resetUnread = function () {
-            $scope.unreadMessages = 0;
+            $scope.unreadMessages = '';
+            $scope.messageCounter = 0;
             $scope.unreadMessagesNotZero = false;
         }
         $scope.test = function () {
@@ -86,9 +88,10 @@
             $('#all_messages').scrollTop($('#all_messages')[$('#all_messages').length - 1].scrollHeight);
 
             //notify
-            var closed = document.querySelector('#sidebar.active');
-            if (closed != null) {
-                $scope.unreadMessages += 1;
+            var open = document.querySelector('#sidebar.active');
+            if (open == null) {
+                $scope.messageCounter += 1;
+                $scope.unreadMessages = '' + $scope.messageCounter;
                 $scope.$apply(function () {
                     $scope.unreadMessagesNotZero = false;
                 });
