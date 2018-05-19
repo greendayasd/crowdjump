@@ -42,6 +42,10 @@ ul.errorlist > li {
     align-items: stretch;
 }
 
+.wrapper.active {
+    max-width: 80%;
+}
+
 .chatcontainer{
   flex-wrap: wrap;
   overflow-wrap: break-word;
@@ -87,18 +91,6 @@ ul.errorlist > li {
     right:0;
 }
 
-#hsidebar {
-    min-width: 20%;
-    max-width: 20%;
-    margin-left: -120%;
-    margin-top: 10px;
-}
-
-#hsidebar.active {
-    margin-left: 00%;
-    visibility: visible;
-    right:0;
-}
 
 /*#sidebar {*/
     /*!*min-width: 250px;*!*/
@@ -131,12 +123,6 @@ ul.errorlist > li {
     text-align: center;
 }
 
-#messageCounter {
-    font-size: 80%;
-    float: left;
-    text-align: left;
-    padding-left: 0px;
-}
 
 #content {
     /*margin-left: 10%;*/
