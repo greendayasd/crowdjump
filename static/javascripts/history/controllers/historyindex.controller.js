@@ -5,10 +5,9 @@
         .module('crowdjump.history.controllers')
         .controller('HistoryIndexController', HistoryIndexController);
 
-    HistoryIndexController.$inject = ['$scope', 'Authentication', 'History', 'Snackbar', '$cookies'];
+    HistoryIndexController.$inject = ['$scope', 'Authentication', 'History'];
 
-    function HistoryIndexController($scope, Authentication, History, Snackbar, $cookies) {
-        var vm = this;
+    function HistoryIndexController($scope, Authentication, History) {
 
         $scope.history = [];
         $scope.tableRowExpanded = false;
@@ -48,7 +47,7 @@
         };
 
         $scope.pageChanged = function () {
-            console.log('Page changed to: ' + $scope.currentPage);
+            // console.log('Page changed to: ' + $scope.currentPage);
         };
 
         $scope.setItemsPerPage = function (num) {
@@ -87,7 +86,6 @@
             }
 
             function historyErrorFn(data, status, headers, config) {
-                Snackbar.error(data.error);
                 console.error(data.error);
             }
         }

@@ -5,9 +5,9 @@
         .module('crowdjump.statistics.controllers')
         .controller('HighscoreController', HighscoreController);
 
-    HighscoreController.$inject = ['$scope', 'Authentication', 'Statistics', 'History', 'Snackbar', '$cookies'];
+    HighscoreController.$inject = ['$scope', 'Authentication', 'Statistics'];
 
-    function HighscoreController($scope, Authentication, Statistics, History, Snackbar, $cookies) {
+    function HighscoreController($scope, Authentication, Statistics) {
         var vm = this;
 
         $scope.statistics = [];
@@ -28,12 +28,10 @@
 
             function statisticsSuccessFn(data, status, headers, config) {
                 $scope.statistics = data.data["results"];
-                // console.error("data " + data.data);
 
             }
 
             function statisticsErrorFn(data, status, headers, config) {
-                Snackbar.error(data.error);
                 console.error(data.error);
             }
         }

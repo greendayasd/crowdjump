@@ -30,7 +30,8 @@
         }).when('/history', {
             controller: 'HistoryController',
             controllerAs: 'vm',
-            templateUrl: '/static/templates/layout/history.html'
+            templateUrl: '/static/templates/layout/history.html',
+            withLogin: true
 
         }).when('/game', {
             controller: 'GameController',
@@ -56,6 +57,18 @@
             controller: 'IdeasIndexController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/idea_index.html'
+
+
+            //surveys
+        }).when('/survey0', {
+            controller: 'IdeasIndexController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/survey0.html'
+
+        }).when('/survey1', {
+            controller: 'IdeasIndexController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/survey1.html'
         })
             .otherwise('/');
     }

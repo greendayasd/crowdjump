@@ -15,8 +15,6 @@
         $scope.unreadMessagesNotZero = true;
 
         vm.isAuthenticated = Authentication.isAuthenticated();
-        // console.error(vm.isAuthenticated || false);
-        // vm.cookie = $cookies.getObject('authenticatedAccount');
 
 
         var roomName = '123';

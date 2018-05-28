@@ -9,9 +9,9 @@
             .module('crowdjump.ideas.controllers')
             .controller('IdeasIndexController', IdeasIndexController);
 
-        IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Comments', 'Votes', 'History', '$cookies', 'ngDialog', '$controller', '$mdToast', '$window', '$route'];
+        IdeasIndexController.$inject = ['$scope', 'Authentication', 'Ideas', 'Comments', 'Votes', 'History', 'ngDialog', '$controller', '$mdToast', '$window'];
 
-        function IdeasIndexController($scope, Authentication, Ideas, Comments, Votes, History, $cookies, ngDialog, $controller, $mdToast, $window, $route) {
+        function IdeasIndexController($scope, Authentication, Ideas, Comments, Votes, History, ngDialog, $controller, $mdToast, $window) {
             var vm = this;
             var canDelete = true;
 
@@ -155,9 +155,10 @@
             $scope.comments = [];
 
             if ($scope.isAuthenticated) {
-                $scope.cookie = $cookies.getObject('authenticatedAccount');
+                $scope.cookie = Authentication.getAuthenticatedAccount();
                 $scope.userid = $scope.cookie["id"];
                 $scope.username2 = $scope.cookie["username"];
+                // console.log($scope.userid + ' ' + $scope.username2);
             }
 
             get_ideavotes();

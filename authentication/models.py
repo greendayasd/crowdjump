@@ -49,6 +49,7 @@ class Account(AbstractBaseUser):
     #weight
     vote_weight = models.IntegerField(default=3)
     vote_multiplier = models.DecimalField(default=1, max_digits=5, decimal_places=2)
+
     survey_status = models.IntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)

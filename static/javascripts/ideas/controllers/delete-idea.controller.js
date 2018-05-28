@@ -6,17 +6,13 @@
         .controller('DeleteIdeaController', DeleteIdeaController);
 
 
-    DeleteIdeaController.$inject = ['$rootScope', '$route', '$scope', 'Snackbar', 'Ideas'];
-    // DeleteIdeaController.$inject = ['$rootScope', '$scope',  '$route', 'Authentication', 'Ideas'];
+    DeleteIdeaController.$inject = ['$route', '$scope', 'Ideas'];
 
-
-    // function DeleteIdeaController(id, $scope, $route, Authentication, Snackbar, Ideas) {
-    function DeleteIdeaController($rootScope, $route, $scope, Snackbar, Ideas) {
+    function DeleteIdeaController($route, $scope, Ideas) {
         var vm = this;
         var canDelete = false;
         $scope.submit = submit;
 
-        // $scope.id = id;
 
 
         function closeDialog() {

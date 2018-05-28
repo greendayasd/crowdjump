@@ -15,6 +15,13 @@
 {% include 'javascripts.html' %}
 {% include 'navbar.html' %}
 
+
+{% if user.is_authenticated %}
+    <div ng-controller="QuestionnaireController as vm">
+    </div>
+{% else %}
+{% endif %}
+
 <div class="wrapper" style="height: 100%; min-height: 100%;">
     {#<div class="wrapper" style="">#}
 
@@ -23,7 +30,7 @@
 
         </div>
     </div>
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and FALSE %}
         <div ng-controller="ChatController as vm">
             {% verbatim %}
             <button type="button" id="sidebarCollapse" class="btn-btn" ng-click="resetUnread()">

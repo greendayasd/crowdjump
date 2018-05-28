@@ -5,9 +5,9 @@
         .module('crowdjump.history.controllers')
         .controller('HistoryController', HistoryController);
 
-    HistoryController.$inject = ['$scope', 'Authentication', 'History', 'Snackbar', '$cookies'];
+    HistoryController.$inject = ['$scope', 'Authentication', 'History'];
 
-    function HistoryController($scope, Authentication, History, Snackbar, $cookies) {
+    function HistoryController($scope, Authentication, History) {
         var vm = this;
 
         $scope.history = [];
@@ -31,7 +31,6 @@
                 $scope.version = data.data["results"][0];          }
 
             function historyErrorFn(data, status, headers, config) {
-                Snackbar.error(data.error);
                 console.error(data.error);
             }
         }
