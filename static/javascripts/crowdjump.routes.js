@@ -16,7 +16,7 @@
             controller: 'RegisterController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/authentication/register.html'
-            
+
         }).when('/login', {
             controller: 'LoginController',
             controllerAs: 'vm',
@@ -61,14 +61,18 @@
 
             //surveys
         }).when('/survey0', {
-            controller: 'IdeasIndexController',
+            controller: 'QuestionnaireController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/questionnaire/survey0.html'
 
         }).when('/survey1', {
-            controller: 'IdeasIndexController',
+            controller: 'QuestionnaireController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/questionnaire/survey1.html'
+        }).when('/survey2', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/survey2.html'
         })
             .otherwise('/');
     }

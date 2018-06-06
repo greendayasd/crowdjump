@@ -2,17 +2,17 @@
 
 const CONST_DOUBLE_JUMP = false;
 const CONST_COINS = false;
-const CONST_ENEMIES = true;
-const CONST_ANIMATE_CHARACTER = true;
+const CONST_ENEMIES = false;
+const CONST_ANIMATE_CHARACTER = false;
 const CONST_TIME = true;
 const CONST_BUBBLE = true;
 const CONST_PAUSE = false;
-const CONST_LEVEL = 4;
-const CONST_ZHONYA = true;
+const CONST_LEVEL = 1;
+const CONST_ZHONYA = false;
 const CONST_KILL_IN_ZHONYA = false;
 const CONST_ZHONYA_DURATION = 2;
 const CONST_ZHONYA_COOLDOWN = 4;
-const CONST_SHOOTING = true;
+const CONST_SHOOTING = false;
 const CONST_FIRERATE = 500;
 const CONST_BULLETSPEED = 800;
 const CONST_BULLETDROP = false;
@@ -48,8 +48,8 @@ window.createGame = function (canvas, scope) {
     scope.$on('$destroy', function () {
         game.destroy(); // Clean up the game when we leave this scope
     });
-    var ws_scheme = 'wss'; //.location.protocol == "https:" ? "wss" : "ws";
 
+    var ws_scheme = 'wss'; //.location.protocol == "https:" ? "wss" : "ws";
     var port = ':8001';
     if (window.location.host == "localhost:8000") {
         ws_scheme = 'ws';
@@ -60,7 +60,7 @@ window.createGame = function (canvas, scope) {
         ws_scheme + '://' + window.location.host + port +
         '/ws/website/');
     highscoreSocket.onclose = function (e) {
-        console.error('Chat socket closed unexpectedly');
+        console.error('Highscore socket closed unexpectedly');
     };
 
 

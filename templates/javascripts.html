@@ -33,11 +33,13 @@
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script type="text/javascript" src="{% static 'bower_components/ngDialog/js/ngDialog.js' %}"></script>
     <script type="text/javascript" src="{% static 'lib/snackbarjs/snackbar.min.js' %}"></script>
 
 
-{#    <script src="https://cdn.rawgit.com/JDMcKinstry/JavaScriptDateFormat/master/Date.format.min.js"></script>#}
+    {#    <script src="https://cdn.rawgit.com/JDMcKinstry/JavaScriptDateFormat/master/Date.format.min.js"></script>#}
 
 
 
@@ -102,12 +104,22 @@
 
 
     <script type="text/javascript" src="{% static 'javascripts/questionnaire/questionnaire.module.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/questionnaire/controllers/questionnaire.controller.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/questionnaire/services/questionnaire.service.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/questionnaire/controllers/questionnaire.controller.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/questionnaire/services/questionnaire.service.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/text.directive.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/combo.directive.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/progressbar.directive.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/radio.directive.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/check.directive.js' %}"></script>
 
 
     <script type="text/javascript" src="{% static 'javascripts/statistics/statistics.module.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/statistics/services/statistics.service.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/statistics/controllers/statistics.controller.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/statistics/controllers/highscore.controller.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/statistics/controllers/statistics.controller.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/statistics/controllers/highscore.controller.js' %}"></script>
 {% endcompress %}

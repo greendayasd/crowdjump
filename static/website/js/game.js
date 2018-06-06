@@ -241,23 +241,27 @@ Crowdjump.Game.create = function () {
         this.stage.addChild(this.pausedIndicator);
     }
 
-    // this.game.physics.startSystem(Phaser.Physics.ARCADE);
-    bullets = this.game.add.group();
-    bullets.enableBody = true;
-    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+    if (CONST_SHOOTING) {
+        // this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        // this.game.physics.enable(bullets, Phaser.Physics.ARCADE);
+        bullets = this.game.add.group();
+        bullets.enableBody = true;
+        bullets.physicsBodyType = Phaser.Physics.ARCADE;
 
-    bullets.createMultiple(50, 'bullet');
-    bullets.setAll('checkWorldBounds', true);
-    bullets.setAll('outOfBoundsKill', true);
-    if (!CONST_BULLETDROP) {
-        bullets.setAll('body.allowGravity', false);
+        bullets.createMultiple(50, 'bullet');
+        bullets.setAll('checkWorldBounds', true);
+        bullets.setAll('outOfBoundsKill', true);
+        if (!CONST_BULLETDROP) {
+            bullets.setAll('body.allowGravity', false);
 
+        }
     }
 
-    // this.game.physics.enable(bullets, Phaser.Physics.ARCADE);
+    if (CONST_ZHONYA) {
+        this.input.keyboard.addKey(Phaser.KeyCode.F).onUp.add(this.activate_Zhonyas, this);
+    }
 
     this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.restart, this);
-    this.input.keyboard.addKey(Phaser.KeyCode.F).onUp.add(this.activate_Zhonyas, this);
     this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
 
 };
@@ -278,28 +282,30 @@ Crowdjump.Game.update = function () {
     this.timeFont.text = `${seconds}`;
     this.coinFont.text = `x${this.coinPickupCount}`;
 
+    if (CONST_ZHONYA) {
+        if (zhonya_activated) {
+            // var zhonya_time = CONST_ZHONYA_DURATION - Math.abs(Math.floor((game.timeElapsed - time_zhonya_activated) / 1));
+            var zhonya_time = CONST_ZHONYA_DURATION - (Math.round(game.timeElapsed / 1) - Math.round(time_zhonya_activated / 1));
+            // console.log(game.timeElapsed +  ' (' + Math.round(game.timeElapsed / 1) + ')   ' + time_zhonya_activated +  ' (' + Math.round(time_zhonya_activated / 1) + ')   ' + '  -->  ' + zhonya_time);
+            this.zhonyaFont.text = `${zhonya_time}`;
+            this.zhonyaFont.setStyle({fill: '#bda73b'});
+        }
+        if (zhonya_cooldown) {
+            // var zhonya_time = CONST_ZHONYA_COOLDOWN - Math.abs(Math.floor((game.timeElapsed - time_zhonya_cooldown) / 1));
+            var zhonya_time = CONST_ZHONYA_COOLDOWN - (Math.round(game.timeElapsed / 1) - Math.round(time_zhonya_cooldown / 1));
+            // console.log(game.timeElapsed +  ' (' + Math.round(game.timeElapsed / 1) + ')   ' + time_zhonya_cooldown +  ' (' + Math.round(time_zhonya_cooldown / 1) + ')   ' + '  -->  ' + zhonya_time);
+            this.zhonyaFont.text = `${zhonya_time}`;
+            this.zhonyaFont.setStyle({fill: '#364bbd'});
+        }
+        if (!zhonya_activated && !zhonya_cooldown) {
+            this.zhonyaFont.text = 'ready!';
+            this.zhonyaFont.setStyle({fill: '#000000'});
+        }
 
-    if (zhonya_activated) {
-        // var zhonya_time = CONST_ZHONYA_DURATION - Math.abs(Math.floor((game.timeElapsed - time_zhonya_activated) / 1));
-        var zhonya_time = CONST_ZHONYA_DURATION - (Math.round(game.timeElapsed / 1) - Math.round(time_zhonya_activated / 1));
-        // console.log(game.timeElapsed +  ' (' + Math.round(game.timeElapsed / 1) + ')   ' + time_zhonya_activated +  ' (' + Math.round(time_zhonya_activated / 1) + ')   ' + '  -->  ' + zhonya_time);
-        this.zhonyaFont.text = `${zhonya_time}`;
-        this.zhonyaFont.setStyle({fill: '#bda73b'});
-    }
-    if (zhonya_cooldown) {
-        // var zhonya_time = CONST_ZHONYA_COOLDOWN - Math.abs(Math.floor((game.timeElapsed - time_zhonya_cooldown) / 1));
-        var zhonya_time = CONST_ZHONYA_COOLDOWN - (Math.round(game.timeElapsed / 1) - Math.round(time_zhonya_cooldown / 1));
-        // console.log(game.timeElapsed +  ' (' + Math.round(game.timeElapsed / 1) + ')   ' + time_zhonya_cooldown +  ' (' + Math.round(time_zhonya_cooldown / 1) + ')   ' + '  -->  ' + zhonya_time);
-        this.zhonyaFont.text = `${zhonya_time}`;
-        this.zhonyaFont.setStyle({fill: '#364bbd'});
-    }
-    if (!zhonya_activated && !zhonya_cooldown) {
-        this.zhonyaFont.text = 'ready!';
-        this.zhonyaFont.setStyle({fill: '#000000'});
-    }
+        if (this.game.input.activePointer.isDown) {
+            this.fire_Bullet();
+        }
 
-    if (this.game.input.activePointer.isDown) {
-        this.fire_Bullet();
     }
 };
 
@@ -312,10 +318,14 @@ Crowdjump.Game._handleCollisions = function () {
 
     this.game.physics.arcade.overlap(this.hero, this.coins, this._onHeroVsCoin,
         null, this);
-    this.game.physics.arcade.overlap(bullets, this.spiders, this._onBulletVsEnemy,
-        null, this);
-    this.game.physics.arcade.overlap(bullets, this.platforms, this._onBulletVsPlatform,
-        null, this);
+
+    if (CONST_SHOOTING) {
+        this.game.physics.arcade.overlap(bullets, this.spiders, this._onBulletVsEnemy,
+            null, this);
+        this.game.physics.arcade.overlap(bullets, this.platforms, this._onBulletVsPlatform,
+            null, this);
+
+    }
 
 
     if (!CONST_ZHONYA || !zhonya_activated || CONST_KILL_IN_ZHONYA) {

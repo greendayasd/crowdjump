@@ -1,0 +1,40 @@
+<div class="text-short  mandatory col-xs-12 question-container"
+     ng-style=" question.visible ? (question.error ? {'display': 'block','border-style': 'solid'} : {'display': 'block','border-style': 'none'}) : (question.error ? {'display': 'none','border-style': 'solid'} : {'display': 'none','border-style': 'none'})">
+
+    <!-- Question title -->
+    <div class="row question-wrapper question-title-container">
+        <div class="col-sm-12 questiontext">
+            <div class="questiontitlecontainer">
+                <span ng-show="{{ question.required }}" class="text-danger asterisk"></span>
+                {{ question.text }}
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Answer -->
+    <div class="row question-wrapper answer-container">
+        <div class="col-sm-12 answer">
+
+            <div class="question answer-item text-item  inputwidth-12 col-sm-12 form-horizontal short-free-text">
+
+                <div class="form-group">
+
+                    <div class="col-xs-12 col-sm-7">
+                        <input class="form-control text  empty" size="12"
+                               id="question.id"
+                               ng-change="checkconditions(question)"
+                               type="text"
+                               ng-model='question.value'>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+
+</div>

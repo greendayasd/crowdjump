@@ -91,13 +91,13 @@
             </table>
 
             <div class="btn-group mr-4" data-toggle="buttons">
-                <button class="btn btn-primary" ng-click="orderUpvotes()">Most Upvotes First</button>
-                <button class="btn btn-primary" ng-click="orderDownvotes()">Most Downvotes First</button>
+                <!--<button class="btn btn-primary" ng-click="orderUpvotes()">Most Upvotes First</button>
+                <button class="btn btn-primary" ng-click="orderDownvotes()">Most Downvotes First</button>-->
                 <button class="btn btn-primary" ng-click="orderOldest()">Oldest First</button>
                 <button class="btn btn-primary" ng-click="orderNewest()">Newest First</button>
-                <label type="button" class="btn btn-primary" ng-model="sortReverse" uib-btn-checkbox
+                <!--<label type="button" class="btn btn-primary" ng-model="sortReverse" uib-btn-checkbox
                        btn-checkbox-true="1" btn-checkbox-false="0" ng-click="sort_all()"> Reverse Ordering
-                </label>
+                </label> -->
             </div>
             <br><br>
             <div class="btn-group mr-4" data-toggle="buttons">
@@ -142,7 +142,7 @@
                                 <div class="idea__estimated_time" ng-if="idea.estimated_time == Null">
                                     No estimated time yet
                                 </div>
-                                <div class="idea__votes" ng-show="isAuthenticated && idea.feasible && !idea.implemented">
+                                <!--<div class="idea__votes" ng-show="isAuthenticated && idea.feasible && !idea.implemented">
                                     <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
                                            ng-src="{{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png' }}"
                                            ng-click="upvote(idea.id)"/>
@@ -153,7 +153,7 @@
                                     <span ng-attr-id="downvote_count{{ idea.id }}">{{ idea.downvotes }}</span>
                                 </div>
 
-                                <div class="idea__votes" ng-show="!isAuthenticated">
+                                <div class="idea__votes" ng-show="!isAuthenticated && idea.feasible && !idea.implemented">
                                     <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
                                            ng-src="/static/website/images/upvote%20trans.png"
                                            ng-click=""/>
@@ -172,10 +172,12 @@
                                            ng-src="{{ idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png' }}"
                                            ng-click="vote_impossible()"/>
                                     <span ng-attr-id="downvote_count{{ idea.id }}">{{ idea.downvotes }}</span>
-                                </div>
+                                </div>  -->
                                 <div class="idea__admin_comment">
+                                     <br>
                                     <span style="font-weight: bold"
-                                          ng-if="idea.feasible == false"> Not feasible <br></span>
+                                          ng-if="idea.feasible == false">Not feasible <br></span> <!-- 1.br nur ohne comments -->
+
                                     {{ idea.admin_comment }}
                                 </div>
 
@@ -189,7 +191,7 @@
 
                             </div>
                         </div>
-                        <div class="commentContainer well" style="background-color: #7bc7e8;" ng-show="idea.comments.length > 0 || isAuthenticated">
+                        <!--<div class="commentContainer well" style="background-color: #7bc7e8;" ng-show="idea.comments.length > 0 || isAuthenticated">
                             <div class="comment">
                                 <div class="comment__comments">
                                     <div ng-repeat="comment in commentOrdering = (idea.comments | filter : customCommentFilter | orderBy:'created_at':false)"  style="background-color: #f5f5f5;" class="well">
@@ -236,7 +238,7 @@
                                     </button>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>

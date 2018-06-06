@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'ideas',
     'chat',
     'channels',
+    'questionnaire'
 ]
 
 MIDDLEWARE = [

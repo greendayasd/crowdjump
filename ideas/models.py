@@ -65,7 +65,7 @@ class Comment(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='comments')
     idea = models.ForeignKey(Idea, on_delete=models.CASCADE, related_name='comments')
 
-    text = models.CharField(max_length=40)
+    text = models.CharField(max_length=140)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

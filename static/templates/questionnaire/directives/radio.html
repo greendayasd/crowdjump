@@ -1,0 +1,51 @@
+<div class="yes-no  mandatory col-xs-12 question-container"
+     ng-style=" question.visible ? (question.error ? {'display': 'block','border-style': 'solid'} : {'display': 'block','border-style': 'none'}) : (question.error ? {'display': 'none','border-style': 'solid'} : {'display': 'none','border-style': 'none'})">
+
+    <!-- Question title -->
+    <div class="row question-wrapper question-title-container">
+        <div class="col-sm-12 questiontext">
+            <div class="qnumcode question-text">
+                <span ng-show="{{ question.required }}" class="text-danger asterisk"></span>
+                {{ question.text }}
+                <div ng-show="{{ question.showImage }}">
+                    <br>
+                    <img src="{{ question.imageURL }}" width="{{ question.imageWidth }}" style="margin-left: auto;margin-right: auto; display: block">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Answer -->
+    <div class="row question-wrapper answer-container">
+        <div class="col-sm-12 answer">
+
+            <div class="list-unstyled answers-list radio-list">
+
+                <div class="col-xs-12 col-sm-6">  <!-- Full width on Phone; otherwise half width -->
+                    <div id="radio" class="btn-group btn-group-justified" data-toggle="buttons">
+
+                        <!-- Yes -->
+                        <label class="btn btn-primary " ng-click="question.value=1;checkconditions(question)">
+                            <input class="radio" value="Y"
+                                   type="radio">
+                            Ja </label>
+
+                        <!-- No -->
+                        <label class="btn btn-primary " ng-click="question.value=0;checkconditions(question)">
+                            <input class="radio" value="N"
+                                   type="radio">
+                            Nein </label>
+                    </div>
+                </div>
+
+                <!-- <input value="" type="hidden">-->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+    </div>
+</div>

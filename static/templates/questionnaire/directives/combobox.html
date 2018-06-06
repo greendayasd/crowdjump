@@ -1,0 +1,36 @@
+<div id="" class="list-dropdown  col-xs-12 question-container"
+     ng-style=" question.visible ? (question.error ? {'display': 'block','border-style': 'solid'} : {'display': 'block','border-style': 'none'}) : (question.error ? {'display': 'none','border-style': 'solid'} : {'display': 'none','border-style': 'none'})">
+
+
+    <!-- Question title -->
+    <div class="row question-wrapper question-title-container">
+        <div class="col-sm-12 questiontext">
+            <div class="qnumcode question-text">
+                <span ng-show="{{ question.required }}" class="text-danger asterisk"></span>
+                {{ question.text }}
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Answer -->
+    <div class="row question-wrapper answer-container">
+        <div class="col-sm-12 answer">
+
+            <p class="question answer-item dropdown-item col-sm-4">
+                <label for="" class="hide label">
+                    Bitte wählen </label>
+                <select class="form-control list-question-select" ng-model="question.value"
+                        ng-init="question.value = question.choices[0]" ng-options="item for item in question.choices"
+                        ng-change="checkconditions(question)">
+
+                </select>
+
+                <input name="" id="" value="" type="hidden">
+
+            </p>
+
+        </div>
+    </div>
+</div>
