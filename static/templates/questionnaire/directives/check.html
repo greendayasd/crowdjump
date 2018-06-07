@@ -9,7 +9,8 @@
                 {{ question.text }}
                 <div ng-show="{{ question.showImage }}">
                     <br>
-                    <img src="{{ question.imageURL }}" width="{{ question.imageWidth }}" style="margin-left: auto;margin-right: auto; display: block">
+                    <img src="{{ question.imageURL }}" width="{{ question.imageWidth }}"
+                         style="margin-left: auto;margin-right: auto; display: block">
 
                 </div>
             </div>
@@ -21,77 +22,61 @@
     <!-- Answer -->
     <div class="row question-wrapper answer-container">
         <div class="col-sm-12 answer">
-            <!-- Multiple Choice -->
-
             <!-- answer -->
             <div class="row multiple-choice-container subquestion-list questions-list checkbox-list">
-                <input name="MULTI836812X2337X27145" value="9" type="hidden">
+                <div ng-repeat="choice in question.choices">
+                    <!-- answer_row -->
+                    <div class="col-sm-12">
+                        <div class="question-item answer-item checkbox-item form-group  checkbox">
 
+                            <label class="answertext" style="margin-left: 10px"><input class="checkbox"
+                                                                                       value="$index"
+                                                                                       ng-click="checkconditions(question)"
+                                                                                       ng-model="question.selected[$index]"
+                                                                                       type="checkbox" style=""><span
+                                    style="margin-left: 10px"></span>{{ choice }}</label>
 
-                <!-- answer_row -->
-                <div class="col-sm-12">
-                    <div id="javatbd836812X2337X27145SQ001"
-                         class="question-item answer-item checkbox-item form-group  checkbox">
-                        <input class="checkbox" name="836812X2337X27145SQ001" id="answer836812X2337X27145SQ001"
-                               value="Y"
-                               onclick="cancelBubbleThis(event); checkconditions(this.value, this.name, this.type)"
-                               aria-labelledby="label-answer836812X2337X27145SQ001" type="checkbox">
-
-                        <label for="answer836812X2337X27145SQ001" class="answertext"></label>
-
-                        <!--
-                             The label text is provided inside a div,
-                             so final user can add paragraph, div, or whatever he wants in the subquestion text
-                             This field is related to the input thanks to attribute aria-labelledby
-                        -->
-                        <div class="label-text label-clickable" id="label-answer836812X2337X27145SQ001">
-                            Story
+                            <input value="" type="hidden">
                         </div>
-
-                        <input name="java836812X2337X27145SQ001" id="java836812X2337X27145SQ001" value="" type="hidden">
                     </div>
                 </div>
-                <!-- end of answer_row -->
 
-                <!-- answer_row_other -->
-                <div class="col-sm-12">
-                    <div id="javatbd836812X2337X27145other"
-                         class="question-item answer-item checkbox-item form-group checkbox">
+                <div class="col-sm-12" ng-show="question.freeChoice!=''">
+                    <div class="question-item answer-item checkbox-item form-group checkbox">
 
-                        <!-- Checkbox + label -->
                         <div class="pull-left othertext-label-checkox-container">
-                            <!-- checkbox -->
-                            <input class="checkbox other-checkbox dontread" name="836812X2337X27145othercbox"
-                                   id="answer836812X2337X27145othercbox"
-                                   aria-labelledby="label-836812X2337X27145othercbox" type="checkbox">
 
-                            <!-- label -->
-                            <label for="answer836812X2337X27145othercbox" class="answertext"></label>
-                            <!--
-                                 The label text is provided inside a div,
-                                 so final user can add paragraph, div, or whatever he wants in the subquestion text
-                                 This field is related to the input thanks to attribute aria-labelledby
-                            -->
-                            <div class="label-text label-clickable" id="label-836812X2337X27145othercbox">
-                                Andere
-                            </div>
+                            <!-- <input class="checkbox other-checkbox dontread"
+                                   ng-click="checkconditions(question)" type="checkbox"
+                                   style="margin-left: 0px">
+
+                            <label class="answertext"
+                                   ng-click="question.value=question.choices.length;checkconditions(question)"></label>
+
+                            <div class="label-text label-clickable" style="margin-left: 30px">
+                                {{ question.freeChoice }}
+                            </div>-->
+
+                            <label class="answertext" style="margin-left: 10px"><input class="checkbox"
+                                                                                       value="question.choices.length"
+                                                                                       ng-click="checkconditions(question)"
+                                                                                       ng-model="question.selected[question.choices.length]"
+                                                                                       type="checkbox" style=""><span
+                                    style="margin-left: 10px"></span>{{ question.freeChoice }}</label>
                         </div>
 
-                        <!-- comment -->
                         <div class="pull-left">
-                            <input class="form-control input-sm text  em_sq_validation good"
-                                   name="836812X2337X27145other" id="answer836812X2337X27145other" value="" type="text">
+                            <input class="form-control input-sm text  em_sq_validation good" value="" type="text"
+                                   ng-model="question.value"
+                                   style="margin-left: 10px">
                         </div>
 
-
-                        <!-- hidden input -->
-                        <input name="java836812X2337X27145other" id="java836812X2337X27145other" value="asdsad"
-                               type="hidden">
+                        <input value="" type="hidden">
 
                     </div> <!-- Form group ; item row -->
                 </div>
 
-                <script type="text/javascript">
+                <!--<script type="text/javascript">
                     $('#answer836812X2337X27145other').bind('keyup focusout', function (event) {
                         if ($.trim($(this).val()).length > 0) {
                             $("#answer836812X2337X27145othercbox").prop("checked", true);
@@ -118,10 +103,8 @@
                         }
                         ;
                     });
-                </script>
-                <!-- end of answer_row_other -->
+                </script> -->
             </div>
-            <!-- end of answer -->
 
         </div>
     </div>

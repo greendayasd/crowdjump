@@ -879,6 +879,7 @@ table.numbers-only th, table.numbers-only input {
  }
 .checkbox input[type="checkbox"] {
     margin-left: 0px;
+  border: 1px solid #a9a9a9;
 }
 
 .short-free-text .prefix, .short-free-text .suffix,.geoloc-item .search-icon, .geoloc-item .checkbox  {

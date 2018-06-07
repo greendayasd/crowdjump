@@ -2,47 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/ideas/migrations/0008_auto_20180601_0906.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/admin.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/apps.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/migrations/0001_initial.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/migrations/0002_auto_20180601_0929.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/migrations/0003_auto_20180601_0938.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/migrations/__init__.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/models.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/serializers.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/tests.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/views.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/directives/check.directive.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/directives/combo.directive.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/directives/progressbar.directive.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/directives/radio.directive.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/directives/text.directive.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/stylesheets/survey.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/check.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/combobox.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/progressbar.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/text.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/settings.py" afterPath="$PROJECT_DIR$/Crowdjump/settings.py" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/urls.py" afterPath="$PROJECT_DIR$/Crowdjump/urls.py" />
-      <change beforePath="$PROJECT_DIR$/ideas/models.py" afterPath="$PROJECT_DIR$/ideas/models.py" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" afterPath="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" />
+      <change beforePath="$PROJECT_DIR$/static/bower_components/bootstrap-material-design/dist/test.html" afterPath="$PROJECT_DIR$/static/bower_components/bootstrap-material-design/dist/test.html" />
       <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/questionnaire.module.js" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/questionnaire.module.js" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" />
-      <change beforePath="$PROJECT_DIR$/static/stylesheets/style.css" afterPath="$PROJECT_DIR$/static/stylesheets/style.css" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/game.html" afterPath="$PROJECT_DIR$/static/templates/layout/game.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/game.js" afterPath="$PROJECT_DIR$/static/website/js/game.js" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/main.js" afterPath="$PROJECT_DIR$/static/website/js/main.js" />
-      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" afterPath="$PROJECT_DIR$/templates/javascripts.html" />
+      <change beforePath="$PROJECT_DIR$/static/stylesheets/survey.css" afterPath="$PROJECT_DIR$/static/stylesheets/survey.css" />
+      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/directives/check.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/check.html" />
       <change beforePath="$PROJECT_DIR$/templates/stylesheets.html" afterPath="$PROJECT_DIR$/templates/stylesheets.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,15 +36,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="survey.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/stylesheets/survey.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="881" column="28" lean-forward="false" selection-start-line="881" selection-start-column="28" selection-end-line="881" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="questionnaire.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="235" column="28" lean-forward="false" selection-start-line="235" selection-start-column="28" selection-end-line="235" selection-end-column="28" />
+            <state relative-caret-position="754">
+              <caret line="261" column="31" lean-forward="false" selection-start-line="261" selection-start-column="25" selection-end-line="261" selection-end-column="31" />
               <folding>
-                <element signature="e#5302#5831#0" expanded="false" />
-                <element signature="e#5858#6405#0" expanded="false" />
-                <element signature="e#6432#6980#0" expanded="false" />
+                <element signature="e#2750#2936#0" expanded="false" />
+                <element signature="e#3160#3337#0" expanded="false" />
+                <element signature="e#3374#3602#0" expanded="false" />
+                <element signature="e#4663#5103#0" expanded="false" />
+                <element signature="e#5139#5295#0" expanded="false" />
+                <element signature="e#5332#5377#0" expanded="false" />
+                <element signature="e#5506#6035#0" expanded="false" />
+                <element signature="e#6062#6609#0" expanded="false" />
+                <element signature="e#6636#7184#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -89,18 +69,8 @@
       <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="91" column="120" lean-forward="true" selection-start-line="91" selection-start-column="120" selection-end-line="91" selection-end-column="120" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scale.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+            <state relative-caret-position="302">
+              <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -116,24 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="check.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/check.html">
+      <file leaf-file-name="combobox.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/combobox.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="53" column="42" lean-forward="false" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="survey.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/stylesheets/survey.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="879" column="9" lean-forward="false" selection-start-line="879" selection-start-column="1" selection-end-line="879" selection-end-column="9" />
+            <state relative-caret-position="136">
+              <caret line="8" column="85" lean-forward="false" selection-start-line="8" selection-start-column="85" selection-end-line="8" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -142,8 +99,8 @@
       <file leaf-file-name="radio.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="17" selection-end-column="10" />
+            <state relative-caret-position="510">
+              <caret line="30" column="66" lean-forward="false" selection-start-line="30" selection-start-column="66" selection-end-line="30" selection-end-column="108" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -164,19 +121,24 @@
       <file leaf-file-name="text.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/text.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="28" selection-end-column="26" />
+            <state relative-caret-position="0">
+              <caret line="0" column="63" lean-forward="false" selection-start-line="0" selection-start-column="63" selection-end-line="0" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="combobox.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/combobox.html">
+      <file leaf-file-name="check.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/check.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="85" lean-forward="false" selection-start-line="8" selection-start-column="85" selection-end-line="8" selection-end-column="92" />
-              <folding />
+            <state relative-caret-position="204">
+              <caret line="40" column="26" lean-forward="true" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+              <folding>
+                <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -195,12 +157,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>format</find>
-      <find>scro</find>
-      <find>scrollin</find>
-      <find>messagec</find>
-      <find>test</find>
-      <find>rootsc</find>
       <find>cookie</find>
       <find>route</find>
       <find>localhost</find>
@@ -224,6 +180,12 @@
       <find>answer</find>
       <find>cancel</find>
       <find>radio</find>
+      <find>label</find>
+      <find>label-text</find>
+      <find>less</find>
+      <find>input</find>
+      <find>responsive</find>
+      <find>maxcdn</find>
       <find>checkbox</find>
     </findStrings>
     <replaceStrings>
@@ -245,7 +207,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/templates/authentication/activated.html" />
         <option value="$PROJECT_DIR$/ideas/views.py" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/q1.html" />
         <option value="$PROJECT_DIR$/authentication/models.py" />
@@ -263,7 +224,6 @@
         <option value="$PROJECT_DIR$/static/templates/layout/index.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/questionnaire.module.js" />
         <option value="$PROJECT_DIR$/static/stylesheets/style.css" />
-        <option value="$PROJECT_DIR$/templates/stylesheets.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/combo.directive.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/progressbar.directive.js" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/progressbar.html" />
@@ -286,16 +246,18 @@
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/choice.directive.js" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/text.html" />
-        <option value="$PROJECT_DIR$/static/stylesheets/survey.css" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/choice.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/radio.directive.js" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html" />
-        <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/combobox.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/check.directive.js" />
         <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" />
+        <option value="$PROJECT_DIR$/static/stylesheets/survey.css" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/combobox.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/check.html" />
+        <option value="$PROJECT_DIR$/static/bower_components/bootstrap-material-design/dist/test.html" />
+        <option value="$PROJECT_DIR$/templates/stylesheets.html" />
       </list>
     </option>
   </component>
@@ -472,7 +434,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="javascript.nodejs.core.library.configured.version" value="9.3.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -658,6 +620,7 @@
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="manage.py@Crowdjump" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24516785" sideWeight="0.49791667" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949877" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29908442" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -669,7 +632,6 @@
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29908442" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -720,20 +682,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="57" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/directives/deleteConfirm.directive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/directives/comment.directive.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -759,13 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="64" lean-forward="false" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/stylesheets.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1057,14 +998,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/text.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="28" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1089,10 +1022,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/directives/check.directive.js">
+    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="74" lean-forward="false" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
+        <state relative-caret-position="302">
+          <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/stylesheets/survey.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="881" column="28" lean-forward="false" selection-start-line="881" selection-start-column="28" selection-end-line="881" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="66" lean-forward="false" selection-start-line="30" selection-start-column="66" selection-end-line="30" selection-end-column="108" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/text.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="63" lean-forward="false" selection-start-line="0" selection-start-column="63" selection-end-line="0" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -1105,52 +1064,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
+    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="91" column="120" lean-forward="true" selection-start-line="91" selection-start-column="120" selection-end-line="91" selection-end-column="120" />
+        <state relative-caret-position="754">
+          <caret line="261" column="31" lean-forward="false" selection-start-line="261" selection-start-column="25" selection-end-line="261" selection-end-column="31" />
+          <folding>
+            <element signature="e#2750#2936#0" expanded="false" />
+            <element signature="e#3160#3337#0" expanded="false" />
+            <element signature="e#3374#3602#0" expanded="false" />
+            <element signature="e#4663#5103#0" expanded="false" />
+            <element signature="e#5139#5295#0" expanded="false" />
+            <element signature="e#5332#5377#0" expanded="false" />
+            <element signature="e#5506#6035#0" expanded="false" />
+            <element signature="e#6062#6609#0" expanded="false" />
+            <element signature="e#6636#7184#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/bower_components/bootstrap/less/mixins/responsive-visibility.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" lean-forward="true" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
+    <entry file="file://$PROJECT_DIR$/static/bower_components/bootstrap-material-design/dist/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="235" column="28" lean-forward="false" selection-start-line="235" selection-start-column="28" selection-end-line="235" selection-end-column="28" />
-          <folding>
-            <element signature="e#5302#5831#0" expanded="false" />
-            <element signature="e#5858#6405#0" expanded="false" />
-            <element signature="e#6432#6980#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html">
+    <entry file="file://$PROJECT_DIR$/templates/stylesheets.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="17" selection-end-column="10" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="8" column="105" lean-forward="false" selection-start-line="8" selection-start-column="105" selection-end-line="8" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/directives/check.directive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="74" lean-forward="false" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/check.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="53" column="42" lean-forward="false" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+        <state relative-caret-position="204">
+          <caret line="40" column="26" lean-forward="true" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#label#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/stylesheets/survey.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="879" column="9" lean-forward="false" selection-start-line="879" selection-start-column="1" selection-end-line="879" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>

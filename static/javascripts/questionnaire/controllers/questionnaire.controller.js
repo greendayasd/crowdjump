@@ -35,6 +35,7 @@
         $scope.submit = function (next_survey) {
 
             var content = {};
+            console.log(vm.surveystatus);
             if ($scope.checkAll(vm.surveystatus)) {
                 content = $scope.getContent(vm.surveystatus);
 
@@ -83,13 +84,19 @@
         }
 
         $scope.checkconditions = function (q) {
-            // console.log(value + '  ' + sur +  '  ' + nr);
+            // console.log(q.value);
             if (q.type === 'radio'){
                 if (q.value == 0 || q.value == 1){
                     q.checked = true;
                 } else {
                     q.checked = false;
                 }
+            }
+
+            if (q.type === 'check'){
+                // console.log(q.selected);
+                // console.log(q.value);
+                // for alle if true then checked
             }
 
             if (q.type === "combo") {
@@ -218,27 +225,50 @@
             error: false,
             activatedBy: new Set(),
         };
-
-        $scope.survey = [];
-        $scope.survey[0] = [];
-        $scope.survey[1] = [];
-        $scope.survey[1][0] = {
+        $scope.exCheck = {
             survey: 1,
-            nr: 0,
-            checked: false,
+            nr: 1,
             type: 'check',
-            text: 'Ja/Nein',
+            text: 'Alter',
             required: true,
             startVisible: true,
             visible: true,
-            minLength: 1,
-            activate: [{v: '', s: 1, nr: 1}],
+            choices: $scope.sur1q3Choices,
+            freeChoice: 'Andere',
+            activate: [{v: 1, s: 1, nr: 1}],
             showImage: false,
             imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
             imageWidth: 1100,
             value: '',
+            checked: false,
             error: false,
             activatedBy: new Set(),
+            selected: {}
+        };
+
+        $scope.survey = [];
+        $scope.survey[0] = [];
+        $scope.survey[1] = [];
+        $scope.sur1q0Choices = ["Story", "Grafik", "Innovation", "Mehrspieler-Modus", "Wettbewerb mit anderen Spielern", "Schwierigkeit", "Gameplay/Spielablauf"];
+        $scope.survey[1][0] = {
+            survey: 1,
+            nr: 0,
+            type: 'check',
+            text: 'Was sind deiner Meninung nach die wichtigsten Aspekte in einem Videospiel?',
+            required: true,
+            startVisible: true,
+            visible: true,
+            choices: $scope.sur1q0Choices,
+            freeChoice: 'Andere',
+            activate: [{v: 1, s: 1, nr: 1}],
+            showImage: false,
+            imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
+            imageWidth: 1100,
+            value: '',
+            checked: false,
+            error: false,
+            activatedBy: new Set(),
+            selected: {}
         };
         $scope.survey[1][1] = {
             survey: 1,
