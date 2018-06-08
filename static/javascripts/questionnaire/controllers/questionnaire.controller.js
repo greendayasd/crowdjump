@@ -13,7 +13,7 @@
         vm.cookie = Authentication.getAuthenticatedAccount();
         vm.url = window.location.pathname;
 
-        if (!vm.isAuthenticated && vm.url.includes("survey")) {
+        if (!vm.isAuthenticated && vm.url.includes("survey") && !vm.url.includes("surveyPreFinished")) {
             // console.log(vm.url);
             window.location.href = '/';
             return;
