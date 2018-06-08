@@ -156,15 +156,6 @@ li.responsive-content
   margin-bottom: 20px;
 }
 
-.ui-slider-2 {
-  width: 200px;
-  height: 23px;
-  position: relative;
-  background-image: url(../../images/slider-bg-2.png);
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
 .slider_callout {
   height: 20px;
   width: 100px;
@@ -220,10 +211,6 @@ li.responsive-content
 .withslider {
     margin-bottom: 30px;
 }
-
-
-
-
 
 
 #indexcontainer {display : none;}
