@@ -64,15 +64,14 @@
                 var survey_id;
                 $http.get('/api/v1/presurvey/?user__id=' + user_id + '&limit=1'
                 ).then(function (result) {
-                    console.log("test");
 
                     if (result["data"]["count"] > 0) {
                         // console.error("vorhanden");
                         var survey = result["data"]["results"][0];
                         survey_id = survey["id"];
-                        console.log(survey);
+                        // console.log(survey);
                         survey["site" + site] = cont;
-                        console.log(survey);
+                        // console.log(survey);
                         $http.patch('/api/v1/presurvey/' + survey_id + '/', {
                             site0: survey["site0"],
                             site1: survey["site1"],
@@ -87,8 +86,13 @@
                         });
                     } else {
                         // console.error("muss neu angelegt werden " + vote);
+                        cont == '' ? cont = null : cont;
                         $http.post('/api/v1/presurvey/', {
-                            "site0": content,
+                            "site0": cont,
+                            "site1": null,
+                            "site2": null,
+                            "site3": null,
+                            "site4": null,
                         }).then(function (result) {
                             // console.error("neu angelegt");
                             return result;

@@ -22,49 +22,45 @@
     <!-- Answer -->
     <div class="row question-wrapper answer-container">
         <div class="col-sm-12 answer">
-            <!-- answer -->
-            <div class="row multiple-choice-container subquestion-list questions-list checkbox-list">
+
+            <div class="list-unstyled radio-list answers-list">
                 <div ng-repeat="choice in question.choices">
                     <!-- answer_row -->
                     <div class="col-sm-12">
-                        <div class="question-item answer-item checkbox-item form-group  checkbox">
+                        <div class="col-xs-12 form-group answer-item radio-item radio" style="margin-left: -34px">
 
-                            <label class="answertext" style="margin-left: 10px"><input class="checkbox"
-                                                                                       value="$index"
-                                                                                       ng-click="checkconditions(question)"
-                                                                                       ng-model="question.selected[$index]"
-                                                                                       type="checkbox" style=""><span
-                                    style="margin-left: 10px"></span>{{ choice }}</label>
-
+                            <label class="control-label radio-label"
+                                   ng-click="question.selected=$index;checkconditions(question)"><input class="radio" value="choice"
+                                                                               name="question.nr"
+                                                                               type="radio">{{ choice }}</label>
                             <input value="" type="hidden">
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-12" ng-show="question.freeChoice!=''">
-                    <div class="question-item answer-item checkbox-item form-group checkbox">
+                    <div class="col-xs-12 form-group answer-item radio-item radio" style="margin-left: -34px">
 
                         <div class="pull-left othertext-label-checkox-container">
 
-                            <label class="answertext" style="margin-left: 10px"><input class="checkbox"
-                                                                                       value="question.choices.length"
-                                                                                       ng-click="checkconditions(question)"
-                                                                                       ng-model="question.selected[question.choices.length]"
-                                                                                       type="checkbox" style=""><span
-                                    style="margin-left: 10px"></span>{{ question.freeChoice }}</label>
+                            <label class="answertext"
+                                   ng-click="question.selected=question.choices.length;checkconditions(question)"><input class="radio"
+                                                                               value="question.value"
+                                                                               name="question.nr"
+                                                                               type="radio"
+                                                                               style="">{{ question.freeChoice }}
+                            </label>
                         </div>
 
                         <div class="pull-left">
                             <input class="form-control input-sm text  em_sq_validation good" value="" type="text"
-                                   ng-model="question.value"
-                                   style="margin-left: 10px">
+                                   ng-model="question.value">
                         </div>
 
                         <input value="" type="hidden">
 
                     </div>
                 </div>
-
             </div>
 
         </div>

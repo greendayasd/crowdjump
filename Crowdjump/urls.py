@@ -50,10 +50,7 @@ urlpatterns = [
     url(r'^survey0/$', IndexView.as_view()),
     url(r'^survey1/$', IndexView.as_view()),
     url(r'^survey2/$', IndexView.as_view()),
-    url(r'^survey3/$', IndexView.as_view()),
-    url(r'^survey4/$', IndexView.as_view()),
-    url(r'^survey5/$', IndexView.as_view()),
-    url(r'^survey6/$', IndexView.as_view()),
+    url(r'^surveyPreFinished/$', IndexView.as_view()),
 
     # url(r'^game/$', GameView.as_view()),
     # url(r'^gameinfo/$', GameInfoView.as_view()),

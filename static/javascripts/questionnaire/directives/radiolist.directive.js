@@ -3,16 +3,16 @@
 
     angular
         .module('crowdjump.questionnaire.directives')
-        .directive('surRadio', surRadio);
+        .directive('surRadiolist', surRadiolist);
 
-    function surRadio() {
+    function surRadiolist() {
 
         var directive = {
             restrict: 'EA',
             scope: {
                 question: '=info'
             },
-            templateUrl: '/static/templates/questionnaire/directives/radio.html',
+            templateUrl: '/static/templates/questionnaire/directives/radiolist.html',
             controller: 'QuestionnaireController'
         };
 

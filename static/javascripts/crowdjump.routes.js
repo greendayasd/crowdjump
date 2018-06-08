@@ -73,6 +73,10 @@
             controller: 'QuestionnaireController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/questionnaire/survey2.html'
+        }).when('/surveyPreFinished', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/surveyPreFinished.html'
         })
             .otherwise('/');
     }
