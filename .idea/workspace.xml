@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/stylesheets/survey.css" afterPath="$PROJECT_DIR$/static/stylesheets/survey.css" />
+      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" afterPath="$PROJECT_DIR$/templates/javascripts.html" />
       <change beforePath="$PROJECT_DIR$/templates/stylesheets.html" afterPath="$PROJECT_DIR$/templates/stylesheets.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,18 +79,18 @@
       <file leaf-file-name="survey.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/stylesheets/survey.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="269" column="22" lean-forward="false" selection-start-line="269" selection-start-column="22" selection-end-line="269" selection-end-column="22" />
+            <state relative-caret-position="166">
+              <caret line="944" column="24" lean-forward="true" selection-start-line="944" selection-start-column="24" selection-end-line="944" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stylesheets.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stylesheets.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/stylesheets.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+            <state relative-caret-position="255">
+              <caret line="15" column="86" lean-forward="true" selection-start-line="15" selection-start-column="86" selection-end-line="15" selection-end-column="86" />
               <folding />
             </state>
           </provider>
@@ -100,7 +100,7 @@
         <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="66" lean-forward="true" selection-start-line="0" selection-start-column="66" selection-end-line="0" selection-end-column="66" />
+              <caret line="0" column="66" lean-forward="false" selection-start-line="0" selection-start-column="66" selection-end-line="0" selection-end-column="66" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -108,11 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="104" lean-forward="true" selection-start-line="8" selection-start-column="104" selection-end-line="8" selection-end-column="104" />
+            <state relative-caret-position="68">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -170,7 +170,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>select</find>
       <find>answer-c</find>
       <find>jumbotr</find>
       <find>wi</find>
@@ -197,8 +196,9 @@
       <find>wof</find>
       <find>dfki</find>
       <find>post</find>
-      <find>irl</find>
       <find>roboto</find>
+      <find>irl</find>
+      <find>fontawesome</find>
       <find>rob</find>
     </findStrings>
     <replaceStrings>
@@ -263,7 +263,6 @@
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" />
         <option value="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/doublescale.directive.js" />
-        <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/doublescale.html" />
         <option value="$PROJECT_DIR$/Crowdjump/urls.py" />
@@ -271,6 +270,7 @@
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
         <option value="$PROJECT_DIR$/static/stylesheets/survey.css" />
         <option value="$PROJECT_DIR$/templates/stylesheets.html" />
+        <option value="$PROJECT_DIR$/templates/javascripts.html" />
       </list>
     </option>
   </component>
@@ -636,7 +636,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960325" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24516785" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
@@ -710,20 +709,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ideas/permissions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/questionnaire/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="50" lean-forward="false" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ideas/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -1102,14 +1087,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="104" lean-forward="true" selection-start-line="8" selection-start-column="104" selection-end-line="8" selection-end-column="104" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -1163,7 +1140,7 @@
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="66" lean-forward="true" selection-start-line="0" selection-start-column="66" selection-end-line="0" selection-end-column="66" />
+          <caret line="0" column="66" lean-forward="false" selection-start-line="0" selection-start-column="66" selection-end-line="0" selection-end-column="66" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
@@ -1178,18 +1155,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/stylesheets/survey.css">
+    <entry file="file://$PROJECT_DIR$/static/admin/img/README.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="269" column="22" lean-forward="false" selection-start-line="269" selection-start-column="22" selection-end-line="269" selection-end-column="22" />
+        <state relative-caret-position="0">
+          <caret line="0" column="46" lean-forward="false" selection-start-line="0" selection-start-column="46" selection-end-line="0" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/rest_framework/docs/css/font-awesome-4.0.3.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/stylesheets.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        <state relative-caret-position="255">
+          <caret line="15" column="86" lean-forward="true" selection-start-line="15" selection-start-column="86" selection-end-line="15" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/stylesheets/survey.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="944" column="24" lean-forward="true" selection-start-line="944" selection-start-column="24" selection-end-line="944" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
