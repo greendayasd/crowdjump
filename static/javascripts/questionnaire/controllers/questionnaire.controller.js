@@ -51,7 +51,7 @@
             Questionnaire.post_preSite(vm.cookie["id"], vm.surveystatus, content);
 
             Questionnaire.increase_surveycount(vm.cookie["username"], next_survey);
-            if (vm.surveystatus < 3) {
+            if (vm.surveystatus < 2) {
                 vm.surveystatus = next_survey;
                 window.location.href = '/survey' + next_survey;
             } else {
