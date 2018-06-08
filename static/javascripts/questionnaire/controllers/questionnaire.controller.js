@@ -13,7 +13,7 @@
         vm.cookie = Authentication.getAuthenticatedAccount();
         vm.url = window.location.pathname;
 
-        if (!vm.isAuthenticated && vm.url.includes("survey") && !vm.url.includes("surveyPreFinished")) {
+        if (!vm.isAuthenticated && vm.url.includes("survey")) {
             // console.log(vm.url);
             window.location.href = '/';
             return;
@@ -30,7 +30,7 @@
         if (vm.surveystatus < 3 && !vm.url.includes("survey" + vm.surveystatus)) {
             window.location.href = '/survey' + vm.surveystatus;
         }
-        if (vm.surveystatus >= 3 && vm.url.includes("survey")){
+        if (vm.surveystatus >= 3 && vm.url.includes("survey") && !vm.url.includes("surveyPreFinished")){
             window.location.href = '/';
 
         }
