@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse" role="navigation" ng-controller="NavbarController as vm">
-    <div class="container-fluid" ng-show="vm.surveystatus == 3 || !vm.isAuthenticated">
+    <div class="container-fluid" ng-show="vm.surveystatus == 3 || vm.surveystatus == 11 || !vm.isAuthenticated">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#not-google-plus-nav">

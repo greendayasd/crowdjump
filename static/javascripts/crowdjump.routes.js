@@ -77,6 +77,38 @@
             controller: 'QuestionnaireController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/questionnaire/surveyPreFinished.html'
+        }).when('/postsurvey0', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/postsurvey0.html'
+        }).when('/postsurvey1', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/postsurvey1.html'
+        }).when('/postsurvey2', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/postsurvey2.html'
+        }).when('/postsurvey3', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/postsurvey3.html'
+        }).when('/postsurvey4', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/postsurvey4.html'
+        }).when('/postsurvey5', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/postsurvey5.html'
+        }).when('/postsurvey6', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/postsurvey6.html'
+        }).when('/surveyPostFinished', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/surveyPostFinished.html'
         })
             .otherwise('/');
     }

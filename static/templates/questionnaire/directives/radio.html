@@ -5,8 +5,8 @@
     <div class="row question-wrapper question-title-container">
         <div class="col-sm-12 questiontext">
             <div class="qnumcode question-text">
-                <span ng-show="{{ question.required }}" class="text-danger asterisk"></span>
-                {{ question.text }}
+                <pre class="pre-question"><span ng-show="{{ question.required }}" class="text-danger asterisk"></span><span class="tab"></span>{{ question.text }}</pre>
+
                 <div ng-show="{{ question.showImage }}">
                     <br>
                     <img src="{{ question.imageURL }}" width="{{ question.imageWidth }}" style="margin-left: auto;margin-right: auto; display: block">

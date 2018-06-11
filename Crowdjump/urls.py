@@ -6,7 +6,7 @@ from rest_framework_nested import routers
 from website.views import IndexView, HistoryViewSet, IdeasView, GameViewSet, GameInfoView, GameView
 from ideas.views import IdeaViewSet, IdeaVotePermissionViewSet, AccountIdeasViewSet, AccountGameInfoViewSet, GameInfoViewSet, CommentViewSet, IdeaVoteViewSet
 from chat.views import room, index, ChatMessageViewSet
-from questionnaire.views import PreSurveyViewSet
+from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet
 
 from authentication.views import AccountViewSet, LoginView, LogoutView
 
@@ -23,6 +23,7 @@ router.register(r'comments', CommentViewSet)
 router.register(r'ideavotes', IdeaVoteViewSet)
 router.register(r'chatmessages', ChatMessageViewSet)
 router.register(r'presurvey', PreSurveyViewSet)
+router.register(r'postsurvey', PostSurveyViewSet)
 
 mainrouter = routers.SimpleRouter()
 mainrouter.register(r'game', GameViewSet)
@@ -51,6 +52,14 @@ urlpatterns = [
     url(r'^survey1/$', IndexView.as_view()),
     url(r'^survey2/$', IndexView.as_view()),
     url(r'^surveyPreFinished/$', IndexView.as_view()),
+    url(r'^postsurvey0/$', IndexView.as_view()),
+    url(r'^postsurvey1/$', IndexView.as_view()),
+    url(r'^postsurvey2/$', IndexView.as_view()),
+    url(r'^postsurvey3/$', IndexView.as_view()),
+    url(r'^postsurvey4/$', IndexView.as_view()),
+    url(r'^postsurvey5/$', IndexView.as_view()),
+    url(r'^postsurvey6/$', IndexView.as_view()),
+    url(r'^surveyPostFinished/$', IndexView.as_view()),
 
     # url(r'^game/$', GameView.as_view()),
     # url(r'^gameinfo/$', GameInfoView.as_view()),

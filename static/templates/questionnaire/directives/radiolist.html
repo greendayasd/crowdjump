@@ -5,8 +5,7 @@
     <div class="row question-wrapper question-title-container">
         <div class="col-sm-12 questiontext">
             <div class="qnumcode question-text">
-                <span ng-show="{{ question.required }}" class="text-danger asterisk"></span>
-                {{ question.text }}
+                <pre class="pre-question"><span ng-show="{{ question.required }}" class="text-danger asterisk"></span><span class="tab"></span>{{ question.text }}</pre>
                 <div ng-show="{{ question.showImage }}">
                     <br>
                     <img src="{{ question.imageURL }}" width="{{ question.imageWidth }}"
@@ -30,9 +29,11 @@
                         <div class="col-xs-12 form-group answer-item radio-item radio" style="margin-left: -34px">
 
                             <label class="control-label radio-label"
-                                   ng-click="question.selected=$index;checkconditions(question)"><input class="radio" value="choice"
-                                                                               name="question.nr"
-                                                                               type="radio">{{ choice }}</label>
+                                   ng-click="question.selected=$index;checkconditions(question)"><input class="radio"
+                                                                                                        value="choice"
+                                                                                                        name="{{  question.nr}}"
+                                                                                                        type="radio">{{ choice }}
+                            </label>
                             <input value="" type="hidden">
                         </div>
                     </div>
@@ -44,11 +45,12 @@
                         <div class="pull-left othertext-label-checkox-container">
 
                             <label class="answertext"
-                                   ng-click="question.selected=question.choices.length;checkconditions(question)"><input class="radio"
-                                                                               value="question.value"
-                                                                               name="question.nr"
-                                                                               type="radio"
-                                                                               style="">{{ question.freeChoice }}
+                                   ng-click="question.selected=question.choices.length;checkconditions(question)"><input
+                                    class="radio"
+                                    value="question.value"
+                                    name="question.nr"
+                                    type="radio"
+                                    style="">{{ question.freeChoice }}
                             </label>
                         </div>
 

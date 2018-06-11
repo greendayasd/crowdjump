@@ -31,7 +31,7 @@
                 $scope.version = data.data["results"][0];          }
 
             function historyErrorFn(data, status, headers, config) {
-                console.error(data.error);
+                // console.error(data.error);
             }
         }
     }

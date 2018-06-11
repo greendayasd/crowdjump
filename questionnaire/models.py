@@ -3,7 +3,8 @@ from authentication.models import Account
 
 
 class preSurvey(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='questionnaire', null=True)  # nur zwischengespeichert
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='questionnairePre',
+                             null=True)  # nur zwischengespeichert
     site0 = models.TextField(default='', null=True)
     site1 = models.TextField(default='', null=True)
     site2 = models.TextField(default='', null=True)
@@ -12,6 +13,24 @@ class preSurvey(models.Model):
 
     def __str__(self):
         return self.site0 + self.site1 + self.site2 + self.site3 + self.site4
+
+    def __unicode__(self):
+        return '{0}'.format(self.site0)
+
+
+class postSurvey(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='questionnairePost',
+                             null=True)  # nur zwischengespeichert
+    site0 = models.TextField(default='', null=True)
+    site1 = models.TextField(default='', null=True)
+    site2 = models.TextField(default='', null=True)
+    site3 = models.TextField(default='', null=True)
+    site4 = models.TextField(default='', null=True)
+    site5 = models.TextField(default='', null=True)
+    site6 = models.TextField(default='', null=True)
+
+    def __str__(self):
+        return self.site0 + self.site1 + self.site2 + self.site3 + self.site4 + self.site5 + self.site6
 
     def __unicode__(self):
         return '{0}'.format(self.site0)
