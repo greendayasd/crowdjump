@@ -13,9 +13,8 @@
         vm.cookie = Authentication.getAuthenticatedAccount();
         vm.url = window.location.pathname;
 
-
+        var ismobile = false;
         function detectmob() {
-            alert(navigator.userAgent);
             if (navigator.userAgent.match(/Android/i)
                 || navigator.userAgent.match(/webOS/i)
                 || navigator.userAgent.match(/iPhone/i)
@@ -24,16 +23,29 @@
                 || navigator.userAgent.match(/BlackBerry/i)
                 || navigator.userAgent.match(/Windows Phone/i)
             ) {
-                alert("mobile");
                 return true;
             }
             else {
-                console.log("none");
                 return false;
             }
         }
 
-        detectmob();
+        function detectmob2() {
+            alert(window.innerHeight);
+            if (window.innerWidth <= 800 && window.innerHeight <= 600) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        ismobile = (detectmob() || detectmob2());
+        alert(ismobile);
+
+        if (ismobile){
+            window.location.href = '/mobile';
+            return;
+
+        }
 
         if (!vm.isAuthenticated && vm.url.includes("survey")) {
             // console.log(vm.url);
