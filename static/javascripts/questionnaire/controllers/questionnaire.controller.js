@@ -56,7 +56,7 @@
         vm.surveystatus = vm.cookie["survey_status"];
         var post_surveystatus = vm.surveystatus - 4;
         // console.log(vm.surveystatus);
-        if (vm.surveystatus < 3 && !vm.url.includes("survey" + vm.surveystatus)) {
+        if (vm.surveystatus < 3 && !vm.url.includes("survey" + vm.surveystatus) && !vm.url.includes("mobile")) {
 
             if (ismobile) {
                 window.location.href = '/mobile';
@@ -65,7 +65,7 @@
             window.location.href = '/survey' + vm.surveystatus;
             return;
         }
-        else if (vm.surveystatus > 3 && vm.surveystatus < 11 && !vm.url.includes("postsurvey" + post_surveystatus)) {
+        else if (vm.surveystatus > 3 && vm.surveystatus < 11 && !vm.url.includes("postsurvey" + post_surveystatus) && !vm.url.includes("mobile")) {
 
             if (ismobile) {
                 window.location.href = '/mobile';
@@ -74,7 +74,7 @@
             window.location.href = 'postsurvey' + post_surveystatus;
             return;
         }
-        else if ((vm.surveystatus == 3 || vm.surveystatus == 3) && vm.url.includes("survey") && !vm.url.includes("surveyPreFinished")) {
+        else if ((vm.surveystatus == 3 || vm.surveystatus == 3) && vm.url.includes("survey") && !vm.url.includes("surveyPreFinished") && !vm.url.includes("mobile")) {
             window.location.href = '/';
         }
 
