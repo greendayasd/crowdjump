@@ -89,6 +89,7 @@
 
             function registerErrorFn(data, status, headers, config) {
                 var msg = 'Registration failed! Please try another username/email'
+                alert(msg);
                 toast(msg);
             }
         }
@@ -134,6 +135,7 @@
 
             function loginErrorFn(data, status, headers, config) {
                 var msg = 'Login failed! Email or password is wrong!';
+                alert(msg);
                 toast(msg);
             }
         }

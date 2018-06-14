@@ -6,7 +6,9 @@
     <div class="row question-wrapper question-title-container">
         <div class="col-sm-12 questiontext">
             <div class="qnumcode question-text">
-                <pre class="pre-question"><span ng-show="{{ question.required }}" class="text-danger asterisk"></span><span class="tab"></span>{{ question.text }}</pre>
+                <pre class="pre-question"><span ng-show="{{ question.required }}"
+                                                class="text-danger asterisk"></span><span
+                        class="tab"></span>{{ question.text }}</pre>
                 <div ng-show="{{ question.showImage }}">
                     <br>
                     <img src="{{ question.imageURL }}" width="{{ question.imageWidth }}"
@@ -45,22 +47,24 @@
                 </thead>
                 <tbody>
 
-                <tr ng-repeat="choice in question.choices">
+                <tr ng-repeat="choice in question.choices track by $index">
                     <th class="answertext">
                         {{ choice }}
                     </th>
 
                     <td ng-repeat="description in question.scale track by $index">
 
-                        <div class="radio text-center">
-                            <label><input class="radio"
-                                          ng-click="question.selected[$parent.$index]=$index;checkconditions(question)" type="radio"
+                        <div class="radio text-center"
+                             ng-click="question.selected[$parent.$index]=$index;checkconditions(question)"
+                             ng-model="question.selected[$parent.$index]">
+                            <label><input class="radio" type="radio"
                                           name="{{ question.choices[$parent.$index]}}"
+                                          value="{{$index}}"
+                                          ng-model="question.selected[$parent.$index]"
                             ></label>
                         </div>
 
                     </td>
-
                 </tr>
                 </tbody>
             </table>

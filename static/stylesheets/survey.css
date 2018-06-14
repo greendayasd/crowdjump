@@ -1085,7 +1085,8 @@ div.yes-no .btn-group label {
 .pre-question {
     background-color: #7bc7e8;
     border: 0px solid #ccc;
-    color: white;
+    color: black;
+    font-weight: bold;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 16px;
     word-break: normal;

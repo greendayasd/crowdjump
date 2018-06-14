@@ -2,36 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/questionnaire/migrations/0004_auto_20180608_1742.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey1.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey2.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey3.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey4.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey5.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey6.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/surveyPostFinished.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/datenschutz.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/urls.py" afterPath="$PROJECT_DIR$/Crowdjump/urls.py" />
-      <change beforePath="$PROJECT_DIR$/questionnaire/models.py" afterPath="$PROJECT_DIR$/questionnaire/models.py" />
-      <change beforePath="$PROJECT_DIR$/questionnaire/serializers.py" afterPath="$PROJECT_DIR$/questionnaire/serializers.py" />
-      <change beforePath="$PROJECT_DIR$/questionnaire/views.py" afterPath="$PROJECT_DIR$/questionnaire/views.py" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" afterPath="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" />
+      <change beforePath="$PROJECT_DIR$/Crowdjump/settings.py" afterPath="$PROJECT_DIR$/Crowdjump/settings.py" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js" afterPath="$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js" />
       <change beforePath="$PROJECT_DIR$/static/javascripts/history/controllers/history.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/history/controllers/history.controller.js" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/history/controllers/historyindex.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/history/controllers/historyindex.controller.js" />
       <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" />
+      <change beforePath="$PROJECT_DIR$/static/stylesheets/style.css" afterPath="$PROJECT_DIR$/static/stylesheets/style.css" />
+      <change beforePath="$PROJECT_DIR$/static/stylesheets/styles.css" afterPath="$PROJECT_DIR$/static/stylesheets/styles.css" />
       <change beforePath="$PROJECT_DIR$/static/stylesheets/survey.css" afterPath="$PROJECT_DIR$/static/stylesheets/survey.css" />
       <change beforePath="$PROJECT_DIR$/static/templates/layout/index.html" afterPath="$PROJECT_DIR$/static/templates/layout/index.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/directives/bigtext.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/bigtext.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/directives/check.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/check.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/directives/combobox.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/combobox.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/directives/doublescale.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/doublescale.html" />
       <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/directives/radiolist.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/radiolist.html" />
       <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/directives/text.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/text.html" />
+      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" />
       <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" />
+      <change beforePath="$PROJECT_DIR$/static/website/js/endscreen.js" afterPath="$PROJECT_DIR$/static/website/js/endscreen.js" />
+      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" afterPath="$PROJECT_DIR$/templates/javascripts.html" />
       <change beforePath="$PROJECT_DIR$/templates/navbar.html" afterPath="$PROJECT_DIR$/templates/navbar.html" />
+      <change beforePath="$PROJECT_DIR$/templates/stylesheets.html" afterPath="$PROJECT_DIR$/templates/stylesheets.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,94 +52,82 @@
       <file leaf-file-name="questionnaire.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="1036" column="18" lean-forward="false" selection-start-line="1036" selection-start-column="18" selection-end-line="1036" selection-end-column="18" />
+            <state relative-caret-position="357">
+              <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
               <folding>
-                <element signature="e#5649#5836#0" expanded="false" />
-                <element signature="e#5874#6130#0" expanded="false" />
-                <element signature="e#6850#7027#0" expanded="false" />
-                <element signature="e#7088#7316#0" expanded="false" />
-                <element signature="e#8495#8935#0" expanded="false" />
-                <element signature="e#10122#10651#0" expanded="false" />
-                <element signature="e#10680#11212#0" expanded="false" />
-                <element signature="e#11239#11786#0" expanded="false" />
-                <element signature="e#11813#12361#0" expanded="false" />
-                <element signature="e#12388#12993#0" expanded="false" />
-                <element signature="e#13024#13633#0" expanded="false" />
-                <element signature="e#13660#14467#0" expanded="false" />
-                <element signature="e#14500#15313#0" expanded="false" />
-                <element signature="e#15448#26393#0" expanded="false" />
-                <element signature="e#15567#16000#0" expanded="false" />
-                <element signature="e#16118#16556#0" expanded="false" />
-                <element signature="e#16685#17155#0" expanded="false" />
-                <element signature="e#17191#17672#0" expanded="false" />
-                <element signature="e#17875#18541#0" expanded="false" />
-                <element signature="e#18577#19262#0" expanded="false" />
-                <element signature="e#19452#20305#0" expanded="false" />
-                <element signature="e#20341#20787#0" expanded="false" />
-                <element signature="e#20823#21297#0" expanded="false" />
-                <element signature="e#21333#21862#0" expanded="false" />
-                <element signature="e#21899#22353#0" expanded="false" />
-                <element signature="e#22390#22982#0" expanded="false" />
-                <element signature="e#23019#23494#0" expanded="false" />
-                <element signature="e#23607#24161#0" expanded="false" />
-                <element signature="e#24198#24714#0" expanded="false" />
-                <element signature="e#24751#25207#0" expanded="false" />
-                <element signature="e#25320#25874#0" expanded="false" />
-                <element signature="e#25911#26382#0" expanded="false" />
-                <element signature="e#26423#28242#0" expanded="false" />
-                <element signature="e#26460#27568#0" expanded="false" />
-                <element signature="e#27605#28230#0" expanded="false" />
-                <element signature="e#28671#31040#0" expanded="false" />
-                <element signature="e#31849#32568#0" expanded="false" />
-                <element signature="e#32604#33225#0" expanded="false" />
-                <element signature="e#33261#33900#0" expanded="false" />
-                <element signature="e#33936#34545#0" expanded="false" />
-                <element signature="e#34581#35199#0" expanded="false" />
-                <element signature="e#35235#35872#0" expanded="false" />
-                <element signature="e#35908#36550#0" expanded="false" />
-                <element signature="e#36586#37219#0" expanded="false" />
-                <element signature="e#37255#37889#0" expanded="false" />
-                <element signature="e#37926#38588#0" expanded="false" />
-                <element signature="e#38630#40779#0" expanded="false" />
-                <element signature="e#38667#40048#0" expanded="false" />
-                <element signature="e#40846#41986#0" expanded="false" />
-                <element signature="e#42022#42688#0" expanded="false" />
-                <element signature="e#42767#43504#0" expanded="false" />
-                <element signature="e#43540#44276#0" expanded="false" />
-                <element signature="e#44318#46100#0" expanded="false" />
-                <element signature="e#44448#45306#0" expanded="false" />
-                <element signature="e#47078#47780#0" expanded="false" />
+                <element signature="e#4066#5870#0" expanded="false" />
+                <element signature="e#5940#6515#0" expanded="false" />
+                <element signature="e#6560#7793#0" expanded="false" />
+                <element signature="e#7841#10452#0" expanded="false" />
+                <element signature="e#7952#8139#0" expanded="false" />
+                <element signature="e#8177#8433#0" expanded="false" />
+                <element signature="e#9153#9330#0" expanded="false" />
+                <element signature="e#9391#9619#0" expanded="false" />
+                <element signature="e#10505#10742#0" expanded="false" />
+                <element signature="e#10797#11237#0" expanded="false" />
+                <element signature="e#11273#11429#0" expanded="false" />
+                <element signature="e#11466#11524#0" expanded="false" />
+                <element signature="e#11561#11617#0" expanded="false" />
+                <element signature="e#11660#11706#0" expanded="false" />
+                <element signature="e#12653#13182#0" expanded="false" />
+                <element signature="e#13211#13743#0" expanded="false" />
+                <element signature="e#13770#14317#0" expanded="false" />
+                <element signature="e#14344#14892#0" expanded="false" />
+                <element signature="e#15555#16164#0" expanded="false" />
+                <element signature="e#16191#16998#0" expanded="false" />
+                <element signature="e#17031#17844#0" expanded="false" />
+                <element signature="e#18269#18855#0" expanded="false" />
+                <element signature="e#19016#19449#0" expanded="false" />
+                <element signature="e#19567#20005#0" expanded="false" />
+                <element signature="e#20134#20604#0" expanded="false" />
+                <element signature="e#20640#21121#0" expanded="false" />
+                <element signature="e#21324#21990#0" expanded="false" />
+                <element signature="e#22026#22711#0" expanded="false" />
+                <element signature="e#22901#23754#0" expanded="false" />
+                <element signature="e#23790#24266#0" expanded="false" />
+                <element signature="e#24302#24806#0" expanded="false" />
+                <element signature="e#24842#25401#0" expanded="false" />
+                <element signature="e#25438#25923#0" expanded="false" />
+                <element signature="e#25960#26582#0" expanded="false" />
+                <element signature="e#26619#27124#0" expanded="false" />
+                <element signature="e#27237#27821#0" expanded="false" />
+                <element signature="e#27858#28404#0" expanded="false" />
+                <element signature="e#28441#28927#0" expanded="false" />
+                <element signature="e#29040#29658#0" expanded="false" />
+                <element signature="e#29695#30196#0" expanded="false" />
+                <element signature="e#30237#32056#0" expanded="false" />
+                <element signature="e#30274#31382#0" expanded="false" />
+                <element signature="e#31419#32044#0" expanded="false" />
+                <element signature="e#32485#34854#0" expanded="false" />
+                <element signature="e#35663#36382#0" expanded="false" />
+                <element signature="e#36418#37039#0" expanded="false" />
+                <element signature="e#37075#37714#0" expanded="false" />
+                <element signature="e#37750#38359#0" expanded="false" />
+                <element signature="e#38395#39013#0" expanded="false" />
+                <element signature="e#39049#39686#0" expanded="false" />
+                <element signature="e#39722#40364#0" expanded="false" />
+                <element signature="e#40400#41033#0" expanded="false" />
+                <element signature="e#41069#41703#0" expanded="false" />
+                <element signature="e#41740#42402#0" expanded="false" />
+                <element signature="e#42444#44593#0" expanded="false" />
+                <element signature="e#42481#43862#0" expanded="false" />
+                <element signature="e#44660#45800#0" expanded="false" />
+                <element signature="e#45836#46502#0" expanded="false" />
+                <element signature="e#46581#47318#0" expanded="false" />
+                <element signature="e#47354#48090#0" expanded="false" />
+                <element signature="e#48132#49914#0" expanded="false" />
+                <element signature="e#48262#49120#0" expanded="false" />
+                <element signature="e#51033#51740#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="postsurvey6.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey6.html">
+      <file leaf-file-name="survey1.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="85" lean-forward="true" selection-start-line="3" selection-start-column="85" selection-end-line="3" selection-end-column="85" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="50" column="44" lean-forward="true" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navbar.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/navbar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="65" lean-forward="true" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
+            <state relative-caret-position="119">
+              <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -159,30 +136,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/layout/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#div#3;n#h4#1;n#div#2;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="surveyPostFinished.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/surveyPostFinished.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="questionnaire.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="105" column="87" lean-forward="true" selection-start-line="105" selection-start-column="87" selection-end-line="105" selection-end-column="87" />
+            <state relative-caret-position="0">
+              <caret line="0" column="51" lean-forward="false" selection-start-line="0" selection-start-column="51" selection-end-line="0" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -191,8 +146,28 @@
       <file leaf-file-name="history.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/history/controllers/history.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stylesheets.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/stylesheets.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="104" lean-forward="false" selection-start-line="13" selection-start-column="104" selection-end-line="13" selection-end-column="104" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="111" lean-forward="false" selection-start-line="5" selection-start-column="111" selection-end-line="5" selection-end-column="111" />
               <folding />
             </state>
           </provider>
@@ -201,18 +176,28 @@
       <file leaf-file-name="survey0.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="85" lean-forward="true" selection-start-line="13" selection-start-column="85" selection-end-line="13" selection-end-column="85" />
+            <state relative-caret-position="119">
+              <caret line="7" column="52" lean-forward="false" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="postsurvey2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey2.html">
+      <file leaf-file-name="datenschutz.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/datenschutz.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+            <state relative-caret-position="629">
+              <caret line="52" column="82" lean-forward="false" selection-start-line="52" selection-start-column="82" selection-end-line="52" selection-end-column="82" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scale.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1122">
+              <caret line="66" column="25" lean-forward="false" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -232,13 +217,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>question-co</find>
-      <find>asd</find>
-      <find>answer</find>
-      <find>cancel</find>
-      <find>radio</find>
-      <find>label</find>
-      <find>label-text</find>
       <find>input</find>
       <find>responsive</find>
       <find>maxcdn</find>
@@ -261,7 +239,14 @@
       <find>question.im</find>
       <find>füll</find>
       <find>post_pre</find>
+      <find>white</find>
+      <find>nav</find>
+      <find>text-ce</find>
+      <find>question.ima</find>
+      <find>image</find>
       <find>fini</find>
+      <find>version</find>
+      <find>route</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -282,14 +267,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Crowdjump/settings.py" />
-        <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/text.directive.js" />
-        <option value="$PROJECT_DIR$/ideas/models.py" />
-        <option value="$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js" />
-        <option value="$PROJECT_DIR$/static/templates/layout/game.html" />
-        <option value="$PROJECT_DIR$/static/website/js/main.js" />
-        <option value="$PROJECT_DIR$/static/website/js/game.js" />
-        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/choice.directive.js" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/choice.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/check.directive.js" />
@@ -298,12 +275,9 @@
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/scale.directive.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/radio.directive.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/bigtext.directive.js" />
-        <option value="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/doublescale.directive.js" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/surveyPreFinished.html" />
-        <option value="$PROJECT_DIR$/templates/stylesheets.html" />
-        <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" />
         <option value="$PROJECT_DIR$/questionnaire/models.py" />
         <option value="$PROJECT_DIR$/questionnaire/serializers.py" />
@@ -312,26 +286,37 @@
         <option value="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey1.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/text.html" />
-        <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/doublescale.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/combobox.html" />
-        <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/check.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/bigtext.html" />
-        <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html" />
-        <option value="$PROJECT_DIR$/static/stylesheets/survey.css" />
-        <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/radiolist.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey2.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey3.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey4.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey5.html" />
-        <option value="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" />
-        <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey6.html" />
         <option value="$PROJECT_DIR$/Crowdjump/urls.py" />
-        <option value="$PROJECT_DIR$/templates/navbar.html" />
-        <option value="$PROJECT_DIR$/static/templates/layout/index.html" />
-        <option value="$PROJECT_DIR$/static/javascripts/history/controllers/history.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" />
+        <option value="$PROJECT_DIR$/Crowdjump/settings.py" />
+        <option value="$PROJECT_DIR$/static/website/js/endscreen.js" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" />
+        <option value="$PROJECT_DIR$/static/stylesheets/survey.css" />
+        <option value="$PROJECT_DIR$/templates/navbar.html" />
+        <option value="$PROJECT_DIR$/static/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/static/stylesheets/styles.css" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/check.html" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/radiolist.html" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html" />
+        <option value="$PROJECT_DIR$/templates/javascripts.html" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" />
+        <option value="$PROJECT_DIR$/templates/stylesheets.html" />
+        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
+        <option value="$PROJECT_DIR$/static/javascripts/history/controllers/historyindex.controller.js" />
+        <option value="$PROJECT_DIR$/static/javascripts/history/controllers/history.controller.js" />
+        <option value="$PROJECT_DIR$/static/templates/layout/index.html" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/datenschutz.html" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" />
+        <option value="$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
       </list>
     </option>
@@ -354,8 +339,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1922" />
-    <option name="y" value="-11" />
+    <option name="x" value="166" />
+    <option name="y" value="221" />
     <option name="width" value="1541" />
     <option name="height" value="1053" />
   </component>
@@ -391,6 +376,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -552,6 +538,19 @@
             <path>
               <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
               <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -564,7 +563,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -742,7 +740,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960325" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -812,87 +810,15 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="42" />
+      <option name="time" value="47" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/directives/bigtext.directive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/directives/doublescale.directive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="75" lean-forward="false" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/directives/scale.directive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/bower_components/bootstrap-material-design/sass/material-wfont.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="152" lean-forward="false" selection-start-line="4" selection-start-column="152" selection-end-line="4" selection-end-column="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1292">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/bower_components/bootstrap-material-design/dist/css/material.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="0" column="36635" lean-forward="false" selection-start-line="0" selection-start-column="36635" selection-end-line="0" selection-end-column="36635" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/bower_components/bootstrap-material-design/sass/material.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/admin/css/fonts.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/stylesheets/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1156">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,21 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/stylesheets.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="86" lean-forward="false" selection-start-line="15" selection-start-column="86" selection-end-line="15" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -936,13 +847,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8515">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="186" column="57" lean-forward="false" selection-start-line="186" selection-start-column="57" selection-end-line="187" selection-end-column="99" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -984,6 +889,99 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/progressbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/surveyPostFinished.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey5.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/crowdjump.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="94" column="75" lean-forward="true" selection-start-line="94" selection-start-column="75" selection-end-line="94" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="105" column="87" lean-forward="false" selection-start-line="105" selection-start-column="87" selection-end-line="105" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="50" column="44" lean-forward="false" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crowdjump/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="28" column="111" lean-forward="false" selection-start-line="28" selection-start-column="111" selection-end-line="28" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/endscreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="49" column="13" lean-forward="false" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -991,17 +989,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey1.html">
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+        <state relative-caret-position="425">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/progressbar.html">
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey6.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="51">
+          <caret line="3" column="85" lean-forward="false" selection-start-line="3" selection-start-column="85" selection-end-line="3" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="43" lean-forward="false" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/stylesheets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/stylesheets/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1012,20 +1031,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="168" lean-forward="false" selection-start-line="7" selection-start-column="168" selection-end-line="7" selection-end-column="168" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/doublescale.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="168" lean-forward="false" selection-start-line="8" selection-start-column="168" selection-end-line="8" selection-end-column="168" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/combobox.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1033,10 +1038,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/check.html">
+    <entry file="file://$PROJECT_DIR$/static/stylesheets/survey.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="168" lean-forward="false" selection-start-line="7" selection-start-column="168" selection-end-line="7" selection-end-column="168" />
+        <state relative-caret-position="226">
+          <caret line="449" column="44" lean-forward="false" selection-start-line="449" selection-start-column="37" selection-end-line="449" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1047,216 +1060,202 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/stylesheets/survey.css">
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/doublescale.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18530">
-          <caret line="1090" column="22" lean-forward="false" selection-start-line="1090" selection-start-column="22" selection-end-line="1090" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="187">
+          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html">
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/check.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="168" lean-forward="false" selection-start-line="8" selection-start-column="168" selection-end-line="8" selection-end-column="168" />
-          <folding />
+        <state relative-caret-position="153">
+          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="11" selection-end-column="86" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/radiolist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="127" lean-forward="false" selection-start-line="33" selection-start-column="127" selection-end-line="33" selection-end-column="127" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/surveyPostFinished.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey4.html">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <caret line="7" column="168" lean-forward="false" selection-start-line="7" selection-start-column="168" selection-end-line="13" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey5.html">
+    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/directives/check.directive.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="66" column="25" lean-forward="false" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html">
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="67" lean-forward="false" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
-          <folding />
+        <state relative-caret-position="-124">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey6.html">
+    <entry file="file://$PROJECT_DIR$/templates/stylesheets.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="85" lean-forward="true" selection-start-line="3" selection-start-column="85" selection-end-line="3" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/crowdjump.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="94" column="75" lean-forward="true" selection-start-line="94" selection-start-column="75" selection-end-line="94" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="50" column="44" lean-forward="true" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
+        <state relative-caret-position="221">
+          <caret line="13" column="104" lean-forward="false" selection-start-line="13" selection-start-column="104" selection-end-line="13" selection-end-column="104" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1232">
-          <caret line="83" column="56" lean-forward="false" selection-start-line="83" selection-start-column="56" selection-end-line="83" selection-end-column="56" />
+        <state relative-caret-position="-323">
+          <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
           <folding>
-            <marker date="1528162394606" expanded="false" signature="12007:12033" ph="..." />
-            <marker date="1528162394606" expanded="false" signature="14499:14537" ph="..." />
-            <marker date="1528162394606" expanded="false" signature="14810:14836" ph="..." />
+            <marker date="1528847455378" expanded="false" signature="12007:12033" ph="..." />
+            <marker date="1528847455378" expanded="false" signature="14499:14537" ph="..." />
+            <marker date="1528847455378" expanded="false" signature="14810:14836" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/navbar.html">
+    <entry file="file://$PROJECT_DIR$/static/javascripts/history/controllers/historyindex.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="65" lean-forward="true" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
+        <state relative-caret-position="226">
+          <caret line="62" column="55" lean-forward="false" selection-start-line="62" selection-start-column="55" selection-end-line="62" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/history/controllers/history.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="40" lean-forward="false" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#3;n#h4#1;n#div#2;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="51" lean-forward="false" selection-start-line="0" selection-start-column="51" selection-end-line="0" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/history/controllers/history.controller.js">
+    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="111" lean-forward="false" selection-start-line="5" selection-start-column="111" selection-end-line="5" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/datenschutz.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="52" column="82" lean-forward="false" selection-start-line="52" selection-start-column="82" selection-end-line="52" selection-end-column="82" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="85" lean-forward="true" selection-start-line="13" selection-start-column="85" selection-end-line="13" selection-end-column="85" />
+        <state relative-caret-position="119">
+          <caret line="7" column="52" lean-forward="false" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
+    <entry file="file://$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="105" column="87" lean-forward="true" selection-start-line="105" selection-start-column="87" selection-end-line="105" selection-end-column="87" />
+        <state relative-caret-position="425">
+          <caret line="200" column="9" lean-forward="true" selection-start-line="200" selection-start-column="9" selection-end-line="200" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="1036" column="18" lean-forward="false" selection-start-line="1036" selection-start-column="18" selection-end-line="1036" selection-end-column="18" />
+        <state relative-caret-position="357">
+          <caret line="24" column="31" lean-forward="false" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
           <folding>
-            <element signature="e#5649#5836#0" expanded="false" />
-            <element signature="e#5874#6130#0" expanded="false" />
-            <element signature="e#6850#7027#0" expanded="false" />
-            <element signature="e#7088#7316#0" expanded="false" />
-            <element signature="e#8495#8935#0" expanded="false" />
-            <element signature="e#10122#10651#0" expanded="false" />
-            <element signature="e#10680#11212#0" expanded="false" />
-            <element signature="e#11239#11786#0" expanded="false" />
-            <element signature="e#11813#12361#0" expanded="false" />
-            <element signature="e#12388#12993#0" expanded="false" />
-            <element signature="e#13024#13633#0" expanded="false" />
-            <element signature="e#13660#14467#0" expanded="false" />
-            <element signature="e#14500#15313#0" expanded="false" />
-            <element signature="e#15448#26393#0" expanded="false" />
-            <element signature="e#15567#16000#0" expanded="false" />
-            <element signature="e#16118#16556#0" expanded="false" />
-            <element signature="e#16685#17155#0" expanded="false" />
-            <element signature="e#17191#17672#0" expanded="false" />
-            <element signature="e#17875#18541#0" expanded="false" />
-            <element signature="e#18577#19262#0" expanded="false" />
-            <element signature="e#19452#20305#0" expanded="false" />
-            <element signature="e#20341#20787#0" expanded="false" />
-            <element signature="e#20823#21297#0" expanded="false" />
-            <element signature="e#21333#21862#0" expanded="false" />
-            <element signature="e#21899#22353#0" expanded="false" />
-            <element signature="e#22390#22982#0" expanded="false" />
-            <element signature="e#23019#23494#0" expanded="false" />
-            <element signature="e#23607#24161#0" expanded="false" />
-            <element signature="e#24198#24714#0" expanded="false" />
-            <element signature="e#24751#25207#0" expanded="false" />
-            <element signature="e#25320#25874#0" expanded="false" />
-            <element signature="e#25911#26382#0" expanded="false" />
-            <element signature="e#26423#28242#0" expanded="false" />
-            <element signature="e#26460#27568#0" expanded="false" />
-            <element signature="e#27605#28230#0" expanded="false" />
-            <element signature="e#28671#31040#0" expanded="false" />
-            <element signature="e#31849#32568#0" expanded="false" />
-            <element signature="e#32604#33225#0" expanded="false" />
-            <element signature="e#33261#33900#0" expanded="false" />
-            <element signature="e#33936#34545#0" expanded="false" />
-            <element signature="e#34581#35199#0" expanded="false" />
-            <element signature="e#35235#35872#0" expanded="false" />
-            <element signature="e#35908#36550#0" expanded="false" />
-            <element signature="e#36586#37219#0" expanded="false" />
-            <element signature="e#37255#37889#0" expanded="false" />
-            <element signature="e#37926#38588#0" expanded="false" />
-            <element signature="e#38630#40779#0" expanded="false" />
-            <element signature="e#38667#40048#0" expanded="false" />
-            <element signature="e#40846#41986#0" expanded="false" />
-            <element signature="e#42022#42688#0" expanded="false" />
-            <element signature="e#42767#43504#0" expanded="false" />
-            <element signature="e#43540#44276#0" expanded="false" />
-            <element signature="e#44318#46100#0" expanded="false" />
-            <element signature="e#44448#45306#0" expanded="false" />
-            <element signature="e#47078#47780#0" expanded="false" />
+            <element signature="e#4066#5870#0" expanded="false" />
+            <element signature="e#5940#6515#0" expanded="false" />
+            <element signature="e#6560#7793#0" expanded="false" />
+            <element signature="e#7841#10452#0" expanded="false" />
+            <element signature="e#7952#8139#0" expanded="false" />
+            <element signature="e#8177#8433#0" expanded="false" />
+            <element signature="e#9153#9330#0" expanded="false" />
+            <element signature="e#9391#9619#0" expanded="false" />
+            <element signature="e#10505#10742#0" expanded="false" />
+            <element signature="e#10797#11237#0" expanded="false" />
+            <element signature="e#11273#11429#0" expanded="false" />
+            <element signature="e#11466#11524#0" expanded="false" />
+            <element signature="e#11561#11617#0" expanded="false" />
+            <element signature="e#11660#11706#0" expanded="false" />
+            <element signature="e#12653#13182#0" expanded="false" />
+            <element signature="e#13211#13743#0" expanded="false" />
+            <element signature="e#13770#14317#0" expanded="false" />
+            <element signature="e#14344#14892#0" expanded="false" />
+            <element signature="e#15555#16164#0" expanded="false" />
+            <element signature="e#16191#16998#0" expanded="false" />
+            <element signature="e#17031#17844#0" expanded="false" />
+            <element signature="e#18269#18855#0" expanded="false" />
+            <element signature="e#19016#19449#0" expanded="false" />
+            <element signature="e#19567#20005#0" expanded="false" />
+            <element signature="e#20134#20604#0" expanded="false" />
+            <element signature="e#20640#21121#0" expanded="false" />
+            <element signature="e#21324#21990#0" expanded="false" />
+            <element signature="e#22026#22711#0" expanded="false" />
+            <element signature="e#22901#23754#0" expanded="false" />
+            <element signature="e#23790#24266#0" expanded="false" />
+            <element signature="e#24302#24806#0" expanded="false" />
+            <element signature="e#24842#25401#0" expanded="false" />
+            <element signature="e#25438#25923#0" expanded="false" />
+            <element signature="e#25960#26582#0" expanded="false" />
+            <element signature="e#26619#27124#0" expanded="false" />
+            <element signature="e#27237#27821#0" expanded="false" />
+            <element signature="e#27858#28404#0" expanded="false" />
+            <element signature="e#28441#28927#0" expanded="false" />
+            <element signature="e#29040#29658#0" expanded="false" />
+            <element signature="e#29695#30196#0" expanded="false" />
+            <element signature="e#30237#32056#0" expanded="false" />
+            <element signature="e#30274#31382#0" expanded="false" />
+            <element signature="e#31419#32044#0" expanded="false" />
+            <element signature="e#32485#34854#0" expanded="false" />
+            <element signature="e#35663#36382#0" expanded="false" />
+            <element signature="e#36418#37039#0" expanded="false" />
+            <element signature="e#37075#37714#0" expanded="false" />
+            <element signature="e#37750#38359#0" expanded="false" />
+            <element signature="e#38395#39013#0" expanded="false" />
+            <element signature="e#39049#39686#0" expanded="false" />
+            <element signature="e#39722#40364#0" expanded="false" />
+            <element signature="e#40400#41033#0" expanded="false" />
+            <element signature="e#41069#41703#0" expanded="false" />
+            <element signature="e#41740#42402#0" expanded="false" />
+            <element signature="e#42444#44593#0" expanded="false" />
+            <element signature="e#42481#43862#0" expanded="false" />
+            <element signature="e#44660#45800#0" expanded="false" />
+            <element signature="e#45836#46502#0" expanded="false" />
+            <element signature="e#46581#47318#0" expanded="false" />
+            <element signature="e#47354#48090#0" expanded="false" />
+            <element signature="e#48132#49914#0" expanded="false" />
+            <element signature="e#48262#49120#0" expanded="false" />
+            <element signature="e#51033#51740#0" expanded="false" />
           </folding>
         </state>
       </provider>

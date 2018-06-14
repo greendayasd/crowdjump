@@ -13,6 +13,7 @@
         $scope.tableRowExpanded = false;
         $scope.tableRowIndexExpandedCurr = "";
         $scope.tableRowIndexExpandedPrev = "";
+        $scope.test = "1";
 
 
         activate();

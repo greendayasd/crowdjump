@@ -28,26 +28,29 @@ Crowdjump.Endscreen.prototype = {
         }
         // console.error("old_time " + old_time);
         // console.error("new_time " + time_score);
-        var highscore_text = '';
+        var highscore_text = '\n ';
         var isHighscore = false;
-        if (old_time == -2) {
-            highscore_text = 'Login to save your score!';
-        }
-        else if (old_time == -1) {
-            highscore_text = 'This is a new highscore!';
-            isHighscore = true;
-            game.gameInfo["highscore"] = time_score * 1000;
-        } else {
-            // old_time = old_time / 1000;
-            if (old_time > time_score * 1000) {
-                highscore_text = 'This is a new highscore, your previous highscore was ' + (old_time / 1000) + ' seconds!';
+        if (false) {
+            if (old_time == -2) {
+                highscore_text += 'Login to save your score!';
+            }
+            else if (old_time == -1) {
+                highscore_text += 'This is a new highscore!';
                 isHighscore = true;
                 game.gameInfo["highscore"] = time_score * 1000;
             } else {
-                highscore_text = 'Your highscore is ' + (old_time / 1000) + ' seconds!';
+                // old_time = old_time / 1000;
+                if (old_time > time_score * 1000) {
+                    highscore_text += 'This is a new highscore, your previous highscore was ' + (old_time / 1000) + ' seconds!';
+                    isHighscore = true;
+                    game.gameInfo["highscore"] = time_score * 1000;
+                } else {
+                    highscore_text += 'Your highscore is ' + (old_time / 1000) + ' seconds!';
+                }
             }
+
         }
-        var scoreText = "Congratulations, you beat the level in " + time_score + " seconds! \n" + highscore_text;
+        var scoreText = "Congratulations, you beat the level in " + time_score + " seconds!" + highscore_text;
         score = this.add.text(this.world.centerX, 60, scoreText, {fill: '#dbdbdb'});
         score.anchor.set(0.5);
 

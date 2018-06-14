@@ -1,3 +1,18 @@
+
+.navbar-inverse .navbar-nav > li > a.no-hover:focus {
+    text-decoration: none;
+    background-color: transparent !important;
+    color:#9d9d9d;
+    cursor: default;
+}
+
+.navbar-inverse .navbar-nav > li > a.no-hover:hover {
+    text-decoration: none;
+    background-color: transparent !important;
+    color:#9d9d9d;
+    cursor: default;
+}
+
 .no-ideas-here {
     text-align: center;
 }
