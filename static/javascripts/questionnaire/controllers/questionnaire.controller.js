@@ -14,6 +14,7 @@
         vm.url = window.location.pathname;
 
         var ismobile = false;
+
         function detectmob() {
             if (navigator.userAgent.match(/Android/i)
                 || navigator.userAgent.match(/webOS/i)
@@ -31,21 +32,14 @@
         }
 
         function detectmob2() {
-            alert(window.innerHeight);
             if (window.innerWidth <= 800 && window.innerHeight <= 600) {
                 return true;
             } else {
                 return false;
             }
         }
-        ismobile = (detectmob() || detectmob2());
-        alert(ismobile);
 
-        if (ismobile){
-            window.location.href = '/mobile';
-            return;
-
-        }
+        ismobile = (detectmob() || detectmob2() );
 
         if (!vm.isAuthenticated && vm.url.includes("survey")) {
             // console.log(vm.url);
@@ -63,10 +57,22 @@
         var post_surveystatus = vm.surveystatus - 4;
         // console.log(vm.surveystatus);
         if (vm.surveystatus < 3 && !vm.url.includes("survey" + vm.surveystatus)) {
+
+            if (ismobile) {
+                window.location.href = '/mobile';
+                return;
+            }
             window.location.href = '/survey' + vm.surveystatus;
+            return;
         }
         else if (vm.surveystatus > 3 && vm.surveystatus < 11 && !vm.url.includes("postsurvey" + post_surveystatus)) {
+
+            if (ismobile) {
+                window.location.href = '/mobile';
+                return;
+            }
             window.location.href = 'postsurvey' + post_surveystatus;
+            return;
         }
         else if ((vm.surveystatus == 3 || vm.surveystatus == 3) && vm.url.includes("survey") && !vm.url.includes("surveyPreFinished")) {
             window.location.href = '/';
