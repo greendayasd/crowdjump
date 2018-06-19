@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/privacy.controller.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/static/templates/questionnaire/legalnotice.html" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js" afterPath="$PROJECT_DIR$/static/javascripts/authentication/services/authentication.service.js" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
-      <change beforePath="$PROJECT_DIR$/static/stylesheets/styles.css" afterPath="$PROJECT_DIR$/static/stylesheets/styles.css" />
-      <change beforePath="$PROJECT_DIR$/static/stylesheets/survey.css" afterPath="$PROJECT_DIR$/static/stylesheets/survey.css" />
-      <change beforePath="$PROJECT_DIR$/static/templates/ideas/new-idea.html" afterPath="$PROJECT_DIR$/static/templates/ideas/new-idea.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/index.html" afterPath="$PROJECT_DIR$/static/templates/layout/index.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/mobile.html" afterPath="$PROJECT_DIR$/static/templates/layout/mobile.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/datenschutz.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/privacy.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/radio.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/endscreen.js" afterPath="$PROJECT_DIR$/static/website/js/endscreen.js" />
-      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" afterPath="$PROJECT_DIR$/templates/javascripts.html" />
+      <change beforePath="$PROJECT_DIR$/static/templates/authentication/register.html" afterPath="$PROJECT_DIR$/static/templates/authentication/register.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,111 +31,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="questionnaire.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="903" column="18" lean-forward="false" selection-start-line="903" selection-start-column="18" selection-end-line="903" selection-end-column="18" />
-              <folding>
-                <element signature="e#591#1120#0" expanded="false" />
-                <element signature="e#1152#1330#0" expanded="false" />
-                <element signature="e#4906#5481#0" expanded="false" />
-                <element signature="e#7052#9760#0" expanded="false" />
-                <element signature="e#7166#7353#0" expanded="false" />
-                <element signature="e#8461#8638#0" expanded="false" />
-                <element signature="e#8699#8927#0" expanded="false" />
-                <element signature="e#9813#10050#0" expanded="false" />
-                <element signature="e#10105#10545#0" expanded="false" />
-                <element signature="e#10581#10737#0" expanded="false" />
-                <element signature="e#10774#10832#0" expanded="false" />
-                <element signature="e#10869#10925#0" expanded="false" />
-                <element signature="e#10968#11014#0" expanded="false" />
-                <element signature="e#11050#11653#0" expanded="false" />
-                <element signature="e#12708#13237#0" expanded="false" />
-                <element signature="e#13266#13798#0" expanded="false" />
-                <element signature="e#13825#14372#0" expanded="false" />
-                <element signature="e#14399#14947#0" expanded="false" />
-                <element signature="e#14974#15579#0" expanded="false" />
-                <element signature="e#15610#16219#0" expanded="false" />
-                <element signature="e#16246#17083#0" expanded="false" />
-                <element signature="e#17116#17959#0" expanded="false" />
-                <element signature="e#18096#18772#0" expanded="false" />
-                <element signature="e#18820#30015#0" expanded="false" />
-                <element signature="e#18939#19370#0" expanded="false" />
-                <element signature="e#19478#19912#0" expanded="false" />
-                <element signature="e#20041#20506#0" expanded="false" />
-                <element signature="e#20542#21012#0" expanded="false" />
-                <element signature="e#21194#21828#0" expanded="false" />
-                <element signature="e#21864#22529#0" expanded="false" />
-                <element signature="e#22718#23592#0" expanded="false" />
-                <element signature="e#23628#24110#0" expanded="false" />
-                <element signature="e#24146#24651#0" expanded="false" />
-                <element signature="e#24687#25237#0" expanded="false" />
-                <element signature="e#25274#25758#0" expanded="false" />
-                <element signature="e#25795#26416#0" expanded="false" />
-                <element signature="e#26453#26958#0" expanded="false" />
-                <element signature="e#27067#27651#0" expanded="false" />
-                <element signature="e#27688#28232#0" expanded="false" />
-                <element signature="e#28269#28753#0" expanded="false" />
-                <element signature="e#28862#29480#0" expanded="false" />
-                <element signature="e#29517#30004#0" expanded="false" />
-                <element signature="e#30092#31030#0" expanded="false" />
-                <element signature="e#31068#31710#0" expanded="false" />
-                <element signature="e#31997#32673#0" expanded="false" />
-                <element signature="e#32725#34885#0" expanded="false" />
-                <element signature="e#32772#34153#0" expanded="false" />
-                <element signature="e#34923#36825#0" expanded="false" />
-                <element signature="e#36864#38565#0" expanded="false" />
-                <element signature="e#37773#38553#0" expanded="false" />
-                <element signature="e#38609#40300#0" expanded="false" />
-                <element signature="e#38741#39520#0" expanded="false" />
-                <element signature="e#40338#41846#0" expanded="false" />
-                <element signature="e#40385#41094#0" expanded="false" />
-                <element signature="e#41901#53211#0" expanded="false" />
-                <element signature="e#42020#42453#0" expanded="false" />
-                <element signature="e#42571#43009#0" expanded="false" />
-                <element signature="e#43138#43608#0" expanded="false" />
-                <element signature="e#43644#44125#0" expanded="false" />
-                <element signature="e#44328#44994#0" expanded="false" />
-                <element signature="e#45030#45715#0" expanded="false" />
-                <element signature="e#45905#46758#0" expanded="false" />
-                <element signature="e#46794#47270#0" expanded="false" />
-                <element signature="e#47306#47810#0" expanded="false" />
-                <element signature="e#47846#48405#0" expanded="false" />
-                <element signature="e#48442#48927#0" expanded="false" />
-                <element signature="e#48964#49586#0" expanded="false" />
-                <element signature="e#49623#50128#0" expanded="false" />
-                <element signature="e#50241#50825#0" expanded="false" />
-                <element signature="e#50862#51408#0" expanded="false" />
-                <element signature="e#51445#51931#0" expanded="false" />
-                <element signature="e#52044#52662#0" expanded="false" />
-                <element signature="e#52699#53200#0" expanded="false" />
-                <element signature="e#53249#55102#0" expanded="false" />
-                <element signature="e#54431#55090#0" expanded="false" />
-                <element signature="e#55140#65224#0" expanded="false" />
-                <element signature="e#55295#57664#0" expanded="false" />
-                <element signature="e#58473#59192#0" expanded="false" />
-                <element signature="e#59228#59849#0" expanded="false" />
-                <element signature="e#59885#60524#0" expanded="false" />
-                <element signature="e#60560#61169#0" expanded="false" />
-                <element signature="e#61205#61823#0" expanded="false" />
-                <element signature="e#61859#62496#0" expanded="false" />
-                <element signature="e#62532#63174#0" expanded="false" />
-                <element signature="e#63210#63843#0" expanded="false" />
-                <element signature="e#63879#64513#0" expanded="false" />
-                <element signature="e#64550#65212#0" expanded="false" />
-                <element signature="e#65272#66841#0" expanded="false" />
-                <element signature="e#65319#66056#0" expanded="false" />
-                <element signature="e#66093#66829#0" expanded="false" />
-                <element signature="e#66877#68659#0" expanded="false" />
-                <element signature="e#67007#67865#0" expanded="false" />
-                <element signature="e#68695#70514#0" expanded="false" />
-                <element signature="e#69795#70502#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="survey0.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -175,11 +53,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="privacy.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="privacy.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/privacy.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="471">
               <caret line="64" column="54" lean-forward="false" selection-start-line="64" selection-start-column="54" selection-end-line="64" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/templates/authentication/register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="50" lean-forward="false" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -317,7 +205,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/radio.directive.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/bigtext.directive.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/directives/doublescale.directive.js" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" />
@@ -368,6 +255,7 @@
         <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/privacy.html" />
+        <option value="$PROJECT_DIR$/static/templates/authentication/register.html" />
       </list>
     </option>
   </component>
@@ -433,6 +321,11 @@
             <path>
               <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
               <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+              <item name="authentication" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
@@ -562,6 +455,13 @@
               <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="authentication" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
@@ -872,20 +772,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/surveyPreFinished.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="28" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="25" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/directives/progressbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1368,10 +1254,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/authentication/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/privacy.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
           <caret line="64" column="54" lean-forward="false" selection-start-line="64" selection-start-column="54" selection-end-line="64" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/authentication/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="50" lean-forward="false" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
           <folding />
         </state>
       </provider>
