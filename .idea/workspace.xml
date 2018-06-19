@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/templates/authentication/login.html" afterPath="$PROJECT_DIR$/static/templates/authentication/login.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/authentication/register.html" afterPath="$PROJECT_DIR$/static/templates/authentication/register.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/ideas/delete-idea.html" afterPath="$PROJECT_DIR$/static/templates/ideas/delete-idea.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/ideas/new-idea.html" afterPath="$PROJECT_DIR$/static/templates/ideas/new-idea.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/game.html" afterPath="$PROJECT_DIR$/static/templates/layout/game.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/history.html" afterPath="$PROJECT_DIR$/static/templates/layout/history.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/mobile.html" afterPath="$PROJECT_DIR$/static/templates/layout/mobile.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/legalnotice.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/legalnotice.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey1.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey1.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey2.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey2.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey3.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey3.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey4.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey4.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey5.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey5.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey6.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/postsurvey6.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/privacy.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/privacy.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/surveyPostFinished.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/surveyPostFinished.html" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/surveyPreFinished.html" afterPath="$PROJECT_DIR$/static/templates/questionnaire/surveyPreFinished.html" />
+      <change beforePath="$PROJECT_DIR$/static/templates/layout/index.html" afterPath="$PROJECT_DIR$/static/templates/layout/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -72,6 +51,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/templates/layout/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="58" lean-forward="false" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="survey2.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey2.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -82,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="58" lean-forward="false" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
+            <state relative-caret-position="408">
+              <caret line="24" column="45" lean-forward="true" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -106,7 +95,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dfki</find>
       <find>post</find>
       <find>fontawesome</find>
       <find>rob</find>
@@ -136,6 +124,7 @@
       <find>ga('set'</find>
       <find>ga('set</find>
       <find>page_path</find>
+      <find>/ideas/</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -184,7 +173,6 @@
         <option value="$PROJECT_DIR$/static/templates/questionnaire/directives/scale.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
         <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/static/templates/layout/index.html" />
         <option value="$PROJECT_DIR$/static/templates/layout/game.html" />
         <option value="$PROJECT_DIR$/static/templates/layout/history.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/legalnotice.html" />
@@ -207,6 +195,7 @@
         <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey1.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/surveyPreFinished.html" />
+        <option value="$PROJECT_DIR$/static/templates/layout/index.html" />
       </list>
     </option>
   </component>
@@ -1036,14 +1025,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="53" lean-forward="true" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/game.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1213,6 +1194,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="45" lean-forward="true" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="58" lean-forward="false" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
