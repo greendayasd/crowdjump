@@ -103,7 +103,7 @@
                     }
 
                 }).catch(function (error) {
-                    console.error("Could not get PreSurvey  " + JSON.stringify(error));
+                    // console.error("Could not get PreSurvey  " + JSON.stringify(error));
                 });
 
 
@@ -134,12 +134,12 @@
                             // console.error("bearbeitet");
                             return result;
                         }).catch(function (error) {
-                            console.error("Fehler " + JSON.stringify(error));
+                            // console.error("Fehler " + JSON.stringify(error));
                         });
                     } else {
                         // console.error("muss neu angelegt werden " + vote);
                         cont == '' ? cont = null : cont;
-                        console.log(cont);
+                        // console.log(cont);
                         $http.post('/api/v1/postsurvey/', {
                             "site0": cont,
                             "site1": null,
@@ -152,7 +152,7 @@
                             // console.error("neu angelegt");
                             return result;
                         }).catch(function (error) {
-                            console.error("Fehler " + JSON.stringify(error));
+                            // console.error("Fehler " + JSON.stringify(error));
                         });
                     }
 

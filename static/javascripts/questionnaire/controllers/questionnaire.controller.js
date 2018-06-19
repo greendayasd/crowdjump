@@ -93,13 +93,13 @@
 
             if (vm.surveystatus >= 3) {
 
-                post_check = vm.surveystatus - 2;
+                post_check = vm.surveystatus - 1;
                 next_survey_id += 4;
             }
-            console.log($scope.getContent(post_check));
+            // console.log($scope.getContent(post_check));
 
             if (vm.surveystatus < 3 && $scope.checkAll(post_check)) {
-                content = $scope.getContent(post_check);
+                // content = $scope.getContent(post_check);
                 // console.log(content);
                 // console.log(vm.surveystatus);
                 Questionnaire.post_preSite(vm.cookie["id"], vm.surveystatus, content);
@@ -114,7 +114,7 @@
                 Questionnaire.post_postSite(vm.cookie["id"], post_check - 2, content);
 
             } else if (vm.surveystatus != 3 && vm.surveystatus != 4 && vm.surveystatus != 11) {
-                alert("Bitte fülle zuerst alle Pflichtfragen aus!");
+                alert("Please answer all required questions first!");
                 return;
 
             }
@@ -964,7 +964,7 @@
                 survey: 5,
                 nr: 0,
                 type: 'scale',
-                text: 'Please indicate how you felt while playing the game for each of the items, on the following scale. ',
+                text: 'Please indicate how you felt while playing the game for each of the items on the following scale. ',
                 required: true,
                 startVisible: true,
                 visible: true,
