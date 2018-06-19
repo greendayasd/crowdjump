@@ -9,7 +9,6 @@
 
     function PrivacyController($scope, Authentication, Questionnaire) {
         var vm = this;
-        console.log("test");
 
 
     }
