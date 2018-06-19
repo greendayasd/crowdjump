@@ -1,29 +1,32 @@
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <h1>Login</h1>
+<div class="outerframe container">
+    <div class="row">
 
-        <div class="well">
-            <form role="form" ng-submit="vm.login()" name="loginForm" #loginForm="ngForm">
-                <div class="alert alert-danger" ng-show="error" ng-bind="error"></div>
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Login</h1>
 
-                <div class="form-group">
-                    <label for="login__email">Email</label>
-                    <input type="email" class="form-control" id="login__email" ng-model="vm.email"
-                           placeholder="ex. john@example.com"/>
-                </div>
+            <div class="well">
+                <form role="form" ng-submit="vm.login()" name="loginForm" #loginForm="ngForm">
+                    <div class="alert alert-danger" ng-show="error" ng-bind="error"></div>
 
-                <div class="form-group">
-                    <label for="login__password">Password</label>
-                    <input type="password" class="form-control" id="login__password" ng-model="vm.password"
-                           required minlength = '6' maxlength="20"
-                           placeholder="ex. password"/>
-                </div>
+                    <div class="form-group">
+                        <label for="login__email">Email</label>
+                        <input type="email" class="form-control" id="login__email" ng-model="vm.email"
+                               placeholder="ex. john@example.com"/>
+                    </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" [disabled]="!ngForm.valid">Submit</button>
-                </div>
+                    <div class="form-group">
+                        <label for="login__password">Password</label>
+                        <input type="password" class="form-control" id="login__password" ng-model="vm.password"
+                               required minlength='6' maxlength="20"
+                               placeholder="ex. password"/>
+                    </div>
 
-            </form>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" [disabled]="!ngForm.valid">Submit</button>
+                    </div>
+
+                </form>
+            </div>
         </div>
     </div>
 </div>
