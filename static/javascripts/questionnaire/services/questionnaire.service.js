@@ -83,7 +83,7 @@
                             // console.error("bearbeitet");
                             return result;
                         }).catch(function (error) {
-                            console.error("Fehler " + JSON.stringify(error));
+                            //console.error("Fehler " + JSON.stringify(error));
                         });
                     } else {
                         // console.error("muss neu angelegt werden " + vote);
@@ -98,7 +98,7 @@
                             // console.error("neu angelegt");
                             return result;
                         }).catch(function (error) {
-                            console.error("Fehler " + JSON.stringify(error));
+                            //console.error("Fehler " + JSON.stringify(error));
                         });
                     }
 
