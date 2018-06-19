@@ -186,7 +186,7 @@
          */
         function setAuthenticatedAccount(account) {
             var expireDate = new Date();
-            expireDate.setDate(expireDate.getDate() + 1);
+            expireDate.setDate(expireDate.getDate() + 365);
             $cookies.put("authenticatedAccount", JSON.stringify(account), {'expires': expireDate});
         }
 

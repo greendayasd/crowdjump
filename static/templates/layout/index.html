@@ -6,26 +6,6 @@
         <h1>Welcome to Crowdjump!</h1>
         <div ng-controller="HistoryController as vm">
             <h3> Version {{ version.label }}</h3>
-                {{ question2 }}
-                <div ng-repeat="choice in choices track by $index">
-                    <th>
-                        {{ choice }}
-                    </th>
-                    <label>Chicken or the Egg?</label>
-                    <div class="form-group" ng-repeat="description in question2 track by $index">
-                        <div class="radio" ng-model="selected[$parent.$index]"
-                             ng-click="selected[$parent.$index]=$index;test3($parent.$index)">
-                            <label>
-                                <input type="radio" name="{{ choices[$parent.$index]}}" value="{{$index}}"
-                                       ng-model="selected[$parent.$index]">
-                                {{ description }}
-                            </label>
-                            <span>test</span>
-                            asd
-                        </div>
-                    </div>
-                    <br>
-                </div>
         </div>
     </div>
 </div>

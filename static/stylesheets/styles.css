@@ -6,6 +6,13 @@
     cursor: default;
 }
 
+
+.ngdialog.ngdialog-theme-default .ngdialog-content{
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .navbar-inverse .navbar-nav > li > a.no-hover:hover {
     text-decoration: none;
     background-color: transparent !important;

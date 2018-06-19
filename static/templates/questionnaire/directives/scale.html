@@ -52,11 +52,11 @@
                         {{ choice }}
                     </th>
 
-                    <td ng-repeat="description in question.scale track by $index">
-
-                        <div class="radio text-center"
-                             ng-click="question.selected[$parent.$index]=$index;checkconditions(question)"
+                    <td ng-repeat="description in question.scale track by $index"
+                             ng-click="question.selected[$parent.$index]='' + $index;checkconditions(question)"
                              ng-model="question.selected[$parent.$index]">
+
+                        <div class="radio text-center">
                             <label><input class="radio" type="radio"
                                           name="{{ question.choices[$parent.$index]}}"
                                           value="{{$index}}"

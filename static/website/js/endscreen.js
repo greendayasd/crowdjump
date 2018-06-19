@@ -4,6 +4,7 @@ Crowdjump.Endscreen = function (game) {
     var replay;
     var score;
     var info;
+    var info;
     var bubble;
     var time_score;
     var old_time;
@@ -59,8 +60,12 @@ Crowdjump.Endscreen.prototype = {
             score.events.onInputDown.add(this.login, this);
         }
 
+        var additionalIdeaInfo = "Do you want to improve the game or the website?";
+        info = this.add.text(this.world.centerX, 155, additionalIdeaInfo, {fill: '#dbdbdb'});
+        info.anchor.set(0.5);
+
         if (CONST_BUBBLE) {
-            bubble = this.add.sprite(this.world.centerX, this.world.centerY, 'bubble');
+            bubble = this.add.sprite(this.world.centerX, this.world.centerY +10, 'bubble');
             bubble.anchor.set(0.5);
             bubble.inputEnabled = true;
             bubble.events.onInputDown.add(this.ideas, this);
