@@ -3,8 +3,9 @@ from django.urls import path, include
 from django.conf.urls import url
 from website import views
 from rest_framework_nested import routers
-from website.views import IndexView, HistoryViewSet, IdeasView, GameViewSet, GameInfoView, GameView
-from ideas.views import IdeaViewSet, IdeaVotePermissionViewSet, AccountIdeasViewSet, AccountGameInfoViewSet, GameInfoViewSet, CommentViewSet, IdeaVoteViewSet
+from website.views import IndexView, HistoryViewSet, IdeasView, GameViewSet, GameInfoView, GameView, AdminView
+from ideas.views import IdeaViewSet, IdeaVotePermissionViewSet, AccountIdeasViewSet, AccountGameInfoViewSet, \
+    GameInfoViewSet, CommentViewSet, IdeaVoteViewSet
 from chat.views import room, index, ChatMessageViewSet
 from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet
 
@@ -40,13 +41,14 @@ urlpatterns = [
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 
-
-    #redirects
+    # redirects
     url(r'^ideas/$', IndexView.as_view()),
     url(r'^game/$', IndexView.as_view()),
     url(r'^history/$', IndexView.as_view()),
     url(r'^login/$', IndexView.as_view()),
     url(r'^register/$', IndexView.as_view()),
+
+    url(r'^admin/$', AdminView.as_view()),
 
     url(r'^survey0/$', IndexView.as_view()),
     url(r'^survey1/$', IndexView.as_view()),

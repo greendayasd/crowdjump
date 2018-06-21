@@ -59,12 +59,18 @@
             templateUrl: '/static/templates/layout/idea_index.html'
 
 
+
+        }).when('/admin', {
+            // controller: 'AdminController',
+            // controllerAs: 'vm',
+            templateUrl: '/static/templates/layout/admin.html'
+
+
             //surveys
         }).when('/survey0', {
             controller: 'QuestionnaireController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/questionnaire/survey0.html'
-
         }).when('/survey1', {
             controller: 'QuestionnaireController',
             controllerAs: 'vm',

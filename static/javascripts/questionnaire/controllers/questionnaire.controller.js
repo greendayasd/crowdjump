@@ -13,7 +13,10 @@
         vm.cookie = Authentication.getAuthenticatedAccount();
         vm.url = window.location.pathname;
 
-        var ismobile = false;
+        if (vm.url.includes("admin")) {
+            get_pre();
+            get_post();
+        }
 
         function detectmob() {
             if (navigator.userAgent.match(/Android/i)
@@ -39,7 +42,7 @@
             }
         }
 
-        ismobile = (detectmob() || detectmob2());
+        var ismobile = (detectmob() || detectmob2());
 
         if (!vm.isAuthenticated && vm.url.includes("survey")) {
             // console.log(vm.url);
@@ -292,6 +295,83 @@
                 }
             });
             survey["visible"] = (survey["startVisible"] || activations.size > 0);
+        }
+
+
+        $scope.createFile = function (text, name, type) {
+            var dlcsv = document.getElementById("dlcsv");
+            var file = new Blob([text], {type: type});
+            dlcsv.href = URL.createObjectURL(file);
+            dlcsv.download = name;
+        }
+
+
+        $scope.csv = '';
+
+        function get_pre() {
+            Questionnaire.all_pre().then(successFn, errorFn);
+
+            function successFn(data, status, headers, config) {
+                $scope.PreSurvey = data.data;
+            }
+
+            function errorFn(data, status, headers, config) {
+            }
+        }
+
+        function get_post() {
+            Questionnaire.all_post().then(successFn, errorFn);
+
+            function successFn(data, status, headers, config) {
+                $scope.PostSurvey = data.data;
+            }
+
+            function errorFn(data, status, headers, config) {
+            }
+        }
+
+        $scope.getCsv = function (surname) {
+            var header = 'id,user_id,';
+            var site1header = '';
+            var site2header = '';
+            var site3header = '';
+            var site4header = '';
+            var site5header = '';
+            var site6header = '';
+            var site1content = '';
+            var site2content = '';
+            var site3content = '';
+            var site4content = '';
+            var site5content = '';
+            var site6content = '';
+            var content = '';
+
+            $scope.csv = '';
+
+            if (surname === "pre") {
+
+                site1header = 'Age (Combobox),Gender (Combobox),Time in hours you use your PC per week (Combobox),Time in hours you play video games per week(Combobox),What are important aspects in a video game?(Checkbox),What is THE most important aspect in a video game?(Radiolist),I played a lot of platformers (7 point scale),I like platformers (7 point scale),I like platformers more than other game genres (7 point scale),Have you ever designed a video game? (Bool),Have you ever designed an application? (except video games) (Bool),If you had the choice, do want to be included in the design process of a video game? (Bool),How would you like to be included? (Text),Have you ever watched a "Twitch Plays" series (e.g. Twitch Plays Pokemon, Twitch Plays Darksouls, Twitch Plays Pubg, etc) on Twitch? (Bool),Did you actively participate in the Twitch Plays series? (Bool), How did you like Twitch Plays? (7 point scale),Have you heard of “PleaseBeNice”? (Bool),Did you play PleaseBeNice yourself? (Bool),How did you like PleaseBeNice? (7 point scale),Did one of your ideas get implemented?(Bool)';
+                site2header = 'A: I am really bad at video games B: I am extremely good in video games (Double 7 point scale),A: Only the design of a product is important B: Only functionality of a product is important (Double 7 point scale),A: I prefer to work alone B: I prefer to work with others (Double 7 point scale),A: Everyone\'s opinion should be heard equally B: The opinion of experts have a higher value (Double 7 point scale),A: I prefer very easy games B: I prefer very hard games (Double 7 point scale),A: I like to have a lot of freedom B: I prefer someone giving me tasks (Double 7 point scale),A: I prefer it when things don\'t change B: I prefer regular innovation (Double 7 point scale),A: I hate to compete with others B: I thrive on competition (Double 7 point scale),A: I see myself as a follower B: I see myself as a leader (Double 7 point scale),A: I love to discuss with others B: I prefer to not communicate with others at all (Double 7 point scale)';
+
+                for (var i = 0; i < $scope.PreSurvey.length; i++) {
+                    site1content = JSON.stringify($scope.PreSurvey[i]["site1"]);
+                    site2content = JSON.stringify($scope.PreSurvey[i]["site2"]);
+
+                    content += '\n' + $scope.PreSurvey[i]["id"] + ',' + $scope.PreSurvey[i]["user"]["id"] + ',' + site1content + site2content + site3content + site4content + site5content + site6content;
+                }
+
+            }
+
+
+            if (surname === "post") {
+                var res = Questionnaire.all_post();
+
+
+            }
+
+            header += site1header + site2header + site3header + site4header + site5header + site6header;
+            $scope.csv += header + content;
+            setTimeout($scope.createFile($scope.csv, surname + '.csv', 'text/csv'));
         }
 
         $scope.test = function () {

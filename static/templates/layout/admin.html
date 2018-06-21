@@ -1,0 +1,28 @@
+<div class="outerframe container" id="outerframeContainer" style="margin-top: 60px;">
+    <div class="row" id="main-row">
+        <div class="col-sm-12 col-centered" id="main-col">
+            <div ng-controller="QuestionnaireController as vm">
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('pre')">Pre CSV
+                </button>
+
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('post')">Post CSV
+                </button>
+                <br>
+                <a href="javascript:void(0)" id="dlcsv">
+                    <button>Download Csv</button>
+                </a>
+
+                <textarea class="form-control textarea  empty"
+                          rows="10" cols="12"
+                          ng-model=csv></textarea>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div ng-controller="MailController as vm">
+    <button type="button" class="btn btn-xs btn-primary" ng-click="sendMail">CSV
+    </button>
+
+</div> ->

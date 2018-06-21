@@ -20,17 +20,19 @@
                 cookieasd: cookieasd,
                 post_preSite: post_preSite,
                 post_postSite: post_postSite,
+                get_pre: get_pre,
+                get_post: get_post,
             };
 
             return Questionnaire;
 
 
             function all_pre() {
-                return $http.get('/api/v1/ideavotes/presurvey');
+                return $http.get('/api/v1/presurvey/');
             }
 
             function all_post() {
-                return $http.get('/api/v1/ideavotes/postsurvey');
+                return $http.get('/api/v1/postsurvey/');
             }
 
             function cookieasd() {
@@ -163,6 +165,15 @@
 
             }
 
+            function get_pre(user_id){
+                var res =  $http.get('/api/v1/presurvey/?user__id=' + user_id + '&limit=1');
+                return res["results"];
+            }
+
+            function get_post(user_id){
+                var res =  $http.get('/api/v1/postsurvey/?user__id=' + user_id + '&limit=1');
+                return res["results"];
+            }
 
         }
     }
