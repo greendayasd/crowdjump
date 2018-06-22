@@ -10,7 +10,7 @@ class PreSurveySerializer(serializers.ModelSerializer):
     class Meta:
         model = preSurvey
 
-        fields = ('id', 'user', 'site0', 'site1', 'site2', 'site3', 'site4')
+        fields = "__all__"
 
         read_only_fields = ['id']
 
@@ -21,6 +21,6 @@ class PostSurveySerializer(serializers.ModelSerializer):
     class Meta:
         model = postSurvey
 
-        fields = ('id', 'user', 'site0', 'site1', 'site2', 'site3', 'site4', 'site5', 'site6')
+        fields = "__all__"
 
         read_only_fields = ['id']

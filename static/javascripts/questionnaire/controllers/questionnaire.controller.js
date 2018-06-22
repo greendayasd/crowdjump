@@ -90,31 +90,30 @@
         $scope.submit = function (next_survey) {
 
             var content = {};
-            // console.log(vm.surveystatus);
             var post_check = vm.surveystatus;
             var next_survey_id = next_survey;
+            var dontAdvance = false; //test only, always false
 
             if (vm.surveystatus >= 3) {
 
                 post_check = vm.surveystatus - 1;
                 next_survey_id += 4;
             }
-            // console.log($scope.getContent(post_check));
 
-            if (vm.surveystatus < 3 && $scope.checkAll(post_check)) {
-                // content = $scope.getContent(post_check);
-                // console.log(content);
-                // console.log(vm.surveystatus);
+            var checked = $scope.checkAll(post_check);
+
+            if (vm.surveystatus < 3 && checked) {
+                content = $scope.getContent(post_check);
+                console.log(content);
                 Questionnaire.post_preSite(vm.cookie["id"], vm.surveystatus, content);
 
             } else if (vm.surveystatus == 4) {
                 Questionnaire.post_postSite(vm.cookie["id"], 0, '');
 
             }
-            else if ($scope.checkAll(post_check)) {
+            else if (checked) {
                 content = $scope.getContent(post_check);
-                // console.log(content);
-                Questionnaire.post_postSite(vm.cookie["id"], post_check - 2, content);
+                Questionnaire.post_postSite(vm.cookie["id"], post_check - 3, content);
 
             } else if (vm.surveystatus != 3 && vm.surveystatus != 4 && vm.surveystatus != 11) {
                 alert("Please answer all required questions first!");
@@ -122,6 +121,7 @@
 
             }
 
+            if (dontAdvance) return;
             // console.log(next_survey_id);
             vm.surveystatus = next_survey_id;
             Questionnaire.increase_surveycount(vm.cookie["username"], next_survey_id);
@@ -161,7 +161,11 @@
             var content = [];
             for (var i = 0; i < $scope.survey[sur].length; i++) {
                 var q = $scope.survey[sur][i];
-                if (q.type === 'check') {
+
+                if (q.type === 'combo') {
+                    if (q.value === choice) content.push('');
+
+                } else if (q.type === 'check') {
                     var values = '';
                     $.each(q.selected, function (index, value) {
                         if (value) {
@@ -169,29 +173,38 @@
                                 //other
                                 values += q.value;
                             } else {
-                                values += q.choices[index] + ',';
+                                values += q.choices[index] + '/';
                             }
                         }
                     });
                     content.push('[' + values + ']');
+
                 } else if (q.type === 'radiolist') {
-                    if (q.selected == q.choices.length) {
+                    if (q.selected < 0 || JSON.stringify(q.selected) == '{}') {
+                        content.push(null);
+                    } else if (q.selected == q.choices.length) {
                         content.push(q.value);
                     } else {
                         content.push(q.choices[q.selected]);
                     }
+
                 } else if (q.type === 'scale' || q.type === 'doublescale') {
-                    var values = [];
-                    $.each(q.selected, function (index, value) {
-                        values.push({"choice": q.choices[index], "value": value});
-                    });
-                    content.push(JSON.stringify(values));
+
+                    if (q.choices.length <= 1) {
+                        content.push(q.value);
+                    } else {
+                        var arr = doubleSortArray(q.selected, q.ordering);
+                        $.each(arr, function (index, value) {
+                            content.push(value);
+                        });
+                    }
+
                 } else {
                     content.push(q.value);
                 }
 
             }
-            return content.toString();
+            return content;
         }
 
         $scope.checkconditions = function (q) {
@@ -297,14 +310,12 @@
             survey["visible"] = (survey["startVisible"] || activations.size > 0);
         }
 
-
         $scope.createFile = function (text, name, type) {
             var dlcsv = document.getElementById("dlcsv");
             var file = new Blob([text], {type: type});
             dlcsv.href = URL.createObjectURL(file);
             dlcsv.download = name;
         }
-
 
         $scope.csv = '';
 
@@ -338,48 +349,68 @@
             var site4header = '';
             var site5header = '';
             var site6header = '';
-            var site1content = '';
-            var site2content = '';
-            var site3content = '';
-            var site4content = '';
-            var site5content = '';
-            var site6content = '';
             var content = '';
 
             $scope.csv = '';
 
             if (surname === "pre") {
 
-                site1header = 'Age (Combobox),Gender (Combobox),Time in hours you use your PC per week (Combobox),Time in hours you play video games per week(Combobox),What are important aspects in a video game?(Checkbox),What is THE most important aspect in a video game?(Radiolist),I played a lot of platformers (7 point scale),I like platformers (7 point scale),I like platformers more than other game genres (7 point scale),Have you ever designed a video game? (Bool),Have you ever designed an application? (except video games) (Bool),If you had the choice, do want to be included in the design process of a video game? (Bool),How would you like to be included? (Text),Have you ever watched a "Twitch Plays" series (e.g. Twitch Plays Pokemon, Twitch Plays Darksouls, Twitch Plays Pubg, etc) on Twitch? (Bool),Did you actively participate in the Twitch Plays series? (Bool), How did you like Twitch Plays? (7 point scale),Have you heard of “PleaseBeNice”? (Bool),Did you play PleaseBeNice yourself? (Bool),How did you like PleaseBeNice? (7 point scale),Did one of your ideas get implemented?(Bool)';
+                site1header = 'Age (Combobox),Gender (Combobox),Time in hours you use your PC per week (Combobox),Time in hours you play video games per week(Combobox),What are important aspects in a video game?(Checkbox),What is THE most important aspect in a video game?(Radiolist),I played a lot of platformers (7 point scale),I like platformers (7 point scale),I like platformers more than other game genres (7 point scale),Have you ever designed a video game? (Bool),Have you ever designed an application? (except video games) (Bool),If you had the choice do want to be included in the design process of a video game? (Bool),How would you like to be included? (Text),Have you ever watched a "Twitch Plays" series (e.g. Twitch Plays Pokemon/ Twitch Plays Darksouls/ Twitch Plays Pubg/ etc) on Twitch? (Bool),Did you actively participate in the Twitch Plays series? (Bool), How did you like Twitch Plays? (7 point scale),Have you heard of “PleaseBeNice”? (Bool),Did you play PleaseBeNice yourself? (Bool),How did you like PleaseBeNice? (7 point scale),Did one of your ideas get implemented?(Bool)';
                 site2header = 'A: I am really bad at video games B: I am extremely good in video games (Double 7 point scale),A: Only the design of a product is important B: Only functionality of a product is important (Double 7 point scale),A: I prefer to work alone B: I prefer to work with others (Double 7 point scale),A: Everyone\'s opinion should be heard equally B: The opinion of experts have a higher value (Double 7 point scale),A: I prefer very easy games B: I prefer very hard games (Double 7 point scale),A: I like to have a lot of freedom B: I prefer someone giving me tasks (Double 7 point scale),A: I prefer it when things don\'t change B: I prefer regular innovation (Double 7 point scale),A: I hate to compete with others B: I thrive on competition (Double 7 point scale),A: I see myself as a follower B: I see myself as a leader (Double 7 point scale),A: I love to discuss with others B: I prefer to not communicate with others at all (Double 7 point scale)';
 
                 for (var i = 0; i < $scope.PreSurvey.length; i++) {
-                    site1content = JSON.stringify($scope.PreSurvey[i]["site1"]);
-                    site2content = JSON.stringify($scope.PreSurvey[i]["site2"]);
+                    content += '\n' + $scope.PreSurvey[i]["id"] + ',' + $scope.PreSurvey[i]["user"]["id"] + ',';
 
-                    content += '\n' + $scope.PreSurvey[i]["id"] + ',' + $scope.PreSurvey[i]["user"]["id"] + ',' + site1content + site2content + site3content + site4content + site5content + site6content;
+                    delete $scope.PreSurvey[i]["id"];
+                    delete $scope.PreSurvey[i]["user"];
+                    delete $scope.PreSurvey[i]["site0"];
+
+                    var values = Object.keys($scope.PreSurvey[i]).map(function (key) {
+                        return $scope.PreSurvey[i][key];
+                    });
+                    content += values;
+
                 }
+                header += site1header + ',' + site2header;
 
             }
 
 
             if (surname === "post") {
-                var res = Questionnaire.all_post();
 
+                site2header = 'I felt challenged (GEQ 5 point scale),I felt pressured (GEQ 5 point scale),I felt frustrated (GEQ 5 point scale),I was fully occupied with the game (GEQ 5 point scale),I had to put a lot of effort into it (GEQ 5 point scale),It was asthetically pleasing (GEQ 5 point scale),I felt annoyed (GEQ 5 point scale),I found it impressive (GEQ 5 point scale),It felt like a rich experience (GEQ 5 point scale),I was deeply concentrated in the game (GEQ 5 point scale),I thought it was fun (GEQ 5 point scale),I felt succesful (GEQ 5 point scale),I felt irritable (GEQ 5 point scale),I was fast at reaching the game\'s targets (GEQ 5 point scale),I felt that I could explore things (GEQ 5 point scale),I felt skillful (GEQ 5 point scale),I found it tiresome (GEQ 5 point scale),I felt competent (GEQ 5 point scale),I forgot everything around me (GEQ 5 point scale),I felt bored (GEQ 5 point scale),I felt content (GEQ 5 point scale),I lost connection with the outside world (GEQ 5 point scale),I thought about other things (GEQ 5 point scale),I felt good (GEQ 5 point scale),I felt imaginative (GEQ 5 point scale),I felt time pressure (GEQ 5 point scale),It gave me a bad mood (GEQ 5 point scale),I felt happy (GEQ 5 point scale),I was good at it (GEQ 5 point scale),I lost track of time (GEQ 5 point scale),I was interested in the game\'s story (GEQ 5 point scale),I thought it was hard (GEQ 5 point scale),I enjoyed it (GEQ 5 point scale)';
+                site3header = 'I found it enjoyable to be with the other(s) (SPGQ 5 point scale),I felt schadenfreude (malicious delight) (SPGQ 5 point scale),I envied the other(s) (SPGQ 5 point scale),I felt jealous of the other(s) (SPGQ 5 point scale),I paid close attention to the other(s) (SPGQ 5 point scale),The other(s) tended to ignore me (SPGQ 5 point scale),My intentions were clear to the other(s) (SPGQ 5 point scale),I felt revengeful (SPGQ 5 point scale),What I did affected what the other(s) did (SPGQ 5 point scale),The other(s) paid close attention to me (SPGQ 5 point scale),I felt connected to the other(s) (SPGQ 5 point scale),I admired the other(s) (SPGQ 5 point scale),My actions depended on the other’s actions (SPGQ 5 point scale),I tended to ignore the other(s) (SPGQ 5 point scale),What the other(s) did affected what I did (SPGQ 5 point scale),I empathized with the other(s) (SPGQ 5 point scale),I sympathized with the other(s) (SPGQ 5 point scale),When I was happy the others were happy (SPGQ 5 point scale),The other\'s actions were dependent on my actions (SPGQ 5 point scale),When the others were happy I was happy (SPGQ 5 point scale),The other’s intentions were clear to me (SPGQ 5 point scale)';
+                site4header = 'I believe I had some choice about doing this activity (KIM/IMI 7 point scale),I thought Crowdjump was quite enjoyable (KIM/IMI 7 point scale),I am satisfied with my performance at Crowdjump (KIM/IMI 7 point scale),I was pretty skilled at Crowdjump (KIM/IMI 7 point scale),I felt pressured while doing Crowdjump (KIM/IMI 7 point scale),I think I am pretty good at this activity (KIM/IMI 7 point scale),I had concerns whether I could do the activity well (KIM/IMI 7 point scale),I was able to control the activity myself (KIM/IMI 7 point scale),I thought Crowdjump was a very interesting activity (KIM/IMI 7 point scale),Crowdjump was fun to do (KIM/IMI 7 point scale),I could choose how to proceed in Crowdjump (KIM/IMI 7 point scale),I felt very tense while doing Crowdjump (KIM/IMI 7 point scale)';
+                site5header = 'I think that I would like to use this system frequently (SUS 5 point scale),I found the system unnecessarily complex (SUS 5 point scale),I thought the system was easy to use (SUS 5 point scale),I think that I would need the support of a technical person to be able to use this system (SUS 5 point scale),I found the various functions in this system were well integrated (SUS 5 point scale),I thought there was too much inconsistency in this system (SUS 5 point scale),I would imagine that most people would learn to use this system very quickly (SUS 5 point scale),I found the system very cumbersome to use (SUS 5 point scale),I felt very confident using the system (SUS 5 point scale),I needed to learn a lot of things before I could get going with this system (SUS 5 point scale)';
+                site6header = 'I liked the idea of Crowdjump (5 point scale),I liked to submit new ideas (5 point scale),The game developed in a positive direction (5 point scale),The website developed in a positive direction (5 point scale),The process of choosing the ideas developed in a positive direction (5 point scale),After each submission cycle the features were implemented as requested (5 point scale),The implemented features met my wishes for Crowdjump (5 point scale),I formed a community with other players (5 point scale),Other players interfered with the development (5 point scale),The other players and I worked as a team (5 point scale),My opinion was not heard (5 point scale)';
+
+
+                for (var i = 0; i < $scope.PostSurvey.length; i++) {
+                    content += '\n' + $scope.PostSurvey[i]["id"] + ',' + $scope.PostSurvey[i]["user"]["id"] + ',';
+
+                    delete $scope.PostSurvey[i]["id"];
+                    delete $scope.PostSurvey[i]["user"];
+                    delete $scope.PostSurvey[i]["site0"];
+
+                    var values = Object.keys($scope.PostSurvey[i]).map(function (key) {
+                        return $scope.PostSurvey[i][key];
+                    });
+                    content += values;
+
+                }
+
+
+                header += site2header + ',' + site3header + ',' + site4header + ',' + site5header + ',' + site6header;
 
             }
 
-            header += site1header + site2header + site3header + site4header + site5header + site6header;
             $scope.csv += header + content;
             setTimeout($scope.createFile($scope.csv, surname + '.csv', 'text/csv'));
         }
 
         $scope.test = function () {
             // Questionnaire.post_preSite(vm.cookie["id"], 1, "asd");
-            console.log("test");
-            // Questionnaire.cookieasd();
         }
-
         $scope.test2 = function () {
             console.log($scope.getContent(1));
         }
@@ -392,6 +423,10 @@
 
         function randomize(array) {
             var currentIndex = array.length, temporaryValue, randomIndex;
+            var ordering = [];
+            for (var i = 0; i < array.length; i++) {
+                ordering.push(i);
+            }
 
             // While there remain elements to shuffle...
             while (0 !== currentIndex) {
@@ -404,9 +439,32 @@
                 temporaryValue = array[currentIndex];
                 array[currentIndex] = array[randomIndex];
                 array[randomIndex] = temporaryValue;
+
+                temporaryValue = ordering[currentIndex];
+                ordering[currentIndex] = ordering[randomIndex];
+                ordering[randomIndex] = temporaryValue;
             }
 
-            return array;
+            return [array, ordering];
+        }
+
+        function doubleSortArray(array, ordering) {
+            //1) combine the arrays:
+            var list = [];
+            var res = [];
+            for (var j = 0; j < ordering.length; j++)
+                list.push({'id': ordering[j], 'value': array[j]});
+
+            //2) sort:
+            list.sort(function (a, b) {
+                return ((a.id < b.id) ? -1 : ((a.id == b.id) ? 0 : 1));
+            });
+
+            //3) separate them back out:
+            for (var k = 0; k < list.length; k++) {
+                res.push(list[k].value);
+            }
+            return res;
         }
 
         $scope.question2 = ["Chicken", "Egg", "Bacon"];
@@ -548,6 +606,7 @@
             startVisible: true,
             visible: true,
             choices: $scope.sur1q3Choices,
+            ordering: $scope.sur1q3Ordering,
             scale: $scope.sur1q3Scale,
             nrscales: 7,
             freeChoice: 'Andere',
@@ -722,7 +781,9 @@
                 activatedBy: new Set(),
                 selected: {}
             };
-            $scope.sur1q6Choices = randomize(["I played a lot of platformers", "I like platformers", "I like platformers more than other game genres"]);
+            $scope.sur1q6ChoicesOG = randomize(["I played a lot of platformers", "I like platformers", "I like platformers more than other game genres"]);
+            $scope.sur1q6Choices = $scope.sur1q6ChoicesOG[0];
+            $scope.sur1q6Ordering = $scope.sur1q6ChoicesOG[1];
             $scope.survey[1][6] = {
                 survey: 1,
                 nr: 6,
@@ -732,6 +793,7 @@
                 startVisible: true,
                 visible: true,
                 choices: $scope.sur1q6Choices,
+                ordering: $scope.sur1q6Ordering,
                 scale: scale7,
                 nrscales: 7,
                 freeChoice: '',
@@ -936,7 +998,7 @@
         } //Survey1
 
         if (true) {
-            $scope.sur2q0Choices = randomize([["A: I am really bad at video games", "B: I am extremely good in video games"],
+            $scope.sur2q0ChoicesOG = randomize([["A: I am really bad at video games", "B: I am extremely good in video games"],
                 ["A: Only the design of a product is important", "B: Only functionality of a product is important"],
                 ["A: I prefer to work alone", "B: I prefer to work with others"],
                 ["A: Everyone's opinion should be heard equally", "B: The opinion of experts have a higher value"],
@@ -946,6 +1008,8 @@
                 ["A: I hate to compete with others", "B: I thrive on competition"],
                 ["A: I see myself as a follower", "B: I see myself as a leader"],
                 ["A: I love to discuss with others", "B: I prefer to not communicate with others at all"]]);
+            $scope.sur2q0Choices = $scope.sur2q0ChoicesOG[0];
+            $scope.sur2q0Ordering = $scope.sur2q0ChoicesOG[1];
 
             $scope.survey[2][0] = {
                 survey: 2,
@@ -956,6 +1020,7 @@
                 startVisible: true,
                 visible: true,
                 choices: $scope.sur2q0Choices,
+                ordering: $scope.sur2q0Ordering,
                 scale: scale7AB,
                 nrscales: 7,
                 freeChoice: '',
@@ -1007,7 +1072,7 @@
         } //PostSurvey0 Nur zum Speichern
 
         if (true) {
-            $scope.sur5q0Choices = randomize(["I felt challenged",
+            $scope.sur5q0ChoicesOG = randomize(["I felt challenged",
                 "I felt pressured",
                 "I felt frustrated",
                 "I was fully occupied with the game",
@@ -1040,6 +1105,8 @@
                 "I was interested in the game's story",
                 "I thought it was hard",
                 "I enjoyed it"]);
+            $scope.sur5q0Choices = $scope.sur5q0ChoicesOG[0];
+            $scope.sur5q0Ordering = $scope.sur5q0ChoicesOG[1];
             $scope.survey[5][0] = {
                 survey: 5,
                 nr: 0,
@@ -1049,6 +1116,7 @@
                 startVisible: true,
                 visible: true,
                 choices: $scope.sur5q0Choices,
+                ordering: $scope.sur5q0Ordering,
                 scale: scale5,
                 nrscales: 5,
                 freeChoice: '',
@@ -1064,7 +1132,7 @@
         } //PostSurvey2 GEQ
 
         if (true) {
-            $scope.sur6q0Choices = randomize(["I found it enjoyable to be with the other(s)",
+            $scope.sur6q0ChoicesOG = randomize(["I found it enjoyable to be with the other(s)",
                 "I felt schadenfreude (malicious delight)",
                 "I envied the other(s)",
                 "I felt jealous of the other(s)",
@@ -1085,6 +1153,8 @@
                 "The other's actions were dependent on my actions",
                 "When the others were happy, I was happy",
                 "The other’s intentions were clear to me"]);
+            $scope.sur6q0Choices = $scope.sur6q0ChoicesOG[0];
+            $scope.sur6q0Ordering = $scope.sur6q0ChoicesOG[1];
             $scope.survey[6][0] = {
                 survey: 6,
                 nr: 0,
@@ -1094,6 +1164,7 @@
                 startVisible: true,
                 visible: true,
                 choices: $scope.sur6q0Choices,
+                ordering: $scope.sur6q0Ordering,
                 scale: scale5,
                 nrscales: 5,
                 freeChoice: '',
@@ -1109,7 +1180,7 @@
         } //PostSurvey3 SPGQ
 
         if (true) {
-            $scope.sur7q0Choices = randomize(["I believe I had some choice about doing this activity.",
+            $scope.sur7q0ChoicesOG = randomize(["I believe I had some choice about doing this activity.",
                 "I thought Crowdjump was quite enjoyable.",
                 "I am satisfied with my performance at Crowdjump.",
                 "I was pretty skilled at Crowdjump.",
@@ -1121,6 +1192,9 @@
                 "Crowdjump was fun to do.",
                 "I could choose how to proceed in Crowdjump.",
                 "I felt very tense while doing Crowdjump."]);
+            $scope.sur7q0Choices = $scope.sur7q0ChoicesOG[0];
+            $scope.sur7q0Ordering = $scope.sur7q0ChoicesOG[1];
+
             $scope.sur7q0Scale = ["not at all true", , , "somewhat true", , , "very true"]
             $scope.survey[7][0] = {
                 survey: 7,
@@ -1131,6 +1205,7 @@
                 startVisible: true,
                 visible: true,
                 choices: $scope.sur7q0Choices,
+                ordering: $scope.sur7q0Ordering,
                 scale: $scope.sur7q0Scale,
                 nrscales: 7,
                 freeChoice: '',
@@ -1147,7 +1222,7 @@
 
         if (true) {
             $scope.sur8q0Scale = ["Strongly disagree", "", "", "", "Strongly agree"]
-            $scope.sur8q0Choices = randomize(["I think that I would like to use this system frequently.",
+            $scope.sur8q0ChoicesOG = randomize(["I think that I would like to use this system frequently.",
                 "I found the system unnecessarily complex.",
                 "I thought the system was easy to use.",
                 "I think that I would need the support of a technical person to be able to use this system.",
@@ -1158,7 +1233,9 @@
                 "I felt very confident using the system.",
                 "I needed to learn a lot of things before I could get going with this system."
             ]);
-            $scope.survey[8][0] = {
+            $scope.sur8q0Choices = $scope.sur8q0ChoicesOG[0];
+            $scope.sur8q0Ordering = $scope.sur8q0ChoicesOG[1];
+            $scope.survey[8][0] =   {
                 survey: 8,
                 nr: 0,
                 type: 'scale',
@@ -1167,6 +1244,7 @@
                 startVisible: true,
                 visible: true,
                 choices: $scope.sur8q0Choices,
+                ordering: $scope.sur8q0Ordering,
                 scale: $scope.sur8q0Scale,
                 nrscales: 5,
                 freeChoice: '',
@@ -1182,7 +1260,7 @@
         } //PostSurvey5 SUS
 
         if (true) {
-            $scope.sur9q0Choices = randomize(["I liked the idea of Crowdjump.",
+            $scope.sur9q0ChoicesOG = randomize(["I liked the idea of Crowdjump.",
                 "I liked to submit new ideas.",
                 "The game developed in a positive direction.",
                 "The website developed in a positive direction.",
@@ -1194,6 +1272,8 @@
                 "The other players and I worked as a team.",
                 "My opinion was not heard.",
             ]);
+            $scope.sur9q0Choices = $scope.sur9q0ChoicesOG[0];
+            $scope.sur9q0Ordering = $scope.sur9q0ChoicesOG[1];
             $scope.survey[9][0] = {
                 survey: 9,
                 nr: 0,
@@ -1203,6 +1283,7 @@
                 startVisible: true,
                 visible: true,
                 choices: $scope.sur9q0Choices,
+                ordering: $scope.sur9q0Ordering,
                 scale: scale5,
                 nrscales: 5,
                 freeChoice: '',
