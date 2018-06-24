@@ -14,6 +14,7 @@
         if (cookie != null){
             vm.surveystatus = cookie["survey_status"];
         }
+        vm.isIE = (false || !!document.documentMode);
 
 
         vm.logout = logout;

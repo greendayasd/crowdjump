@@ -13,6 +13,11 @@
         vm.cookie = Authentication.getAuthenticatedAccount();
         vm.url = window.location.pathname;
 
+        //IE redirect
+        if (false || !!document.documentMode) {
+            window.location.href = '/oldbrowser';
+        }
+
         if (vm.url.includes("admin")) {
             get_pre();
             get_post();
@@ -1235,7 +1240,7 @@
             ]);
             $scope.sur8q0Choices = $scope.sur8q0ChoicesOG[0];
             $scope.sur8q0Ordering = $scope.sur8q0ChoicesOG[1];
-            $scope.survey[8][0] =   {
+            $scope.survey[8][0] = {
                 survey: 8,
                 nr: 0,
                 type: 'scale',
