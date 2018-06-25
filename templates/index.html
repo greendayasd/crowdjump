@@ -63,13 +63,12 @@
     {% else %}
     {% endif %}
     <script type="text/javascript">
-
         //IE redirect
-        if ((false || !!document.documentMode) && !window.location.pathname.includes("oldbrowser")) {
+        if ((false || !!document.documentMode) && !(window.location.pathname == "/oldbrowser/")) {
             console.log("IE");
             window.location.href = '/oldbrowser';
         } else {
-            console.log(document.documentMode);
+            //console.log(document.documentMode);
         }
 
         $(document).ready(function () {

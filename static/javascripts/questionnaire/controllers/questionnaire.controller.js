@@ -18,7 +18,7 @@
             console.log("IE");
             window.location.href = '/oldbrowser';
         } else {
-            console.log(document.documentMode);
+            //console.log(document.documentMode);
         }
 
         if (vm.url.includes("admin")) {
