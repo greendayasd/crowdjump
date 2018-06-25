@@ -12,11 +12,13 @@
         vm.isAuthenticated = Authentication.isAuthenticated();
         vm.cookie = Authentication.getAuthenticatedAccount();
         vm.url = window.location.pathname;
-        
+
         //IE redirect
         if ((false || !!document.documentMode) && !vm.url.includes("oldbrowser")) {
             console.log("IE");
             window.location.href = '/oldbrowser';
+        } else {
+            console.log(document.documentMode);
         }
 
         if (vm.url.includes("admin")) {

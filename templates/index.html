@@ -68,6 +68,8 @@
         if ((false || !!document.documentMode) && !vm.url.includes("oldbrowser")) {
             console.log("IE");
             window.location.href = '/oldbrowser';
+        } else {
+            console.log(document.documentMode);
         }
 
         $(document).ready(function () {
