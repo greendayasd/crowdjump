@@ -65,7 +65,7 @@
     <script type="text/javascript">
 
         //IE redirect
-        if ((false || !!document.documentMode) && !vm.url.includes("oldbrowser")) {
+        if ((false || !!document.documentMode) && !window.location.pathname.includes("oldbrowser")) {
             console.log("IE");
             window.location.href = '/oldbrowser';
         } else {
