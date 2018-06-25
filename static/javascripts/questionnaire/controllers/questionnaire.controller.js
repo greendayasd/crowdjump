@@ -15,6 +15,7 @@
 
         //IE redirect
         if (false || !!document.documentMode) {
+            console.log("IE");
             window.location.href = '/oldbrowser';
         }
 

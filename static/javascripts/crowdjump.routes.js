@@ -115,10 +115,16 @@
             controller: 'QuestionnaireController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/questionnaire/surveyPostFinished.html'
+
+
         }).when('/mobile', {
             controller: 'QuestionnaireController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/mobile.html'
+        }).when('/oldbrowser', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/layout/oldbrowser.html'
         })
             .otherwise('/');
     }

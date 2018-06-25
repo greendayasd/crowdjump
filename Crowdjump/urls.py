@@ -63,6 +63,7 @@ urlpatterns = [
     url(r'^postsurvey6/$', IndexView.as_view()),
     url(r'^surveyPostFinished/$', IndexView.as_view()),
     url(r'^mobile/$', IndexView.as_view()),
+    url(r'^oldbrowser/$', IndexView.as_view()),
 
     # url(r'^game/$', GameView.as_view()),
     # url(r'^gameinfo/$', GameInfoView.as_view()),
