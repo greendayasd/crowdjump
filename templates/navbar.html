@@ -1,5 +1,7 @@
 <nav class="navbar navbar-inverse" role="navigation" ng-controller="NavbarController as vm">
-    <div class="container-fluid" ng-show="vm.surveystatus == 3 || vm.surveystatus == 11 || !vm.isAuthenticated || !vm.isIE">
+
+    <div class="container-fluid"
+         ng-show="(vm.surveystatus == 3 || vm.surveystatus == 11 || !vm.isAuthenticated) && !vm.isIE">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#not-google-plus-nav">
@@ -8,7 +10,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Crowdjump</a>
+            {% verbatim %} <a class="navbar-brand" href="/">Crowdjump v{{ version.label }}</a> {% endverbatim %}
 
         </div> <!-- ./navbar-header -->
 
@@ -19,17 +21,21 @@
             <ul class="nav navbar-nav pull-left">
                 <li></li>
                 <li><a class="nav-link"
-                        ng-dialog-controller="PrivacyController as vm"
-                        href="javascript:void(0)"
-                        ng-dialog="/static/templates/questionnaire/privacy.html">Privacy Policy</a> </li>
+                       ng-dialog-controller="PrivacyController as vm"
+                       href="javascript:void(0)"
+                       ng-dialog="/static/templates/questionnaire/privacy.html">Privacy Policy</a></li>
                 <li><a class="nav-link"
-                        ng-dialog-controller="PrivacyController as vm"
-                        href="javascript:void(0)"
-                        ng-dialog="/static/templates/questionnaire/legalnotice.html">Legal Notice</a> </li>
+                       ng-dialog-controller="PrivacyController as vm"
+                       href="javascript:void(0)"
+                       ng-dialog="/static/templates/questionnaire/legalnotice.html">Legal Notice</a></li>
 
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li></li>
+                {% verbatim %} <li><a class="nav-link"
+                       ng-dialog-controller="PrivacyController as vm"
+                       href="javascript:void(0)"
+                       ng-dialog="/static/templates/layout/countdowninfo.html">{{ clock }}</a></li>{% endverbatim %}
                 <li><a class="nav-link" href="game">Game</a></li>
                 <li><a class="nav-link" href="ideas">Ideas</a></li>
                 <li><a class="nav-link" href="history">History</a></li>

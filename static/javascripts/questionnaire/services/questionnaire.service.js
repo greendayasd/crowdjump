@@ -78,21 +78,23 @@
                             survey["HoursPCWeek_Combobox"] = cont[2];
                             survey["VideogamesWeek_Combobox"] = cont[3];
                             survey["ImportantAspect_Checkbox"] = cont[4];
-                            survey["MostImportantAspect_Radiolist"] = cont[5];
-                            survey["PlayPlatformers_7scale"] = cont[6];
-                            survey["LikePlatformers_7scale"] = cont[7];
-                            survey["LikePlatformersMore_7scale"] = cont[8];
-                            survey["EverDesignedVG_bool"] = cont[9];
-                            survey["EverDesignedApp_bool"] = cont[10];
-                            survey["DesignProcess_bool"] = cont[11];
-                            survey["HowInDesignProcess_text"] = cont[12];
-                            survey["WatchedTP_bool"] = cont[13];
-                            survey["ParticipateTP_bool"] = cont[14];
-                            survey["LikeTP_7scale"] = cont[15];
-                            survey["HeardPBN_bool"] = cont[16];
-                            survey["PlayPBN_bool"] = cont[17];
-                            survey["LikePBN_7scale"] = cont[18];
-                            survey["IdeaPBN_bool"] = cont[19];
+                            survey["ImportantAspectOther_Checkbox"] = cont[5];
+                            survey["MostImportantAspect_Radiolist"] = cont[6];
+                            survey["MostImportantAspectOther_Radiolist"] = cont[7];
+                            survey["PlayPlatformers_7scale"] = cont[8];
+                            survey["LikePlatformers_7scale"] = cont[9];
+                            survey["LikePlatformersMore_7scale"] = cont[10];
+                            survey["EverDesignedVG_bool"] = cont[11];
+                            survey["EverDesignedApp_bool"] = cont[12];
+                            survey["DesignProcess_bool"] = cont[13];
+                            survey["HowInDesignProcess_text"] = cont[14];
+                            survey["WatchedTP_bool"] = cont[15];
+                            survey["ParticipateTP_bool"] = cont[16];
+                            survey["LikeTP_7scale"] = cont[17];
+                            survey["HeardPBN_bool"] = cont[18];
+                            survey["PlayPBN_bool"] = cont[19];
+                            survey["LikePBN_7scale"] = cont[20];
+                            survey["IdeaPBN_bool"] = cont[21];
                         }
                         if (site == 2) {
                             survey["ABSurvey0"] = cont[0];
@@ -115,7 +117,9 @@
                             HoursPCWeek_Combobox: survey["HoursPCWeek_Combobox"],
                             VideogamesWeek_Combobox: survey["VideogamesWeek_Combobox"],
                             ImportantAspect_Checkbox: survey["ImportantAspect_Checkbox"],
+                            ImportantAspectOther_Checkbox: survey["ImportantAspectOther_Checkbox"],
                             MostImportantAspect_Radiolist: survey["MostImportantAspect_Radiolist"],
+                            MostImportantAspectOther_Radiolist: survey["MostImportantAspectOther_Radiolist"],
                             PlayPlatformers_7scale: survey["PlayPlatformers_7scale"],
                             LikePlatformers_7scale: survey["LikePlatformers_7scale"],
                             LikePlatformersMore_7scale: survey["LikePlatformersMore_7scale"],

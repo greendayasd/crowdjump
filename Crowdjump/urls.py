@@ -9,7 +9,7 @@ from ideas.views import IdeaViewSet, IdeaVotePermissionViewSet, AccountIdeasView
 from chat.views import room, index, ChatMessageViewSet
 from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet
 
-from authentication.views import AccountViewSet, LoginView, LogoutView
+from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
@@ -74,6 +74,10 @@ urlpatterns = [
     url(r'^chat/(?P<room_name>[^/]+)/$', IndexView.as_view()),
     # url(r'^chat2/$', index, name='index'),
     # url(r'^chat2/(?P<room_name>[^/]+)/$', room, name='room'),
+
+
+    #ajax requests
+    url(r'^sendtracking/$', SendTrackingData, name='sendtracking'),
 
 ]
 

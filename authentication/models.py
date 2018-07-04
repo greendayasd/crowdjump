@@ -93,12 +93,13 @@ class GameInfo(models.Model):
                                 , default=Version.objects.all().order_by('-id')[0].id)
     rounds_started = models.IntegerField(default=0)
     rounds_won = models.IntegerField(default=0)
-    # rounds_lost = models.IntegerField(default=0)
+    highest_level = models.IntegerField(default=0)
     enemies_killed = models.IntegerField(default=0)
     coins_collected = models.IntegerField(default=0)
     highscore = models.IntegerField(default=-1)
     time_spent_game = models.IntegerField(default=0)
     jumps = models.IntegerField(default=0)
+    movement_inputs = models.IntegerField(default=0)
     deaths = models.IntegerField(default=0)
     restarts = models.IntegerField(default=0)
 
@@ -120,6 +121,12 @@ class WebsiteInfo(models.Model):
     time_spent_index = models.IntegerField(default=0)
     time_spent_history = models.IntegerField(default=0)
     time_spent_chat = models.IntegerField(default=0)
+
+
+# class Tracking(models.Model):
+#     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='Tracking', null=True, default=NULL)
+#     unknown = models.TextField(default='', null=True, blank=True)
+#     trackingdata = models.FileField(null=True,upload_to='trackingdata')
 
 
 class FilterSettings(models.Model):

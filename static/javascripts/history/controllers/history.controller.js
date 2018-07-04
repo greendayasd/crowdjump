@@ -12,8 +12,6 @@
 
         $scope.history = [];
         $scope.version = '';
-        $scope.choices = ["1", "2", "3"];
-        $scope.question2 = ["A", "V", "C"];
 
         getVersion();
 

@@ -5,13 +5,18 @@
         .module('crowdjump.questionnaire.controllers')
         .controller('QuestionnaireController', QuestionnaireController);
 
-    QuestionnaireController.$inject = ['$scope', 'Authentication', 'Questionnaire'];
+    QuestionnaireController.$inject = ['$scope', 'Authentication', 'Questionnaire', 'Ideas', 'Comments'];
 
-    function QuestionnaireController($scope, Authentication, Questionnaire) {
+    function QuestionnaireController($scope, Authentication, Questionnaire, Ideas, Comments) {
         var vm = this;
         vm.isAuthenticated = Authentication.isAuthenticated();
         vm.cookie = Authentication.getAuthenticatedAccount();
         vm.url = window.location.pathname;
+
+
+        $scope.test = function () {
+            console.log(vm.url);
+        }
 
         //IE redirect
         if ((false || !!document.documentMode) && !vm.url.includes("oldbrowser")) {
@@ -24,6 +29,8 @@
         if (vm.url.includes("admin")) {
             get_pre();
             get_post();
+            get_comments();
+            get_ideas();
         }
 
         function detectmob() {
@@ -112,7 +119,7 @@
 
             if (vm.surveystatus < 3 && checked) {
                 content = $scope.getContent(post_check);
-                console.log(content);
+                // console.log(content);
                 Questionnaire.post_preSite(vm.cookie["id"], vm.surveystatus, content);
 
             } else if (vm.surveystatus == 4) {
@@ -171,39 +178,47 @@
                 var q = $scope.survey[sur][i];
 
                 if (q.type === 'combo') {
-                    if (q.value === choice) content.push('');
+                    if (q.value === choice) {
+                        content.push('');
+                    } else {
+                        content.push(q.value);
+                    }
 
                 } else if (q.type === 'check') {
                     var values = '';
+                    var other = '';
                     $.each(q.selected, function (index, value) {
                         if (value) {
                             if (index == q.choices.length) {
                                 //other
-                                values += q.value;
+                                other = q.value;
                             } else {
-                                values += q.choices[index] + '/';
+                                values += index + '/';
                             }
                         }
                     });
                     content.push('[' + values + ']');
+                    content.push('other');
 
                 } else if (q.type === 'radiolist') {
                     if (q.selected < 0 || JSON.stringify(q.selected) == '{}') {
                         content.push(null);
                     } else if (q.selected == q.choices.length) {
+                        content.push();
                         content.push(q.value);
                     } else {
-                        content.push(q.choices[q.selected]);
+                        content.push(q.selected);
+                        content.push('');
                     }
 
                 } else if (q.type === 'scale' || q.type === 'doublescale') {
-
+                    //scales not 0..6 but 1..7
                     if (q.choices.length <= 1) {
-                        content.push(q.value);
+                        content.push(q.value + 1);
                     } else {
                         var arr = doubleSortArray(q.selected, q.ordering);
                         $.each(arr, function (index, value) {
-                            content.push(value);
+                            content.push(parseInt(value) + 1);
                         });
                     }
 
@@ -349,22 +364,77 @@
             }
         }
 
-        $scope.getCsv = function (surname) {
-            var header = 'id,user_id,';
-            var site1header = '';
-            var site2header = '';
-            var site3header = '';
-            var site4header = '';
-            var site5header = '';
-            var site6header = '';
+        function get_comments() {
+            Comments.all().then(commentsSuccessFn, commentsErrorFn);
+
+            function commentsSuccessFn(data, status, headers, config) {
+                $scope.comments = data.data;
+            }
+
+            function commentsErrorFn(data, status, headers, config) {
+            }
+        }
+
+        function get_ideas() {
+            Ideas.all().then(ideasSuccessFn, ideasErrorFn);
+
+            $scope.$on('idea.created', function (event, idea) {
+                $scope.ideas.unshift(idea);
+            });
+
+            $scope.$on('idea.created.error', function () {
+                $scope.ideas.shift();
+            });
+
+            function ideasSuccessFn(data, status, headers, config) {
+                $scope.ideas_tmp = data.data;
+
+                //find own votes for ideas
+                $scope.ideas = $.map($scope.ideas_tmp, function (idea) {
+                    // var vote = $.grep($scope.ideavotes, function (ideavote) {
+                    //     return ideavote.idea === idea.id;
+                    // })[0];
+                    // if (typeof vote !== 'undefined') {
+                    //
+                    //     idea.uservote = vote.vote;
+                    //
+                    // } else {
+                    //     idea.uservote = 0;
+                    // }
+
+                    var comments = $.grep($scope.comments, function (comment) {
+                        return comment.idea === idea.id;
+                    });
+
+                    if (typeof comments !== 'undefined') {
+                        // console.log(vote);
+                        idea.comments = comments;
+
+                    } else {
+                        idea.comments = {'id': -1};
+                    }
+
+                    return idea;
+                });
+
+            }
+
+            function ideasErrorFn(data, status, headers, config) {
+                var msg = "Could not get ideas";
+                console.log(msg);
+            }
+        }
+
+        $scope.getCsv = function (name) {
+            var header = '';
             var content = '';
 
             $scope.csv = '';
 
-            if (surname === "pre") {
-
-                site1header = 'Age (Combobox),Gender (Combobox),Time in hours you use your PC per week (Combobox),Time in hours you play video games per week(Combobox),What are important aspects in a video game?(Checkbox),What is THE most important aspect in a video game?(Radiolist),I played a lot of platformers (7 point scale),I like platformers (7 point scale),I like platformers more than other game genres (7 point scale),Have you ever designed a video game? (Bool),Have you ever designed an application? (except video games) (Bool),If you had the choice do want to be included in the design process of a video game? (Bool),How would you like to be included? (Text),Have you ever watched a "Twitch Plays" series (e.g. Twitch Plays Pokemon/ Twitch Plays Darksouls/ Twitch Plays Pubg/ etc) on Twitch? (Bool),Did you actively participate in the Twitch Plays series? (Bool), How did you like Twitch Plays? (7 point scale),Have you heard of “PleaseBeNice”? (Bool),Did you play PleaseBeNice yourself? (Bool),How did you like PleaseBeNice? (7 point scale),Did one of your ideas get implemented?(Bool)';
-                site2header = 'A: I am really bad at video games B: I am extremely good in video games (Double 7 point scale),A: Only the design of a product is important B: Only functionality of a product is important (Double 7 point scale),A: I prefer to work alone B: I prefer to work with others (Double 7 point scale),A: Everyone\'s opinion should be heard equally B: The opinion of experts have a higher value (Double 7 point scale),A: I prefer very easy games B: I prefer very hard games (Double 7 point scale),A: I like to have a lot of freedom B: I prefer someone giving me tasks (Double 7 point scale),A: I prefer it when things don\'t change B: I prefer regular innovation (Double 7 point scale),A: I hate to compete with others B: I thrive on competition (Double 7 point scale),A: I see myself as a follower B: I see myself as a leader (Double 7 point scale),A: I love to discuss with others B: I prefer to not communicate with others at all (Double 7 point scale)';
+            if (name === "pre") {
+                header = 'id,user_id,';
+                var site1header = 'Age (Combobox),Gender (Combobox),Time in hours you use your PC per week (Combobox),Time in hours you play video games per week(Combobox),What are important aspects in a video game?(Checkbox)[0 Story/1 Graphic/2 Innovation/3 Multiplayer/4 Competition with other players/5 Difficulty/6 Gameplay],What are important aspects in a video game?(Checkbox)[Other],What is THE most important aspect in a video game?(Radiolist)[0 Story/1 Graphic/2 Innovation/3 Multiplayer/4 Competition with other players/5 Difficulty/6 Gameplay],What is THE most important aspect in a video game?(Radiolist)[Other],I played a lot of platformers (7 point scale),I like platformers (7 point scale),I like platformers more than other game genres (7 point scale),Have you ever designed a video game? (Bool),Have you ever designed an application? (except video games) (Bool),If you had the choice do want to be included in the design process of a video game? (Bool),How would you like to be included? (Text),Have you ever watched a "Twitch Plays" series (e.g. Twitch Plays Pokemon/ Twitch Plays Darksouls/ Twitch Plays Pubg/ etc) on Twitch? (Bool),Did you actively participate in the Twitch Plays series? (Bool), How did you like Twitch Plays? (7 point scale),Have you heard of “PleaseBeNice”? (Bool),Did you play PleaseBeNice yourself? (Bool),How did you like PleaseBeNice? (7 point scale),Did one of your ideas get implemented?(Bool)';
+                var site2header = 'A: I am really bad at video games B: I am extremely good in video games (Double 7 point scale),A: Only the design of a product is important B: Only functionality of a product is important (Double 7 point scale),A: I prefer to work alone B: I prefer to work with others (Double 7 point scale),A: Everyone\'s opinion should be heard equally B: The opinion of experts have a higher value (Double 7 point scale),A: I prefer very easy games B: I prefer very hard games (Double 7 point scale),A: I like to have a lot of freedom B: I prefer someone giving me tasks (Double 7 point scale),A: I prefer it when things don\'t change B: I prefer regular innovation (Double 7 point scale),A: I hate to compete with others B: I thrive on competition (Double 7 point scale),A: I see myself as a follower B: I see myself as a leader (Double 7 point scale),A: I love to discuss with others B: I prefer to not communicate with others at all (Double 7 point scale)';
 
                 for (var i = 0; i < $scope.PreSurvey.length; i++) {
                     content += '\n' + $scope.PreSurvey[i]["id"] + ',' + $scope.PreSurvey[i]["user"]["id"] + ',';
@@ -380,17 +450,15 @@
 
                 }
                 header += site1header + ',' + site2header;
-
             }
 
-
-            if (surname === "post") {
-
-                site2header = 'I felt challenged (GEQ 5 point scale),I felt pressured (GEQ 5 point scale),I felt frustrated (GEQ 5 point scale),I was fully occupied with the game (GEQ 5 point scale),I had to put a lot of effort into it (GEQ 5 point scale),It was asthetically pleasing (GEQ 5 point scale),I felt annoyed (GEQ 5 point scale),I found it impressive (GEQ 5 point scale),It felt like a rich experience (GEQ 5 point scale),I was deeply concentrated in the game (GEQ 5 point scale),I thought it was fun (GEQ 5 point scale),I felt succesful (GEQ 5 point scale),I felt irritable (GEQ 5 point scale),I was fast at reaching the game\'s targets (GEQ 5 point scale),I felt that I could explore things (GEQ 5 point scale),I felt skillful (GEQ 5 point scale),I found it tiresome (GEQ 5 point scale),I felt competent (GEQ 5 point scale),I forgot everything around me (GEQ 5 point scale),I felt bored (GEQ 5 point scale),I felt content (GEQ 5 point scale),I lost connection with the outside world (GEQ 5 point scale),I thought about other things (GEQ 5 point scale),I felt good (GEQ 5 point scale),I felt imaginative (GEQ 5 point scale),I felt time pressure (GEQ 5 point scale),It gave me a bad mood (GEQ 5 point scale),I felt happy (GEQ 5 point scale),I was good at it (GEQ 5 point scale),I lost track of time (GEQ 5 point scale),I was interested in the game\'s story (GEQ 5 point scale),I thought it was hard (GEQ 5 point scale),I enjoyed it (GEQ 5 point scale)';
-                site3header = 'I found it enjoyable to be with the other(s) (SPGQ 5 point scale),I felt schadenfreude (malicious delight) (SPGQ 5 point scale),I envied the other(s) (SPGQ 5 point scale),I felt jealous of the other(s) (SPGQ 5 point scale),I paid close attention to the other(s) (SPGQ 5 point scale),The other(s) tended to ignore me (SPGQ 5 point scale),My intentions were clear to the other(s) (SPGQ 5 point scale),I felt revengeful (SPGQ 5 point scale),What I did affected what the other(s) did (SPGQ 5 point scale),The other(s) paid close attention to me (SPGQ 5 point scale),I felt connected to the other(s) (SPGQ 5 point scale),I admired the other(s) (SPGQ 5 point scale),My actions depended on the other’s actions (SPGQ 5 point scale),I tended to ignore the other(s) (SPGQ 5 point scale),What the other(s) did affected what I did (SPGQ 5 point scale),I empathized with the other(s) (SPGQ 5 point scale),I sympathized with the other(s) (SPGQ 5 point scale),When I was happy the others were happy (SPGQ 5 point scale),The other\'s actions were dependent on my actions (SPGQ 5 point scale),When the others were happy I was happy (SPGQ 5 point scale),The other’s intentions were clear to me (SPGQ 5 point scale)';
-                site4header = 'I believe I had some choice about doing this activity (KIM/IMI 7 point scale),I thought Crowdjump was quite enjoyable (KIM/IMI 7 point scale),I am satisfied with my performance at Crowdjump (KIM/IMI 7 point scale),I was pretty skilled at Crowdjump (KIM/IMI 7 point scale),I felt pressured while doing Crowdjump (KIM/IMI 7 point scale),I think I am pretty good at this activity (KIM/IMI 7 point scale),I had concerns whether I could do the activity well (KIM/IMI 7 point scale),I was able to control the activity myself (KIM/IMI 7 point scale),I thought Crowdjump was a very interesting activity (KIM/IMI 7 point scale),Crowdjump was fun to do (KIM/IMI 7 point scale),I could choose how to proceed in Crowdjump (KIM/IMI 7 point scale),I felt very tense while doing Crowdjump (KIM/IMI 7 point scale)';
-                site5header = 'I think that I would like to use this system frequently (SUS 5 point scale),I found the system unnecessarily complex (SUS 5 point scale),I thought the system was easy to use (SUS 5 point scale),I think that I would need the support of a technical person to be able to use this system (SUS 5 point scale),I found the various functions in this system were well integrated (SUS 5 point scale),I thought there was too much inconsistency in this system (SUS 5 point scale),I would imagine that most people would learn to use this system very quickly (SUS 5 point scale),I found the system very cumbersome to use (SUS 5 point scale),I felt very confident using the system (SUS 5 point scale),I needed to learn a lot of things before I could get going with this system (SUS 5 point scale)';
-                site6header = 'I liked the idea of Crowdjump (5 point scale),I liked to submit new ideas (5 point scale),The game developed in a positive direction (5 point scale),The website developed in a positive direction (5 point scale),The process of choosing the ideas developed in a positive direction (5 point scale),After each submission cycle the features were implemented as requested (5 point scale),The implemented features met my wishes for Crowdjump (5 point scale),I formed a community with other players (5 point scale),Other players interfered with the development (5 point scale),The other players and I worked as a team (5 point scale),My opinion was not heard (5 point scale)';
+            if (name === "post") {
+                header = 'id,user_id,';
+                var site2header = 'I felt challenged (GEQ 5 point scale),I felt pressured (GEQ 5 point scale),I felt frustrated (GEQ 5 point scale),I was fully occupied with the game (GEQ 5 point scale),I had to put a lot of effort into it (GEQ 5 point scale),It was asthetically pleasing (GEQ 5 point scale),I felt annoyed (GEQ 5 point scale),I found it impressive (GEQ 5 point scale),It felt like a rich experience (GEQ 5 point scale),I was deeply concentrated in the game (GEQ 5 point scale),I thought it was fun (GEQ 5 point scale),I felt succesful (GEQ 5 point scale),I felt irritable (GEQ 5 point scale),I was fast at reaching the game\'s targets (GEQ 5 point scale),I felt that I could explore things (GEQ 5 point scale),I felt skillful (GEQ 5 point scale),I found it tiresome (GEQ 5 point scale),I felt competent (GEQ 5 point scale),I forgot everything around me (GEQ 5 point scale),I felt bored (GEQ 5 point scale),I felt content (GEQ 5 point scale),I lost connection with the outside world (GEQ 5 point scale),I thought about other things (GEQ 5 point scale),I felt good (GEQ 5 point scale),I felt imaginative (GEQ 5 point scale),I felt time pressure (GEQ 5 point scale),It gave me a bad mood (GEQ 5 point scale),I felt happy (GEQ 5 point scale),I was good at it (GEQ 5 point scale),I lost track of time (GEQ 5 point scale),I was interested in the game\'s story (GEQ 5 point scale),I thought it was hard (GEQ 5 point scale),I enjoyed it (GEQ 5 point scale)';
+                var site3header = 'I found it enjoyable to be with the other(s) (SPGQ 5 point scale),I felt schadenfreude (malicious delight) (SPGQ 5 point scale),I envied the other(s) (SPGQ 5 point scale),I felt jealous of the other(s) (SPGQ 5 point scale),I paid close attention to the other(s) (SPGQ 5 point scale),The other(s) tended to ignore me (SPGQ 5 point scale),My intentions were clear to the other(s) (SPGQ 5 point scale),I felt revengeful (SPGQ 5 point scale),What I did affected what the other(s) did (SPGQ 5 point scale),The other(s) paid close attention to me (SPGQ 5 point scale),I felt connected to the other(s) (SPGQ 5 point scale),I admired the other(s) (SPGQ 5 point scale),My actions depended on the other’s actions (SPGQ 5 point scale),I tended to ignore the other(s) (SPGQ 5 point scale),What the other(s) did affected what I did (SPGQ 5 point scale),I empathized with the other(s) (SPGQ 5 point scale),I sympathized with the other(s) (SPGQ 5 point scale),When I was happy the others were happy (SPGQ 5 point scale),The other\'s actions were dependent on my actions (SPGQ 5 point scale),When the others were happy I was happy (SPGQ 5 point scale),The other’s intentions were clear to me (SPGQ 5 point scale)';
+                var site4header = 'I believe I had some choice about doing this activity (KIM/IMI 7 point scale),I thought Crowdjump was quite enjoyable (KIM/IMI 7 point scale),I am satisfied with my performance at Crowdjump (KIM/IMI 7 point scale),I was pretty skilled at Crowdjump (KIM/IMI 7 point scale),I felt pressured while doing Crowdjump (KIM/IMI 7 point scale),I think I am pretty good at this activity (KIM/IMI 7 point scale),I had concerns whether I could do the activity well (KIM/IMI 7 point scale),I was able to control the activity myself (KIM/IMI 7 point scale),I thought Crowdjump was a very interesting activity (KIM/IMI 7 point scale),Crowdjump was fun to do (KIM/IMI 7 point scale),I could choose how to proceed in Crowdjump (KIM/IMI 7 point scale),I felt very tense while doing Crowdjump (KIM/IMI 7 point scale)';
+                var site5header = 'I think that I would like to use this system frequently (SUS 5 point scale),I found the system unnecessarily complex (SUS 5 point scale),I thought the system was easy to use (SUS 5 point scale),I think that I would need the support of a technical person to be able to use this system (SUS 5 point scale),I found the various functions in this system were well integrated (SUS 5 point scale),I thought there was too much inconsistency in this system (SUS 5 point scale),I would imagine that most people would learn to use this system very quickly (SUS 5 point scale),I found the system very cumbersome to use (SUS 5 point scale),I felt very confident using the system (SUS 5 point scale),I needed to learn a lot of things before I could get going with this system (SUS 5 point scale)';
+                var site6header = 'I liked the idea of Crowdjump (5 point scale),I liked to submit new ideas (5 point scale),The game developed in a positive direction (5 point scale),The website developed in a positive direction (5 point scale),The process of choosing the ideas developed in a positive direction (5 point scale),After each submission cycle the features were implemented as requested (5 point scale),The implemented features met my wishes for Crowdjump (5 point scale),I formed a community with other players (5 point scale),Other players interfered with the development (5 point scale),The other players and I worked as a team (5 point scale),My opinion was not heard (5 point scale)';
 
 
                 for (var i = 0; i < $scope.PostSurvey.length; i++) {
@@ -412,19 +480,41 @@
 
             }
 
+            if (name === "active_ideacomments") {
+                header = 'id,user_id,title,description';
+                for (var i = 0; i < $scope.ideas.length; i++) {
+                    if ($scope.ideas[i].deleted == true) continue;
+                    content += '\n' + $scope.ideas[i].id + ',' + $scope.ideas[i].user.id + ',' + $scope.ideas[i].request_text + ',' + $scope.ideas[i].description + ','
+                    for (var j = 0; j < $scope.ideas[i].comments.length; j++) {
+                        if ($scope.ideas[i].comments[j].deleted == true) continue;
+                        content += '\n' + $scope.ideas[i].comments[j].id + ',' + $scope.ideas[i].comments[j].user.id + ',' + ',' + $scope.ideas[i].comments[j].text + ','
+                    }
+                    content += '\n';
+                }
+
+            }
+
+            if (name === "all_ideacomments") {
+                header = 'id,user_id,title,description';
+                for (var i = 0; i < $scope.ideas.length; i++) {
+                    content += '\n' + $scope.ideas[i].id + ',' + $scope.ideas[i].user.id + ',' + $scope.ideas[i].request_text + ',' + $scope.ideas[i].description + ','
+                    for (var j = 0; j < $scope.ideas[i].comments.length; j++) {
+                        content += '\n' + $scope.ideas[i].comments[j].id + ',' + $scope.ideas[i].comments[j].user.id + ',' + ',' + $scope.ideas[i].comments[j].text + ','
+                    }
+                    content += '\n';
+                }
+            }
+
+
+            if (name === "implemented_ideas") {
+                console.log(groupBy(['id'], 'length'));
+
+            }
+
             $scope.csv += header + content;
-            setTimeout($scope.createFile($scope.csv, surname + '.csv', 'text/csv'));
+            setTimeout($scope.createFile($scope.csv, name + '.csv', 'text/csv'));
         }
 
-        $scope.test = function () {
-            // Questionnaire.post_preSite(vm.cookie["id"], 1, "asd");
-        }
-        $scope.test2 = function () {
-            console.log($scope.getContent(1));
-        }
-        $scope.test3 = function (a) {
-            console.log($scope.selected[a]);
-        }
         $scope.getNumber = function (num) {
             return new Array(num);
         }
@@ -456,6 +546,7 @@
             return [array, ordering];
         }
 
+        //to get the randomized questions in the right order again
         function doubleSortArray(array, ordering) {
             //1) combine the arrays:
             var list = [];
@@ -475,8 +566,14 @@
             return res;
         }
 
-        $scope.question2 = ["Chicken", "Egg", "Bacon"];
-        $scope.choices = ["Test", "asd", "123"];
+        //for csv convert
+        var groupBy = function (xs, key) {
+            return xs.reduce(function (rv, x) {
+                (rv[x[key]] = rv[x[key]] || []).push(x);
+                return rv;
+            }, {});
+        };
+
         $scope.selected = [];
 
         //questions
@@ -489,170 +586,172 @@
         var scale7AB = ["A", , , , , , "B"];
 
         $scope.survey = [];
-        $scope.exChoices = [choice, "< 18", "18 - 26", "26 - 39", "> 40"];
-        $scope.exDoubleChoices = [["A: Ich bin sehr schlecht in Videospielen", "B: Ich bin sehr gut in Videospielen"],
-            ["A: Nur das Design eines Produktes is wichtig ", "B: Nur die Funktion eines Produktes ist wichtig"]];
-        $scope.exScaleDescription = ["überhaupt nicht", , , , , , "sehr"];
-        $scope.exText = {
-            survey: 1,
-            nr: 0,
-            type: 'text',
-            text: 'Text1',
-            required: true,
-            startVisible: true,
-            visible: true,
-            minLength: 1,
-            activate: [{v: '', s: 1, nr: 1}],
-            showImage: false,
-            imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
-            imageWidth: 1100,
-            value: '',
-            checked: false,
-            error: false,
-            activatedBy: new Set(),
-        };
-        $scope.exBigtext = {
-            survey: 1,
-            nr: 0,
-            type: 'bigtext',
-            text: 'Text1',
-            required: true,
-            startVisible: true,
-            visible: true,
-            minLength: 1,
-            activate: [{v: '', s: 1, nr: 1}],
-            showImage: false,
-            imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
-            imageWidth: 1100,
-            value: '',
-            checked: false,
-            error: false,
-            activatedBy: new Set(),
-        };
-        $scope.exCombo = {
-            survey: 1,
-            nr: 1,
-            type: 'combo',
-            text: 'Alter',
-            required: true,
-            startVisible: true,
-            visible: true,
-            choices: $scope.sur1q3Choices,
-            activate: [{v: '', s: 1, nr: 1}],
-            showImage: false,
-            imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
-            imageWidth: 1100,
-            value: '',
-            checked: false,
-            error: false,
-            activatedBy: new Set(),
-        };
-        $scope.exRadio = {
-            survey: 1,
-            nr: 1,
-            type: 'radio',
-            text: 'Alter',
-            required: true,
-            startVisible: true,
-            visible: true,
-            choices: $scope.sur1q3Choices,
-            activate: [{v: 1, s: 1, nr: 1}],
-            showImage: false,
-            imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
-            imageWidth: 1100,
-            value: '-1',
-            checked: false,
-            error: false,
-            activatedBy: new Set(),
-        };
-        $scope.exCheck = {
-            survey: 1,
-            nr: 1,
-            type: 'check',
-            text: 'Alter',
-            required: true,
-            startVisible: true,
-            visible: true,
-            choices: $scope.sur1q3Choices,
-            freeChoice: 'Andere',
-            activate: [{v: 1, s: 1, nr: 1}],
-            showImage: false,
-            imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
-            imageWidth: 1100,
-            value: '',
-            checked: false,
-            error: false,
-            activatedBy: new Set(),
-            selected: {}
-        };
-        $scope.exRadioList = {
-            survey: 1,
-            nr: 1,
-            type: 'radiolist',
-            text: 'Alter',
-            required: true,
-            startVisible: true,
-            visible: true,
-            choices: $scope.sur1q3Choices,
-            freeChoice: 'Andere',
-            activate: [{v: 1, s: 1, nr: 1}],
-            showImage: false,
-            imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
-            imageWidth: 1100,
-            value: '',
-            checked: false,
-            error: false,
-            activatedBy: new Set(),
-            selected: {}
-        };
-        $scope.exScale = {
-            survey: 1,
-            nr: 1,
-            type: 'scale',
-            text: 'Bitte bewerte die folgenden Aussagen über Plattformer (wie Super Mario oder Super Meat Boy) auf einer Skala von "überhaupt nicht" bis "sehr".',
-            required: true,
-            startVisible: true,
-            visible: true,
-            choices: $scope.sur1q3Choices,
-            ordering: $scope.sur1q3Ordering,
-            scale: $scope.sur1q3Scale,
-            nrscales: 7,
-            freeChoice: 'Andere',
-            activate: [{v: 1, s: 1, nr: 1}],
-            showImage: false,
-            imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
-            imageWidth: 1100,
-            randomized: true,
-            value: '',
-            checked: false,
-            error: false,
-            activatedBy: new Set(),
-            selected: [{}]
-        };
-        $scope.exDoubleScale = {
-            survey: 1,
-            nr: 1,
-            type: 'doublescale',
-            text: 'Bitte bewerte die folgenden Aussagen über Plattformer (wie Super Mario oder Super Meat Boy) auf einer Skala von "überhaupt nicht" bis "sehr".',
-            required: true,
-            startVisible: true,
-            visible: true,
-            choices: $scope.sur1q3Choices,
-            scale: $scope.sur1q3Scale,
-            nrscales: 7,
-            freeChoice: 'Andere',
-            activate: [{v: 1, s: 1, nr: 1}],
-            showImage: false,
-            randomized: true,
-            imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
-            imageWidth: 1100,
-            value: '',
-            checked: false,
-            error: false,
-            activatedBy: new Set(),
-            selected: [{}]
-        };
 
+        if (false) {
+            $scope.exChoices = [choice, "< 18", "18 - 26", "26 - 39", "> 40"];
+            $scope.exDoubleChoices = [["A: Ich bin sehr schlecht in Videospielen", "B: Ich bin sehr gut in Videospielen"],
+                ["A: Nur das Design eines Produktes is wichtig ", "B: Nur die Funktion eines Produktes ist wichtig"]];
+            $scope.exScaleDescription = ["überhaupt nicht", , , , , , "sehr"];
+            $scope.exText = {
+                survey: 1,
+                nr: 0,
+                type: 'text',
+                text: 'Text1',
+                required: true,
+                startVisible: true,
+                visible: true,
+                minLength: 1,
+                activate: [{v: '', s: 1, nr: 1}],
+                showImage: false,
+                imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
+                imageWidth: 1100,
+                value: '',
+                checked: false,
+                error: false,
+                activatedBy: new Set(),
+            };
+            $scope.exBigtext = {
+                survey: 1,
+                nr: 0,
+                type: 'bigtext',
+                text: 'Text1',
+                required: true,
+                startVisible: true,
+                visible: true,
+                minLength: 1,
+                activate: [{v: '', s: 1, nr: 1}],
+                showImage: false,
+                imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
+                imageWidth: 1100,
+                value: '',
+                checked: false,
+                error: false,
+                activatedBy: new Set(),
+            };
+            $scope.exCombo = {
+                survey: 1,
+                nr: 1,
+                type: 'combo',
+                text: 'Alter',
+                required: true,
+                startVisible: true,
+                visible: true,
+                choices: $scope.sur1q3Choices,
+                activate: [{v: '', s: 1, nr: 1}],
+                showImage: false,
+                imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
+                imageWidth: 1100,
+                value: '',
+                checked: false,
+                error: false,
+                activatedBy: new Set(),
+            };
+            $scope.exRadio = {
+                survey: 1,
+                nr: 1,
+                type: 'radio',
+                text: 'Alter',
+                required: true,
+                startVisible: true,
+                visible: true,
+                choices: $scope.sur1q3Choices,
+                activate: [{v: 1, s: 1, nr: 1}],
+                showImage: false,
+                imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
+                imageWidth: 1100,
+                value: '-1',
+                checked: false,
+                error: false,
+                activatedBy: new Set(),
+            };
+            $scope.exCheck = {
+                survey: 1,
+                nr: 1,
+                type: 'check',
+                text: 'Alter',
+                required: true,
+                startVisible: true,
+                visible: true,
+                choices: $scope.sur1q3Choices,
+                freeChoice: 'Andere',
+                activate: [{v: 1, s: 1, nr: 1}],
+                showImage: false,
+                imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
+                imageWidth: 1100,
+                value: '',
+                checked: false,
+                error: false,
+                activatedBy: new Set(),
+                selected: {}
+            };
+            $scope.exRadioList = {
+                survey: 1,
+                nr: 1,
+                type: 'radiolist',
+                text: 'Alter',
+                required: true,
+                startVisible: true,
+                visible: true,
+                choices: $scope.sur1q3Choices,
+                freeChoice: 'Andere',
+                activate: [{v: 1, s: 1, nr: 1}],
+                showImage: false,
+                imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
+                imageWidth: 1100,
+                value: '',
+                checked: false,
+                error: false,
+                activatedBy: new Set(),
+                selected: {}
+            };
+            $scope.exScale = {
+                survey: 1,
+                nr: 1,
+                type: 'scale',
+                text: 'Bitte bewerte die folgenden Aussagen über Plattformer (wie Super Mario oder Super Meat Boy) auf einer Skala von "überhaupt nicht" bis "sehr".',
+                required: true,
+                startVisible: true,
+                visible: true,
+                choices: $scope.sur1q3Choices,
+                ordering: $scope.sur1q3Ordering,
+                scale: $scope.sur1q3Scale,
+                nrscales: 7,
+                freeChoice: 'Andere',
+                activate: [{v: 1, s: 1, nr: 1}],
+                showImage: false,
+                imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
+                imageWidth: 1100,
+                randomized: true,
+                value: '',
+                checked: false,
+                error: false,
+                activatedBy: new Set(),
+                selected: [{}]
+            };
+            $scope.exDoubleScale = {
+                survey: 1,
+                nr: 1,
+                type: 'doublescale',
+                text: 'Bitte bewerte die folgenden Aussagen über Plattformer (wie Super Mario oder Super Meat Boy) auf einer Skala von "überhaupt nicht" bis "sehr".',
+                required: true,
+                startVisible: true,
+                visible: true,
+                choices: $scope.sur1q3Choices,
+                scale: $scope.sur1q3Scale,
+                nrscales: 7,
+                freeChoice: 'Andere',
+                activate: [{v: 1, s: 1, nr: 1}],
+                showImage: false,
+                randomized: true,
+                imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
+                imageWidth: 1100,
+                value: '',
+                checked: false,
+                error: false,
+                activatedBy: new Set(),
+                selected: [{}]
+            };
+        } //Examples
         //Pre Survey
         $scope.survey[0] = [];
         $scope.survey[1] = [];
@@ -778,7 +877,7 @@
                 startVisible: true,
                 visible: true,
                 choices: $scope.sur1q4Choices,
-                freeChoice: 'Andere',
+                freeChoice: 'Other',
                 activate: [{v: 1, s: 1, nr: 1}],
                 showImage: false,
                 imageURL: '',
@@ -843,7 +942,7 @@
                 activate: [],
                 showImage: false,
                 imageURL: '',
-                value: '-1',
+                value: '',
                 checked: false,
                 error: false,
                 activatedBy: new Set(),
@@ -859,7 +958,7 @@
                 activate: [{v: 1, s: 1, nr: 10}],
                 showImage: false,
                 imageURL: '',
-                value: '-1',
+                value: '',
                 checked: false,
                 error: false,
                 activatedBy: new Set(),
@@ -891,7 +990,7 @@
                 activate: [{v: 1, s: 1, nr: 12}, {v: 1, s: 1, nr: 13}],
                 showImage: false,
                 imageURL: '',
-                value: '-1',
+                value: '',
                 checked: false,
                 error: false,
                 activatedBy: new Set(),
@@ -907,7 +1006,7 @@
                 activate: [],
                 showImage: false,
                 imageURL: '',
-                value: '-1',
+                value: '',
                 checked: false,
                 error: false,
                 activatedBy: new Set(),
@@ -937,14 +1036,14 @@
                 survey: 1,
                 nr: 14,
                 type: 'radio',
-                text: 'Have you heard of “PleaseBeNice”?',
+                text: 'Have you heard of "PleaseBeNice"?',
                 required: true,
                 startVisible: true,
                 visible: true,
                 activate: [{v: 1, s: 1, nr: 15}, {v: 1, s: 1, nr: 16}, {v: 1, s: 1, nr: 17}],
                 showImage: false,
                 imageURL: '',
-                value: '-1',
+                value: '',
                 checked: false,
                 error: false,
                 activatedBy: new Set(),
@@ -953,7 +1052,7 @@
                 survey: 1,
                 nr: 15,
                 type: 'radio',
-                text: 'Did you play PleaseBeNice yourself?',
+                text: 'Did you play "PleaseBeNice" yourself?',
                 required: true,
                 startVisible: false,
                 visible: false,
@@ -965,7 +1064,7 @@
                 error: false,
                 activatedBy: new Set(),
             };
-            $scope.sur1q16Choices = ["How did you like PleaseBeNice?"];
+            $scope.sur1q16Choices = ['How did you like "PleaseBeNice?"'];
             $scope.survey[1][16] = {
                 survey: 1,
                 nr: 16,
@@ -2018,6 +2117,8 @@
             };
 
         } //PostSurvey6DE
+
+
     }
 
 

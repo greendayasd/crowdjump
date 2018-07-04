@@ -1,4 +1,4 @@
-import json
+import json,os
 from django.contrib.auth import authenticate, login, logout
 from authentication.models import Account
 from authentication.permissions import IsAccountOwner
@@ -78,3 +78,22 @@ class LogoutView(views.APIView):
         logout(request)
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+
+def SendTrackingData(request):
+    username = request.GET.get('username', None)
+    lastpage = request.GET.get('lastpage', None)
+    page = request.GET.get('page', None)
+    time = request.GET.get('time', None)
+    file = '{' + 'lastpage:' + lastpage + ',page:' + page + ',time:' + time + '}'
+
+    folder_path = '/tracking/'
+
+
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+    save_path = os.path.join(folder_path, username)
+    with open(save_path, 'wb+') as destination:
+        for chunk in file.chunks():
+            destination.write(chunk)

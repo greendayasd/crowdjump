@@ -10,26 +10,33 @@ class Idea(models.Model):
     version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='ideas'
                                 , default=Version.objects.all().order_by('-id')[0].id)
 
-    # version = models.CharField(max_length= 25, default="0,01")
-    # version = models.CharField(max_length=25, default=Version.objects.all().order_by('-id')[0].label)
     request_text = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    update_count = models.IntegerField(default=0)
+
     feasible = models.BooleanField(default=True)
     implemented = models.BooleanField(default=False)
+    implemented_at = models.DateTimeField(null=True)
 
     deleted = models.BooleanField(default=False)
 
     admin_comment = models.CharField(max_length=50, null=True, default='')
     estimated_time = models.CharField(max_length=50, null=True, default='')
+    time_needed = models.CharField(max_length=50, null=True, default='')
 
     newest_comment = models.IntegerField(default=-1)
 
     upvotes = models.IntegerField(default=0)
     downvotes = models.IntegerField(default=0)
+
+    #classification
+    rater1 = models.CharField(max_length=50, null=True, default='')
+    rater2 = models.CharField(max_length=50, null=True, default='')
+    raterfinal = models.CharField(max_length=50, null=True, default='')
 
     def __unicode__(self):
         return '{0}'.format(self.description)

@@ -3,7 +3,7 @@
 
 {% compress js %}
 
-{#    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">#}
+    {#    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">#}
 
 
     <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
@@ -21,6 +21,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-sanitize.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-aria.min.js"></script>
     <script src="https://code.angularjs.org/1.6.7/angular-messages.min.js"></script>
+
+    {#    moment for countdown clock#}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 
     <!-- Angular Material Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
@@ -108,14 +111,22 @@
             src="{% static 'javascripts/questionnaire/services/questionnaire.service.js' %}"></script>
 
     <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/text.directive.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/combo.directive.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/progressbar.directive.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/radio.directive.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/check.directive.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/radiolist.directive.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/scale.directive.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/bigtext.directive.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/questionnaire/directives/doublescale.directive.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/questionnaire/directives/combo.directive.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/questionnaire/directives/progressbar.directive.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/questionnaire/directives/radio.directive.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/questionnaire/directives/check.directive.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/questionnaire/directives/radiolist.directive.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/questionnaire/directives/scale.directive.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/questionnaire/directives/bigtext.directive.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/questionnaire/directives/doublescale.directive.js' %}"></script>
 
 
     <script type="text/javascript" src="{% static 'javascripts/statistics/statistics.module.js' %}"></script>
@@ -124,4 +135,172 @@
             src="{% static 'javascripts/statistics/controllers/statistics.controller.js' %}"></script>
     <script type="text/javascript"
             src="{% static 'javascripts/statistics/controllers/highscore.controller.js' %}"></script>
+
+    <script type="text/javascript">
+        var isonfocus = true;
+
+        window.onblur = function () {
+            isonfocus = false;
+        }
+        window.onfocus = function () {
+            isonfocus = true;
+        }
+
+
+        var setSessionIdentifier = function () {
+            var account = getCookie('authenticatedAccount');
+            var username = '';
+            var identifier = getCookie('identifier');
+            if (account != '') {
+                //already logged in
+                if (identifier != '') {
+                    //previously not logged in
+                    transferTrackingData(identifier, username);
+                }
+            }
+            console.log('user ' + account.username);
+            const rand = () =
+        >
+            Math.random(0).toString(36).substr(2);
+            const token = (length) =
+        >
+            (rand() + rand() + rand() + rand()).substr(0, length);
+            //console.log(token(40));
+            //setCookie('identifier',session);
+        }
+
+
+        var sendTrackingData = function (lastpage, page, time) {
+            var user = '';
+            if (account != '') {
+
+                //get user
+
+            } else {
+                user = getCookie('identifier');
+            }
+
+            var data = {"user": user,
+                        "lastpage": lastpage,
+                        "page": page,
+                        "time": time};
+
+            $.ajax({
+                method: 'POST',
+                url: '/sendtracking/',
+                data: data,
+                success: function (data) {
+                    //this gets called when server returns an OK response
+                    console.log("it worked!");
+                },
+                error: function (data) {
+                    console.log("it didnt work");
+                }
+            });
+
+        }
+
+
+        var transferTrackingData = function (token, user) {
+            console.log(token + ' to ' + user);
+        }
+
+        var tracksite = function () {
+            var url = window.location.pathname;
+            var start = moment().unix();
+            var lasttime = getCookie('time');
+            setCookie('lastpage', getCookie('page'));
+            setSessionIdentifier();
+
+            setCookie('page', url);
+            setCookie('time', start);
+            startClock();
+
+
+        }
+
+        function startClock() {
+            var clock = '';
+            var currentTime = moment().unix(),
+                startTime = getCookie('time'),
+                startPage = getCookie('page'),
+                lastPage = getCookie('lastpage'),
+                diffTime = currentTime - startTime,
+                interval = 1000,
+                duration = moment.duration(diffTime * 1000, 'milliseconds'),
+                pause = false;
+
+
+            setInterval(function () {
+
+                if (!pause && isonfocus) {
+                    if (window.location.pathname != startPage) {
+                        sendTrackingData(lastPage, startPage, clock);
+                        pause = true;
+                    }
+
+                    duration = moment.duration(duration.asMilliseconds() + interval, 'milliseconds');
+                    var d = moment.duration(duration).days(),
+                        h = moment.duration(duration).hours(),
+                        m = moment.duration(duration).minutes(),
+                        s = moment.duration(duration).seconds();
+
+                    clock = '';
+
+                    if (d > 0) {
+                        d = $.trim(d).length === 1 ? '0' + d : d;
+                        clock += d + ' day';
+                        clock += d > 1 ? 's ' : ' ';
+                    }
+                    h = $.trim(h).length === 1 ? '0' + h : h;
+                    m = $.trim(m).length === 1 ? '0' + m : m;
+                    s = $.trim(s).length === 1 ? '0' + s : s;
+
+
+                    clock += h + ':' + m + ':' + s;
+                    console.log(startPage + ' ' + clock);
+
+                }
+            }, interval);
+        }
+
+
+        function setCookie(cname, cvalue) {
+            document.cookie = cname + "=" + cvalue;
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        $(function () {
+            var start = null;
+            $(window).load(function (event) {
+                start = event.timeStamp;
+                {#console.log("load");#}
+            });
+            $(window).unload(function (event) {
+                var time = event.timeStamp - start;
+                {#console.log("unload");#}
+            })
+        });
+    </script>
 {% endcompress %}

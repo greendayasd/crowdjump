@@ -14,6 +14,7 @@
         function IdeasIndexController($scope, Authentication, Ideas, Comments, Votes, History, ngDialog, $controller, $mdToast, $window) {
             var vm = this;
             var canDelete = true;
+            var activate_comments = false;
 
             //Filter/Ordering
             $scope.filterReset = function () {
@@ -161,8 +162,10 @@
                 // console.log($scope.userid + ' ' + $scope.username2);
             }
 
-            get_ideavotes();
-            get_comments();
+            // get_ideavotes();
+            if (activate_comments == true) {
+                get_comments();
+            }
 
             activate();
             get_versions();
@@ -213,7 +216,6 @@
                 $scope.search.version.id_max = id;
             }
 
-
             function get_ideavotes() {
                 Votes.all_user($scope.userid).then(ideavotesSuccessFn, ideavotesErrorFn);
 
@@ -224,7 +226,6 @@
                 function ideavotesErrorFn(data, status, headers, config) {
                 }
             }
-
 
             function get_comments() {
                 Comments.all().then(commentsSuccessFn, commentsErrorFn);
@@ -252,6 +253,7 @@
                     $scope.ideas_tmp = data.data;
 
                     //find own votes for ideas
+                    if (!activate_comments) return;
                     $scope.ideas = $.map($scope.ideas_tmp, function (idea) {
                         var vote = $.grep($scope.ideavotes, function (ideavote) {
                             return ideavote.idea === idea.id;
@@ -297,7 +299,7 @@
                 }
 
                 function ideasErrorFn(data, status, headers, config) {
-                    var msg = "could not get ideas";
+                    var msg = "Could not get ideas";
                     toast(msg);
                 }
             }
@@ -324,7 +326,7 @@
                         // final multiplier: (sum(multiplier)+ 2*multiplier last version) / (versions played + 2)
                         $scope.vote = Math.abs(($scope.newestVersion.vote_weight - $scope.vote_weight) * $scope.multiplier) + 1;
                         var plural = '';
-                        if ($scope.vote > 1){
+                        if ($scope.vote > 1) {
                             plural = 's';
                         }
                         $scope.text_vote_weight = "Calculated from your playing time, one of your votes is worth " + $scope.vote + " point" + plural + ". Play more to increase this amount when the next version is live!"
@@ -602,7 +604,6 @@
 
             }
 
-
             function broadcast_vote(content) {
 
                 try {
@@ -672,18 +673,8 @@
                 }
             }
 
-            // function get_CommentIndex(comment_id) {
-            //     for (var idea = 0; idea < $scope.ideas.length; idea++) {
-            //         for (var i = $scope.ideas[idea].comments.length - 1; i >= 0; i--) {
-            //             if ($scope.ideas[idea].comments[i].id == comment_id) {
-            //                 return i;
-            //             }
-            //         }
-            //     }
-            // }
-
             $scope.test = function () {
-                document.getElementById( 'pagination' ).scrollIntoView();
+                document.getElementById('pagination').scrollIntoView();
             }
 
             function toast(msg) {
