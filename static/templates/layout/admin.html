@@ -2,29 +2,42 @@
     <div class="row" id="main-row">
         <div class="col-sm-12 col-centered" id="main-col">
             <div ng-controller="QuestionnaireController as vm">
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('pre')">Pre CSV
+                <h3>Ideas</h3>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('pre')">Pre CSV
                 </button>
 
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('post')">Post CSV
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('post')">Post CSV
                 </button>
 
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('active_ideacomments')">Active Ideas + Comments
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('active_ideacomments')">Active
+                    Ideas + Comments
                 </button>
 
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('all_ideacomments')">All Ideas + Comments
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('all_ideacomments')">All Ideas +
+                    Comments
                 </button>
 
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('implemented_ideas')">Implemented Ideas (grouped by user)
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('implemented_ideas')">Implemented
+                    Ideas (grouped by user)
                 </button>
+
+                <br>
+                <h3>Usertracking</h3>
+                <input type="text" name="Username" ng-model="username">
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_user(username,false)">Usertracking
+                </button>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_user(username,true)">Grouped by page
+                </button><br>
                 <br>
                 <a href="javascript:void(0)" id="dlcsv">
                     <button>Download Csv</button>
                 </a>
 
+
+
                 <textarea class="form-control textarea  empty"
                           rows="10" cols="12"
                           ng-model=csv></textarea>
-
             </div>
         </div>
     </div>

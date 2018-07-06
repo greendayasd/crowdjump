@@ -44,7 +44,7 @@
 
         //timer
         var $clock = $('#clock'),
-            eventTime = moment('04-07-2018 08:30:00', 'DD-MM-YYYY HH:mm:ss').unix(),
+            eventTime = moment('06-07-2018 01:13:00', 'DD-MM-YYYY HH:mm:ss').unix(),
             currentTime = moment().unix(),
             diffTime = eventTime - currentTime,
             duration = moment.duration(diffTime * 1000, 'milliseconds'),
@@ -55,6 +55,10 @@
             setInterval(function () {
 
                 duration = moment.duration(duration.asMilliseconds() - interval, 'milliseconds');
+                if(duration < 0){
+                    $scope.clock = '00:00:00';
+                    return;
+                }
                 var d = moment.duration(duration).days(),
                     h = moment.duration(duration).hours(),
                     m = moment.duration(duration).minutes(),
@@ -78,6 +82,8 @@
 
             }, interval);
 
+        } else{
+            $scope.clock = '00:00:00';
         }
     }
 })();

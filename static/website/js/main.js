@@ -27,21 +27,6 @@ function csrfSafeMethod(method) {
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
 
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
 window.createGame = function (canvas, scope) {
 
 
@@ -87,7 +72,7 @@ window.createGame = function (canvas, scope) {
     }
 
     resetStats();
-    game.csrftoken = getCookie('csrftoken');
+    game.csrftoken = getAuthCookie('csrftoken');
 
     game.state.add('Boot', Crowdjump.Boot);
     game.state.add('Preloader', Crowdjump.Preloader);
@@ -102,7 +87,7 @@ window.createGame = function (canvas, scope) {
 
 function getInfo() {
 
-    var account = JSON.parse(getCookie('authenticatedAccount'));
+    var account = JSON.parse(getAuthCookie('authenticatedAccount'));
     // console.error("account" + account);
 
     if (account == '' || account == null) {

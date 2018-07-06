@@ -147,62 +147,103 @@
         }
 
 
+        var getUsername = function () {
+            var account = JSON.parse(getAuthCookie('authenticatedAccount'));
+            if (account != '' && account != null) {
+
+                //get user
+                return account["username"];
+
+            } else {
+                return getCookie('identifier');
+            }
+
+        }
+
+        function deleteCookie(name) {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
+
+        var deleteIdentifier = function () {
+            deleteCookie('identifier');
+        }
+
         var setSessionIdentifier = function () {
-            var account = getCookie('authenticatedAccount');
-            var username = '';
+            var username = getUsername();
             var identifier = getCookie('identifier');
-            if (account != '') {
-                //already logged in
-                if (identifier != '') {
+            if (username == '' && identifier == '') {
+                const rand = () =>Math.random(0).toString(36).substr(2);
+                const token = (length) =>(rand() + rand() + rand() + rand()).substr(0, length);
+                setCookie('identifier', token(40));
+                //console.log(token(40));
+                return;
+            }
+            else{
+                if (username != '' && identifier != '' &&(username != identifier)) {
                     //previously not logged in
                     transferTrackingData(identifier, username);
                 }
             }
-            console.log('user ' + account.username);
-            const rand = () =
-        >
-            Math.random(0).toString(36).substr(2);
-            const token = (length) =
-        >
-            (rand() + rand() + rand() + rand()).substr(0, length);
-            //console.log(token(40));
-            //setCookie('identifier',session);
+
         }
 
 
-        var sendTrackingData = function (lastpage, page, time) {
-            var user = '';
-            if (account != '') {
-
-                //get user
-
-            } else {
-                user = getCookie('identifier');
+        function getAuthCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
             }
+            return cookieValue;
+        }
 
-            var data = {"user": user,
-                        "lastpage": lastpage,
-                        "page": page,
-                        "time": time};
+        var sendTrackingData = function (lastpage, page, time) {
+            var username = getUsername();
+
+            var data = {
+                "username": username,
+                "lastpage": lastpage,
+                "page": page,
+                "time": time
+            };
 
             $.ajax({
-                method: 'POST',
                 url: '/sendtracking/',
                 data: data,
                 success: function (data) {
-                    //this gets called when server returns an OK response
-                    console.log("it worked!");
                 },
                 error: function (data) {
-                    console.log("it didnt work");
                 }
             });
 
         }
 
 
-        var transferTrackingData = function (token, user) {
-            console.log(token + ' to ' + user);
+        var transferTrackingData = function (token, username) {
+            if (token == username) return
+
+            var data = {
+                "username": username,
+                "identifier": token,
+                "destination": 'tracking'
+            };
+
+            $.ajax({
+                url: '/transferdata/',
+                data: data,
+                success: function (data) {
+                },
+                error: function (data) {
+                }
+            });
+            deleteIdentifier();
+            //console.log(token + ' to ' + username);
         }
 
         var tracksite = function () {
@@ -214,13 +255,15 @@
 
             setCookie('page', url);
             setCookie('time', start);
+            //console.log(getCookie('lastpage')+','+getCookie('page')+','+getCookie('time'));
             startClock();
 
 
         }
 
+        var globeclock = '00:00:00';
         function startClock() {
-            var clock = '';
+            var clock = '00:00:00';
             var currentTime = moment().unix(),
                 startTime = getCookie('time'),
                 startPage = getCookie('page'),
@@ -258,7 +301,8 @@
 
 
                     clock += h + ':' + m + ':' + s;
-                    console.log(startPage + ' ' + clock);
+                    globeclock = clock;
+                    //console.log(startPage + ' ' + clock);
 
                 }
             }, interval);
@@ -290,16 +334,17 @@
             }
             return "";
         }
+        window.onbeforeunload = function(){
+            sendTrackingData(getCookie("lastpage"), getCookie("page"), globeclock);
+        };
 
         $(function () {
-            var start = null;
+            //var start = null;
             $(window).load(function (event) {
-                start = event.timeStamp;
-                {#console.log("load");#}
+                //start = event.timeStamp;
+                setSessionIdentifier();
             });
             $(window).unload(function (event) {
-                var time = event.timeStamp - start;
-                {#console.log("unload");#}
             })
         });
     </script>

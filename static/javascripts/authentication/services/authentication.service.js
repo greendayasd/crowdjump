@@ -113,12 +113,12 @@
              */
             function loginSuccessFn(data, status, headers, config) {
                 Authentication.setAuthenticatedAccount(data.data);
-                setSessionIdentifier();
                 if (firstlogin) {
                     // console.error(firstlogin);
                     Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
                 } else {
                     window.location = '/';
+                    setSessionIdentifier();
 
                 }
             }

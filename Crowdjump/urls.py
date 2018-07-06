@@ -9,7 +9,7 @@ from ideas.views import IdeaViewSet, IdeaVotePermissionViewSet, AccountIdeasView
 from chat.views import room, index, ChatMessageViewSet
 from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet
 
-from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData
+from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData, GetTrackingData, TransferData
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
@@ -78,6 +78,8 @@ urlpatterns = [
 
     #ajax requests
     url(r'^sendtracking/$', SendTrackingData, name='sendtracking'),
+    url(r'^gettracking/$', GetTrackingData, name='gettracking'),
+    url(r'^transferdata/$', TransferData, name='transfertracking'),
 
 ]
 
