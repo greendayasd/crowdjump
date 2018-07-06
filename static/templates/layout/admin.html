@@ -13,27 +13,44 @@
                     Ideas + Comments
                 </button>
 
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('all_ideacomments')">All Ideas +
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('all_ideacomments')">All Ideas
+                    +
                     Comments
                 </button>
 
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('implemented_ideas')">Implemented
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('implemented_ideas')">
+                    Implemented
                     Ideas (grouped by user)
                 </button>
 
                 <br>
                 <h3>Usertracking</h3>
                 <input type="text" name="Username" ng-model="username">
-                <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_user(username,false)">Usertracking
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_user(username,false)">
+                    Usertracking
                 </button>
-                <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_user(username,true)">Grouped by page
-                </button><br>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_user(username,true)">Grouped
+                    by page
+                </button>
                 <br>
+
+                <h3>Gamedata</h3>
+                <select ng-model="newestVersion"
+                        ng-options="template.label for template in versions track by template.id"
+                >
+                </select>
+                <br><br>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_gamedata_user(username,false)">
+                    Gamedata
+                </button>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_gamedata_user(username,true)">Grouped
+                    by level
+                </button>
+
+                <br><br>
                 <a href="javascript:void(0)" id="dlcsv">
                     <button>Download Csv</button>
                 </a>
-
-
 
                 <textarea class="form-control textarea  empty"
                           rows="10" cols="12"
