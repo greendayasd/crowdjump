@@ -183,8 +183,12 @@ Crowdjump.Game.init = function (data) {
         }
     };
 
+    this.keys.left.onDown.add(this._countMovementInput, this);
+    this.keys.right.onDown.add(this._countMovementInput, this);
+
     this.keys.up.onDown.add(jump, this);
     this.keys.space.onDown.add(jump, this);
+
     this.game.camera.follow(this.hero);
 
     if (typeof  data !== 'undefined') {
@@ -352,6 +356,10 @@ Crowdjump.Game._handleInput = function () {
     }
 };
 
+Crowdjump.Game._countMovementInput = function () {
+    game.movement_inputs += 1;
+}
+
 Crowdjump.Game._loadLevel = function (data) {
     // create all the groups/layers that we need
 
@@ -485,6 +493,7 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
         // console.log("killed: hero: " + hero.body.position.y + "  velocity: " + hero.body.velocity.y + "  spider: " + enemy.body.position.y);
         this.sfx.stomp.play();
         game.deaths++;
+        setLevelInfo(this.level+1,"death");
         this.game.state.restart(true, false, {level: this.level});
     }
 };
@@ -505,8 +514,10 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     }
     if (this.level < CONST_LEVEL - 1) {
         // console.log(this.level + ' level');
+        setLevelInfo(this.level+1,"completed");
         this.game.state.restart(true, false, {level: this.level + 1});
     } else {
+        setLevelInfo(this.level+1,"completed");
         this.state.start('Endscreen');
     }
 
@@ -648,6 +659,7 @@ Crowdjump.Game.fire_Bullet = function () {
 Crowdjump.Game.restart = function () {
     // game.gameInfo["rounds_started"] = game.gameInfo["rounds_started"] + 1;
     game.restarts++;
+    setLevelInfo(this.level+1,"restart");
     updateInfo(false);
     last_second = 0;
 

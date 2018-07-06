@@ -131,17 +131,24 @@ def GetTrackingData(request):
 
 def SendGameData(request):
     username = request.GET.get('username')
-    lastpage = request.GET.get('lastpage')
-    page = request.GET.get('page')
-    timevisited = request.GET.get('time')
+    version = request.GET.get('version')
+    level = request.GET.get('level')
+    status = request.GET.get('status')
+    timeneeded = request.GET.get('time')
+    jumps = request.GET.get('jumps')
+    movement_inputs = request.GET.get('movement_inputs')
+    enemies_killed = request.GET.get('enemies_killed')
+    coins_collected = request.GET.get('coins_collected')
 
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-    data = '{"timestamp":"' + st + '", "lastpage":"' + lastpage + '", "page":"' + page + '", "time":"' + timevisited + '"}'
+    data = '{"timestamp":"' + st + '", "level":"' + level + '", "status":"' + status + '", "time":"' + timeneeded +\
+           '", "jumps":"' + jumps + '", "movement_inputs":"' + movement_inputs + '"}'
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     folder_path = os.path.join(BASE_DIR, 'data')
     folder_path = os.path.join(folder_path, 'gamedata')
+    folder_path = os.path.join(folder_path, version)
 
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
@@ -160,6 +167,23 @@ def SendGameData(request):
             outfile.write(data)
 
     return JsonResponse({}, safe=False)
+
+
+def GetGameData(request):
+    username = request.GET.get('username')
+    version = request.GET.get('version')
+
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    folder_path = os.path.join(BASE_DIR, 'data')
+    folder_path = os.path.join(folder_path, 'gamedata')
+    folder_path = os.path.join(folder_path, version)
+    save_path = os.path.join(folder_path, username + '.json')
+
+    with open(save_path) as outfile:
+        data = outfile.read()
+        arrData = json.loads('[' + data + ']')
+
+    return JsonResponse(arrData, safe=False)
 
 
 def TransferData(request):
@@ -183,4 +207,3 @@ def append_to_file(file, append):
     with open(file, 'a') as source:
         with open(append, 'r+') as appendix:
             source.write(',\n' + appendix.read())
-

@@ -18,6 +18,8 @@ const CONST_BULLETSPEED = 800;
 const CONST_BULLETDROP = false;
 const CONST_SHOOT_IN_ZHONYA = false;
 
+var version = '0.01';
+
 var game;
 var g_gameinfo = '';
 var highscoreSocket;
@@ -66,6 +68,7 @@ window.createGame = function (canvas, scope) {
         gameInfo: {},
         csrftoken: '',
         jumps: 0,
+        movement_inputs:0,
         deaths: 0,
         restarts: 0,
         authenticated: true,
@@ -93,16 +96,12 @@ function getInfo() {
     if (account == '' || account == null) {
         return '';
     }
-    var username = account["username"];//'User3';
-    // console.error(username);
+    var username = account["username"];
 
-    var version = '0.03';
     var path = '/api/v1/gameinfo/?format=json&user__username=' + username + '&version__label=' + version;
-    // var path2 = '/api/v1/gameinfo/10/?format=json';
+
     jQuery.get(path, function (data) {
         g_gameinfo = data[0];
-        // console.error("gameinfo " + g_gameinfo);
-        // console.error("getinfo gameinfo : " + JSON.stringify(temp_gameinfo));
     })
 }
 
@@ -121,6 +120,7 @@ function updateInfo(isHighscore) {
         game.gameInfo["coins_collected"] = game.gameInfo["coins_collected"] + game.coinPickupCount;
         game.gameInfo["enemies_killed"] = game.gameInfo["enemies_killed"] + game.enemiesDefeatedCount;
         game.gameInfo["jumps"] = game.gameInfo["jumps"] + game.jumps;
+        game.gameInfo["movement_inputs"] = game.gameInfo["movement_inputs"] + game.movement_inputs;
         game.gameInfo["deaths"] = game.gameInfo["deaths"] + game.deaths;
         game.gameInfo["restarts"] = game.gameInfo["restarts"] + game.restarts;
 
@@ -170,12 +170,38 @@ function updateInfo(isHighscore) {
 
 }
 
+function setLevelInfo(level,status) {
+    var username = getUsername();
+    console.log(username);
+    var data = {
+        "username": username,
+        "version": version,
+        "level": level,
+        "status": status,
+        "time": (game.timeElapsed.toFixed(3) * 1000),
+        "jumps": game.jumps,
+        "movement_inputs": game.movement_inputs,
+        "enemies_killed": game.enemiesDefeatedCount,
+        "coins_collected": game.coinPickupCount
+    };
+
+    $.ajax({
+        url: '/sendgamedata/',
+        data: data,
+        success: function (data) {
+        },
+        error: function (data) {
+        }
+    });
+}
+
 function resetStats() {
 
     game.coinPickupCount = 0;
     game.enemiesDefeatedCount = 0;
     game.timeElapsed = 0;
     game.jumps = 0;
+    game.movement_inputs = 0,
     game.deaths = 0;
     game.restarts = 0;
 }
