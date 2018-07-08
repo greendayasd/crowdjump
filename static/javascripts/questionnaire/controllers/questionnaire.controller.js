@@ -571,8 +571,7 @@
                 var header = '';
                 var content = '';
                 username = 'admin';
-                console.log($scope.newestVersion);
-                var data = {"username": username,"version": $scope.newestVersion};
+                var data = {"username": username, "version": $scope.newestVersion.label};
 
                 $.ajax({
                     url: '/getgamedata/',
@@ -589,10 +588,11 @@
 
                             }
                         } else {
-                            header = 'timestamp,lastpage,page,time,';
+                            header = 'timestamp,level,status,time,jumps,movement_inputs,';
                             for (var i = 0; i < data.length; i++) {
-                                content += '\n' + data[i].timestamp + ',' + data[i].lastpage + ',' + data[i].page + ',' + data[i].time + ',';
+                                content += '\n' + data[i].timestamp + ',' + data[i].level + ',' + data[i].status + ',' + data[i].time + ',' + data[i].jumps + ',' + data[i].movement_inputs + ',';
                             }
+                            console.log(data);
                         }
                         $scope.csv = header + content;
                     },

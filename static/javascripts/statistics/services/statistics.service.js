@@ -45,6 +45,8 @@
                 coins_collected: 0,
                 highscore: -1,
                 jumps: 0,
+                deaths: 0,
+                restarts: 0,
                 time_spent_game: 0,
             });
         }
