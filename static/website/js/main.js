@@ -123,8 +123,8 @@ function updateInfo(isHighscore) {
         game.gameInfo["movement_inputs"] = game.gameInfo["movement_inputs"] + game.movement_inputs;
         game.gameInfo["deaths"] = game.gameInfo["deaths"] + game.deaths;
         game.gameInfo["restarts"] = game.gameInfo["restarts"] + game.restarts;
-        game.gameInfo["time_spent_game"] = game.gameInfo["time_spent_game"] + (game.timeElapsed.toFixed(3) * 1000);
 
+        game.gameInfo["time_spent_game"] = game.gameInfo["time_spent_game"] + (game.timeElapsed.toFixed(3) * 1000);
 
         $.ajaxSetup({
             beforeSend: function (xhr, settings) {
