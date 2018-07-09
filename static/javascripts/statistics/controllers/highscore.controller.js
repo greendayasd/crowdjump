@@ -97,9 +97,7 @@
             }
             if (!found) {
                 $scope.statistics.push(data);
-                console.log("1 " + JSON.stringify($scope.statistics));
                 $scope.sort_all();
-                console.log("2 " + JSON.stringify($scope.statistics));
                 $scope.$apply();
                 $scope.statistics.pop();
 

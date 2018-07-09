@@ -172,7 +172,6 @@ function updateInfo(isHighscore) {
 
 function setLevelInfo(level,status) {
     var username = getUsername();
-    console.log(username);
     var data = {
         "username": username,
         "version": version,
