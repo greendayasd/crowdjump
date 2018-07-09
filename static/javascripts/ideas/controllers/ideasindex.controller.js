@@ -255,7 +255,6 @@
                     //find own votes for ideas
                     if (!activate_comments) {
                         $scope.ideas = $scope.ideas_tmp;
-                        console.log($scope.ideas);
                         return;
                     }
                     $scope.ideas = $.map($scope.ideas_tmp, function (idea) {
