@@ -253,7 +253,14 @@
                     $scope.ideas_tmp = data.data;
 
                     //find own votes for ideas
+<<<<<<< HEAD
                     if (!activate_comments) return;
+=======
+                    if (!activate_comments) {
+                        $scope.ideas = $scope.ideas_tmp;
+                        return;
+                    }
+>>>>>>> c4c8e0a06ff8133422df1a51c3b8785157fbdd18
                     $scope.ideas = $.map($scope.ideas_tmp, function (idea) {
                         var vote = $.grep($scope.ideavotes, function (ideavote) {
                             return ideavote.idea === idea.id;

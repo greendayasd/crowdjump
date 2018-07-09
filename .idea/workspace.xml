@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
+=======
+      <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
+      <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
+>>>>>>> c4c8e0a06ff8133422df1a51c3b8785157fbdd18
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -90,6 +95,7 @@
                 <element signature="e#7696#7762#0" expanded="false" />
                 <element signature="e#7801#8146#0" expanded="false" />
                 <element signature="e#8184#8509#0" expanded="false" />
+<<<<<<< HEAD
                 <element signature="e#12963#13949#0" expanded="false" />
                 <element signature="e#14019#16394#0" expanded="false" />
                 <element signature="e#16445#18829#0" expanded="false" />
@@ -109,6 +115,28 @@
                 <element signature="e#25153#25536#0" expanded="false" />
                 <element signature="e#25604#25819#0" expanded="false" />
                 <element signature="e#25883#26143#0" expanded="false" />
+=======
+                <element signature="e#11233#13019#0" expanded="false" />
+                <element signature="e#13068#14054#0" expanded="false" />
+                <element signature="e#14124#16499#0" expanded="false" />
+                <element signature="e#16550#18934#0" expanded="false" />
+                <element signature="e#18985#19097#0" expanded="false" />
+                <element signature="e#19217#20248#0" expanded="false" />
+                <element signature="e#20307#20529#0" expanded="false" />
+                <element signature="e#20603#20843#0" expanded="false" />
+                <element signature="e#20907#21964#0" expanded="false" />
+                <element signature="e#22146#22222#0" expanded="false" />
+                <element signature="e#22580#22932#0" expanded="false" />
+                <element signature="e#22983#23215#0" expanded="false" />
+                <element signature="e#23336#23545#0" expanded="false" />
+                <element signature="e#23595#23967#0" expanded="false" />
+                <element signature="e#24014#24386#0" expanded="false" />
+                <element signature="e#24428#24674#0" expanded="false" />
+                <element signature="e#24719#25216#0" expanded="false" />
+                <element signature="e#25258#25641#0" expanded="false" />
+                <element signature="e#25709#25924#0" expanded="false" />
+                <element signature="e#25988#26248#0" expanded="false" />
+>>>>>>> c4c8e0a06ff8133422df1a51c3b8785157fbdd18
               </folding>
             </state>
           </provider>
@@ -265,6 +293,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/authentication/views.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -288,6 +317,8 @@
           </provider>
         </entry>
       </file>
+=======
+>>>>>>> c4c8e0a06ff8133422df1a51c3b8785157fbdd18
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -302,10 +333,13 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< HEAD
       <find>setse</find>
       <find>delete</find>
       <find>deleteid</find>
       <find>' ,</find>
+=======
+>>>>>>> c4c8e0a06ff8133422df1a51c3b8785157fbdd18
       <find>getc</find>
       <find>tran</find>
       <find>dlcs</find>
@@ -332,6 +366,14 @@
       <find>cookie</find>
       <find>newestve</find>
       <find>main.js</find>
+<<<<<<< HEAD
+=======
+      <find>highsco</find>
+      <find>update</find>
+      <find>$scope.ideas</find>
+      <find>days</find>
+      <find>updatei</find>
+>>>>>>> c4c8e0a06ff8133422df1a51c3b8785157fbdd18
     </findStrings>
     <replaceStrings>
       <replace />
@@ -368,7 +410,6 @@
         <option value="$PROJECT_DIR$/static/templates/layout/game.html" />
         <option value="$PROJECT_DIR$/Crowdjump/settings.py" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" />
-        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/templates/ideas/delete-idea.html" />
         <option value="$PROJECT_DIR$/static/templates/authentication/login.html" />
@@ -403,6 +444,13 @@
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
         <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/static/website/js/main.js" />
+        <option value="$PROJECT_DIR$/static/website/js/endscreen.js" />
+        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
+        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
+>>>>>>> c4c8e0a06ff8133422df1a51c3b8785157fbdd18
       </list>
     </option>
   </component>
@@ -1187,6 +1235,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/static/website/js/endscreen.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1279">
@@ -1211,6 +1260,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> c4c8e0a06ff8133422df1a51c3b8785157fbdd18
     <entry file="file://$PROJECT_DIR$/static/website/js/gameover.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1327,6 +1378,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="78" column="10" lean-forward="true" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="145" column="121" lean-forward="false" selection-start-line="145" selection-start-column="121" selection-end-line="145" selection-end-column="121" />
           <folding />
         </state>
       </provider>
@@ -1450,5 +1509,56 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="256" column="56" lean-forward="false" selection-start-line="256" selection-start-column="56" selection-end-line="256" selection-end-column="56" />
+          <folding>
+            <element signature="e#727#1184#0" expanded="false" />
+            <element signature="e#1215#1472#0" expanded="false" />
+            <element signature="e#1525#2269#0" expanded="false" />
+            <element signature="e#2332#3602#0" expanded="false" />
+            <element signature="e#3787#4231#0" expanded="false" />
+            <element signature="e#4756#4941#0" expanded="false" />
+            <element signature="e#4991#5178#0" expanded="false" />
+            <element signature="e#5225#5407#0" expanded="false" />
+            <element signature="e#5454#5635#0" expanded="false" />
+            <element signature="e#5679#5815#0" expanded="false" />
+            <element signature="e#6028#6304#0" expanded="false" />
+            <element signature="e#6581#6995#0" expanded="false" />
+            <element signature="e#7111#7171#0" expanded="false" />
+            <element signature="e#7219#7308#0" expanded="false" />
+            <element signature="e#7363#7522#0" expanded="false" />
+            <element signature="e#7576#7642#0" expanded="false" />
+            <element signature="e#7696#7762#0" expanded="false" />
+            <element signature="e#7801#8146#0" expanded="false" />
+            <element signature="e#8184#8509#0" expanded="false" />
+            <element signature="e#11233#13019#0" expanded="false" />
+            <element signature="e#13068#14054#0" expanded="false" />
+            <element signature="e#14124#16499#0" expanded="false" />
+            <element signature="e#16550#18934#0" expanded="false" />
+            <element signature="e#18985#19097#0" expanded="false" />
+            <element signature="e#19217#20248#0" expanded="false" />
+            <element signature="e#20307#20529#0" expanded="false" />
+            <element signature="e#20603#20843#0" expanded="false" />
+            <element signature="e#20907#21964#0" expanded="false" />
+            <element signature="e#22146#22222#0" expanded="false" />
+            <element signature="e#22580#22932#0" expanded="false" />
+            <element signature="e#22983#23215#0" expanded="false" />
+            <element signature="e#23336#23545#0" expanded="false" />
+            <element signature="e#23595#23967#0" expanded="false" />
+            <element signature="e#24014#24386#0" expanded="false" />
+            <element signature="e#24428#24674#0" expanded="false" />
+            <element signature="e#24719#25216#0" expanded="false" />
+            <element signature="e#25258#25641#0" expanded="false" />
+            <element signature="e#25709#25924#0" expanded="false" />
+            <element signature="e#25988#26248#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+>>>>>>> c4c8e0a06ff8133422df1a51c3b8785157fbdd18
   </component>
 </project>
