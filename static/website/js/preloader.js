@@ -102,7 +102,6 @@ Crowdjump.Preloader.prototype = {
         if (this.ready === true) {
             this.ready = false;
             text.setText('');
-            // this.state.start('Startmenu');
 
             game.gameInfo = g_gameinfo;
 
@@ -113,6 +112,7 @@ Crowdjump.Preloader.prototype = {
                 game.authenticated = false;
             }
             this.state.start('Game');
+            // this.state.start('Startmenu');
             // this.state.start('Endscreen');
         }
     }

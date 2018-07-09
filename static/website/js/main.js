@@ -1,6 +1,10 @@
 // Global Variables
 
 const CONST_DOUBLE_JUMP = false;
+const CONST_JUMP_SPEED = 700;
+const CONST_AIR_SPEED = 500;
+const CONST_BOUNCE_SPEED = 200;
+const CONST_GRAVITY = 1400;
 const CONST_COINS = false;
 const CONST_ENEMIES = false;
 const CONST_ANIMATE_CHARACTER = false;
@@ -68,7 +72,7 @@ window.createGame = function (canvas, scope) {
         gameInfo: {},
         csrftoken: '',
         jumps: 0,
-        movement_inputs:0,
+        movement_inputs: 0,
         deaths: 0,
         restarts: 0,
         authenticated: true,
@@ -170,7 +174,7 @@ function updateInfo(isHighscore) {
 
 }
 
-function setLevelInfo(level,status) {
+function setLevelInfo(level, status) {
     var username = getUsername();
     var data = {
         "username": username,
@@ -200,7 +204,7 @@ function resetStats() {
     game.enemiesDefeatedCount = 0;
     game.timeElapsed = 0;
     game.jumps = 0;
-    game.movement_inputs = 0,
+    game.movement_inputs = 0;
     game.deaths = 0;
     game.restarts = 0;
 }

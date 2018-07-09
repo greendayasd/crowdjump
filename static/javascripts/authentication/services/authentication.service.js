@@ -159,7 +159,9 @@
 
             function logoutErrorFn(data, status, headers, config) {
                 var msg = 'Logout failed!';
-                $route.reload();
+                // $route.reload();
+                deleteCookie("authenticatedAccount");
+                window.location = '/';
                 // toast(msg);
             }
         }
