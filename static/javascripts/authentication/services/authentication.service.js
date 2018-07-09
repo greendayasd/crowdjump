@@ -153,7 +153,7 @@
              */
             function logoutSuccessFn(data, status, headers, config) {
                 Authentication.unauthenticate();
-
+                deleteCookie("authenticatedAccount");
                 window.location = '/';
             }
 
