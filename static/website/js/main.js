@@ -1,5 +1,11 @@
 // Global Variables
 
+const CONST_JUMP_SPEED = 700;
+const CONST_AIR_SPEED = 500;
+const CONST_BOUNCE_SPEED = 200;
+const CONST_GRAVITY = 1400;
+const CONST_MOVE_SPEED = 200;
+
 const CONST_DOUBLE_JUMP = false;
 const CONST_COINS = false;
 const CONST_ENEMIES = false;

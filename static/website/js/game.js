@@ -49,8 +49,7 @@ Hero.prototype = Object.create(Phaser.Sprite.prototype);
 Hero.prototype.constructor = Hero;
 
 Hero.prototype.move = function (direction) {
-    const SPEED = 200;
-    this.body.velocity.x = direction * SPEED;
+    this.body.velocity.x = direction * CONST_MOVE_SPEED;
 
     // update image flipping & animations
     if (this.body.velocity.x < 0) {
@@ -62,7 +61,6 @@ Hero.prototype.move = function (direction) {
 };
 
 Hero.prototype.jump = function () {
-    const JUMP_SPEED = 700;
     let canJump = this.body.touching.down;
 
     if (this.body.touching.down) {
@@ -70,11 +68,11 @@ Hero.prototype.jump = function () {
     }
 
     if (canJump) {
-        this.body.velocity.y = -JUMP_SPEED;
+        this.body.velocity.y = -CONST_JUMP_SPEED;
         game.jumps++;
     } else {
         if (second_jump && CONST_DOUBLE_JUMP) {
-            this.body.velocity.y = -(JUMP_SPEED * 0.8);
+            this.body.velocity.y = -(CONST_JUMP_SPEED * 0.8);
             game.jumps++;
             second_jump = false;
             return true;
@@ -85,8 +83,7 @@ Hero.prototype.jump = function () {
 };
 
 Hero.prototype.bounce = function () {
-    const BOUNCE_SPEED = 200;
-    this.body.velocity.y = -BOUNCE_SPEED;
+    this.body.velocity.y = -CONST_BOUNCE_SPEED;
 };
 
 Hero.prototype.update = function () {
@@ -389,8 +386,7 @@ Crowdjump.Game._loadLevel = function (data) {
     this._spawnFlag(data.flag.x, data.flag.y);
 
     // enable gravity
-    const GRAVITY = 1400;
-    this.game.physics.arcade.gravity.y = GRAVITY;
+    this.game.physics.arcade.gravity.y = CONST_GRAVITY;
 
     seconds_last_level = Math.abs(Math.floor(game.timeElapsed / 1));
 };
