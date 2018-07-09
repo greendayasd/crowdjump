@@ -1102,7 +1102,7 @@
                     survey: 1,
                     nr: 9,
                     type: 'radio',
-                    text: 'If you had the choice, do want to be included in the design process of a video game?',
+                    text: 'If you had the choice, do you want to be included in the design process of a video game?',
                     required: true,
                     startVisible: true,
                     visible: true,
