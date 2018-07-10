@@ -34,7 +34,8 @@
                                 ng-if="idea.estimated_time!=1">s</span>
                         </div><br>
                         <div class="idea__estimated_time" ng-if="idea.estimated_time == Null">
-                            No estimated time yet
+                            Estimated time: <b>{{ idea.estimated_time }}</b> day<span
+                                        ng-if="idea.estimated_time!=1">s</span>
                         </div>
                         <br>
                     </div>
