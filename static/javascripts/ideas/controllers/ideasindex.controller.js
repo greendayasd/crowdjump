@@ -15,6 +15,7 @@
             var vm = this;
             var canDelete = true;
             var activate_comments = false;
+            var last_idea_id = 7;
 
             //Filter/Ordering
             $scope.filterReset = function () {
@@ -251,10 +252,10 @@
 
                 function ideasSuccessFn(data, status, headers, config) {
                     $scope.ideas_tmp = data.data;
-
                     //find own votes for ideas
                     if (!activate_comments) {
                         $scope.ideas = $scope.ideas_tmp;
+                        $scope.last_idea = $scope.ideas[get_IdeaIndex(last_idea_id)];
                         return;
                     }
                     $scope.ideas = $.map($scope.ideas_tmp, function (idea) {
@@ -298,6 +299,7 @@
                     $scope.itemsPerPage = 5;
                     $scope.maxSize = 5; //Number of pager buttons to show
                     $scope.displayItems = $scope.ideas.slice(0, $scope.itemsPerPage);
+
 
                 }
 

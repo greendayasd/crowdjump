@@ -440,7 +440,7 @@
                 }
             }
 
-            $scope.getIdeaCsv = function (name) {
+            $scope.getCsv = function (name) {
                 var header = '';
                 var content = '';
 
@@ -499,10 +499,10 @@
                     header = 'id,user_id,title,description';
                     for (var i = 0; i < $scope.ideas.length; i++) {
                         if ($scope.ideas[i].deleted == true) continue;
-                        content += '\n' + $scope.ideas[i].id + ',' + $scope.ideas[i].user.id + ',' + $scope.ideas[i].request_text + ',' + $scope.ideas[i].description + ','
+                        content += '\n' + $scope.ideas[i].id + ',' + $scope.ideas[i].user.id + ',' + $scope.ideas[i].request_text + ',' + $scope.ideas[i].description + ',';
                         for (var j = 0; j < $scope.ideas[i].comments.length; j++) {
                             if ($scope.ideas[i].comments[j].deleted == true) continue;
-                            content += '\n' + $scope.ideas[i].comments[j].id + ',' + $scope.ideas[i].comments[j].user.id + ',' + ',' + $scope.ideas[i].comments[j].text + ','
+                            content += '\n' + $scope.ideas[i].comments[j].id + ',' + $scope.ideas[i].comments[j].user.id + ',' + ',' + $scope.ideas[i].comments[j].text + ',';
                         }
                         content += '\n';
                     }
@@ -529,7 +529,6 @@
                 $scope.csv += header + content;
                 setTimeout($scope.createFile($scope.csv, name + '.csv', 'text/csv'));
             }
-
 
             $scope.get_tracking_user = function (username, grouped) {
                 var header = '';
@@ -619,6 +618,16 @@
                     }
                 });
 
+            }
+
+            $scope.get_idea_list = function(){
+                var list = '';
+                for (var i = 0; i < $scope.ideas.length; i++) {
+                    if ($scope.ideas[i].deleted == true || $scope.ideas[i].implemented == true || $scope.ideas[i].not_feasible == true) continue;
+                    if (i >= 1) list += '\n';
+                    list += $scope.ideas[i].id;
+                }
+                $scope.csv = list;
             }
 
             $scope.getNumber = function (num) {

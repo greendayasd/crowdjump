@@ -30,6 +30,7 @@
             function historySuccessFn(data, status, headers, config) {
                 $scope.version = data.data["results"][0];
                 $scope.$apply;
+                versionlabel = $scope.version.label;
             }
 
             function historyErrorFn(data, status, headers, config) {
@@ -44,7 +45,7 @@
 
         //timer
         var $clock = $('#clock'),
-            eventTime = moment('10-07-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix(),
+            eventTime = moment('11-07-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix(),
             currentTime = moment().unix(),
             diffTime = eventTime - currentTime,
             duration = moment.duration(diffTime * 1000, 'milliseconds'),

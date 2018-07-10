@@ -3,22 +3,22 @@
         <div class="col-sm-12 col-centered" id="main-col">
             <div ng-controller="QuestionnaireController as vm">
                 <h3>Ideas</h3>
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('pre')">Pre CSV
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('pre')">Pre CSV
                 </button>
 
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('post')">Post CSV
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('post')">Post CSV
                 </button>
 
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('active_ideacomments')">Active
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('active_ideacomments')">Active
                     Ideas + Comments
                 </button>
 
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('all_ideacomments')">All Ideas
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('all_ideacomments')">All Ideas
                     +
                     Comments
                 </button>
 
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getIdeaCsv('implemented_ideas')">
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('implemented_ideas')">
                     Implemented
                     Ideas (grouped by user)
                 </button>
@@ -45,6 +45,10 @@
                 </button>
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_gamedata_user(username,true)">Grouped
                     by level
+                </button>
+
+                <h3>Random Org</h3>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_idea_list()">get Idea List
                 </button>
 
                 <br><br>

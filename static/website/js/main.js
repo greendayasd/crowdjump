@@ -24,7 +24,7 @@ const CONST_BULLETSPEED = 800;
 const CONST_BULLETDROP = false;
 const CONST_SHOOT_IN_ZHONYA = false;
 
-var version = '0.01';
+var version = '';
 
 var game;
 var g_gameinfo = '';
@@ -36,7 +36,7 @@ function csrfSafeMethod(method) {
 }
 
 window.createGame = function (canvas, scope) {
-
+    version = versionlabel;
 
     scope.$on('$destroy', function () {
         game.destroy(); // Clean up the game when we leave this scope

@@ -138,6 +138,7 @@
 
     <script type="text/javascript">
         var isonfocus = true;
+        var versionlabel = '';
 
         window.onblur = function () {
             isonfocus = false;
@@ -249,7 +250,7 @@
 
         var transferGameData = function (token, username) {
             if (token == username) return
-            version = '0.01';
+            version = versionlabel;
 
             var data = {
                 "username": username,

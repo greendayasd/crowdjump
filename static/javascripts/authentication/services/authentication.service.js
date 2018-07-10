@@ -113,7 +113,7 @@
              */
             function loginSuccessFn(data, status, headers, config) {
                 var cookie = Authentication.setAuthenticatedAccount(data.data);
-                if (firstlogin || cookie["versionlabel"] != '0.01') {
+                if (firstlogin || cookie["versionlabel"] != versionlabel) {
                     // console.error(firstlogin);
                     Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
                 } else {
