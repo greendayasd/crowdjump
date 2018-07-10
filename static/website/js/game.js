@@ -186,7 +186,6 @@ Crowdjump.Game.init = function (data) {
     this.keys.up.onDown.add(jump, this);
     this.keys.space.onDown.add(jump, this);
 
-    this.game.camera.follow(this.hero);
 
     if (typeof  data !== 'undefined') {
         this.level = data.level;
@@ -264,6 +263,7 @@ Crowdjump.Game.create = function () {
 
     this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.restart, this);
     this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
+    this.game.camera.follow(this.hero);
 
 };
 
@@ -320,6 +320,12 @@ Crowdjump.Game._handleCollisions = function () {
     this.game.physics.arcade.overlap(this.hero, this.coins, this._onHeroVsCoin,
         null, this);
 
+    if (CONST_LAVA) {
+        this.game.physics.arcade.overlap(this.hero, this.lava, this._onHeroVsLava,
+            null, this);
+    }
+
+
     if (CONST_SHOOTING) {
         this.game.physics.arcade.overlap(bullets, this.spiders, this._onBulletVsEnemy,
             null, this);
@@ -363,6 +369,11 @@ Crowdjump.Game._loadLevel = function (data) {
     this.bgDecoration = this.game.add.group();
     this.platforms = this.game.add.group();
 
+    if (CONST_LAVA) {
+        this.lava = this.game.add.group();
+    }
+
+
     this.coins = this.game.add.group();
 
     this.spiders = this.game.add.group();
@@ -373,6 +384,11 @@ Crowdjump.Game._loadLevel = function (data) {
 
     // spawn all platforms
     data.platforms.forEach(this._spawnPlatform, this);
+
+    //spawn lava
+    if (CONST_LAVA) {
+        data.lava.forEach(this._spawnLava, this);
+    }
 
     // spawn hero and enemies
     this._spawnCharacters({hero: data.hero, spiders: data.spiders});
@@ -389,6 +405,9 @@ Crowdjump.Game._loadLevel = function (data) {
     this.game.physics.arcade.gravity.y = CONST_GRAVITY;
 
     seconds_last_level = Math.abs(Math.floor(game.timeElapsed / 1));
+
+
+    this.world.resize(data.size.x, data.size.y);
 };
 
 Crowdjump.Game._spawnPlatform = function (platform) {
@@ -401,6 +420,19 @@ Crowdjump.Game._spawnPlatform = function (platform) {
 
     this._spawnEnemyWall(platform.x, platform.y, 'left');
     this._spawnEnemyWall(platform.x + sprite.width, platform.y, 'right');
+};
+
+
+Crowdjump.Game._spawnLava = function (lava) {
+    let sprite = this.lava.create(
+        lava.x, lava.y, lava.image);
+
+    this.game.physics.enable(sprite);
+    sprite.body.allowGravity = false;
+    sprite.body.immovable = true;
+
+    this._spawnEnemyWall(lava.x, lava.y, 'left');
+    this._spawnEnemyWall(lava.x + sprite.width, lava.y, 'right');
 };
 
 Crowdjump.Game._spawnEnemyWall = function (x, y, side) {
@@ -488,10 +520,19 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
     else { // game over -> restart the game
         // console.log("killed: hero: " + hero.body.position.y + "  velocity: " + hero.body.velocity.y + "  spider: " + enemy.body.position.y);
         this.sfx.stomp.play();
-        game.deaths++;
-        setLevelInfo(this.level+1,"death");
-        this.game.state.restart(true, false, {level: this.level});
+        console.log(enemy);
+        console.log(enemy.name);
+        console.log(enemy.type);
+
+        this.killHero("death by " + enemy.name);
     }
+};
+
+Crowdjump.Game._onHeroVsLava = function (hero, platform) {
+    // game over -> restart the game
+    // console.log("killed: hero: " + hero.body.position.y + "  velocity: " + hero.body.velocity.y + "  spider: " + enemy.body.position.y);
+
+    this.killHero("death by lava");
 };
 
 Crowdjump.Game._onBulletVsEnemy = function (bullet, enemy) {
@@ -510,10 +551,10 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     }
     if (this.level < CONST_LEVEL - 1) {
         // console.log(this.level + ' level');
-        setLevelInfo(this.level+1,"completed");
+        setLevelInfo(this.level + 1, "completed");
         this.game.state.restart(true, false, {level: this.level + 1});
     } else {
-        setLevelInfo(this.level+1,"completed");
+        setLevelInfo(this.level + 1, "completed");
         this.state.start('Endscreen');
     }
 
@@ -560,11 +601,12 @@ Crowdjump.Game._createTimerHud = function () {
 
     this.timehud = this.game.add.group();
     if (CONST_TIME) {
-        let timeImg = this.game.make.image(20, 20, this.timeFont);
+        let timeImg = this.game.make.image(480, 20, this.timeFont);
         timeImg.anchor.set(0.5, 0);
 
         this.timehud.add(timeImg);
-        this.timehud.position.set(game.world.centerX, 5);
+        this.timehud.fixedToCamera = true;
+        // this.timehud.position.set(200, 5);
 
     }
 };
@@ -651,11 +693,20 @@ Crowdjump.Game.fire_Bullet = function () {
 
 };
 
+Crowdjump.Game.killHero = function (reason) {
+    game.deaths++;
+    setLevelInfo(this.level + 1, reason);
+    //this.game.state.restart(true, false, {level: this.level});
+    console.log(this.game.time.totalElapsedSeconds());
+    this.game.time.reset();
+    this.state.start('Gameover');
+
+}
 
 Crowdjump.Game.restart = function () {
     // game.gameInfo["rounds_started"] = game.gameInfo["rounds_started"] + 1;
     game.restarts++;
-    setLevelInfo(this.level+1,"restart");
+    setLevelInfo(this.level + 1, "restart");
     updateInfo(false);
     last_second = 0;
 

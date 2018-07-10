@@ -8,6 +8,8 @@
         {"image": "invisible:4x1", "x": 245, "y": 252},
         {"image": "invisible:8x1", "x": 486, "y": 357}
     ],
+    "lava": [
+    ],
     "decoration": [
     ],
     "coins": [

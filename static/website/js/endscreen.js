@@ -4,7 +4,6 @@ Crowdjump.Endscreen = function (game) {
     var replay;
     var score;
     var info;
-    var info;
     var bubble;
     var time_score;
     var old_time;
@@ -12,9 +11,12 @@ Crowdjump.Endscreen = function (game) {
 
 
 Crowdjump.Endscreen.prototype = {
+
     create: function () {
+	this.game.camera.reset();
         if (CONST_TIME) {
-            time_score = game.timeElapsed.toFixed(3);
+            // time_score = game.timeElapsed.toFixed(3);
+            time_score = game.time.totalElapsedSeconds().toFixed(3);
             // console.error("gameinfo 0: " + JSON.stringify(game.gameInfo));
             // console.error(game.gameInfo["highscore"]);
             // console.error(game.gameInfo["highscore"] + 0);

@@ -25,27 +25,33 @@ Crowdjump.Preloader.prototype = {
         this.load.image('logo', images + 'logo.png');
         this.load.image('play', images + 'play.png');
         this.load.image('bubble', images + 'ideabubble.png');
+        this.load.image('alien_death', images + 'alien_death.png');
 
         //alle Level laden
-        // for (i = 0; i < CONST_LEVEL; i++){
-        //     var levelname = 'level';
-        //     levelname += i +'';
-        //
-        //     this.load.json('level:' + i, level + levelname + '.json');
-        // }
-        this.load.json('level:0', level + 'level0.json');
-        this.load.json('level:1', level + 'level1.json');
-        this.load.json('level:2', level + 'level2.json');
-        this.load.json('level:3', level + 'level3.json');
+        for (i = 0; i < CONST_LEVEL; i++){
+            var levelname = 'level';
+            levelname += i +'';
+
+            this.load.json('level:' + i, level + levelname + '.json');
+        }
+        // this.load.json('level:0', level + 'level0.json');
+        // this.load.json('level:1', level + 'level1.json');
+        // this.load.json('level:2', level + 'level2.json');
+        // this.load.json('level:3', level + 'level3.json');
 
         //files
         this.load.image('background', files + 'background.png');
         this.load.image('ground', files + 'ground.png');
+        this.load.image('ground:1x2', files + 'ground_1x2.png');
+        this.load.image('ground:2x2', files + 'ground_2x2.png');
+        this.load.image('ground:4x2', files + 'ground_4x2.png');
         this.load.image('grass:8x1', files + 'grass_8x1.png');
         this.load.image('grass:6x1', files + 'grass_6x1.png');
         this.load.image('grass:4x1', files + 'grass_4x1.png');
         this.load.image('grass:2x1', files + 'grass_2x1.png');
         this.load.image('grass:1x1', files + 'grass_1x1.png');
+        this.load.image('lava:1x1', files + 'lava_1x1.png');
+        this.load.image('lava:2x1', files + 'lava_2x1.png');
         this.load.image('invisible:8x1', files + 'invisible_8x1.png');
         this.load.image('invisible:4x1', files + 'invisible_4x1.png');
         this.load.image('invisible:2x1', files + 'invisible_2x1.png');

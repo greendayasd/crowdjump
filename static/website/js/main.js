@@ -23,6 +23,7 @@ const CONST_FIRERATE = 500;
 const CONST_BULLETSPEED = 800;
 const CONST_BULLETDROP = false;
 const CONST_SHOOT_IN_ZHONYA = false;
+const CONST_LAVA = false;
 
 var version = '';
 
@@ -88,6 +89,7 @@ window.createGame = function (canvas, scope) {
     game.state.add('Startmenu', Crowdjump.Menu);
     game.state.add('Game', Crowdjump.Game);
     game.state.add('Endscreen', Crowdjump.Endscreen);
+    game.state.add('Gameover', Crowdjump.Gameover);
     game.state.start('Boot');
 
     return;

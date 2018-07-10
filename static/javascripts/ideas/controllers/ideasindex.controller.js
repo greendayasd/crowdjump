@@ -209,6 +209,7 @@
                 $scope.currentPage = 1; //reset to first page
             }
 
+            $scope.setItemsPerPage(5);
             $scope.versionFilterMin = function (id) {
                 $scope.search.version.id_min = id;
             }

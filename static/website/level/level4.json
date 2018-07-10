@@ -6,6 +6,8 @@
         {"image": "grass:4x1", "x": 94, "y": 252},
         {"image": "grass:4x1", "x": 346, "y": 168}
     ],
+    "lava": [
+    ],
     "decoration": [
     ],
     "coins": [
