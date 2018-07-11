@@ -17,7 +17,6 @@
                 all_pre: all_pre,
                 all_post: all_post,
                 increase_surveycount: increase_surveycount,
-                cookieasd: cookieasd,
                 post_preSite: post_preSite,
                 post_postSite: post_postSite,
                 get_pre: get_pre,
@@ -33,14 +32,6 @@
 
             function all_post() {
                 return $http.get('/api/v1/postsurvey/');
-            }
-
-            function cookieasd() {
-                var res = $cookies.getObject("authenticatedAccount");
-                res["survey_status"] = 1;
-
-                $cookies.put("authenticatedAccount", JSON.stringify(res));
-
             }
 
             function increase_surveycount(username, newCount) {
@@ -67,11 +58,9 @@
                 var survey_id;
                 $http.get('/api/v1/presurvey/?user__id=' + user_id + '&limit=1'
                 ).then(function (result) {
-
                     if (result["data"]["count"] > 0) {
                         var survey = result["data"]["results"][0];
                         survey_id = survey["id"];
-
                         if (site == 1) {
                             survey["Age_Combobox"] = cont[0];
                             survey["Gender_Combobox"] = cont[1];
@@ -108,7 +97,6 @@
                             survey["ABSurvey8"] = cont[8];
                             survey["ABSurvey9"] = cont[9];
                         }
-
                         $http.patch('/api/v1/presurvey/' + survey_id + '/', {
                             site0: survey["site0"],
 
@@ -148,6 +136,7 @@
                         }).then(function (result) {
                             return result;
                         }).catch(function (error) {
+                            console.log(error);
                         });
                     } else {
                         $http.post('/api/v1/presurvey/', {
