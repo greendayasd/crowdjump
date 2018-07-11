@@ -16,7 +16,7 @@ def mail_new_version(request):
 
     for user in models.Account.objects.all():
         final_message = message1 + user.username + message2 + html_content
-        msg = EmailMultiAlternatives(subject, '', fromMail, ['freshkd2@web.de'])
+        msg = EmailMultiAlternatives(subject, '', fromMail, [user.email])
         msg.attach_alternative(final_message, "text/html")
         msg.send()
 
