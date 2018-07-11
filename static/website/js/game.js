@@ -697,7 +697,6 @@ Crowdjump.Game.killHero = function (reason) {
     game.deaths++;
     setLevelInfo(this.level + 1, reason);
     //this.game.state.restart(true, false, {level: this.level});
-    console.log(this.game.time.totalElapsedSeconds());
     this.game.time.reset();
     this.state.start('Gameover');
 

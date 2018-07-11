@@ -23,7 +23,7 @@ const CONST_FIRERATE = 500;
 const CONST_BULLETSPEED = 800;
 const CONST_BULLETDROP = false;
 const CONST_SHOOT_IN_ZHONYA = false;
-const CONST_LAVA = false;
+const CONST_LAVA = true;
 
 var version = '';
 
@@ -155,6 +155,7 @@ function updateInfo(isHighscore) {
             dataType: 'json',
             processData: false,
             contentType: "application/json",
+            cache: false,
             success: function (data) {
                 if (isHighscore || true) {
 
@@ -194,6 +195,7 @@ function setLevelInfo(level,status) {
 
     $.ajax({
         url: '/sendgamedata/',
+        cache: false,
         data: data,
         success: function (data) {
         },

@@ -16,6 +16,7 @@
             'crowdjump.version',
             'crowdjump.statistics',
             'crowdjump.questionnaire',
+            'crowdjump.admin',
         ]);
 
     angular

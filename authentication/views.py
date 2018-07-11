@@ -6,6 +6,7 @@ from authentication.serializers import AccountSerializer
 from rest_framework.response import Response
 from rest_framework import status, permissions, viewsets, views
 from django.http import JsonResponse
+import http.cookiejar, urllib.request, requests
 
 
 class AccountViewSet(viewsets.ModelViewSet):
@@ -83,6 +84,12 @@ class LogoutView(views.APIView):
 
 def SendTrackingData(request):
     username = request.GET.get('username')
+    if request.user.is_authenticated:
+        username2 = request.user.username
+        if username != username2:
+            return JsonResponse({}, safe=False)
+        username = username2
+
     lastpage = request.GET.get('lastpage')
     page = request.GET.get('page')
     timevisited = request.GET.get('time')
@@ -117,6 +124,11 @@ def SendTrackingData(request):
 def GetTrackingData(request):
     username = request.GET.get('username')
 
+    if request.user.is_authenticated:
+        username = request.user.username
+    if username != 'admin':
+        return JsonResponse({}, safe=False)
+
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     folder_path = os.path.join(BASE_DIR, 'data')
     folder_path = os.path.join(folder_path, 'tracking')
@@ -131,10 +143,21 @@ def GetTrackingData(request):
 
 def SendGameData(request):
     username = request.GET.get('username')
+    if request.user.is_authenticated:
+        username2 = request.user.username
+        if username != username2:
+            return JsonResponse({}, safe=False)
+        username = username2
+
     version = request.GET.get('version')
     level = request.GET.get('level')
     status = request.GET.get('status')
     timeneeded = request.GET.get('time')
+
+    if int(timeneeded) < 4200:
+        #cheated
+        return JsonResponse({}, safe=False)
+
     jumps = request.GET.get('jumps')
     movement_inputs = request.GET.get('movement_inputs')
     enemies_killed = request.GET.get('enemies_killed')
@@ -142,7 +165,7 @@ def SendGameData(request):
 
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-    data = '{"timestamp":"' + st + '", "level":"' + level + '", "status":"' + status + '", "time":"' + timeneeded +\
+    data = '{"timestamp":"' + st + '", "level":"' + level + '", "status":"' + status + '", "time":"' + timeneeded + \
            '", "jumps":"' + jumps + '", "movement_inputs":"' + movement_inputs + '"}'
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -171,6 +194,11 @@ def SendGameData(request):
 
 def GetGameData(request):
     username = request.GET.get('username')
+    if request.user.is_authenticated:
+        username = request.user.username
+    if username != 'admin':
+        return JsonResponse({}, safe=False)
+
     version = request.GET.get('version')
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

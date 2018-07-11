@@ -8,6 +8,7 @@ from ideas.views import IdeaViewSet, IdeaVotePermissionViewSet, AccountIdeasView
     GameInfoViewSet, CommentViewSet, IdeaVoteViewSet
 from chat.views import room, index, ChatMessageViewSet
 from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet
+from Crowdjump.mailFunctions import mail_new_version
 
 from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData, GetTrackingData, TransferData, SendGameData, GetGameData
 
@@ -82,6 +83,8 @@ urlpatterns = [
     url(r'^sendgamedata/$', SendGameData, name='sendgamedata'),
     url(r'^getgamedata/$', GetGameData, name='getgamedata'),
     url(r'^transferdata/$', TransferData, name='transferdata'),
+
+    url(r'^sendmail/$', mail_new_version, name='sendmail'),
 
 ]
 

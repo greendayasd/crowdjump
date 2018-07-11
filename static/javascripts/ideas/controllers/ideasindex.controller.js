@@ -15,7 +15,7 @@
             var vm = this;
             var canDelete = true;
             var activate_comments = false;
-            var last_idea_id = 7;
+            var last_idea_id = 4;
 
             //Filter/Ordering
             $scope.filterReset = function () {
