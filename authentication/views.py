@@ -217,6 +217,11 @@ def GetGameData(request):
 def TransferData(request):
     identifier = request.GET.get('identifier')
     username = request.GET.get('username')
+    if request.user.is_authenticated:
+        username2 = request.user.username
+        if username != username2:
+            return JsonResponse({}, safe=False)
+        username = username2
     destination = request.GET.get('destination')
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

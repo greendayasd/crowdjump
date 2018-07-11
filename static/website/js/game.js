@@ -695,6 +695,7 @@ Crowdjump.Game.fire_Bullet = function () {
 
 Crowdjump.Game.killHero = function (reason) {
     game.deaths++;
+    this.timeFont.text = '0';
     setLevelInfo(this.level + 1, reason);
     //this.game.state.restart(true, false, {level: this.level});
     this.game.time.reset();
