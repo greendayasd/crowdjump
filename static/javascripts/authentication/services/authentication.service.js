@@ -143,6 +143,26 @@
             }
         }
 
+        function increase_surveycount(username, newCount) {
+            var res = $cookies.getObject("authenticatedAccount");
+            res["survey_status"] = newCount;
+
+            $cookies.put("authenticatedAccount", JSON.stringify(res));
+            return $http.patch('/api/v1/accounts/' + username + '/', {
+                survey_status: newCount,
+
+
+            }).then(increaseSuccessFn, increaseErrorFn);
+
+            function increaseSuccessFn(data, status, headers, config) {
+            }
+
+            function increaseErrorFn(data, status, headers, config) {
+                var msg = 'Could not get to next survey'
+                console.log(msg);
+            }
+        }
+
         function logout() {
             return $http.post('/api/v1/auth/logout/')
                 .then(logoutSuccessFn, logoutErrorFn);

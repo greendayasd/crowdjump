@@ -191,7 +191,7 @@
                             }
                         });
                         content.push('[' + values + ']');
-                        content.push('other');
+                        content.push(other);
 
                     } else if (q.type === 'radiolist') {
                         if (q.selected < 0 || JSON.stringify(q.selected) == '{}') {
