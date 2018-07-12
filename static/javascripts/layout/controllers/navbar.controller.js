@@ -32,6 +32,7 @@
                 $scope.$apply;
                 versionlabel = $scope.version.label;
                 versionnumber = $scope.version.id;
+                console.log(versionnumber);
             }
 
             function historyErrorFn(data, status, headers, config) {

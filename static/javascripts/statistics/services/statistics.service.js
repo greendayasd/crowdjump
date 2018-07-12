@@ -24,7 +24,6 @@
         }
 
         function top(x, version){
-            console.log(version);
             return $http.get('/api/v1/gameinfo/?version__id=' + version + '&highscore__gt=0&limit=' + x);
         }
 
