@@ -114,7 +114,8 @@
             function loginSuccessFn(data, status, headers, config) {
                 var cookie = Authentication.setAuthenticatedAccount(data.data);
                 if (firstlogin || cookie["versionlabel"] != versionlabel) {
-                    // console.error(firstlogin);
+                    console.error(cookie["versionlabel"]);
+                    increase_versionlabel(cookie["username"],versionlabel);
                     Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
                 } else {
                     window.location = '/';
@@ -143,13 +144,13 @@
             }
         }
 
-        function increase_surveycount(username, newCount) {
+        function increase_versionlabel(username, label) {
             var res = $cookies.getObject("authenticatedAccount");
-            res["survey_status"] = newCount;
+            res["versionlabel"] = label;
 
             $cookies.put("authenticatedAccount", JSON.stringify(res));
             return $http.patch('/api/v1/accounts/' + username + '/', {
-                survey_status: newCount,
+                versionlabel: label,
 
 
             }).then(increaseSuccessFn, increaseErrorFn);
@@ -158,8 +159,8 @@
             }
 
             function increaseErrorFn(data, status, headers, config) {
-                var msg = 'Could not get to next survey'
-                console.log(msg);
+                // var msg = 'Could not get to next survey';
+                // console.log(msg);
             }
         }
 
