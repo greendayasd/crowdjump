@@ -43,7 +43,6 @@ Crowdjump.Endscreen.prototype = {
                 isHighscore = true;
                 game.gameInfo["highscore"] = time_score * 1000;
             } else {
-                old_time = old_time / 1000;
                 if (old_time > time_score * 1000) {
                     highscore_text += 'This is a new highscore, your previous highscore was ' + (old_time / 1000) + ' seconds!';
                     isHighscore = true;
