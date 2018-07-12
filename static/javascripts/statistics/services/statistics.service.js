@@ -24,6 +24,7 @@
         }
 
         function top(x, version){
+            console.log(version);
             return $http.get('/api/v1/gameinfo/?version__id=' + version + '&highscore__gt=0&limit=' + x);
         }
 
@@ -31,7 +32,6 @@
             return
         }
         function create() {
-            console.log(versionnumber);
             return $http.post('/api/v1/gameinfo/', {
                 // version: versionnumber,
                 // rounds_started: content["rounds_started"],
