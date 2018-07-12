@@ -114,7 +114,7 @@
             function loginSuccessFn(data, status, headers, config) {
                 var cookie = Authentication.setAuthenticatedAccount(data.data);
                 if (firstlogin || cookie["versionlabel"] != versionlabel) {
-                    console.error(cookie["versionlabel"]);
+                    // console.error(cookie["versionlabel"]);
                     increase_versionlabel(cookie["username"],versionlabel);
                     Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
                 } else {

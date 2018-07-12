@@ -39,6 +39,7 @@
         }
 
         function logout() {
+            if (!vm.isAuthenticated) return;
             Authentication.logout();
         }
 

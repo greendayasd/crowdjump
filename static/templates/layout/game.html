@@ -16,7 +16,11 @@
     }
 </style>
 
+<!-- <div class="container" style="background-color: #2c21cb"> -->
 <div class="container">
+    <div class="row">
+        <br>
+    </div>
     <div class="row">
         <div class="col-md-12" id="gameCanvas">
 
@@ -26,7 +30,7 @@
     <div class="row">
         <div class="col-md-12" id="instructions">
 
-            <h4 style="color: white">
+            <h4 class="text-center" id="instructions" style="color: white; padding-right: 3%;">
                 <br>
                 The goal is simple: Control the alien by using the arrow keys
                 to move (or space to jump) to get to the flag. <br>
@@ -48,7 +52,8 @@
         <br>
         <div class="alert alert-info">
             <strong>
-                <a style="font-size: 28px" style="margin-top: 45px" href="/login?next={{ request.path }}">Remember to login before you play, so your score is saved!</a>
+                <a style="font-size: 28px" style="margin-top: 45px" href="/login?next={{ request.path }}">Remember to
+                    login before you play, so your score is saved!</a>
             </strong>
         </div>
     </div>

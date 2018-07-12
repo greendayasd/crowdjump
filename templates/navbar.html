@@ -47,7 +47,7 @@
                     {#                    <li><a href="/+{{ user.username }}/settings">Settings</a></li>#}
                     <li><a href="javascript:void(0)" ng-click="vm.logout()">Logout</a></li>
                 {% else %}
-                    <li><a href="/login">Login</a></li>
+                    <li ng-init="vm.logout()"><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>
                     <li>
                     </li>
