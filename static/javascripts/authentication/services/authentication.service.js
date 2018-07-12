@@ -113,8 +113,9 @@
              */
             function loginSuccessFn(data, status, headers, config) {
                 var cookie = Authentication.setAuthenticatedAccount(data.data);
+                console.log(versionlabel);
                 if (firstlogin || cookie["versionlabel"] != versionlabel) {
-                    // console.error(cookie["versionlabel"]);
+                    console.log(cookie["versionlabel"]);
                     increase_versionlabel(cookie["username"],versionlabel);
                     Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
                 } else {
@@ -148,7 +149,6 @@
             var res = $cookies.getObject("authenticatedAccount");
             res["versionlabel"] = label;
 
-            $cookies.put("authenticatedAccount", JSON.stringify(res));
             return $http.patch('/api/v1/accounts/' + username + '/', {
                 versionlabel: label,
 
@@ -156,6 +156,7 @@
             }).then(increaseSuccessFn, increaseErrorFn);
 
             function increaseSuccessFn(data, status, headers, config) {
+                $cookies.put("authenticatedAccount", JSON.stringify(res));
             }
 
             function increaseErrorFn(data, status, headers, config) {

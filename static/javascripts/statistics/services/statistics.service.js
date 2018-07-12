@@ -23,16 +23,17 @@
             return $http.get('/api/v1/gameinfo/');
         }
 
-        function top(x){
-            return $http.get('/api/v1/gameinfo/?version__id=3&highscore__gt=0&limit=' + x);
+        function top(x, version){
+            return $http.get('/api/v1/gameinfo/?version__id=' + version + '&highscore__gt=0&limit=' + x);
         }
 
         function newVersion(){
             return
         }
         function create() {
+            console.log(versionnumber);
             return $http.post('/api/v1/gameinfo/', {
-                // version: content["version"],
+                // version: versionnumber,
                 // rounds_started: content["rounds_started"],
                 // rounds_won: content["rounds_won"],
                 // enemies_killed: content["enemies_killed"],

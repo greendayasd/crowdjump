@@ -3,22 +3,24 @@
 
     angular
         .module('crowdjump.statistics.controllers')
-        .controller('StatisticsController', StatisticsController);
+        .controller('ProfileController', ProfileController);
 
-    StatisticsController.$inject = ['$scope', 'Authentication', 'Statistics'];
+    ProfileController.$inject = ['$scope', 'Authentication', 'Statistics'];
 
-    function StatisticsController($scope, Authentication, Statistics) {
+    function ProfileController($scope, Authentication, Statistics) {
         var vm = this;
+
+        vm.isAuthenticated = Authentication.isAuthenticated();
+        vm.cookie = Authentication.getAuthenticatedAccount();
+        $scope.username = vm.cookie["username"];
 
         $scope.statistics = [];
 
 
         activate();
 
-
-
         function activate() {
-            Statistics.top(5,versionnumber).then(statisticsSuccessFn, statisticsErrorFn);
+            Statistics.get($scope.username).then(statisticsSuccessFn, statisticsErrorFn);
 
             $scope.$on('statistics.created', function (event, statistics) {
                 $scope.history.unshift(statistics);
@@ -29,7 +31,8 @@
             });
 
             function statisticsSuccessFn(data, status, headers, config) {
-                $scope.statistics = data.data["results"];
+                $scope.statistics = data.data;
+                console.log(data.data);
 
             }
 

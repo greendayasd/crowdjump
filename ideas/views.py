@@ -53,7 +53,7 @@ class AccountIdeasViewSet(viewsets.ViewSet):
 
 
 class GameInfoViewSet(viewsets.ModelViewSet):
-    queryset = GameInfo.objects.order_by('highscore')
+    queryset = GameInfo.objects.order_by('-version','highscore')
     serializer_class = GameInfoSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ['highscore', 'version', 'user', 'id']

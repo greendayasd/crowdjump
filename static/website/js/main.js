@@ -25,6 +25,11 @@ const CONST_BULLETDROP = false;
 const CONST_SHOOT_IN_ZHONYA = false;
 const CONST_LAVA = true;
 
+const CONST_CANVAS_X = 960;
+const CONST_CANVAS_Y = 600;
+const CONST_WORLD_CENTER_X = CONST_CANVAS_X/2;
+const CONST_WORLD_CENTER_Y = CONST_CANVAS_Y/2;
+
 var version = '';
 
 var game;
@@ -65,7 +70,7 @@ window.createGame = function (canvas, scope) {
     });
 
 
-    game = new Phaser.Game(960, 600, Phaser.AUTO, canvas);
+    game = new Phaser.Game(CONST_CANVAS_X, CONST_CANVAS_Y, Phaser.AUTO, canvas);
     // game.world.setBounds(0,0,1500,600);
 
     game.global = {

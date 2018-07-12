@@ -10,19 +10,22 @@ Crowdjump.Gameover = function (game) {
 Crowdjump.Gameover.prototype = {
 
     create: function () {
-        this.game.camera.reset();
+        this.game.stage.backgroundColor = '#1948cd';
 
-        info = this.add.text(this.world.centerX, 155, "You died!", {font:"50px Arial",fill: '#dbdbdb'});
+        info = this.add.text(CONST_WORLD_CENTER_X, 155, "You died!", {font:"50px Arial",fill: '#dbdbdb'});
         info.anchor.set(0.5);
+        info.fixedToCamera = true;
 
-        death = this.add.sprite(this.world.centerX, this.world.centerY + 10, 'alien_death');
+        death = this.add.sprite(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 10, 'alien_death');
         death.anchor.set(0.5);
+        death.fixedToCamera = true;
 
-        replay = this.add.text(this.world.centerX,
-            this.world.centerY -40, 'Try again?', {font:"35px Arial", fill: '#dbdbdb'});
+        replay = this.add.text(CONST_WORLD_CENTER_X,
+            CONST_WORLD_CENTER_Y -40, 'Try again?', {font:"35px Arial", fill: '#dbdbdb'});
         replay.anchor.set(0.5, -5);
         replay.inputEnabled = true;
         replay.events.onInputDown.add(this.replay, this);
+        replay.fixedToCamera = true;
 
 
         this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.replay, this);

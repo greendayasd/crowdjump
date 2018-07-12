@@ -58,11 +58,15 @@
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/idea_index.html'
 
+        }).when('/profile', {
+            controller: 'ProfileController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/layout/profile.html'
 
 
         }).when('/admin', {
-            // controller: 'AdminController',
-            // controllerAs: 'vm',
+            controller: 'AdminController',
+            controllerAs: 'vm',
             templateUrl: '/static/templates/layout/admin.html'
 
 

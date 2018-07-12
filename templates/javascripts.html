@@ -139,10 +139,13 @@
             src="{% static 'javascripts/statistics/controllers/statistics.controller.js' %}"></script>
     <script type="text/javascript"
             src="{% static 'javascripts/statistics/controllers/highscore.controller.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/statistics/controllers/profile.controller.js' %}"></script>
 
     <script type="text/javascript">
         var isonfocus = true;
         var versionlabel = '';
+        var versionnumber = 2;
 
         window.onblur = function () {
             isonfocus = false;

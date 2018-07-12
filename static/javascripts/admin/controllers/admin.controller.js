@@ -34,74 +34,6 @@
                 get_versions();
             }
 
-            function detectmob() {
-                if (navigator.userAgent.match(/Android/i)
-                    || navigator.userAgent.match(/webOS/i)
-                    || navigator.userAgent.match(/iPhone/i)
-                    || navigator.userAgent.match(/iPad/i)
-                    || navigator.userAgent.match(/iPod/i)
-                    || navigator.userAgent.match(/BlackBerry/i)
-                    || navigator.userAgent.match(/Windows Phone/i)
-                ) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            }
-
-            function detectmob2() {
-                if (window.innerWidth <= 800 && window.innerHeight <= 600) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-
-            var ismobile = (detectmob() || detectmob2());
-
-            if (!vm.isAuthenticated && vm.url.includes("survey")) {
-                // console.log(vm.url);
-                window.location.href = '/';
-                return;
-            }
-
-            if (!vm.isAuthenticated) {
-                return;
-            }
-
-
-            // console.log(vm.url);
-            vm.surveystatus = vm.cookie["survey_status"];
-            var post_surveystatus = vm.surveystatus - 4;
-            // console.log(vm.surveystatus);
-            if (vm.surveystatus < 3 && !vm.url.includes("survey" + vm.surveystatus) && !vm.url.includes("mobile")) {
-
-                if (ismobile) {
-                    window.location.href = '/mobile';
-                    return;
-                }
-                window.location.href = '/survey' + vm.surveystatus;
-                return;
-            }
-            else if (vm.surveystatus > 3 && vm.surveystatus < 11 && !vm.url.includes("postsurvey" + post_surveystatus) && !vm.url.includes("mobile")) {
-
-                if (ismobile) {
-                    window.location.href = '/mobile';
-                    return;
-                }
-                window.location.href = 'postsurvey' + post_surveystatus;
-                return;
-            }
-            else if ((vm.surveystatus == 3 || vm.surveystatus == 3) && vm.url.includes("survey") && !vm.url.includes("surveyPreFinished") && !vm.url.includes("mobile")) {
-                window.location.href = '/';
-            }
-
-            // else if (vm.surveystatus > 3 && !vm.url.includes("postsurvey" + vm.surveystatus)) {
-            //     console.log(vm.surveystatus);
-            //     window.location.href = '/survey' + vm.surveystatus;
-            // }
-
 
             $scope.submit = function (next_survey) {
 
@@ -744,11 +676,8 @@
                 return ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2)
             }
 
-
             //questions
             var choice = "-- Please Select --";
-
-
 
         }
 

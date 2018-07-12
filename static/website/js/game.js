@@ -221,7 +221,10 @@ Crowdjump.Game.create = function () {
         shoot: this.game.add.audio('sfx:shoot'),
     };
 
-    this.game.add.image(0, 0, 'background');
+    // this.game.add.image(0, 0, 'background');
+    var c = Phaser.Color.getRandomColor(255, 255, 255);
+
+    this.game.stage.backgroundColor = c;
     zhonya_activated = false;
     zhonya_cooldown = false;
     time_zhonya_activated = 0;
@@ -405,7 +408,6 @@ Crowdjump.Game._loadLevel = function (data) {
     this.game.physics.arcade.gravity.y = CONST_GRAVITY;
 
     seconds_last_level = Math.abs(Math.floor(game.timeElapsed / 1));
-
 
     this.world.resize(data.size.x, data.size.y);
 };

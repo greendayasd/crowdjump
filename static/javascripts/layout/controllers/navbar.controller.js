@@ -31,6 +31,7 @@
                 $scope.version = data.data["results"][0];
                 $scope.$apply;
                 versionlabel = $scope.version.label;
+                versionnumber = $scope.version.id;
             }
 
             function historyErrorFn(data, status, headers, config) {
@@ -46,7 +47,7 @@
 
         //timer
         var $clock = $('#clock'),
-            eventTime = moment('12-07-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix(),
+            eventTime = moment('13-07-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix(),
             currentTime = moment().unix(),
             diffTime = eventTime - currentTime,
             duration = moment.duration(diffTime * 1000, 'milliseconds'),

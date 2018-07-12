@@ -12,7 +12,7 @@ Crowdjump.Preloader.prototype = {
     create: function () {
     },
     preload: function () {
-        this.preloadBar = this.add.sprite(this.world.centerX, this.world.centerY, 'preloadbar');
+        this.preloadBar = this.add.sprite(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y, 'preloadbar');
         this.preloadBar.anchor.set(0.5);
         this.load.setPreloadSprite(this.preloadBar);
 
@@ -98,7 +98,7 @@ Crowdjump.Preloader.prototype = {
 
     },
     loadStart: function () {
-        text = this.add.text(this.world.centerX, this.world.centerY - 30, 'Loading. . . ');
+        text = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y - 30, 'Loading. . . ');
         text.anchor.set(0.5);
     },
     loadComplete: function () {

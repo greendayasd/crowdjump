@@ -5,18 +5,19 @@
         .module('crowdjump.statistics.controllers')
         .controller('HighscoreController', HighscoreController);
 
-    HighscoreController.$inject = ['$scope', 'Authentication', 'Statistics'];
+    HighscoreController.$inject = ['$scope', 'Authentication', 'Statistics', 'History'];
 
-    function HighscoreController($scope, Authentication, Statistics) {
+    function HighscoreController($scope, Authentication, Statistics, History) {
         var vm = this;
-
         $scope.statistics = [];
+        $scope.versions = [];
 
         activate();
 
 
         function activate() {
-            Statistics.top(5).then(statisticsSuccessFn, statisticsErrorFn);
+            Statistics.top(5, versionnumber).then(statisticsSuccessFn, statisticsErrorFn);
+            get_versions();
 
             $scope.$on('statistics.created', function (event, statistics) {
                 $scope.history.unshift(statistics);
@@ -104,6 +105,38 @@
 
             }
 
+        }
+
+        $scope.getVersionHighscore = function (version) {
+            Statistics.top(5, version).then(statisticsSuccessFn, statisticsErrorFn);
+
+
+            function statisticsSuccessFn(data, status, headers, config) {
+                $scope.statistics = data.data["results"];
+
+            }
+
+            function statisticsErrorFn(data, status, headers, config) {
+                console.error(data.error);
+            }
+
+        }
+
+        function get_versions() {
+            History.all().then(historySuccessFn, historyErrorFn);
+
+            function historySuccessFn(data, status, headers, config) {
+                $scope.versions = data.data;
+                $scope.versions_max = data.data;
+                // $scope.versions.unshift({id: -1, label: "all"});
+                $scope.newestVersion = $scope.versions[0];
+
+
+            }
+
+            function historyErrorFn(data, status, headers, config) {
+                console.error(data.error);
+            }
         }
     }
 })();

@@ -12,12 +12,12 @@ Crowdjump.Menu.prototype = {
         this.game.stage.backgroundColor = '#1948cd';
 
 
-        logo = this.add.sprite(this.world.centerX,
-                               this.world.centerY -80, 'logo');
+        logo = this.add.sprite(CONST_WORLD_CENTER_X,
+                               CONST_WORLD_CENTER_Y -80, 'logo');
         logo.anchor.set(0.5);
 
-        startGame = this.add.sprite(this.world.centerX,
-                               this.world.centerY + 40, 'play');
+        startGame = this.add.sprite(CONST_WORLD_CENTER_X,
+                               CONST_WORLD_CENTER_Y + 40, 'play');
         startGame.anchor.set(0.5);
         startGame.inputEnabled = true;
         startGame.events.onInputDown.add(this.phasergame,this)

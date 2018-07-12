@@ -13,7 +13,8 @@ Crowdjump.Endscreen = function (game) {
 Crowdjump.Endscreen.prototype = {
 
     create: function () {
-	this.game.camera.reset();
+        this.game.stage.backgroundColor = '#1948cd';
+
         if (CONST_TIME) {
             // time_score = game.timeElapsed.toFixed(3);
             time_score = game.time.totalElapsedSeconds().toFixed(3);
@@ -54,7 +55,7 @@ Crowdjump.Endscreen.prototype = {
 
         }
         var scoreText = "Congratulations, you beat the level in " + time_score + " seconds!" + highscore_text;
-        score = this.add.text(this.world.centerX, 60, scoreText, {fill: '#dbdbdb'});
+        score = this.add.text(CONST_WORLD_CENTER_X, 60, scoreText, {fill: '#dbdbdb'});
         score.anchor.set(0.5);
 
         if (old_time == -2) {
@@ -63,18 +64,18 @@ Crowdjump.Endscreen.prototype = {
         }
 
         var additionalIdeaInfo = "Do you want to improve the game or the website?";
-        info = this.add.text(this.world.centerX, 155, additionalIdeaInfo, {fill: '#dbdbdb'});
+        info = this.add.text(CONST_WORLD_CENTER_X, 155, additionalIdeaInfo, {fill: '#dbdbdb'});
         info.anchor.set(0.5);
 
         if (CONST_BUBBLE) {
-            bubble = this.add.sprite(this.world.centerX, this.world.centerY +10, 'bubble');
+            bubble = this.add.sprite(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y +10, 'bubble');
             bubble.anchor.set(0.5);
             bubble.inputEnabled = true;
             bubble.events.onInputDown.add(this.ideas, this);
         }
 
-        replay = this.add.text(this.world.centerX,
-            this.world.centerY, 'Replay?', {fill: '#dbdbdb'});
+        replay = this.add.text(CONST_WORLD_CENTER_X,
+            CONST_WORLD_CENTER_Y, 'Replay?', {fill: '#dbdbdb'});
         replay.anchor.set(0.5, -5);
         replay.inputEnabled = true;
         replay.events.onInputDown.add(this.replay, this);
