@@ -41,7 +41,7 @@
 
         function logout() {
             if (!vm.isAuthenticated) return;
-            console.log("logout?");
+            console.log("logout");
             Authentication.logout();
         }
 
