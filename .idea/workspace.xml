@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -90,7 +91,7 @@
                 <element signature="e#24588#24834#0" expanded="false" />
                 <element signature="e#24879#25376#0" expanded="false" />
                 <element signature="e#25418#25801#0" expanded="false" />
-                <element signature="e#26148#26408#0" expanded="false" />
+                <element signature="e#26230#26490#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -140,7 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setC</find>
       <find>increa</find>
       <find>isHi</find>
       <find>getA</find>
@@ -170,6 +170,7 @@
       <find>sf</find>
       <find>getV</find>
       <find>addNew</find>
+      <find>get_ideaIn</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -1375,7 +1376,7 @@
             <element signature="e#24588#24834#0" expanded="false" />
             <element signature="e#24879#25376#0" expanded="false" />
             <element signature="e#25418#25801#0" expanded="false" />
-            <element signature="e#26148#26408#0" expanded="false" />
+            <element signature="e#26230#26490#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -15,7 +15,7 @@
             var vm = this;
             var canDelete = true;
             var activate_comments = false;
-            var last_idea_id = 11;
+            var last_idea_id = 14;
 
             //Filter/Ordering
             $scope.filterReset = function () {
@@ -665,6 +665,7 @@
             //utility
             function get_IdeaIndex(idea_id) {
                 for (var i = $scope.ideas.length - 1; i >= 0; i--) {
+                        console.log(i + '         ,       ' + $scope.ideas[i].id)
                     if ($scope.ideas[i].id == idea_id) {
                         return i;
                     }
