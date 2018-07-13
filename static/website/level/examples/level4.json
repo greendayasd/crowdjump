@@ -20,5 +20,6 @@
     "repeat_spiders": [
         {"x": 241, "y":21, "spawns":10, "interval": 2, "offset": 1},
         {"x": 534, "y":21, "spawns":10, "interval": 2, "offset": 0}
-    ]
+    ],
+    "size": {"x": 960, "y": 600}
 }

@@ -9,13 +9,18 @@ Crowdjump.Game = function (game) {
     var level_data;
     var last_second = 0;
     var seconds_last_level = 0;
+    var pu_lavaorb = false;
+    var pu_jumpboost = false;
+
     var zhonya_activated = false;
     var zhonya_cooldown = false;
     var time_zhonya_activated = 0;
     var time_zhonya_cooldown = 0;
+
     var nextFire = 0;
     var bulletsprite;
     var bullets;
+    var bullets_left = CONST_MAGAZINE;
 }
 
 Crowdjump.Game = {};
@@ -68,11 +73,22 @@ Hero.prototype.jump = function () {
     }
 
     if (canJump) {
-        this.body.velocity.y = -CONST_JUMP_SPEED;
+        if (pu_jumpboost) {
+            this.body.velocity.y = -(1.4 * CONST_JUMP_SPEED);
+            pu_jumpboost = false;
+        } else {
+            this.body.velocity.y = -CONST_JUMP_SPEED;
+        }
+
         game.jumps++;
     } else {
         if (second_jump && CONST_DOUBLE_JUMP) {
-            this.body.velocity.y = -(CONST_JUMP_SPEED * 0.8);
+            if (pu_jumpboost) {
+                this.body.velocity.y = -(1.1 * CONST_JUMP_SPEED);
+                pu_jumpboost = false;
+            } else {
+                this.body.velocity.y = -(CONST_JUMP_SPEED * 0.8);
+            }
             game.jumps++;
             second_jump = false;
             return true;
@@ -202,6 +218,9 @@ Crowdjump.Game.init = function (data) {
     second_jump = true;
     last_second = 0;
     nextFire = 0;
+    pu_jumpboost = false;
+    pu_lavaorb = false;
+    bullets_left = CONST_MAGAZINE;
 
 };
 
@@ -219,6 +238,8 @@ Crowdjump.Game.create = function () {
         flag: this.game.add.audio('sfx:flag'),
         zhonyas: this.game.add.audio('sfx:zhonya'),
         shoot: this.game.add.audio('sfx:shoot'),
+        empty_magazine: this.game.add.audio('sfx:empty_magazine'),
+        powerup: this.game.add.audio('sfx:powerup'),
     };
 
     // this.game.add.image(0, 0, 'background');
@@ -286,6 +307,11 @@ Crowdjump.Game.update = function () {
     this.timeFont.text = `${seconds}`;
     this.coinFont.text = `x${this.coinPickupCount}`;
 
+
+    if (CONST_SHOOTING && this.game.input.activePointer.isDown && (!CONST_ZHONYA || CONST_SHOOT_IN_ZHONYA)) {
+        this.fire_Bullet();
+    }
+
     if (CONST_ZHONYA) {
         if (zhonya_activated) {
             // var zhonya_time = CONST_ZHONYA_DURATION - Math.abs(Math.floor((game.timeElapsed - time_zhonya_activated) / 1));
@@ -305,11 +331,6 @@ Crowdjump.Game.update = function () {
             this.zhonyaFont.text = 'ready!';
             this.zhonyaFont.setStyle({fill: '#000000'});
         }
-
-        if (this.game.input.activePointer.isDown) {
-            this.fire_Bullet();
-        }
-
     }
 };
 
@@ -323,11 +344,13 @@ Crowdjump.Game._handleCollisions = function () {
     this.game.physics.arcade.overlap(this.hero, this.coins, this._onHeroVsCoin,
         null, this);
 
-    if (CONST_LAVA) {
+    this.game.physics.arcade.overlap(this.hero, this.powerups, this._onHeroVsPowerup,
+        null, this);
+
+    if (CONST_LAVA && !pu_lavaorb) {
         this.game.physics.arcade.overlap(this.hero, this.lava, this._onHeroVsLava,
             null, this);
     }
-
 
     if (CONST_SHOOTING) {
         this.game.physics.arcade.overlap(bullets, this.spiders, this._onBulletVsEnemy,
@@ -336,7 +359,6 @@ Crowdjump.Game._handleCollisions = function () {
             null, this);
 
     }
-
 
     if (!CONST_ZHONYA || !zhonya_activated || CONST_KILL_IN_ZHONYA) {
         this.game.physics.arcade.overlap(this.hero, this.spiders,
@@ -372,13 +394,6 @@ Crowdjump.Game._loadLevel = function (data) {
     this.bgDecoration = this.game.add.group();
     this.platforms = this.game.add.group();
 
-    if (CONST_LAVA) {
-        this.lava = this.game.add.group();
-    }
-
-
-    this.coins = this.game.add.group();
-
     this.spiders = this.game.add.group();
 
     this.enemyWalls = this.game.add.group();
@@ -388,17 +403,24 @@ Crowdjump.Game._loadLevel = function (data) {
     // spawn all platforms
     data.platforms.forEach(this._spawnPlatform, this);
 
-    //spawn lava
-    if (CONST_LAVA) {
-        data.lava.forEach(this._spawnLava, this);
-    }
-
     // spawn hero and enemies
     this._spawnCharacters({hero: data.hero, spiders: data.spiders});
 
+    //spawn lava
+    if (CONST_LAVA) {
+        this.lava = this.game.add.group();
+        data.lava.forEach(this._spawnLava, this);
+    }
 
-    // spawn important objects
+    //spawn powerups
+    if (CONST_POWERUPS) {
+        this.powerups = this.game.add.group();
+        data.powerups.forEach(this._spawnPowerup, this);
+    }
+
+    // spawn coins
     if (CONST_COINS) {
+        this.coins = this.game.add.group();
         data.coins.forEach(this._spawnCoin, this);
     }
 
@@ -498,6 +520,36 @@ Crowdjump.Game._onHeroVsCoin = function (hero, coin) {
     coin.kill();
     this.coinPickupCount++;
 };
+
+
+Crowdjump.Game._spawnPowerup = function (powerup) {
+    let sprite = this.powerups.create(powerup.x, powerup.y, powerup.image);
+    sprite.anchor.set(0.5, 0.5);
+
+    this.game.physics.enable(sprite);
+    sprite.body.allowGravity = false;
+};
+
+Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
+    this.sfx.powerup.play();
+
+    switch (powerup.key) {
+        case "powerup:lavaorb":
+            pu_lavaorb = true;
+            break;
+        case "powerup:jumpboost":
+            pu_jumpboost = true;
+            break;
+        default:
+            console.log(powerup.key);
+        //do nothing
+    }
+
+    powerup.kill();
+
+    // this.powerupPickupCount++;
+};
+
 
 Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
     // if (hero.body.velocity.y > 0 && hero.body.position.y < enemy.body.position.y) {  // kill enemies when hero is falling
@@ -615,7 +667,7 @@ Crowdjump.Game._createTimerHud = function () {
 
 Crowdjump.Game.updateTimer = function () {
 
-    game.timeElapsed = this.game.time.totalElapsedSeconds();
+    game.timeElapsed = game.time.totalElapsedSeconds().toFixed(3);
 
 };
 
@@ -643,6 +695,14 @@ Crowdjump.Game.resumed = function () {
     }
 
 };
+
+Crowdjump.Game.powerup_lavaorb = function () {
+    pu_lavaorb = true;
+}
+
+Crowdjump.Game.powerup_jumpboost = function () {
+    pu_jumpboost = true;
+}
 
 Crowdjump.Game.activate_Zhonyas = function () {
     if (zhonya_activated || zhonya_cooldown) {
@@ -681,6 +741,11 @@ Crowdjump.Game.fire_Bullet = function () {
     if (!CONST_SHOOTING) {
         return;
     }
+    if (this.game.time.now > nextFire && bullets_left == 0){
+        this.sfx.empty_magazine.play();
+        nextFire = this.game.time.now + CONST_FIRERATE;
+        return;
+    }
     if (this.game.time.now > nextFire && bullets.countDead() > 0) {
         this.sfx.shoot.play();
         nextFire = this.game.time.now + CONST_FIRERATE;
@@ -691,6 +756,7 @@ Crowdjump.Game.fire_Bullet = function () {
         // console.log("fire " + nextFire);
 
         this.game.physics.arcade.moveToPointer(bullet, CONST_BULLETSPEED);
+        bullets_left -= 1;
     }
 
 };

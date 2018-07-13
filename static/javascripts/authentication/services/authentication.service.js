@@ -27,6 +27,7 @@
             logout: logout,
             register: register,
             setAuthenticatedAccount: setAuthenticatedAccount,
+            increase_versionlabel: increase_versionlabel,
             unauthenticate: unauthenticate
         };
 
@@ -113,10 +114,8 @@
              */
             function loginSuccessFn(data, status, headers, config) {
                 var cookie = Authentication.setAuthenticatedAccount(data.data);
-                console.log(versionlabel);
                 if (firstlogin || cookie["versionlabel"] != versionlabel) {
-                    console.log(cookie["versionlabel"]);
-                    increase_versionlabel(cookie["username"],versionlabel);
+                    increase_versionlabel(cookie["username"], true);
                     Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
                 } else {
                     window.location = '/';
@@ -145,18 +144,20 @@
             }
         }
 
-        function increase_versionlabel(username, label) {
-            var res = $cookies.getObject("authenticatedAccount");
-            res["versionlabel"] = label;
-
+        function increase_versionlabel(username, cookie_increase) {
+            if (cookie_increase) {
+                var res = $cookies.getObject("authenticatedAccount");
+                res["versionlabel"] = versionlabel;
+            }
+            // console.log(username + ' , ' + versionlabel);
             return $http.patch('/api/v1/accounts/' + username + '/', {
-                versionlabel: label,
+                versionlabel: versionlabel,
 
 
             }).then(increaseSuccessFn, increaseErrorFn);
 
             function increaseSuccessFn(data, status, headers, config) {
-                $cookies.put("authenticatedAccount", JSON.stringify(res));
+                if (cookie_increase) $cookies.put("authenticatedAccount", JSON.stringify(res));
             }
 
             function increaseErrorFn(data, status, headers, config) {

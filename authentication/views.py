@@ -146,7 +146,7 @@ def SendGameData(request):
     if request.user.is_authenticated:
         username2 = request.user.username
         if username != username2:
-            return JsonResponse({}, safe=False)
+            return JsonResponse('{"success":"' + username2 + '"}', safe=False)
         username = username2
 
     version = request.GET.get('version')
@@ -154,9 +154,13 @@ def SendGameData(request):
     status = request.GET.get('status')
     timeneeded = request.GET.get('time')
 
-    if int(timeneeded) < 4200:
-        #cheated
-        return JsonResponse({}, safe=False)
+    if (status == 'completed'):
+        if (int(timeneeded) < 4200 and int(level) == 0
+                or int(timeneeded) < 9000 and int(level) == 1
+                or int(timeneeded) < 17000 and int(level) == 2
+                or int(timeneeded) < 22000 and int(level) == 3):
+            # cheated
+            return JsonResponse('{"sucess":"true"}', safe=False)
 
     jumps = request.GET.get('jumps')
     movement_inputs = request.GET.get('movement_inputs')
@@ -189,7 +193,7 @@ def SendGameData(request):
         with open(save_path, 'w+') as outfile:
             outfile.write(data)
 
-    return JsonResponse({}, safe=False)
+    return JsonResponse('{"success":"true"}', safe=False)
 
 
 def GetGameData(request):

@@ -552,7 +552,7 @@
 
             }
 
-            $scope.send_mail = function(){
+            $scope.send_mail = function () {
                 var data = {};
                 $.ajax({
                     url: '/sendmail/',
@@ -563,7 +563,7 @@
                     }
                 });
             }
-            $scope.get_idea_list = function(){
+            $scope.get_idea_list = function () {
                 var list = '';
                 for (var i = 0; i < $scope.ideas.length; i++) {
                     if ($scope.ideas[i].deleted == true || $scope.ideas[i].implemented == true || $scope.ideas[i].not_feasible == true) continue;

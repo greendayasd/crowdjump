@@ -44,6 +44,7 @@
                 enemies_killed: 0,
                 coins_collected: 0,
                 highscore: -1,
+                movement_inputs: 0,
                 jumps: 0,
                 deaths: 0,
                 restarts: 0,
