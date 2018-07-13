@@ -134,6 +134,7 @@ function getInfo() {
     var username = account["username"];
 
     if (account["versionlabel"] != versionlabel) {
+        console.log("increase versionlabel");
         increase_versionlabel(username, true);
     }
 
