@@ -2,135 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/mailFunctions.py" afterPath="$PROJECT_DIR$/Crowdjump/mailFunctions.py" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/authentication/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/authentication/migrations/0002_auto_20180413_0207.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/authentication/migrations/0003_auto_20180413_0309.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/authentication/migrations/0004_auto_20180413_0310.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/authentication/migrations/0005_gameinfo_deaths.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/authentication/migrations/0006_auto_20180418_0111.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/authentication/migrations/0007_account_vote_multiplier.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/authentication/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/authentication/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/chat/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/chat/migrations/0002_chatmessage.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/chat/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/chat/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/ideas/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/ideas/migrations/0002_idea_version.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/ideas/migrations/0003_auto_20180413_0309.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/ideas/migrations/0004_auto_20180414_1353.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/ideas/migrations/0005_auto_20180425_0014.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/ideas/migrations/0006_auto_20180426_1859.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/ideas/migrations/0007_idea_newest_comment.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/ideas/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/ideas/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/questionnaire/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/questionnaire/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/website/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/website/migrations/0002_version_submitter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/website/migrations/0003_auto_20180413_0216.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/website/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 01.06/website/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/auth/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/auth/migrations/0002_websiteinfo_version.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/auth/migrations/0003_filtersettings.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/auth/migrations/0004_remove_websiteinfo_version.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/auth/migrations/0005_auto_20180404_2217.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/auth/migrations/0006_gameinfo_jumps.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/auth/migrations/0007_account_vote_weight.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/auth/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/ideas/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/ideas/migrations/0002_auto_20180323_0326.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/ideas/migrations/0003_auto_20180323_0634.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/ideas/migrations/0004_auto_20180323_0710.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/ideas/migrations/0005_auto_20180323_0714.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/ideas/migrations/0006_auto_20180323_0726.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/ideas/migrations/0007_idea_deleted.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/ideas/migrations/0008_ideavote_multiplier.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/ideas/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/website/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/website/migrations/0002_version_submitter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/website/migrations/0003_remove_version_submitter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 13.04/website/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/admin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/apps.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/migrations/0002_auto_20180413_0207.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/migrations/0003_auto_20180413_0309.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/migrations/0004_auto_20180413_0310.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/migrations/0005_gameinfo_deaths.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/migrations/0006_auto_20180418_0111.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/migrations/0007_account_vote_multiplier.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/migrations/0008_account_is_staff.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/migrations/0009_remove_account_is_staff.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/permissions.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/serializers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/tests.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/authentication/views.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/Backup/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/Backup/0002_auto_20180131_1949.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/admin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/apps.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/consumers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/migrations/0002_idea_version.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/migrations/0003_auto_20180413_0309.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/migrations/0004_auto_20180414_1353.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/migrations/0005_auto_20180425_0014.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/migrations/0006_auto_20180426_1859.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/migrations/0007_idea_newest_comment.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/migrations/0008_auto_20180601_0906.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/permissions.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/routing.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/serializers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/tests.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/ideas/views.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/admin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/apps.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/migrations/0002_auto_20180601_0929.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/migrations/0003_auto_20180601_0938.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/migrations/0004_auto_20180608_1742.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/serializers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/tests.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/questionnaire/views.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/admin.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/apps.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/consumers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/migrations/0002_version_submitter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/migrations/0003_auto_20180413_0216.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/migrations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/permissions.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/routing.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/serializers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/templates/website/TestAngular.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/templates/website/home.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/tests.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/tokens.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/urls.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database Backups/Database 21.06/website/views.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ideas/views.py" afterPath="$PROJECT_DIR$/ideas/views.py" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/services/votes.service.js" afterPath="$PROJECT_DIR$/static/javascripts/ideas/services/votes.service.js" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" afterPath="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/admin.html" afterPath="$PROJECT_DIR$/static/templates/layout/admin.html" />
       <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
-      <change beforePath="$PROJECT_DIR$/static/website/images/downvote trans.png" afterPath="$PROJECT_DIR$/static/website/images/downvote trans.png" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -172,7 +44,7 @@
       <file leaf-file-name="ideasindex.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
+            <state relative-caret-position="1993">
               <caret line="265" column="41" lean-forward="false" selection-start-line="265" selection-start-column="33" selection-end-line="265" selection-end-column="41" />
               <folding>
                 <element signature="e#762#1219#0" expanded="false" />
@@ -181,7 +53,6 @@
                 <element signature="e#2367#3637#0" expanded="false" />
                 <element signature="e#3822#4266#0" expanded="false" />
                 <element signature="e#4791#4976#0" expanded="false" />
-                <element signature="e#5026#5213#0" expanded="false" />
                 <element signature="e#5260#5442#0" expanded="false" />
                 <element signature="e#5489#5670#0" expanded="false" />
                 <element signature="e#5714#5850#0" expanded="false" />
@@ -278,11 +149,11 @@
       <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="26" column="15" lean-forward="false" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
+            <state relative-caret-position="187">
+              <caret line="11" column="107" lean-forward="false" selection-start-line="11" selection-start-column="107" selection-end-line="11" selection-end-column="107" />
               <folding>
-                <marker date="1531574968784" expanded="false" signature="943:959" ph="..." />
-                <marker date="1531574968784" expanded="false" signature="1473:1489" ph="..." />
+                <marker date="1531587627904" expanded="false" signature="952:968" ph="..." />
+                <marker date="1531587627904" expanded="false" signature="1482:1498" ph="..." />
               </folding>
             </state>
           </provider>
@@ -352,8 +223,8 @@
       <find>.vote</find>
       <find>ideavotes</find>
       <find>$scope.ideavo</find>
-      <find>uservote</find>
       <find>userv</find>
+      <find>uservote</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -418,13 +289,13 @@
         <option value="$PROJECT_DIR$/static/templates/layout/profile.html" />
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
         <option value="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" />
-        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
         <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
         <option value="$PROJECT_DIR$/ideas/views.py" />
         <option value="$PROJECT_DIR$/static/javascripts/ideas/services/votes.service.js" />
         <option value="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" />
         <option value="$PROJECT_DIR$/static/templates/layout/admin.html" />
         <option value="$PROJECT_DIR$/Crowdjump/mailFunctions.py" />
+        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
       </list>
     </option>
   </component>
@@ -1319,46 +1190,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="265" column="41" lean-forward="false" selection-start-line="265" selection-start-column="33" selection-end-line="265" selection-end-column="41" />
-          <folding>
-            <element signature="e#762#1219#0" expanded="false" />
-            <element signature="e#1250#1507#0" expanded="false" />
-            <element signature="e#1560#2304#0" expanded="false" />
-            <element signature="e#2367#3637#0" expanded="false" />
-            <element signature="e#3822#4266#0" expanded="false" />
-            <element signature="e#4791#4976#0" expanded="false" />
-            <element signature="e#5026#5213#0" expanded="false" />
-            <element signature="e#5260#5442#0" expanded="false" />
-            <element signature="e#5489#5670#0" expanded="false" />
-            <element signature="e#5714#5850#0" expanded="false" />
-            <element signature="e#6613#7027#0" expanded="false" />
-            <element signature="e#8258#8583#0" expanded="false" />
-            <element signature="e#10029#10616#0" expanded="false" />
-            <element signature="e#11426#13212#0" expanded="false" />
-            <element signature="e#13261#14247#0" expanded="false" />
-            <element signature="e#16743#19127#0" expanded="false" />
-            <element signature="e#19565#20596#0" expanded="false" />
-            <element signature="e#20655#20877#0" expanded="false" />
-            <element signature="e#20951#21191#0" expanded="false" />
-            <element signature="e#21255#22312#0" expanded="false" />
-            <element signature="e#22494#22570#0" expanded="false" />
-            <element signature="e#22928#23280#0" expanded="false" />
-            <element signature="e#23331#23563#0" expanded="false" />
-            <element signature="e#23684#23893#0" expanded="false" />
-            <element signature="e#23943#24315#0" expanded="false" />
-            <element signature="e#24362#24734#0" expanded="false" />
-            <element signature="e#24776#25022#0" expanded="false" />
-            <element signature="e#25067#25564#0" expanded="false" />
-            <element signature="e#25606#25989#0" expanded="false" />
-            <element signature="e#26057#26272#0" expanded="false" />
-            <element signature="e#26336#26596#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="601">
@@ -1407,13 +1238,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1993">
+          <caret line="265" column="41" lean-forward="false" selection-start-line="265" selection-start-column="33" selection-end-line="265" selection-end-column="41" />
+          <folding>
+            <element signature="e#762#1219#0" expanded="false" />
+            <element signature="e#1250#1507#0" expanded="false" />
+            <element signature="e#1560#2304#0" expanded="false" />
+            <element signature="e#2367#3637#0" expanded="false" />
+            <element signature="e#3822#4266#0" expanded="false" />
+            <element signature="e#4791#4976#0" expanded="false" />
+            <element signature="e#5260#5442#0" expanded="false" />
+            <element signature="e#5489#5670#0" expanded="false" />
+            <element signature="e#5714#5850#0" expanded="false" />
+            <element signature="e#6613#7027#0" expanded="false" />
+            <element signature="e#8258#8583#0" expanded="false" />
+            <element signature="e#10029#10616#0" expanded="false" />
+            <element signature="e#11426#13212#0" expanded="false" />
+            <element signature="e#13261#14247#0" expanded="false" />
+            <element signature="e#16743#19127#0" expanded="false" />
+            <element signature="e#19565#20596#0" expanded="false" />
+            <element signature="e#20655#20877#0" expanded="false" />
+            <element signature="e#20951#21191#0" expanded="false" />
+            <element signature="e#21255#22312#0" expanded="false" />
+            <element signature="e#22494#22570#0" expanded="false" />
+            <element signature="e#22928#23280#0" expanded="false" />
+            <element signature="e#23331#23563#0" expanded="false" />
+            <element signature="e#23684#23893#0" expanded="false" />
+            <element signature="e#23943#24315#0" expanded="false" />
+            <element signature="e#24362#24734#0" expanded="false" />
+            <element signature="e#24776#25022#0" expanded="false" />
+            <element signature="e#25067#25564#0" expanded="false" />
+            <element signature="e#25606#25989#0" expanded="false" />
+            <element signature="e#26057#26272#0" expanded="false" />
+            <element signature="e#26336#26596#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="26" column="15" lean-forward="false" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
+        <state relative-caret-position="187">
+          <caret line="11" column="107" lean-forward="false" selection-start-line="11" selection-start-column="107" selection-end-line="11" selection-end-column="107" />
           <folding>
-            <marker date="1531574968784" expanded="false" signature="943:959" ph="..." />
-            <marker date="1531574968784" expanded="false" signature="1473:1489" ph="..." />
+            <marker date="1531587627904" expanded="false" signature="952:968" ph="..." />
+            <marker date="1531587627904" expanded="false" signature="1482:1498" ph="..." />
           </folding>
         </state>
       </provider>
