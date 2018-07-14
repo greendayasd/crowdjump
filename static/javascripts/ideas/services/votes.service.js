@@ -14,6 +14,7 @@
 
         function Votes($http, History) {
             var Votes = {
+                all:all,
                 all_idea: all_idea,
                 all_user: all_user,
                 vote: vote,
@@ -30,13 +31,18 @@
 
             return Votes;
 
+            function all(){
+                //exlude 0 vote
+                return $http.get('/api/v1/ideavotes/?vote!=0');
+            }
 
             function all_idea(idea_id) {
                 return $http.get('/api/v1/ideavotes/?idea=' + idea_id);
             }
 
             function all_user(user_id) {
-                return $http.get('/api/v1/ideavotes/?user__id=' + user_id);
+                //exlude 0 vote
+                return $http.get('/api/v1/ideavotes/?user__id=' + user_id + '&vote!=0');
             }
 
             function vote(idea_id, user_id, vote, multiplier) {

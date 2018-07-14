@@ -9,13 +9,13 @@ def mail_new_version(request):
     if username != 'admin':
         return 'Wrong User'
 
-    version = 'version 0.04'
+    version = 'version 0.05'
     subject = 'Crowdjump ' + version + ' is available!'
     message1 = 'Hello '
     message2 = ',<br>check out ' + version + ' of Crowdjump, the newest feature '
-    feature = 'is more levels! Try your best to learn the few secret tricks and beat the levels faster than any other player! When more unique gameplay features are implemented, these levels may become even better, so:'
+    feature = 'is a voting system! Now ideas are not randomly chosen anymore, YOU can decide which feature will get implemented next.'
     message3 = '<br>If you want your own idea to be implemented, '
-    html_content = '<a href="https://www.crowdjump.win">submit an idea at Crowdjump :)</a>'
+    html_content = '<a href="https://www.crowdjump.win">submit an idea or vote for it at Crowdjump :)</a>'
     fromMail = 'crowdjump@gmail.com'
 
     for user in models.Account.objects.all():

@@ -116,7 +116,7 @@ class IdeaVoteViewSet(viewsets.ModelViewSet):
     queryset = IdeaVote.objects.order_by('id')
     serializer_class = IdeaVoteSerializer
     filter_backends = [DjangoFilterBackend]
-    filter_fields = ['idea', 'user']
+    filter_fields = ['idea', 'user', 'vote']
 
     # def get_permissions(self):
     #     if self.request.method in permissions.SAFE_METHODS:

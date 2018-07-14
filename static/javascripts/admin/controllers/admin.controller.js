@@ -5,9 +5,9 @@
             .module('crowdjump.admin.controllers')
             .controller('AdminController', AdminController);
 
-        AdminController.$inject = ['$scope', 'Authentication', 'Questionnaire', 'Ideas', 'Comments', 'History'];
+        AdminController.$inject = ['$scope', 'Authentication', 'Questionnaire', 'Ideas', 'Comments', 'History', 'Votes'];
 
-        function AdminController($scope, Authentication, Questionnaire, Ideas, Comments, History) {
+        function AdminController($scope, Authentication, Questionnaire, Ideas, Comments, History, Votes) {
             var vm = this;
             vm.isAuthenticated = Authentication.isAuthenticated();
             vm.cookie = Authentication.getAuthenticatedAccount();
@@ -30,6 +30,7 @@
                 get_pre();
                 get_post();
                 get_comments();
+                get_ideavotes();
                 get_ideas();
                 get_versions();
             }
@@ -308,6 +309,17 @@
                 }
             }
 
+            function get_ideavotes() {
+                Votes.all().then(ideavotesSuccessFn, ideavotesErrorFn);
+
+                function ideavotesSuccessFn(data, status, headers, config) {
+                    $scope.ideavotes = data.data;
+                }
+
+                function ideavotesErrorFn(data, status, headers, config) {
+                }
+            }
+
             function get_ideas() {
                 Ideas.all().then(ideasSuccessFn, ideasErrorFn);
 
@@ -324,16 +336,16 @@
 
                     //find own votes for ideas
                     $scope.ideas = $.map($scope.ideas_tmp, function (idea) {
-                        // var vote = $.grep($scope.ideavotes, function (ideavote) {
-                        //     return ideavote.idea === idea.id;
-                        // })[0];
-                        // if (typeof vote !== 'undefined') {
-                        //
-                        //     idea.uservote = vote.vote;
-                        //
-                        // } else {
-                        //     idea.uservote = 0;
-                        // }
+                        var votes = $.grep($scope.ideavotes, function (ideavote) {
+                            return ideavote.idea === idea.id;
+                        })[0];
+                        if (typeof vote !== 'undefined') {
+
+                            // idea.votes.push(vote.vote);
+
+                        } else {
+                            // idea.uservote = 0;
+                        }
 
                         var comments = $.grep($scope.comments, function (comment) {
                             return comment.idea === idea.id;
@@ -550,6 +562,15 @@
                     }
                 });
 
+            }
+
+            $scope.checkIdeas = function (){
+                $scope.csv = '';
+
+                for (var i = 0; i < $scope.ideas.length;i++){
+                    var upvotes = 0;
+                    var downvotes = 0;
+                }
             }
 
             $scope.send_mail = function () {

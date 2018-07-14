@@ -163,7 +163,7 @@
                 // console.log($scope.userid + ' ' + $scope.username2);
             }
 
-            // get_ideavotes();
+            get_ideavotes();
             if (activate_comments == true) {
                 get_comments();
             }
@@ -209,7 +209,7 @@
                 $scope.currentPage = 1; //reset to first page
             }
 
-            $scope.setItemsPerPage(5);
+            // $scope.setItemsPerPage(5);
             $scope.versionFilterMin = function (id) {
                 $scope.search.version.id_min = id;
             }
@@ -253,12 +253,10 @@
 
                 function ideasSuccessFn(data, status, headers, config) {
                     $scope.ideas_tmp = data.data;
+
                     //find own votes for ideas
-                    if (!activate_comments) {
-                        $scope.ideas = $scope.ideas_tmp;
-                        $scope.last_idea = $scope.ideas[get_IdeaIndex(last_idea_id)];
-                        return;
-                    }
+                    $scope.ideas = $scope.ideas_tmp;
+                    $scope.last_idea = $scope.ideas[get_IdeaIndex(last_idea_id)];
                     $scope.ideas = $.map($scope.ideas_tmp, function (idea) {
                         var vote = $.grep($scope.ideavotes, function (ideavote) {
                             return ideavote.idea === idea.id;
@@ -271,24 +269,27 @@
                             idea.uservote = 0;
                         }
 
-                        var comments = $.grep($scope.comments, function (comment) {
-                            return comment.idea === idea.id;
-                        });
 
-                        if (typeof comments !== 'undefined') {
-                            // console.log(vote);
-                            idea.show_comments = false;
-                            idea.comments = comments;
-                            idea.newest_comment = comments[0];
-                            if (typeof idea.newest_comment !== 'undefined') {
-                                // console.error(idea.newest_comment["user"]["username"]);
-                                idea.newest_comment_user = idea.newest_comment["user"]["username"];
+                        if (activate_comments) {
+                            var comments = $.grep($scope.comments, function (comment) {
+                                return comment.idea === idea.id;
+                            });
 
+                            if (typeof comments !== 'undefined') {
+                                // console.log(vote);
+                                idea.show_comments = false;
+                                idea.comments = comments;
+                                idea.newest_comment = comments[0];
+                                if (typeof idea.newest_comment !== 'undefined') {
+                                    // console.error(idea.newest_comment["user"]["username"]);
+                                    idea.newest_comment_user = idea.newest_comment["user"]["username"];
+
+                                }
+
+                            } else {
+                                idea.comments = {'id': -1};
+                                idea.newest_comment = {'id': -1};
                             }
-
-                        } else {
-                            idea.comments = {'id': -1};
-                            idea.newest_comment = {'id': -1};
                         }
 
 
@@ -474,6 +475,12 @@
 
             }
 
+            $scope.vote_login_needed = function () {
+
+                var msg = "Login to vote for this idea!";
+                toast(msg);
+
+            }
             //Comments
             // $scope.comment_text = '';
             $scope.addNewComment = function (idea_id) {
