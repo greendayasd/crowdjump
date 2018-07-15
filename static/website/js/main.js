@@ -5,21 +5,30 @@ const CONST_AIR_SPEED = 500;
 const CONST_BOUNCE_SPEED = 200;
 const CONST_GRAVITY = 1400;
 const CONST_MOVE_SPEED = 200;
+const CONST_HERO_WEIGHT = 1000;
 
 const CONST_LEVEL = 4;
 const CONST_TIME = true;
 
 const CONST_LAVA = true;
-const CONST_SLIPPERYPLATFORMS = true;
-const CONST_MOVINGPLATFORMS = true;
+const CONST_CRATES = false;
+const CONST_SLIPPERYPLATFORMS = false;
+const CONST_MOVINGPLATFORMS = false;
+const CONST_BOUNCINGPLATFORMS = false;
+const CONST_SLIDEPLATFORMS = false;
+const CONST_FALLINGPLATFORMS = false;
+
 const CONST_POWERUPS = false;
 const CONST_COINS = false;
+
 const CONST_ENEMIES = false;
-const CONST_DOUBLE_JUMP = false;
+const CONST_KILL_ENEMIES = false;
 
 const CONST_BUBBLE = true;
 const CONST_PAUSE = false;
 
+const CONST_DOUBLE_JUMP = false;
+const CONST_WALL_JUMP = false;
 const CONST_ZHONYA = false;
 const CONST_KILL_IN_ZHONYA = false;
 const CONST_ZHONYA_DURATION = 2;
@@ -224,7 +233,7 @@ function setLevelInfo(level, status) {
         "version": version,
         "level": level,
         "status": status,
-        "time": (time),
+        "time": time,
         "jumps": game.jumps,
         "movement_inputs": game.movement_inputs,
         "enemies_killed": game.enemiesDefeatedCount,
@@ -238,7 +247,7 @@ function setLevelInfo(level, status) {
         success: function (data) {
         },
         error: function (data) {
-            console.log(data);
+            console.log("time:" + time + ' . ' +  data);
         }
     });
 }
