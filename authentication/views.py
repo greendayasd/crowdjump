@@ -155,10 +155,10 @@ def SendGameData(request):
     timeneeded = request.GET.get('time')
 
     if (status == 'completed'):
-        if (int(timeneeded) < 4200 and int(level) == 0
-                or int(timeneeded) < 9000 and int(level) == 1
-                or int(timeneeded) < 17000 and int(level) == 2
-                or int(timeneeded) < 22000 and int(level) == 3):
+        if (int(timeneeded) < 4000 and int(level) == 0
+                or int(timeneeded) < 8500 and int(level) == 1
+                or int(timeneeded) < 16000 and int(level) == 2
+                or int(timeneeded) < 21000 and int(level) == 3):
             # cheated
             return JsonResponse('{"sucess":"true"}', safe=False)
 
