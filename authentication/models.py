@@ -47,7 +47,7 @@ class Account(AbstractBaseUser):
     is_activated = models.BooleanField(default=True)
 
     #weight
-    vote_weight = models.IntegerField(default=3)
+    vote_weight = models.IntegerField(default=1)
     vote_multiplier = models.DecimalField(default=1, max_digits=5, decimal_places=2)
 
     survey_status = models.IntegerField(default=0)

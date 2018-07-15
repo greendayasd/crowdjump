@@ -16,6 +16,7 @@
 
 
         function activate() {
+            console.log(versionnumber);
             Statistics.top(5, versionnumber).then(statisticsSuccessFn, statisticsErrorFn);
             get_versions();
 

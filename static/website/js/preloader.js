@@ -91,7 +91,7 @@ Crowdjump.Preloader.prototype = {
 
         //sprites
         this.load.spritesheet('coin', files + 'coin_animated.png', 22, 22);
-        this.load.spritesheet('spider', files + 'spider.png', 42, 32);
+        this.load.spritesheet('spider', files + 'spider2.png', 42, 32);
         this.load.spritesheet('flag', files + 'flag.png', 42, 66);
         this.load.image('bullet', files + 'bullet.png');
 

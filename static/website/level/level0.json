@@ -21,7 +21,8 @@
         {"image": "grass:4x1", "x": 294, "y": 252},
         {"image": "grass:4x1", "x": 546, "y": 168},
 
-        {"image": "grass:6x1", "x": 42, "y": 378}
+        {"image": "grass:6x1", "x": 42, "y": 378, "p_types":"slippery,movable"}
+
     ],
     "lava": [
         {"image": "lava:1x1", "x": 336, "y": 546},

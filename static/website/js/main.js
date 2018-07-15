@@ -10,6 +10,8 @@ const CONST_LEVEL = 4;
 const CONST_TIME = true;
 
 const CONST_LAVA = true;
+const CONST_SLIPPERYPLATFORMS = true;
+const CONST_MOVINGPLATFORMS = true;
 const CONST_POWERUPS = false;
 const CONST_COINS = false;
 const CONST_ENEMIES = false;
@@ -36,6 +38,8 @@ const CONST_CANVAS_X = 960;
 const CONST_CANVAS_Y = 600;
 const CONST_WORLD_CENTER_X = CONST_CANVAS_X / 2;
 const CONST_WORLD_CENTER_Y = CONST_CANVAS_Y / 2;
+
+const CONST_WASD_CONTROLS = false;
 
 var version = '';
 
