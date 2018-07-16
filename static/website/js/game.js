@@ -625,7 +625,7 @@ Crowdjump.Game.setFriction = function (player, platform) {
 Crowdjump.Game._spawnLava = function (lava) {
     //4 pixel down because of collision
     let sprite = this.lava.create(
-        lava.x, lava.y + 4, lava.image); //for chest +8
+        lava.x, lava.y + 3, lava.image); //for chest +8
 
     this.game.physics.enable(sprite);
     sprite.body.allowGravity = false;
