@@ -522,13 +522,21 @@
                     success: function (data) {
 
                         if (grouped) {
-                            header = 'page,time,';
-                            var orderedByPage = Object.values(groupBy(data, 'page'));
+                            header = 'level,status,count';
+                            console.log(data);
+                            var orderedByLevel = Object.values(groupBy(data, 'level'));
+                            console.log(orderedByLevel);
+                            var orderedByLevelAndStatus = [];
+                            for (var i = 0; i < orderedByLevel.length; i++) {
+                                orderedByLevelAndStatus.push(Object.values(groupBy(orderedByLevel[i], 'status')));
+                                console.log(orderedByLevelAndStatus);
+                            }
 
-                            for (var i = 0; i < orderedByPage.length; i++) {
-                                orderedByPage[i] = (orderedByPage[i][0]["page"] + ',' + sumUp(orderedByPage[i], "time") + ',');
-                                content += '\n' + orderedByPage[i];
-
+                            for (var i = 0; i < orderedByLevelAndStatus.length; i++) {
+                                for (var j = 0; j < orderedByLevelAndStatus[i].length; j++) {
+                                    console.log(orderedByLevelAndStatus[i][j]);
+                                    content += '\n' + orderedByLevelAndStatus[i][j][0]["level"] + ',' + orderedByLevelAndStatus[i][j][0]["status"] + ',' + orderedByLevelAndStatus[i][j].length;
+                                }
                             }
                         } else {
                             header = 'timestamp,level,status,time,jumps,movement_inputs,';
@@ -540,11 +548,73 @@
                         $scope.csv = header + content;
                     },
                     error: function (data) {
-                        console.log("not found?");
+                        console.log("not found?" + JSON.stringify(data));
                     }
                 });
 
                 setTimeout($scope.createFile($scope.csv, username + '.csv', 'text/csv'));
+
+            };
+
+            $scope.get_all_gamedata = function (grouped) {
+                var header = '';
+                var content = '';
+                var data = {"version": $scope.newestVersion.label};
+
+                $.ajax({
+                    url: '/getallgamedata/',
+                    data: data,
+                    success: function (data) {
+
+                        if (grouped) {
+                            header = 'level,status,count';
+                            console.log(data);
+                            var orderedByLevel = Object.values(groupBy(data, 'level'));
+                            console.log(orderedByLevel);
+                            var orderedByLevelAndStatus = [];
+                            for (var i = 0; i < orderedByLevel.length; i++) {
+                                orderedByLevelAndStatus.push(Object.values(groupBy(orderedByLevel[i], 'status')));
+                            }
+
+                            for (var i = 0; i < orderedByLevelAndStatus.length; i++) {
+                                for (var j = 0; j < orderedByLevelAndStatus[i].length; j++) {
+                                    content += '\n' + orderedByLevelAndStatus[i][j][0]["level"] + ',' + orderedByLevelAndStatus[i][j][0]["status"] + ',' + orderedByLevelAndStatus[i][j].length;
+                                }
+                            }
+                        } else {
+                            header = 'timestamp,level,status,time,jumps,movement_inputs,';
+                            for (var i = 0; i < data.length; i++) {
+                                content += '\n' + data[i].timestamp + ',' + data[i].level + ',' + data[i].status + ',' + data[i].time + ',' + data[i].jumps + ',' + data[i].movement_inputs + ',';
+                            }
+                            console.log(data);
+                        }
+                        $scope.csv = header + content;
+                    },
+                    error: function (data) {
+                        console.log("not found?" + JSON.stringify(data));
+                    }
+                });
+
+                setTimeout($scope.createFile($scope.csv, username + '.csv', 'text/csv'));
+
+            };
+
+            $scope.get_all_game_user_version = function () {
+                var data = {"version": $scope.newestVersion.label};
+                $scope.csv = '';
+
+                $.ajax({
+                    url: '/getallusergame/',
+                    data: data,
+                    success: function (data) {
+                        for (var i = 0; i <= data.length; i++) {
+                            $scope.csv += data[i] + "\n";
+                        }
+                    },
+                    error: function (data) {
+                        console.log("not found?" + JSON.stringify(data));
+                    }
+                });
 
             }
 
@@ -564,10 +634,10 @@
 
             }
 
-            $scope.checkIdeas = function (){
+            $scope.checkIdeas = function () {
                 $scope.csv = '';
 
-                for (var i = 0; i < $scope.ideas.length;i++){
+                for (var i = 0; i < $scope.ideas.length; i++) {
                     var upvotes = 0;
                     var downvotes = 0;
                 }
@@ -596,6 +666,114 @@
 
             $scope.getNumber = function (num) {
                 return new Array(num);
+            }
+
+            $scope.level_json = function () {
+                var data = $scope.csv.replaceAll("this.add.sprite", "");
+                //replace function
+                var levelstring1 = 'Level';
+                var levelstring2 = '.prototype.create = function ';
+                data = data.replaceAll(levelstring1 + levelstring2, "");
+
+                for (var i = 0; i < 9; i++) {
+                    data = data.replaceAll(levelstring1 + i + levelstring2, "");
+                }
+                data = data.replaceAll("};", "");
+
+                //replace tabs and linebreaks
+                data = data.replaceAll(";\n", ",");
+                data = data.replaceAll("\t", "");
+                data = data.replaceAll(";", "");
+                data = data.replaceAll("'", "\"");
+
+                //convert to array
+                data = data.replaceAll(/\(/, "[");
+                data = data.replaceAll(/\)/, "]");
+
+                //cut of paranthesis at the beginning and comma/line breaks at the end
+                data = data.substring(5, data.length);
+                var string_unfinished = true;
+                var maxcount = 10;
+                while (string_unfinished){
+                    var last_char = data.substring(data.length-1,data.length);
+                    last_char == "]" ? string_unfinished = false :data = data.substring(0,data.length-1);
+                    maxcount--;
+                    maxcount == 0 ? string_unfinished = true:maxcount;
+
+                }
+
+                var array = JSON.parse("[" + data + "]");
+                var platforms = '';
+                var falling_platforms = '';
+                var crates = '';
+                var lava = '';
+                var flags = '';
+                var coins = '';
+                var hero = '';
+                var powerups = '';
+                var decorations = '';
+                var enemies = '';
+
+                var worldsize = '\t"size": {"x": 960, "y": 600}';
+
+                for (var i = 0; i < array.length; i++) {
+                    var image = array[i][2];
+                    var line = '\t\t{"image": ' + '"' + image + '", "x": ' + array[i][0] + ', "y": ' + array[i][1];
+                    if (image.startsWith("lava")) {
+                        lava += line + '},\n';
+                        continue;
+                    }
+                    if (image.startsWith("crate")) {
+                        crates += line + '},\n';
+                        continue;
+                    }
+                    if (image.startsWith("falling")) {
+                        falling_platforms += line + '},\n';
+                        continue;
+                    }
+                    if (image.startsWith("flag")) {
+                        flags += line + '},\n';
+                        continue;
+                    }
+                    if (image.startsWith("coin")) {
+                        coins += line + '},\n';
+                        continue;
+                    }
+                    if (image.startsWith("hero")) {
+                        hero += line + '},\n';
+                        continue;
+                    }
+                    if (image.startsWith("powerup")) {
+                        var type = image.split(":");
+                        powerups += line + '"type":"' + type[1] + '"},\n';
+                        continue;
+                    }
+                    if (image.startsWith("deco")) {
+                        var type = image.split(":");
+                        decorations += line + '"type":"' + type[1] + '"},\n';
+                        continue;
+                    }
+                    if (image.startsWith("enemy")) {
+                        var type = image.split(":");
+                        enemies += line + '"type":"' + type[1] + '"},\n';
+                        continue;
+                    }
+                    //else = normal platform
+                    platforms += line + ', "p_types": ""},\n';
+                }
+
+                platforms = wrapJsonLevel(platforms, "platforms");
+                falling_platforms = wrapJsonLevel(falling_platforms, "falling_platforms");
+                crates = wrapJsonLevel(crates, "crates");
+                lava = wrapJsonLevel(lava, "lava");
+                flags = wrapJsonLevel(flags, "flags");
+                coins = wrapJsonLevel(coins, "coins");
+                hero = '\t"hero":\n' + hero + '';
+                enemies = wrapJsonLevel(enemies, "enemies");
+                powerups = wrapJsonLevel(powerups, "powerups");
+                decorations = wrapJsonLevel(decorations, "decorations");
+                $scope.csv = '{\n' + platforms + falling_platforms + crates + lava + flags + coins + hero + enemies + powerups + decorations + worldsize + '\n}';
+
             }
 
             function randomize(array) {
@@ -658,6 +836,14 @@
                 return xs.reduce(function (sum, x) {
                     return addTimes(sum, x[key]);
                 }, initialValue);
+            };
+
+            var sumKey = function (xs, key) {
+                var res = 0;
+                return xs.reduce(function (sum, x) {
+                    return addTimes(sum, x[key]);
+                }, res);
+
             }
 
             function addTimes(startTime, endTime) {
@@ -697,6 +883,23 @@
                 return ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2)
             }
 
+            function parseTuple(t) {
+                var items = t.replace(/^\(|\)$/g, "").split("),(");
+                items.forEach(function (val, index, array) {
+                    array[index] = val.split(",").map(Number);
+                });
+                return items;
+            }
+
+            function wrapJsonLevel(string, key) {
+                string = string.substring(0, string.length - 2);
+                return '\t"' + key + '": [\n' + string + '\n\t],\n';
+            }
+
+            String.prototype.replaceAll = function (search, replacement) {
+                var target = this;
+                return target.replace(new RegExp(search, 'g'), replacement);
+            };
             //questions
             var choice = "-- Please Select --";
 

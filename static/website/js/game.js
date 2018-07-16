@@ -6,6 +6,10 @@ var Crowdjump = Crowdjump || {};
 Crowdjump.Game = function (game) {
 
     var second_jump = true;
+    var hero_on_wall = false;
+    var jumpTimer = 0;
+    var lives = CONST_HERO_LIVES;
+
     var level_data;
     var last_second = 0;
     var seconds_last_level = 0;
@@ -20,6 +24,7 @@ Crowdjump.Game = function (game) {
     var nextFire = 0;
     var bulletsprite;
     var bullets;
+    var death;
     var bullets_left = CONST_MAGAZINE;
 }
 
@@ -40,6 +45,7 @@ function Hero(game, x, y) {
     // physic properties
     this.game.physics.enable(this);
     this.body.collideWorldBounds = true;
+    this.body.drag.x = CONST_HERO_WEIGHT;
 
     this.animations.add('stop', [0]);
     this.animations.add('run', [1, 2], 8, true); // 8fps looped
@@ -63,23 +69,38 @@ Hero.prototype.move = function (direction) {
     else if (this.body.velocity.x > 0) {
         this.scale.x = 1;
     }
+    // console.log(this.body.velocity.x);
 };
 
 Hero.prototype.jump = function () {
     let canJump = this.body.touching.down;
 
+    if (CONST_LONG_JUMP) {
+        if (canJump) jumpTimer = 0;
+        if ((Crowdjump.Game.keys.up.isDown || Crowdjump.Game.keys.space.isDown || Crowdjump.Game.wasd.up.isDown) && (jumpTimer > 0)) {
+            //jump higher
+            this.body.velocity.y = -CONST_JUMP_SPEED;
+            jumpTimer++;
+            if (jumpTimer == CONST_MAX_LONG_JUMP) {
+                jumpTimer = 0;
+            }
+            return;
+        }
+
+    }
+
     if (this.body.touching.down) {
         second_jump = true;
     }
 
-    if (canJump) {
+    if (canJump || (hero_on_wall && CONST_WALL_JUMP)) {
         if (pu_jumpboost) {
             this.body.velocity.y = -(1.4 * CONST_JUMP_SPEED);
             pu_jumpboost = false;
         } else {
             this.body.velocity.y = -CONST_JUMP_SPEED;
         }
-
+        jumpTimer = 1;
         game.jumps++;
     } else {
         if (second_jump && CONST_DOUBLE_JUMP) {
@@ -202,13 +223,14 @@ Crowdjump.Game.init = function (data) {
     this.keys.up.onDown.add(jump, this);
     this.keys.space.onDown.add(jump, this);
 
-
+    this.wasd = {};
     if (CONST_WASD_CONTROLS) {
         this.input.keyboard.addKey(Phaser.KeyCode.W).onDown.add(jump, this);
 
         this.wasd = {
             left: this.game.input.keyboard.addKey(Phaser.Keyboard.A),
             right: this.game.input.keyboard.addKey(Phaser.Keyboard.D),
+            up: this.game.input.keyboard.addKey(Phaser.Keyboard.W),
         };
 
     }
@@ -218,7 +240,6 @@ Crowdjump.Game.init = function (data) {
 
     } else {
         this.level = 0;
-
     }
 
     if (this.level == 0 && game.authenticated) {
@@ -226,11 +247,20 @@ Crowdjump.Game.init = function (data) {
         // console.error("started " + game.gameInfo["rounds_started"]);
     }
     second_jump = true;
+    hero_on_wall = false;
     last_second = 0;
     nextFire = 0;
     pu_jumpboost = false;
     pu_lavaorb = false;
     bullets_left = CONST_MAGAZINE;
+    jumpTimer = 0;
+    try {
+        if (this.level == 0 && (lives == undefined || lives <= 0)) lives = CONST_HERO_LIVES;
+    } catch (e) {
+        lives = CONST_HERO_LIVES;
+    }
+    death = false;
+
 
 };
 
@@ -251,6 +281,8 @@ Crowdjump.Game.create = function () {
         empty_magazine: this.game.add.audio('sfx:empty_magazine'),
         powerup: this.game.add.audio('sfx:powerup'),
     };
+
+    // this.game.physics.startSystem(Phaser.Physics.P2);
 
     // this.game.add.image(0, 0, 'background');
     var c = Phaser.Color.getRandomColor(255, 255, 255);
@@ -317,7 +349,6 @@ Crowdjump.Game.update = function () {
     this.timeFont.text = `${seconds}`;
     this.coinFont.text = `x${this.coinPickupCount}`;
 
-
     if (CONST_SHOOTING && this.game.input.activePointer.isDown && (!CONST_ZHONYA || CONST_SHOOT_IN_ZHONYA)) {
         this.fire_Bullet();
     }
@@ -349,16 +380,7 @@ Crowdjump.Game._handleCollisions = function () {
     this.game.physics.arcade.collide(this.spiders, this.enemyWalls);
     this.game.physics.arcade.collide(this.hero, this.platforms);
 
-    if (CONST_SLIPPERYPLATFORMS) {
-        this.game.physics.arcade.collide(this.hero, this.platforms_slippery, this.setFriction, null, this);
-        this.game.physics.arcade.collide(this.spiders, this.platforms_slippery);
-    }
 
-    if (CONST_MOVINGPLATFORMS) {
-        this.game.physics.arcade.collide(this.spiders, this.platforms_moving);
-        this.game.physics.arcade.collide(this.hero, this.platforms_moving);
-
-    }
     // this.game.physics.arcade.collide(this.spiders, bullets);
     // this.game.physics.arcade.collide(bullets, this.platforms);
 
@@ -368,19 +390,40 @@ Crowdjump.Game._handleCollisions = function () {
     this.game.physics.arcade.overlap(this.hero, this.powerups, this._onHeroVsPowerup,
         null, this);
 
-    if (CONST_LAVA && !pu_lavaorb) {
+
+    if (CONST_WALL_JUMP) {
+        if (this.hero.body.touching.down) {
+
+            // hero not on the wall
+            hero_on_wall = false;
+        }
+        // hero NOT on the ground and touching a wall on the right
+        if (this.hero.body.touching.right && !this.hero.body.touching.down) {
+
+            // hero on a wall
+            hero_on_wall = true;
+        }
+
+        if (this.hero.body.touching.left && !this.hero.body.touching.down) {
+            hero_on_wall = true;
+        }
+    }
+
+    if (CONST_LAVA && !pu_lavaorb && !death) {
         this.game.physics.arcade.overlap(this.hero, this.lava, this._onHeroVsLava,
             null, this);
+    }
+
+    if (CONST_CRATES) {
+        this.game.physics.arcade.collide(this.hero, this.crates);
+        this.game.physics.arcade.collide(this.crates, this.platforms);
+        this.game.physics.arcade.collide(this.spiders, this.crates);
     }
 
     if (CONST_SHOOTING) {
         this.game.physics.arcade.overlap(bullets, this.spiders, this._onBulletVsEnemy,
             null, this);
         this.game.physics.arcade.overlap(bullets, this.platforms, this._onBulletVsPlatform,
-            null, this);
-        this.game.physics.arcade.overlap(bullets, this.platforms_slippery, this._onBulletVsPlatform,
-            null, this);
-        this.game.physics.arcade.overlap(bullets, this.platforms_moving, this._onBulletVsPlatform,
             null, this);
 
     }
@@ -390,11 +433,7 @@ Crowdjump.Game._handleCollisions = function () {
             this._onHeroVsEnemy, null, this);
     }
 
-    this.game.physics.arcade.overlap(this.hero, this.flag, this._onHeroVsFlag,
-        // ignore if there is no key or the player is on air
-        function (hero, flag) {
-            return hero.body.touching.down;
-        }, this);
+    this.game.physics.arcade.overlap(this.hero, this.flags, this._onHeroVsFlag, null, this);
 };
 
 Crowdjump.Game._handleInput = function () {
@@ -417,6 +456,26 @@ Crowdjump.Game._handleInput = function () {
     else { // stop
         this.hero.move(0);
     }
+    if (CONST_LONG_JUMP) {
+        if (this.keys.space.isDown || this.keys.up.isDown) {
+            this.hero.jump();
+        } else if (CONST_WASD_CONTROLS) {
+            if (this.wasd.up.isDown) {
+                this.hero.jump();
+
+            }
+        }
+        if (this.keys.space.isUp && this.keys.up.isUp) {
+            if (CONST_WASD_CONTROLS) {
+                if (this.wasd.up.isUp) {
+                    jumpTimer = 0;
+                }
+            } else {
+                jumpTimer = 0;
+            }
+        }
+
+    }
 };
 
 Crowdjump.Game._countMovementInput = function () {
@@ -438,19 +497,15 @@ Crowdjump.Game._loadLevel = function (data) {
     this.platforms = this.game.add.group();
     data.platforms.forEach(this._spawnPlatform, this);
 
+    this.platforms.setAll('body.immovable', true);
+    // this.platforms.forEach(console.log, this.body);
+
     // spawn hero and enemies
-    this._spawnCharacters({hero: data.hero, spiders: data.spiders});
+    this._spawnCharacters({hero: data.hero, spiders: data.enemies});
 
-    //spawn slippery platforms
-    if (CONST_SLIPPERYPLATFORMS) {
-        this.platforms_slippery = this.game.add.group();
-        data.platforms_slippery.forEach(this._spawnSlipperyPlatform, this);
-    }
-
-    //spawn moving platforms
-    if (CONST_MOVINGPLATFORMS) {
-        this.platforms_moving = this.game.add.group();
-        data.platforms_moving.forEach(this._spawnMovingPlatform, this);
+    if (CONST_CRATES) {
+        this.crates = this.game.add.group();
+        data.crates.forEach(this._spawnCrate, this);
     }
 
     //spawn lava
@@ -471,7 +526,9 @@ Crowdjump.Game._loadLevel = function (data) {
         data.coins.forEach(this._spawnCoin, this);
     }
 
-    this._spawnFlag(data.flag.x, data.flag.y);
+    //+30/+45 for correction
+    this.flags = this.game.add.group();
+    data.flags.forEach(this._spawnFlag, this);
 
     // enable gravity
     this.game.physics.arcade.gravity.y = CONST_GRAVITY;
@@ -482,67 +539,92 @@ Crowdjump.Game._loadLevel = function (data) {
 };
 
 Crowdjump.Game._spawnPlatform = function (platform) {
+
     let sprite = this.platforms.create(
         platform.x, platform.y, platform.image);
+    sprite.p_types = platform.p_types;
 
     this.game.physics.enable(sprite);
     sprite.body.allowGravity = false;
     sprite.body.immovable = true;
+    sprite.body.friction.y = 0;
+
     var types = [];
-    if (platform.p_types != undefined){
+    if (platform.p_types != undefined) {
         types = platform.p_types.split(",");
     }
+    var already_moving = false;
+    for (var i = 0; i < types.length; i++) {
+        switch (types[i]) {
+            case "moving":
+                if (CONST_MOVINGPLATFORMS) {
+                    console.log("moving");
+                    already_moving = true;
+                }
+                break;
+            case "slippery":
+                if (CONST_SLIPPERYPLATFORMS) {
+                    if (already_moving) {
+                        console.log("slippery + moving");
 
-    sprite.p_types = platform.p_types;
-    // console.log(sprite);
+                    } else {
+                        console.log("slippery");
+                        sprite.body.friction.x = 1;
+                    }
+                }
+                break;
+            case "bouncing":
+                if (CONST_BOUNCINGPLATFORMS) {
+                    console.log("bouncing");
+                    sprite.body.bounce.set(0.8);
+                }
+                break;
+            case "slide":
+                if (CONST_SLIDEPLATFORMS) {
+                    console.log("slide");
+                }
+                break;
+            case "falling":
+                if (CONST_FALLINGPLATFORMS) {
+                    console.log("falling");
+                }
+                break;
+            default:
+            // console.log("unknown platform type: " + types[i]);
+        }
+    }
+
+    sprite.p_types = types;
 
     this._spawnEnemyWall(platform.x, platform.y, 'left');
     this._spawnEnemyWall(platform.x + sprite.width, platform.y, 'right');
 };
 
-Crowdjump.Game._spawnSlipperyPlatform = function (platform) {
+Crowdjump.Game._spawnCrate = function (platform) {
 
-    let sprite = this.platforms_slippery.create(
+    let sprite = this.crates.create(
         platform.x, platform.y, platform.image);
 
     this.game.physics.enable(sprite);
-    sprite.body.allowGravity = false;
-    sprite.body.immovable = true;
-    // sprite.body.friction.x = 0;
-
-    this._spawnEnemyWall(platform.x, platform.y, 'left');
-    this._spawnEnemyWall(platform.x + sprite.width, platform.y, 'right');
+    sprite.body.allowGravity = true;
+    sprite.body.immovable = false;
+    sprite.body.friction.x = 1;
+    sprite.body.drag.x = 700;
 };
 
 //Moving/Not riding
 Crowdjump.Game.setFriction = function (player, platform) {
     // player.body.x -= platform.body.x - platform.body.prev.x;
-
-
-};
-
-Crowdjump.Game._spawnMovingPlatform = function (platform) {
-    let sprite = this.platforms_moving.create(
-        platform.x, platform.y, platform.image);
-
-    this.game.physics.enable(sprite);
-    sprite.body.allowGravity = false;
-    sprite.body.immovable = true;
-
-    this._spawnEnemyWall(platform.x, platform.y, 'left');
-    this._spawnEnemyWall(platform.x + sprite.width, platform.y, 'right');
 };
 
 Crowdjump.Game._spawnLava = function (lava) {
+    //4 pixel down because of collision
     let sprite = this.lava.create(
-        lava.x, lava.y, lava.image);
+        lava.x, lava.y + 4, lava.image); //for chest +8
 
     this.game.physics.enable(sprite);
     sprite.body.allowGravity = false;
     sprite.body.immovable = true;
-
-    this._spawnEnemyWall(lava.x, lava.y, 'left');
-    this._spawnEnemyWall(lava.x + sprite.width, lava.y, 'right');
 };
 
 Crowdjump.Game._spawnEnemyWall = function (x, y, side) {
@@ -560,14 +642,23 @@ Crowdjump.Game._spawnCharacters = function (data) {
 
     if (CONST_ENEMIES) {
         // spawn spiders
-        data.spiders.forEach(function (spider) {
-            let sprite = new Spider(this.game, spider.x, spider.y);
-            // sprite.anchor.set(0.5,0.5);
-            this.spiders.add(sprite);
+        data.enemies.forEach(function (enemy) {
+            switch (enemy.type) {
+                case "spider":
+                    let spriteSpider = new Spider(this.game, enemy.x, enemy.y);
+                    // sprite.anchor.set(0.5,0.5);
+                    this.spiders.add(spriteSpider);
+                    break;
+                default:
+                    let sprite = new Spider(this.game, enemy.x, enemy.y);
+                    // sprite.anchor.set(0.5,0.5);
+                    this.spiders.add(sprite);
+
+            }
         }, this);
     }
-    // spawn hero
-    this.hero = new Hero(this.game, data.hero.x, data.hero.y);
+    // spawn hero //+size/2 on each side
+    this.hero = new Hero(this.game, data.hero.x + 21, data.hero.y + 21);
     this.game.add.existing(this.hero);
 };
 
@@ -575,7 +666,7 @@ Crowdjump.Game._newSpawns = function (data) {
     if (CONST_ENEMIES) {
         // spawn spiders
         var seconds_this_game = last_second - seconds_last_level;
-        data.spiders.forEach(function (spider) {
+        data.enemies.forEach(function (spider) {
             // console.error(seconds_this_game + " offset " + spider.offset + " spawns " + spider.spawns + " interval " + spider.interval);
             if (seconds_this_game >= spider.offset) {
                 if (spider.spawns * spider.interval + spider.offset > seconds_this_game) {
@@ -607,7 +698,6 @@ Crowdjump.Game._onHeroVsCoin = function (hero, coin) {
     this.coinPickupCount++;
 };
 
-
 Crowdjump.Game._spawnPowerup = function (powerup) {
     let sprite = this.powerups.create(powerup.x, powerup.y, powerup.image);
     sprite.anchor.set(0.5, 0.5);
@@ -636,47 +726,42 @@ Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
     // this.powerupPickupCount++;
 };
 
-
 Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
-    // if (hero.body.velocity.y > 0 && hero.body.position.y < enemy.body.position.y) {  // kill enemies when hero is falling
     if (CONST_ZHONYA && zhonya_activated) {
         if (!CONST_KILL_IN_ZHONYA) {
             return;
         }
-        enemy.die();
-        game.enemiesDefeatedCount++;
-        this.sfx.stomp.play();
-        return;
+        if (CONST_KILL_ENEMIES) {
+            this._killEnemy(enemy, false);
+        }
+
     }
     if ((hero.body.velocity.y > 0 && hero.body.position.y + 5 < enemy.body.position.y) || hero.body.position.y + 10 < enemy.body.position.y) {
-        // console.log("enemy killed: hero: " + hero.body.position.y + "  spider: " + enemy.body.position.y);
-        hero.bounce();
-        enemy.die();
-        game.enemiesDefeatedCount++;
-        // console.error("enemy " + game.enemiesDefeatedCount);
-
-        this.sfx.stomp.play();
+        this._killEnemy(enemy, true);
     }
     else { // game over -> restart the game
-        // console.log("killed: hero: " + hero.body.position.y + "  velocity: " + hero.body.velocity.y + "  spider: " + enemy.body.position.y);
         this.sfx.stomp.play();
-        console.log(enemy);
-        console.log(enemy.name);
-        console.log(enemy.type);
-
         this.killHero("death by " + enemy.name);
     }
 };
 
+Crowdjump.Game._killEnemy = function (enemy, bounce) {
+    if (bounce) {
+        hero.bounce();
+        this.sfx.stomp.play();
+    }
+    enemy.die();
+    game.enemiesDefeatedCount++;
+
+}
+
 Crowdjump.Game._onHeroVsLava = function (hero, platform) {
     // game over -> restart the game
-    // console.log("killed: hero: " + hero.body.position.y + "  velocity: " + hero.body.velocity.y + "  spider: " + enemy.body.position.y);
-
     this.killHero("death by lava");
 };
 
 Crowdjump.Game._onBulletVsEnemy = function (bullet, enemy) {
-    enemy.die();
+    this._killEnemy(enemy, false);
     bullet.reset();
 };
 
@@ -757,8 +842,8 @@ Crowdjump.Game.updateTimer = function () {
 
 };
 
-Crowdjump.Game._spawnFlag = function (x, y) {
-    this.flag = this.bgDecoration.create(x, y, 'flag');
+Crowdjump.Game._spawnFlag = function (flagspawn) {
+    this.flag = this.flags.create(flagspawn.x + 20, flagspawn.y + 45, 'flag');
     this.flag.anchor.setTo(0.5, 1);
     this.game.physics.enable(this.flag);
     this.flag.body.allowGravity = false;
@@ -848,12 +933,20 @@ Crowdjump.Game.fire_Bullet = function () {
 };
 
 Crowdjump.Game.killHero = function (reason) {
+    if (death) return; //else you can die twice!
+    death = true;
     game.deaths++;
+    this.hero.kill();
+    console.log("you died because of " + reason);
     this.timeFont.text = '0';
     setLevelInfo(this.level + 1, reason);
-    //this.game.state.restart(true, false, {level: this.level});
-    this.game.time.reset();
-    this.state.start('Gameover');
+    lives -= 1;
+    if (lives <= 0) {
+        this.game.time.reset();
+        this.state.start('Gameover');
+    } else {
+        this.game.state.restart(true, false, {level: this.level});
+    }
 
 }
 
@@ -863,6 +956,7 @@ Crowdjump.Game.restart = function () {
     setLevelInfo(this.level + 1, "restart");
     updateInfo(false);
     last_second = 0;
+    lives = CONST_HERO_LIVES;
 
     this.state.restart();
     this.game.time.reset();

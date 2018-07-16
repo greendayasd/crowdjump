@@ -1,7 +1,7 @@
 <div class="outerframe container" id="outerframeContainer" style="margin-top: 60px;">
     <div class="row" id="main-row">
         <div class="col-sm-12 col-centered" id="main-col">
-            <div >
+            <div>
                 <h3>Ideas</h3>
                 <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('pre')">Pre CSV
                 </button>
@@ -41,8 +41,16 @@
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_gamedata_user(username,false)">
                     Gamedata
                 </button>
-                <button type="button" class="btn btn-xs btn-primary" ng-click="get_gamedata_user(username,true)">Grouped
-                    by level
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_gamedata_user(username,true)">
+                    Gamedata grouped
+                    by level and status
+                </button>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_game_user_version()">Get users
+                </button>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_gamedata(false)">All gamedata
+                </button>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_gamedata(true)">All gamedata
+                    grouped by level and status
                 </button>
 
                 <h3>Random Org</h3>
@@ -63,7 +71,13 @@
 
                 <textarea class="form-control textarea  empty"
                           rows="10" cols="12"
+
                           ng-model=csv></textarea>
+
+                <h3>Level</h3>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="level_json()">get Level json
+                </button>
+                <br><br>
             </div>
         </div>
     </div>

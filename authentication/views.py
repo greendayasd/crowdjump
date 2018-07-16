@@ -218,6 +218,49 @@ def GetGameData(request):
     return JsonResponse(arrData, safe=False)
 
 
+def GetAllGameData(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+    if username != 'admin':
+        return JsonResponse({}, safe=False)
+
+    version = request.GET.get('version')
+
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    folder_path = os.path.join(BASE_DIR, 'data')
+    folder_path = os.path.join(folder_path, 'gamedata')
+    folder_path = os.path.join(folder_path, version)
+
+
+    res = ''
+    for filename in os.listdir(folder_path):
+        with open(os.path.join(folder_path, filename)) as outfile:
+            res += outfile.read() + ','
+
+
+    arrData = json.loads('[' + res[:-1] + ']')
+    return JsonResponse(arrData, safe=False)
+
+
+def GetAllUserGame(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+    if username != 'admin':
+        return JsonResponse({}, safe=False)
+
+    version = request.GET.get('version')
+
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    folder_path = os.path.join(BASE_DIR, 'data')
+    folder_path = os.path.join(folder_path, 'gamedata')
+    folder_path = os.path.join(folder_path, version)
+
+    listOfFiles = os.listdir(folder_path)
+    resList = [os.path.splitext(x)[0] for x in listOfFiles]
+
+    return JsonResponse(resList, safe=False)
+
+
 def TransferData(request):
     identifier = request.GET.get('identifier')
     username = request.GET.get('username')

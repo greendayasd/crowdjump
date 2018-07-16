@@ -1,11 +1,12 @@
 // Global Variables
 
-const CONST_JUMP_SPEED = 700;
+const CONST_JUMP_SPEED = 700; //~500 for long jump
 const CONST_AIR_SPEED = 500;
 const CONST_BOUNCE_SPEED = 200;
 const CONST_GRAVITY = 1400;
 const CONST_MOVE_SPEED = 200;
-const CONST_HERO_WEIGHT = 1000;
+const CONST_HERO_WEIGHT = 1;
+const CONST_HERO_LIVES = 1;
 
 const CONST_LEVEL = 4;
 const CONST_TIME = true;
@@ -29,6 +30,8 @@ const CONST_PAUSE = false;
 
 const CONST_DOUBLE_JUMP = false;
 const CONST_WALL_JUMP = false;
+const CONST_LONG_JUMP = false;
+const CONST_MAX_LONG_JUMP = 15;
 const CONST_ZHONYA = false;
 const CONST_KILL_IN_ZHONYA = false;
 const CONST_ZHONYA_DURATION = 2;

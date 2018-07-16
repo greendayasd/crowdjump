@@ -27,15 +27,15 @@ Crowdjump.Preloader.prototype = {
         this.load.image('bubble', images + 'ideabubble.png');
         this.load.image('alien_death', images + 'alien_death.png');
 
-        //alle Level laden
+        // alle Level laden
         for (i = 0; i < CONST_LEVEL; i++){
             var levelname = 'level';
             levelname += i +'';
 
             this.load.json('level:' + i, level + levelname + '.json');
         }
+        this.load.json('level:0', level + 'level3.json');
         // this.load.json('level:0', level + 'level3.json');
-        // this.load.json('level:1', level + 'level1.json');
         // this.load.json('level:1', level + 'level1.json');
         // this.load.json('level:2', level + 'level2.json');
         // this.load.json('level:3', level + 'level3.json');
@@ -44,23 +44,35 @@ Crowdjump.Preloader.prototype = {
         this.load.image('background', files + 'background.png');
 
         this.load.image('ground', files + 'ground.png');
+        this.load.image('ground:1x1', files + 'ground_1x1.png');
         this.load.image('ground:1x2', files + 'ground_1x2.png');
+        this.load.image('ground:1x4', files + 'ground_1x4.png');
+        this.load.image('ground:1x6', files + 'ground_1x6.png');
+        this.load.image('ground:1x8', files + 'ground_1x8.png');
+        this.load.image('ground:1x10', files + 'ground_1x10.png');
+        this.load.image('ground:1x12', files + 'ground_1x12.png');
+        this.load.image('ground:2x1', files + 'ground_2x1.png');
         this.load.image('ground:2x2', files + 'ground_2x2.png');
+        this.load.image('ground:4x1', files + 'ground_4x1.png');
         this.load.image('ground:4x2', files + 'ground_4x2.png');
+        this.load.image('ground:20x1', files + 'ground_20x1.png');
 
-        this.load.image('grass:8x1', files + 'grass_8x1.png');
-        this.load.image('grass:6x1', files + 'grass_6x1.png');
-        this.load.image('grass:4x1', files + 'grass_4x1.png');
-        this.load.image('grass:2x1', files + 'grass_2x1.png');
         this.load.image('grass:1x1', files + 'grass_1x1.png');
-        this.load.image('lava:1x1', files + 'lava_1x1.png');
-        this.load.image('lava:2x1', files + 'lava_2x1.png');
+        this.load.image('grass:2x1', files + 'grass_2x1.png');
+        this.load.image('grass:4x1', files + 'grass_4x1.png');
+        this.load.image('grass:6x1', files + 'grass_6x1.png');
+        this.load.image('grass:8x1', files + 'grass_8x1.png');
 
-        this.load.image('invisible:8x1', files + 'invisible_8x1.png');
-        this.load.image('invisible:4x1', files + 'invisible_4x1.png');
-        this.load.image('invisible:2x1', files + 'invisible_2x1.png');
-        this.load.image('invisible:1x1', files + 'invisible_1x1.png');
+        this.load.image('lava:1x1', files + 'lava2_1x1.png');
+        this.load.image('lava:2x1', files + 'lava2_2x1.png');
+
         this.load.image('invisible-wall', files + 'invisible_wall.png');
+        this.load.image('invisible:1x1', files + 'invisible_1x1.png');
+        this.load.image('invisible:2x1', files + 'invisible_2x1.png');
+        this.load.image('invisible:4x1', files + 'invisible_4x1.png');
+        this.load.image('invisible:8x1', files + 'invisible_8x1.png');
+
+        this.load.image('crate', files + 'crate.png');
 
         this.load.image('icon:coin', files + 'coin_icon.png');
 

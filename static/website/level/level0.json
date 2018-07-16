@@ -1,52 +1,65 @@
 {
-    "platforms": [
-        {"image": "ground:1x2", "x": 336, "y": 588},
+	"platforms": [
+		{"image": "ground:1x1", "x": 336, "y": 588, "p_types": ""},
+		{"image": "ground:2x1", "x": 378, "y": 588, "p_types": ""},
+		{"image": "ground:2x1", "x": 714, "y": 588, "p_types": ""},
+		{"image": "ground:2x1", "x": 630, "y": 588, "p_types": ""},
+		{"image": "ground:2x2", "x": 462, "y": 546, "p_types": ""},
+		{"image": "ground:2x2", "x": 546, "y": 546, "p_types": ""},
+		{"image": "ground:4x2", "x": 0, "y": 546, "p_types": ""},
+		{"image": "ground:4x2", "x": 168, "y": 546, "p_types": ""},
+		{"image": "grass:4x1", "x": 294, "y": 252, "p_types": ""},
+		{"image": "grass:4x1", "x": 798, "y": 294, "p_types": ""},
+		{"image": "grass:6x1", "x": 0, "y": 378, "p_types": ""},
+		{"image": "ground:1x6", "x": 588, "y": 294, "p_types": ""},
+		{"image": "grass:1x1", "x": 252, "y": 210, "p_types": ""},
+		{"image": "ground:1x2", "x": 798, "y": 462, "p_types": ""},
+		{"image": "grass:2x1", "x": 1218, "y": 84, "p_types": ""},
+		{"image": "ground:4x1", "x": 966, "y": 294, "p_types": ""},
+		{"image": "ground:1x4", "x": 1134, "y": 210, "p_types": ""},
+		{"image": "ground:2x1", "x": 1050, "y": 252, "p_types": ""},
+		{"image": "ground:4x2", "x": 798, "y": 546, "p_types": ""},
+		{"image": "grass:1x1", "x": 966, "y": 420, "p_types": ""},
+		{"image": "ground:4x1", "x": 966, "y": 588, "p_types": ""},
+		{"image": "ground:4x1", "x": 1134, "y": 588, "p_types": ""},
+		{"image": "ground:1x1", "x": 1050, "y": 546, "p_types": ""},
+		{"image": "ground:1x2", "x": 1092, "y": 420, "p_types": ""},
+		{"image": "ground:2x1", "x": 1176, "y": 546, "p_types": ""},
+		{"image": "ground:1x1", "x": 1260, "y": 546, "p_types": ""},
+		{"image": "ground:1x10", "x": 1260, "y": 126, "p_types": ""},
+		{"image": "grass:1x1", "x": 1218, "y": 378, "p_types": ""}
+	],
+	"falling_platforms": [
 
-        {"image": "ground:2x2", "x": 378, "y": 588},
-        {"image": "ground:2x2", "x": 462, "y": 546},
-        {"image": "ground:2x2", "x": 546, "y": 546},
-        {"image": "ground:2x2", "x": 630, "y": 588},
-        {"image": "ground:2x2", "x": 714, "y": 588},
+	],
+	"crates": [
 
-        {"image": "ground:4x2", "x": 0, "y": 546},
-        {"image": "ground:4x2", "x": 168, "y": 546},
+	],
+	"lava": [
+		{"image": "lava:2x1", "x": 378, "y": 546},
+		{"image": "lava:2x1", "x": 630, "y": 546},
+		{"image": "lava:2x1", "x": 714, "y": 546},
+		{"image": "lava:2x1", "x": 1050, "y": 210},
+		{"image": "lava:2x1", "x": 966, "y": 252},
+		{"image": "lava:2x1", "x": 966, "y": 546},
+		{"image": "lava:2x1", "x": 1092, "y": 546},
+		{"image": "lava:1x1", "x": 336, "y": 546}
+	],
+	"flags": [
+		{"image": "flag", "x": 1260, "y": 42}
+	],
+	"coins": [
 
-        {"image": "ground", "x": 798, "y": 546},
+	],
+    "hero": {"image": "hero", "x": 0, "y": 504},
+	"enemies": [
 
-        {"image": "grass:1x1", "x": 588, "y": 504},
+	],
+	"powerups": [
 
-        {"image": "grass:2x1", "x": 462, "y": 420},
-        {"image": "grass:2x1", "x": 798, "y": 84},
+	],
+	"decorations": [
 
-        {"image": "grass:4x1", "x": 294, "y": 252},
-        {"image": "grass:4x1", "x": 546, "y": 168},
-
-        {"image": "grass:6x1", "x": 42, "y": 378, "p_types":"slippery,movable"}
-
-    ],
-    "lava": [
-        {"image": "lava:1x1", "x": 336, "y": 546},
-
-        {"image": "lava:2x1", "x": 378, "y": 546},
-        {"image": "lava:2x1", "x": 630, "y": 546},
-        {"image": "lava:2x1", "x": 714, "y": 546}
-    ],
-    "decoration": [
-        {"frame": 0, "x": 84, "y": 504}, {"frame": 1, "x": 420, "y": 504},
-        {"frame": 3, "x": 672, "y": 504}, {"frame": 4, "x": 595, "y": 462},
-        {"frame": 2, "x": 142, "y": 378}, {"frame": 1, "x": 168, "y": 378},
-        {"frame": 0, "x": 714, "y": 336},
-        {"frame": 4, "x": 420, "y": 294},
-        {"frame": 1, "x": 515, "y": 126}, {"frame": 3, "x": 525, "y": 126}
-    ],
-    "coins": [
-        {"x": 231, "y": 524}, {"x": 273, "y": 524}, {"x": 315, "y": 524}, {"x": 357, "y": 524}
-    ],
-    "powerups": [
-        {"image": "powerup:lavaorb", "type":"lavaorb", "x": 200, "y": 524}, {"image": "powerup:jumpboost", "type":"jumpboost", "x": 160, "y": 524}
-    ],
-    "hero": {"x": 21, "y": 525},
-    "spiders": [{"x": 200, "y": 362}],
-    "flag": {"x": 870, "y": 87},
-    "size": {"x": 960, "y": 600}
+	],
+	"size": {"x": 1304, "y": 600}
 }

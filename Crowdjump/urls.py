@@ -10,7 +10,7 @@ from chat.views import room, index, ChatMessageViewSet
 from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet
 from Crowdjump.mailFunctions import mail_new_version
 
-from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData, GetTrackingData, TransferData, SendGameData, GetGameData
+from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData, GetTrackingData, TransferData, SendGameData, GetGameData, GetAllGameData, GetAllUserGame
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
@@ -83,6 +83,8 @@ urlpatterns = [
     url(r'^gettracking/$', GetTrackingData, name='gettracking'),
     url(r'^sendgamedata/$', SendGameData, name='sendgamedata'),
     url(r'^getgamedata/$', GetGameData, name='getgamedata'),
+    url(r'^getallgamedata/$', GetAllGameData, name='getallgamedata'),
+    url(r'^getallusergame/$', GetAllUserGame, name='getallusergame'),
     url(r'^transferdata/$', TransferData, name='transferdata'),
 
     url(r'^sendmail/$', mail_new_version, name='sendmail'),
