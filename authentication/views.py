@@ -154,13 +154,14 @@ def SendGameData(request):
     status = request.GET.get('status')
     timeneeded = request.GET.get('time')
 
-    if (status == 'completed'):
-        if (int(timeneeded) < 4000 and int(level) == 0
-                or int(timeneeded) < 8500 and int(level) == 1
-                or int(timeneeded) < 16000 and int(level) == 2
-                or int(timeneeded) < 21000 and int(level) == 3):
-            # cheated
-            return JsonResponse('{"sucess":"true"}', safe=False)
+    #Anticheat
+    # if (status == 'completed'):
+    #     if (int(timeneeded) < 4000 and int(level) == 0
+    #             or int(timeneeded) < 8500 and int(level) == 1
+    #             or int(timeneeded) < 16000 and int(level) == 2
+    #             or int(timeneeded) < 21000 and int(level) == 3):
+    #         # cheated
+    #         return JsonResponse('{"sucess":"true"}', safe=False)
 
     jumps = request.GET.get('jumps')
     movement_inputs = request.GET.get('movement_inputs')

@@ -60,6 +60,12 @@ var g_gameinfo = '';
 var highscoreSocket;
 var account;
 
+//info from last level
+var time_last_level = 0;
+var jumps_last_level = 0;
+var movementinputs_last_level = 0;
+var enemies_last_level = 0;
+var coins_last_level = 0;
 
 function csrfSafeMethod(method) {
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -230,17 +236,18 @@ function updateInfo(isHighscore) {
 
 function setLevelInfo(level, status) {
     var username = getUsername();
-    var time = game.time.totalElapsedSeconds().toFixed(3) * 1000;
+    var time = game.time.totalElapsedSeconds().toFixed(3);
+    var final_time = ((time - time_last_level) * 1000).toFixed(3);
     var data = {
         "username": username,
         "version": version,
         "level": level,
         "status": status,
-        "time": time,
-        "jumps": game.jumps,
-        "movement_inputs": game.movement_inputs,
-        "enemies_killed": game.enemiesDefeatedCount,
-        "coins_collected": game.coinPickupCount
+        "time": final_time,
+        "jumps": game.jumps - jumps_last_level,
+        "movement_inputs": game.movement_inputs - movementinputs_last_level,
+        "enemies_killed": game.enemiesDefeatedCount - enemies_last_level,
+        "coins_collected": game.coinPickupCount - coins_last_level
     };
 
     $.ajax({
@@ -320,3 +327,11 @@ function increase_versionlabel(username, cookie_increase) {
 
 }
 
+function setInfoLastLevel (){
+    time_last_level = game.time.totalElapsedSeconds().toFixed(3);
+    jumps_last_level = game.jumps;
+    movementinputs_last_level = game.movement_inputs;
+    enemies_last_level = game.enemiesDefeatedCount;
+    coins_last_level = game.coinPickupCount;
+
+}

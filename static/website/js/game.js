@@ -330,6 +330,11 @@ Crowdjump.Game.create = function () {
     this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.restart, this);
     this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
     this.game.camera.follow(this.hero);
+    try {
+        if (time_last_level == undefined || time_last_level <= 1) time_last_level = 0;
+    } catch (e) {
+        time_last_level = 0;
+    }
 
 };
 
@@ -534,7 +539,7 @@ Crowdjump.Game._loadLevel = function (data) {
     this.game.physics.arcade.gravity.y = CONST_GRAVITY;
 
     seconds_last_level = Math.abs(Math.floor(game.timeElapsed / 1));
-
+    setInfoLastLevel();
     this.world.resize(data.size.x, data.size.y);
 };
 
