@@ -30,7 +30,7 @@ Crowdjump.Preloader.prototype = {
         // alle Level laden
         for (i = 0; i < CONST_LEVEL; i++){
             var levelname = 'level';
-            levelname += 1 +'';
+            levelname += i +'';
 
             this.load.json('level:' + i, level + levelname + '.json');
         }
