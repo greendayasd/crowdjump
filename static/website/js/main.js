@@ -7,6 +7,7 @@ const CONST_GRAVITY = 1400;
 const CONST_MOVE_SPEED = 200;
 const CONST_HERO_WEIGHT = 1;
 const CONST_HERO_LIVES = 1;
+const CONST_REPLAY_LEVEL = false;
 
 const CONST_LEVEL = 4;
 const CONST_TIME = true;
@@ -22,7 +23,7 @@ const CONST_FALLINGPLATFORMS = false;
 const CONST_POWERUPS = false;
 const CONST_COINS = false;
 
-const CONST_ENEMIES = false;
+const CONST_ENEMIES = true;
 const CONST_KILL_ENEMIES = false;
 
 const CONST_BUBBLE = true;
@@ -212,7 +213,7 @@ function updateInfo(isHighscore) {
             contentType: "application/json",
             cache: false,
             success: function (data) {
-                if (isHighscore || true) {
+                if (isHighscore) {
 
                     var content = data;
                     // console.log(data);
@@ -237,7 +238,7 @@ function updateInfo(isHighscore) {
 function setLevelInfo(level, status) {
     var username = getUsername();
     var time = game.time.totalElapsedSeconds().toFixed(3);
-    var final_time = ((time - time_last_level) * 1000).toFixed(3);
+    var final_time = ((time - time_last_level) * 1000).toFixed(0);
     var data = {
         "username": username,
         "version": version,

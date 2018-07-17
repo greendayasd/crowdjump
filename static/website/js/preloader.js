@@ -28,18 +28,24 @@ Crowdjump.Preloader.prototype = {
         this.load.image('alien_death', images + 'alien_death.png');
 
         // alle Level laden
-        for (i = 0; i < CONST_LEVEL; i++){
-            var levelname = 'level';
-            levelname += i +'';
 
-            this.load.json('level:' + i, level + levelname + '.json');
+        var test = false;
+
+        if (test) {
+            this.load.json('level:0', level + 'level2.json');
+            this.load.json('level:1', level + 'level3.json');
+            this.load.json('level:2', level + 'level3.json');
+            this.load.json('level:3', level + 'level3.json');
+
+        } else {
+            for (i = 0; i < CONST_LEVEL; i++) {
+                var levelname = 'level';
+                levelname += i + '';
+
+                this.load.json('level:' + i, level + levelname + '.json');
+            }
         }
 
-        // this.load.json('level:0', level + 'level3.json');
-        // this.load.json('level:0', level + 'level3.json');
-        // this.load.json('level:1', level + 'level1.json');
-        // this.load.json('level:2', level + 'level2.json');
-        // this.load.json('level:3', level + 'level3.json');
 
         //files
         this.load.image('background', files + 'background.png');

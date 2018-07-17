@@ -19,7 +19,7 @@
 		{"image": "grass:1x1", "x": 798, "y": 168, "p_types": ""},
 		{"image": "grass:1x1", "x": 672, "y": 84, "p_types": ""}
 	],
-	"falling_platforms": [
+	"fallingPlatforms": [
 
 	],
 	"crates": [
@@ -43,7 +43,10 @@
 	"hero":
 		{"image": "hero", "x": 0, "y": 756},
 	"enemies": [
-
+		{"image": "enemy:spider", "x": 252, "y": 756, "type":"spider"}
+	],
+	"enemyWalls": [
+		{"image": "invisible_wall", "x": 336, "y": 756}
 	],
 	"powerups": [
 
@@ -51,5 +54,5 @@
 	"decorations": [
 
 	],
-	"size": {"x": 960, "y": 1200}
+	"size": {"x": 966, "y": 852}
 }

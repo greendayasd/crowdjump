@@ -489,13 +489,13 @@ Crowdjump.Game._countMovementInput = function () {
 
 Crowdjump.Game._loadLevel = function (data) {
     // create all the groups/layers that we need
-
     this.bgDecoration = this.game.add.group();
 
     this.spiders = this.game.add.group();
 
     this.enemyWalls = this.game.add.group();
-    this.enemyWalls.visible = false;
+    data.enemyWalls.forEach(this._spawnEnemyWall, this);
+    // this.enemyWalls.visible = false;
     // console.error("spiders" + level_data.repeat_spiders);
 
     // spawn all platforms
@@ -506,7 +506,7 @@ Crowdjump.Game._loadLevel = function (data) {
     // this.platforms.forEach(console.log, this.body);
 
     // spawn hero and enemies
-    this._spawnCharacters({hero: data.hero, spiders: data.enemies});
+    this._spawnCharacters({hero: data.hero, enemies: data.enemies});
 
     if (CONST_CRATES) {
         this.crates = this.game.add.group();
@@ -601,8 +601,8 @@ Crowdjump.Game._spawnPlatform = function (platform) {
 
     sprite.p_types = types;
 
-    this._spawnEnemyWall(platform.x, platform.y, 'left');
-    this._spawnEnemyWall(platform.x + sprite.width, platform.y, 'right');
+    // this._spawnEnemyWall(platform.x, platform.y, 'left');
+    // this._spawnEnemyWall(platform.x + sprite.width, platform.y, 'right');
 };
 
 Crowdjump.Game._spawnCrate = function (platform) {
@@ -636,6 +636,15 @@ Crowdjump.Game._spawnEnemyWall = function (x, y, side) {
     let sprite = this.enemyWalls.create(x, y, 'invisible-wall');
     // anchor and y displacement
     sprite.anchor.set(side === 'left' ? 1 : 0, 1);
+
+    // physic properties
+    this.game.physics.enable(sprite);
+    sprite.body.immovable = true;
+    sprite.body.allowGravity = false;
+};
+//does not need side
+Crowdjump.Game._spawnEnemyWall = function (wall) {
+    let sprite = this.enemyWalls.create(wall.x, wall.y, 'invisible-wall');
 
     // physic properties
     this.game.physics.enable(sprite);
@@ -741,18 +750,18 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
         }
 
     }
-    if ((hero.body.velocity.y > 0 && hero.body.position.y + 5 < enemy.body.position.y) || hero.body.position.y + 10 < enemy.body.position.y) {
+    if (((hero.body.velocity.y > 0 && hero.body.position.y + 5 < enemy.body.position.y) || hero.body.position.y + 10 < enemy.body.position.y)&& CONST_KILL_ENEMIES) {
         this._killEnemy(enemy, true);
     }
     else { // game over -> restart the game
         this.sfx.stomp.play();
-        this.killHero("death by " + enemy.name);
+        this.killHero("killed by " + enemy.key);
     }
 };
 
 Crowdjump.Game._killEnemy = function (enemy, bounce) {
     if (bounce) {
-        hero.bounce();
+        this.game.hero.bounce();
         this.sfx.stomp.play();
     }
     enemy.die();
@@ -946,7 +955,13 @@ Crowdjump.Game.killHero = function (reason) {
     this.timeFont.text = '0';
     setLevelInfo(this.level + 1, reason);
     lives -= 1;
+    if (CONST_REPLAY_LEVEL){
+        this.game.state.restart(true, false, {level: this.level});
+        return;
+    }
+
     if (lives <= 0) {
+        updateInfo(false);
         this.game.time.reset();
         this.state.start('Gameover');
     } else {

@@ -713,66 +713,78 @@
                 var powerups = '';
                 var decorations = '';
                 var enemies = '';
+                var enemy_walls ='';
 
-                var worldsize = '\t"size": {"x": 960, "y": 600}';
+                var maxX = 918;
+                var maxY = 588;
 
                 for (var i = 0; i < array.length; i++) {
                     var image = array[i][2];
+                    var split =  image.split(":");
+                    var type = ', "type":"' + split[1] + '"';
+                    var endline = '},\n';
+
+                    maxX = Math.max(maxX,array[i][0]);
+                    maxY = Math.max(maxY,array[i][1]);
                     var line = '\t\t{"image": ' + '"' + image + '", "x": ' + array[i][0] + ', "y": ' + array[i][1];
                     if (image.startsWith("lava")) {
-                        lava += line + '},\n';
+                        lava += line + endline;
                         continue;
                     }
                     if (image.startsWith("crate")) {
-                        crates += line + '},\n';
+                        crates += line + endline;
                         continue;
                     }
                     if (image.startsWith("falling")) {
-                        falling_platforms += line + '},\n';
+                        falling_platforms += line + endline;
                         continue;
                     }
                     if (image.startsWith("flag")) {
-                        flags += line + '},\n';
+                        flags += line + endline;
                         continue;
                     }
                     if (image.startsWith("coin")) {
-                        coins += line + '},\n';
+                        coins += line + endline;
                         continue;
                     }
                     if (image.startsWith("hero")) {
-                        hero += line + '},\n';
+                        hero += line + endline;
                         continue;
                     }
                     if (image.startsWith("powerup")) {
-                        var type = image.split(":");
-                        powerups += line + '"type":"' + type[1] + '"},\n';
+                        powerups += line + type + endline;
                         continue;
                     }
                     if (image.startsWith("deco")) {
-                        var type = image.split(":");
-                        decorations += line + '"type":"' + type[1] + '"},\n';
+                        decorations += line + type + endline;
                         continue;
                     }
                     if (image.startsWith("enemy")) {
-                        var type = image.split(":");
-                        enemies += line + '"type":"' + type[1] + '"},\n';
+                        enemies += line + type + endline;
+                        continue;
+                    }
+                    if (image.startsWith("invisible_wall")) {
+                        enemy_walls += line + endline;
                         continue;
                     }
                     //else = normal platform
-                    platforms += line + ', "p_types": ""},\n';
+                    platforms += line + ', "p_types": ""' + endline;
                 }
 
+                var worldsize = '\t"size": {"x": ' + (maxX +42) + ', "y": ' + (maxY +12)+ '}';
+
                 platforms = wrapJsonLevel(platforms, "platforms");
-                falling_platforms = wrapJsonLevel(falling_platforms, "falling_platforms");
+                falling_platforms = wrapJsonLevel(falling_platforms, "fallingPlatforms");
                 crates = wrapJsonLevel(crates, "crates");
                 lava = wrapJsonLevel(lava, "lava");
                 flags = wrapJsonLevel(flags, "flags");
                 coins = wrapJsonLevel(coins, "coins");
                 hero = '\t"hero":\n' + hero + '';
                 enemies = wrapJsonLevel(enemies, "enemies");
+                enemy_walls = wrapJsonLevel(enemy_walls, "enemyWalls");
                 powerups = wrapJsonLevel(powerups, "powerups");
                 decorations = wrapJsonLevel(decorations, "decorations");
-                $scope.csv = '{\n' + platforms + falling_platforms + crates + lava + flags + coins + hero + enemies + powerups + decorations + worldsize + '\n}';
+                $scope.csv = '{\n' + platforms + falling_platforms + crates + lava + flags + coins + hero + enemies + enemy_walls + powerups + decorations + worldsize + '\n}';
 
             }
 

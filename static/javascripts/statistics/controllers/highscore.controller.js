@@ -83,6 +83,9 @@
             // console.log(data);
             var user = data["user"]["username"];
             var highscore = data["highscore"];
+            if(highscore == "-0.001"){
+                console.error(data + '\n' + $scope.statistics);
+            }
             // console.log(user);
             // console.log(highscore);
             var found = false;
