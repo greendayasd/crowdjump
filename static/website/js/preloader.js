@@ -73,7 +73,14 @@ Crowdjump.Preloader.prototype = {
         this.load.image('lava:1x1', files + 'lava2_1x1.png');
         this.load.image('lava:2x1', files + 'lava2_2x1.png');
 
-        this.load.image('invisible-wall', files + 'invisible_wall.png');
+        this.load.image('invisible_wall', files + 'invisible_wall.png');
+        this.load.image('invisible_wall_horizontal', files + 'invisible_wall_horizontal.png');
+
+        // this.load.image('move_wall', files + 'move_wall.png');
+        // this.load.image('move_wall_horizontal', files + 'move_wall_horizontal.png');
+        this.load.image('move_wall', files + 'invisible_wall_debug.png');
+        this.load.image('move_wall_horizontal', files + 'invisible_wall_horizontal_debug.png');
+
         this.load.image('invisible:1x1', files + 'invisible_1x1.png');
         this.load.image('invisible:2x1', files + 'invisible_2x1.png');
         this.load.image('invisible:4x1', files + 'invisible_4x1.png');

@@ -385,6 +385,9 @@ Crowdjump.Game._handleCollisions = function () {
     this.game.physics.arcade.collide(this.spiders, this.enemyWalls);
     this.game.physics.arcade.collide(this.hero, this.platforms);
 
+    if (CONST_MOVINGPLATFORMS) {
+        this.game.physics.arcade.collide(this.platforms, this.moveWalls);
+    }
 
     // this.game.physics.arcade.collide(this.spiders, bullets);
     // this.game.physics.arcade.collide(bullets, this.platforms);
@@ -496,17 +499,19 @@ Crowdjump.Game._loadLevel = function (data) {
     this.enemyWalls = this.game.add.group();
     data.enemyWalls.forEach(this._spawnEnemyWall, this);
     // this.enemyWalls.visible = false;
-    // console.error("spiders" + level_data.repeat_spiders);
 
     // spawn all platforms
     this.platforms = this.game.add.group();
     data.platforms.forEach(this._spawnPlatform, this);
-
-    this.platforms.setAll('body.immovable', true);
-    // this.platforms.forEach(console.log, this.body);
+    // this.platforms.setAll('body.immovable', true);
 
     // spawn hero and enemies
     this._spawnCharacters({hero: data.hero, enemies: data.enemies});
+
+    if (CONST_MOVINGPLATFORMS) {
+        this.moveWalls = this.game.add.group();
+        data.moveWalls.forEach(this._spawnMoveWall, this);
+    }
 
     if (CONST_CRATES) {
         this.crates = this.game.add.group();
@@ -559,11 +564,24 @@ Crowdjump.Game._spawnPlatform = function (platform) {
         types = platform.p_types.split(",");
     }
     var already_moving = false;
+    var already_slippery = false;
+
     for (var i = 0; i < types.length; i++) {
         switch (types[i]) {
             case "moving":
                 if (CONST_MOVINGPLATFORMS) {
-                    console.log("moving");
+                    sprite.body.velocity.x = platform.xmove;
+                    sprite.body.velocity.y = platform.ymove;
+                    sprite.body.bounce.set(1);
+                    sprite.body.collideWorldBounds = true;
+                    sprite.bounceTimer = 0;
+                    if (already_slippery) {
+                        console.log("slippery + moving");
+
+                    } else {
+                        console.log("moving");
+                        sprite.body.friction.x = 1;
+                    }
                     already_moving = true;
                 }
                 break;
@@ -576,6 +594,7 @@ Crowdjump.Game._spawnPlatform = function (platform) {
                         console.log("slippery");
                         sprite.body.friction.x = 1;
                     }
+                    already_slippery = true;
                 }
                 break;
             case "bouncing":
@@ -644,7 +663,7 @@ Crowdjump.Game._spawnEnemyWall = function (x, y, side) {
 };
 //does not need side
 Crowdjump.Game._spawnEnemyWall = function (wall) {
-    let sprite = this.enemyWalls.create(wall.x, wall.y, 'invisible-wall');
+    let sprite = this.enemyWalls.create(wall.x, wall.y, wall.image);
 
     // physic properties
     this.game.physics.enable(sprite);
@@ -652,6 +671,14 @@ Crowdjump.Game._spawnEnemyWall = function (wall) {
     sprite.body.allowGravity = false;
 };
 
+Crowdjump.Game._spawnMoveWall = function (wall) {
+    let sprite = this.moveWalls.create(wall.x, wall.y, wall.image);
+
+    // physic properties
+    this.game.physics.enable(sprite);
+    sprite.body.immovable = true;
+    sprite.body.allowGravity = false;
+};
 Crowdjump.Game._spawnCharacters = function (data) {
 
     if (CONST_ENEMIES) {
@@ -750,7 +777,7 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
         }
 
     }
-    if (((hero.body.velocity.y > 0 && hero.body.position.y + 5 < enemy.body.position.y) || hero.body.position.y + 10 < enemy.body.position.y)&& CONST_KILL_ENEMIES) {
+    if (((hero.body.velocity.y > 0 && hero.body.position.y + 5 < enemy.body.position.y) || hero.body.position.y + 10 < enemy.body.position.y) && CONST_KILL_ENEMIES) {
         this._killEnemy(enemy, true);
     }
     else { // game over -> restart the game
@@ -955,7 +982,7 @@ Crowdjump.Game.killHero = function (reason) {
     this.timeFont.text = '0';
     setLevelInfo(this.level + 1, reason);
     lives -= 1;
-    if (CONST_REPLAY_LEVEL){
+    if (CONST_REPLAY_LEVEL) {
         this.game.state.restart(true, false, {level: this.level});
         return;
     }

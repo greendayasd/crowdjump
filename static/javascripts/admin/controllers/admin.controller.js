@@ -714,6 +714,7 @@
                 var decorations = '';
                 var enemies = '';
                 var enemy_walls ='';
+                var move_walls ='';
 
                 var maxX = 918;
                 var maxY = 588;
@@ -767,6 +768,10 @@
                         enemy_walls += line + endline;
                         continue;
                     }
+                    if (image.startsWith("move_wall")) {
+                        move_walls += line + endline;
+                        continue;
+                    }
                     //else = normal platform
                     platforms += line + ', "p_types": ""' + endline;
                 }
@@ -782,9 +787,10 @@
                 hero = '\t"hero":\n' + hero + '';
                 enemies = wrapJsonLevel(enemies, "enemies");
                 enemy_walls = wrapJsonLevel(enemy_walls, "enemyWalls");
+                move_walls = wrapJsonLevel(move_walls, "moveWalls");
                 powerups = wrapJsonLevel(powerups, "powerups");
                 decorations = wrapJsonLevel(decorations, "decorations");
-                $scope.csv = '{\n' + platforms + falling_platforms + crates + lava + flags + coins + hero + enemies + enemy_walls + powerups + decorations + worldsize + '\n}';
+                $scope.csv = '{\n' + platforms + falling_platforms + crates + lava + flags + coins + hero + enemies + enemy_walls + move_walls + powerups + decorations + worldsize + '\n}';
 
             }
 

@@ -12,7 +12,7 @@ def mail_new_version(request):
     version = 'version 0.08'
     subject = 'Crowdjump ' + version + ' is available!'
     message1 = 'Hello '
-    message2 = ',<br>check out ' + version + ' of Crowdjump, the newest feature '
+    message2 = ',<br>check out ' + version + ' of Crowdjump, the newest feature is '
     feature = 'Checkpoints! You dont have to start at the first level if you die!'
     message3 = '<br>If you want your own idea to be implemented, '
     html_content = '<a href="https://www.crowdjump.win">submit an idea or vote for it at Crowdjump :)</a>'
