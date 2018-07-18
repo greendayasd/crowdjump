@@ -34,7 +34,8 @@
 		{"image": "grass:2x1", "x": 1176, "y": 210, "p_types": ""},
 		{"image": "grass:1x1", "x": 924, "y": 168, "p_types": ""},
 		{"image": "ground:1x1", "x": 1134, "y": 168, "p_types": ""},
-		{"image": "ground:2x1", "x": 1050, "y": 168, "p_types": ""}
+		{"image": "ground:2x1", "x": 1050, "y": 168, "p_types": ""},
+		{"image": "ground:1x1", "x": 1092, "y": 84, "p_types": ""}
 	],
 	"fallingPlatforms": [
 
