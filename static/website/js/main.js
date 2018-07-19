@@ -16,6 +16,7 @@ const CONST_LAVA = true;
 const CONST_CRATES = false;
 const CONST_SLIPPERYPLATFORMS = true;
 const CONST_MOVINGPLATFORMS = true;
+const CONST_LOCKPLATFORM = false;
 const CONST_BOUNCINGPLATFORMS = false;
 const CONST_SLIDEPLATFORMS = false;
 const CONST_FALLINGPLATFORMS = false;

@@ -32,7 +32,7 @@ Crowdjump.Preloader.prototype = {
         var test = false;
 
         if (test) {
-            this.load.json('level:0', level + 'level3.json');
+            this.load.json('level:0', level + 'level2.json');
             this.load.json('level:1', level + 'level3.json');
             this.load.json('level:2', level + 'level3.json');
             this.load.json('level:3', level + 'level3.json');

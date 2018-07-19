@@ -452,9 +452,25 @@ Crowdjump.Game._setupPhysics = function () {
 Crowdjump.Game._handleCollisions = function () {
     this.game.physics.arcade.collide(this.spiders, this.enemyWalls);
     this.game.physics.arcade.collide(this.spiders, this.platforms);
-    this.game.physics.arcade.collide(this.spiders, this.movingPlatforms);
     this.game.physics.arcade.collide(this.hero, this.platforms);
-    this.game.physics.arcade.collide(this.hero, this.movingPlatforms);
+
+    //lock the entitys on the platform
+    this.game.physics.arcade.collide(this.spiders, this.movingPlatforms);
+
+    if (CONST_LOCKPLATFORM) {
+        this.game.physics.arcade.collide(this.hero, this.movingPlatforms, this.lockPlatform, null, this);
+        if (this.hero.locked) {
+            if (this.hero.body.right < this.hero.lockedTo.body.x || this.hero.body.x > this.hero.lockedTo.body.right) {
+                this.hero.locked = false;
+                this.hero.lockedTo = null;
+            } else {
+                // this.hero.x += this.hero.lockedTo.deltaX;
+                this.hero.y += this.hero.lockedTo.deltaY;
+            }
+        }
+    } else {
+        this.game.physics.arcade.collide(this.hero, this.movingPlatforms);
+    }
 
     if (CONST_MOVINGPLATFORMS) {
         this.game.physics.arcade.collide(this.movingPlatforms, this.platforms);
@@ -741,6 +757,14 @@ Crowdjump.Game._spawnPlatform = function (platform) {
     // this._spawnEnemyWall(platform.x + sprite.width, platform.y, 'right');
 };
 
+Crowdjump.Game.lockPlatform = function (hero, platform) {
+    if (!hero.locked) {
+        hero.locked = true;
+        hero.lockedTo = platform;
+        hero.body.velocity.y = 0;
+    }
+}
+
 Crowdjump.Game._spawnCrate = function (platform) {
 
     let sprite = this.crates.create(
@@ -751,11 +775,6 @@ Crowdjump.Game._spawnCrate = function (platform) {
     sprite.body.immovable = false;
     sprite.body.friction.x = 1;
     sprite.body.drag.x = 700;
-};
-
-//Moving/Not riding
-Crowdjump.Game.setFriction = function (player, platform) {
-    // player.body.x -= platform.body.x - platform.body.prev.x;
 };
 
 Crowdjump.Game._spawnLava = function (lava) {
@@ -788,14 +807,6 @@ Crowdjump.Game._spawnEnemyWall = function (wall) {
     sprite.body.allowGravity = false;
 };
 
-Crowdjump.Game._spawnMoveWall = function (wall) {
-    let sprite = this.moveWalls.create(wall.x, wall.y, wall.image);
-
-    // physic properties
-    this.game.physics.enable(sprite);
-    sprite.body.immovable = true;
-    sprite.body.allowGravity = false;
-};
 Crowdjump.Game._spawnCharacters = function (data) {
 
     if (CONST_ENEMIES) {
