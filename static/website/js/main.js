@@ -14,7 +14,7 @@ const CONST_TIME = true;
 
 const CONST_LAVA = true;
 const CONST_CRATES = false;
-const CONST_SLIPPERYPLATFORMS = false;
+const CONST_SLIPPERYPLATFORMS = true;
 const CONST_MOVINGPLATFORMS = true;
 const CONST_BOUNCINGPLATFORMS = false;
 const CONST_SLIDEPLATFORMS = false;
@@ -25,6 +25,7 @@ const CONST_COINS = false;
 
 const CONST_ENEMIES = true;
 const CONST_KILL_ENEMIES = false;
+const CONST_SPIDER_SPEED = 100;
 
 const CONST_BUBBLE = true;
 const CONST_PAUSE = false;
@@ -46,7 +47,11 @@ const CONST_MAGAZINE = 10;
 const CONST_SHOOT_IN_ZHONYA = false;
 
 const CONST_ANIMATE_CHARACTER = false;
+const CONST_COLOR = false;
 
+const CONST_P2_PHYSICS = false;
+const CONST_DEBUG = false;
+const CONST_FPS = false;
 const CONST_CANVAS_X = 960;
 const CONST_CANVAS_Y = 600;
 const CONST_WORLD_CENTER_X = CONST_CANVAS_X / 2;

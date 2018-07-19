@@ -768,12 +768,12 @@
                         enemy_walls += line + endline;
                         continue;
                     }
-                    if (image.startsWith("move_wall")) {
-                        move_walls += line + endline;
-                        continue;
-                    }
+                    // if (image.startsWith("move_wall")) {
+                    //     move_walls += line + endline;
+                    //     continue;
+                    // }
                     //else = normal platform
-                    platforms += line + ', "p_types": ""' + endline;
+                    platforms += line + ', "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
                 }
 
                 var worldsize = '\t"size": {"x": ' + (maxX +42) + ', "y": ' + (maxY +12)+ '}';
@@ -787,10 +787,10 @@
                 hero = '\t"hero":\n' + hero + '';
                 enemies = wrapJsonLevel(enemies, "enemies");
                 enemy_walls = wrapJsonLevel(enemy_walls, "enemyWalls");
-                move_walls = wrapJsonLevel(move_walls, "moveWalls");
+                // move_walls = wrapJsonLevel(move_walls, "moveWalls");
                 powerups = wrapJsonLevel(powerups, "powerups");
                 decorations = wrapJsonLevel(decorations, "decorations");
-                $scope.csv = '{\n' + platforms + falling_platforms + crates + lava + flags + coins + hero + enemies + enemy_walls + move_walls + powerups + decorations + worldsize + '\n}';
+                $scope.csv = '{\n' + platforms + falling_platforms + crates + lava + flags + coins + hero + enemies + enemy_walls + powerups + decorations + worldsize + '\n}';
 
             }
 

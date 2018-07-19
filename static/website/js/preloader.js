@@ -32,7 +32,7 @@ Crowdjump.Preloader.prototype = {
         var test = false;
 
         if (test) {
-            this.load.json('level:0', level + 'level2.json');
+            this.load.json('level:0', level + 'level3.json');
             this.load.json('level:1', level + 'level3.json');
             this.load.json('level:2', level + 'level3.json');
             this.load.json('level:3', level + 'level3.json');
@@ -73,13 +73,20 @@ Crowdjump.Preloader.prototype = {
         this.load.image('lava:1x1', files + 'lava2_1x1.png');
         this.load.image('lava:2x1', files + 'lava2_2x1.png');
 
-        this.load.image('invisible_wall', files + 'invisible_wall.png');
-        this.load.image('invisible_wall_horizontal', files + 'invisible_wall_horizontal.png');
+        if (CONST_DEBUG) {
+            this.load.image('invisible_wall', files + 'invisible_wall_debug.png');
+            this.load.image('invisible_wall_horizontal', files + 'invisible_wall_horizontal_debug.png');
+            this.load.image('move_wall', files + 'invisible_wall_debug.png');
+            this.load.image('move_wall_horizontal', files + 'invisible_wall_horizontal_debug.png');
 
-        // this.load.image('move_wall', files + 'move_wall.png');
-        // this.load.image('move_wall_horizontal', files + 'move_wall_horizontal.png');
-        this.load.image('move_wall', files + 'invisible_wall_debug.png');
-        this.load.image('move_wall_horizontal', files + 'invisible_wall_horizontal_debug.png');
+        } else {
+            this.load.image('invisible_wall', files + 'invisible_wall.png');
+            this.load.image('invisible_wall_horizontal', files + 'invisible_wall_horizontal.png');
+            this.load.image('move_wall', files + 'move_wall.png');
+            this.load.image('move_wall_horizontal', files + 'move_wall_horizontal.png');
+
+        }
+
 
         this.load.image('invisible:1x1', files + 'invisible_1x1.png');
         this.load.image('invisible:2x1', files + 'invisible_2x1.png');
@@ -95,11 +102,11 @@ Crowdjump.Preloader.prototype = {
 
         //character
         if (CONST_ANIMATE_CHARACTER) {
-            if (CONST_ZHONYA) {
-                this.load.spritesheet('hero', files + 'zhonya template.png', 34, 42);
-            } else {
-                this.load.spritesheet('hero', files + 'hero.png', 36, 42);
-            }
+                this.load.spritesheet('hero', files + 'zhonya template2.png', 34, 42);
+            // if (CONST_ZHONYA) {
+            // } else {
+            //     this.load.spritesheet('hero', files + 'hero.png', 36, 42);
+            // }
         }
         else {
             this.load.image('hero', files + 'hero_stopped.png');

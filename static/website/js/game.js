@@ -43,15 +43,28 @@ function Hero(game, x, y) {
     this.anchor.set(0.5, 0.5);
 
     // physic properties
-    this.game.physics.enable(this);
+    if (CONST_P2_PHYSICS) {
+        this.game.physics.p2.enable(this);
+        this.body.setMaterial(heroMaterial);
+        this.body.fixedRotation = true;
+        console.log(this.body);
+
+    } else {
+        this.game.physics.enable(this);
+        this.body.drag.x = CONST_HERO_WEIGHT;
+
+    }
     this.body.collideWorldBounds = true;
-    this.body.drag.x = CONST_HERO_WEIGHT;
 
     this.animations.add('stop', [0]);
     this.animations.add('run', [1, 2], 8, true); // 8fps looped
     this.animations.add('jump', [3]);
     this.animations.add('fall', [4]);
     this.animations.add('zhonya', [6]);
+
+    if (CONST_DEBUG) {
+        this.body.debug = true;
+    }
 }
 
 
@@ -73,7 +86,17 @@ Hero.prototype.move = function (direction) {
 };
 
 Hero.prototype.jump = function () {
-    let canJump = this.body.touching.down;
+    var canJump;
+    if (CONST_P2_PHYSICS) {
+        canJump = true;
+        second_jump = true;
+    } else {
+        canJump = this.body.touching.down;
+        if (this.body.touching.down) {
+            second_jump = true;
+        }
+    }
+
 
     if (CONST_LONG_JUMP) {
         if (canJump) jumpTimer = 0;
@@ -89,9 +112,6 @@ Hero.prototype.jump = function () {
 
     }
 
-    if (this.body.touching.down) {
-        second_jump = true;
-    }
 
     if (canJump || (hero_on_wall && CONST_WALL_JUMP)) {
         if (pu_jumpboost) {
@@ -168,10 +188,13 @@ function Spider(game, x, y) {
     // physic properties
     this.game.physics.enable(this);
     this.body.collideWorldBounds = true;
-    this.body.velocity.x = Spider.SPEED;
-}
+    this.body.velocity.x = CONST_SPIDER_SPEED;
 
-Spider.SPEED = 100;
+
+    if (CONST_DEBUG) {
+        this.body.debug = true;
+    }
+}
 
 // inherit from Phaser.Sprite
 Spider.prototype = Object.create(Phaser.Sprite.prototype);
@@ -180,10 +203,10 @@ Spider.prototype.constructor = Spider;
 Spider.prototype.update = function () {
     // check against walls and reverse direction if necessary
     if (this.body.touching.right || this.body.blocked.right) {
-        this.body.velocity.x = -Spider.SPEED; // turn left
+        this.body.velocity.x = -CONST_SPIDER_SPEED; // turn left
     }
     else if (this.body.touching.left || this.body.blocked.left) {
-        this.body.velocity.x = Spider.SPEED; // turn right
+        this.body.velocity.x = CONST_SPIDER_SPEED; // turn right
     }
 };
 
@@ -207,7 +230,8 @@ Crowdjump.Game.init = function (data) {
         left: Phaser.KeyCode.LEFT,
         right: Phaser.KeyCode.RIGHT,
         space: Phaser.KeyCode.SPACEBAR,
-        up: Phaser.KeyCode.UP
+        up: Phaser.KeyCode.UP,
+        down: Phaser.KeyCode.DOWN //Fix Scrolling Bug
     });
 
     jump = function () {
@@ -261,6 +285,10 @@ Crowdjump.Game.init = function (data) {
     }
     death = false;
 
+    if (CONST_DEBUG) {
+        this.game.plugins.add(Phaser.Plugin.DebugArcadePhysics);
+        this.game.debug.arcade.on();
+    }
 
 };
 
@@ -297,6 +325,12 @@ Crowdjump.Game.create = function () {
 
     this._createHud();
     this._createTimerHud();
+
+    if (CONST_FPS) {
+        game.time.advancedTiming = true;
+        fpsText = this.game.add.text(CONST_CANVAS_X - 60, 10, '', {font: '16px Arial', fill: '#ff0000'});
+        fpsText.fixedToCamera = true;
+    }
 
     if (CONST_PAUSE) {
         this.pausedIndicator = this.add.text(0, 0, 'paused', {fill: 'black', font: '48px san    s-serif'});
@@ -339,8 +373,18 @@ Crowdjump.Game.create = function () {
 };
 
 Crowdjump.Game.update = function () {
-    this._handleCollisions();
+    if (CONST_P2_PHYSICS) {
+        this._handleCollisionsP2();
+    } else {
+        this._handleCollisions();
+    }
     this._handleInput();
+    try {
+        if (CONST_MOVINGPLATFORMS) this.movingPlatforms.forEach(this._movePlatforms, this);
+    } catch (e) {
+        console.log(e);
+    }
+
     // var elapsedTime = Math.floor(this.game.time.totalElapsedSeconds());
     // console.error(this.roundTimer.seconds);
     var seconds = Math.abs(Math.floor(game.timeElapsed / 1));
@@ -353,6 +397,11 @@ Crowdjump.Game.update = function () {
     }
     this.timeFont.text = `${seconds}`;
     this.coinFont.text = `x${this.coinPickupCount}`;
+
+    if (CONST_FPS && this.game.time.fps !== 0) {
+        fpsText.setText(this.game.time.fps + ' FPS');
+
+    }
 
     if (CONST_SHOOTING && this.game.input.activePointer.isDown && (!CONST_ZHONYA || CONST_SHOOT_IN_ZHONYA)) {
         this.fire_Bullet();
@@ -380,13 +429,36 @@ Crowdjump.Game.update = function () {
     }
 };
 
+Crowdjump.Game._setupPhysics = function () {
+    this.game.physics.startSystem(Phaser.Physics.P2JS);
+    this.game.physics.p2.setImpactEvents(true);
+    this.game.physics.defaultRestitution = 0;
+    this.game.physics.p2.gravity.y = CONST_GRAVITY;
+    this.game.world.enableBodySleeping = true;  //allow bodies to not get calculated when there is nothing to do
+    this.game.stage.smoothed = false;  // no antialiasing
+
+    iceMaterial = game.physics.p2.createMaterial('ice');
+    heroMaterial = game.physics.p2.createMaterial('hero');
+    groundMaterial = game.physics.p2.createMaterial('ground');
+    bounceMaterial = game.physics.p2.createMaterial('bounce');
+
+    this.game.physics.p2.createContactMaterial(heroMaterial, groundMaterial, {friction: 2.0, restitution: 0.0});
+    this.game.physics.p2.createContactMaterial(heroMaterial, iceMaterial, {friction: 0.1, restitution: 0.0});
+    this.game.physics.p2.createContactMaterial(heroMaterial, bounceMaterial, {friction: 0.1, restitution: 5.0});
+
+
+}
+
 Crowdjump.Game._handleCollisions = function () {
-    this.game.physics.arcade.collide(this.spiders, this.platforms);
     this.game.physics.arcade.collide(this.spiders, this.enemyWalls);
+    this.game.physics.arcade.collide(this.spiders, this.platforms);
+    this.game.physics.arcade.collide(this.spiders, this.movingPlatforms);
     this.game.physics.arcade.collide(this.hero, this.platforms);
+    this.game.physics.arcade.collide(this.hero, this.movingPlatforms);
 
     if (CONST_MOVINGPLATFORMS) {
-        this.game.physics.arcade.collide(this.platforms, this.moveWalls);
+        this.game.physics.arcade.collide(this.movingPlatforms, this.platforms);
+        this.game.physics.arcade.collide(this.movingPlatforms, this.movingPlatforms);
     }
 
     // this.game.physics.arcade.collide(this.spiders, bullets);
@@ -444,6 +516,10 @@ Crowdjump.Game._handleCollisions = function () {
     this.game.physics.arcade.overlap(this.hero, this.flags, this._onHeroVsFlag, null, this);
 };
 
+Crowdjump.Game._handleCollisionsP2 = function () {
+
+}
+
 Crowdjump.Game._handleInput = function () {
     if (this.keys.left.isDown) { // move hero left
         this.hero.move(-1);
@@ -486,6 +562,15 @@ Crowdjump.Game._handleInput = function () {
     }
 };
 
+Crowdjump.Game._movePlatforms = function (platform) {
+    if (platform.body.x >= platform.body.maxx || platform.body.x <= platform.body.minx) {
+        platform.body.velocity.x *= -1;
+    }
+    if (platform.body.y >= platform.body.maxy || platform.body.y <= platform.body.miny) {
+        platform.body.velocity.y *= -1;
+    }
+}
+
 Crowdjump.Game._countMovementInput = function () {
     game.movement_inputs += 1;
 }
@@ -498,19 +583,12 @@ Crowdjump.Game._loadLevel = function (data) {
 
     this.enemyWalls = this.game.add.group();
     data.enemyWalls.forEach(this._spawnEnemyWall, this);
-    // this.enemyWalls.visible = false;
 
-    // spawn all platforms
-    this.platforms = this.game.add.group();
-    data.platforms.forEach(this._spawnPlatform, this);
-    // this.platforms.setAll('body.immovable', true);
-
-    // spawn hero and enemies
-    this._spawnCharacters({hero: data.hero, enemies: data.enemies});
 
     if (CONST_MOVINGPLATFORMS) {
-        this.moveWalls = this.game.add.group();
-        data.moveWalls.forEach(this._spawnMoveWall, this);
+        this.movingPlatforms = this.game.add.group();
+        // this.moveWalls = this.game.add.group();
+        // data.moveWalls.forEach(this._spawnMoveWall, this);
     }
 
     if (CONST_CRATES) {
@@ -536,12 +614,26 @@ Crowdjump.Game._loadLevel = function (data) {
         data.coins.forEach(this._spawnCoin, this);
     }
 
+
+    // spawn athe rest of the platforms
+    this.platforms = this.game.add.group();
+    data.platforms.forEach(this._spawnPlatform, this);
+
+    // spawn hero and enemies
+    this._spawnCharacters({hero: data.hero, enemies: data.enemies});
+
     //+30/+45 for correction
     this.flags = this.game.add.group();
     data.flags.forEach(this._spawnFlag, this);
 
-    // enable gravity
-    this.game.physics.arcade.gravity.y = CONST_GRAVITY;
+
+    if (CONST_P2_PHYSICS) {
+        this._setupPhysics();
+    } else {
+        // enable gravity
+        this.game.physics.arcade.gravity.y = CONST_GRAVITY;
+    }
+
 
     seconds_last_level = Math.abs(Math.floor(game.timeElapsed / 1));
     setInfoLastLevel();
@@ -550,73 +642,98 @@ Crowdjump.Game._loadLevel = function (data) {
 
 Crowdjump.Game._spawnPlatform = function (platform) {
 
-    let sprite = this.platforms.create(
-        platform.x, platform.y, platform.image);
-    sprite.p_types = platform.p_types;
-
-    this.game.physics.enable(sprite);
-    sprite.body.allowGravity = false;
-    sprite.body.immovable = true;
-    sprite.body.friction.y = 0;
-
+    var sprite;
+    var already_moving = false;
+    var already_slippery = false;
+    var already_bouncing = false;
     var types = [];
+
+
     if (platform.p_types != undefined) {
         types = platform.p_types.split(",");
     }
-    var already_moving = false;
-    var already_slippery = false;
+    if ((platform.xmove != 0 || platform.ymove != 0) && CONST_MOVINGPLATFORMS) {
+        sprite = this.movingPlatforms.create(
+            platform.x, platform.y, platform.image);
+        already_moving = true;
+    } else {
+        sprite = this.platforms.create(
+            platform.x, platform.y, platform.image);
+    }
+    sprite.p_types = platform.p_types;
+
+    if (CONST_P2_PHYSICS) {
+        this.game.physics.p2.enable(sprite);
+    } else {
+        this.game.physics.enable(sprite);
+        sprite.body.friction.y = 0;
+    }
+
+    sprite.body.allowGravity = false;
+    sprite.body.immovable = true;
 
     for (var i = 0; i < types.length; i++) {
         switch (types[i]) {
-            case "moving":
-                if (CONST_MOVINGPLATFORMS) {
-                    sprite.body.velocity.x = platform.xmove;
-                    sprite.body.velocity.y = platform.ymove;
-                    sprite.body.bounce.set(1);
-                    sprite.body.collideWorldBounds = true;
-                    sprite.bounceTimer = 0;
-                    if (already_slippery) {
-                        console.log("slippery + moving");
-
-                    } else {
-                        console.log("moving");
-                        sprite.body.friction.x = 1;
-                    }
-                    already_moving = true;
-                }
-                break;
             case "slippery":
                 if (CONST_SLIPPERYPLATFORMS) {
+                    if (!CONST_P2_PHYSICS) {
+                        sprite.body.friction.x = 0;
+                    }
                     if (already_moving) {
-                        console.log("slippery + moving");
 
                     } else {
-                        console.log("slippery");
-                        sprite.body.friction.x = 1;
                     }
                     already_slippery = true;
                 }
                 break;
             case "bouncing":
                 if (CONST_BOUNCINGPLATFORMS) {
-                    console.log("bouncing");
-                    sprite.body.bounce.set(0.8);
+                    if (!CONST_P2_PHYSICS) {
+                        sprite.body.bounce.set(0.8);
+                    }
+                    already_bouncing = true;
                 }
                 break;
             case "slide":
                 if (CONST_SLIDEPLATFORMS) {
-                    console.log("slide");
                 }
                 break;
             case "falling":
                 if (CONST_FALLINGPLATFORMS) {
-                    console.log("falling");
                 }
                 break;
             default:
-            // console.log("unknown platform type: " + types[i]);
+                if (types[i] != '') console.log("unknown platform type: " + types[i]);
         }
     }
+
+
+    if (already_moving) {
+        if (CONST_MOVINGPLATFORMS) {
+            sprite.body.velocity.x = platform.xmove;
+            sprite.body.velocity.y = platform.ymove;
+            sprite.body.minx = platform.x - platform.minx;
+            sprite.body.miny = platform.y - platform.miny;
+            sprite.body.maxx = platform.x + platform.maxx;
+            sprite.body.maxy = platform.y + platform.maxy;
+            if (!CONST_P2_PHYSICS) {
+                sprite.body.bounce.set(1);
+            }
+            sprite.body.collideWorldBounds = true;
+            sprite.bounceTimer = 0;
+        }
+    }
+    if (CONST_P2_PHYSICS) {
+        if (already_slippery) {
+            sprite.body.setMaterial(iceMaterial);
+        } else if (already_bouncing) {
+            sprite.body.setMaterial(bounceMaterial);
+        }
+        else {
+            sprite.body.setMaterial(groundMaterial);
+        }
+    }
+
 
     sprite.p_types = types;
 
@@ -698,7 +815,7 @@ Crowdjump.Game._spawnCharacters = function (data) {
             }
         }, this);
     }
-    // spawn hero //+size/2 on each side
+    // spawn hero //+size/2 on each side because anchor 0.5
     this.hero = new Hero(this.game, data.hero.x + 21, data.hero.y + 21);
     this.game.add.existing(this.hero);
 };
@@ -887,7 +1004,6 @@ Crowdjump.Game._spawnFlag = function (flagspawn) {
     this.flag = this.flags.create(flagspawn.x + 20, flagspawn.y + 45, 'flag');
     this.flag.anchor.setTo(0.5, 1);
     this.game.physics.enable(this.flag);
-    this.flag.body.allowGravity = false;
     this.flag.body.allowGravity = false;
 };
 
