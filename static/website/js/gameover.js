@@ -29,6 +29,7 @@ Crowdjump.Gameover.prototype = {
 
 
         this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.replay, this);
+        this.input.keyboard.addKey(Phaser.KeyCode.ESC).onDown.add(backToMainMenu);
         // console.error("Gameinfo!: " + gameinfo);
 
 

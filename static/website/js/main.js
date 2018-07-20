@@ -14,7 +14,7 @@ const CONST_TIME = true;
 
 const CONST_LAVA = true;
 const CONST_CRATES = false;
-const CONST_SLIPPERYPLATFORMS = true;
+const CONST_SLIPPERYPLATFORMS = false;
 const CONST_MOVINGPLATFORMS = true;
 const CONST_LOCKPLATFORM = false;
 const CONST_BOUNCINGPLATFORMS = false;
@@ -28,8 +28,12 @@ const CONST_ENEMIES = true;
 const CONST_KILL_ENEMIES = false;
 const CONST_SPIDER_SPEED = 100;
 
+const CONST_LEVELSELECTION = true;
 const CONST_BUBBLE = true;
 const CONST_PAUSE = false;
+
+const CONST_WALK = false;
+const CONST_SPRINT = false;
 
 const CONST_DOUBLE_JUMP = false;
 const CONST_WALL_JUMP = false;
@@ -60,6 +64,7 @@ const CONST_WORLD_CENTER_Y = CONST_CANVAS_Y / 2;
 
 const CONST_WASD_CONTROLS = false;
 
+var DIFFICULTY = Object.freeze({"easy":1, "normal":2, "hard":3})
 var version = '';
 
 var game;
@@ -73,6 +78,8 @@ var jumps_last_level = 0;
 var movementinputs_last_level = 0;
 var enemies_last_level = 0;
 var coins_last_level = 0;
+var difficulty = DIFFICULTY.normal;
+var selected_level = -1;
 
 function csrfSafeMethod(method) {
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -145,6 +152,7 @@ window.createGame = function (canvas, scope) {
     game.state.add('Game', Crowdjump.Game);
     game.state.add('Endscreen', Crowdjump.Endscreen);
     game.state.add('Gameover', Crowdjump.Gameover);
+    game.state.add('Levelselection', Crowdjump.Levelselection);
     game.state.start('Boot');
 
     return;
@@ -341,4 +349,11 @@ function setInfoLastLevel (){
     enemies_last_level = game.enemiesDefeatedCount;
     coins_last_level = game.coinPickupCount;
 
+}
+
+function backToMainMenu () {
+    setLevelInfo(this.level + 1, "back to start menu");
+    updateInfo(false);
+    this.game.time.reset();
+    this.game.state.start("Startmenu");
 }

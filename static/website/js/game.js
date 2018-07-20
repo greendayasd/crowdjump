@@ -5,6 +5,8 @@ var Crowdjump = Crowdjump || {};
 // =============================================================================
 Crowdjump.Game = function (game) {
 
+    var is_walking = false;
+    var is_sprinting = false;
     var second_jump = true;
     var hero_on_wall = false;
     var jumpTimer = 0;
@@ -73,7 +75,11 @@ Hero.prototype = Object.create(Phaser.Sprite.prototype);
 Hero.prototype.constructor = Hero;
 
 Hero.prototype.move = function (direction) {
-    this.body.velocity.x = direction * CONST_MOVE_SPEED;
+    var movespeed = CONST_MOVE_SPEED;
+    if (CONST_WALK && is_walking) movespeed *= 0.5;
+    if (CONST_SPRINT && is_sprinting) movespeed *= 2;
+
+    this.body.velocity.x = direction * movespeed;
 
     // update image flipping & animations
     if (this.body.velocity.x < 0) {
@@ -231,7 +237,10 @@ Crowdjump.Game.init = function (data) {
         right: Phaser.KeyCode.RIGHT,
         space: Phaser.KeyCode.SPACEBAR,
         up: Phaser.KeyCode.UP,
-        down: Phaser.KeyCode.DOWN //Fix Scrolling Bug
+        down: Phaser.KeyCode.DOWN, //Fix Scrolling Bug
+        esc: Phaser.KeyCode.ESC,
+        ctrl: Phaser.KeyCode.CONTROL,
+        shift: Phaser.KeyCode.SHIFT
     });
 
     jump = function () {
@@ -244,8 +253,19 @@ Crowdjump.Game.init = function (data) {
     this.keys.left.onDown.add(this._countMovementInput, this);
     this.keys.right.onDown.add(this._countMovementInput, this);
 
+    if (CONST_SPRINT) {
+        this.keys.ctrl.onDown.add(this._activateSprint, this);
+        this.keys.ctrl.onUp.add(this._deactivateSprint, this);
+    }
+    if (CONST_WALK) {
+        this.keys.shift.onDown.add(this._activateWalk, this);
+        this.keys.shift.onUp.add(this._deactivateWalk, this);
+    }
+
     this.keys.up.onDown.add(jump, this);
     this.keys.space.onDown.add(jump, this);
+
+    this.keys.esc.onDown.add(backToMainMenu);
 
     this.wasd = {};
     if (CONST_WASD_CONTROLS) {
@@ -278,6 +298,9 @@ Crowdjump.Game.init = function (data) {
     pu_lavaorb = false;
     bullets_left = CONST_MAGAZINE;
     jumpTimer = 0;
+    is_sprinting = false;
+    is_walking = false;
+
     try {
         if (this.level == 0 && (lives == undefined || lives <= 0)) lives = CONST_HERO_LIVES;
     } catch (e) {
@@ -320,7 +343,11 @@ Crowdjump.Game.create = function () {
     zhonya_cooldown = false;
     time_zhonya_activated = 0;
     time_zhonya_cooldown = 0;
-    level_data = this.game.cache.getJSON(`level:${this.level}`);
+    if (selected_level >= 0) {
+        level_data = this.game.cache.getJSON(`level:${selected_level}`);
+    } else {
+        level_data = this.game.cache.getJSON(`level:${this.level}`);
+    }
     this._loadLevel(level_data);
 
     this._createHud();
@@ -943,7 +970,12 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     if (zhonya_activated) {
         this.sfx.zhonyas.stop();
     }
-    if (this.level < CONST_LEVEL - 1) {
+    if (selected_level >= 0) {
+        setLevelInfo(selected_level + 1, "completed");
+        this.state.start('Endscreen');
+
+    }
+    else if (this.level < CONST_LEVEL - 1) {
         // console.log(this.level + ' level');
         setLevelInfo(this.level + 1, "completed");
         this.game.state.restart(true, false, {level: this.level + 1});
@@ -1016,6 +1048,24 @@ Crowdjump.Game._spawnFlag = function (flagspawn) {
     this.flag.anchor.setTo(0.5, 1);
     this.game.physics.enable(this.flag);
     this.flag.body.allowGravity = false;
+};
+
+Crowdjump.Game._activateSprint = function () {
+    is_walking = false;
+    is_sprinting = true;
+};
+
+Crowdjump.Game._deactivateSprint = function () {
+    is_sprinting = false;
+};
+
+Crowdjump.Game._activateWalk = function () {
+    is_walking = true;
+    is_sprinting = false;
+};
+
+Crowdjump.Game._deactivateWalk = function () {
+    is_walking = false;
 };
 
 Crowdjump.Game.paused = function () {

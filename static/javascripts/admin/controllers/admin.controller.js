@@ -466,7 +466,15 @@
 
 
                 if (name === "implemented_ideas") {
-                    console.log(groupBy(['id'], 'length'));
+                    var orderedByUser = Object.values(groupBy($scope.ideas, 'user'));
+                    console.log(orderedByUser);
+                    header = 'id,user_id,title,description';
+                    for (var i = 0; i < $scope.ideas.length; i++) {
+                        if ($scope.ideas[i].deleted == true) continue;
+                        if ($scope.ideas[i].implemented == false) continue;
+                        content += '\n' + $scope.ideas[i].id + ',' + $scope.ideas[i].user.id + ',' + $scope.ideas[i].request_text + ',' + $scope.ideas[i].description + ',';
+                    }
+
 
                 }
 
@@ -510,10 +518,49 @@
 
             }
 
+            $scope.get_tracking_all = function (grouped) {
+
+                //ajax get all user files
+                var header = '';
+                var content = '';
+                var data = {};
+
+                $.ajax({
+                    url: '/getalltracking/',
+                    data: data,
+                    success: function (data) {
+                        console.log(data);
+                        if (grouped) {
+                            header = 'page,time,';
+                            var orderedByPage = Object.values(groupBy(data, 'page'));
+
+                            for (var i = 0; i < orderedByPage.length; i++) {
+                                orderedByPage[i] = (orderedByPage[i][0]["page"] + ',' + sumUp(orderedByPage[i], "time") + ',');
+                                content += '\n' + orderedByPage[i];
+
+                            }
+                        } else {
+                            header = 'timestamp,lastpage,page,time,';
+                            for (var i = 0; i < data.length; i++) {
+                                content += '\n' + data[i].timestamp + ',' + data[i].lastpage + ',' + data[i].page + ',' + data[i].time + ',';
+                            }
+                        }
+                        $scope.csv = header + content;
+                    },
+                    error: function (data) {
+                        console.log("not found?");
+                    }
+                });
+
+                setTimeout($scope.createFile($scope.csv, 'all_tracking.csv', 'text/csv'));
+
+            }
+
             $scope.get_gamedata_user = function (username, grouped) {
                 var header = '';
                 var content = '';
-                username = 'admin';
+                // username = 'admin';
+                console.log(username);
                 var data = {"username": username, "version": $scope.newestVersion.label};
 
                 $.ajax({
@@ -523,9 +570,7 @@
 
                         if (grouped) {
                             header = 'level,status,count';
-                            console.log(data);
                             var orderedByLevel = Object.values(groupBy(data, 'level'));
-                            console.log(orderedByLevel);
                             var orderedByLevelAndStatus = [];
                             for (var i = 0; i < orderedByLevel.length; i++) {
                                 orderedByLevelAndStatus.push(Object.values(groupBy(orderedByLevel[i], 'status')));
@@ -556,21 +601,20 @@
 
             };
 
-            $scope.get_all_gamedata = function (grouped) {
+            $scope.get_all_gamedata = function (grouped, all) {
                 var header = '';
                 var content = '';
-                var data = {"version": $scope.newestVersion.label};
+                var data = all ? {"version": 0} : {"version": $scope.newestVersion.label};
 
                 $.ajax({
                     url: '/getallgamedata/',
                     data: data,
                     success: function (data) {
-
+                        if (data[0] == 'failure') console.log(data);
+                        console.log(data);
                         if (grouped) {
                             header = 'level,status,count';
-                            console.log(data);
                             var orderedByLevel = Object.values(groupBy(data, 'level'));
-                            console.log(orderedByLevel);
                             var orderedByLevelAndStatus = [];
                             for (var i = 0; i < orderedByLevel.length; i++) {
                                 orderedByLevelAndStatus.push(Object.values(groupBy(orderedByLevel[i], 'status')));
@@ -586,7 +630,6 @@
                             for (var i = 0; i < data.length; i++) {
                                 content += '\n' + data[i].timestamp + ',' + data[i].level + ',' + data[i].status + ',' + data[i].time + ',' + data[i].jumps + ',' + data[i].movement_inputs + ',';
                             }
-                            console.log(data);
                         }
                         $scope.csv = header + content;
                     },
@@ -595,7 +638,7 @@
                     }
                 });
 
-                setTimeout($scope.createFile($scope.csv, username + '.csv', 'text/csv'));
+                setTimeout($scope.createFile($scope.csv, "gamedata" + $scope.newestVersion.label + '.csv', 'text/csv'));
 
             };
 
@@ -607,7 +650,7 @@
                     url: '/getallusergame/',
                     data: data,
                     success: function (data) {
-                        for (var i = 0; i <= data.length; i++) {
+                        for (var i = 0; i < data.length; i++) {
                             $scope.csv += data[i] + "\n";
                         }
                     },
@@ -618,21 +661,6 @@
 
             }
 
-            $scope.get_tracking_all = function () {
-
-                //ajax get all user files
-                var data = {"username": user};
-
-                $.ajax({
-                    url: '/gettracking/',
-                    data: data,
-                    success: function (data) {
-                    },
-                    error: function (data) {
-                    }
-                });
-
-            }
 
             $scope.checkIdeas = function () {
                 $scope.csv = '';
@@ -694,11 +722,11 @@
                 data = data.substring(5, data.length);
                 var string_unfinished = true;
                 var maxcount = 10;
-                while (string_unfinished){
-                    var last_char = data.substring(data.length-1,data.length);
-                    last_char == "]" ? string_unfinished = false :data = data.substring(0,data.length-1);
+                while (string_unfinished) {
+                    var last_char = data.substring(data.length - 1, data.length);
+                    last_char == "]" ? string_unfinished = false : data = data.substring(0, data.length - 1);
                     maxcount--;
-                    maxcount == 0 ? string_unfinished = true:maxcount;
+                    maxcount == 0 ? string_unfinished = true : maxcount;
 
                 }
 
@@ -713,20 +741,20 @@
                 var powerups = '';
                 var decorations = '';
                 var enemies = '';
-                var enemy_walls ='';
-                var move_walls ='';
+                var enemy_walls = '';
+                var move_walls = '';
 
                 var maxX = 918;
                 var maxY = 588;
 
                 for (var i = 0; i < array.length; i++) {
                     var image = array[i][2];
-                    var split =  image.split(":");
+                    var split = image.split(":");
                     var type = ', "type":"' + split[1] + '"';
                     var endline = '},\n';
 
-                    maxX = Math.max(maxX,array[i][0]);
-                    maxY = Math.max(maxY,array[i][1]);
+                    maxX = Math.max(maxX, array[i][0]);
+                    maxY = Math.max(maxY, array[i][1]);
                     var line = '\t\t{"image": ' + '"' + image + '", "x": ' + array[i][0] + ', "y": ' + array[i][1];
                     if (image.startsWith("lava")) {
                         lava += line + endline;
@@ -776,7 +804,7 @@
                     platforms += line + ', "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
                 }
 
-                var worldsize = '\t"size": {"x": ' + (maxX +42) + ', "y": ' + (maxY +12)+ '}';
+                var worldsize = '\t"size": {"x": ' + (maxX + 42) + ', "y": ' + (maxY + 12) + '}';
 
                 platforms = wrapJsonLevel(platforms, "platforms");
                 falling_platforms = wrapJsonLevel(falling_platforms, "fallingPlatforms");

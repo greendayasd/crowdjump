@@ -2,12 +2,13 @@
     <div class="row" id="main-row">
         <div class="col-sm-12 col-centered" id="main-col">
             <div>
-                <h3>Ideas</h3>
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('pre')">Pre CSV
+                <h3>Survey</h3>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('pre')">Pre
                 </button>
 
-                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('post')">Post CSV
-                </button>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('post')">Post
+                </button><br>
+                <h3>Ideas</h3>
 
                 <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('active_ideacomments')">Active
                     Ideas + Comments
@@ -27,7 +28,13 @@
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_user(username,false)">
                     Usertracking
                 </button>
-                <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_user(username,true)">Grouped
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_user(username,true)">Usertracking grouped
+                    by page
+                </button>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_all(false)">
+                    All tracking
+                </button>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_all(true)">All tracking grouped
                     by page
                 </button>
                 <br>
@@ -37,6 +44,8 @@
                         ng-options="template.label for template in versions track by template.id"
                 >
                 </select>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_game_user_version()">Get users
+                </button>
                 <br><br>
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_gamedata_user(username,false)">
                     Gamedata
@@ -44,19 +53,22 @@
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_gamedata_user(username,true)">
                     Gamedata grouped
                     by level and status
+                </button><br><br>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_gamedata(false,false)">All gamedata version
                 </button>
-                <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_game_user_version()">Get users
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_gamedata(true,false)">All gamedata version
+                    grouped by level and status
+                </button><br><br>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_gamedata(false,true)">All gamedata
                 </button>
-                <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_gamedata(false)">All gamedata
-                </button>
-                <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_gamedata(true)">All gamedata
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_gamedata(true,true)">All gamedata
                     grouped by level and status
                 </button>
 
-                <h3>Random Org</h3>
+                <!--<h3>Random Org</h3>
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_idea_list()">get Idea List
                 </button>
-                <br>
+                <br>-->
 
                 <h3>Mail</h3>
                 <button type="button" class="btn btn-xs btn-primary" ng-click="send_mail()">send Mail

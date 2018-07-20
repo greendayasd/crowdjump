@@ -124,10 +124,10 @@ def SendTrackingData(request):
 def GetTrackingData(request):
     username = request.GET.get('username')
 
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.username != 'admin':
         username = request.user.username
-    if username != 'admin':
-        return JsonResponse({}, safe=False)
+    # if username != 'admin':
+    #     return JsonResponse({}, safe=False)
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     folder_path = os.path.join(BASE_DIR, 'data')
@@ -139,6 +139,36 @@ def GetTrackingData(request):
         arrData = json.loads('[' + data + ']')
 
     return JsonResponse(arrData, safe=False)
+
+
+def GetAllTrackingData(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+    if username != 'admin':
+        return JsonResponse({}, safe=False)
+
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    folder_path = os.path.join(BASE_DIR, 'data')
+    folder_path = os.path.join(folder_path, 'tracking')
+
+    res = ''
+    for filename in os.listdir(folder_path):
+        with open(os.path.join(folder_path, filename)) as outfile:
+            check = outfile.read() + ',\n'
+            try:
+                checkJson = json.loads('[' + check[:-2] + ']')
+            except:
+                print("failure")
+                return JsonResponse('{"path":"' + folder_path + '\\' + filename + '"' + '"failure":"' + check + '"}',
+                                    safe=False)
+            res += check
+
+    try:
+        arrData = json.loads('[' + res[:-2] + ']')
+        return JsonResponse(arrData, safe=False)
+    except:
+        print("failure")
+        return JsonResponse('{"failure":"' + res[:-2] + '"}', safe=False)
 
 
 def SendGameData(request):
@@ -154,7 +184,7 @@ def SendGameData(request):
     status = request.GET.get('status')
     timeneeded = request.GET.get('time')
 
-    #Anticheat
+    # Anticheat
     # if (status == 'completed'):
     #     if (int(timeneeded) < 4000 and int(level) == 0
     #             or int(timeneeded) < 8500 and int(level) == 1
@@ -199,10 +229,10 @@ def SendGameData(request):
 
 def GetGameData(request):
     username = request.GET.get('username')
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.username != 'admin':
         username = request.user.username
-    if username != 'admin':
-        return JsonResponse({}, safe=False)
+    # if username != 'admin':
+    #     return JsonResponse({}, safe=False)
 
     version = request.GET.get('version')
 
@@ -226,20 +256,51 @@ def GetAllGameData(request):
         return JsonResponse({}, safe=False)
 
     version = request.GET.get('version')
-
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    folder_path = os.path.join(BASE_DIR, 'data')
-    folder_path = os.path.join(folder_path, 'gamedata')
-    folder_path = os.path.join(folder_path, version)
-
-
     res = ''
-    for filename in os.listdir(folder_path):
-        with open(os.path.join(folder_path, filename)) as outfile:
-            res += outfile.read() + ','
 
+    if version == '0':
+        try:
+            BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            folder_path = os.path.join(BASE_DIR, 'data')
+            folder_path = os.path.join(folder_path, 'gamedata')
 
-    arrData = json.loads('[' + res[:-1] + ']')
+            for versionfolder in os.listdir(folder_path):
+                new_path = os.path.join(folder_path, versionfolder)
+                for filename in os.listdir(new_path):
+                    with open(os.path.join(new_path, filename)) as outfile:
+                        check = outfile.read() + ',\n'
+                        try:
+                            checkJson = json.loads('[' + check[:-2] + ']')
+                        except:
+                            print("failure")
+                            return JsonResponse(
+                                '{"path":"' + new_path + '\\' + filename + '"' + '"failure":"' + check + '"}',
+                                safe=False)
+                        res += check
+        except:
+            return JsonResponse('{"failure":"' + new_path + '\\' + filename + '"}', safe=False)
+    else:
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        folder_path = os.path.join(BASE_DIR, 'data')
+        folder_path = os.path.join(folder_path, 'gamedata')
+        folder_path = os.path.join(folder_path, version)
+
+        for filename in os.listdir(folder_path):
+            with open(os.path.join(folder_path, filename)) as outfile:
+                check = outfile.read() + ',\n'
+                try:
+                    checkJson = json.loads('[' + check[:-2] + ']')
+                except:
+                    print("failure")
+                    return JsonResponse(
+                        '{"path":"' + folder_path + '\\' + filename + '"' + '"failure":"' + check + '"}', safe=False)
+                res += check
+
+    try:
+        arrData = json.loads('[' + res[:-2] + ']')
+    except:
+        print("failure")
+        return JsonResponse('{"failure":"' + res[:-2] + '"}', safe=False)
     return JsonResponse(arrData, safe=False)
 
 

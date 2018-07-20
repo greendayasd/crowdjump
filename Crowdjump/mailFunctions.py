@@ -9,11 +9,11 @@ def mail_new_version(request):
     if username != 'admin':
         return 'Wrong User'
 
-    version = 'version 0.09'
+    version = 'version 0.10'
     subject = 'Crowdjump ' + version + ' is available!'
     message1 = 'Hello '
     message2 = ',<br>check out ' + version + ' of Crowdjump, the newest feature is '
-    feature = 'moving platforms! Try not to fall off, the levels got a bit harder!'
+    feature = 'the possibility to replay each level without having to play through the ones before! Now you can practice each level before going for a new highscore!'
     message3 = '<br>If you want your own idea to be implemented, '
     html_content = '<a href="https://www.crowdjump.win">submit an idea or vote for it at Crowdjump :)</a>'
     fromMail = 'crowdjump@gmail.com'

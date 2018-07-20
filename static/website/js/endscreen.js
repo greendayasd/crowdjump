@@ -14,46 +14,48 @@ Crowdjump.Endscreen.prototype = {
 
     create: function () {
         this.game.stage.backgroundColor = '#1948cd';
+        var scoreText = '';
 
         if (CONST_TIME) {
             // time_score = game.timeElapsed.toFixed(3);
             time_score = game.time.totalElapsedSeconds().toFixed(3);
-            // console.error("gameinfo 0: " + JSON.stringify(game.gameInfo));
-            // console.error(game.gameInfo["highscore"]);
-            // console.error(game.gameInfo["highscore"] + 0);
         }
         old_time = -2;
 
-        if (game.authenticated) {
-            if (game.gameInfo["highscore"] == null || game.gameInfo["highscore"] == 0 || game.gameInfo["highscore"] == NaN || isNaN(game.gameInfo["highscore"])) {
-                game.gameInfo["highscore"] = -1;
+        if (selected_level >= 0) {
+            scoreText = "Congratulations, you beat level " + (selected_level +1) + " in " + time_score + " seconds!";
+        } else {
+            if (game.authenticated) {
+                if (game.gameInfo["highscore"] == null || game.gameInfo["highscore"] == 0 || game.gameInfo["highscore"] == NaN || isNaN(game.gameInfo["highscore"])) {
+                    game.gameInfo["highscore"] = -1;
+                }
+                old_time = (game.gameInfo["highscore"] + 0);
             }
-            old_time = (game.gameInfo["highscore"] + 0);
-        }
-        // console.error("old_time " + old_time);
-        // console.error("new_time " + time_score);
-        var highscore_text = '\n';
-        var isHighscore = false;
-        if (true) {
-            if (old_time == -2) {
-                highscore_text += 'Login to save your score!';
-            }
-            else if (old_time == -1) {
-                highscore_text += 'This is a new highscore!';
-                isHighscore = true;
-                game.gameInfo["highscore"] = time_score * 1000;
-            } else {
-                if (old_time > time_score * 1000) {
-                    highscore_text += 'This is a new highscore, your previous highscore was ' + (old_time / 1000) + ' seconds!';
+            // console.error("old_time " + old_time);
+            // console.error("new_time " + time_score);
+            var highscore_text = '\n';
+            var isHighscore = false;
+            if (true) {
+                if (old_time == -2) {
+                    highscore_text += 'Login to save your score!';
+                }
+                else if (old_time == -1) {
+                    highscore_text += 'This is a new highscore!';
                     isHighscore = true;
                     game.gameInfo["highscore"] = time_score * 1000;
                 } else {
-                    highscore_text += 'Your highscore is ' + (old_time / 1000) + ' seconds!';
+                    if (old_time > time_score * 1000) {
+                        highscore_text += 'This is a new highscore, your previous highscore was ' + (old_time / 1000) + ' seconds!';
+                        isHighscore = true;
+                        game.gameInfo["highscore"] = time_score * 1000;
+                    } else {
+                        highscore_text += 'Your highscore is ' + (old_time / 1000) + ' seconds!';
+                    }
                 }
-            }
 
+            }
+            scoreText = "Congratulations, you beat the game in " + time_score + " seconds!" + highscore_text;
         }
-        var scoreText = "Congratulations, you beat the level in " + time_score + " seconds!" + highscore_text;
         score = this.add.text(CONST_WORLD_CENTER_X, 60, scoreText, {fill: '#dbdbdb'});
         score.anchor.set(0.5);
 
@@ -67,7 +69,7 @@ Crowdjump.Endscreen.prototype = {
         info.anchor.set(0.5);
 
         if (CONST_BUBBLE) {
-            bubble = this.add.sprite(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y +10, 'bubble');
+            bubble = this.add.sprite(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 10, 'bubble');
             bubble.anchor.set(0.5);
             bubble.inputEnabled = true;
             bubble.events.onInputDown.add(this.ideas, this);
@@ -81,6 +83,7 @@ Crowdjump.Endscreen.prototype = {
 
 
         this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.replay, this);
+        this.input.keyboard.addKey(Phaser.KeyCode.ESC).onDown.add(backToMainMenu);
         // console.error("Gameinfo!: " + gameinfo);
 
 

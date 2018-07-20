@@ -23,7 +23,8 @@ Crowdjump.Preloader.prototype = {
 
         //Ui
         this.load.image('logo', images + 'logo.png');
-        this.load.image('play', images + 'play.png');
+        // this.load.image('play', images + 'play.png');
+        // this.load.image('select_level', images + 'select_level.png');
         this.load.image('bubble', images + 'ideabubble.png');
         this.load.image('alien_death', images + 'alien_death.png');
 
@@ -102,7 +103,7 @@ Crowdjump.Preloader.prototype = {
 
         //character
         if (CONST_ANIMATE_CHARACTER) {
-                this.load.spritesheet('hero', files + 'zhonya template2.png', 34, 42);
+            this.load.spritesheet('hero', files + 'zhonya template2.png', 34, 42);
             // if (CONST_ZHONYA) {
             // } else {
             //     this.load.spritesheet('hero', files + 'hero.png', 36, 42);
@@ -160,8 +161,11 @@ Crowdjump.Preloader.prototype = {
                 // console.error("nicht auth");
                 game.authenticated = false;
             }
-            // this.state.start('Startmenu');
-            this.state.start('Game');
+            if (CONST_LEVELSELECTION) {
+                this.state.start('Startmenu');
+            } else {
+                this.state.start('Game');
+            }
             // this.state.start('Endscreen');
         }
     }
