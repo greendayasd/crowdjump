@@ -65,7 +65,7 @@
     <div ng-controller="IndexController as vm" ng-show="!vm.isAuthenticated">
         <div class="alert alert-info">
             <strong>
-                <a style="font-size: 28px" style="margin-top: 45px" href="/login?next={{ request.path }}">Login to
+                <a style="font-size: 28px" style="margin-top: 45px" href="/login?next={{ request.path }}">Login to vote, comment or
                     submit your own Idea!</a>
             </strong>
         </div>
@@ -217,7 +217,7 @@
 
                             </div>
                         </div>
-                        <!--<div class="commentContainer well" style="background-color: #7bc7e8;" ng-show="idea.comments.length > 0 || isAuthenticated">
+                        <div class="commentContainer well" style="background-color: #7bc7e8;" ng-show="idea.comments.length > 0 || isAuthenticated">
                             <div class="comment">
                                 <div class="comment__comments">
                                     <div ng-repeat="comment in commentOrdering = (idea.comments | filter : customCommentFilter | orderBy:'created_at':false)"  style="background-color: #f5f5f5;" class="well">
@@ -245,16 +245,15 @@
                                     <label class="btn btn-primary" btn-checkbox-false="0" ng-click="idea.show_comments=true"  > Show all {{ idea.comments.length }} Comments
                                     </label>
                                     <br>
-                                    <br>
                                 </div>
                                 <div ng-show="idea.show_comments">
                                     <label class="btn btn-primary" btn-checkbox-false="0" ng-click="idea.show_comments=false"  > Hide Comments
                                     </label>
                                     <br>
-                                    <br>
                                 </div>
                                 <form name="comment_form{{ idea.id }}" ng-submit="addNewComment(idea.id)" novalidate
                                       ng-show="isAuthenticated">
+                                                <br>
                                                 <textarea placeholder="Type in your comment"
                                                           style="resize: none; width: 88%; height: 50px" ng-model="comment_text"
                                                           ng-attr-id="comment_text{{ idea.id }}"
@@ -264,7 +263,7 @@
                                     </button>
                                 </form>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
 
                 </div>

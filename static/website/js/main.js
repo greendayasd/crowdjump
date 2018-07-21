@@ -4,10 +4,13 @@ const CONST_JUMP_SPEED = 700; //~500 for long jump
 const CONST_AIR_SPEED = 500;
 const CONST_BOUNCE_SPEED = 200;
 const CONST_GRAVITY = 1400;
+const CONST_ACCELERATION = 0;
+const CONST_MAX_SPEED = 30;
 const CONST_MOVE_SPEED = 200;
-const CONST_HERO_WEIGHT = 1;
+const CONST_HERO_WEIGHT = 100;
 const CONST_HERO_LIVES = 1;
 const CONST_REPLAY_LEVEL = true;
+const CONST_SAVE_LEVEL_TIME = false;
 
 const CONST_LEVEL = 4;
 const CONST_TIME = true;
@@ -37,7 +40,7 @@ const CONST_SPRINT = false;
 
 const CONST_DOUBLE_JUMP = false;
 const CONST_WALL_JUMP = false;
-const CONST_LONG_JUMP = false;
+const CONST_LONG_JUMP = false; //Jump Speed -> 500
 const CONST_MAX_LONG_JUMP = 15;
 const CONST_ZHONYA = false;
 const CONST_KILL_IN_ZHONYA = false;
@@ -54,9 +57,10 @@ const CONST_SHOOT_IN_ZHONYA = false;
 const CONST_ANIMATE_CHARACTER = false;
 const CONST_COLOR = false;
 
+const CONST_SHOWLEVEL = false;
+const CONST_FPS = false;
 const CONST_P2_PHYSICS = false;
 const CONST_DEBUG = false;
-const CONST_FPS = false;
 const CONST_CANVAS_X = 960;
 const CONST_CANVAS_Y = 600;
 const CONST_WORLD_CENTER_X = CONST_CANVAS_X / 2;
@@ -80,6 +84,9 @@ var enemies_last_level = 0;
 var coins_last_level = 0;
 var difficulty = DIFFICULTY.normal;
 var selected_level = -1;
+
+var time_overall = 0;
+var time_last_level_or_restart = 0;
 
 function csrfSafeMethod(method) {
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));

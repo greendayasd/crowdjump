@@ -14,8 +14,8 @@
         function IdeasIndexController($scope, Authentication, Ideas, Comments, Votes, History, ngDialog, $controller, $mdToast, $window) {
             var vm = this;
             var canDelete = true;
-            var activate_comments = false;
-            var last_idea_id = 11;
+            var activate_comments = true;
+            var last_idea_id = 21;
 
             //Filter/Ordering
             $scope.filterReset = function () {

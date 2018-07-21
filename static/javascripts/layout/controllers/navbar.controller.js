@@ -48,7 +48,7 @@
 
         //timer
         var $clock = $('#clock'),
-            eventTime = moment('21-07-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix(),
+            eventTime = moment('22-07-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix(),
             currentTime = moment().unix(),
             diffTime = eventTime - currentTime,
             duration = moment.duration(diffTime * 1000, 'milliseconds'),

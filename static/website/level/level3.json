@@ -6,7 +6,7 @@
 		{"image": "ground:2x2", "x": 462, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:2x2", "x": 546, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:4x2", "x": 0, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:4x2", "x": 168, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:4x2", "x": 168, "y": 546, "p_types": "slippery", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:4x1", "x": 336, "y": 168, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:4x1", "x": 546, "y": 252, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:6x1", "x": 84, "y": 378, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
@@ -67,7 +67,7 @@
 		{"image": "invisible_wall", "x": 908, "y": 336}
 	],
 	"powerups": [
-
+		{"image": "powerup:lavaorb", "x": 462, "y": 504, "type":"lavaorb"}
 	],
 	"decorations": [
 

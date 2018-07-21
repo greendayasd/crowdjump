@@ -76,6 +76,9 @@
 		{"image": "invisible_wall", "x": 320, "y": 168}
 	],
 	"powerups": [
+		{"image": "powerup:jumpboost", "x": 336, "y": 252, "type":"jumpboost"},
+		{"image": "powerup:jumpboost", "x": 1344, "y": 336, "type":"jumpboost"},
+		{"image": "powerup:lavaorb", "x": 504, "y": 294, "type":"lavaorb"}
 
 	],
 	"decorations": [

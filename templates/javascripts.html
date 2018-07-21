@@ -146,8 +146,8 @@
 
     <script type="text/javascript">
         var isonfocus = true;
-        var versionlabel = '';
-        var versionnumber = 10;
+        var versionnumber = 11;
+        var versionlabel = '0.' + versionnumber;
 
         window.onblur = function () {
             isonfocus = false;
@@ -367,6 +367,21 @@
         window.onbeforeunload = function(){
             sendTrackingData(getCookie("lastpage"), getCookie("page"), globeclock);
         };
+
+        function log(string1,string2,string3,string4,string5,string6,string7,string8,string9,string10){
+            var res=string1;
+            string2 != undefined ? res+= ' , ' + string2: false;
+            string3 != undefined ? res+= ' , ' + string3: false;
+            string4 != undefined ? res+= ' , ' + string4: false;
+            string5 != undefined ? res+= ' , ' + string5: false;
+            string6 != undefined ? res+= ' , ' + string6: false;
+            string7 != undefined ? res+= ' , ' + string7: false;
+            string8 != undefined ? res+= ' , ' + string8: false;
+            string9 != undefined ? res+= ' , ' + string9: false;
+            string10 != undefined ? res+= ' , ' + string10: false;
+
+            console.log(res);
+        }
 
         $(function () {
             //var start = null;
