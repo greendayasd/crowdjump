@@ -245,15 +245,16 @@
                                     <label class="btn btn-primary" btn-checkbox-false="0" ng-click="idea.show_comments=true"  > Show all {{ idea.comments.length }} Comments
                                     </label>
                                     <br>
+                                    <br>
                                 </div>
                                 <div ng-show="idea.show_comments">
                                     <label class="btn btn-primary" btn-checkbox-false="0" ng-click="idea.show_comments=false"  > Hide Comments
                                     </label>
                                     <br>
+                                    <br>
                                 </div>
                                 <form name="comment_form{{ idea.id }}" ng-submit="addNewComment(idea.id)" novalidate
                                       ng-show="isAuthenticated">
-                                                <br>
                                                 <textarea placeholder="Type in your comment"
                                                           style="resize: none; width: 88%; height: 50px" ng-model="comment_text"
                                                           ng-attr-id="comment_text{{ idea.id }}"

@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/static/website/level/level4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/mailFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crowdjump/mailFunctions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/powerup_jumpboost.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/gamefiles/powerup_jumpboost.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/powerup_lavaorb.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/gamefiles/powerup_lavaorb.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/levelselection.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/levelselection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/preloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level0.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level1.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level2.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level3.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/pixelart projects/hero.pmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/javascripts.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -84,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="348">
@@ -130,6 +113,15 @@
                 <element signature="e#33821#34576#0" />
                 <element signature="e#35237#35513#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="254" column="64" selection-start-line="254" selection-start-column="64" selection-end-line="254" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -203,8 +195,8 @@
       <find>time_last_level</find>
       <find>total</find>
       <find>setInfoLast</find>
-      <find>setinfol</find>
       <find>setInfoLastL</find>
+      <find>setinfol</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -261,7 +253,6 @@
         <option value="$PROJECT_DIR$/static/website/js/gameover.js" />
         <option value="$PROJECT_DIR$/static/templates/layout/game.html" />
         <option value="$PROJECT_DIR$/static/website/js/startmenu.js" />
-        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
         <option value="$PROJECT_DIR$/static/website/level/level0.json" />
         <option value="$PROJECT_DIR$/static/website/level/level1.json" />
         <option value="$PROJECT_DIR$/static/website/level/level2.json" />
@@ -276,6 +267,7 @@
         <option value="$PROJECT_DIR$/static/website/js/levelselection.js" />
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
         <option value="$PROJECT_DIR$/static/website/js/game.js" />
+        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
       </list>
     </option>
   </component>
@@ -993,19 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4182">
-          <caret line="255" column="52" selection-start-line="255" selection-start-column="52" selection-end-line="255" selection-end-column="52" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7">
@@ -1079,6 +1058,13 @@
             <element signature="e#33821#34576#0" />
             <element signature="e#35237#35513#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="254" column="64" selection-start-line="254" selection-start-column="64" selection-end-line="254" selection-end-column="64" />
         </state>
       </provider>
     </entry>
