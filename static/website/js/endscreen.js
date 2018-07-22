@@ -16,10 +16,15 @@ Crowdjump.Endscreen.prototype = {
         this.game.stage.backgroundColor = '#1948cd';
         var scoreText = '';
 
+
         if (CONST_TIME) {
-            // time_score = game.timeElapsed.toFixed(3);
-            time_score = game.time.totalElapsedSeconds().toFixed(3);
+            if (CONST_SAVE_LEVEL_TIME){
+                time_score = time_overall;
+            } else {
+                time_score = game.time.totalElapsedSeconds().toFixed(3);
+            }
         }
+
         old_time = -2;
 
         if (selected_level >= 0) {

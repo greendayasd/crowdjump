@@ -440,7 +440,13 @@ Crowdjump.Game.update = function () {
 
     // var elapsedTime = Math.floor(this.game.time.totalElapsedSeconds());
     // console.error(this.roundTimer.seconds);
-    var seconds = Math.abs(Math.floor(game.timeElapsed / 1));
+    var seconds = 0;
+
+    if (CONST_SAVE_LEVEL_TIME) {
+        seconds = Math.abs(Math.floor(game.timeElapsed / 1)) - Math.abs(Math.floor(time_last_level_or_restart / 1));
+    } else {
+        seconds = Math.abs(Math.floor(game.timeElapsed / 1));
+    }
     if (seconds != last_second) {
         last_second = seconds;
         if (level_data.repeats) {
@@ -927,10 +933,10 @@ Crowdjump.Game._spawnLava = function (lava) {
     let sprite = this.lava.create(
         lava.x, lava.y + 3, lava.image); //for chest +8
 
-    if (CONST_P2_PHYSICS){
-       this.game.physics.p2.enable(sprite);
+    if (CONST_P2_PHYSICS) {
+        this.game.physics.p2.enable(sprite);
         sprite.body.kinematic = true;
-    } else{
+    } else {
         this.game.physics.enable(sprite);
     }
     sprite.body.allowGravity = false;
@@ -1019,12 +1025,16 @@ Crowdjump.Game._onHeroVsCoin = function (hero, coin) {
 };
 
 Crowdjump.Game._spawnPowerup = function (powerup) {
-    //+2, 38x38 tile
-    let sprite = this.powerups.create(powerup.x + 2, powerup.y + 2, powerup.image);
+    //+21, 38x38 tile
+    let sprite = this.powerups.create(powerup.x + 21, powerup.y + 21, powerup.image);
     sprite.anchor.set(0.5, 0.5);
 
-    this.game.physics.enable(sprite);
-    if (CONST_P2_PHYSICS) this.game.physics.p2.enable(sprite);
+    if (CONST_P2_PHYSICS) {
+        this.game.physics.p2.enable(sprite);
+    } else {
+        this.game.physics.enable(sprite);
+    }
+
     sprite.body.allowGravity = false;
 };
 
@@ -1103,6 +1113,8 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     }
     else if (this.level < CONST_LEVEL - 1) {
         setLevelInfo(this.level + 1, "completed");
+        time_last_level_or_restart = game.time.totalElapsedSeconds().toFixed(3);
+        time_overall += game.time.totalElapsedSeconds() - time_last_level_or_restart;
         this.game.state.restart(true, false, {level: this.level + 1});
     } else {
         setLevelInfo(this.level + 1, "completed");
@@ -1285,7 +1297,7 @@ Crowdjump.Game.killHero = function (reason) {
     lives -= 1;
 
     if (CONST_REPLAY_LEVEL) {
-        time_last_level_or_restart = game.time.totalElapsedSeconds().toFixed(3);
+        console.log(time_last_level_or_restart);
         this.game.state.restart(true, false, {level: this.level});
         return;
     }
@@ -1293,6 +1305,7 @@ Crowdjump.Game.killHero = function (reason) {
     if (lives <= 0) {
         updateInfo(false);
         this.game.time.reset();
+        game.timeElapsed = 0;
         this.state.start('Gameover');
     } else {
         this.game.state.restart(true, false, {level: this.level});
@@ -1306,6 +1319,7 @@ Crowdjump.Game.restart = function () {
     setLevelInfo(this.level + 1, "restart");
     updateInfo(false);
     last_second = 0;
+    game.timeElapsed = 0;
     lives = CONST_HERO_LIVES;
 
     this.state.restart();

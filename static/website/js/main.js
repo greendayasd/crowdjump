@@ -24,7 +24,7 @@ const CONST_BOUNCINGPLATFORMS = false;
 const CONST_SLIDEPLATFORMS = false;
 const CONST_FALLINGPLATFORMS = false;
 
-const CONST_POWERUPS = false;
+const CONST_POWERUPS = true;
 const CONST_COINS = false;
 
 const CONST_ENEMIES = true;
