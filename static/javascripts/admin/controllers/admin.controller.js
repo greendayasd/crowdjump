@@ -529,7 +529,7 @@
                     url: '/getalltracking/',
                     data: data,
                     success: function (data) {
-                        console.log(data);
+                        // console.log(data);
                         if (grouped) {
                             header = 'page,time,';
                             var orderedByPage = Object.values(groupBy(data, 'page'));
@@ -610,8 +610,9 @@
                     url: '/getallgamedata/',
                     data: data,
                     success: function (data) {
-                        if (data[0] == 'failure') console.log(data);
+                        if (data[1] == 'failure') console.log(data);
                         console.log(data);
+                        // console.log(data);
                         if (grouped) {
                             header = 'level,status,count';
                             var orderedByLevel = Object.values(groupBy(data, 'level'));
@@ -637,8 +638,11 @@
                         console.log("not found?" + JSON.stringify(data));
                     }
                 });
-
-                setTimeout($scope.createFile($scope.csv, "gamedata" + $scope.newestVersion.label + '.csv', 'text/csv'));
+                if (all) {
+                    setTimeout($scope.createFile($scope.csv, "gamedata_all.csv", 'text/csv'));
+                } else {
+                    setTimeout($scope.createFile($scope.csv, "gamedata" + $scope.newestVersion.label + '.csv', 'text/csv'));
+                }
 
             };
 

@@ -200,8 +200,14 @@
                             content.push();
                             content.push(q.value);
                         } else {
-                            content.push(q.selected);
-                            content.push('');
+                            //change
+                            if (!q.visible) {
+                                content.push();
+                                content.push('');
+                            } else {
+                                content.push(q.selected);
+                                content.push('');
+                            }
                         }
 
                     } else if (q.type === 'scale' || q.type === 'doublescale') {

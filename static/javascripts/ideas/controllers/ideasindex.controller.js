@@ -15,7 +15,8 @@
             var vm = this;
             var canDelete = true;
             var activate_comments = true;
-            var last_idea_id = 41;
+            var last_idea_id = 34;
+            var last_idea_id2 = 41;
 
             //Filter/Ordering
             $scope.filterReset = function () {
@@ -257,6 +258,7 @@
                     //find own votes for ideas
                     $scope.ideas = $scope.ideas_tmp;
                     $scope.last_idea = $scope.ideas[get_IdeaIndex(last_idea_id)];
+                    $scope.last_idea2 = $scope.ideas[get_IdeaIndex(last_idea_id2)];
                     $scope.ideas = $.map($scope.ideas_tmp, function (idea) {
                         var vote = $.grep($scope.ideavotes, function (ideavote) {
                             return ideavote.idea === idea.id;

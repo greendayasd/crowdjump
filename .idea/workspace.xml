@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Crowdjump/mailFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crowdjump/mailFunctions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/templates/layout/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,20 +38,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
+      <file leaf-file-name="navbar.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="148" column="30" selection-start-line="148" selection-start-column="30" selection-end-line="148" selection-end-column="30" />
+            <state relative-caret-position="140">
+              <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navbar.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js">
+      <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
+            <state relative-caret-position="612">
+              <caret line="39" column="166" selection-start-line="39" selection-start-column="166" selection-end-line="39" selection-end-column="166" />
             </state>
           </provider>
         </entry>
@@ -52,17 +59,39 @@
       <file leaf-file-name="ideasindex.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+            <state relative-caret-position="292">
+              <caret line="258" column="52" lean-forward="true" selection-start-line="258" selection-start-column="52" selection-end-line="258" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mailFunctions.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/authentication/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="276" column="44" selection-start-line="276" selection-start-column="44" selection-end-line="276" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mailFunctions.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Crowdjump/mailFunctions.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="15" column="127" selection-start-line="15" selection-start-column="127" selection-end-line="15" selection-end-column="127" />
+              <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="127" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="919">
+              <caret line="641" column="79" selection-start-line="641" selection-start-column="79" selection-end-line="641" selection-end-column="79" />
+              <folding>
+                <element signature="e#14219#25898#0" />
+                <element signature="e#25968#27407#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,45 +99,17 @@
       <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="1299" column="48" lean-forward="true" selection-start-line="1299" selection-start-column="48" selection-end-line="1299" selection-end-column="48" />
-              <folding>
-                <element signature="e#8722#11453#0" />
-                <element signature="e#13968#14926#0" />
-                <element signature="e#19089#19364#0" />
-                <element signature="e#19495#21185#0" />
-                <element signature="e#21240#24230#0" />
-                <element signature="e#24289#24418#0" />
-                <element signature="e#24469#24732#0" />
-                <element signature="e#24779#25024#0" />
-                <element signature="e#25082#25370#0" />
-                <element signature="e#25442#25650#0" />
-                <element signature="e#25703#26487#0" />
-                <element signature="e#26534#27282#0" />
-                <element signature="e#27328#27616#0" />
-                <element signature="e#27672#27746#0" />
-                <element signature="e#28050#28416#0" />
-                <element signature="e#29079#29221#0" />
-                <element signature="e#29280#29356#0" />
-                <element signature="e#29418#29476#0" />
-                <element signature="e#29544#29567#0" />
-                <element signature="e#30218#31286#0" />
-                <element signature="e#31334#31772#0" />
-                <element signature="e#31816#31888#0" />
-                <element signature="e#31940#32140#0" />
-                <element signature="e#32188#32240#0" />
-                <element signature="e#32290#32319#0" />
-                <element signature="e#32365#32417#0" />
-                <element signature="e#32465#32492#0" />
-                <element signature="e#32531#32669#0" />
-                <element signature="e#32709#32848#0" />
-                <element signature="e#32896#32922#0" />
-                <element signature="e#32971#32999#0" />
-                <element signature="e#33047#33443#0" />
-                <element signature="e#33492#33697#0" />
-                <element signature="e#33743#33777#0" />
-                <element signature="e#33821#34576#0" />
-              </folding>
+            <state relative-caret-position="22083">
+              <caret line="1299" column="48" selection-start-line="1299" selection-start-column="48" selection-end-line="1299" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/layout/admin.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="820">
+              <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -116,7 +117,7 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-224">
+            <state relative-caret-position="204">
               <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
             </state>
           </provider>
@@ -125,26 +126,8 @@
       <file leaf-file-name="level2.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/level/level2.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="endscreen.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/website/js/endscreen.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="23" column="72" selection-start-line="23" selection-start-column="72" selection-end-line="23" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="levelselection.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/website/js/levelselection.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+            <state relative-caret-position="1088">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
             </state>
           </provider>
         </entry>
@@ -163,8 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>wall</find>
-      <find>arcade</find>
       <find>physics.arcade</find>
       <find>hero_on</find>
       <find>this.hero</find>
@@ -186,13 +167,15 @@
       <find>time_las</find>
       <find>roundT</find>
       <find>game.timeElapsed</find>
-      <find>time_last_level</find>
       <find>total</find>
       <find>setInfoLast</find>
       <find>setInfoLastL</find>
       <find>setinfol</find>
-      <find>herovse</find>
+      <find>time_last_level</find>
       <find>setlevel</find>
+      <find>herovse</find>
+      <find>failure</find>
+      <find>last_idea_id</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -223,7 +206,6 @@
         <option value="$PROJECT_DIR$/static/javascripts/crowdjump.js" />
         <option value="$PROJECT_DIR$/static/javascripts/admin/admin.module.js" />
         <option value="$PROJECT_DIR$/static/templates/mail/mail_content.html" />
-        <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" />
         <option value="$PROJECT_DIR$/templates/navbar.html" />
         <option value="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" />
@@ -242,9 +224,6 @@
         <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
         <option value="$PROJECT_DIR$/static/website/js/DebugArcadePhysics.js" />
         <option value="$PROJECT_DIR$/Crowdjump/urls.py" />
-        <option value="$PROJECT_DIR$/authentication/views.py" />
-        <option value="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" />
-        <option value="$PROJECT_DIR$/static/templates/layout/admin.html" />
         <option value="$PROJECT_DIR$/static/website/js/gameover.js" />
         <option value="$PROJECT_DIR$/static/templates/layout/game.html" />
         <option value="$PROJECT_DIR$/static/website/js/startmenu.js" />
@@ -256,14 +235,18 @@
         <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
         <option value="$PROJECT_DIR$/static/website/level/level4.json" />
         <option value="$PROJECT_DIR$/static/website/js/levelselection.js" />
-        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
         <option value="$PROJECT_DIR$/static/website/js/endscreen.js" />
         <option value="$PROJECT_DIR$/templates/javascripts.html" />
-        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
-        <option value="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" />
         <option value="$PROJECT_DIR$/static/website/js/game.js" />
         <option value="$PROJECT_DIR$/Crowdjump/mailFunctions.py" />
+        <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
+        <option value="$PROJECT_DIR$/static/templates/layout/admin.html" />
+        <option value="$PROJECT_DIR$/authentication/views.py" />
+        <option value="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" />
+        <option value="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" />
+        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
+        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
       </list>
     </option>
   </component>
@@ -296,8 +279,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="237" />
-    <option name="y" value="484" />
+    <option name="x" value="215" />
+    <option name="y" value="-8" />
     <option name="width" value="1034" />
     <option name="height" value="1051" />
   </component>
@@ -403,6 +386,29 @@
               <item name="javascripts" type="462c0819:PsiDirectoryNode" />
               <item name="layout" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
+              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
+              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
+              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
@@ -636,11 +642,10 @@
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.32858595" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1375" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1375" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="manage.py@Crowdjump" order="11" sideWeight="0.49791667" visible="true" weight="0.22833844" />
+      <window_info active="true" anchor="bottom" id="manage.py@Crowdjump" order="11" sideWeight="0.49791667" visible="true" weight="0.22833844" />
       <window_info anchor="right" id="Database" order="3" weight="0.32949877" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.29908442" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24947916" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -653,6 +658,7 @@
       <window_info anchor="bottom" id="REST Client" order="13" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.29908442" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -701,18 +707,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/website/serializers.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#29#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ideas/permissions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -728,13 +722,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/website/level/level4.json" />
-    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -855,13 +842,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/authentication/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="159" column="19" selection-start-line="159" selection-start-column="19" selection-end-line="159" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
@@ -869,20 +849,6 @@
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="531" column="42" selection-start-line="531" selection-start-column="42" selection-end-line="531" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -925,13 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/game.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="23" column="21" lean-forward="true" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/level/level3.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -953,13 +912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4199">
-          <caret line="247" column="40" selection-start-line="247" selection-start-column="40" selection-end-line="247" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -974,89 +926,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="2516">
           <caret line="148" column="30" selection-start-line="148" selection-start-column="30" selection-end-line="148" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="1299" column="48" lean-forward="true" selection-start-line="1299" selection-start-column="48" selection-end-line="1299" selection-end-column="48" />
-          <folding>
-            <element signature="e#8722#11453#0" />
-            <element signature="e#13968#14926#0" />
-            <element signature="e#19089#19364#0" />
-            <element signature="e#19495#21185#0" />
-            <element signature="e#21240#24230#0" />
-            <element signature="e#24289#24418#0" />
-            <element signature="e#24469#24732#0" />
-            <element signature="e#24779#25024#0" />
-            <element signature="e#25082#25370#0" />
-            <element signature="e#25442#25650#0" />
-            <element signature="e#25703#26487#0" />
-            <element signature="e#26534#27282#0" />
-            <element signature="e#27328#27616#0" />
-            <element signature="e#27672#27746#0" />
-            <element signature="e#28050#28416#0" />
-            <element signature="e#29079#29221#0" />
-            <element signature="e#29280#29356#0" />
-            <element signature="e#29418#29476#0" />
-            <element signature="e#29544#29567#0" />
-            <element signature="e#30218#31286#0" />
-            <element signature="e#31334#31772#0" />
-            <element signature="e#31816#31888#0" />
-            <element signature="e#31940#32140#0" />
-            <element signature="e#32188#32240#0" />
-            <element signature="e#32290#32319#0" />
-            <element signature="e#32365#32417#0" />
-            <element signature="e#32465#32492#0" />
-            <element signature="e#32531#32669#0" />
-            <element signature="e#32709#32848#0" />
-            <element signature="e#32896#32922#0" />
-            <element signature="e#32971#32999#0" />
-            <element signature="e#33047#33443#0" />
-            <element signature="e#33492#33697#0" />
-            <element signature="e#33743#33777#0" />
-            <element signature="e#33821#34576#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-224">
-          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/website/level/level2.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="1088">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/game.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="23" column="21" lean-forward="true" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="208" column="49" selection-start-line="208" selection-start-column="49" selection-end-line="208" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/questionnaire.module.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22083">
+          <caret line="1299" column="48" selection-start-line="1299" selection-start-column="48" selection-end-line="1299" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/authentication/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="276" column="44" selection-start-line="276" selection-start-column="44" selection-end-line="276" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Crowdjump/mailFunctions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="15" column="127" selection-start-line="15" selection-start-column="127" selection-end-line="15" selection-end-column="127" />
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="66" column="24" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="919">
+          <caret line="641" column="79" selection-start-line="641" selection-start-column="79" selection-end-line="641" selection-end-column="79" />
+          <folding>
+            <element signature="e#14219#25898#0" />
+            <element signature="e#25968#27407#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="258" column="52" lean-forward="true" selection-start-line="258" selection-start-column="52" selection-end-line="258" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="39" column="166" selection-start-line="39" selection-start-column="166" selection-end-line="39" selection-end-column="166" />
         </state>
       </provider>
     </entry>

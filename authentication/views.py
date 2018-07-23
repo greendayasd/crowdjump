@@ -269,12 +269,14 @@ def GetAllGameData(request):
                 for filename in os.listdir(new_path):
                     with open(os.path.join(new_path, filename)) as outfile:
                         check = outfile.read() + ',\n'
+                        if check == '':
+                            continue
                         try:
                             checkJson = json.loads('[' + check[:-2] + ']')
                         except:
-                            print("failure")
+                            print("failure1")
                             return JsonResponse(
-                                '{"path":"' + new_path + '\\' + filename + '"' + '"failure":"' + check + '"}',
+                                '{"path":"' + new_path + '\\' + filename + '"' + ',"failure":"' + check + '"}',
                                 safe=False)
                         res += check
         except:
@@ -288,12 +290,14 @@ def GetAllGameData(request):
         for filename in os.listdir(folder_path):
             with open(os.path.join(folder_path, filename)) as outfile:
                 check = outfile.read() + ',\n'
+                if check == '':
+                    continue
                 try:
                     checkJson = json.loads('[' + check[:-2] + ']')
                 except:
-                    print("failure")
+                    print("failure2")
                     return JsonResponse(
-                        '{"path":"' + folder_path + '\\' + filename + '"' + '"failure":"' + check + '"}', safe=False)
+                        '{"path":"' + folder_path + '\\' + filename + '"' + ',"failure":"' + check + '"}', safe=False)
                 res += check
 
     try:
