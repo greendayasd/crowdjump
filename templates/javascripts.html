@@ -30,7 +30,7 @@
 
 
 
-{#    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+    {#    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
     <script type="text/javascript" src="{% static 'lib/bootstrap 3.3.7min/bootstrap3.3.7min.js' %}"></script>
     <script type="text/javascript" src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
 
@@ -188,11 +188,11 @@
                 //console.log(token(40));
                 return;
             }
-            else{
-                if (username != '' && identifier != '' &&(username != identifier)) {
+            else {
+                if (username != '' && identifier != '' && (username != identifier)) {
                     //previously not logged in
                     transferTrackingData(identifier, username);
-                    transferGameData(identifier,username);
+                    transferGameData(identifier, username);
                 }
             }
 
@@ -263,7 +263,7 @@
             var data = {
                 "username": username,
                 "identifier": token,
-                "destination": 'gamedata/'+version
+                "destination": 'gamedata/' + version
             };
 
             $.ajax({
@@ -292,6 +292,7 @@
         }
 
         var globeclock = '00:00:00';
+
         function startClock() {
             var clock = '00:00:00';
             var currentTime = moment().unix(),
@@ -364,23 +365,29 @@
             }
             return "";
         }
-        window.onbeforeunload = function(){
+
+        window.onbeforeunload = function () {
             sendTrackingData(getCookie("lastpage"), getCookie("page"), globeclock);
         };
 
-        function log(string1,string2,string3,string4,string5,string6,string7,string8,string9,string10){
-            var res=string1;
-            string2 != undefined ? res+= ' , ' + string2: false;
-            string3 != undefined ? res+= ' , ' + string3: false;
-            string4 != undefined ? res+= ' , ' + string4: false;
-            string5 != undefined ? res+= ' , ' + string5: false;
-            string6 != undefined ? res+= ' , ' + string6: false;
-            string7 != undefined ? res+= ' , ' + string7: false;
-            string8 != undefined ? res+= ' , ' + string8: false;
-            string9 != undefined ? res+= ' , ' + string9: false;
-            string10 != undefined ? res+= ' , ' + string10: false;
+        function log(string1, string2, string3, string4, string5, string6, string7, string8, string9, string10) {
+            var res = string1;
+            string2 != undefined ? res += ' , ' + string2 : false;
+            string3 != undefined ? res += ' , ' + string3 : false;
+            string4 != undefined ? res += ' , ' + string4 : false;
+            string5 != undefined ? res += ' , ' + string5 : false;
+            string6 != undefined ? res += ' , ' + string6 : false;
+            string7 != undefined ? res += ' , ' + string7 : false;
+            string8 != undefined ? res += ' , ' + string8 : false;
+            string9 != undefined ? res += ' , ' + string9 : false;
+            string10 != undefined ? res += ' , ' + string10 : false;
 
             console.log(res);
+        }
+
+        function arrayContains(arr,str) {
+            if (arr == undefined) return false;
+            return (arr.indexOf(str) > -1);
         }
 
         $(function () {
@@ -392,5 +399,6 @@
             $(window).unload(function (event) {
             })
         });
+
     </script>
 {% endcompress %}

@@ -72,6 +72,9 @@ Crowdjump.Preloader.prototype = {
         this.load.image('grass:6x1', files + 'grass_6x1.png');
         this.load.image('grass:8x1', files + 'grass_8x1.png');
 
+        this.load.image('ice:1x1', files + 'ice_1x1.png');
+        this.load.image('ice:2x1', files + 'ice_2x1.png');
+
         this.load.image('lava:1x1', files + 'lava2_1x1.png');
         this.load.image('lava:2x1', files + 'lava2_2x1.png');
 
