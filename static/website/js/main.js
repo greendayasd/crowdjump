@@ -10,7 +10,7 @@ const CONST_MOVE_SPEED = 200;
 const CONST_HERO_WEIGHT = 100;
 const CONST_HERO_LIVES = 1;
 const CONST_REPLAY_LEVEL = true;
-const CONST_SAVE_LEVEL_TIME = false;
+const CONST_SAVE_LEVEL_TIME = true;
 
 const CONST_LEVEL = 4;
 const CONST_TIME = true;

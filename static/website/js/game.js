@@ -443,7 +443,10 @@ Crowdjump.Game.update = function () {
     var seconds = 0;
 
     if (CONST_SAVE_LEVEL_TIME) {
-        seconds = Math.abs(Math.floor(game.timeElapsed / 1)) - Math.abs(Math.floor(time_last_level_or_restart / 1));
+        seconds = (Math.abs(Math.floor(game.time.totalElapsedSeconds().toFixed(3) / 1)) - Math.abs(Math.floor(time_last_level_or_restart / 1))) + Math.floor(time_overall / 1);
+        if (time_overall != 0) {
+
+        }
     } else {
         seconds = Math.abs(Math.floor(game.timeElapsed / 1));
     }
@@ -1113,11 +1116,18 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     }
     else if (this.level < CONST_LEVEL - 1) {
         setLevelInfo(this.level + 1, "completed");
-        time_last_level_or_restart = game.time.totalElapsedSeconds().toFixed(3);
-        time_overall += game.time.totalElapsedSeconds() - time_last_level_or_restart;
+
+        if (CONST_SAVE_LEVEL_TIME) {
+            time_overall += game.time.totalElapsedSeconds().toFixed(3) - time_last_level_or_restart;
+            time_overall = time_overall.toFixed(3);
+            time_last_level_or_restart = game.time.totalElapsedSeconds().toFixed(3);
+        }
         this.game.state.restart(true, false, {level: this.level + 1});
     } else {
         setLevelInfo(this.level + 1, "completed");
+        if (CONST_SAVE_LEVEL_TIME) {
+            time_overall += game.time.totalElapsedSeconds().toFixed(3) - time_last_level_or_restart;
+        }
         this.state.start('Endscreen');
     }
 
@@ -1297,7 +1307,8 @@ Crowdjump.Game.killHero = function (reason) {
     lives -= 1;
 
     if (CONST_REPLAY_LEVEL) {
-        console.log(time_last_level_or_restart);
+        time_last_level_or_restart = game.time.totalElapsedSeconds().toFixed(3);
+        log(time_overall);
         this.game.state.restart(true, false, {level: this.level});
         return;
     }
@@ -1320,6 +1331,8 @@ Crowdjump.Game.restart = function () {
     updateInfo(false);
     last_second = 0;
     game.timeElapsed = 0;
+    time_overall = 0;
+    time_last_level_or_restart = 0;
     lives = CONST_HERO_LIVES;
 
     this.state.restart();
