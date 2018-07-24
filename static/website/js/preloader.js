@@ -64,7 +64,10 @@ Crowdjump.Preloader.prototype = {
         this.load.image('ground:2x2', files + 'ground_2x2.png');
         this.load.image('ground:4x1', files + 'ground_4x1.png');
         this.load.image('ground:4x2', files + 'ground_4x2.png');
+        this.load.image('ground:6x1', files + 'ground_6x1.png');
         this.load.image('ground:20x1', files + 'ground_20x1.png');
+
+        this.load.image('lavaground:2x1', files + 'lavaground_2x1.png');
 
         this.load.image('grass:1x1', files + 'grass_1x1.png');
         this.load.image('grass:2x1', files + 'grass_2x1.png');
@@ -74,9 +77,12 @@ Crowdjump.Preloader.prototype = {
 
         this.load.image('ice:1x1', files + 'ice_1x1.png');
         this.load.image('ice:2x1', files + 'ice_2x1.png');
+        this.load.image('ice:6x1', files + 'ice_6x1.png');
 
         this.load.image('lava:1x1', files + 'lava2_1x1.png');
         this.load.image('lava:2x1', files + 'lava2_2x1.png');
+
+        this.load.image('bounce:1x1', files + 'bounce_1x1.png');
 
         if (CONST_DEBUG) {
             this.load.image('invisible_wall', files + 'invisible_wall_debug.png');
