@@ -1201,8 +1201,8 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
         this.sfx.zhonyas.stop();
     }
     if (selected_level >= 0) {
-        time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds().toFixed(3) - parseFloat(time_last_level_or_restart);
-        time_overall = time_overall.toFixed(3);
+        time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds() - parseFloat(time_last_level_or_restart);
+        time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
         setLevelInfo(selected_level + 1, "completed");
         this.state.start('Endscreen');
 
@@ -1211,16 +1211,18 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
         setLevelInfo(this.level + 1, "completed");
 
         if (CONST_SAVE_LEVEL_TIME) {
-            time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds().toFixed(3) - parseFloat(time_last_level_or_restart);
-            time_overall = time_overall.toFixed(3);
+
+            time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds() - parseFloat(time_last_level_or_restart);
+            time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
+
             time_last_level_or_restart = game.time.totalElapsedSeconds().toFixed(3);
         }
         this.game.state.restart(true, false, {level: this.level + 1});
     } else {
         setLevelInfo(this.level + 1, "completed");
         if (CONST_SAVE_LEVEL_TIME) {
-            time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds().toFixed(3) - parseFloat(time_last_level_or_restart);
-            time_overall = time_overall.toFixed(3);
+            time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds() - parseFloat(time_last_level_or_restart);
+            time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
         }
         this.state.start('Endscreen');
     }
