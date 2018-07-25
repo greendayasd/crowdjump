@@ -10,13 +10,13 @@
 		{"image": "grass:6x1", "x": 42, "y": 630, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x6", "x": 588, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 294, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "grass:2x1", "x": 420, "y": 672, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ice:2x1", "x": 420, "y": 672, "p_types": "slippery", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:4x1", "x": 630, "y": 840, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:4x1", "x": 798, "y": 840, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "grass:1x1", "x": 756, "y": 504, "p_types": "", "xmove": -100, "ymove": 0, "minx": 84, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "grass:1x1", "x": 840, "y": 378, "p_types": "", "xmove": 0, "ymove": 100, "minx": 0, "miny": 42, "maxx": 0, "maxy": 42},
-		{"image": "grass:1x1", "x": 924, "y": 252, "p_types": "", "xmove": -100, "ymove": 0, "minx": 84, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "grass:1x1", "x": 798, "y": 168, "p_types": "", "xmove": 0, "ymove": -100, "minx": 0, "miny": 84, "maxx": 0, "maxy": 0},
+		{"image": "ice:1x1", "x": 756, "y": 504, "p_types": "slippery", "xmove": -100, "ymove": 0, "minx": 84, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ice:1x1", "x": 840, "y": 378, "p_types": "slippery", "xmove": 0, "ymove": 100, "minx": 0, "miny": 42, "maxx": 0, "maxy": 42},
+		{"image": "ice:1x1", "x": 924, "y": 252, "p_types": "slippery", "xmove": -100, "ymove": 0, "minx": 84, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ice:1x1", "x": 798, "y": 168, "p_types": "slippery", "xmove": 0, "ymove": -100, "minx": 0, "miny": 84, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 672, "y": 84, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
 	],
 	"fallingPlatforms": [

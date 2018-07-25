@@ -746,7 +746,7 @@
                 var decorations = '';
                 var enemies = '';
                 var enemy_walls = '';
-                var move_walls = '';
+                var type = '';
 
                 var maxX = 918;
                 var maxY = 588;
@@ -800,12 +800,17 @@
                         enemy_walls += line + endline;
                         continue;
                     }
-                    // if (image.startsWith("move_wall")) {
-                    //     move_walls += line + endline;
-                    //     continue;
-                    // }
-                    //else = normal platform
-                    platforms += line + ', "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+
+                    if (image.startsWith("bounce")) {
+                        type = 'bouncing';
+                    }
+                    if (image.startsWith("lavaground")) {
+                        type = 'lavaswitch';
+                    }
+                    if (image.startsWith("ice")) {
+                        type = 'slippery';
+                    }
+                    platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
                 }
 
                 var worldsize = '\t"size": {"x": ' + (maxX + 42) + ', "y": ' + (maxY + 12) + '}';

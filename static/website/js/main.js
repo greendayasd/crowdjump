@@ -17,14 +17,14 @@ const CONST_LEVEL = 4;
 const CONST_TIME = true;
 
 const CONST_LAVA = true;
-const CONST_LAVASWITCHINGPLATFORM = false;
-const CONST_CRATES = false;
-const CONST_SLIPPERYPLATFORMS = false;
+const CONST_LAVASWITCHINGPLATFORM = true;
+const CONST_SLIPPERYPLATFORMS = true;
 const CONST_MOVINGPLATFORMS = true;
 const CONST_LOCKPLATFORM = false;
-const CONST_BOUNCINGPLATFORMS = false;
+const CONST_BOUNCINGPLATFORMS = true;
 const CONST_SLIDEPLATFORMS = false;
 const CONST_FALLINGPLATFORMS = false;
+const CONST_CRATES = false;
 
 const CONST_POWERUPS = true;
 const CONST_COINS = false;

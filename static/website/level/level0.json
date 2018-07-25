@@ -24,10 +24,11 @@
 		{"image": "ground:4x1", "x": 1134, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x1", "x": 1050, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x2", "x": 1092, "y": 420, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:2x1", "x": 1176, "y": 546, "p_types": "lavaswitch", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "lavaground:2x1", "x": 1176, "y": 546, "p_types": "lavaswitch", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x1", "x": 1260, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x10", "x": 1260, "y": 126, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "grass:1x1", "x": 1218, "y": 378, "p_types": "", "xmove": 0, "ymove": -100, "minx": 0, "miny": 168, "maxx": 0, "maxy": 42}
+		{"image": "grass:1x1", "x": 1218, "y": 378, "p_types": "", "xmove": 0, "ymove": -100, "minx": 0, "miny": 168, "maxx": 0, "maxy": 42},
+		{"image": "bounce:1x1", "x": 546, "y": 252, "p_types": "bouncing", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
 	],
 	"fallingPlatforms": [
 

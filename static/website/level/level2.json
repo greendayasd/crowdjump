@@ -4,15 +4,17 @@
 		{"image": "ground:2x1", "x": 378, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:2x1", "x": 714, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:2x1", "x": 630, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:2x2", "x": 462, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "lavaground:2x1", "x": 462, "y": 546, "p_types": "lavaswitch", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:2x1", "x": 462, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:2x2", "x": 546, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:4x2", "x": 0, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:4x2", "x": 168, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:6x1", "x": 42, "y": 378, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 588, "y": 504, "p_types": "", "xmove": 150, "ymove": 0, "minx": 0, "miny": 0, "maxx": 84, "maxy": 0},
 		{"image": "grass:1x1", "x": 588, "y": 420, "p_types": "", "xmove": -100, "ymove": 0, "minx": 42, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "grass:1x1", "x": 588, "y": 378, "p_types": "", "xmove": -300, "ymove": 0, "minx": 126, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:2x2", "x": 798, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "bounce:1x1", "x": 588, "y": 378, "p_types": "bouncing", "xmove": -300, "ymove": 0, "minx": 126, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "lavaground:2x1", "x": 798, "y": 546, "p_types": "lavaswitch", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:2x1", "x": 798, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:2x1", "x": 882, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 798, "y": 378, "p_types": "", "xmove": 0, "ymove": 50, "minx": 0, "miny": 0, "maxx": 0, "maxy": 42},
 		{"image": "grass:1x1", "x": 294, "y": 336, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
@@ -21,9 +23,11 @@
 		{"image": "grass:1x1", "x": 0, "y": 84, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:8x1", "x": 588, "y": 210, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:6x1", "x": 336, "y": 210, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:2x2", "x": 966, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "lavaground:2x1", "x": 966, "y": 546, "p_types": "lavaswitch", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:2x1", "x": 966, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:2x1", "x": 1050, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:2x2", "x": 1134, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "lavaground:2x1", "x": 1134, "y": 546, "p_types": "lavaswitch", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:2x1", "x": 1134, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:2x1", "x": 1218, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:2x2", "x": 1302, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 1008, "y": 462, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
@@ -78,7 +82,7 @@
 	"powerups": [
 		{"image": "powerup:jumpboost", "x": 336, "y": 252, "type":"jumpboost"},
 		{"image": "powerup:jumpboost", "x": 1344, "y": 336, "type":"jumpboost"},
-		{"image": "powerup:lavaorb", "x": 504, "y": 294, "type":"lavaorb"}
+		{"image": "powerup:lavaorb", "x": 504, "y": 252, "type":"lavaorb"}
 
 	],
 	"decorations": [

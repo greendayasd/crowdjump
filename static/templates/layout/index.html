@@ -13,6 +13,16 @@
     </div>
 </div>
 <div class="container">
+
+    <div class="container-well" style="align-content: center">
+        <div class="btn-group" ng-controller="QuestionnaireController as vm" ng-show="vm.surveystatus == 3">
+            <a href="postsurvey0" class="btn btn-info" ng-click="submit(0)">
+                <i aria-hidden="true"></i> Take the survey!
+            </a>
+            <br><br>
+        </div>
+    </div>
+
     <h4> Crowdjump is a bachelor thesis in which you can submit your ideas to improve a simple game to your likings!<br><br>
         The goal of the thesis is to observe how a game is designed bottom-up with a crowd and how the decision
         finding<br>
@@ -21,6 +31,8 @@
 
 
     <h4>
+
+
         The game itself can be found at
         <div class="btn-group">
             <a href="game" class="btn btn-info">

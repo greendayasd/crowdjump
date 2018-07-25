@@ -1,6 +1,6 @@
 var Crowdjump = Crowdjump || {};
 
-Crowdjump.Menu = function(game){
+Crowdjump.Menu = function (game) {
     var startGame;
     var selectLevel;
     var logo;
@@ -9,24 +9,36 @@ Crowdjump.Menu = function(game){
 };
 
 Crowdjump.Menu.prototype = {
-    create:function () {
+    create: function () {
         this.game.stage.backgroundColor = '#1948cd';
 
 
         logo = this.add.sprite(CONST_WORLD_CENTER_X,
-                               CONST_WORLD_CENTER_Y -80, 'logo');
+            CONST_WORLD_CENTER_Y - 80, 'logo');
         logo.anchor.set(0.5);
-        startGame = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 40, "Play", {font:"40px Arial", fill: '#dbdbdb'});
+        startGame = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 40, "Play", {
+            font: "40px Arial",
+            fill: '#dbdbdb'
+        });
         startGame.anchor.set(0.5);
         startGame.inputEnabled = true;
-        startGame.events.onInputDown.add(this.phasergame,this)
+        startGame.events.onInputDown.add(this.phasergame, this)
 
 
-        selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 120, "Select Level", {font:"40px Arial", fill: '#dbdbdb'});
+        selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 120, "Select Level", {
+            font: "40px Arial",
+            fill: '#dbdbdb'
+        });
         selectLevel.anchor.set(0.5);
         selectLevel.inputEnabled = true;
-        selectLevel.events.onInputDown.add(this.levelselection,this)
+        selectLevel.events.onInputDown.add(this.levelselection, this)
 
+
+        key1 = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
+        key1.onDown.add(this.phasergame, this);
+
+        key2 = game.input.keyboard.addKey(Phaser.Keyboard.TWO);
+        key2.onDown.add(this.levelselection, this);
 
 
         var instructionText = "The goal is simple: Control the alien by using the arrow keys \n" +
@@ -48,7 +60,7 @@ Crowdjump.Menu.prototype = {
         game.state.start('Levelselection');
     },
 
-    endscreen: function (){
+    endscreen: function () {
 
     }
 }
