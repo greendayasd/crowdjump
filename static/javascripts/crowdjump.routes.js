@@ -129,6 +129,10 @@
             controller: 'QuestionnaireController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/oldbrowser.html'
+        }).when('/unsubscribe', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/layout/unsubscribe.html'
         })
             .otherwise('/');
     }

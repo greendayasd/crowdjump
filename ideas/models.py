@@ -19,6 +19,7 @@ class Idea(models.Model):
     update_count = models.IntegerField(default=0)
 
     feasible = models.BooleanField(default=True)
+    currently_implemented = models.BooleanField(default=False)
     implemented = models.BooleanField(default=False)
     implemented_at = models.DateTimeField(null=True)
 

@@ -566,7 +566,6 @@
             $scope.survey[1] = [];
             $scope.survey[2] = [];
 
-
             if (true) {
                 $scope.sur0q0Choices = [""];
                 $scope.survey[0][0] = {

@@ -42,6 +42,7 @@ class Account(AbstractBaseUser):
     requests_left = models.IntegerField(default=1)
     votes_left = models.IntegerField(default=1)
     email_confirmed = models.BooleanField(default=False)
+    email_notification = models.BooleanField(default=True)
 
     is_admin = models.BooleanField(default=False)
     is_activated = models.BooleanField(default=True)

@@ -16,10 +16,14 @@ def mail_new_version(request):
     feature = "is more platform types! Try them out and don't die going for a new highscore!"
     message3 = '<br>Also, please fill out the survey at '
     html_content = '<a href="https://www.crowdjump.win">Crowdjump.win :)</a>'
+    unsubscribe = '<br><a href="https://www.crowdjump.win/unsubscribe">Click here if you dont want to get this newsletter anymore</a>'
     fromMail = 'crowdjump@gmail.com'
 
     for user in models.Account.objects.all():
-        final_message = message1 + user.username + message2 + feature + message3 + html_content
+        if not user.email_notification:
+            continue
+
+        final_message = message1 + user.username + message2 + feature + message3 + html_content + unsubscribe
         msg = EmailMultiAlternatives(subject, '', fromMail, [user.email])
         msg.attach_alternative(final_message, "text/html")
         msg.send()

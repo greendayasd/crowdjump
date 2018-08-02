@@ -419,16 +419,16 @@
                     var site5header = 'I think that I would like to use this system frequently (SUS 5 point scale),I found the system unnecessarily complex (SUS 5 point scale),I thought the system was easy to use (SUS 5 point scale),I think that I would need the support of a technical person to be able to use this system (SUS 5 point scale),I found the various functions in this system were well integrated (SUS 5 point scale),I thought there was too much inconsistency in this system (SUS 5 point scale),I would imagine that most people would learn to use this system very quickly (SUS 5 point scale),I found the system very cumbersome to use (SUS 5 point scale),I felt very confident using the system (SUS 5 point scale),I needed to learn a lot of things before I could get going with this system (SUS 5 point scale)';
                     var site6header = 'I liked the idea of Crowdjump (5 point scale),I liked to submit new ideas (5 point scale),The game developed in a positive direction (5 point scale),The website developed in a positive direction (5 point scale),The process of choosing the ideas developed in a positive direction (5 point scale),After each submission cycle the features were implemented as requested (5 point scale),The implemented features met my wishes for Crowdjump (5 point scale),I formed a community with other players (5 point scale),Other players interfered with the development (5 point scale),The other players and I worked as a team (5 point scale),My opinion was not heard (5 point scale)';
 
+                    $scope.PostSurvey2 = $scope.PostSurvey;
+                    for (var i = 0; i < $scope.PostSurvey2.length; i++) {
+                        content += '\n' + $scope.PostSurvey2[i]["id"] + ',' + $scope.PostSurvey2[i]["user"]["id"] + ',';
 
-                    for (var i = 0; i < $scope.PostSurvey.length; i++) {
-                        content += '\n' + $scope.PostSurvey[i]["id"] + ',' + $scope.PostSurvey[i]["user"]["id"] + ',';
+                        delete $scope.PostSurvey2[i]["id"];
+                        delete $scope.PostSurvey2[i]["user"];
+                        delete $scope.PostSurvey2[i]["site0"];
 
-                        delete $scope.PostSurvey[i]["id"];
-                        delete $scope.PostSurvey[i]["user"];
-                        delete $scope.PostSurvey[i]["site0"];
-
-                        var values = Object.keys($scope.PostSurvey[i]).map(function (key) {
-                            return $scope.PostSurvey[i][key];
+                        var values = Object.keys($scope.PostSurvey2[i]).map(function (key) {
+                            return $scope.PostSurvey2[i][key];
                         });
                         content += values;
 
@@ -480,6 +480,160 @@
 
                 $scope.csv += header + content;
                 setTimeout($scope.createFile($scope.csv, name + '.csv', 'text/csv'));
+            }
+
+            $scope.getQuestionnaire = function (questionnaire) {
+                var header = '';
+                var content = '';
+                $scope.csv = '';
+
+                header = 'id,user_id,';
+
+                switch (questionnaire) {
+                    case "geq":
+                        header += 'Competence, Sensory and Imaginative Immersion, Flow, Tension/Annoyance, Challenge, Negative affect, Positive affect';
+                        break;
+                    case "sus":
+                        header += 'SUS Score';
+                        break;
+                    default:
+                }
+
+                for (var i = 0; i < $scope.PostSurvey.length; i++) {
+                    content += '\n' + $scope.PostSurvey[i]["id"] + ',' + $scope.PostSurvey[i]["user"]["id"] + ',';
+                    var competence = 0,
+                        sensory = 0,
+                        flow = 0,
+                        tension = 0,
+                        challenge = 0,
+                        negative = 0,
+                        positive = 0,
+                        pressure = 0,
+                        enjoyment = 0,
+                        freedomOfChoice = 0;
+
+                    switch (questionnaire) {
+                        case "geq":
+                            for (var j = 0; j <= 32; j++) {
+                                var row = "GEQ";
+
+                                j < 10 ? row += '0' + j : row += j;
+                                var value = parseInt($scope.PostSurvey[i][row]);
+
+                                //new mapped!
+                                switch (j + 1) {
+                                    case 16:
+                                    case 18:
+                                    case 29:
+                                    case 12:
+                                    case 14: //Competence
+                                        competence += value;
+                                        // log("Competence", j, value, competence, i);
+                                        break;
+                                    case 31:
+                                    case 6:
+                                    case 25:
+                                    case 15:
+                                    case 8:
+                                    case 9:
+                                        sensory += value;
+                                        break;
+                                    case 4:
+                                    case 19:
+                                    case 30:
+                                    case 10:
+                                    case 12:
+                                        flow += value;
+                                        break;
+                                    case 7:
+                                    case 13:
+                                    case 3:
+                                        tension += value;
+                                        break;
+                                    case 32:
+                                    case 1:
+                                    case 1:
+                                    case 26:
+                                    case 5:
+                                        challenge += value;
+                                        break;
+                                    case 27:
+                                    case 23:
+                                    case 17:
+                                    case 20:
+                                        negative += value;
+                                        break;
+                                    case 21:
+                                    case 11:
+                                    case 28:
+                                    case 24:
+                                    case 33:
+                                        positive += value;
+                                        break;
+                                    default:
+                                        console.log(j);
+                                }
+                                // log(row, $scope.PostSurvey[i][row]);
+                            }
+                            content += competence + ',' + sensory + ',' + flow + ',' + tension + ',' + challenge + ',' + negative + ',' + positive;
+                            break;
+                        case "kim":
+                            for (var j = 0; j <= 32; j++) {
+                                var row = "GEQ";
+
+                                j < 10 ? row += '0' + j : row += j;
+                                var value = parseInt($scope.PostSurvey[i][row]);
+
+                                //new mapped!
+                                switch (j + 1) {
+                                    case 2:
+                                    case 9:
+                                    case 10:
+                                        enjoyment += value;
+                                        break;
+                                    case 3:
+                                    case 4:
+                                    case 6:
+                                        competence += value;
+                                        break;
+                                    case 1:
+                                    case 8:
+                                    case 11:
+                                        freedomOfChoice += value;
+                                        break;
+                                    case 5:
+                                    case 7:
+                                    case 12:
+                                        pressure += value;
+                                        break;
+                                    default:
+                                        console.log(j);
+                                }
+                                // log(row, $scope.PostSurvey[i][row]);
+                            }
+                            content += competence + ',' + sensory + ',' + flow + ',' + tension + ',' + challenge + ',' + negative + ',' + positive;
+                            break;
+                        case "sus":
+                            var score = 0;
+                            for (var j = 0; j <= 9; j++) {
+                                var row = "SUS";
+                                j < 10 ? row += '0' + j : row += j;
+                                var value = $scope.PostSurvey[i][row];
+                                j % 2 == 0 ? score += value - 1 : score += (5 - value);
+                                // log(row,$scope.PostSurvey[i][row], score);
+                            }
+                            content += score * 2.5;
+                            break;
+                        default:
+                            console.log(questionnaire)
+                    }
+                    // console.log($scope.PostSurvey[i]);
+                }
+
+
+                $scope.csv += header + content;
+                setTimeout($scope.createFile($scope.csv, questionnaire + '.csv', 'text/csv'));
+
             }
 
             $scope.get_tracking_user = function (username, grouped) {
