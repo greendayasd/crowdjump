@@ -12,6 +12,7 @@ class Version(models.Model):
     vote_weight = models.IntegerField(default=-1)
 
     submitter = models.ForeignKey('authentication.Account', on_delete=models.DO_NOTHING, null=True)
+    idea_nr = models.IntegerField(default=-1)
 
     # submitter = models.CharField(max_length=200, default="")
 

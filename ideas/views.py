@@ -31,7 +31,7 @@ class IdeaVotePermissionViewSet(viewsets.ModelViewSet):
     queryset = Idea.objects.order_by('-created_at')
     serializer_class = IdeaVotingPermissionSerializer
     filter_backends = [DjangoFilterBackend]
-    filter_fields = ['deleted', 'version', 'user', 'id']
+    filter_fields = ['deleted', 'version', 'user', 'id', 'implemented']
 
     def get_permissions(self):
         return (permissions.AllowAny(),)

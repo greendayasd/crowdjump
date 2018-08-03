@@ -908,7 +908,7 @@
                 for (var i = 0; i < array.length; i++) {
                     var image = array[i][2];
                     var split = image.split(":");
-                    var type = ', "type":"' + split[1] + '"';
+                    var type = split[1];
                     var endline = '},\n';
 
                     maxX = Math.max(maxX, array[i][0]);
@@ -957,14 +957,20 @@
 
                     if (image.startsWith("bounce")) {
                         type = 'bouncing';
+                        platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                        continue;
                     }
                     if (image.startsWith("lavaground")) {
                         type = 'lavaswitch';
+                        platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                        continue;
                     }
                     if (image.startsWith("ice")) {
                         type = 'slippery';
+                        platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                        continue;
                     }
-                    platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                    platforms += line + ', "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
                 }
 
                 var worldsize = '\t"size": {"x": ' + (maxX + 42) + ', "y": ' + (maxY + 12) + '}';

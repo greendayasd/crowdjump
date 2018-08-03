@@ -84,6 +84,11 @@ class Comment(models.Model):
     upvotes = models.IntegerField(default=0, null=True)
     downvotes = models.IntegerField(default=0, null=True)
 
+    #classification
+    rater1 = models.CharField(max_length=50, null=True, default='')
+    rater2 = models.CharField(max_length=50, null=True, default='')
+    raterfinal = models.CharField(max_length=50, null=True, default='')
+
     def __unicode__(self):
         return '{0}'.format(self.description)
 

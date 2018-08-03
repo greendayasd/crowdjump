@@ -9,13 +9,14 @@
     <h1> Current Ideas </h1>
     <h4>
         Here are the current ideas for new features, all submitted by players like you! <br>
-        At the moment, every X days the most popular idea will be implemented, so vote for your favourites! If you want an other
+        At the moment, every day the x most popular ideas will be implemented, so vote for your favourites! If you want
+        an other
         selection process, feature requests are not limited to the game but can also include
         communication or voting features! <br>
         Every request cycle you can submit one idea, you will be notified when a new cycle starts.
         The estimated time is edited manually and may help you to find suited ideas. <br><br>
-
-        <!--Vote for the next idea to be chosen!<br>
+        Vote for the next idea to be chosen!<br><br>
+        <!--
        <div> The last idea chosen was from <b>{{ last_idea.user.username }}</b> and will be implemented shortly:<br>
         </div>
         <div class="row" style="padding-top: 5px">
@@ -66,7 +67,8 @@
     <div ng-controller="IndexController as vm" ng-show="!vm.isAuthenticated">
         <div class="alert alert-info">
             <strong>
-                <a style="font-size: 28px" style="margin-top: 45px" href="/login?next={{ request.path }}">Login to vote, comment or
+                <a style="font-size: 28px" style="margin-top: 45px" href="/login?next={{ request.path }}">Login to vote,
+                    comment or
                     submit your own Idea!</a>
             </strong>
         </div>
@@ -117,8 +119,8 @@
             </table>
 
             <div class="btn-group mr-4" data-toggle="buttons">
-                <!--<button class="btn btn-primary" ng-click="orderUpvotes()">Most Upvotes First</button>
-                <button class="btn btn-primary" ng-click="orderDownvotes()">Most Downvotes First</button> -->
+                <button class="btn btn-primary" ng-click="orderUpvotes()">Most Upvotes First</button>
+                <button class="btn btn-primary" ng-click="orderDownvotes()">Most Downvotes First</button>
                 <button class="btn btn-primary" ng-click="orderOldest()">Oldest First</button>
                 <button class="btn btn-primary" ng-click="orderNewest()">Newest First</button>
                 <!--<label type="button" class="btn btn-primary" ng-model="sortReverse" uib-btn-checkbox
@@ -167,9 +169,10 @@
                                         ng-if="idea.estimated_time!=1">s</span> -->
                                 </div>
                                 <div class="idea__estimated_time" ng-if="idea.estimated_time == Null">
-                                    No estimated time yet
+                                    No estimated time yet<br>
                                 </div>
-                                <!--<div class="idea__votes" ng-show="isAuthenticated && idea.feasible && !idea.implemented">
+                                <div class="idea__votes"
+                                     ng-show="isAuthenticated && idea.feasible && !idea.implemented">
                                     <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
                                            ng-src="{{ idea.uservote > 0 && '/static/website/images/upvote%20trans%20bright.png' || '/static/website/images/upvote%20trans.png' }}"
                                            ng-click="upvote(idea.id)"/>
@@ -180,7 +183,8 @@
                                     <span ng-attr-id="downvote_count{{ idea.id }}">{{ idea.downvotes }}</span>
                                 </div>
 
-                                <div class="idea__votes" ng-show="!isAuthenticated && idea.feasible && !idea.implemented">
+                                <div class="idea__votes"
+                                     ng-show="!isAuthenticated && idea.feasible && !idea.implemented">
                                     <input ng-attr-id="upvote_button{{ idea.id }}" type="image"
                                            ng-src="/static/website/images/upvote%20trans.png"
                                            ng-click="vote_login_needed()"/>
@@ -199,11 +203,11 @@
                                            ng-src="{{ idea.uservote < 0 && '/static/website/images/downvote%20trans.png' || '/static/website/images/downvote%20trans%20dark.png' }}"
                                            ng-click="vote_impossible()"/>
                                     <span ng-attr-id="downvote_count{{ idea.id }}">{{ idea.downvotes }}</span>
-                                </div>-->
+                                </div>
                                 <div class="idea__admin_comment">
+                                    <!-- br nur ohne comments -->
                                     <span style="font-weight: bold"
                                           ng-if="idea.feasible == false">Not feasible <br></span>
-                                    <!-- 1.br nur ohne comments -->
 
                                     {{ idea.admin_comment }}
                                 </div>

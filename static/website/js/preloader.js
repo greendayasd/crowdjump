@@ -45,7 +45,6 @@ Crowdjump.Preloader.prototype = {
 
                 this.load.json('level:' + i, level + levelname + '.json');
             }
-            this.load.json('level:4', level + 'level4.json');
         }
 
 

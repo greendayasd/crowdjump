@@ -551,8 +551,13 @@ Crowdjump.Game._setupPhysicsArcade = function () {
 }
 
 Crowdjump.Game._handleCollisions = function () {
-    this.game.physics.arcade.collide(this.spiders, this.enemyWalls);
-    this.game.physics.arcade.collide(this.spiders, this.platforms);
+
+    if (CONST_ENEMIES) {
+        this.game.physics.arcade.collide(this.spiders, this.enemyWalls);
+        this.game.physics.arcade.collide(this.spiders, this.platforms);
+
+    }
+
     this.game.physics.arcade.collide(this.hero, this.platforms, this._onHeroVsSpecialPlatform, null, this);
 
 
@@ -940,6 +945,8 @@ Crowdjump.Game._spawnPlatform = function (platform) {
                 if (CONST_LAVASWITCHINGPLATFORM) {
                     sprite.lavaObject = platform;
                 }
+                break;
+            case "undefined":
                 break;
             default:
                 if (types[i] != '') console.log("unknown platform type: " + types[i]);

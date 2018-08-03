@@ -5,18 +5,17 @@
         .module('crowdjump.history.controllers')
         .controller('HistoryIndexController', HistoryIndexController);
 
-    HistoryIndexController.$inject = ['$scope', 'Authentication', 'History'];
+    HistoryIndexController.$inject = ['$scope', 'Authentication', 'History', 'Ideas'];
 
-    function HistoryIndexController($scope, Authentication, History) {
+    function HistoryIndexController($scope, Authentication, History, Ideas) {
 
         $scope.history = [];
+        $scope.ideas = [];
         $scope.tableRowExpanded = false;
         $scope.tableRowIndexExpandedCurr = "";
         $scope.tableRowIndexExpandedPrev = "";
-        $scope.test = "1";
 
-
-        activate();
+        getIdeas();
 
         $scope.selectTableRow = function (index) {
             if (typeof $scope.historyCollapse === 'undefined') {
@@ -84,10 +83,41 @@
                     }
                 };
 
+                setIdeas();
             }
 
             function historyErrorFn(data, status, headers, config) {
                 console.error(data.error);
+            }
+        }
+
+
+        function getIdeas() {
+            Ideas.all_implemented().then(ideasSuccessFn, ideasErrorFn);
+
+            function ideasSuccessFn(data, status, headers, config) {
+                $scope.ideas = data.data;
+                activate();
+            }
+
+            function ideasErrorFn(data, status, headers, config) {
+                // console.error(data.error);
+            }
+        }
+
+        function setIdeas() {
+            for (var i = $scope.history.length - 1; i >= 0; i--) {
+                var index = get_IdeaIndex($scope.history[i].idea_nr);
+                $scope.history[i].idea = $scope.ideas[index];
+            }
+        }
+
+        //utility
+        function get_IdeaIndex(idea_id) {
+            for (var i = $scope.ideas.length - 1; i >= 0; i--) {
+                if ($scope.ideas[i].id == idea_id) {
+                    return i;
+                }
             }
         }
     }

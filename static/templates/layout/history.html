@@ -53,6 +53,18 @@
                     <tr>
                         <td>{{ change.features_website }}</td>
                     </tr>
+                    <tr ng-show="change.idea != undefined">
+                        <td></td>
+                    </tr>
+                    <tr ng-show="change.idea != undefined">
+                        <td><b>Original Idea:</b></td>
+                    </tr>
+                    <tr ng-show="change.idea != undefined">
+                        <td>{{ change.idea.request_text }}</td>
+                    </tr>
+                    <tr ng-show="change.idea != undefined">
+                        <td>{{ change.idea.description }}</td>
+                    </tr>
                     </tbody>
                 </table>
             </td>

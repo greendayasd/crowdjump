@@ -12,6 +12,7 @@
     function Ideas($http, History) {
         var Ideas = {
             all: all,
+            all_implemented:all_implemented,
             create: create,
             get: get,
             deleteIdea: deleteIdea,
@@ -22,6 +23,10 @@
 
         function all() {
             return $http.get('/api/v1/ideas?deleted=false');
+        }
+
+        function all_implemented() {
+            return $http.get('/api/v1/ideas?implemented=true');
         }
 
         function create(content) {

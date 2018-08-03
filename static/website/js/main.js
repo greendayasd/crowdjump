@@ -10,30 +10,30 @@ const CONST_MAX_SPEED = 1000;
 const CONST_MOVE_SPEED = 200;
 const CONST_HERO_WEIGHT = 100;
 const CONST_HERO_LIVES = 1;
-const CONST_REPLAY_LEVEL = true;
-const CONST_SAVE_LEVEL_TIME = true;
+const CONST_REPLAY_LEVEL = false;
+const CONST_SAVE_LEVEL_TIME = false;
 
-const CONST_LEVEL = 4;
+const CONST_LEVEL = 1;
 const CONST_TIME = true;
 
-const CONST_LAVA = true;
-const CONST_LAVASWITCHINGPLATFORM = true;
-const CONST_SLIPPERYPLATFORMS = true;
-const CONST_MOVINGPLATFORMS = true;
+const CONST_LAVA = false;
+const CONST_LAVASWITCHINGPLATFORM = false;
+const CONST_SLIPPERYPLATFORMS = false;
+const CONST_MOVINGPLATFORMS = false;
 const CONST_LOCKPLATFORM = false;
-const CONST_BOUNCINGPLATFORMS = true;
+const CONST_BOUNCINGPLATFORMS = false;
 const CONST_SLIDEPLATFORMS = false;
 const CONST_FALLINGPLATFORMS = false;
 const CONST_CRATES = false;
 
-const CONST_POWERUPS = true;
+const CONST_POWERUPS = false;
 const CONST_COINS = false;
 
-const CONST_ENEMIES = true;
+const CONST_ENEMIES = false;
 const CONST_KILL_ENEMIES = false;
 const CONST_SPIDER_SPEED = 100;
 
-const CONST_LEVELSELECTION = true;
+const CONST_LEVELSELECTION = false;
 const CONST_BUBBLE = true;
 const CONST_PAUSE = false;
 

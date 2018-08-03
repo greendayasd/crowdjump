@@ -16,22 +16,23 @@ Crowdjump.Menu.prototype = {
         logo = this.add.sprite(CONST_WORLD_CENTER_X,
             CONST_WORLD_CENTER_Y - 80, 'logo');
         logo.anchor.set(0.5);
-        startGame = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 40, "Play", {
-            font: "40px Arial",
+        //+40 with level selection, font 40
+        startGame = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 60, "Play", {
+            font: "50px Arial",
             fill: '#dbdbdb'
         });
         startGame.anchor.set(0.5);
         startGame.inputEnabled = true;
-        startGame.events.onInputDown.add(this.phasergame, this)
+        startGame.events.onInputDown.add(this.phasergame, this);
 
 
-        selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 120, "Select Level", {
-            font: "40px Arial",
-            fill: '#dbdbdb'
-        });
-        selectLevel.anchor.set(0.5);
-        selectLevel.inputEnabled = true;
-        selectLevel.events.onInputDown.add(this.levelselection, this)
+        // selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 120, "Select Level", {
+        //     font: "40px Arial",
+        //     fill: '#dbdbdb'
+        // });
+        // selectLevel.anchor.set(0.5);
+        // selectLevel.inputEnabled = true;
+        // selectLevel.events.onInputDown.add(this.levelselection, this);
 
 
         key1 = game.input.keyboard.addKey(Phaser.Keyboard.ONE);

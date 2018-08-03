@@ -10,7 +10,7 @@ class VersionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Version
         fields = ('id', 'label', 'change', 'submitter', 'features_game', 'features_design', 'features_selection',
-                  'features_website', 'vote_weight', 'created_at',)
+                  'features_website', 'vote_weight', 'created_at', 'idea_nr')
         # read_only_fields = ()
 
     def get_validation_exclusions(self, *args, **kwargs):
