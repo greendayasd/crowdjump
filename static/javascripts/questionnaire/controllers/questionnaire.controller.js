@@ -396,6 +396,8 @@
 
             $scope.survey = [];
 
+            var english = true;
+
             if (false) {
                 $scope.exChoices = [choice, "< 18", "18 - 26", "26 - 39", "> 40"];
                 $scope.exDoubleChoices = [["A: Ich bin sehr schlecht in Videospielen", "B: Ich bin sehr gut in Videospielen"],
@@ -566,389 +568,391 @@
             $scope.survey[1] = [];
             $scope.survey[2] = [];
 
-            if (true) {
-                $scope.sur0q0Choices = [""];
-                $scope.survey[0][0] = {
-                    survey: 0,
-                    nr: 0,
-                    type: 'check1',
-                    text: '',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur0q0Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
+            if (english) {
+                if (true) {
+                    $scope.sur0q0Choices = [""];
+                    $scope.survey[0][0] = {
+                        survey: 0,
+                        nr: 0,
+                        type: 'check1',
+                        text: '',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur0q0Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
 
-            } //Survey0 Nur zum Speichern
+                } //Survey0 Nur zum Speichern
 
-            if (true) {
-                $scope.sur1q0Choices = [choice, "< 18", "18 - 26", "26 - 39", "> 40"];
-                $scope.survey[1][0] = {
-                    survey: 1,
-                    nr: 0,
-                    checked: false,
-                    type: 'combo',
-                    text: 'Age',
-                    required: false,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q0Choices,
-                    activate: [],
-                    value: '',
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.sur1q1Choices = [choice, "female", "male", "other"];
-                $scope.survey[1][1] = {
-                    survey: 1,
-                    nr: 1,
-                    checked: false,
-                    type: 'combo',
-                    text: 'Gender',
-                    required: false,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q1Choices,
-                    activate: [],
-                    value: '',
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.sur1q2Choices = [choice, "0 - 5", "5 - 10", "10 - 15", "15 - 20", "25+"];
-                $scope.survey[1][2] = {
-                    survey: 1,
-                    nr: 2,
-                    checked: false,
-                    type: 'combo',
-                    text: 'Time in hours you use your PC per week',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q2Choices,
-                    activate: [],
-                    value: '',
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][3] = {
-                    survey: 1,
-                    nr: 3,
-                    type: 'combo',
-                    text: 'Time in hours you play video games per week',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q2Choices,
-                    activate: [],
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.sur1q4Choices = ["Story", "Graphic", "Innovation", "Multiplayer", "Competition with other players", "Difficulty", "Gameplay"];
-                $scope.survey[1][4] = {
-                    survey: 1,
-                    nr: 4,
-                    type: 'check',
-                    text: 'What are important aspects in a video game?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q4Choices,
-                    freeChoice: 'Other',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.survey[1][5] = {
-                    survey: 1,
-                    nr: 5,
-                    type: 'radiolist',
-                    text: 'What is THE most important aspect in a video game?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q4Choices,
-                    freeChoice: 'Other',
-                    activate: [{v: 1, s: 1, nr: 1}],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.sur1q6ChoicesOG = randomize(["I played a lot of platformers", "I like platformers", "I like platformers more than other game genres"]);
-                $scope.sur1q6Choices = $scope.sur1q6ChoicesOG[0];
-                $scope.sur1q6Ordering = $scope.sur1q6ChoicesOG[1];
-                $scope.survey[1][6] = {
-                    survey: 1,
-                    nr: 6,
-                    type: 'scale',
-                    text: 'Please rate the following statements about platform games (like Super Mario or Super Meat Boy) from "not at all" to "very much".',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q6Choices,
-                    ordering: $scope.sur1q6Ordering,
-                    scale: scale7,
-                    nrscales: 7,
-                    freeChoice: '',
-                    randomized: true,
-                    activate: [],
-                    showImage: true,
-                    imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
-                $scope.survey[1][7] = {
-                    survey: 1,
-                    nr: 7,
-                    type: 'radio',
-                    text: 'Have you ever designed a video game?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '-1',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][8] = {
-                    survey: 1,
-                    nr: 8,
-                    type: 'radio',
-                    text: 'Have you ever designed an application? (except video games)',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][9] = {
-                    survey: 1,
-                    nr: 9,
-                    type: 'radio',
-                    text: 'If you had the choice, do you want to be included in the design process of a video game?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    activate: [{v: 1, s: 1, nr: 10}],
-                    showImage: false,
-                    imageURL: '',
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][10] = {
-                    survey: 1,
-                    nr: 10,
-                    type: 'bigtext',
-                    text: 'How would you like to be included?',
-                    required: false,
-                    startVisible: false,
-                    visible: false,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][11] = {
-                    survey: 1,
-                    nr: 11,
-                    type: 'radio',
-                    text: 'Have you ever watched a "Twitch Plays" series (e.g. Twitch Plays Pokemon, Twitch Plays Darksouls, Twitch Plays Pubg, etc) on Twitch?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    activate: [{v: 1, s: 1, nr: 12}, {v: 1, s: 1, nr: 13}],
-                    showImage: false,
-                    imageURL: '',
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][12] = {
-                    survey: 1,
-                    nr: 12,
-                    type: 'radio',
-                    text: 'Did you actively participate in the Twitch Plays series?',
-                    required: true,
-                    startVisible: false,
-                    visible: false,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.sur1q13Choices = ["How did you like Twitch Plays?"];
-                $scope.survey[1][13] = {
-                    survey: 1,
-                    nr: 13,
-                    type: 'scale',
-                    text: '',
-                    required: true,
-                    startVisible: false,
-                    visible: false,
-                    choices: $scope.sur1q13Choices,
-                    scale: scale7,
-                    nrscales: 7,
-                    freeChoice: '',
-                    imageURL: '',
-                    activate: [],
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
-                $scope.survey[1][14] = {
-                    survey: 1,
-                    nr: 14,
-                    type: 'radio',
-                    text: 'Have you heard of "PleaseBeNice"?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    activate: [{v: 1, s: 1, nr: 15}, {v: 1, s: 1, nr: 16}, {v: 1, s: 1, nr: 17}],
-                    showImage: false,
-                    imageURL: '',
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][15] = {
-                    survey: 1,
-                    nr: 15,
-                    type: 'radio',
-                    text: 'Did you play "PleaseBeNice" yourself?',
-                    required: true,
-                    startVisible: false,
-                    visible: false,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.sur1q16Choices = ['How did you like "PleaseBeNice?"'];
-                $scope.survey[1][16] = {
-                    survey: 1,
-                    nr: 16,
-                    type: 'scale',
-                    text: '',
-                    required: true,
-                    startVisible: false,
-                    visible: false,
-                    choices: $scope.sur1q16Choices,
-                    scale: scale7,
-                    nrscales: 7,
-                    freeChoice: '',
-                    activate: [],
-                    value: '',
-                    showImage: false,
-                    imageURL: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
-                $scope.survey[1][17] = {
-                    survey: 1,
-                    nr: 17,
-                    type: 'radio',
-                    text: 'Did one of your ideas get implemented?',
-                    required: true,
-                    startVisible: false,
-                    visible: false,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-            } //Survey1
+                if (true) {
+                    $scope.sur1q0Choices = [choice, "< 18", "18 - 26", "26 - 39", "> 40"];
+                    $scope.survey[1][0] = {
+                        survey: 1,
+                        nr: 0,
+                        checked: false,
+                        type: 'combo',
+                        text: 'Age',
+                        required: false,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q0Choices,
+                        activate: [],
+                        value: '',
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.sur1q1Choices = [choice, "female", "male", "other"];
+                    $scope.survey[1][1] = {
+                        survey: 1,
+                        nr: 1,
+                        checked: false,
+                        type: 'combo',
+                        text: 'Gender',
+                        required: false,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q1Choices,
+                        activate: [],
+                        value: '',
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.sur1q2Choices = [choice, "0 - 5", "5 - 10", "10 - 15", "15 - 20", "25+"];
+                    $scope.survey[1][2] = {
+                        survey: 1,
+                        nr: 2,
+                        checked: false,
+                        type: 'combo',
+                        text: 'Time in hours you use your PC per week',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q2Choices,
+                        activate: [],
+                        value: '',
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][3] = {
+                        survey: 1,
+                        nr: 3,
+                        type: 'combo',
+                        text: 'Time in hours you play video games per week',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q2Choices,
+                        activate: [],
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.sur1q4Choices = ["Story", "Graphic", "Innovation", "Multiplayer", "Competition with other players", "Difficulty", "Gameplay"];
+                    $scope.survey[1][4] = {
+                        survey: 1,
+                        nr: 4,
+                        type: 'check',
+                        text: 'What are important aspects in a video game?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q4Choices,
+                        freeChoice: 'Other',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.survey[1][5] = {
+                        survey: 1,
+                        nr: 5,
+                        type: 'radiolist',
+                        text: 'What is THE most important aspect in a video game?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q4Choices,
+                        freeChoice: 'Other',
+                        activate: [{v: 1, s: 1, nr: 1}],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.sur1q6ChoicesOG = randomize(["I played a lot of platformers", "I like platformers", "I like platformers more than other game genres"]);
+                    $scope.sur1q6Choices = $scope.sur1q6ChoicesOG[0];
+                    $scope.sur1q6Ordering = $scope.sur1q6ChoicesOG[1];
+                    $scope.survey[1][6] = {
+                        survey: 1,
+                        nr: 6,
+                        type: 'scale',
+                        text: 'Please rate the following statements about platform games (like Super Mario or Super Meat Boy) from "not at all" to "very much".',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q6Choices,
+                        ordering: $scope.sur1q6Ordering,
+                        scale: scale7,
+                        nrscales: 7,
+                        freeChoice: '',
+                        randomized: true,
+                        activate: [],
+                        showImage: true,
+                        imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
+                    $scope.survey[1][7] = {
+                        survey: 1,
+                        nr: 7,
+                        type: 'radio',
+                        text: 'Have you ever designed a video game?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '-1',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][8] = {
+                        survey: 1,
+                        nr: 8,
+                        type: 'radio',
+                        text: 'Have you ever designed an application? (except video games)',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][9] = {
+                        survey: 1,
+                        nr: 9,
+                        type: 'radio',
+                        text: 'If you had the choice, do you want to be included in the design process of a video game?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [{v: 1, s: 1, nr: 10}],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][10] = {
+                        survey: 1,
+                        nr: 10,
+                        type: 'bigtext',
+                        text: 'How would you like to be included?',
+                        required: false,
+                        startVisible: false,
+                        visible: false,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][11] = {
+                        survey: 1,
+                        nr: 11,
+                        type: 'radio',
+                        text: 'Have you ever watched a "Twitch Plays" series (e.g. Twitch Plays Pokemon, Twitch Plays Darksouls, Twitch Plays Pubg, etc) on Twitch?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [{v: 1, s: 1, nr: 12}, {v: 1, s: 1, nr: 13}],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][12] = {
+                        survey: 1,
+                        nr: 12,
+                        type: 'radio',
+                        text: 'Did you actively participate in the Twitch Plays series?',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.sur1q13Choices = ["How did you like Twitch Plays?"];
+                    $scope.survey[1][13] = {
+                        survey: 1,
+                        nr: 13,
+                        type: 'scale',
+                        text: '',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        choices: $scope.sur1q13Choices,
+                        scale: scale7,
+                        nrscales: 7,
+                        freeChoice: '',
+                        imageURL: '',
+                        activate: [],
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
+                    $scope.survey[1][14] = {
+                        survey: 1,
+                        nr: 14,
+                        type: 'radio',
+                        text: 'Have you heard of "PleaseBeNice"?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [{v: 1, s: 1, nr: 15}, {v: 1, s: 1, nr: 16}, {v: 1, s: 1, nr: 17}],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][15] = {
+                        survey: 1,
+                        nr: 15,
+                        type: 'radio',
+                        text: 'Did you play "PleaseBeNice" yourself?',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.sur1q16Choices = ['How did you like "PleaseBeNice?"'];
+                    $scope.survey[1][16] = {
+                        survey: 1,
+                        nr: 16,
+                        type: 'scale',
+                        text: '',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        choices: $scope.sur1q16Choices,
+                        scale: scale7,
+                        nrscales: 7,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        imageURL: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
+                    $scope.survey[1][17] = {
+                        survey: 1,
+                        nr: 17,
+                        type: 'radio',
+                        text: 'Did one of your ideas get implemented?',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                } //Survey1
 
-            if (true) {
-                $scope.sur2q0ChoicesOG = randomize([["A: I am really bad at video games", "B: I am extremely good in video games"],
-                    ["A: Only the design of a product is important", "B: Only functionality of a product is important"],
-                    ["A: I prefer to work alone", "B: I prefer to work with others"],
-                    ["A: Everyone's opinion should be heard equally", "B: The opinion of experts have a higher value"],
-                    ["A: I prefer very easy games", "B: I prefer very hard games"],
-                    ["A: I like to have a lot of freedom", "B: I prefer someone giving me tasks"],
-                    ["A: I prefer it when things don't change", "B: I prefer regular innovation"],
-                    ["A: I hate to compete with others", "B: I thrive on competition"],
-                    ["A: I see myself as a follower", "B: I see myself as a leader"],
-                    ["A: I love to discuss with others", "B: I prefer to not communicate with others at all"]]);
-                $scope.sur2q0Choices = $scope.sur2q0ChoicesOG[0];
-                $scope.sur2q0Ordering = $scope.sur2q0ChoicesOG[1];
+                if (true) {
+                    $scope.sur2q0ChoicesOG = randomize([["A: I am really bad at video games", "B: I am extremely good in video games"],
+                        ["A: Only the design of a product is important", "B: Only functionality of a product is important"],
+                        ["A: I prefer to work alone", "B: I prefer to work with others"],
+                        ["A: Everyone's opinion should be heard equally", "B: The opinion of experts have a higher value"],
+                        ["A: I prefer very easy games", "B: I prefer very hard games"],
+                        ["A: I like to have a lot of freedom", "B: I prefer someone giving me tasks"],
+                        ["A: I prefer it when things don't change", "B: I prefer regular innovation"],
+                        ["A: I hate to compete with others", "B: I thrive on competition"],
+                        ["A: I see myself as a follower", "B: I see myself as a leader"],
+                        ["A: I love to discuss with others", "B: I prefer to not communicate with others at all"]]);
+                    $scope.sur2q0Choices = $scope.sur2q0ChoicesOG[0];
+                    $scope.sur2q0Ordering = $scope.sur2q0ChoicesOG[1];
 
-                $scope.survey[2][0] = {
-                    survey: 2,
-                    nr: 0,
-                    type: 'doublescale',
-                    text: 'Please choose whether you lean more towards A or B',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur2q0Choices,
-                    ordering: $scope.sur2q0Ordering,
-                    scale: scale7AB,
-                    nrscales: 7,
-                    freeChoice: '',
-                    activate: [],
-                    randomized: true,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
+                    $scope.survey[2][0] = {
+                        survey: 2,
+                        nr: 0,
+                        type: 'doublescale',
+                        text: 'Please choose whether you lean more towards A or B',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur2q0Choices,
+                        ordering: $scope.sur2q0Ordering,
+                        scale: scale7AB,
+                        nrscales: 7,
+                        freeChoice: '',
+                        activate: [],
+                        randomized: true,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
 
-            } //Survey2
+                } //Survey2
+            }
 
 
             //Post Survey +3
@@ -960,972 +964,973 @@
             $scope.survey[8] = [];
             $scope.survey[9] = [];
 
+            if (english) {
+                if (true) {
+                    $scope.sur3q0Choices = [""];
+                    $scope.survey[3][0] = {
+                        survey: 3,
+                        nr: 0,
+                        type: 'check1',
+                        text: '',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q0Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
 
-            if (true) {
-                $scope.sur3q0Choices = [""];
-                $scope.survey[3][0] = {
-                    survey: 3,
-                    nr: 0,
-                    type: 'check1',
-                    text: '',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q0Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
+                } //PostSurvey0 Nur zum Speichern
 
-            } //PostSurvey0 Nur zum Speichern
+                if (true) {
+                    $scope.sur5q0ChoicesOG = randomize(["I felt challenged",
+                        "I felt pressured",
+                        "I felt frustrated",
+                        "I was fully occupied with the game",
+                        "I had to put a lot of effort into it",
+                        "It was asthetically pleasing",
+                        "I felt annoyed",
+                        "I found it impressive",
+                        "It felt like a rich experience",
+                        "I was deeply concentrated in the game",
+                        "I thought it was fun",
+                        "I felt succesful",
+                        "I felt irritable",
+                        "I was fast at reaching the game's targets",
+                        "I felt that I could explore things",
+                        "I felt skillful",
+                        "I found it tiresome",
+                        "I felt competent",
+                        "I forgot everything around me",
+                        "I felt bored",
+                        "I felt content",
+                        "I lost connection with the outside world",
+                        "I thought about other things",
+                        "I felt good",
+                        "I felt imaginative",
+                        "I felt time pressure",
+                        "It gave me a bad mood",
+                        "I felt happy",
+                        "I was good at it",
+                        "I lost track of time",
+                        "I was interested in the game's story",
+                        "I thought it was hard",
+                        "I enjoyed it"]);
+                    $scope.sur5q0Choices = $scope.sur5q0ChoicesOG[0];
+                    $scope.sur5q0Ordering = $scope.sur5q0ChoicesOG[1];
+                    $scope.survey[5][0] = {
+                        survey: 5,
+                        nr: 0,
+                        type: 'scale',
+                        text: 'Please indicate how you felt while playing the game for each of the items on the following scale. ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur5q0Choices,
+                        ordering: $scope.sur5q0Ordering,
+                        scale: scale5,
+                        nrscales: 5,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
 
-            if (true) {
-                $scope.sur5q0ChoicesOG = randomize(["I felt challenged",
-                    "I felt pressured",
-                    "I felt frustrated",
-                    "I was fully occupied with the game",
-                    "I had to put a lot of effort into it",
-                    "It was asthetically pleasing",
-                    "I felt annoyed",
-                    "I found it impressive",
-                    "It felt like a rich experience",
-                    "I was deeply concentrated in the game",
-                    "I thought it was fun",
-                    "I felt succesful",
-                    "I felt irritable",
-                    "I was fast at reaching the game's targets",
-                    "I felt that I could explore things",
-                    "I felt skillful",
-                    "I found it tiresome",
-                    "I felt competent",
-                    "I forgot everything around me",
-                    "I felt bored",
-                    "I felt content",
-                    "I lost connection with the outside world",
-                    "I thought about other things",
-                    "I felt good",
-                    "I felt imaginative",
-                    "I felt time pressure",
-                    "It gave me a bad mood",
-                    "I felt happy",
-                    "I was good at it",
-                    "I lost track of time",
-                    "I was interested in the game's story",
-                    "I thought it was hard",
-                    "I enjoyed it"]);
-                $scope.sur5q0Choices = $scope.sur5q0ChoicesOG[0];
-                $scope.sur5q0Ordering = $scope.sur5q0ChoicesOG[1];
-                $scope.survey[5][0] = {
-                    survey: 5,
-                    nr: 0,
-                    type: 'scale',
-                    text: 'Please indicate how you felt while playing the game for each of the items on the following scale. ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur5q0Choices,
-                    ordering: $scope.sur5q0Ordering,
-                    scale: scale5,
-                    nrscales: 5,
-                    freeChoice: '',
-                    activate: [],
-                    value: '',
-                    showImage: false,
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
+                } //PostSurvey2 GEQ
 
-            } //PostSurvey2 GEQ
+                if (true) {
+                    $scope.sur6q0ChoicesOG = randomize(["I found it enjoyable to be with the other(s)",
+                        "I felt schadenfreude (malicious delight)",
+                        "I envied the other(s)",
+                        "I felt jealous of the other(s)",
+                        "I paid close attention to the other(s)",
+                        "The other(s) tended to ignore me",
+                        "My intentions were clear to the other(s)",
+                        "I felt revengeful",
+                        "What I did affected what the other(s) did",
+                        "The other(s) paid close attention to me",
+                        "I felt connected to the other(s)",
+                        "I admired the other(s)",
+                        "My actions depended on the other’s actions",
+                        "I tended to ignore the other(s)",
+                        "What the other(s) did affected what I did",
+                        "I empathized with the other(s)",
+                        "I sympathized with the other(s)",
+                        "When I was happy, the others were happy",
+                        "The other's actions were dependent on my actions",
+                        "When the others were happy, I was happy",
+                        "The other’s intentions were clear to me"]);
+                    $scope.sur6q0Choices = $scope.sur6q0ChoicesOG[0];
+                    $scope.sur6q0Ordering = $scope.sur6q0ChoicesOG[1];
+                    $scope.survey[6][0] = {
+                        survey: 6,
+                        nr: 0,
+                        type: 'scale',
+                        text: 'Please rate the following statements on a scale from "not at all" to "extremely". ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur6q0Choices,
+                        ordering: $scope.sur6q0Ordering,
+                        scale: scale5,
+                        nrscales: 5,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
 
-            if (true) {
-                $scope.sur6q0ChoicesOG = randomize(["I found it enjoyable to be with the other(s)",
-                    "I felt schadenfreude (malicious delight)",
-                    "I envied the other(s)",
-                    "I felt jealous of the other(s)",
-                    "I paid close attention to the other(s)",
-                    "The other(s) tended to ignore me",
-                    "My intentions were clear to the other(s)",
-                    "I felt revengeful",
-                    "What I did affected what the other(s) did",
-                    "The other(s) paid close attention to me",
-                    "I felt connected to the other(s)",
-                    "I admired the other(s)",
-                    "My actions depended on the other’s actions",
-                    "I tended to ignore the other(s)",
-                    "What the other(s) did affected what I did",
-                    "I empathized with the other(s)",
-                    "I sympathized with the other(s)",
-                    "When I was happy, the others were happy",
-                    "The other's actions were dependent on my actions",
-                    "When the others were happy, I was happy",
-                    "The other’s intentions were clear to me"]);
-                $scope.sur6q0Choices = $scope.sur6q0ChoicesOG[0];
-                $scope.sur6q0Ordering = $scope.sur6q0ChoicesOG[1];
-                $scope.survey[6][0] = {
-                    survey: 6,
-                    nr: 0,
-                    type: 'scale',
-                    text: 'Please rate the following statements on a scale from "not at all" to "extremely". ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur6q0Choices,
-                    ordering: $scope.sur6q0Ordering,
-                    scale: scale5,
-                    nrscales: 5,
-                    freeChoice: '',
-                    activate: [],
-                    value: '',
-                    showImage: false,
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
+                } //PostSurvey3 SPGQ
 
-            } //PostSurvey3 SPGQ
+                if (true) {
+                    $scope.sur7q0ChoicesOG = randomize(["I believe I had some choice about doing this activity.",
+                        "I thought Crowdjump was quite enjoyable.",
+                        "I am satisfied with my performance at Crowdjump.",
+                        "I was pretty skilled at Crowdjump.",
+                        "I felt pressured while doing Crowdjump.",
+                        "I think I am pretty good at this activity.",
+                        "I had concerns whether I could do the activity well.",
+                        "I was able to control the activity myself.",
+                        "I thought Crowdjump was a very interesting activity.",
+                        "Crowdjump was fun to do.",
+                        "I could choose how to proceed in Crowdjump.",
+                        "I felt very tense while doing Crowdjump."]);
+                    $scope.sur7q0Choices = $scope.sur7q0ChoicesOG[0];
+                    $scope.sur7q0Ordering = $scope.sur7q0ChoicesOG[1];
 
-            if (true) {
-                $scope.sur7q0ChoicesOG = randomize(["I believe I had some choice about doing this activity.",
-                    "I thought Crowdjump was quite enjoyable.",
-                    "I am satisfied with my performance at Crowdjump.",
-                    "I was pretty skilled at Crowdjump.",
-                    "I felt pressured while doing Crowdjump.",
-                    "I think I am pretty good at this activity.",
-                    "I had concerns whether I could do the activity well.",
-                    "I was able to control the activity myself.",
-                    "I thought Crowdjump was a very interesting activity.",
-                    "Crowdjump was fun to do.",
-                    "I could choose how to proceed in Crowdjump.",
-                    "I felt very tense while doing Crowdjump."]);
-                $scope.sur7q0Choices = $scope.sur7q0ChoicesOG[0];
-                $scope.sur7q0Ordering = $scope.sur7q0ChoicesOG[1];
+                    $scope.sur7q0Scale = ["not at all true", , , "somewhat true", , , "very true"]
+                    $scope.survey[7][0] = {
+                        survey: 7,
+                        nr: 0,
+                        type: 'scale',
+                        text: 'The following items concern your experience with the task. Please answer all items and indicate how true the statement is for you, using a scale from "not at all true" to "very true". ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur7q0Choices,
+                        ordering: $scope.sur7q0Ordering,
+                        scale: $scope.sur7q0Scale,
+                        nrscales: 7,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
 
-                $scope.sur7q0Scale = ["not at all true", , , "somewhat true", , , "very true"]
-                $scope.survey[7][0] = {
-                    survey: 7,
-                    nr: 0,
-                    type: 'scale',
-                    text: 'The following items concern your experience with the task. Please answer all items and indicate how true the statement is for you, using a scale from "not at all true" to "very true". ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur7q0Choices,
-                    ordering: $scope.sur7q0Ordering,
-                    scale: $scope.sur7q0Scale,
-                    nrscales: 7,
-                    freeChoice: '',
-                    activate: [],
-                    value: '',
-                    showImage: false,
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
+                } //PostSurvey4 KIM / IMI
 
-            } //PostSurvey4 KIM / IMI
+                if (true) {
+                    $scope.sur8q0Scale = ["Strongly disagree", "", "", "", "Strongly agree"]
+                    $scope.sur8q0ChoicesOG = randomize(["I think that I would like to use this system frequently.",
+                        "I found the system unnecessarily complex.",
+                        "I thought the system was easy to use.",
+                        "I think that I would need the support of a technical person to be able to use this system.",
+                        "I found the various functions in this system were well integrated.",
+                        "I thought there was too much inconsistency in this system.",
+                        "I would imagine that most people would learn to use this system very quickly.",
+                        "I found the system very cumbersome to use.",
+                        "I felt very confident using the system.",
+                        "I needed to learn a lot of things before I could get going with this system."
+                    ]);
+                    $scope.sur8q0Choices = $scope.sur8q0ChoicesOG[0];
+                    $scope.sur8q0Ordering = $scope.sur8q0ChoicesOG[1];
+                    $scope.survey[8][0] = {
+                        survey: 8,
+                        nr: 0,
+                        type: 'scale',
+                        text: 'Please rate the following statements regarding your experience with Crowdjump on a scale from "strongly disagree" to "strongly agree". ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur8q0Choices,
+                        ordering: $scope.sur8q0Ordering,
+                        scale: $scope.sur8q0Scale,
+                        nrscales: 5,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
 
-            if (true) {
-                $scope.sur8q0Scale = ["Strongly disagree", "", "", "", "Strongly agree"]
-                $scope.sur8q0ChoicesOG = randomize(["I think that I would like to use this system frequently.",
-                    "I found the system unnecessarily complex.",
-                    "I thought the system was easy to use.",
-                    "I think that I would need the support of a technical person to be able to use this system.",
-                    "I found the various functions in this system were well integrated.",
-                    "I thought there was too much inconsistency in this system.",
-                    "I would imagine that most people would learn to use this system very quickly.",
-                    "I found the system very cumbersome to use.",
-                    "I felt very confident using the system.",
-                    "I needed to learn a lot of things before I could get going with this system."
-                ]);
-                $scope.sur8q0Choices = $scope.sur8q0ChoicesOG[0];
-                $scope.sur8q0Ordering = $scope.sur8q0ChoicesOG[1];
-                $scope.survey[8][0] = {
-                    survey: 8,
-                    nr: 0,
-                    type: 'scale',
-                    text: 'Please rate the following statements regarding your experience with Crowdjump on a scale from "strongly disagree" to "strongly agree". ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur8q0Choices,
-                    ordering: $scope.sur8q0Ordering,
-                    scale: $scope.sur8q0Scale,
-                    nrscales: 5,
-                    freeChoice: '',
-                    activate: [],
-                    value: '',
-                    showImage: false,
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
+                } //PostSurvey5 SUS
 
-            } //PostSurvey5 SUS
+                if (true) {
+                    $scope.sur9q0ChoicesOG = randomize(["I liked the idea of Crowdjump.",
+                        "I liked to submit new ideas.",
+                        "The game developed in a positive direction.",
+                        "The website developed in a positive direction.",
+                        "The process of choosing the ideas developed in a positive direction.",
+                        "After each submission cycle the features were implemented as requested.",
+                        "The implemented features met my wishes for Crowdjump.",
+                        "I formed a community with other players.",
+                        "Other players interfered with the development.",
+                        "The other players and I worked as a team.",
+                        "My opinion was not heard.",
+                    ]);
+                    $scope.sur9q0Choices = $scope.sur9q0ChoicesOG[0];
+                    $scope.sur9q0Ordering = $scope.sur9q0ChoicesOG[1];
+                    $scope.survey[9][0] = {
+                        survey: 9,
+                        nr: 0,
+                        type: 'scale',
+                        text: 'Please rate the following statements regarding your experience with Crowdjump on a scale from "not at" to "extremely". ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur9q0Choices,
+                        ordering: $scope.sur9q0Ordering,
+                        scale: scale5,
+                        nrscales: 5,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
 
-            if (true) {
-                $scope.sur9q0ChoicesOG = randomize(["I liked the idea of Crowdjump.",
-                    "I liked to submit new ideas.",
-                    "The game developed in a positive direction.",
-                    "The website developed in a positive direction.",
-                    "The process of choosing the ideas developed in a positive direction.",
-                    "After each submission cycle the features were implemented as requested.",
-                    "The implemented features met my wishes for Crowdjump.",
-                    "I formed a community with other players.",
-                    "Other players interfered with the development.",
-                    "The other players and I worked as a team.",
-                    "My opinion was not heard.",
-                ]);
-                $scope.sur9q0Choices = $scope.sur9q0ChoicesOG[0];
-                $scope.sur9q0Ordering = $scope.sur9q0ChoicesOG[1];
-                $scope.survey[9][0] = {
-                    survey: 9,
-                    nr: 0,
-                    type: 'scale',
-                    text: 'Please rate the following statements regarding your experience with Crowdjump on a scale from "not at" to "extremely". ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur9q0Choices,
-                    ordering: $scope.sur9q0Ordering,
-                    scale: scale5,
-                    nrscales: 5,
-                    freeChoice: '',
-                    activate: [],
-                    value: '',
-                    showImage: false,
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
-
-            } //PostSurvey6
-
+                } //PostSurvey6
+            }
 
             //Deutsch
 
-            if (false) {
-                $scope.sur1q0Choices = [choice, "< 18", "18 - 26", "26 - 39", "> 40"];
-                $scope.survey[1][0] = {
-                    survey: 1,
-                    nr: 0,
-                    checked: false,
-                    type: 'combo',
-                    text: 'Alter',
-                    required: false,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q0Choices,
-                    activate: [],
-                    value: '',
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.sur1q1Choices = [choice, "weiblich", "männlich", "sonstiges"];
-                $scope.survey[1][1] = {
-                    survey: 1,
-                    nr: 1,
-                    checked: false,
-                    type: 'combo',
-                    text: 'Geschlecht',
-                    required: false,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q1Choices,
-                    activate: [],
-                    value: '',
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.sur1q2Choices = [choice, "0 - 5", "5 - 10", "10 - 15", "15 - 20", "25+"];
-                $scope.survey[1][2] = {
-                    survey: 1,
-                    nr: 2,
-                    checked: false,
-                    type: 'combo',
-                    text: 'Stunden pro Woche, die du am PC verbringst ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q2Choices,
-                    activate: [],
-                    value: '',
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][3] = {
-                    survey: 1,
-                    nr: 3,
-                    type: 'combo',
-                    text: 'Stunden pro Woche, die du mit Videospielen verbringst ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q2Choices,
-                    activate: [],
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.sur1q4Choices = ["Story", "Grafik", "Innovation", "Mehrspieler-Modus", "Wettbewerb mit anderen Spielern", "Schwierigkeit", "Gameplay/Spielablauf"];
-                $scope.survey[1][4] = {
-                    survey: 1,
-                    nr: 4,
-                    type: 'check',
-                    text: 'Was sind deiner Meninung nach die wichtigsten Aspekte in einem Videospiel?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q4Choices,
-                    freeChoice: 'Andere',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.survey[1][5] = {
-                    survey: 1,
-                    nr: 5,
-                    type: 'radiolist',
-                    text: 'Was ist deiner Meinung nach DER wichtigste Aspekt in einem Videospiel?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q4Choices,
-                    freeChoice: 'Andere',
-                    activate: [{v: 1, s: 1, nr: 1}],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.sur1q6Choices = ["Ich hab viele Plattformer gespielt", "Ich mag Plattformer", "Ich mag Plattformer mehr als andere Videospiel Genre"];
-                $scope.survey[1][6] = {
-                    survey: 1,
-                    nr: 6,
-                    type: 'scale',
-                    text: 'Bitte bewerte die folgenden Aussagen über Plattformer (wie Super Mario oder Super Meat Boy) auf einer Skala von "überhaupt nicht" bis "sehr".',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur1q6Choices,
-                    scale: scale7,
-                    nrscales: 7,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: true,
-                    imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
-                $scope.survey[1][7] = {
-                    survey: 1,
-                    nr: 7,
-                    type: 'radio',
-                    text: 'Hast du je ein Spiel designed?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '-1',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][8] = {
-                    survey: 1,
-                    nr: 8,
-                    type: 'radio',
-                    text: 'Hast du je eine Applikation designed? (außer Videospielen)',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '-1',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][9] = {
-                    survey: 1,
-                    nr: 9,
-                    type: 'radio',
-                    text: 'Wenn du die Wahl hast, würdest du gerne beim Designprozess eines Videospieles beteiligt sein?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    activate: [{v: 1, s: 1, nr: 10}],
-                    showImage: false,
-                    imageURL: '',
-                    value: '-1',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][10] = {
-                    survey: 1,
-                    nr: 10,
-                    type: 'bigtext',
-                    text: 'Wie wärst du dabei gerne beteiligt?',
-                    required: false,
-                    startVisible: false,
-                    visible: false,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][11] = {
-                    survey: 1,
-                    nr: 11,
-                    type: 'radio',
-                    text: 'Hast du je eine "Twitch Plays" (bspw. Twitch Plays Pokemon, Twitch Plays Darksouls, Twitch Plays Pubg, etc) Serie auf Twitch gesehen?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    activate: [{v: 1, s: 1, nr: 12}, {v: 1, s: 1, nr: 13}],
-                    showImage: false,
-                    imageURL: '',
-                    value: '-1',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][12] = {
-                    survey: 1,
-                    nr: 12,
-                    type: 'radio',
-                    text: 'Hast du aktiv an der "Twitch Plays" Serie teilgenommen? ',
-                    required: true,
-                    startVisible: false,
-                    visible: false,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '-1',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.sur1q13Choices = ["Wie hat dir Twitch Plays gefallen?"];
-                $scope.survey[1][13] = {
-                    survey: 1,
-                    nr: 13,
-                    type: 'scale',
-                    text: '',
-                    required: true,
-                    startVisible: false,
-                    visible: false,
-                    choices: $scope.sur1q13Choices,
-                    scale: scale7,
-                    nrscales: 7,
-                    freeChoice: '',
-                    imageURL: '',
-                    activate: [],
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
-                $scope.survey[1][14] = {
-                    survey: 1,
-                    nr: 14,
-                    type: 'radio',
-                    text: 'Hast du je von PleaseBeNice gehört?',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    activate: [{v: 1, s: 1, nr: 15}, {v: 1, s: 1, nr: 16}, {v: 1, s: 1, nr: 17}],
-                    showImage: false,
-                    imageURL: '',
-                    value: '-1',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.survey[1][15] = {
-                    survey: 1,
-                    nr: 15,
-                    type: 'radio',
-                    text: 'Hast du PleaseBeNice selbst gespielt?',
-                    required: true,
-                    startVisible: false,
-                    visible: false,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '-1',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-                $scope.sur1q16Choices = ["Wie hat dir PleaseBeNice gefallen?"];
-                $scope.survey[1][16] = {
-                    survey: 1,
-                    nr: 16,
-                    type: 'scale',
-                    text: '',
-                    required: true,
-                    startVisible: false,
-                    visible: false,
-                    choices: $scope.sur1q16Choices,
-                    scale: scale7,
-                    nrscales: 7,
-                    freeChoice: '',
-                    activate: [],
-                    value: '',
-                    showImage: false,
-                    imageURL: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
-                $scope.survey[1][17] = {
-                    survey: 1,
-                    nr: 17,
-                    type: 'radio',
-                    text: 'Wurde eine deiner Ideen bei PleaseBeNice übernommen?',
-                    required: true,
-                    startVisible: false,
-                    visible: false,
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    value: '-1',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                };
-            } //Survey1 deutsch
-            if (false) {
-                $scope.sur2q0Choices = [["A: Ich bin sehr schlecht in Videospielen", "B: Ich bin sehr gut in Videospielen"],
-                    ["A: Nur das Design eines Produktes is wichtig", "B: Nur die Funktion eines Produktes ist wichtig"],
-                    ["A: Ich bevorzuge es, alleine zu arbeiten", "B: Ich bevorzuge es, mit anderen zu arbeiten"],
-                    ["A: Jede Meinung ist gleichermaßen wichtig", "B: Die Meinung von Experten hat einen höheren Stellenwert"],
-                    ["A: Ich bevorzuge leichte Spiele", "B: Ich bevorzuge schwere Spiele"],
-                    ["A: Ich habe gerne viel Freiheit bei dem was ich tue", "B: Ich bevorzuge jemanden, der mir Aufgaben gibt"],
-                    ["A: Mir sind Dinge, die sich nicht verändern am liebsten", "B: Regelmäßige Innovation ist wichtig für mich"],
-                    ["A: Ich hasse den Wettbewerb mit anderen", "B: Ich blühe in Wettbewerbssituationen auf"],
-                    ["A: Ich sehe mich als Mitläufer", "B: Ich sehe mich als Anführer"],
-                    ["A: Ich liebe die Diskussion mit anderen", "B: Mir ist es am liebsten, überhaupt nicht mit anderen Leuten kommunizieren"]];
+            if (!english) {
+                if (false) {
+                    $scope.sur1q0Choices = [choice, "< 18", "18 - 26", "26 - 39", "> 40"];
+                    $scope.survey[1][0] = {
+                        survey: 1,
+                        nr: 0,
+                        checked: false,
+                        type: 'combo',
+                        text: 'Alter',
+                        required: false,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q0Choices,
+                        activate: [],
+                        value: '',
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.sur1q1Choices = [choice, "weiblich", "männlich", "sonstiges"];
+                    $scope.survey[1][1] = {
+                        survey: 1,
+                        nr: 1,
+                        checked: false,
+                        type: 'combo',
+                        text: 'Geschlecht',
+                        required: false,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q1Choices,
+                        activate: [],
+                        value: '',
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.sur1q2Choices = [choice, "0 - 5", "5 - 10", "10 - 15", "15 - 20", "25+"];
+                    $scope.survey[1][2] = {
+                        survey: 1,
+                        nr: 2,
+                        checked: false,
+                        type: 'combo',
+                        text: 'Stunden pro Woche, die du am PC verbringst ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q2Choices,
+                        activate: [],
+                        value: '',
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][3] = {
+                        survey: 1,
+                        nr: 3,
+                        type: 'combo',
+                        text: 'Stunden pro Woche, die du mit Videospielen verbringst ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q2Choices,
+                        activate: [],
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.sur1q4Choices = ["Story", "Grafik", "Innovation", "Mehrspieler-Modus", "Wettbewerb mit anderen Spielern", "Schwierigkeit", "Gameplay/Spielablauf"];
+                    $scope.survey[1][4] = {
+                        survey: 1,
+                        nr: 4,
+                        type: 'check',
+                        text: 'Was sind deiner Meninung nach die wichtigsten Aspekte in einem Videospiel?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q4Choices,
+                        freeChoice: 'Andere',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.survey[1][5] = {
+                        survey: 1,
+                        nr: 5,
+                        type: 'radiolist',
+                        text: 'Was ist deiner Meinung nach DER wichtigste Aspekt in einem Videospiel?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q4Choices,
+                        freeChoice: 'Andere',
+                        activate: [{v: 1, s: 1, nr: 1}],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.sur1q6Choices = ["Ich hab viele Plattformer gespielt", "Ich mag Plattformer", "Ich mag Plattformer mehr als andere Videospiel Genre"];
+                    $scope.survey[1][6] = {
+                        survey: 1,
+                        nr: 6,
+                        type: 'scale',
+                        text: 'Bitte bewerte die folgenden Aussagen über Plattformer (wie Super Mario oder Super Meat Boy) auf einer Skala von "überhaupt nicht" bis "sehr".',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur1q6Choices,
+                        scale: scale7,
+                        nrscales: 7,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: true,
+                        imageURL: 'http://wallpaperget.com/images/super-mario-world-wallpaper-24.jpg',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
+                    $scope.survey[1][7] = {
+                        survey: 1,
+                        nr: 7,
+                        type: 'radio',
+                        text: 'Hast du je ein Spiel designed?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '-1',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][8] = {
+                        survey: 1,
+                        nr: 8,
+                        type: 'radio',
+                        text: 'Hast du je eine Applikation designed? (außer Videospielen)',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '-1',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][9] = {
+                        survey: 1,
+                        nr: 9,
+                        type: 'radio',
+                        text: 'Wenn du die Wahl hast, würdest du gerne beim Designprozess eines Videospieles beteiligt sein?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [{v: 1, s: 1, nr: 10}],
+                        showImage: false,
+                        imageURL: '',
+                        value: '-1',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][10] = {
+                        survey: 1,
+                        nr: 10,
+                        type: 'bigtext',
+                        text: 'Wie wärst du dabei gerne beteiligt?',
+                        required: false,
+                        startVisible: false,
+                        visible: false,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][11] = {
+                        survey: 1,
+                        nr: 11,
+                        type: 'radio',
+                        text: 'Hast du je eine "Twitch Plays" (bspw. Twitch Plays Pokemon, Twitch Plays Darksouls, Twitch Plays Pubg, etc) Serie auf Twitch gesehen?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [{v: 1, s: 1, nr: 12}, {v: 1, s: 1, nr: 13}],
+                        showImage: false,
+                        imageURL: '',
+                        value: '-1',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][12] = {
+                        survey: 1,
+                        nr: 12,
+                        type: 'radio',
+                        text: 'Hast du aktiv an der "Twitch Plays" Serie teilgenommen? ',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '-1',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.sur1q13Choices = ["Wie hat dir Twitch Plays gefallen?"];
+                    $scope.survey[1][13] = {
+                        survey: 1,
+                        nr: 13,
+                        type: 'scale',
+                        text: '',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        choices: $scope.sur1q13Choices,
+                        scale: scale7,
+                        nrscales: 7,
+                        freeChoice: '',
+                        imageURL: '',
+                        activate: [],
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
+                    $scope.survey[1][14] = {
+                        survey: 1,
+                        nr: 14,
+                        type: 'radio',
+                        text: 'Hast du je von PleaseBeNice gehört?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [{v: 1, s: 1, nr: 15}, {v: 1, s: 1, nr: 16}, {v: 1, s: 1, nr: 17}],
+                        showImage: false,
+                        imageURL: '',
+                        value: '-1',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][15] = {
+                        survey: 1,
+                        nr: 15,
+                        type: 'radio',
+                        text: 'Hast du PleaseBeNice selbst gespielt?',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '-1',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.sur1q16Choices = ["Wie hat dir PleaseBeNice gefallen?"];
+                    $scope.survey[1][16] = {
+                        survey: 1,
+                        nr: 16,
+                        type: 'scale',
+                        text: '',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        choices: $scope.sur1q16Choices,
+                        scale: scale7,
+                        nrscales: 7,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        imageURL: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
+                    $scope.survey[1][17] = {
+                        survey: 1,
+                        nr: 17,
+                        type: 'radio',
+                        text: 'Wurde eine deiner Ideen bei PleaseBeNice übernommen?',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '-1',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                } //Survey1 deutsch
+                if (false) {
+                    $scope.sur2q0Choices = [["A: Ich bin sehr schlecht in Videospielen", "B: Ich bin sehr gut in Videospielen"],
+                        ["A: Nur das Design eines Produktes is wichtig", "B: Nur die Funktion eines Produktes ist wichtig"],
+                        ["A: Ich bevorzuge es, alleine zu arbeiten", "B: Ich bevorzuge es, mit anderen zu arbeiten"],
+                        ["A: Jede Meinung ist gleichermaßen wichtig", "B: Die Meinung von Experten hat einen höheren Stellenwert"],
+                        ["A: Ich bevorzuge leichte Spiele", "B: Ich bevorzuge schwere Spiele"],
+                        ["A: Ich habe gerne viel Freiheit bei dem was ich tue", "B: Ich bevorzuge jemanden, der mir Aufgaben gibt"],
+                        ["A: Mir sind Dinge, die sich nicht verändern am liebsten", "B: Regelmäßige Innovation ist wichtig für mich"],
+                        ["A: Ich hasse den Wettbewerb mit anderen", "B: Ich blühe in Wettbewerbssituationen auf"],
+                        ["A: Ich sehe mich als Mitläufer", "B: Ich sehe mich als Anführer"],
+                        ["A: Ich liebe die Diskussion mit anderen", "B: Mir ist es am liebsten, überhaupt nicht mit anderen Leuten kommunizieren"]];
 
-                $scope.survey[2][0] = {
-                    survey: 2,
-                    nr: 0,
-                    type: 'doublescale',
-                    text: 'Bitte wähle auf der Skala aus, inwiefern du eher A oder B zustimmst',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur2q0Choices,
-                    scale: scale7AB,
-                    nrscales: 7,
-                    freeChoice: '',
-                    activate: [],
-                    randomized: true,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
+                    $scope.survey[2][0] = {
+                        survey: 2,
+                        nr: 0,
+                        type: 'doublescale',
+                        text: 'Bitte wähle auf der Skala aus, inwiefern du eher A oder B zustimmst',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur2q0Choices,
+                        scale: scale7AB,
+                        nrscales: 7,
+                        freeChoice: '',
+                        activate: [],
+                        randomized: true,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
 
-            } //Survey2 deutsch
-            if (false) {
-                $scope.sur3q0Scale = ["A1", "A2", "B1", "B2", "C1", "C2"];
-                $scope.sur3q0Choices = ["Reading"];
-                $scope.survey[3][0] = {
-                    survey: 3,
-                    nr: 0,
-                    type: 'scale',
-                    text: 'Manche der nachfolgenden Fragen in der Umfrage sind auf englisch. Um deine Antworten auf diese Fragen besser einschätzen zu können, beantworte bitte die nachfolgenden Fragen.\n' +
-                    '\n' +
-                    'Zuerst, wähle unten den Text, welcher deiner Meinung nach deine Lesefähigkeiten in Englisch am Besten beschreibt.\n' +
-                    '\n' +
-                    '\n' +
-                    '\n' +
-                    'A1: I can understand familiar names, words and very simple sentences, for example on notices and posters or in catalogues.\n' +
-                    '\n' +
-                    'A2: I can read very short, simple texts. I can find specific, predictable information in simple everyday material such as advertisements, prospectuses, menus and timetables and I can understand short simple personal letters.\n' +
-                    '\n' +
-                    'B1: I can understand texts that consist mainly of high frequency everyday or job-related language. I can understand the description of events, feelings and wishes in personal letters.\n' +
-                    '\n' +
-                    'B2: I can read articles and reports concerned with contemporary problems in which the writers adopt particular attitudes or viewpoints. I can understand contemporary literary prose\n' +
-                    '\n' +
-                    'C1: I can understand long and complex factual and literary texts, appreciating distinctions of style. I can understand specialised articles and longer technical instructions, even when they do not relate to my field.\n' +
-                    '\n' +
-                    'C2: I can read with ease virtually all forms of the written language, including abstract, structurally or linguistically complex texts such as manuals, specialised articles and literary works. ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q0Choices,
-                    scale: $scope.sur3q0Scale,
-                    nrscales: 6,
-                    freeChoice: '',
-                    activate: [],
-                    value: '',
-                    showImage: false,
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
-                $scope.sur3q1Choices = ["go", "going", "was", "went"];
-                $scope.sur3q2Choices = ["situated", "age", "like", "located"];
-                $scope.sur3q3Choices = ["have not to be", "am not being", "will not be", "can't be"];
-                $scope.sur3q4Choices = ["high", "wide", "long", "heavy"];
-                $scope.sur3q5Choices = ["a", "some", "me", "I"];
-                $scope.sur3q6Choices = ["had", "has had", "has", "had had"];
-                $scope.sur3q7Choices = ["anyone", "some people", "not anybody", "someone"];
-                $scope.sur3q8Choices = ["had know", "knew", "has known", "knows"];
-                $scope.sur3q9Choices = ["can", "will", "may", "might"];
-                $scope.sur3q10Choices = ["just buy", "had just bought", "'ve just", "soon will"];
-                $scope.survey[3][1] = {
-                    survey: 3,
-                    nr: 1,
-                    type: 'radiolist',
-                    text: 'Answer the following 10 questions\n' +
-                    '\n' +
-                    '1) Did you ……… anywhere interesting last weekend? ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q1Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.survey[3][2] = {
-                    survey: 3,
-                    nr: 2,
-                    type: 'radiolist',
-                    text: "2) What is your home town ……… ?",
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q2Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.survey[3][3] = {
-                    survey: 3,
-                    nr: 3,
-                    type: 'radiolist',
-                    text: "3) I’m afraid I ……… here for your birthday party.",
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q3Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.survey[3][4] = {
-                    survey: 3,
-                    nr: 4,
-                    type: 'radiolist',
-                    text: "4) How ……… are you?",
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q4Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.survey[3][5] = {
-                    survey: 3,
-                    nr: 5,
-                    type: 'radiolist',
-                    text: "5) Would you like ……… help? ",
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q5Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.survey[3][6] = {
-                    survey: 3,
-                    nr: 6,
-                    type: 'radiolist',
-                    text: "6) He hasn’t played since he ……… the accident. ",
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q6Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.survey[3][7] = {
-                    survey: 3,
-                    nr: 7,
-                    type: 'radiolist',
-                    text: "7) In life ……… can make a mistake; we’re all human. ",
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q7Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.survey[3][8] = {
-                    survey: 3,
-                    nr: 8,
-                    type: 'radiolist',
-                    text: "8) If he ……… about it, I’m sure he’d help. ",
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q8Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.survey[3][9] = {
-                    survey: 3,
-                    nr: 9,
-                    type: 'radiolist',
-                    text: "9) They said they ……… come, but they didn’t.",
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q9Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
-                $scope.survey[3][10] = {
-                    survey: 3,
-                    nr: 10,
-                    type: 'radiolist',
-                    text: " 10) I don't have a cent to give you. I ...... bought a new computer. ",
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur3q10Choices,
-                    freeChoice: '',
-                    activate: [],
-                    showImage: false,
-                    imageURL: '',
-                    imageWidth: 1100,
-                    value: '',
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: {}
-                };
+                } //Survey2 deutsch
+                if (false) {
+                    $scope.sur3q0Scale = ["A1", "A2", "B1", "B2", "C1", "C2"];
+                    $scope.sur3q0Choices = ["Reading"];
+                    $scope.survey[3][0] = {
+                        survey: 3,
+                        nr: 0,
+                        type: 'scale',
+                        text: 'Manche der nachfolgenden Fragen in der Umfrage sind auf englisch. Um deine Antworten auf diese Fragen besser einschätzen zu können, beantworte bitte die nachfolgenden Fragen.\n' +
+                        '\n' +
+                        'Zuerst, wähle unten den Text, welcher deiner Meinung nach deine Lesefähigkeiten in Englisch am Besten beschreibt.\n' +
+                        '\n' +
+                        '\n' +
+                        '\n' +
+                        'A1: I can understand familiar names, words and very simple sentences, for example on notices and posters or in catalogues.\n' +
+                        '\n' +
+                        'A2: I can read very short, simple texts. I can find specific, predictable information in simple everyday material such as advertisements, prospectuses, menus and timetables and I can understand short simple personal letters.\n' +
+                        '\n' +
+                        'B1: I can understand texts that consist mainly of high frequency everyday or job-related language. I can understand the description of events, feelings and wishes in personal letters.\n' +
+                        '\n' +
+                        'B2: I can read articles and reports concerned with contemporary problems in which the writers adopt particular attitudes or viewpoints. I can understand contemporary literary prose\n' +
+                        '\n' +
+                        'C1: I can understand long and complex factual and literary texts, appreciating distinctions of style. I can understand specialised articles and longer technical instructions, even when they do not relate to my field.\n' +
+                        '\n' +
+                        'C2: I can read with ease virtually all forms of the written language, including abstract, structurally or linguistically complex texts such as manuals, specialised articles and literary works. ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q0Choices,
+                        scale: $scope.sur3q0Scale,
+                        nrscales: 6,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
+                    $scope.sur3q1Choices = ["go", "going", "was", "went"];
+                    $scope.sur3q2Choices = ["situated", "age", "like", "located"];
+                    $scope.sur3q3Choices = ["have not to be", "am not being", "will not be", "can't be"];
+                    $scope.sur3q4Choices = ["high", "wide", "long", "heavy"];
+                    $scope.sur3q5Choices = ["a", "some", "me", "I"];
+                    $scope.sur3q6Choices = ["had", "has had", "has", "had had"];
+                    $scope.sur3q7Choices = ["anyone", "some people", "not anybody", "someone"];
+                    $scope.sur3q8Choices = ["had know", "knew", "has known", "knows"];
+                    $scope.sur3q9Choices = ["can", "will", "may", "might"];
+                    $scope.sur3q10Choices = ["just buy", "had just bought", "'ve just", "soon will"];
+                    $scope.survey[3][1] = {
+                        survey: 3,
+                        nr: 1,
+                        type: 'radiolist',
+                        text: 'Answer the following 10 questions\n' +
+                        '\n' +
+                        '1) Did you ……… anywhere interesting last weekend? ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q1Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.survey[3][2] = {
+                        survey: 3,
+                        nr: 2,
+                        type: 'radiolist',
+                        text: "2) What is your home town ……… ?",
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q2Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.survey[3][3] = {
+                        survey: 3,
+                        nr: 3,
+                        type: 'radiolist',
+                        text: "3) I’m afraid I ……… here for your birthday party.",
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q3Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.survey[3][4] = {
+                        survey: 3,
+                        nr: 4,
+                        type: 'radiolist',
+                        text: "4) How ……… are you?",
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q4Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.survey[3][5] = {
+                        survey: 3,
+                        nr: 5,
+                        type: 'radiolist',
+                        text: "5) Would you like ……… help? ",
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q5Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.survey[3][6] = {
+                        survey: 3,
+                        nr: 6,
+                        type: 'radiolist',
+                        text: "6) He hasn’t played since he ……… the accident. ",
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q6Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.survey[3][7] = {
+                        survey: 3,
+                        nr: 7,
+                        type: 'radiolist',
+                        text: "7) In life ……… can make a mistake; we’re all human. ",
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q7Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.survey[3][8] = {
+                        survey: 3,
+                        nr: 8,
+                        type: 'radiolist',
+                        text: "8) If he ……… about it, I’m sure he’d help. ",
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q8Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.survey[3][9] = {
+                        survey: 3,
+                        nr: 9,
+                        type: 'radiolist',
+                        text: "9) They said they ……… come, but they didn’t.",
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q9Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
+                    $scope.survey[3][10] = {
+                        survey: 3,
+                        nr: 10,
+                        type: 'radiolist',
+                        text: " 10) I don't have a cent to give you. I ...... bought a new computer. ",
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur3q10Choices,
+                        freeChoice: '',
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        imageWidth: 1100,
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: {}
+                    };
 
-            } //PostSurvey1 Englisch Test
-            if (false) {
-                $scope.sur6q0Choices = randomize(["Bei Crowdjump konnte ich so vorgehen, wie ich es wollte.",
-                    "Crowdjump war unterhaltsam.",
-                    "Mit meiner Leistung in Crowdjump bin ich zufrieden.",
-                    "Bei Crowdjump stellte ich mich geschickt an.",
-                    "Bei Crowdjump fühlte ich mich unter Druck.",
-                    "Ich glaube, ich war bei Crowdjump ziemlich gut.",
-                    "Ich hatte Bedenken, ob ich Crowdjump gut hinbekomme.",
-                    "Ich konnte Crowdjump selbst steuern.",
-                    "Ich fand Crowdjump sehr interessant.",
-                    "Crowdjump hat mir Spaß gemacht.",
-                    "Bei Crowdjump konnte ich wählen, wie ich es mache.",
-                    "Bei Crowdjump fühlte ich mich angespannt."]);
-                $scope.survey[6][0] = {
-                    survey: 6,
-                    nr: 0,
-                    type: 'scale',
-                    text: 'Bitte bewerte, wie du über folgende Aussagen bezüglich der Teilnahme an Crowdjump denkst, auf einer Skala von "stimmt gar nicht" bis "stimmt völlig". ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur6q0Choices,
-                    scale: scale5de,
-                    nrscales: 5,
-                    freeChoice: '',
-                    activate: [],
-                    value: '',
-                    showImage: false,
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
+                } //PostSurvey1 Englisch Test
+                if (false) {
+                    $scope.sur6q0Choices = randomize(["Bei Crowdjump konnte ich so vorgehen, wie ich es wollte.",
+                        "Crowdjump war unterhaltsam.",
+                        "Mit meiner Leistung in Crowdjump bin ich zufrieden.",
+                        "Bei Crowdjump stellte ich mich geschickt an.",
+                        "Bei Crowdjump fühlte ich mich unter Druck.",
+                        "Ich glaube, ich war bei Crowdjump ziemlich gut.",
+                        "Ich hatte Bedenken, ob ich Crowdjump gut hinbekomme.",
+                        "Ich konnte Crowdjump selbst steuern.",
+                        "Ich fand Crowdjump sehr interessant.",
+                        "Crowdjump hat mir Spaß gemacht.",
+                        "Bei Crowdjump konnte ich wählen, wie ich es mache.",
+                        "Bei Crowdjump fühlte ich mich angespannt."]);
+                    $scope.survey[6][0] = {
+                        survey: 6,
+                        nr: 0,
+                        type: 'scale',
+                        text: 'Bitte bewerte, wie du über folgende Aussagen bezüglich der Teilnahme an Crowdjump denkst, auf einer Skala von "stimmt gar nicht" bis "stimmt völlig". ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur6q0Choices,
+                        scale: scale5de,
+                        nrscales: 5,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
 
-            } //PostSurvey4DE
-            if (false) {
-                $scope.sur7q0Scale = ["Stimme überhaupt nicht zu", "", "", "", "Stimme voll zu"]
-                $scope.sur7q0Choices = ["Ich denke, dass ich das System gerne häufig benutzen würde.",
-                    "Ich fand das System unnötig komplex.",
-                    "Ich fand das System einfach zu benutzen.",
-                    "Ich glaube, ich würde die Hilfe einer technisch versierten Person benötigen, um das System benutzen zu können.",
-                    "Ich fand, die verschiedenen Funktionen in diesem System waren gut integriert.",
-                    "Ich denke, das System enthielt zu viele Inkonsistenzen.",
-                    "Ich kann mir vorstellen, dass die meisten Menschen den Umgang mit diesem System sehr schnell lernen.",
-                    "Ich fand das System sehr umständlich zu nutzen.",
-                    "Ich fühlte mich bei der Benutzung des Systems sehr sicher",
-                    "Ich musste eine Menge lernen, bevor ich anfangen konnte das System zu verwenden."
-                ];
-                $scope.survey[7][0] = {
-                    survey: 7,
-                    nr: 0,
-                    type: 'scale',
-                    text: 'Bitte bewerte, wie du über folgende Aussagen bezüglich der Teilnahme an Crowdjump denkst, auf einer Skala von "stimmt gar" nicht bis "stimmt völlig". ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur7q0Choices,
-                    scale: $scope.sur7q0Scale,
-                    nrscales: 5,
-                    freeChoice: '',
-                    activate: [],
-                    value: '',
-                    showImage: false,
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
+                } //PostSurvey4DE
+                if (false) {
+                    $scope.sur7q0Scale = ["Stimme überhaupt nicht zu", "", "", "", "Stimme voll zu"]
+                    $scope.sur7q0Choices = ["Ich denke, dass ich das System gerne häufig benutzen würde.",
+                        "Ich fand das System unnötig komplex.",
+                        "Ich fand das System einfach zu benutzen.",
+                        "Ich glaube, ich würde die Hilfe einer technisch versierten Person benötigen, um das System benutzen zu können.",
+                        "Ich fand, die verschiedenen Funktionen in diesem System waren gut integriert.",
+                        "Ich denke, das System enthielt zu viele Inkonsistenzen.",
+                        "Ich kann mir vorstellen, dass die meisten Menschen den Umgang mit diesem System sehr schnell lernen.",
+                        "Ich fand das System sehr umständlich zu nutzen.",
+                        "Ich fühlte mich bei der Benutzung des Systems sehr sicher",
+                        "Ich musste eine Menge lernen, bevor ich anfangen konnte das System zu verwenden."
+                    ];
+                    $scope.survey[7][0] = {
+                        survey: 7,
+                        nr: 0,
+                        type: 'scale',
+                        text: 'Bitte bewerte, wie du über folgende Aussagen bezüglich der Teilnahme an Crowdjump denkst, auf einer Skala von "stimmt gar" nicht bis "stimmt völlig". ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur7q0Choices,
+                        scale: $scope.sur7q0Scale,
+                        nrscales: 5,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
 
-            } //PostSurvey5DE
-            if (false) {
-                $scope.sur8q0Choices = randomize(["Mir gefällt die Idee hinter Crowdjump.",
-                    "Ich habe gerne neue Ideen vorgeschlagen.",
-                    "Das Spiel hat sich in eine positive Richtung entwickelt.",
-                    "Die Website hat sich in eine positive Richtung entwickelt.",
-                    "Das Verfahren zum Auswählen der zu implementierenden Ideen hat sich in eine positive Richtung entwickelt.",
-                    "Nach einer Abstimmung wurden die Features wie gewünscht umgesetzt.",
-                    "Die umgesetzten Features entsprachen dem, was ich mir auch für Crowdjump gewünscht habe.",
-                    "Ich habe mit den anderen Spielern zusammen eine Gemeinschaft gebildet.",
-                    "Andere Spieler haben die Entwicklung behindert.",
-                    "Die anderen Spieler und ich haben als Team gearbeitet.",
-                    "Meine Meinung wurde nicht angehört.",
-                ]);
-                $scope.sur8q0Scale = ["Stimme nicht zu", "Stimme eher nicht zu", "Stimme weder zu noch lehne ab", "Stimme eher zu", "Stimme zu"]
-                $scope.survey[8][0] = {
-                    survey: 8,
-                    nr: 0,
-                    type: 'scale',
-                    text: 'Bewerte die folgenden Aussagen über deine Erfahrung mit Crowdjump auf einer Skala von "Stimme nicht zu" bis "Stimme zu". ',
-                    required: true,
-                    startVisible: true,
-                    visible: true,
-                    choices: $scope.sur8q0Choices,
-                    scale: scale5de,
-                    nrscales: 5,
-                    freeChoice: '',
-                    activate: [],
-                    value: '',
-                    showImage: false,
-                    checked: false,
-                    error: false,
-                    activatedBy: new Set(),
-                    selected: [{}]
-                };
+                } //PostSurvey5DE
+                if (false) {
+                    $scope.sur8q0Choices = randomize(["Mir gefällt die Idee hinter Crowdjump.",
+                        "Ich habe gerne neue Ideen vorgeschlagen.",
+                        "Das Spiel hat sich in eine positive Richtung entwickelt.",
+                        "Die Website hat sich in eine positive Richtung entwickelt.",
+                        "Das Verfahren zum Auswählen der zu implementierenden Ideen hat sich in eine positive Richtung entwickelt.",
+                        "Nach einer Abstimmung wurden die Features wie gewünscht umgesetzt.",
+                        "Die umgesetzten Features entsprachen dem, was ich mir auch für Crowdjump gewünscht habe.",
+                        "Ich habe mit den anderen Spielern zusammen eine Gemeinschaft gebildet.",
+                        "Andere Spieler haben die Entwicklung behindert.",
+                        "Die anderen Spieler und ich haben als Team gearbeitet.",
+                        "Meine Meinung wurde nicht angehört.",
+                    ]);
+                    $scope.sur8q0Scale = ["Stimme nicht zu", "Stimme eher nicht zu", "Stimme weder zu noch lehne ab", "Stimme eher zu", "Stimme zu"]
+                    $scope.survey[8][0] = {
+                        survey: 8,
+                        nr: 0,
+                        type: 'scale',
+                        text: 'Bewerte die folgenden Aussagen über deine Erfahrung mit Crowdjump auf einer Skala von "Stimme nicht zu" bis "Stimme zu". ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur8q0Choices,
+                        scale: scale5de,
+                        nrscales: 5,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
 
-            } //PostSurvey6DE
-
+                } //PostSurvey6DE
+            }
 
         }
 

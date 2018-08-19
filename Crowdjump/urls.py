@@ -10,7 +10,8 @@ from chat.views import room, index, ChatMessageViewSet
 from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet
 from Crowdjump.mailFunctions import mail_new_version
 
-from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData, GetTrackingData, GetAllTrackingData, TransferData, SendGameData, GetGameData, GetAllGameData, GetAllUserGame
+from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData, GetTrackingData, \
+    GetAllTrackingData, TransferData, SendGameData, GetGameData, GetAllGameDataUser, GetAllGameData, GetAllUserGame
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
@@ -78,13 +79,13 @@ urlpatterns = [
     # url(r'^chat2/$', index, name='index'),
     # url(r'^chat2/(?P<room_name>[^/]+)/$', room, name='room'),
 
-
-    #ajax requests
+    # ajax requests
     url(r'^sendtracking/$', SendTrackingData, name='sendtracking'),
     url(r'^gettracking/$', GetTrackingData, name='gettracking'),
     url(r'^getalltracking/$', GetAllTrackingData, name='getalltracking'),
     url(r'^sendgamedata/$', SendGameData, name='sendgamedata'),
     url(r'^getgamedata/$', GetGameData, name='getgamedata'),
+    url(r'^getallgamedatauser/$', GetAllGameDataUser, name='getallgamedatauser'),
     url(r'^getallgamedata/$', GetAllGameData, name='getallgamedata'),
     url(r'^getallusergame/$', GetAllUserGame, name='getallusergame'),
     url(r'^transferdata/$', TransferData, name='transferdata'),

@@ -496,6 +496,12 @@
                     case "sus":
                         header += 'SUS Score';
                         break;
+                    case "spgq":
+                        header += 'Empathy, Negative feelings, Behavioural engagement';
+                        break;
+                    case "kim":
+                        header += 'Enjoyment, Perceived Competence, Perceived Choice, Pressure/Tension';
+                        break;
                     default:
                 }
 
@@ -510,7 +516,10 @@
                         positive = 0,
                         pressure = 0,
                         enjoyment = 0,
-                        freedomOfChoice = 0;
+                        freedomOfChoice = 0,
+                        empathy = 0,
+                        negativefeelings = 0,
+                        behavioural = 0;
 
                     switch (questionnaire) {
                         case "geq":
@@ -579,7 +588,7 @@
                             break;
                         case "kim":
                             for (var j = 0; j <= 32; j++) {
-                                var row = "GEQ";
+                                var row = "KIM";
 
                                 j < 10 ? row += '0' + j : row += j;
                                 var value = parseInt($scope.PostSurvey[i][row]);
@@ -611,7 +620,50 @@
                                 }
                                 // log(row, $scope.PostSurvey[i][row]);
                             }
-                            content += competence + ',' + sensory + ',' + flow + ',' + tension + ',' + challenge + ',' + negative + ',' + positive;
+                            content += enjoyment + ',' + competence + ',' + freedomOfChoice + ',' + pressure;
+                            break;
+                        case "spgq":
+                            for (var j = 0; j <= 20; j++) {
+                                var row = "SPGQ";
+
+                                j < 10 ? row += '0' + j : row += j;
+                                var value = parseInt($scope.PostSurvey[i][row]);
+
+                                //new mapped!
+                                switch (j + 1) {
+                                    case 20:
+                                    case 18:
+                                    case 16:
+                                    case 11:
+                                    case 12:
+                                    case 1:
+                                    case 17:
+                                        empathy += value;
+                                        break;
+                                    case 14:
+                                    case 6:
+                                    case 8:
+                                    case 2:
+                                    case 4:
+                                    case 3:
+                                        negativefeelings += value;
+                                        break;
+                                    case 13:
+                                    case 19:
+                                    case 15:
+                                    case 9:
+                                    case 10:
+                                    case 5:
+                                    case 7:
+                                    case 21:
+                                        behavioural += value;
+                                        break;
+                                    default:
+                                        console.log(j);
+                                }
+                                // log(row, $scope.PostSurvey[i][row]);
+                            }
+                            content += empathy + ',' + negativefeelings + ',' + behavioural;
                             break;
                         case "sus":
                             var score = 0;
@@ -710,30 +762,44 @@
 
             }
 
-            $scope.get_gamedata_user = function (username, grouped) {
+            $scope.get_gamedata_user = function (username, grouped, time) {
                 var header = '';
                 var content = '';
                 // username = 'admin';
-                console.log(username);
+                // console.log(username);
                 var data = {"username": username, "version": $scope.newestVersion.label};
-
+                console.log(time);
                 $.ajax({
                     url: '/getgamedata/',
                     data: data,
                     success: function (data) {
 
-                        if (grouped) {
+                        if (time) {
+                            header = 'level,time';
+                            var orderedByLevel = Object.values(groupBy(data, 'level'));
+                            for (var i = 0; i < orderedByLevel.length; i++) {
+                                var time_sum = 0;
+                                for (var j = 0; j < orderedByLevel[i].length;j++){
+                                    if(orderedByLevel[i][j]["status"] == "completed"){
+                                        time_sum += parseInt(orderedByLevel[i][j]["time"]);
+                                    }
+                                }
+                                content += '\n' + orderedByLevel[i][0].level + ',' + time_sum + ',';
+                            }
+
+                        }
+                        else if (grouped) {
                             header = 'level,status,count';
                             var orderedByLevel = Object.values(groupBy(data, 'level'));
                             var orderedByLevelAndStatus = [];
                             for (var i = 0; i < orderedByLevel.length; i++) {
                                 orderedByLevelAndStatus.push(Object.values(groupBy(orderedByLevel[i], 'status')));
-                                console.log(orderedByLevelAndStatus);
+                                // console.log(orderedByLevelAndStatus);
                             }
 
                             for (var i = 0; i < orderedByLevelAndStatus.length; i++) {
                                 for (var j = 0; j < orderedByLevelAndStatus[i].length; j++) {
-                                    console.log(orderedByLevelAndStatus[i][j]);
+                                    // console.log(orderedByLevelAndStatus[i][j]);
                                     content += '\n' + orderedByLevelAndStatus[i][j][0]["level"] + ',' + orderedByLevelAndStatus[i][j][0]["status"] + ',' + orderedByLevelAndStatus[i][j].length;
                                 }
                             }
@@ -742,7 +808,7 @@
                             for (var i = 0; i < data.length; i++) {
                                 content += '\n' + data[i].timestamp + ',' + data[i].level + ',' + data[i].status + ',' + data[i].time + ',' + data[i].jumps + ',' + data[i].movement_inputs + ',';
                             }
-                            console.log(data);
+                            // console.log(data);
                         }
                         $scope.csv = header + content;
                     },
@@ -755,7 +821,71 @@
 
             };
 
-            $scope.get_all_gamedata = function (grouped, all) {
+            $scope.get_all_gamedata_user = function (username, grouped, all, time) {
+                var header = '';
+                var content = '';
+                var data = all ? {"username": username, "version": 0} : {
+                    "username": username,
+                    "version": $scope.newestVersion.label
+                };
+
+                $.ajax({
+                    url: '/getallgamedatauser/',
+                    data: data,
+                    success: function (data) {
+                        if (data[1] == 'failure') console.log(data);
+                        // console.log(data);
+                        // console.log(data);
+
+
+                        if (time) {
+                            header = 'level,time';
+                            var orderedByLevel = Object.values(groupBy(data, 'level'));
+                            for (var i = 0; i < orderedByLevel.length; i++) {
+                                var time_sum = 0;
+                                for (var j = 0; j < orderedByLevel[i].length;j++){
+                                    if(orderedByLevel[i][j]["status"] == "completed"){
+                                        time_sum += parseInt(orderedByLevel[i][j]["time"]);
+                                    }
+                                }
+                                content += '\n' + orderedByLevel[i][0].level + ',' + time_sum + ',';
+                            }
+
+                        }
+                        else if (grouped) {
+                            header = 'level,status,count';
+                            var orderedByLevel = Object.values(groupBy(data, 'level'));
+                            var orderedByLevelAndStatus = [];
+                            for (var i = 0; i < orderedByLevel.length; i++) {
+                                orderedByLevelAndStatus.push(Object.values(groupBy(orderedByLevel[i], 'status')));
+                            }
+
+                            for (var i = 0; i < orderedByLevelAndStatus.length; i++) {
+                                for (var j = 0; j < orderedByLevelAndStatus[i].length; j++) {
+                                    content += '\n' + orderedByLevelAndStatus[i][j][0]["level"] + ',' + orderedByLevelAndStatus[i][j][0]["status"] + ',' + orderedByLevelAndStatus[i][j].length;
+                                }
+                            }
+                        } else {
+                            header = 'timestamp,level,status,time,jumps,movement_inputs,';
+                            for (var i = 0; i < data.length; i++) {
+                                content += '\n' + data[i].timestamp + ',' + data[i].level + ',' + data[i].status + ',' + data[i].time + ',' + data[i].jumps + ',' + data[i].movement_inputs + ',';
+                            }
+                        }
+                        $scope.csv = header + content;
+                    },
+                    error: function (data) {
+                        console.log("not found?" + JSON.stringify(data));
+                    }
+                });
+                if (all) {
+                    setTimeout($scope.createFile($scope.csv, "gamedata_all.csv", 'text/csv'));
+                } else {
+                    setTimeout($scope.createFile($scope.csv, "gamedata" + $scope.newestVersion.label + '.csv', 'text/csv'));
+                }
+
+            };
+
+            $scope.get_all_gamedata = function (grouped, all, time) {
                 var header = '';
                 var content = '';
                 var data = all ? {"version": 0} : {"version": $scope.newestVersion.label};
@@ -765,9 +895,23 @@
                     data: data,
                     success: function (data) {
                         if (data[1] == 'failure') console.log(data);
-                        console.log(data);
-                        // console.log(data);
-                        if (grouped) {
+
+                        if (time) {
+                            header = 'level,time';
+                            var orderedByLevel = Object.values(groupBy(data, 'level'));
+                            console.log(orderedByLevel);
+                            for (var i = 0; i < orderedByLevel.length; i++) {
+                                var time_sum = 0;
+                                for (var j = 0; j < orderedByLevel[i].length;j++){
+                                    if(orderedByLevel[i][j]["status"] == "completed"){
+                                        time_sum += parseInt(orderedByLevel[i][j]["time"]);
+                                    }
+                                }
+                                content += '\n' + orderedByLevel[i][0].level + ',' + time_sum + ',';
+                            }
+
+                        }
+                        else if (grouped) {
                             header = 'level,status,count';
                             var orderedByLevel = Object.values(groupBy(data, 'level'));
                             var orderedByLevelAndStatus = [];
