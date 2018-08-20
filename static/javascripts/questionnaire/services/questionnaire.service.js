@@ -95,17 +95,28 @@
                             survey["LikePBN_7scale"] = cont[20];
                             survey["IdeaPBN_bool"] = cont[21];
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
-
-                                ABSurvey0: survey["ABSurvey0"],
-                                ABSurvey1: survey["ABSurvey1"],
-                                ABSurvey2: survey["ABSurvey2"],
-                                ABSurvey3: survey["ABSurvey3"],
-                                ABSurvey4: survey["ABSurvey4"],
-                                ABSurvey5: survey["ABSurvey5"],
-                                ABSurvey6: survey["ABSurvey6"],
-                                ABSurvey7: survey["ABSurvey7"],
-                                ABSurvey8: survey["ABSurvey8"],
-                                ABSurvey9: survey["ABSurvey9"],
+                                Age_Combobox: survey["Age_Combobox"],
+                                Gender_Combobox: survey["Gender_Combobox"],
+                                HoursPCWeek_Combobox: survey["HoursPCWeek_Combobox"],
+                                VideogamesWeek_Combobox: survey["VideogamesWeek_Combobox"],
+                                ImportantAspect_Checkbox: survey["ImportantAspect_Checkbox"],
+                                ImportantAspectOther_Checkbox: survey["ImportantAspectOther_Checkbox"],
+                                MostImportantAspect_Radiolist: survey["MostImportantAspect_Radiolist"],
+                                MostImportantAspectOther_Radiolist: survey["MostImportantAspectOther_Radiolist"],
+                                PlayPlatformers_7scale: survey["PlayPlatformers_7scale"],
+                                LikePlatformers_7scale: survey["LikePlatformers_7scale"],
+                                LikePlatformersMore_7scale: survey["LikePlatformersMore_7scale"],
+                                EverDesignedVG_bool: survey["EverDesignedVG_bool"],
+                                EverDesignedApp_bool: survey["EverDesignedApp_bool"],
+                                DesignProcess_bool: survey["DesignProcess_bool"],
+                                HowInDesignProcess_text: survey["HowInDesignProcess_text"],
+                                WatchedTP_bool: survey["WatchedTP_bool"],
+                                ParticipateTP_bool: survey["ParticipateTP_bool"],
+                                LikeTP_7scale: survey["LikeTP_7scale"],
+                                HeardPBN_bool: survey["HeardPBN_bool"],
+                                PlayPBN_bool: survey["PlayPBN_bool"],
+                                LikePBN_7scale: survey["LikePBN_7scale"],
+                                IdeaPBN_bool: survey["IdeaPBN_bool"],
                             }).then(function (result) {
                                 return result;
                             }).catch(function (error) {
