@@ -56,12 +56,16 @@
 
             function post_preSite(user_id, site, cont) {
                 var survey_id;
-                post_preSite.preventDefault
                 $http.get('/api/v1/presurvey/?user__id=' + user_id + '&limit=1'
                 ).then(function (result) {
                     if (result["data"]["count"] > 0) {
                         var survey = result["data"]["results"][0];
                         survey_id = survey["id"];
+                        $http.patch('/api/v1/presurvey/11/', {
+                        }).then(function (result) {
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
                         if (site == 0) {
 
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
