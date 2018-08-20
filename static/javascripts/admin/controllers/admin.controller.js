@@ -415,7 +415,7 @@
                     header = 'id,user_id,';
                     var site2header = 'I felt challenged (GEQ 5 point scale),I felt pressured (GEQ 5 point scale),I felt frustrated (GEQ 5 point scale),I was fully occupied with the game (GEQ 5 point scale),I had to put a lot of effort into it (GEQ 5 point scale),It was asthetically pleasing (GEQ 5 point scale),I felt annoyed (GEQ 5 point scale),I found it impressive (GEQ 5 point scale),It felt like a rich experience (GEQ 5 point scale),I was deeply concentrated in the game (GEQ 5 point scale),I thought it was fun (GEQ 5 point scale),I felt succesful (GEQ 5 point scale),I felt irritable (GEQ 5 point scale),I was fast at reaching the game\'s targets (GEQ 5 point scale),I felt that I could explore things (GEQ 5 point scale),I felt skillful (GEQ 5 point scale),I found it tiresome (GEQ 5 point scale),I felt competent (GEQ 5 point scale),I forgot everything around me (GEQ 5 point scale),I felt bored (GEQ 5 point scale),I felt content (GEQ 5 point scale),I lost connection with the outside world (GEQ 5 point scale),I thought about other things (GEQ 5 point scale),I felt good (GEQ 5 point scale),I felt imaginative (GEQ 5 point scale),I felt time pressure (GEQ 5 point scale),It gave me a bad mood (GEQ 5 point scale),I felt happy (GEQ 5 point scale),I was good at it (GEQ 5 point scale),I lost track of time (GEQ 5 point scale),I was interested in the game\'s story (GEQ 5 point scale),I thought it was hard (GEQ 5 point scale),I enjoyed it (GEQ 5 point scale)';
                     var site3header = 'I found it enjoyable to be with the other(s) (SPGQ 5 point scale),I felt schadenfreude (malicious delight) (SPGQ 5 point scale),I envied the other(s) (SPGQ 5 point scale),I felt jealous of the other(s) (SPGQ 5 point scale),I paid close attention to the other(s) (SPGQ 5 point scale),The other(s) tended to ignore me (SPGQ 5 point scale),My intentions were clear to the other(s) (SPGQ 5 point scale),I felt revengeful (SPGQ 5 point scale),What I did affected what the other(s) did (SPGQ 5 point scale),The other(s) paid close attention to me (SPGQ 5 point scale),I felt connected to the other(s) (SPGQ 5 point scale),I admired the other(s) (SPGQ 5 point scale),My actions depended on the other’s actions (SPGQ 5 point scale),I tended to ignore the other(s) (SPGQ 5 point scale),What the other(s) did affected what I did (SPGQ 5 point scale),I empathized with the other(s) (SPGQ 5 point scale),I sympathized with the other(s) (SPGQ 5 point scale),When I was happy the others were happy (SPGQ 5 point scale),The other\'s actions were dependent on my actions (SPGQ 5 point scale),When the others were happy I was happy (SPGQ 5 point scale),The other’s intentions were clear to me (SPGQ 5 point scale)';
-                    var site4header = 'I believe I had some choice about doing this activity (KIM/IMI 7 point scale),I thought Crowdjump was quite enjoyable (KIM/IMI 7 point scale),I am satisfied with my performance at Crowdjump (KIM/IMI 7 point scale),I was pretty skilled at Crowdjump (KIM/IMI 7 point scale),I felt pressured while doing Crowdjump (KIM/IMI 7 point scale),I think I am pretty good at this activity (KIM/IMI 7 point scale),I had concerns whether I could do the activity well (KIM/IMI 7 point scale),I was able to control the activity myself (KIM/IMI 7 point scale),I thought Crowdjump was a very interesting activity (KIM/IMI 7 point scale),Crowdjump was fun to do (KIM/IMI 7 point scale),I could choose how to proceed in Crowdjump (KIM/IMI 7 point scale),I felt very tense while doing Crowdjump (KIM/IMI 7 point scale)';
+                    var site4header = 'I believe I had some choice about doing this activity (KIM/IMI 5 point scale),I thought Crowdjump was quite enjoyable (KIM/IMI 5 point scale),I am satisfied with my performance at Crowdjump (KIM/IMI 5 point scale),I was pretty skilled at Crowdjump (KIM/IMI 5 point scale),I felt pressured while doing Crowdjump (KIM/IMI 5 point scale),I think I am pretty good at this activity (KIM/IMI 5 point scale),I had concerns whether I could do the activity well (KIM/IMI 5 point scale),I was able to control the activity myself (KIM/IMI 5 point scale),I thought Crowdjump was a very interesting activity (KIM/IMI 5 point scale),Crowdjump was fun to do (KIM/IMI 5 point scale),I could choose how to proceed in Crowdjump (KIM/IMI 5 point scale),I felt very tense while doing Crowdjump (KIM/IMI 5 point scale)';
                     var site5header = 'I think that I would like to use this system frequently (SUS 5 point scale),I found the system unnecessarily complex (SUS 5 point scale),I thought the system was easy to use (SUS 5 point scale),I think that I would need the support of a technical person to be able to use this system (SUS 5 point scale),I found the various functions in this system were well integrated (SUS 5 point scale),I thought there was too much inconsistency in this system (SUS 5 point scale),I would imagine that most people would learn to use this system very quickly (SUS 5 point scale),I found the system very cumbersome to use (SUS 5 point scale),I felt very confident using the system (SUS 5 point scale),I needed to learn a lot of things before I could get going with this system (SUS 5 point scale)';
                     var site6header = 'I liked the idea of Crowdjump (5 point scale),I liked to submit new ideas (5 point scale),The game developed in a positive direction (5 point scale),The website developed in a positive direction (5 point scale),The process of choosing the ideas developed in a positive direction (5 point scale),After each submission cycle the features were implemented as requested (5 point scale),The implemented features met my wishes for Crowdjump (5 point scale),I formed a community with other players (5 point scale),Other players interfered with the development (5 point scale),The other players and I worked as a team (5 point scale),My opinion was not heard (5 point scale)';
 
@@ -587,11 +587,11 @@
                             content += competence + ',' + sensory + ',' + flow + ',' + tension + ',' + challenge + ',' + negative + ',' + positive;
                             break;
                         case "kim":
-                            for (var j = 0; j <= 32; j++) {
+                            for (var j = 0; j <= 11; j++) {
                                 var row = "KIM";
 
                                 j < 10 ? row += '0' + j : row += j;
-                                var value = parseInt($scope.PostSurvey[i][row]);
+                                var value = parseInt($scope.PostSurvey[i][row])-1;
 
                                 //new mapped!
                                 switch (j + 1) {
@@ -768,23 +768,25 @@
                 // username = 'admin';
                 // console.log(username);
                 var data = {"username": username, "version": $scope.newestVersion.label};
-                console.log(time);
                 $.ajax({
                     url: '/getgamedata/',
                     data: data,
                     success: function (data) {
 
                         if (time) {
-                            header = 'level,time';
+                            header = 'level,time,count';
                             var orderedByLevel = Object.values(groupBy(data, 'level'));
+                            console.log(orderedByLevel);
                             for (var i = 0; i < orderedByLevel.length; i++) {
                                 var time_sum = 0;
-                                for (var j = 0; j < orderedByLevel[i].length;j++){
-                                    if(orderedByLevel[i][j]["status"] == "completed"){
+                                var count = 0;
+                                for (var j = 0; j < orderedByLevel[i].length; j++) {
+                                    if (orderedByLevel[i][j]["status"] == "completed") {
                                         time_sum += parseInt(orderedByLevel[i][j]["time"]);
+                                        count++;
                                     }
                                 }
-                                content += '\n' + orderedByLevel[i][0].level + ',' + time_sum + ',';
+                                content += '\n' + orderedByLevel[i][0].level + ',' + time_sum + ',' + count + ',';
                             }
 
                         }
@@ -839,16 +841,18 @@
 
 
                         if (time) {
-                            header = 'level,time';
+                            header = 'level,time,count';
                             var orderedByLevel = Object.values(groupBy(data, 'level'));
                             for (var i = 0; i < orderedByLevel.length; i++) {
                                 var time_sum = 0;
-                                for (var j = 0; j < orderedByLevel[i].length;j++){
-                                    if(orderedByLevel[i][j]["status"] == "completed"){
+                                var count = 0;
+                                for (var j = 0; j < orderedByLevel[i].length; j++) {
+                                    if (orderedByLevel[i][j]["status"] == "completed") {
                                         time_sum += parseInt(orderedByLevel[i][j]["time"]);
+                                        count++;
                                     }
                                 }
-                                content += '\n' + orderedByLevel[i][0].level + ',' + time_sum + ',';
+                                content += '\n' + orderedByLevel[i][0].level + ',' + time_sum + ',' + count + ',';
                             }
 
                         }
@@ -897,17 +901,18 @@
                         if (data[1] == 'failure') console.log(data);
 
                         if (time) {
-                            header = 'level,time';
+                            header = 'level,time,count';
                             var orderedByLevel = Object.values(groupBy(data, 'level'));
-                            console.log(orderedByLevel);
                             for (var i = 0; i < orderedByLevel.length; i++) {
                                 var time_sum = 0;
-                                for (var j = 0; j < orderedByLevel[i].length;j++){
-                                    if(orderedByLevel[i][j]["status"] == "completed"){
+                                var count = 0;
+                                for (var j = 0; j < orderedByLevel[i].length; j++) {
+                                    if (orderedByLevel[i][j]["status"] == "completed") {
                                         time_sum += parseInt(orderedByLevel[i][j]["time"]);
+                                        count++;
                                     }
                                 }
-                                content += '\n' + orderedByLevel[i][0].level + ',' + time_sum + ',';
+                                content += '\n' + orderedByLevel[i][0].level + ',' + time_sum + ',' + count + ',';
                             }
 
                         }
