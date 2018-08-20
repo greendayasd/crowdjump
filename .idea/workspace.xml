@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -54,7 +52,7 @@
       <file leaf-file-name="questionnaire.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
+            <state relative-caret-position="-864">
               <caret line="115" column="39" lean-forward="true" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="25" />
               <folding>
                 <element signature="e#15778#16443#0" />
@@ -76,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="questionnaire.service.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="questionnaire.service.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+            <state relative-caret-position="336">
+              <caret line="114" column="39" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
               <folding>
                 <element signature="e#2278#3849#0" />
                 <element signature="e#3889#4506#0" />
@@ -131,7 +129,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="survey2.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="survey2.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey2.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -260,8 +258,8 @@
         <option value="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
         <option value="$PROJECT_DIR$/Crowdjump/settings.py" />
-        <option value="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" />
+        <option value="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" />
       </list>
     </option>
   </component>
@@ -1081,9 +1079,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="88" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
+        <state relative-caret-position="-864">
           <caret line="115" column="39" lean-forward="true" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="25" />
           <folding>
             <element signature="e#15778#16443#0" />
@@ -1106,19 +1111,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="59" column="42" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
+        <state relative-caret-position="336">
+          <caret line="114" column="39" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
           <folding>
             <element signature="e#2278#3849#0" />
             <element signature="e#3889#4506#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="88" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
         </state>
       </provider>
     </entry>

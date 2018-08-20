@@ -61,6 +61,16 @@
                     if (result["data"]["count"] > 0) {
                         var survey = result["data"]["results"][0];
                         survey_id = survey["id"];
+                        if (site == 0) {
+
+                            $http.patch('/api/v1/presurvey/' + survey_id + '/', {
+                                site0: survey["site0"]
+                            }).then(function (result) {
+                                return result;
+                            }).catch(function (error) {
+                                console.log(error);
+                            });
+                        }
                         if (site == 1) {
                             survey["Age_Combobox"] = cont[0];
                             survey["Gender_Combobox"] = cont[1];
@@ -84,6 +94,23 @@
                             survey["PlayPBN_bool"] = cont[19];
                             survey["LikePBN_7scale"] = cont[20];
                             survey["IdeaPBN_bool"] = cont[21];
+                            $http.patch('/api/v1/presurvey/' + survey_id + '/', {
+
+                                ABSurvey0: survey["ABSurvey0"],
+                                ABSurvey1: survey["ABSurvey1"],
+                                ABSurvey2: survey["ABSurvey2"],
+                                ABSurvey3: survey["ABSurvey3"],
+                                ABSurvey4: survey["ABSurvey4"],
+                                ABSurvey5: survey["ABSurvey5"],
+                                ABSurvey6: survey["ABSurvey6"],
+                                ABSurvey7: survey["ABSurvey7"],
+                                ABSurvey8: survey["ABSurvey8"],
+                                ABSurvey9: survey["ABSurvey9"],
+                            }).then(function (result) {
+                                return result;
+                            }).catch(function (error) {
+                                console.log(error);
+                            });
                         }
                         if (site == 2) {
                             survey["ABSurvey0"] = cont[0];
@@ -96,48 +123,24 @@
                             survey["ABSurvey7"] = cont[7];
                             survey["ABSurvey8"] = cont[8];
                             survey["ABSurvey9"] = cont[9];
+                            $http.patch('/api/v1/presurvey/' + survey_id + '/', {
+
+                                ABSurvey0: survey["ABSurvey0"],
+                                ABSurvey1: survey["ABSurvey1"],
+                                ABSurvey2: survey["ABSurvey2"],
+                                ABSurvey3: survey["ABSurvey3"],
+                                ABSurvey4: survey["ABSurvey4"],
+                                ABSurvey5: survey["ABSurvey5"],
+                                ABSurvey6: survey["ABSurvey6"],
+                                ABSurvey7: survey["ABSurvey7"],
+                                ABSurvey8: survey["ABSurvey8"],
+                                ABSurvey9: survey["ABSurvey9"],
+                            }).then(function (result) {
+                                return result;
+                            }).catch(function (error) {
+                                console.log(error);
+                            });
                         }
-                        $http.patch('/api/v1/presurvey/' + survey_id + '/', {
-                            site0: survey["site0"],
-
-                            Age_Combobox: survey["Age_Combobox"],
-                            Gender_Combobox: survey["Gender_Combobox"],
-                            HoursPCWeek_Combobox: survey["HoursPCWeek_Combobox"],
-                            VideogamesWeek_Combobox: survey["VideogamesWeek_Combobox"],
-                            ImportantAspect_Checkbox: survey["ImportantAspect_Checkbox"],
-                            ImportantAspectOther_Checkbox: survey["ImportantAspectOther_Checkbox"],
-                            MostImportantAspect_Radiolist: survey["MostImportantAspect_Radiolist"],
-                            MostImportantAspectOther_Radiolist: survey["MostImportantAspectOther_Radiolist"],
-                            PlayPlatformers_7scale: survey["PlayPlatformers_7scale"],
-                            LikePlatformers_7scale: survey["LikePlatformers_7scale"],
-                            LikePlatformersMore_7scale: survey["LikePlatformersMore_7scale"],
-                            EverDesignedVG_bool: survey["EverDesignedVG_bool"],
-                            EverDesignedApp_bool: survey["EverDesignedApp_bool"],
-                            DesignProcess_bool: survey["DesignProcess_bool"],
-                            HowInDesignProcess_text: survey["HowInDesignProcess_text"],
-                            WatchedTP_bool: survey["WatchedTP_bool"],
-                            ParticipateTP_bool: survey["ParticipateTP_bool"],
-                            LikeTP_7scale: survey["LikeTP_7scale"],
-                            HeardPBN_bool: survey["HeardPBN_bool"],
-                            PlayPBN_bool: survey["PlayPBN_bool"],
-                            LikePBN_7scale: survey["LikePBN_7scale"],
-                            IdeaPBN_bool: survey["IdeaPBN_bool"],
-
-                            ABSurvey0: survey["ABSurvey0"],
-                            ABSurvey1: survey["ABSurvey1"],
-                            ABSurvey2: survey["ABSurvey2"],
-                            ABSurvey3: survey["ABSurvey3"],
-                            ABSurvey4: survey["ABSurvey4"],
-                            ABSurvey5: survey["ABSurvey5"],
-                            ABSurvey6: survey["ABSurvey6"],
-                            ABSurvey7: survey["ABSurvey7"],
-                            ABSurvey8: survey["ABSurvey8"],
-                            ABSurvey9: survey["ABSurvey9"],
-                        }).then(function (result) {
-                            return result;
-                        }).catch(function (error) {
-                            console.log(error);
-                        });
                     } else {
                         $http.post('/api/v1/presurvey/', {
                             site0: null,
