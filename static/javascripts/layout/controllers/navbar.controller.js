@@ -11,8 +11,8 @@
         var vm = this;
         var cookie = Authentication.getAuthenticatedAccount();
 
-        $scope.version = '';
-        getVersion();
+        $scope.version.label = versionlabel;
+        // getVersion();
 
         vm.isAuthenticated = Authentication.isAuthenticated();
         if (cookie != null) {
