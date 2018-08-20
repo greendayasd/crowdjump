@@ -1,11 +1,11 @@
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
 from url_filter.integrations.drf import DjangoFilterBackend
-
+from django.views.decorators.csrf import csrf_exempt
 from .serializers import PreSurveySerializer, PostSurveySerializer
 from .models import preSurvey, postSurvey
 
-
+@csrf_exempt
 class PreSurveyViewSet(viewsets.ModelViewSet):
     queryset = preSurvey.objects
     serializer_class = PreSurveySerializer
@@ -21,7 +21,7 @@ class PreSurveyViewSet(viewsets.ModelViewSet):
         instance = serializer.save(user=self.request.user)
         return super(PreSurveyViewSet, self).perform_create(serializer)
 
-
+@csrf_exempt
 class PostSurveyViewSet(viewsets.ModelViewSet):
     queryset = postSurvey.objects
     serializer_class = PostSurveySerializer
