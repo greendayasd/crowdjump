@@ -39,7 +39,6 @@
                 res["survey_status"] = newCount;
 
                 $cookies.put("authenticatedAccount", JSON.stringify(res));
-                return;
                 return $http.patch('/api/v1/accounts/' + username + '/', {
                     survey_status: newCount,
 
@@ -57,6 +56,7 @@
 
             function post_preSite(user_id, site, cont) {
                 var survey_id;
+                post_preSite.preventDefault
                 $http.get('/api/v1/presurvey/?user__id=' + user_id + '&limit=1'
                 ).then(function (result) {
                     if (result["data"]["count"] > 0) {
