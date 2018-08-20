@@ -39,6 +39,7 @@
                 res["survey_status"] = newCount;
 
                 $cookies.put("authenticatedAccount", JSON.stringify(res));
+                return;
                 return $http.patch('/api/v1/accounts/' + username + '/', {
                     survey_status: newCount,
 
