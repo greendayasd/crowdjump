@@ -50,7 +50,7 @@
 
                 function increaseErrorFn(data, status, headers, config) {
                     var msg = 'Could not get to next survey'
-                    console.log(msg);
+                    console.log(msg + '\n' + data);
                 }
             }
 
