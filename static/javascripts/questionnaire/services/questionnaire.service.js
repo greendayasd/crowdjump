@@ -58,12 +58,9 @@
                 var survey_id;
                 $http.get('/api/v1/presurvey/?user__id=' + user_id + '&limit=1'
                 ).then(function (result) {
-                    console.log(result["data"]);
                     if (result["data"]["count"] > 0) {
                         var survey = result["data"]["results"][0];
-                        console.log(survey);
                         survey_id = survey["id"];
-                        console.log(site);
                         if (site == 1) {
                             survey["Age_Combobox"] = cont[0];
                             survey["Gender_Combobox"] = cont[1];
@@ -100,7 +97,6 @@
                             survey["ABSurvey8"] = cont[8];
                             survey["ABSurvey9"] = cont[9];
                         }
-                        console.log(survey);
                         $http.patch('/api/v1/presurvey/' + survey_id + '/', {
                             site0: survey["site0"],
 
