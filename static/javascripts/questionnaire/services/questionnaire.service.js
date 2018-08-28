@@ -146,7 +146,7 @@
                             survey["ABSurvey8"] = cont[8];
                             survey["ABSurvey9"] = cont[9];
                             console.log("vor Patch 2");
-                            Questionnaire.increase_surveycount(cookie["username"], 3);
+                            Questionnaire.increase_surveycount(cookie["username"], 0);
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
 
                                 ABSurvey0: survey["ABSurvey0"],
