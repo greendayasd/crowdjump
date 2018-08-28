@@ -113,19 +113,19 @@
                 if (vm.surveystatus < 3 && checked) {
                     content = $scope.getContent(post_check);
                     // console.log(content);
-                    Questionnaire.post_preSite(vm.cookie["id"], vm.surveystatus, content);
+                    Questionnaire.post_preSite(vm.cookie["id"], vm.surveystatus, content, vm.cookie);
                     // setTimeout(function(){while (survey_send = false){
                     //     var zweiundvierzig = 42;
                     // };
                     // }, 3000);
 
                 } else if (vm.surveystatus == 4) {
-                    Questionnaire.post_postSite(vm.cookie["id"], 0, '');
+                    Questionnaire.post_postSite(vm.cookie["id"], 0, '', vm.cookie);
 
                 }
                 else if (checked) {
                     content = $scope.getContent(post_check);
-                    Questionnaire.post_postSite(vm.cookie["id"], post_check - 3, content);
+                    Questionnaire.post_postSite(vm.cookie["id"], post_check - 3, content, vm.cookie);
 
                 } else if (vm.surveystatus != 3 && vm.surveystatus != 4 && vm.surveystatus != 11) {
                     alert("Please answer all required questions first!");

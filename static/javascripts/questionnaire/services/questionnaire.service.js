@@ -54,7 +54,7 @@
                 // }
             }
 
-            function post_preSite(user_id, site, cont) {
+            function post_preSite(user_id, site, cont, cookie) {
                 var survey_id;
                 console.log(1);
                 $http.get('/api/v1/presurvey/?user__id=' + user_id + '&limit=1'
@@ -66,7 +66,7 @@
 
                         console.log(2);
                         if (site == 0) {
-                            Questionnaire.increase_surveycount(vm.cookie["username"], 1);
+                            Questionnaire.increase_surveycount(cookie["username"], 1);
 
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
                                 site0: survey["site0"]
@@ -102,7 +102,7 @@
                             survey["IdeaPBN_bool"] = cont[21];
 
                             console.log("vor Patch 1");
-                            Questionnaire.increase_surveycount(vm.cookie["username"], 2);
+                            Questionnaire.increase_surveycount(cookie["username"], 2);
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
                                 Age_Combobox: survey["Age_Combobox"],
                                 Gender_Combobox: survey["Gender_Combobox"],
@@ -146,7 +146,7 @@
                             survey["ABSurvey8"] = cont[8];
                             survey["ABSurvey9"] = cont[9];
                             console.log("vor Patch 2");
-                            Questionnaire.increase_surveycount(vm.cookie["username"], 3);
+                            Questionnaire.increase_surveycount(cookie["username"], 3);
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
 
                                 ABSurvey0: survey["ABSurvey0"],
