@@ -113,8 +113,11 @@
                 if (vm.surveystatus < 3 && checked) {
                     content = $scope.getContent(post_check);
                     // console.log(content);
-                    var test = Questionnaire.post_preSite(vm.cookie["id"], vm.surveystatus, content);
-                    console.log(test);
+                    Questionnaire.post_preSite(vm.cookie["id"], vm.surveystatus, content);
+                    // setTimeout(function(){while (survey_send = false){
+                    //     var zweiundvierzig = 42;
+                    // };
+                    // }, 3000);
 
                 } else if (vm.surveystatus == 4) {
                     Questionnaire.post_postSite(vm.cookie["id"], 0, '');
@@ -134,17 +137,17 @@
                 // console.log(next_survey_id);
                 vm.surveystatus = next_survey_id;
                 Questionnaire.increase_surveycount(vm.cookie["username"], next_survey_id);
-                if (vm.surveystatus < 3) {
-                    window.location.href = '/survey' + next_survey;
-                } else if (vm.surveystatus == 3) {
-                    window.location.href = '/surveyPreFinished';
-
-                } else if (vm.surveystatus < 11) {
-                    window.location.href = '/postsurvey' + next_survey;
-
-                } else {
-                    window.location.href = '/surveyPostFinished';
-                }
+                // if (vm.surveystatus < 3) {
+                //     window.location.href = '/survey' + next_survey;
+                // } else if (vm.surveystatus == 3) {
+                //     window.location.href = '/surveyPreFinished';
+                //
+                // } else if (vm.surveystatus < 11) {
+                //     window.location.href = '/postsurvey' + next_survey;
+                //
+                // } else {
+                //     window.location.href = '/surveyPostFinished';
+                // }
             }
 
             //false when error

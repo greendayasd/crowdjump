@@ -66,10 +66,12 @@
 
                         console.log(2);
                         if (site == 0) {
+                            Questionnaire.increase_surveycount(vm.cookie["username"], 1);
 
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
                                 site0: survey["site0"]
                             }).then(function (result) {
+                                window.location.href = '/survey' + 1;
                                 return result;
                             }).catch(function (error) {
                                 console.log(error);
@@ -100,6 +102,7 @@
                             survey["IdeaPBN_bool"] = cont[21];
 
                             console.log("vor Patch 1");
+                            Questionnaire.increase_surveycount(vm.cookie["username"], 2);
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
                                 Age_Combobox: survey["Age_Combobox"],
                                 Gender_Combobox: survey["Gender_Combobox"],
@@ -125,6 +128,7 @@
                                 IdeaPBN_bool: survey["IdeaPBN_bool"],
                             }).then(function (result) {
                                 console.log("nach Patch 1");
+                                window.location.href = '/survey' + 2;
                                 return result;
                             }).catch(function (error) {
                                 console.log(error);
@@ -142,6 +146,7 @@
                             survey["ABSurvey8"] = cont[8];
                             survey["ABSurvey9"] = cont[9];
                             console.log("vor Patch 2");
+                            Questionnaire.increase_surveycount(vm.cookie["username"], 3);
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
 
                                 ABSurvey0: survey["ABSurvey0"],
@@ -156,6 +161,7 @@
                                 ABSurvey9: survey["ABSurvey9"],
                             }).then(function (result) {
                                 console.log("nach Patch 2");
+                                window.location.href = '/survey' + 0;
                                 return result;
                             }).catch(function (error) {
                                 console.log(error);
