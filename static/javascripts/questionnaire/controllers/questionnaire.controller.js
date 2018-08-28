@@ -113,7 +113,9 @@
                 if (vm.surveystatus < 3 && checked) {
                     content = $scope.getContent(post_check);
                     // console.log(content);
-                    Questionnaire.post_preSite(vm.cookie["id"], vm.surveystatus, content);
+                    if (Questionnaire.post_preSite(vm.cookie["id"], vm.surveystatus, content) != null) {
+                        console.log("test");
+                    }
 
                 } else if (vm.surveystatus == 4) {
                     Questionnaire.post_postSite(vm.cookie["id"], 0, '');
