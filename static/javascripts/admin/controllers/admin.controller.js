@@ -699,11 +699,11 @@
                     success: function (data) {
 
                         if (grouped) {
-                            header = 'page,time,';
+                            header = 'page,time,count';
                             var orderedByPage = Object.values(groupBy(data, 'page'));
 
                             for (var i = 0; i < orderedByPage.length; i++) {
-                                orderedByPage[i] = (orderedByPage[i][0]["page"] + ',' + sumUp(orderedByPage[i], "time") + ',');
+                                orderedByPage[i] = (orderedByPage[i][0]["page"] + ',' + sumUp(orderedByPage[i], "time") + ',' + orderedByPage[i].length + ',');
                                 content += '\n' + orderedByPage[i];
 
                             }
