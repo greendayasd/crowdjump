@@ -154,7 +154,7 @@
                                 ABSurvey8: survey["ABSurvey8"],
                                 ABSurvey9: survey["ABSurvey9"],
                             }).then(function (result) {
-                                window.location.href = '/survey' + 0;
+                                window.location.href = '/surveyPreFinished';
                                 return result;
                             }).catch(function (error) {
                                 console.log(error);
