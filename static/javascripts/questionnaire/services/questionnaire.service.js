@@ -56,15 +56,12 @@
 
             function post_preSite(user_id, site, cont, cookie) {
                 var survey_id;
-                console.log(1);
                 $http.get('/api/v1/presurvey/?user__id=' + user_id + '&limit=1'
                 ).then(function (result) {
-                    console.log(result);
                     if (result["data"]["count"] > 0) {
                         var survey = result["data"]["results"][0];
                         survey_id = survey["id"];
 
-                        console.log(2);
                         if (site == 0) {
                             Questionnaire.increase_surveycount(cookie["username"], 1);
 
@@ -101,7 +98,6 @@
                             survey["LikePBN_7scale"] = cont[20];
                             survey["IdeaPBN_bool"] = cont[21];
 
-                            console.log("vor Patch 1");
                             Questionnaire.increase_surveycount(cookie["username"], 2);
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
                                 Age_Combobox: survey["Age_Combobox"],
@@ -127,7 +123,6 @@
                                 LikePBN_7scale: survey["LikePBN_7scale"],
                                 IdeaPBN_bool: survey["IdeaPBN_bool"],
                             }).then(function (result) {
-                                console.log("nach Patch 1");
                                 window.location.href = '/survey' + 2;
                                 return result;
                             }).catch(function (error) {
@@ -145,7 +140,6 @@
                             survey["ABSurvey7"] = cont[7];
                             survey["ABSurvey8"] = cont[8];
                             survey["ABSurvey9"] = cont[9];
-                            console.log("vor Patch 2");
                             Questionnaire.increase_surveycount(cookie["username"], 0);
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
 
@@ -160,7 +154,6 @@
                                 ABSurvey8: survey["ABSurvey8"],
                                 ABSurvey9: survey["ABSurvey9"],
                             }).then(function (result) {
-                                console.log("nach Patch 2");
                                 window.location.href = '/survey' + 0;
                                 return result;
                             }).catch(function (error) {
@@ -168,7 +161,7 @@
                             });
                         }
                     } else {
-                        console.log("post");
+                        // console.log("post");
                         $http.post('/api/v1/presurvey/', {
                             site0: null,
                         }).then(function (result) {

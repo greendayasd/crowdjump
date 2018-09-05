@@ -38,8 +38,8 @@
       <file leaf-file-name="questionnaire.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="115" column="99" selection-start-line="115" selection-start-column="99" selection-end-line="115" selection-end-column="99" />
+            <state relative-caret-position="357">
+              <caret line="72" column="27" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
               <folding>
                 <element signature="e#15778#16443#0" />
                 <element signature="e#16480#17148#0" />
@@ -55,16 +55,11 @@
                 <element signature="e#39891#40743#0" />
                 <element signature="e#40803#43594#0" />
                 <element signature="e#43640#46078#0" />
+                <element signature="e#52586#86874#0" />
+                <element signature="e#52615#66445#0" />
+                <element signature="e#66491#68592#0" />
+                <element signature="e#68638#80730#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="150" column="75" selection-start-line="150" selection-start-column="75" selection-end-line="150" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -72,9 +67,11 @@
       <file leaf-file-name="questionnaire.service.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="148" column="84" selection-start-line="148" selection-start-column="84" selection-end-line="148" selection-end-column="84" />
+            <state relative-caret-position="534">
+              <caret line="164" column="47" lean-forward="true" selection-start-line="164" selection-start-column="47" selection-end-line="164" selection-end-column="47" />
               <folding>
+                <element signature="e#2702#6474#0" />
+                <element signature="e#6514#8097#0" />
                 <element signature="e#8650#16156#0" />
               </folding>
             </state>
@@ -91,20 +88,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="262">
               <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="721" lean-forward="true" selection-start-line="721" selection-end-line="721" />
-              <folding>
-                <element signature="e#11988#13704#0" />
-                <element signature="e#26030#35490#0" />
-                <element signature="e#30868#32368#0" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -127,6 +110,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="survey0.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-367">
+              <caret column="31" selection-start-column="31" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -141,8 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>arr</find>
-      <find>loadle</find>
       <find>hero_boun</find>
       <find>hero_on_b</find>
       <find>hero_bounce</find>
@@ -171,6 +161,8 @@
       <find>increase</find>
       <find>newest</find>
       <find>rest</find>
+      <find>surveystat</find>
+      <find>please</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -695,6 +687,7 @@
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="manage.py@Crowdjump" order="12" sideWeight="0.49791667" visible="true" weight="0.23955148" />
       <window_info anchor="right" id="Database" order="3" weight="0.32949877" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.29867482" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24947916" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -707,7 +700,6 @@
       <window_info anchor="bottom" id="REST Client" order="14" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.29867482" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -756,13 +748,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/website/level/level0.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/level/level3.json" />
     <entry file="file://$PROJECT_DIR$/static/website/js/endscreen.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -861,13 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="89" selection-start-line="14" selection-start-column="89" selection-end-line="14" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/authentication/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="44" column="22" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1019,18 +997,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="721" lean-forward="true" selection-start-line="721" selection-end-line="721" />
-          <folding>
-            <element signature="e#11988#13704#0" />
-            <element signature="e#26030#35490#0" />
-            <element signature="e#30868#32368#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -1060,13 +1026,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-367">
-          <caret column="31" selection-start-column="31" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/admin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1248">
@@ -1088,10 +1047,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey5.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/authentication/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="44" column="22" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2686">
+          <caret line="31" column="31" lean-forward="true" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+          <folding>
+            <element signature="e#11988#13704#0" />
+            <element signature="e#26030#35490#0" />
+            <element signature="e#30868#32368#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="115" column="99" selection-start-line="115" selection-start-column="99" selection-end-line="115" selection-end-column="99" />
+        <state relative-caret-position="357">
+          <caret line="72" column="27" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
           <folding>
             <element signature="e#15778#16443#0" />
             <element signature="e#16480#17148#0" />
@@ -1107,15 +1088,28 @@
             <element signature="e#39891#40743#0" />
             <element signature="e#40803#43594#0" />
             <element signature="e#43640#46078#0" />
+            <element signature="e#52586#86874#0" />
+            <element signature="e#52615#66445#0" />
+            <element signature="e#66491#68592#0" />
+            <element signature="e#68638#80730#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-367">
+          <caret column="31" selection-start-column="31" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="148" column="84" selection-start-line="148" selection-start-column="84" selection-end-line="148" selection-end-column="84" />
+        <state relative-caret-position="534">
+          <caret line="164" column="47" lean-forward="true" selection-start-line="164" selection-start-column="47" selection-end-line="164" selection-end-column="47" />
           <folding>
+            <element signature="e#2702#6474#0" />
+            <element signature="e#6514#8097#0" />
             <element signature="e#8650#16156#0" />
           </folding>
         </state>
