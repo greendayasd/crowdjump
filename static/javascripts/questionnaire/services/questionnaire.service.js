@@ -173,7 +173,14 @@
                     }
 
                 }).catch(function (error) {
-                    console.log(error);
+                    $http.post('/api/v1/presurvey/', {
+                        site0: null,
+                    }).then(function (result) {
+                        window.location.href = '/survey' + 1;
+                        return result;
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
                 });
 
 
