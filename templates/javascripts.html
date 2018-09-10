@@ -371,6 +371,13 @@
             sendTrackingData(getCookie("lastpage"), getCookie("page"), globeclock);
         };
 
+        function signum(i){
+            if (i>0) return 1;
+            if (i<0) return -1;
+            return 0;
+        }
+
+
         function log(string1, string2, string3, string4, string5, string6, string7, string8, string9, string10) {
             var res = string1;
             string2 != undefined ? res += ' , ' + string2 : false;

@@ -82,6 +82,8 @@ Crowdjump.Preloader.prototype = {
         this.load.image('lava:2x1', files + 'lava2_2x1.png');
 
         this.load.image('bounce:1x1', files + 'bounce_1x1.png');
+        this.load.image('conveyor_right:1x1', files + 'conveyor_right_1x1.png');
+        this.load.image('conveyor_left:1x1', files + 'conveyor_left_1x1.png');
 
         if (CONST_DEBUG) {
             this.load.image('invisible_wall', files + 'invisible_wall_debug.png');
@@ -97,6 +99,7 @@ Crowdjump.Preloader.prototype = {
 
         }
 
+        this.load.image('white_smoke', files + 'white_smoke.png');
 
         this.load.image('invisible:1x1', files + 'invisible_1x1.png');
         this.load.image('invisible:2x1', files + 'invisible_2x1.png');

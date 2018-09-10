@@ -72,6 +72,28 @@ function Hero(game, x, y) {
     this.animations.add('fall', [4]);
     this.animations.add('zhonya', [6]);
 
+
+    this.body.onConveyor = 0;
+    this.body.wasConveyor = 0;
+    // this.body.slowEmitter = this.game.add.emitter(this.body.sprite.x, this.body.sprite.y, 100);
+    // this.body.slowEmitter.makeParticles("white_smoke");
+    // this.body.slowEmitter.setYSpeed(-80, -120);
+    // this.body.slowEmitter.on = false;
+    // this.body.slowEmitter.setScale(0, 1, 0, 1, -300);
+    // this.body.slowEmitter.start(false, 500, 10, 0, false);
+    // this.body.slowEmitter.particleBringToTop = true;
+
+    // this.onWallLastFrame = false;
+    // this.lastWallSlideAt = 0;
+    // this.lastWallSide = 0;
+    //
+    // this.wallslideEmitter = this.game.add.emitter(this.x, this.y, 100);
+    // this.wallslideEmitter.makeParticles("white-particle");
+    // this.wallslideEmitter.setYSpeed(-80, -120);
+    // this.wallslideEmitter.on = false;
+    // this.wallslideEmitter.setScale(0, 1, 0, 1, -300);
+    // this.wallslideEmitter.start(false, 500, 10, 0, false);
+
     if (CONST_DEBUG) {
         this.body.debug = true;
     }
@@ -107,7 +129,28 @@ Hero.prototype.move = function (direction) {
         }
 
     } else {
-        this.body.velocity.x = direction * movespeed;
+        log(direction, this.body.wasConveyor, this.body.velocity.x, this.body.onConveyor);
+        if (direction != 0 && this.body.wasConveyor != 0 && direction != this.body.wasConveyor) {
+            log(this.body.wasConveyor, direction, 'Wechsel');
+            this.body.wasConveyor = 0;
+        }
+        if (this.body.onConveyor != 0 && (signum(direction) != signum(this.body.onConveyor))) {
+            if (direction > 0) this.body.velocity.x = Math.min(CONST_MAX_SPEED, Math.max(direction * movespeed + this.body.onConveyor, this.body.velocity.x));
+            if (direction < 0) this.body.velocity.x = Math.max(-CONST_MAX_SPEED, Math.min(direction * movespeed + this.body.onConveyor, this.body.velocity.x));
+            if (direction != 0) this.body.wasConveyor = direction;
+
+        }
+        else if (this.body.onConveyor != 0) {
+            if (direction > 0) this.body.velocity.x = Math.min(CONST_MAX_SPEED, Math.max(direction * movespeed, this.body.velocity.x));
+            if (direction < 0) this.body.velocity.x = Math.max(-CONST_MAX_SPEED, Math.min(direction * movespeed, this.body.velocity.x));
+
+        } else if (this.body.wasConveyor != 0) {
+
+        }
+        else {
+            this.body.velocity.x = direction * movespeed;
+        }
+
 
         // update image flipping & animations
         if (this.body.velocity.x < 0) {
@@ -908,6 +951,7 @@ Crowdjump.Game._spawnPlatform = function (platform) {
     sprite.body.immovable = true;
     sprite.body.slippery = false;
     sprite.converted_to_lava = false;
+    sprite.body.conveyor_direction = 0;
 
     for (var i = 0; i < types.length; i++) {
         switch (types[i]) {
@@ -944,6 +988,16 @@ Crowdjump.Game._spawnPlatform = function (platform) {
             case "lavaswitch":
                 if (CONST_LAVASWITCHINGPLATFORM) {
                     sprite.lavaObject = platform;
+                }
+                break;
+            case "con_r":
+                if (CONST_CONVEYORPLATFORMS) {
+                    sprite.body.conveyor_direction = 10;
+                }
+                break;
+            case "con_l":
+                if (CONST_CONVEYORPLATFORMS) {
+                    sprite.body.conveyor_direction = -10;
                 }
                 break;
             case "undefined":
@@ -1242,6 +1296,13 @@ Crowdjump.Game._onHeroVsSpecialPlatform = function (hero, platform) {
     if (platform.body.bouncing && CONST_BOUNCINGPLATFORMS) {
         hero.body.velocity.y = hero_bounce_velocity * 0.7;
         hero_bounce_velocity = 0;
+    }
+
+    if (CONST_CONVEYORPLATFORMS && platform.body.conveyor_direction != 0) {
+        hero.body.velocity.x += platform.body.conveyor_direction;
+        hero.body.onConveyor = platform.body.conveyor_direction;
+    } else {
+        hero.body.onConveyor = 0;
     }
 
     if (!platform.converted_to_lava && arrayContains(platform.p_types, "lavaswitch") && CONST_LAVASWITCHINGPLATFORM) {
