@@ -493,8 +493,6 @@
 
                 }
 
-                upvotes = Voteresult["upvotes"];
-                downvotes = Voteresult["downvotes"];
                 var content = {};
                 content["idea_id"] = idea_id;
                 content["upvotes"] = upvotes;

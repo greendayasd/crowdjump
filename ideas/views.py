@@ -138,8 +138,6 @@ class IdeaVoteViewSet(viewsets.ModelViewSet):
 def Vote(request):
     userid = request.GET.get('userid')
     ideaid = request.GET.get('ideaid')
-    print(userid)
-    print(ideaid)
     if request.user.is_authenticated:
         userid2 = request.user.id
         if str(userid) != str(userid2):

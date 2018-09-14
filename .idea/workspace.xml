@@ -6,32 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/ideas/migrations/0017_idea_date_chosen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crowdjump/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ideas/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ideas/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ideas/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ideas/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database Backups/models.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ideas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ideas/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/questionnaire/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/questionnaire/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/ideas/controllers/new-idea.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/services/ideas.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/ideas/services/ideas.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/ideas/services/votes.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/ideas/services/votes.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/bootstrap 3.3.7min/bootstrap3.3.7-theme.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/bootstrap3.3.7min/bootstrap3.3.7-theme.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/bootstrap 3.3.7min/bootstrap3.3.7.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/bootstrap3.3.7min/bootstrap3.3.7.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/lib/bootstrap 3.3.7min/bootstrap3.3.7min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/lib/bootstrap3.3.7min/bootstrap3.3.7min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/privacy.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/questionnaire/privacy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/endscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/endscreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/javascripts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/stylesheets.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stylesheets.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/serializers.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ideas/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2125">
-              <caret line="125" column="66" selection-start-line="125" selection-start-column="66" selection-end-line="125" selection-end-column="66" />
+            <state relative-caret-position="242">
+              <caret line="149" column="16" lean-forward="true" selection-start-line="149" selection-start-column="16" selection-end-line="149" selection-end-column="16" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -75,8 +53,8 @@
       <file leaf-file-name="privacy.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/privacy.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+            <state relative-caret-position="986">
+              <caret line="58" column="96" selection-start-line="58" selection-start-column="96" selection-end-line="58" selection-end-column="96" />
             </state>
           </provider>
         </entry>
@@ -84,8 +62,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="26" column="46" lean-forward="true" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+            <state relative-caret-position="170">
+              <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -96,16 +74,10 @@
       <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ideas/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="35" />
+            <state relative-caret-position="68">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="35" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
-                <element signature="e#1173#1828#0" />
-                <element signature="e#1909#2521#0" />
-                <element signature="e#2594#3153#0" />
-                <element signature="e#3214#3784#0" />
-                <element signature="e#4698#5186#0" />
-                <element signature="e#5262#5328#0" />
               </folding>
             </state>
           </provider>
@@ -114,8 +86,8 @@
       <file leaf-file-name="ideas.service.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/services/ideas.service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="33" column="49" lean-forward="true" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
+            <state relative-caret-position="561">
+              <caret line="33" column="49" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -123,7 +95,7 @@
       <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/authentication/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="602">
+            <state relative-caret-position="1003">
               <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
               <folding>
                 <element signature="e#0#56#0" expanded="true" />
@@ -135,8 +107,8 @@
       <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="207" column="57" lean-forward="true" selection-start-line="207" selection-start-column="57" selection-end-line="207" selection-end-column="57" />
+            <state relative-caret-position="3519">
+              <caret line="207" column="57" selection-start-line="207" selection-start-column="57" selection-end-line="207" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -144,17 +116,17 @@
       <file leaf-file-name="ideasindex.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-935">
+            <state relative-caret-position="6953">
               <caret line="409" column="66" selection-start-line="409" selection-start-column="66" selection-end-line="409" selection-end-column="66" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-256">
-              <caret line="222" column="51" selection-start-line="222" selection-start-column="51" selection-end-line="222" selection-end-column="51" />
+            <state relative-caret-position="4335">
+              <caret line="255" column="70" selection-start-line="255" selection-start-column="70" selection-end-line="255" selection-end-column="70" />
               <folding>
                 <element signature="e#837#1783#0#HTML" />
               </folding>
@@ -274,9 +246,9 @@
         <option value="$PROJECT_DIR$/questionnaire/serializers.py" />
         <option value="$PROJECT_DIR$/ideas/serializers.py" />
         <option value="$PROJECT_DIR$/static/javascripts/ideas/services/ideas.service.js" />
-        <option value="$PROJECT_DIR$/ideas/views.py" />
-        <option value="$PROJECT_DIR$/static/templates/questionnaire/privacy.html" />
         <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/privacy.html" />
+        <option value="$PROJECT_DIR$/ideas/views.py" />
       </list>
     </option>
   </component>
@@ -309,7 +281,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-82" />
+    <option name="x" value="165" />
     <option name="y" value="-8" />
     <option name="width" value="1156" />
     <option name="height" value="1050" />
@@ -598,7 +570,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32960325" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50208336" side_tool="true" weight="0.24516785" />
@@ -607,11 +578,10 @@
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32858595" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19791667" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19791667" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="manage.py@Crowdjump" order="12" sideWeight="0.49791667" visible="true" weight="0.34556574" />
+      <window_info active="true" anchor="bottom" id="manage.py@Crowdjump" order="12" sideWeight="0.49791667" visible="true" weight="0.34556574" />
       <window_info anchor="right" id="Database" order="3" weight="0.32949877" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.29867482" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24947916" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -624,6 +594,7 @@
       <window_info anchor="bottom" id="REST Client" order="14" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.29867482" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -734,26 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="115" column="42" selection-start-line="115" selection-start-column="34" selection-end-line="115" selection-end-column="42" />
-          <folding>
-            <element signature="e#15778#16443#0" />
-            <element signature="e#16480#17148#0" />
-            <element signature="e#17183#17866#0" />
-            <element signature="e#17901#18585#0" />
-            <element signature="e#18620#19377#0" />
-            <element signature="e#19416#20177#0" />
-            <element signature="e#20212#21278#0" />
-            <element signature="e#21319#22338#0" />
-            <element signature="e#22521#39560#0" />
-            <element signature="e#23457#37373#0" />
-            <element signature="e#34488#35150#0" />
-            <element signature="e#39891#40743#0" />
-            <element signature="e#40803#43594#0" />
-            <element signature="e#43640#46078#0" />
-            <element signature="e#52586#86874#0" />
-            <element signature="e#52615#66445#0" />
-            <element signature="e#66491#68592#0" />
-            <element signature="e#68638#80730#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -790,28 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
           <caret line="895" column="37" selection-start-line="895" selection-start-column="37" selection-end-line="895" selection-end-column="37" />
-          <folding>
-            <element signature="e#10288#10519#0" />
-            <element signature="e#10582#10885#0" />
-            <element signature="e#10919#11224#0" />
-            <element signature="e#11262#11587#0" />
-            <element signature="e#11626#11953#0" />
-            <element signature="e#11988#13704#0" />
-            <element signature="e#13742#14173#0" />
-            <element signature="e#14219#25965#0" />
-            <element signature="e#26030#35490#0" />
-            <element signature="e#30868#32368#0" />
-            <element signature="e#35560#37036#0" />
-            <element signature="e#37095#38606#0" />
-            <element signature="e#38682#41949#0" />
-            <element signature="e#42035#45430#0" />
-            <element signature="e#45501#48697#0" />
-            <element signature="e#48759#49358#0" />
-            <element signature="e#49405#49612#0" />
-            <element signature="e#49657#49956#0" />
-            <element signature="e#50004#50407#0" />
-            <element signature="e#50455#50509#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -838,56 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="1261" column="8" selection-start-line="1261" selection-start-column="8" selection-end-line="1261" selection-end-column="8" />
-          <folding>
-            <element signature="e#3181#4621#0" />
-            <element signature="e#4750#5014#0" />
-            <element signature="e#5064#5481#0" />
-            <element signature="e#5513#6018#0" />
-            <element signature="e#6187#6523#0" />
-            <element signature="e#6915#9450#0" />
-            <element signature="e#9603#12517#0" />
-            <element signature="e#12556#16138#0" />
-            <element signature="e#16186#17142#0" />
-            <element signature="e#17359#20743#0" />
-            <element signature="e#20795#23939#0" />
-            <element signature="e#23983#24999#0" />
-            <element signature="e#25054#25329#0" />
-            <element signature="e#25460#27264#0" />
-            <element signature="e#28786#30146#0" />
-            <element signature="e#31276#31405#0" />
-            <element signature="e#31456#32006#0" />
-            <element signature="e#32053#32723#0" />
-            <element signature="e#32781#33069#0" />
-            <element signature="e#33141#33412#0" />
-            <element signature="e#33465#34249#0" />
-            <element signature="e#34296#35044#0" />
-            <element signature="e#35090#35378#0" />
-            <element signature="e#35434#35508#0" />
-            <element signature="e#35561#35879#0" />
-            <element signature="e#35941#36307#0" />
-            <element signature="e#36365#36914#0" />
-            <element signature="e#36970#37112#0" />
-            <element signature="e#37171#37247#0" />
-            <element signature="e#37309#37367#0" />
-            <element signature="e#37435#37458#0" />
-            <element signature="e#39481#40549#0" />
-            <element signature="e#40597#41035#0" />
-            <element signature="e#41079#41151#0" />
-            <element signature="e#41203#41403#0" />
-            <element signature="e#41451#41503#0" />
-            <element signature="e#41553#41582#0" />
-            <element signature="e#41628#41680#0" />
-            <element signature="e#41728#41755#0" />
-            <element signature="e#41794#41932#0" />
-            <element signature="e#41972#42111#0" />
-            <element signature="e#42159#42185#0" />
-            <element signature="e#42234#42262#0" />
-            <element signature="e#42310#42706#0" />
-            <element signature="e#42755#42960#0" />
-            <element signature="e#43006#43040#0" />
-            <element signature="e#43084#43795#0" />
-            <element signature="e#43842#44529#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -970,8 +849,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="207" column="57" lean-forward="true" selection-start-line="207" selection-start-column="57" selection-end-line="207" selection-end-column="57" />
+        <state relative-caret-position="3519">
+          <caret line="207" column="57" selection-start-line="207" selection-start-column="57" selection-end-line="207" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -979,15 +858,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-554">
           <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
-          <folding>
-            <element signature="e#1435#3847#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-935">
+        <state relative-caret-position="6953">
           <caret line="409" column="66" selection-start-line="409" selection-start-column="66" selection-end-line="409" selection-end-column="66" />
         </state>
       </provider>
@@ -996,9 +872,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1006,9 +879,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1016,9 +886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1033,15 +900,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/authentication/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
+        <state relative-caret-position="1003">
           <caret line="63" column="27" selection-start-line="63" selection-start-column="27" selection-end-line="63" selection-end-column="27" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
@@ -1051,31 +915,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/services/ideas.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="33" column="49" lean-forward="true" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
+        <state relative-caret-position="561">
+          <caret line="33" column="49" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ideas/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="35" />
+        <state relative-caret-position="68">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="35" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
-            <element signature="e#1173#1828#0" />
-            <element signature="e#1909#2521#0" />
-            <element signature="e#2594#3153#0" />
-            <element signature="e#3214#3784#0" />
-            <element signature="e#4698#5186#0" />
-            <element signature="e#5262#5328#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="46" lean-forward="true" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+        <state relative-caret-position="170">
+          <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -1095,29 +953,29 @@
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ideas/views.py">
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2125">
-          <caret line="125" column="66" selection-start-line="125" selection-start-column="66" selection-end-line="125" selection-end-column="66" />
+        <state relative-caret-position="4335">
+          <caret line="255" column="70" selection-start-line="255" selection-start-column="70" selection-end-line="255" selection-end-column="70" />
           <folding>
-            <element signature="e#0#48#0" expanded="true" />
+            <element signature="e#837#1783#0#HTML" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/privacy.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+        <state relative-caret-position="986">
+          <caret line="58" column="96" selection-start-line="58" selection-start-column="96" selection-end-line="58" selection-end-column="96" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
+    <entry file="file://$PROJECT_DIR$/ideas/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-256">
-          <caret line="222" column="51" selection-start-line="222" selection-start-column="51" selection-end-line="222" selection-end-column="51" />
+        <state relative-caret-position="242">
+          <caret line="149" column="16" lean-forward="true" selection-start-line="149" selection-start-column="16" selection-end-line="149" selection-end-column="16" />
           <folding>
-            <element signature="e#837#1783#0#HTML" />
+            <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
