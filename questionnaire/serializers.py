@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
 from questionnaire.models import preSurvey, postSurvey
-from authentication.serializers import AccountSerializer
+from authentication.serializers import AccountSerializerPrivate
 
 
 class PreSurveySerializer(serializers.ModelSerializer):
-    user = AccountSerializer(read_only=True, required=False, allow_null=True, partial=True)
+    user = AccountSerializerPrivate(read_only=True, required=False, allow_null=True, partial=True)
 
     class Meta:
         model = preSurvey
@@ -16,7 +16,7 @@ class PreSurveySerializer(serializers.ModelSerializer):
 
 
 class PostSurveySerializer(serializers.ModelSerializer):
-    user = AccountSerializer(read_only=True, required=False, allow_null=True, partial=True)
+    user = AccountSerializerPrivate(read_only=True, required=False, allow_null=True, partial=True)
 
     class Meta:
         model = postSurvey

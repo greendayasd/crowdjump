@@ -21,7 +21,7 @@ Crowdjump.Endscreen.prototype = {
             if (CONST_SAVE_LEVEL_TIME){
                 time_score = parseFloat(time_overall);
             } else {
-                time_score = game.time.totalElapsedSeconds().toFixed(3);
+                time_score = time_finished;
             }
         }
 

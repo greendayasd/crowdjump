@@ -2,7 +2,7 @@ import json, os, time, datetime
 from django.contrib.auth import authenticate, login, logout
 from authentication.models import Account
 from authentication.permissions import IsAccountOwner
-from authentication.serializers import AccountSerializer
+from authentication.serializers import AccountSerializer, AccountSerializerPrivate
 from rest_framework.response import Response
 from rest_framework import status, permissions, viewsets, views
 from django.http import JsonResponse
@@ -38,7 +38,8 @@ class AccountViewSet(viewsets.ModelViewSet):
 
     def get(self, request, format=None):
         users = Account.objects.all()
-        serializer = AccountSerializer(users, many=True, context={'request': request})
+
+        serializer = AccountSerializerPrivate(users, many=True, context={'request': request})
         return Response(serializer.data)
 
 
@@ -191,7 +192,7 @@ def SendGameData(request):
 
     # Anticheat
     cheated = 'cheat'
-
+    TODOXXX
     #version
     if (version != correct_version):
             # cheated

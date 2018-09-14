@@ -1,13 +1,13 @@
 from rest_framework import serializers
 
-from authentication.serializers import AccountSerializer
+from authentication.serializers import AccountSerializerPrivate, AccountSerializer
 from website.serializers import VersionSerializer
 from ideas.models import Idea, CommentVote, IdeaVote, Comment
 from authentication.models import GameInfo, WebsiteInfo
 
 
 class IdeaSerializer(serializers.ModelSerializer):
-    user = AccountSerializer(read_only=True, required=False)
+    user = AccountSerializerPrivate(read_only=True, required=False)
     # votes = serializers.HyperlinkedIdentityField('vote', lookup_field='username')
 
     version = VersionSerializer(read_only=True, required=False)
@@ -18,7 +18,7 @@ class IdeaSerializer(serializers.ModelSerializer):
         fields = ('id', 'user', 'version', 'request_text', 'description',
                   'created_at', 'updated_at', 'estimated_time', 'admin_comment',
                   'feasible', 'implemented', 'deleted', 'newest_comment',
-                  'upvotes', 'downvotes')
+                  'upvotes', 'downvotes', 'currently_implemented')
 
         read_only_fields = ('id', 'created_at', 'updated_at')
 
@@ -29,7 +29,7 @@ class IdeaSerializer(serializers.ModelSerializer):
 
 
 class IdeaVotingPermissionSerializer(serializers.ModelSerializer):
-    user = AccountSerializer(read_only=True, required=False)
+    user = AccountSerializerPrivate(read_only=True, required=False)
     # votes = serializers.HyperlinkedIdentityField('vote', lookup_field='username')
 
     version = VersionSerializer(read_only=True, required=False)
@@ -49,7 +49,7 @@ class IdeaVotingPermissionSerializer(serializers.ModelSerializer):
 
 
 class IdeaNewestCommentPermissionSerializer(serializers.ModelSerializer):
-    user = AccountSerializer(read_only=True, required=False)
+    user = AccountSerializerPrivate(read_only=True, required=False)
     # votes = serializers.HyperlinkedIdentityField('vote', lookup_field='username')
 
     version = VersionSerializer(read_only=True, required=False)
@@ -68,7 +68,7 @@ class IdeaNewestCommentPermissionSerializer(serializers.ModelSerializer):
 
 
 class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
-    user = AccountSerializer(read_only=True, required=False)
+    user = AccountSerializerPrivate(read_only=True, required=False)
     version = VersionSerializer(read_only=True, required=False)
 
     class Meta:
@@ -84,7 +84,7 @@ class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    user = AccountSerializer(read_only=True, required=False)
+    user = AccountSerializerPrivate(read_only=True, required=False)
     # idea = IdeaSerializer(read_only=True)#(read_only=True, required=False)
 
     class Meta:
@@ -103,7 +103,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class IdeaVoteSerializer(serializers.ModelSerializer):
-    user = AccountSerializer(read_only=True, required=False)
+    user = AccountSerializerPrivate(read_only=True, required=False)
     # idea = IdeaSerializer(read_only=False, required=False)
 
     # vote = serializers.IntegerField()
@@ -129,7 +129,7 @@ class IdeaVoteSerializer(serializers.ModelSerializer):
 
 
 class CommentVoteSerializer(serializers.ModelSerializer):
-    user = AccountSerializer(read_only=True, required=False)
+    user = AccountSerializerPrivate(read_only=True, required=False)
     comment = CommentSerializer(read_only=True, required=False)
 
     class Meta:

@@ -34,10 +34,7 @@
             return $http.post('/api/v1/ideas/', {
                 version: content["version"],
                 request_text: content["request_text"],
-                description: content["description"],
-                estimated_time: content["estimated_time"],
-                upvotes: content["upvotes"],
-                downvotes: content["downvotes"],
+                description: content["description"]
             });
             //   return $http.post('/api/v1/ideas/', {
             //     "version": content["version"],

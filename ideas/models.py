@@ -20,6 +20,8 @@ class Idea(models.Model):
 
     feasible = models.BooleanField(default=True)
     currently_implemented = models.BooleanField(default=False)
+    date_chosen = models.DateTimeField(null=True)
+
     implemented = models.BooleanField(default=False)
     implemented_at = models.DateTimeField(null=True)
 

@@ -154,6 +154,7 @@
 
             $scope.isAuthenticated = Authentication.isAuthenticated();
             $scope.ideas = [];
+            $scope.currently_implementing = [];
             $scope.versions = [];
             $scope.comments = [];
 
@@ -255,6 +256,20 @@
                 function ideasSuccessFn(data, status, headers, config) {
                     $scope.ideas_tmp = data.data;
 
+                    //filter currently implemented ideas
+                    for (var i = $scope.ideas_tmp.length - 1; i >= 0; i--) {
+                        if ($scope.ideas_tmp[i].currently_implemented == 1) {
+                            $scope.currently_implementing.push($scope.ideas_tmp[i]);
+                            $scope.ideas_tmp.splice(i, 1);
+                        }
+                    }
+                    $scope.ideaCollapseFn = function () {
+                        $scope.ideaCollapse = [];
+                        for (var i = 0; i < $scope.currently_implementing.length; i += 1) {
+                            $scope.ideaCollapse.push(false);
+                        }
+                    };
+
                     //find own votes for ideas
                     $scope.ideas = $scope.ideas_tmp;
                     $scope.last_idea = $scope.ideas[get_IdeaIndex(last_idea_id)];
@@ -276,7 +291,6 @@
                             var comments = $.grep($scope.comments, function (comment) {
                                 return comment.idea === idea.id;
                             });
-
                             if (typeof comments !== 'undefined') {
                                 // console.log(vote);
                                 idea.show_comments = false;
@@ -390,29 +404,38 @@
                 var upvotes = $scope.ideas[index].upvotes + 0;
                 var downvotes = $scope.ideas[index].downvotes + 0;
 
-
                 if (downvote_img.src.match("/static/website/images/downvote%20trans.png")) {
+                    //down to up
                     downvote_img.src = "/static/website/images/downvote%20trans%20dark.png";
                     upvote_img.src = "/static/website/images/upvote%20trans%20bright.png";
-                    Votes.down_to_up(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+
+                    $.when(Votes.vote(idea_id, $scope.userid, $scope.vote)).then(function (Voteresult, status, etc) {
+                        upvotes = Voteresult["upvotes"];
+                        downvotes = Voteresult["downvotes"];
+                    });
                     downvotes = downvotes - $scope.vote;
                     upvotes = upvotes + $scope.vote;
                 }
 
                 else if (upvote_img.src.match("/static/website/images/upvote%20trans.png")) {
+                    //Upvote
                     upvote_img.src = "/static/website/images/upvote%20trans%20bright.png";
-                    // console.error("upvotes? " + upvotes);
-                    Votes.upvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+                    $.when(Votes.vote(idea_id, $scope.userid, $scope.vote)).then(function (Voteresult, status, etc) {
+                        upvotes = Voteresult["upvotes"];
+                        downvotes = Voteresult["downvotes"];
+                    });
                     upvotes = upvotes + $scope.vote;
 
                 } else {
-                    Votes.undo_upvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+                    //undo Upvote
+                    $.when(Votes.vote(idea_id, $scope.userid, 0)).then(function (Voteresult, status, etc) {
+                        upvotes = Voteresult["upvotes"];
+                        downvotes = Voteresult["downvotes"];
+                    });
                     upvote_img.src = "/static/website/images/upvote%20trans.png";
                     upvotes = upvotes - $scope.vote;
                 }
                 // console.log(upvotes + " , " + downvotes);
-
-
                 var content = {};
                 content["idea_id"] = idea_id;
                 content["upvotes"] = upvotes;
@@ -435,28 +458,43 @@
                 // var downvote_count = document.getElementById('downvote_count' + idea_id);
                 var upvotes = $scope.ideas[index].upvotes + 0;
                 var downvotes = $scope.ideas[index].downvotes + 0;
-                // console.log("downvote " + upvotes + " , " + downvotes);
+                var Voteresult = [];
+
 
                 if (upvote_img.src.match("/static/website/images/upvote%20trans%20bright.png")) {
+                    //up to down
                     upvote_img.src = "/static/website/images/upvote%20trans.png";
                     downvote_img.src = "/static/website/images/downvote%20trans.png";
-                    Votes.up_to_down(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+                    $.when(Votes.vote(idea_id, $scope.userid, -$scope.vote)).then(function (Voteresult, status, etc) {
+                        upvotes = Voteresult["upvotes"];
+                        downvotes = Voteresult["downvotes"];
+                    });
                     downvotes = downvotes + $scope.vote;
                     upvotes = upvotes - $scope.vote;
                 }
 
 
                 else if (downvote_img.src.match("/static/website/images/downvote%20trans%20dark.png")) {
+                    //downvote
                     downvote_img.src = "/static/website/images/downvote%20trans.png";
-                    Votes.downvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+                    $.when(Votes.vote(idea_id, $scope.userid, -$scope.vote)).then(function (Voteresult, status, etc) {
+                        upvotes = Voteresult["upvotes"];
+                        downvotes = Voteresult["downvotes"];
+                    });
                     downvotes = downvotes + $scope.vote;
                 } else {
+                    //undo downvote
                     downvote_img.src = "/static/website/images/downvote%20trans%20dark.png";
-                    Votes.undo_downvote(idea_id, $scope.userid, upvotes, downvotes, $scope.vote, $scope.multiplier);
+                    $.when(Votes.vote(idea_id, $scope.userid, 0)).then(function (Voteresult, status, etc) {
+                        upvotes = Voteresult["upvotes"];
+                        downvotes = Voteresult["downvotes"];
+                    });
                     downvotes = downvotes - $scope.vote;
 
                 }
 
+                upvotes = Voteresult["upvotes"];
+                downvotes = Voteresult["downvotes"];
                 var content = {};
                 content["idea_id"] = idea_id;
                 content["upvotes"] = upvotes;
@@ -687,6 +725,37 @@
                     }
                 }
             }
+
+            //table functions
+
+            $scope.tableRowExpanded = false;
+            $scope.tableRowIndexExpandedCurr = "";
+            $scope.tableRowIndexExpandedPrev = "";
+
+            $scope.selectTableRow = function (index) {
+                if (typeof $scope.ideaCollapse === 'undefined') {
+                    $scope.ideaCollapseFn();
+                }
+
+                if ($scope.tableRowExpanded === false && $scope.tableRowIndexExpandedCurr === "") {
+                    $scope.tableRowIndexExpandedPrev = "";
+                    $scope.tableRowExpanded = true;
+                    $scope.tableRowIndexExpandedCurr = index;
+                    $scope.ideaCollapse[index] = true;
+                } else if ($scope.tableRowExpanded === true) {
+                    if ($scope.tableRowIndexExpandedCurr === index) {
+                        $scope.tableRowExpanded = false;
+                        $scope.tableRowIndexExpandedCurr = "";
+                        $scope.ideaCollapse[index] = false;
+                    } else {
+                        $scope.tableRowIndexExpandedPrev = $scope.tableRowIndexExpandedCurr;
+                        $scope.tableRowIndexExpandedCurr = index;
+                        $scope.ideaCollapse[$scope.tableRowIndexExpandedPrev] = false;
+                        $scope.ideaCollapse[$scope.tableRowIndexExpandedCurr] = true;
+                    }
+                }
+
+            };
 
             $scope.test = function () {
                 document.getElementById('pagination').scrollIntoView();

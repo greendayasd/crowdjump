@@ -36,9 +36,7 @@
             content = {
                 "request_text": vm.request_text,
                 "description": vm.description,
-                "estimated_time": null,
-                "upvotes": 0,
-                "downvotes": 0
+                "estimated_time": null
             }
             Ideas.create(content).then(createIdeaSuccessFn, createIdeaErrorFn);
 

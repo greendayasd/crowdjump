@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from .models import Version
-from authentication.serializers import AccountSerializer
+from authentication.serializers import AccountSerializerPrivate
 from authentication.models import Account, GameInfo, WebsiteInfo
 
 
 class VersionSerializer(serializers.ModelSerializer):
-    submitter = AccountSerializer(read_only=True, required=False)
+    submitter = AccountSerializerPrivate(read_only=True, required=False)
 
     class Meta:
         model = Version

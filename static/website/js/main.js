@@ -89,6 +89,8 @@ var coins_last_level = 0;
 var difficulty = DIFFICULTY.normal;
 var selected_level = -1;
 
+var time_finished = 0; //Synchronisation von DB und tracking
+
 var time_overall = 0;
 var time_last_level_or_restart = 0;
 
@@ -120,19 +122,20 @@ window.createGame = function (canvas, scope) {
         game.destroy(); // Clean up the game when we leave this scope
     });
 
-    var ws_scheme = 'wss'; //.location.protocol == "https:" ? "wss" : "ws";
-    var port = ':8001';
-    if (window.location.host == "localhost:8000") {
-        ws_scheme = 'ws';
-        port = '';
-    }
-
-    highscoreSocket = new WebSocket(
-        ws_scheme + '://' + window.location.host + port +
-        '/ws/website/');
-    highscoreSocket.onclose = function (e) {
-        console.error('Highscore socket closed unexpectedly');
-    };
+    //Highscore Socket
+    // var ws_scheme = 'wss'; //.location.protocol == "https:" ? "wss" : "ws";
+    // var port = ':8001';
+    // if (window.location.host == "localhost:8000") {
+    //     ws_scheme = 'ws';
+    //     port = '';
+    // }
+    //
+    // highscoreSocket = new WebSocket(
+    //     ws_scheme + '://' + window.location.host + port +
+    //     '/ws/website/');
+    // highscoreSocket.onclose = function (e) {
+    //     console.error('Highscore socket closed unexpectedly');
+    // };
 
 
     scope.$on('game:toggleMusic', function () {
@@ -262,7 +265,7 @@ function updateInfo(isHighscore) {
 
 function setLevelInfo(level, status) {
     var username = getUsername();
-    var time = game.time.totalElapsedSeconds().toFixed(3);
+    var time = time_finished;
     var final_time = ((time - time_last_level) * 1000).toFixed(0);
     var data = {
         "username": username,

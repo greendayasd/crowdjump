@@ -9,14 +9,14 @@
     <h1> Current Ideas </h1>
     <h4>
         Here are the current ideas for new features, all submitted by players like you! <br>
-        At the moment, every day the x most popular ideas will be implemented, so vote for your favourites! If you want
-        an other
-        selection process, feature requests are not limited to the game but can also include
-        communication or voting features! <br>
+        At the moment, every day at 9am and 7pm the most popular idea will be chosen and implemented, so vote for your
+        favourites! If you want an other selection process, feature requests are not limited to the game but can also
+        include communication or voting features! <br>
         Every request cycle you can submit one idea, you will be notified when a new cycle starts.
         The estimated time is edited manually and may help you to find suited ideas. <br><br>
         Vote for the next idea to be chosen!<br><br>
-        <!--
+    </h4>
+    <!--
        <div> The last idea chosen was from <b>{{ last_idea.user.username }}</b> and will be implemented shortly:<br>
         </div>
         <div class="row" style="padding-top: 5px">
@@ -38,30 +38,50 @@
                 </div>
             </div>
         </div>-->
-        <!--Remember that idea {{ last_idea2.id }} <b>{{ last_idea2.request_text }}</b> from <b>{{ last_idea2.user.username }} </b> will be implemented tomorrow! <br><br>-->
-        <div ng-controller="HistoryController as vm" style="padding-bot: 5px">
-            Current state of version {{ version.label }}:
+    <div ng-show="false">
+        These ideas were chosen and will be implemented shortly! Click on an idea for more information.
 
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Idea Nr</th>
+                <th scope="col">Change</th>
+                <th scope="col">Submitter</th>
+                <th scope="col">Date chosen</th>
+                <th scope="col">Estimated time</th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="idea in currently_implementing" data-ng-switch on="ideaCollapse[$index]">
+            <tr class="clickableRow" title="Click to show more information about the idea."
+                data-ng-click="selectTableRow($index)">
+                <td>{{ idea.id }}</td>
+                <td>{{ idea.request_text }}</td>
+                <td>{{ idea.user.username }}</td>
+                <td>{{ idea.created_at | date : "dd.MM.y HH:mm" }}</td>
+                <td>{{ idea.estimated_time }}</td>
+            </tr>
+            <tr data-ng-switch-when="true">
+                <td colspan="9">
+                    <table class="table table-striped" style="margin-bottom: 0px">
+                        <tbody>
+                        <tr>
+                            <td>{{ idea.description }}</td>
+                        </tr>
+                        <tr>
+                            <td>Upvotes: {{ idea.upvotes }}</td>
+                        </tr>
+                        <tr>
+                            <td>Downvotes: {{ idea.downvotes }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
 
-            <div>
-                <ul class="list-group" style="padding-top: 5px">
+            </tbody>
 
-                    <li class="list-group-item list-group-item-info">
-                        {{ version.features_game }}
-                    </li>
-                    <li class="list-group-item list-group-item-info">
-                        {{ version.features_design }}
-                    </li>
-                    <li class="list-group-item list-group-item-info">
-                        {{ version.features_selection }}
-                    </li>
-                    <li class="list-group-item list-group-item-info">
-                        {{ version.features_website }}
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </h4>
+        </table>
+    </div>
     <br>
 
     <div ng-controller="IndexController as vm" ng-show="!vm.isAuthenticated">

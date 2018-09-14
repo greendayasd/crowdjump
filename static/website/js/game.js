@@ -1258,12 +1258,14 @@ Crowdjump.Game._onBulletVsPlatform = function (bullet, platform) {
 
 Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     this.sfx.flag.play();
+    time_finished = game.time.totalElapsedSeconds().toFixed(3);
     if (zhonya_activated) {
         this.sfx.zhonyas.stop();
     }
     if (selected_level >= 0) {
         time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds() - parseFloat(time_last_level_or_restart);
         time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
+
         setLevelInfo(selected_level + 1, "completed");
         this.state.start('Endscreen');
 

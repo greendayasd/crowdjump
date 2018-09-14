@@ -5,7 +5,7 @@ from website import views
 from rest_framework_nested import routers
 from website.views import IndexView, HistoryViewSet, IdeasView, GameViewSet, GameInfoView, GameView, AdminView
 from ideas.views import IdeaViewSet, IdeaVotePermissionViewSet, AccountIdeasViewSet, AccountGameInfoViewSet, \
-    GameInfoViewSet, CommentViewSet, IdeaVoteViewSet
+    GameInfoViewSet, CommentViewSet, IdeaVoteViewSet, Vote
 from chat.views import room, index, ChatMessageViewSet
 from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet
 from Crowdjump.mailFunctions import mail_new_version
@@ -89,6 +89,7 @@ urlpatterns = [
     url(r'^getallgamedata/$', GetAllGameData, name='getallgamedata'),
     url(r'^getallusergame/$', GetAllUserGame, name='getallusergame'),
     url(r'^transferdata/$', TransferData, name='transferdata'),
+    url(r'^vote/$', Vote, name='vote'),
 
     url(r'^sendmail/$', mail_new_version, name='sendmail'),
 

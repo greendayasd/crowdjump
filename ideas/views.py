@@ -5,9 +5,11 @@ from website.serializers import VersionSerializer
 
 from ideas.models import Idea, CommentVote, IdeaVote, Comment
 from ideas.permissions import IsCreaterOfIdea, IsOwnerOfInfo
-from ideas.serializers import IdeaSerializer, IdeaVotingPermissionSerializer, GameInfoSerializer, CommentSerializer, IdeaVoteSerializer
+from ideas.serializers import IdeaSerializer, IdeaVotingPermissionSerializer, GameInfoSerializer, CommentSerializer, \
+    IdeaVoteSerializer
+from django.http import JsonResponse
 
-from authentication.models import GameInfo
+from authentication.models import GameInfo, Account
 from url_filter.integrations.drf import DjangoFilterBackend
 
 
@@ -53,7 +55,7 @@ class AccountIdeasViewSet(viewsets.ViewSet):
 
 
 class GameInfoViewSet(viewsets.ModelViewSet):
-    queryset = GameInfo.objects.order_by('-version','highscore')
+    queryset = GameInfo.objects.order_by('-version', 'highscore')
     serializer_class = GameInfoSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ['highscore', 'version', 'user', 'id']
@@ -124,5 +126,62 @@ class IdeaVoteViewSet(viewsets.ModelViewSet):
     #     return (permissions.IsAuthenticated(), IsOwnerOfInfo(),)
 
     def perform_create(self, serializer):
-        instance = serializer.save(user=self.request.user)
-        return super(IdeaVoteViewSet, self).perform_create(serializer)
+        return False
+        # instance = serializer.save(user=self.request.user)
+        # return super(IdeaViewSet, self).perform_create(serializer)
+
+    def save_model(self, request, obj, form, change):
+        # Return nothing to make sure user can't update any data
+        pass
+
+
+def Vote(request):
+    userid = request.GET.get('userid')
+    ideaid = request.GET.get('ideaid')
+    print(userid)
+    print(ideaid)
+    if request.user.is_authenticated:
+        userid2 = request.user.id
+        if str(userid) != str(userid2):
+            return JsonResponse('{"success":"' + str(userid) + '"}', safe=False)
+
+    vote = int(request.GET.get('vote'))
+
+    # get Voteweight
+    multiplier = 1
+    if vote > 0:
+        vote = 1
+    if vote < 0:
+        vote = -1
+    lastvote = 0
+
+    try:
+        dbvote = IdeaVote.objects.filter(user_id=userid, idea_id=ideaid)[0]
+        # print(dbvote)
+        lastvote = dbvote.vote
+        dbvote.vote = vote
+        dbvote.save()
+    except:
+        i = Idea.objects.filter(id=ideaid)[0]
+        v = IdeaVote(idea_id=ideaid, user_id=userid, vote=vote, multiplier=multiplier)
+        v.save()
+
+    i = Idea.objects.filter(id=ideaid)[0]
+
+    # alten Vote rückgängig machen
+    if lastvote < 0:
+        i.downvotes += lastvote
+
+    if lastvote > 0:
+        i.upvotes -= lastvote
+
+    # neuen Vote einfügen
+    if vote < 0:
+        i.downvotes -= vote
+
+    if vote > 0:
+        i.upvotes += vote
+
+    i.save()
+
+    return JsonResponse('{"upvotes":"' + str(i.upvotes) + '", "downvotes":"' + str(i.downvotes) + '"}', safe=False)
