@@ -23,13 +23,6 @@
                 $scope.closeThisDialog();
                 return;
             }
-            $scope.$broadcast('idea.created', {
-                description: vm.description,
-                request_text: vm.request_text,
-                user: {
-                    username: Authentication.getAuthenticatedAccount().username
-                },
-            });
 
             $scope.closeThisDialog();
 
@@ -41,6 +34,14 @@
             Ideas.create(content).then(createIdeaSuccessFn, createIdeaErrorFn);
 
             function createIdeaSuccessFn(data, status, headers, config) {
+
+                $scope.$broadcast('idea.created', {
+                    description: vm.description,
+                    request_text: vm.request_text,
+                    user: {
+                        username: Authentication.getAuthenticatedAccount().username
+                    },
+                });
                 var content = data["data"];
                 content["type"] = 'idea_broadcast';
                 broadcast_idea(content);
@@ -49,7 +50,8 @@
 
             function createIdeaErrorFn(data, status, headers, config) {
                 $rootScope.$broadcast('idea.created.error');
-                msg = "There was an error, the idea was not created!";
+                console.log(data);
+                var msg = "There was an error, the idea was not created!";
                 toast(msg);
             }
 

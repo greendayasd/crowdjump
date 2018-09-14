@@ -31,7 +31,7 @@
 
         function create(content) {
             // console.error("Content: " + content["upvotes"]);
-            return $http.post('/api/v1/ideas/', {
+            var result =  $http.post('/api/v1/ideas/', {
                 version: content["version"],
                 request_text: content["request_text"],
                 description: content["description"]
@@ -44,6 +44,7 @@
             //     "upvotes": 0,
             //     "downvotes": 0,
             // });
+            return result;
         }
 
         function get(username) {

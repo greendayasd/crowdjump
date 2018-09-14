@@ -6,6 +6,7 @@ from authentication.serializers import AccountSerializer, AccountSerializerPriva
 from rest_framework.response import Response
 from rest_framework import status, permissions, viewsets, views
 from django.http import JsonResponse
+from website.models import Version
 import http.cookiejar, urllib.request, requests
 
 

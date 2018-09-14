@@ -3,7 +3,7 @@ from rest_framework import serializers
 from authentication.serializers import AccountSerializerPrivate, AccountSerializer
 from website.serializers import VersionSerializer
 from ideas.models import Idea, CommentVote, IdeaVote, Comment
-from authentication.models import GameInfo, WebsiteInfo
+from authentication.models import GameInfo, WebsiteInfo, Version
 
 
 class IdeaSerializer(serializers.ModelSerializer):
@@ -69,7 +69,8 @@ class IdeaNewestCommentPermissionSerializer(serializers.ModelSerializer):
 
 class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
     user = AccountSerializerPrivate(read_only=True, required=False)
-    version = VersionSerializer(read_only=True, required=False)
+    # version = VersionSerializer(read_only=True, required=False)
+    version = Version.objects.all().order_by('-id')[0]
 
     class Meta:
         model = GameInfo

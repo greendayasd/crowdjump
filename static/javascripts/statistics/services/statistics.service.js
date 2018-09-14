@@ -32,7 +32,7 @@
         }
         function create() {
             return $http.post('/api/v1/gameinfo/', {
-                // version: versionnumber,
+                version: versionnumber,
                 // rounds_started: content["rounds_started"],
                 // rounds_won: content["rounds_won"],
                 // enemies_killed: content["enemies_killed"],

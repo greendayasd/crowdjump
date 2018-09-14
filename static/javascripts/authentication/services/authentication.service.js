@@ -144,6 +144,7 @@
             }
         }
 
+        //Version, in welcher sich angemeldet wurde
         function increase_versionlabel(username, cookie_increase) {
             if (cookie_increase) {
                 var res = $cookies.getObject("authenticatedAccount");
