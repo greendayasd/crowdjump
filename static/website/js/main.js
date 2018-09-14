@@ -24,7 +24,7 @@ const CONST_LOCKPLATFORM = false;
 const CONST_BOUNCINGPLATFORMS = false;
 const CONST_SLIDEPLATFORMS = false;
 const CONST_FALLINGPLATFORMS = false;
-const CONST_CONVEYORPLATFORMS = true;
+const CONST_CONVEYORPLATFORMS = false;
 const CONST_CRATES = false;
 
 const CONST_POWERUPS = false;

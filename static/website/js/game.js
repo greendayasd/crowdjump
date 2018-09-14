@@ -129,9 +129,7 @@ Hero.prototype.move = function (direction) {
         }
 
     } else {
-        log(direction, this.body.wasConveyor, this.body.velocity.x, this.body.onConveyor);
         if (direction != 0 && this.body.wasConveyor != 0 && direction != this.body.wasConveyor) {
-            log(this.body.wasConveyor, direction, 'Wechsel');
             this.body.wasConveyor = 0;
         }
         if (this.body.onConveyor != 0 && (signum(direction) != signum(this.body.onConveyor))) {
@@ -490,7 +488,6 @@ Crowdjump.Game.update = function () {
     try {
         if (CONST_MOVINGPLATFORMS) this.movingPlatforms.forEach(this._movePlatforms, this);
     } catch (e) {
-        console.log(e);
     }
 
     // var elapsedTime = Math.floor(this.game.time.totalElapsedSeconds());
@@ -915,7 +912,6 @@ Crowdjump.Game._spawnPlatform = function (platform) {
     var newy = platform.y;
 
     if (CONST_P2_PHYSICS) {
-        // log(newx,newy);
         var width = game.cache.getImage(platform.image).width;
         var height = game.cache.getImage(platform.image).height;
         newx += width / 2;
@@ -1054,7 +1050,6 @@ Crowdjump.Game._spawnCrate = function (platform) {
     var newy = platform.y;
 
     if (CONST_P2_PHYSICS) {
-        // log(newx,newy);
         var width = game.cache.getImage(platform.image).width;
         var height = game.cache.getImage(platform.image).height;
         newx += width / 2;

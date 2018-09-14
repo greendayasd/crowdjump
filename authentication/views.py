@@ -192,7 +192,6 @@ def SendGameData(request):
 
     # Anticheat
     cheated = 'cheat'
-    TODOXXX
     #version
     if (version != correct_version):
             # cheated
@@ -200,7 +199,7 @@ def SendGameData(request):
 
     #time
     if (status == 'completed'):
-        if (int(level) == 0 and int(timeneeded) < 4000
+        if (int(level) == 0 and int(timeneeded) < 4400
                 or int(level) == 1 and int(timeneeded) < 4000
                 or int(level) == 2 and int(timeneeded) < 4000
                 or int(level) == 3 and int(timeneeded) < 4000):
