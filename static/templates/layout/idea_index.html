@@ -68,10 +68,10 @@
                             <td>{{ idea.description }}</td>
                         </tr>
                         <tr>
-                            <td>Upvotes: {{ idea.upvotes }}</td>
-                        </tr>
-                        <tr>
-                            <td>Downvotes: {{ idea.downvotes }}</td>
+                            <td>
+                                <input type="image" ng-src="/static/website/images/upvote%20trans.png"/> {{ idea.upvotes }}
+                                <input type="image" ng-src="/static/website/images/downvote%20trans.png"/> {{ idea.downvotes }}
+                            </td>
                         </tr>
                         </tbody>
                     </table>
