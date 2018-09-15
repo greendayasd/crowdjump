@@ -84,6 +84,22 @@ class LogoutView(views.APIView):
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
 
+def Unsubscribe(request):
+    if request.user.is_authenticated:
+        userid = request.user.id
+    else:
+        return JsonResponse({}, safe=False)
+
+    try:
+        acc = Account.objects.filter(id=userid)[0]
+        acc.email_notification = 0
+        acc.save()
+    except:
+        print("failure unsubscribing")
+
+    return JsonResponse({}, safe=False)
+
+
 def SendTrackingData(request):
     username = request.GET.get('username')
     if request.user.is_authenticated:

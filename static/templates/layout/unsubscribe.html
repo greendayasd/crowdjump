@@ -2,24 +2,39 @@
     tracksite();
 </script>
 
-<div class="container">
-    <div class="form-group">
-        <label for="idea__description">Enter your email address to unsubscribe from the newsletter</label>
-        <textarea class="form-control"
-                  id="idea__request_text"
-                  rows="1"
-                  placeholder="Your email address"
-                  minlength="5"
-                  maxlength="50"
-                  ng-model="vm.request_email">
-        </textarea></div>
+<br><br>
+<div ng-show="!vm.isAuthenticated" class="outerframe container">
+    <div class="row">
 
-    <div class="row" id="nextTo1">
-        <div class="form-group col-xs-6 save-all text-right" style="margin-right: 15px">
-            <button type="submit" class="btn btn-primary" value="Check"
-            >
-                Submit
-            </button>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="alert alert-info">
+                <strong>
+                    <a style="font-size: 28px" style="margin-top: 45px" href="/login?next={{ request.path }}">Login to
+                        unsubscribe from the newsletter</a>
+                </strong>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-show="vm.isAuthenticated" class="outerframe container">
+    <div class="row">
+
+        <div class="col-md-6 col-md-offset-3">
+
+            <div class="well">
+                <form role="form" ng-submit="vm.submit()" name="unsubscribeForm" #unsubscribeForm="ngForm">
+                    <div class="alert alert-danger" ng-show="error" ng-bind="error"></div>
+
+                    <h4  align="center">Click here to to unsubscribe from the newsletter</h4>
+
+                    <div class="form-group">
+                        <div style="" align="center">
+                            <button type="submit" class="btn btn-primary" [disabled]="!ngForm.valid">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
         </div>
     </div>
 </div>

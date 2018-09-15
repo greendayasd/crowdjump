@@ -30,8 +30,8 @@
 
 
 
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-{#    <script type="text/javascript" src="{% static 'lib/bootstrap3.3.7min/bootstrap3.3.7min.js' %}"></script>#}
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {#    <script type="text/javascript" src="{% static 'lib/bootstrap3.3.7min/bootstrap3.3.7min.js' %}"></script>#}
     <script type="text/javascript" src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
 
 
@@ -66,10 +66,11 @@
             src="{% static 'javascripts/authentication/controllers/register.controller.js' %}"></script>
     <script type="text/javascript"
             src="{% static 'javascripts/authentication/controllers/login.controller.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'javascripts/authentication/controllers/unsubscribe.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/layout/layout.module.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/layout/controllers/navbar.controller.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/layout/controllers/index.controller.js' %}"></script>
-    <script type="text/javascript" src="{% static 'javascripts/layout/controllers/unsubscribe.controller.js' %}"></script>
 
 
     <script type="text/javascript" src="{% static 'javascripts/admin/admin.module.js' %}"></script>
@@ -371,12 +372,11 @@
             sendTrackingData(getCookie("lastpage"), getCookie("page"), globeclock);
         };
 
-        function signum(i){
-            if (i>0) return 1;
-            if (i<0) return -1;
+        function signum(i) {
+            if (i > 0) return 1;
+            if (i < 0) return -1;
             return 0;
         }
-
 
         function log(string1, string2, string3, string4, string5, string6, string7, string8, string9, string10) {
             var res = string1;
@@ -393,7 +393,7 @@
             console.log(res);
         }
 
-        function arrayContains(arr,str) {
+        function arrayContains(arr, str) {
             if (arr == undefined) return false;
             return (arr.indexOf(str) > -1);
         }

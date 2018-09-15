@@ -130,7 +130,7 @@
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/oldbrowser.html'
         }).when('/unsubscribe', {
-            controller: 'QuestionnaireController',
+            controller: 'UnsubscribeController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/unsubscribe.html'
         })

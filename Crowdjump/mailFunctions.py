@@ -12,15 +12,16 @@ def mail_new_version(request):
     version = 'version 0.03'
     subject = 'Crowdjump ' + version + ' is available!'
     message1 = 'Hello '
-    message2 = ',<br>check out ' + version + ' of Crowdjump, the newest feature '
-    feature = "is more platform types! Try them out and don't die going for a new highscore!"
-    message3 = '<br>Also, please fill out the survey at '
+    message2 = ',<br>check out ' + version + ' of Crowdjump, the newest features are'
+    feature = "a highscore list and!"
+    message3 = '<br>To play the game and vote for your own ideas, visit  '
     html_content = '<a href="https://www.crowdjump.win">Crowdjump.win :)</a>'
     unsubscribe = '<br><a href="https://www.crowdjump.win/unsubscribe">Click here if you dont want to get this newsletter anymore</a>'
     fromMail = 'crowdjump@gmail.com'
 
     for user in models.Account.objects.all():
         if not user.email_notification:
+            print(user.username)
             continue
 
         final_message = message1 + user.username + message2 + feature + message3 + html_content + unsubscribe

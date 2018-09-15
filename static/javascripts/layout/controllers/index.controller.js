@@ -9,9 +9,9 @@
 
     function IndexController($scope, Authentication, Ideas) {
         var vm = this;
-
         vm.isAuthenticated = Authentication.isAuthenticated();
         vm.ideas = [];
+        vm.test = "test";
         activate();
 
         function activate() {
