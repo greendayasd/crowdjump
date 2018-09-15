@@ -1301,6 +1301,7 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
 
         }
         this.state.start('Endscreen');
+        first_moved = 0;
     }
 
 };
