@@ -57,7 +57,7 @@
                 <td>{{ idea.id }}</td>
                 <td>{{ idea.request_text }}</td>
                 <td>{{ idea.user.username }}</td>
-                <td>{{ idea.created_at | date : "dd.MM.y HH:mm" }}</td>
+                <td>{{ idea.date_chosen | date : "dd.MM.y HH:mm" }}</td>
                 <td>{{ idea.estimated_time }}</td>
             </tr>
             <tr data-ng-switch-when="true">
