@@ -1527,6 +1527,7 @@ Crowdjump.Game.restart = function () {
     updateInfo(false);
     last_second = 0;
     game.timeElapsed = 0;
+    first_moved = 0;
     time.finished = 0;
     time_overall = 0;
     time_last_level_or_restart = 0;
