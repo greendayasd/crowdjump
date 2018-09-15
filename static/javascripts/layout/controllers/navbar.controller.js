@@ -47,48 +47,48 @@
         }
 
 
-        //timer
-        // var $clock = $('#clock'),
-        //     eventTime = moment('24-07-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix(),
-        //     currentTime = moment().unix(),
-        //     diffTime = eventTime - currentTime,
-        //     duration = moment.duration(diffTime * 1000, 'milliseconds'),
-        //     interval = 1000;
+        // timer
+        var $clock = $('#clock'),
+            eventTime = moment('16-09-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix(),
+            currentTime = moment().unix(),
+            diffTime = eventTime - currentTime,
+            duration = moment.duration(diffTime * 1000, 'milliseconds'),
+            interval = 1000;
 
         // if time to countdown
-        // if (diffTime > 0) {
-        //     setInterval(function () {
-        //
-        //         duration = moment.duration(duration.asMilliseconds() - interval, 'milliseconds');
-        //         if(duration < 0){
-        //             $scope.clock = '00:00:00';
-        //             return;
-        //         }
-        //         var d = moment.duration(duration).days(),
-        //             h = moment.duration(duration).hours(),
-        //             m = moment.duration(duration).minutes(),
-        //             s = moment.duration(duration).seconds();
-        //
-        //         $scope.clock = '';
-        //
-        //         if (d > 0) {
-        //             d = $.trim(d).length === 1 ? '0' + d : d;
-        //             $scope.clock += d + ' day';
-        //             $scope.clock+= d > 1 ? 's ' : ' ';
-        //         }
-        //         h = $.trim(h).length === 1 ? '0' + h : h;
-        //         m = $.trim(m).length === 1 ? '0' + m : m;
-        //         s = $.trim(s).length === 1 ? '0' + s : s;
-        //
-        //
-        //         $scope.clock += h + ':' + m + ':' + s;
-        //
-        //         $scope.$apply();
-        //
-        //     }, interval);
-        //
-        // } else{
-        //     $scope.clock = '00:00:00';
-        // }
+        if (diffTime > 0) {
+            setInterval(function () {
+
+                duration = moment.duration(duration.asMilliseconds() - interval, 'milliseconds');
+                if(duration < 0){
+                    $scope.clock = '00:00:00';
+                    return;
+                }
+                var d = moment.duration(duration).days(),
+                    h = moment.duration(duration).hours(),
+                    m = moment.duration(duration).minutes(),
+                    s = moment.duration(duration).seconds();
+
+                $scope.clock = '';
+
+                if (d > 0) {
+                    d = $.trim(d).length === 1 ? '0' + d : d;
+                    $scope.clock += d + ' day';
+                    $scope.clock+= d > 1 ? 's ' : ' ';
+                }
+                h = $.trim(h).length === 1 ? '0' + h : h;
+                m = $.trim(m).length === 1 ? '0' + m : m;
+                s = $.trim(s).length === 1 ? '0' + s : s;
+
+
+                $scope.clock += h + ':' + m + ':' + s;
+
+                $scope.$apply();
+
+            }, interval);
+
+        } else{
+            $scope.clock = '00:00:00';
+        }
     }
 })();

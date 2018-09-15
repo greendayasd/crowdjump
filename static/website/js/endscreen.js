@@ -18,17 +18,13 @@ Crowdjump.Endscreen.prototype = {
 
 
         if (CONST_TIME) {
-            if (CONST_SAVE_LEVEL_TIME){
-                time_score = parseFloat(time_overall);
-            } else {
-                time_score = time_finished;
-            }
+            time_score = parseFloat(time_overall);
         }
 
         old_time = -2;
 
         if (selected_level >= 0) {
-            scoreText = "Congratulations, you beat level " + (selected_level +1) + " in " + time_score + " seconds!";
+            scoreText = "Congratulations, you beat level " + (selected_level + 1) + " in " + time_score + " seconds!";
         } else {
             if (game.authenticated) {
                 if (game.gameInfo["highscore"] == null || game.gameInfo["highscore"] == 0 || game.gameInfo["highscore"] == NaN || isNaN(game.gameInfo["highscore"])) {

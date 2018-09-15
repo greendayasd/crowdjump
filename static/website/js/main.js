@@ -15,6 +15,7 @@ const CONST_SAVE_LEVEL_TIME = false;
 
 const CONST_LEVEL = 1;
 const CONST_TIME = true;
+const CONST_TIME_WHEN_MOVED = true;
 
 const CONST_LAVA = false;
 const CONST_LAVASWITCHINGPLATFORM = false;

@@ -218,7 +218,7 @@ def SendGameData(request):
 
     #movement
     if (status == 'completed'):
-        if (int(level) == 0 and int(movement_inputs) < 1
+        if (int(level) == 0 and int(movement_inputs) < 3
                 or int(level) == 1 and int(movement_inputs) < 1
                 or int(level) == 2 and int(movement_inputs) < 1
                 or int(level) == 3 and int(movement_inputs) < 1):

@@ -263,6 +263,8 @@
                             $scope.ideas_tmp.splice(i, 1);
                         }
                     }
+                    $scope.currently_implementing.sort(sort_date_chosen);
+                    //Table for ideas
                     $scope.ideaCollapseFn = function () {
                         $scope.ideaCollapse = [];
                         for (var i = 0; i < $scope.currently_implementing.length; i += 1) {
@@ -759,6 +761,12 @@
                 document.getElementById('pagination').scrollIntoView();
             }
 
+            function sort_date_chosen(a,b){
+                if (a.date_chosen < b.date_chosen) return -1
+                if (a.date_chosen > b.date_chosen) return 1
+                return 0;
+
+            }
             function toast(msg) {
                 var toast = $mdToast.simple().textContent(msg)
                     .parent($("#toast-container"));

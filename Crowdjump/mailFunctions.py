@@ -9,7 +9,7 @@ def mail_new_version(request):
     if username != 'admin':
         return 'Wrong User'
 
-    version = 'version 0.14'
+    version = 'version 0.03'
     subject = 'Crowdjump ' + version + ' is available!'
     message1 = 'Hello '
     message2 = ',<br>check out ' + version + ' of Crowdjump, the newest feature '
