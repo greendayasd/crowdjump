@@ -1302,6 +1302,7 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
         }
         this.state.start('Endscreen');
         first_moved = 0;
+        time_finished = 0;
     }
 
 };
@@ -1529,7 +1530,7 @@ Crowdjump.Game.restart = function () {
     last_second = 0;
     game.timeElapsed = 0;
     first_moved = 0;
-    time.finished = 0;
+    time_finished = 0;
     time_overall = 0;
     time_last_level_or_restart = 0;
     lives = CONST_HERO_LIVES;
