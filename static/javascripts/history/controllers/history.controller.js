@@ -12,6 +12,7 @@
 
         $scope.history = [];
         $scope.version = '';
+        $scope.versionLabel = versionlabel;
 
         getVersion();
 

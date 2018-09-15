@@ -19,6 +19,7 @@ Crowdjump.Endscreen.prototype = {
 
         if (CONST_TIME) {
             time_score = parseFloat(time_overall);
+            time_overall = 0;
         }
 
         old_time = -2;

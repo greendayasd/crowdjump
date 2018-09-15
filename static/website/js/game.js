@@ -1267,6 +1267,7 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     if (zhonya_activated) {
         this.sfx.zhonyas.stop();
     }
+    //manually selected level
     if (selected_level >= 0) {
         time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds() - parseFloat(time_last_level_or_restart);
         time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
@@ -1275,6 +1276,7 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
         this.state.start('Endscreen');
 
     }
+    //not the last level
     else if (this.level < CONST_LEVEL - 1) {
         setLevelInfo(this.level + 1, "completed");
 
@@ -1290,7 +1292,9 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
 
         }
         this.game.state.restart(true, false, {level: this.level + 1});
-    } else {
+    }
+    //last level
+    else {
         setLevelInfo(this.level + 1, "completed");
         if (CONST_SAVE_LEVEL_TIME) {
             time_overall = parseFloat(time_overall) + (game.time.totalElapsedSeconds() - first_moved) - parseFloat(time_last_level_or_restart);
@@ -1300,9 +1304,9 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
             time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
 
         }
-        this.state.start('Endscreen');
         first_moved = 0;
         time_finished = 0;
+        this.state.start('Endscreen');
     }
 
 };
