@@ -125,19 +125,19 @@ window.createGame = function (canvas, scope) {
     });
 
     //Highscore Socket
-    // var ws_scheme = 'wss'; //.location.protocol == "https:" ? "wss" : "ws";
-    // var port = ':8001';
-    // if (window.location.host == "localhost:8000") {
-    //     ws_scheme = 'ws';
-    //     port = '';
-    // }
-    //
-    // highscoreSocket = new WebSocket(
-    //     ws_scheme + '://' + window.location.host + port +
-    //     '/ws/website/');
-    // highscoreSocket.onclose = function (e) {
-    //     console.error('Highscore socket closed unexpectedly');
-    // };
+    var ws_scheme = 'wss'; //.location.protocol == "https:" ? "wss" : "ws";
+    var port = ':8001';
+    if (window.location.host == "localhost:8000") {
+        ws_scheme = 'ws';
+        port = '';
+    }
+
+    highscoreSocket = new WebSocket(
+        ws_scheme + '://' + window.location.host + port +
+        '/ws/website/');
+    highscoreSocket.onclose = function (e) {
+        console.error('Highscore socket closed unexpectedly');
+    };
 
 
     scope.$on('game:toggleMusic', function () {

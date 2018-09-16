@@ -16,7 +16,7 @@ def mail_new_version(request):
     feature = "a highscore list and even more features are on the way!"
     message3 = '<br>To play the game and vote for your own ideas, visit  '
     html_content = '<a href="https://www.crowdjump.win">Crowdjump.win :)</a>'
-    unsubscribe = '<br><a href="https://www.crowdjump.win/unsubscribe">Click here if you dont want to get this newsletter anymore</a>'
+    unsubscribe = '<br><br><a href="https://www.crowdjump.win/unsubscribe">Click here if you dont want to get this newsletter anymore</a>'
     fromMail = 'crowdjump@gmail.com'
 
     for user in models.Account.objects.all():
