@@ -46,37 +46,10 @@
          */
         function register(email, password, username) {
 
-            // var vote_weight = 3;
-            // History.newest().then(historySuccessFn, historyErrorFn);
-            //
-            // function historySuccessFn(data, status, headers, config) {
-            //     var version = data.data["results"][0];
-            //     // vote_weight = version["vote_weight"];
-            //     console.error(vote_weight);
-            //
-            //     return $http.post('/api/v1/accounts/', {
-            //         username: username,
-            //         password: password,
-            //         email: email,
-            //
-            //
-            //     }).then(registerSuccessFn, registerErrorFn);
-            // }
-            //
-            // function historyErrorFn(data, status, headers, config) {
-            //     // console.error(data.error);
-            //
-            //     return $http.post('/api/v1/accounts/', {
-            //         username: username,
-            //         password: password,
-            //         email: email,
-            //
-            //     }).then(registerSuccessFn, registerErrorFn);
-            // }
             return $http.post('/api/v1/accounts/', {
                 username: username,
                 password: password,
-                email: email,
+                email: email
 
 
             }).then(registerSuccessFn, registerErrorFn);
@@ -116,6 +89,8 @@
                 var cookie = Authentication.setAuthenticatedAccount(data.data);
                 if (firstlogin || cookie["versionlabel"] != versionlabel) {
                     increase_versionlabel(cookie["username"], true);
+                    window.location = '/';
+                    setSessionIdentifier();
                     // Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
                 } else {
                     window.location = '/';
