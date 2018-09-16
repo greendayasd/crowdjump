@@ -359,7 +359,7 @@
                                 var row = "KIM";
 
                                 j < 10 ? row += '0' + j : row += j;
-                                var value = parseInt($scope.PostSurvey[i][row])-1;
+                                var value = parseInt($scope.PostSurvey[i][row]) - 1;
 
                                 //new mapped!
                                 switch (j + 1) {
@@ -778,8 +778,8 @@
                 var levelstring2 = '.prototype.create = function ';
                 data = data.replaceAll(levelstring1 + levelstring2, "");
 
-                for (var i = 0; i < 9; i++) {
-                    data = data.replaceAll(levelstring1 + i + levelstring2, "");
+                for (var levelid = 0; levelid < 9; levelid++) {
+                    data = data.replaceAll(levelstring1 + levelid + levelstring2, "");
                 }
                 data = data.replaceAll("};", "");
 
@@ -808,6 +808,7 @@
                 var array = JSON.parse("[" + data + "]");
                 var platforms = '';
                 var falling_platforms = '';
+                var fakeplatforms = '';
                 var crates = '';
                 var lava = '';
                 var flags = '';
@@ -817,7 +818,7 @@
                 var decorations = '';
                 var enemies = '';
                 var enemy_walls = '';
-                var type = '';
+                var eastereggs = '';
 
                 var maxX = 918;
                 var maxY = 588;
@@ -826,6 +827,7 @@
                     var image = array[i][2];
                     var split = image.split(":");
                     var type = split[1];
+                    var fulltype = ', "type":"' + split[1] + '"';
                     var endline = '},\n';
 
                     maxX = Math.max(maxX, array[i][0]);
@@ -856,15 +858,19 @@
                         continue;
                     }
                     if (image.startsWith("powerup")) {
-                        powerups += line + type + endline;
+                        powerups += line + fulltype + endline;
+                        continue;
+                    }
+                    if (image.startsWith("easteregg")) {
+                        eastereggs += line + fulltype + endline;
                         continue;
                     }
                     if (image.startsWith("deco")) {
-                        decorations += line + type + endline;
+                        decorations += line + fulltype + endline;
                         continue;
                     }
                     if (image.startsWith("enemy")) {
-                        enemies += line + type + endline;
+                        enemies += line + fulltype + endline;
                         continue;
                     }
                     if (image.startsWith("invisible_wall")) {
@@ -872,6 +878,10 @@
                         continue;
                     }
 
+                    if (image.startsWith("fake")) {
+                        fakeplatforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                        continue;
+                    }
                     if (image.startsWith("bounce")) {
                         type = 'bouncing';
                         platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
@@ -889,12 +899,12 @@
                     }
                     if (image.startsWith("conveyor_l")) {
                         type = 'con_l';
-                        platforms += line + ', "p_types": "' +  type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                        platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
                         continue;
                     }
                     if (image.startsWith("conveyor_r")) {
                         type = 'con_r';
-                        platforms += line + ', "p_types": "' +  type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                        platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
                         continue;
                     }
                     platforms += line + ', "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
@@ -904,6 +914,7 @@
 
                 platforms = wrapJsonLevel(platforms, "platforms");
                 falling_platforms = wrapJsonLevel(falling_platforms, "fallingPlatforms");
+                fakeplatforms = wrapJsonLevel(fakeplatforms, "fakePlatforms");
                 crates = wrapJsonLevel(crates, "crates");
                 lava = wrapJsonLevel(lava, "lava");
                 flags = wrapJsonLevel(flags, "flags");
@@ -913,8 +924,9 @@
                 enemy_walls = wrapJsonLevel(enemy_walls, "enemyWalls");
                 // move_walls = wrapJsonLevel(move_walls, "moveWalls");
                 powerups = wrapJsonLevel(powerups, "powerups");
+                eastereggs = wrapJsonLevel(eastereggs, "eastereggs");
                 decorations = wrapJsonLevel(decorations, "decorations");
-                $scope.csv = '{\n' + platforms + falling_platforms + crates + lava + flags + coins + hero + enemies + enemy_walls + powerups + decorations + worldsize + '\n}';
+                $scope.csv = '{\n' + platforms + falling_platforms + fakeplatforms + crates + lava + flags + coins + hero + enemies + enemy_walls + powerups + eastereggs + decorations + worldsize + '\n}';
 
             }
 

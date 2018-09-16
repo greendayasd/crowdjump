@@ -90,10 +90,14 @@ class Account(AbstractBaseUser):
         return current.rounds_won >= 1
 
 
+def get_latest_version():
+    return Version.objects.all().order_by('-id')[0].id
+
+
 class GameInfo(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='gameinfo')
     version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='gameinfo'
-                                , default=Version.objects.all().order_by('-id')[0].id)
+                                , default=get_latest_version())
     rounds_started = models.IntegerField(default=0)
     rounds_won = models.IntegerField(default=0)
     highest_level = models.IntegerField(default=0)
@@ -120,7 +124,7 @@ class GameInfo(models.Model):
 class WebsiteInfo(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='websiteinfo')
     version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='websiteinfo'
-                                , default=Version.objects.all().order_by('-id')[0].id)
+                                , default=get_latest_version())
 
     time_spent_ideas = models.IntegerField(default=0)
     time_spent_index = models.IntegerField(default=0)

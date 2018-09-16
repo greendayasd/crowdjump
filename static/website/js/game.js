@@ -21,8 +21,10 @@ Crowdjump.Game = function (game) {
     var level_data;
     var last_second = 0;
     var seconds_last_level = 0;
+
     var pu_lavaorb = false;
     var pu_jumpboost = false;
+    var movespeed_boost = 0;
 
     var zhonya_activated = false;
     var zhonya_cooldown = false;
@@ -35,7 +37,10 @@ Crowdjump.Game = function (game) {
     var death;
     var bullets_left = CONST_MAGAZINE;
 
+    var tween = null;
+
     var first_moved = -1;
+    var timeeggs = 0;
 }
 
 Crowdjump.Game = {};
@@ -107,12 +112,12 @@ Hero.prototype = Object.create(Phaser.Sprite.prototype);
 Hero.prototype.constructor = Hero;
 
 Hero.prototype.move = function (direction) {
-    var movespeed = 0;
+    var movespeed = movespeed_boost;
 
     if (CONST_USE_ACCELERATION) {
-        movespeed = CONST_ACCELERATION;
+        movespeed += CONST_ACCELERATION;
     } else {
-        movespeed = CONST_MOVE_SPEED
+        movespeed += CONST_MOVE_SPEED
     }
 
     if (CONST_WALK && is_walking) movespeed *= 0.5;
@@ -370,9 +375,13 @@ Crowdjump.Game.init = function (data) {
     hero_bounce_velocity = 0;
     last_second = 0;
     nextFire = 0;
+
     pu_jumpboost = false;
     pu_lavaorb = false;
+    movespeed_boost = 0;
+    timeeggs = 0;
     bullets_left = CONST_MAGAZINE;
+
     jumpTimer = 0;
     is_sprinting = false;
     is_walking = false;
@@ -410,6 +419,7 @@ Crowdjump.Game.create = function () {
         shoot: this.game.add.audio('sfx:shoot'),
         empty_magazine: this.game.add.audio('sfx:empty_magazine'),
         powerup: this.game.add.audio('sfx:powerup'),
+        easteregg: this.game.add.audio('sfx:easteregg'),
     };
 
     // this.game.physics.startSystem(Phaser.Physics.P2);
@@ -504,7 +514,7 @@ Crowdjump.Game.update = function () {
         }
     } else if (first_moved > 0) {
         // seconds = Math.floor(game.time.totalElapsedSeconds().toFixed(3) - first_moved) + time_finished;
-        var seconds_this_level = Math.floor(game.time.totalElapsedSeconds().toFixed(3) - first_moved);
+        var seconds_this_level = Math.floor(game.time.totalElapsedSeconds().toFixed(3) - first_moved - (timeeggs * 5));
         seconds = ((seconds_this_level / 1) + parseFloat(time_finished)).toFixed(0);
         // seconds = seconds.toFixed(0);
     } else {
@@ -650,6 +660,8 @@ Crowdjump.Game._handleCollisions = function () {
     this.game.physics.arcade.overlap(this.hero, this.powerups, this._onHeroVsPowerup,
         null, this);
 
+    this.game.physics.arcade.overlap(this.hero, this.eastereggs, this._onHeroVsEasteregg,
+        null, this);
 
     if (CONST_WALL_JUMP) {
         if (this.hero.body.touching.down) {
@@ -735,7 +747,6 @@ Crowdjump.Game._handleCollisionsP2 = function () {
 
     this.game.physics.arcade.overlap(this.hero, this.powerups, this._onHeroVsPowerup,
         null, this);
-
 
     if (CONST_WALL_JUMP) {
         //     if (this.hero.body.touching.down) {
@@ -879,6 +890,12 @@ Crowdjump.Game._loadLevel = function (data) {
         data.powerups.forEach(this._spawnPowerup, this);
     }
 
+    //spawn eastereggs
+    if (CONST_EASTEREGGS) {
+        this.eastereggs = this.game.add.group();
+        data.eastereggs.forEach(this._spawnEasteregg, this);
+    }
+
     // spawn coins
     if (CONST_COINS) {
         this.coins = this.game.add.group();
@@ -886,9 +903,13 @@ Crowdjump.Game._loadLevel = function (data) {
     }
 
 
-    // spawn athe rest of the platforms
+    // spawn the rest of the platforms
     this.platforms = this.game.add.group();
     data.platforms.forEach(this._spawnPlatform, this);
+
+    this.fakePlatforms = this.game.add.group();
+    data.fakePlatforms.forEach(this._spawnFakePlatform, this);
+
     if (CONST_P2_PHYSICS) var platformCollisionGroup = game.physics.p2.createCollisionGroup();
 
     // spawn hero and enemies
@@ -1044,6 +1065,17 @@ Crowdjump.Game._spawnPlatform = function (platform) {
 
     // this._spawnEnemyWall(platform.x, platform.y, 'left');
     // this._spawnEnemyWall(platform.x + sprite.width, platform.y, 'right');
+};
+
+Crowdjump.Game._spawnFakePlatform = function (platform) {
+
+    var sprite;
+
+    var newx = platform.x;
+    var newy = platform.y;
+
+    sprite = this.fakePlatforms.create(newx, newy, platform.image);
+
 };
 
 Crowdjump.Game.lockPlatform = function (hero, platform) {
@@ -1202,10 +1234,10 @@ Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
 
     switch (powerup.key) {
         case "powerup:lavaorb":
-            pu_lavaorb = true;
+            this.powerup_lavaorb();
             break;
         case "powerup:jumpboost":
-            pu_jumpboost = true;
+            this.powerup_jumpboost();
             break;
         default:
             console.log(powerup.key);
@@ -1214,8 +1246,77 @@ Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
 
     powerup.kill();
 
-    // this.powerupPickupCount++;
+    game.powerupPickupCount++;
 };
+
+Crowdjump.Game.powerup_lavaorb = function () {
+    pu_lavaorb = true;
+}
+
+Crowdjump.Game.powerup_jumpboost = function () {
+    pu_jumpboost = true;
+}
+
+Crowdjump.Game._spawnEasteregg = function (easteregg) {
+    //+21, 42x42 tile
+    if (easteregg == undefined) return;
+    let sprite = this.eastereggs.create(easteregg.x + 21, easteregg.y + 21, easteregg.image);
+    sprite.anchor.set(0.5, 0.5);
+
+    if (CONST_P2_PHYSICS) {
+        this.game.physics.p2.enable(sprite);
+    } else {
+        this.game.physics.enable(sprite);
+    }
+
+    sprite.body.allowGravity = false;
+};
+
+Crowdjump.Game._onHeroVsEasteregg = function (hero, easteregg) {
+    this.sfx.easteregg.play();
+
+    switch (easteregg.key) {
+        case "easteregg:time":
+            this.easteregg_time()
+            break;
+        case "easteregg:movementspeed":
+            this.easteregg_movementspeed();
+            break;
+        case "easteregg:specialname":
+            this.easteregg_specialname();
+            break;
+        default:
+            console.log(easteregg.key);
+        //do nothing
+    }
+
+    easteregg.kill();
+
+    game.eastereggPickupCount++;
+
+}
+
+
+Crowdjump.Game.easteregg_time = function () {
+    timeeggs++;
+    this.showMessage("more time",4000);
+}
+
+Crowdjump.Game.easteregg_movementspeed = function () {
+    movespeed_boost = 100;
+    this.showMessage("be fast!",2000);
+}
+
+Crowdjump.Game.easteregg_specialname = function () {
+    game.specialName++;
+    switch(game.specialName){
+        case 1:
+            this.showMessage("I'm blue",3000);
+            break;
+        default:
+            break;
+    }
+}
 
 Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
     if (CONST_ZHONYA && zhonya_activated) {
@@ -1300,7 +1401,7 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
             time_overall = parseFloat(time_overall) + (game.time.totalElapsedSeconds() - first_moved) - parseFloat(time_last_level_or_restart);
             time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
         } else {
-            time_overall = parseFloat(time_overall) + (game.time.totalElapsedSeconds() - first_moved);
+            time_overall = parseFloat(time_overall) + (game.time.totalElapsedSeconds() - first_moved - (timeeggs * 5));
             time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
 
         }
@@ -1435,14 +1536,6 @@ Crowdjump.Game.resumed = function () {
 
 };
 
-Crowdjump.Game.powerup_lavaorb = function () {
-    pu_lavaorb = true;
-}
-
-Crowdjump.Game.powerup_jumpboost = function () {
-    pu_jumpboost = true;
-}
-
 Crowdjump.Game.activate_Zhonyas = function () {
     if (zhonya_activated || zhonya_cooldown) {
         return;
@@ -1526,6 +1619,15 @@ Crowdjump.Game.killHero = function (reason) {
 
 }
 
+Crowdjump.Game.showMessage = function (message,time) {
+    log(message);
+    message_image = this.add.text(CONST_WORLD_CENTER_X, 200, message, {fill: '#000000'});
+    message_image.anchor.set(0.5);
+    message_image.fixedToCamera = true;
+    tween = game.add.tween(message_image).to({alpha: 0}, time, Phaser.Easing.Linear.None, true);
+
+};
+
 Crowdjump.Game.restart = function () {
     // game.gameInfo["rounds_started"] = game.gameInfo["rounds_started"] + 1;
     game.restarts++;
@@ -1538,7 +1640,10 @@ Crowdjump.Game.restart = function () {
     time_overall = 0;
     time_last_level_or_restart = 0;
     lives = CONST_HERO_LIVES;
+    game.eastereggPickupCount = 0;
+    game.specialName = 0;
 
     this.state.restart();
     this.game.time.reset();
 };
+

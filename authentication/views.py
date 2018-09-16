@@ -1,6 +1,6 @@
 import json, os, time, datetime
 from django.contrib.auth import authenticate, login, logout
-from authentication.models import Account
+from authentication.models import Account, GameInfo
 from authentication.permissions import IsAccountOwner
 from authentication.serializers import AccountSerializer, AccountSerializerPrivate
 from rest_framework.response import Response
@@ -96,6 +96,38 @@ def Unsubscribe(request):
         acc.save()
     except:
         print("failure unsubscribing")
+
+    return JsonResponse({}, safe=False)
+
+
+def CreateGamedata(request):
+    if request.user.is_authenticated:
+        userid = request.user.id
+    else:
+        return JsonResponse({}, safe=False)
+
+    try:
+        v = Version.objects.order_by('-id')[0]
+    except:
+        print("no Version found")
+
+    try:
+        # if found return
+        gameinfo = GameInfo.objects.filter(user_id=userid, version_id=v.id)
+        gameinfo.highscore = gameinfo.highscore
+        return JsonResponse({}, safe=False)
+
+    except:
+        gameinfo = GameInfo(user_id=userid, version_id=v.id)
+        gameinfo.save()
+
+    try:
+        acc = Account.objects.filter(id=userid)[0]
+        acc.versionlabel = v.label
+        acc.save()
+    except:
+        print("failure creating gamedata")
+        JsonResponse({}, safe=False)
 
     return JsonResponse({}, safe=False)
 
@@ -198,7 +230,7 @@ def SendGameData(request):
         username = username2
 
     version = request.GET.get('version')
-    correct_version = '0.01' #get correct version
+    correct_version = '0.01'  # get correct version
     level = request.GET.get('level')
     status = request.GET.get('status')
     timeneeded = request.GET.get('time')
@@ -209,12 +241,12 @@ def SendGameData(request):
 
     # Anticheat
     cheated = 'cheat'
-    #version
+    # version
     if (version != correct_version):
-            # cheated
-            cheated += '_version'
+        # cheated
+        cheated += '_version'
 
-    #time
+    # time
     if (status == 'completed'):
         if (int(level) == 0 and int(timeneeded) < 4400
                 or int(level) == 1 and int(timeneeded) < 4000
@@ -223,7 +255,7 @@ def SendGameData(request):
             # cheated
             cheated += '_time'
 
-    #jumps
+    # jumps
     if (status == 'completed'):
         if (int(level) == 0 and int(jumps) < 4
                 or int(level) == 1 and int(jumps) < 4
@@ -232,7 +264,7 @@ def SendGameData(request):
             # cheated
             cheated += '_jumps'
 
-    #movement
+    # movement
     if (status == 'completed'):
         if (int(level) == 0 and int(movement_inputs) < 3
                 or int(level) == 1 and int(movement_inputs) < 1
@@ -240,8 +272,6 @@ def SendGameData(request):
                 or int(level) == 3 and int(movement_inputs) < 1):
             # cheated
             cheated += '_movementInputs'
-
-
 
     if cheated != 'cheat':
         status = 'cheated?'

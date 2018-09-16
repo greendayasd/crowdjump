@@ -32,8 +32,8 @@
                 for (var i = 0; i < $scope.statistics.length; i++){
                     switch ($scope.statistics[i].special_name){
                         case 0: $scope.statistics[i].color = {"color" :" black"}; break;
-                        case 1: $scope.statistics[i].color = {"color" :" red"}; break;
-                        case 2: $scope.statistics[i].color = {"color" :" blue"}; break;
+                        case 1: $scope.statistics[i].color = {"color" :" blue"}; break;
+                        case 2: $scope.statistics[i].color = {"color" :" red"}; break;
                         default: $scope.statistics[i].color = {"color" :" black"};
                     }
 

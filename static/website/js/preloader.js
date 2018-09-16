@@ -33,10 +33,7 @@ Crowdjump.Preloader.prototype = {
         var test = false;
 
         if (test) {
-            this.load.json('level:0', level + 'level2.json');
-            this.load.json('level:1', level + 'level3.json');
-            this.load.json('level:2', level + 'level3.json');
-            this.load.json('level:3', level + 'level3.json');
+            this.load.json('level:0', level + 'level1.json');
 
         } else {
             for (i = 0; i < CONST_LEVEL; i++) {
@@ -65,6 +62,9 @@ Crowdjump.Preloader.prototype = {
         this.load.image('ground:4x2', files + 'ground_4x2.png');
         this.load.image('ground:6x1', files + 'ground_6x1.png');
         this.load.image('ground:20x1', files + 'ground_20x1.png');
+
+        this.load.image('fakeground:1x1', files + 'fakeground_1x1.png');
+        this.load.image('fakeground:1x2', files + 'fakeground_1x2.png');
 
         this.load.image('lavaground:2x1', files + 'lavaground_2x1.png');
 
@@ -102,6 +102,8 @@ Crowdjump.Preloader.prototype = {
         this.load.image('white_smoke', files + 'white_smoke.png');
 
         this.load.image('invisible:1x1', files + 'invisible_1x1.png');
+        this.load.image('invisible:1x2', files + 'invisible_1x2.png');
+        this.load.image('invisible:1x4', files + 'invisible_1x4.png');
         this.load.image('invisible:2x1', files + 'invisible_2x1.png');
         this.load.image('invisible:4x1', files + 'invisible_4x1.png');
         this.load.image('invisible:8x1', files + 'invisible_8x1.png');
@@ -109,6 +111,9 @@ Crowdjump.Preloader.prototype = {
         this.load.image('crate', files + 'crate.png');
 
         this.load.image('icon:coin', files + 'coin_icon.png');
+        this.load.image('easteregg:specialname', files + 'easteregg_specialname.png');
+        this.load.image('easteregg:time', files + 'easteregg_time.png');
+        this.load.image('easteregg:movementspeed', files + 'easteregg_movementspeed.png');
 
         this.load.image('powerup:lavaorb', files + 'powerup_lavaorb.png');
         this.load.image('powerup:jumpboost', files + 'powerup_jumpboost.png');
@@ -134,6 +139,7 @@ Crowdjump.Preloader.prototype = {
         this.load.audio('sfx:shoot', audio + 'shoot.mp3');
         this.load.audio('sfx:empty_magazine', audio + 'empty_magazine.wav');
         this.load.audio('sfx:powerup', audio + 'powerup.mp3');
+        this.load.audio('sfx:easteregg', audio + 'easteregg.wav');
 
         //sprites
         this.load.spritesheet('coin', files + 'coin_animated.png', 22, 22);

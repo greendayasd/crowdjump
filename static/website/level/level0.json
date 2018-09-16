@@ -13,6 +13,8 @@
 	"fallingPlatforms": [
 
 	],
+	"fakePlatforms": [
+	],
 	"crates": [
 
 	],
@@ -35,6 +37,8 @@
 	],
 	"powerups": [
 
+	],
+	"eastereggs": [
 	],
 	"decorations": [
 

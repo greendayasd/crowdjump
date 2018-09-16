@@ -11,7 +11,8 @@ from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet
 from Crowdjump.mailFunctions import mail_new_version
 
 from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData, GetTrackingData, \
-    GetAllTrackingData, TransferData, SendGameData, GetGameData, GetAllGameDataUser, GetAllGameData, GetAllUserGame, Unsubscribe
+    GetAllTrackingData, TransferData, SendGameData, GetGameData, GetAllGameDataUser, GetAllGameData, GetAllUserGame, \
+    Unsubscribe, CreateGamedata
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
@@ -91,6 +92,7 @@ urlpatterns = [
     url(r'^transferdata/$', TransferData, name='transferdata'),
     url(r'^vote/$', Vote, name='vote'),
     url(r'^unsubscribeNL/$', Unsubscribe, name='unsubscribeNL'),
+    url(r'^createGamedata/$', CreateGamedata, name='createGamedata'),
 
     url(r'^sendmail/$', mail_new_version, name='sendmail'),
 

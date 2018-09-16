@@ -49,7 +49,7 @@
 
         // timer
         var $clock = $('#clock'),
-            eventTime = moment('16-09-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix(),
+            eventTime = nextVote,
             currentTime = moment().unix(),
             diffTime = eventTime - currentTime,
             duration = moment.duration(diffTime * 1000, 'milliseconds'),

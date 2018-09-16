@@ -116,7 +116,7 @@
                 var cookie = Authentication.setAuthenticatedAccount(data.data);
                 if (firstlogin || cookie["versionlabel"] != versionlabel) {
                     increase_versionlabel(cookie["username"], true);
-                    Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
+                    // Statistics.create().then(createStatisticsSuccessFn, createStatisticsErrorFn);
                 } else {
                     window.location = '/';
                     setSessionIdentifier();
@@ -146,25 +146,20 @@
 
         //Version, in welcher sich angemeldet wurde
         function increase_versionlabel(username, cookie_increase) {
-            if (cookie_increase) {
-                var res = $cookies.getObject("authenticatedAccount");
-                res["versionlabel"] = versionlabel;
-            }
-            // console.log(username + ' , ' + versionlabel);
-            return $http.patch('/api/v1/accounts/' + username + '/', {
-                versionlabel: versionlabel,
-
-
-            }).then(increaseSuccessFn, increaseErrorFn);
-
-            function increaseSuccessFn(data, status, headers, config) {
-                if (cookie_increase) $cookies.put("authenticatedAccount", JSON.stringify(res));
-            }
-
-            function increaseErrorFn(data, status, headers, config) {
-                // var msg = 'Could not get to next survey';
-                // console.log(msg);
-            }
+            var data = [];
+            $.ajax({
+                url: '/createGamedata/',
+                data: data,
+                success: function (data) {
+                    if (cookie_increase) {
+                        var res = $cookies.getObject("authenticatedAccount");
+                        res["versionlabel"] = versionlabel;
+                    }
+                },
+                error: function (data) {
+                    log("error", data);
+                }
+            });
         }
 
         function logout() {

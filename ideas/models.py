@@ -5,10 +5,13 @@ from datetime import datetime
 from website.models import Version
 
 
+def get_latest_version():
+    return Version.objects.all().order_by('-id')[0].id
+
 class Idea(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='ideas')
     version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='ideas'
-                                , default=Version.objects.all().order_by('-id')[0].id)
+                                , default=get_latest_version())
 
     request_text = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
