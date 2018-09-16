@@ -238,6 +238,8 @@ def SendGameData(request):
     movement_inputs = request.GET.get('movement_inputs')
     enemies_killed = request.GET.get('enemies_killed')
     coins_collected = request.GET.get('coins_collected')
+    eastereggs_found = request.GET.get('coins_collected')
+    special_name = request.GET.get('coins_collected')
 
     # Anticheat
     cheated = 'cheat'
@@ -273,13 +275,47 @@ def SendGameData(request):
             # cheated
             cheated += '_movementInputs'
 
+    # coins
+    if (int(level) == 0 and int(coins_collected) > 3
+            or int(level) == 1 and int(coins_collected) > 1
+            or int(level) == 2 and int(coins_collected) > 1
+            or int(level) == 3 and int(coins_collected) > 1):
+            # cheated
+            cheated += '_coinsCollected'
+
+    # eastereggs
+    if (int(level) == 0 and int(eastereggs_found) > 3
+            or int(level) == 1 and int(eastereggs_found) > 1
+            or int(level) == 2 and int(eastereggs_found) > 1
+            or int(level) == 3 and int(eastereggs_found) > 1):
+            # cheated
+            cheated += '_eastereggsFound'
+
+    # specialname
+    if (int(level) == 0 and int(special_name) > 1
+            or int(level) == 1 and int(special_name) > 1
+            or int(level) == 2 and int(special_name) > 1
+            or int(level) == 3 and int(special_name) > 1):
+            # cheated
+            cheated += '_specialName'
+
+
+
     if cheated != 'cheat':
-        status = 'cheated?'
+        status = 'cheated?' + cheated
 
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-    data = '{"timestamp":"' + st + '", "level":"' + level + '", "status":"' + status + '", "time":"' + timeneeded + \
-           '", "jumps":"' + jumps + '", "movement_inputs":"' + movement_inputs + '"}'
+    data =  '{"timestamp":"' + st +\
+            '", "level":"' + level +\
+            '", "status":"' + status +\
+            '", "time":"' + timeneeded + \
+            '", "jumps":"' + jumps +\
+            '", "movement_inputs":"' + movement_inputs +\
+            '", "coins_collected":"' + coins_collected +\
+            '", eastereggs_found":"' + eastereggs_found + \
+            '", special_name":"' + special_name +\
+            '" }'
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     folder_path = os.path.join(BASE_DIR, 'data')
