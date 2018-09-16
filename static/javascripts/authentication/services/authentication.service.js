@@ -132,7 +132,7 @@
                     }
                 },
                 error: function (data) {
-                    log("error", data);
+                    log("error versionlabel", JSON.stringify(data));
                 }
             });
         }

@@ -230,7 +230,14 @@ def SendGameData(request):
         username = username2
 
     version = request.GET.get('version')
-    correct_version = '0.01'  # get correct version
+
+    try:
+        v = Version.objects.order_by('-id')[0]
+        correct_version = v.label  # get correct version
+    except:
+        correct_version = '0.06'  # get correct version
+        print("no Version found")
+
     level = request.GET.get('level')
     status = request.GET.get('status')
     timeneeded = request.GET.get('time')
