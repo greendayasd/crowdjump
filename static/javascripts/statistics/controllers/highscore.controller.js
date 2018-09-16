@@ -29,6 +29,15 @@
 
             function statisticsSuccessFn(data, status, headers, config) {
                 $scope.statistics = data.data["results"];
+                for (var i = 0; i < $scope.statistics.length; i++){
+                    switch ($scope.statistics[i].special_name){
+                        case 0: $scope.statistics[i].color = {"color" :" black"}; break;
+                        case 1: $scope.statistics[i].color = {"color" :" red"}; break;
+                        case 2: $scope.statistics[i].color = {"color" :" blue"}; break;
+                        default: $scope.statistics[i].color = {"color" :" black"};
+                    }
+
+                }
 
             }
 

@@ -76,7 +76,7 @@ class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
         model = GameInfo
         fields = (
             'id', 'user', 'version', 'rounds_started', 'rounds_won', 'enemies_killed', 'coins_collected', 'highscore',
-            'jumps', 'deaths', 'restarts', 'movement_inputs', 'time_spent_game')
+            'jumps', 'deaths', 'restarts', 'movement_inputs', 'time_spent_game', 'eastereggs_found', "special_name")
 
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(GameInfoSerializer, self).get_validation_exclusions()

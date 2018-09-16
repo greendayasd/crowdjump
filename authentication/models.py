@@ -105,6 +105,8 @@ class GameInfo(models.Model):
     movement_inputs = models.IntegerField(default=0)
     deaths = models.IntegerField(default=0)
     restarts = models.IntegerField(default=0)
+    eastereggs_found = models.IntegerField(default=0)
+    special_name = models.IntegerField(default=0)
 
     def __str__(self):
         return self.version.label + '  ' + self.user.username + '  ' + self.rounds_won + ...
