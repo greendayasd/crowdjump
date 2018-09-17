@@ -97,6 +97,7 @@
 
         function receive_highscore(data) {
             var username = data["username"];
+            data["user"] = {"username": username};
             data["user"]["username"] = username;
 
             var highscore = data["highscore"];
