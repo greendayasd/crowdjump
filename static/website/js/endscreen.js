@@ -7,6 +7,8 @@ Crowdjump.Endscreen = function (game) {
     var bubble;
     var time_score;
     var old_time;
+    var coin_text;
+    var coin_icon;
 };
 
 
@@ -18,7 +20,7 @@ Crowdjump.Endscreen.prototype = {
 
 
         if (CONST_TIME) {
-            time_score = parseFloat(time_overall);
+            time_score = parseFloat((parseFloat(time_overall) - (game.coinPickupCount * 0.5)).toFixed(3));
             time_overall = 0;
         }
 
@@ -56,6 +58,7 @@ Crowdjump.Endscreen.prototype = {
                 }
 
             }
+
             scoreText = "Congratulations, you beat the game in " + time_score + " seconds!" + highscore_text;
         }
         score = this.add.text(CONST_WORLD_CENTER_X, 60, scoreText, {fill: '#dbdbdb'});
@@ -66,6 +69,13 @@ Crowdjump.Endscreen.prototype = {
             score.events.onInputDown.add(this.login, this);
         }
 
+        if (CONST_COINS) {
+            coin_icon = this.add.image(850, 550, 'icon:coin');
+            coin_icon.anchor.set(0.5);
+            coin_text = this.add.text(892, 553, game.coinPickupCount, {fill: '#dbdbdb'});
+            coin_text.anchor.set(0.5);
+
+        }
         var additionalIdeaInfo = "Do you want to improve the game or the website?";
         info = this.add.text(CONST_WORLD_CENTER_X, 155, additionalIdeaInfo, {fill: '#dbdbdb'});
         info.anchor.set(0.5);
@@ -113,6 +123,11 @@ function setInfo(isHighscore) {
     if (game.authenticated) {
         game.gameInfo["rounds_won"] = game.gameInfo["rounds_won"] + 1;
     }
+    // log(JSON.stringify(this.game));
+    setLevelInfo(this.level + 1, "completed", isHighscore);
 
-    updateInfo(isHighscore);
+    //reset after setLevelInfo
+    first_moved = 0;
+    time_finished = 0;
+    // updateInfo(isHighscore);
 }

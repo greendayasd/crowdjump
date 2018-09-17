@@ -26,11 +26,11 @@ const CONST_BOUNCINGPLATFORMS = false;
 const CONST_SLIDEPLATFORMS = false;
 const CONST_FALLINGPLATFORMS = false;
 const CONST_CONVEYORPLATFORMS = false;
-const CONST_CRATES = false;
 
-const CONST_POWERUPS = true;
-const CONST_COINS = false;
+const CONST_POWERUPS = false;
+const CONST_COINS = true;
 const CONST_EASTEREGGS = true;
+const CONST_CRATES = false;
 
 const CONST_ENEMIES = false;
 const CONST_KILL_ENEMIES = false;
@@ -38,10 +38,10 @@ const CONST_SPIDER_SPEED = 100;
 
 const CONST_LEVELSELECTION = false;
 const CONST_BUBBLE = true;
-const CONST_PAUSE = false;
 
 const CONST_WALK = false;
 const CONST_SPRINT = false;
+const CONST_WASD_CONTROLS = false;
 
 const CONST_DOUBLE_JUMP = false;
 const CONST_WALL_JUMP = false;
@@ -60,6 +60,9 @@ const CONST_MAGAZINE = 10;
 const CONST_SHOOT_IN_ZHONYA = false;
 
 const CONST_ANIMATE_CHARACTER = false;
+const CONST_ANIMATE_COIN = false;
+const CONST_ANIMATE_CONVEYOR = false;
+
 const CONST_COLOR = false;
 
 const CONST_SHOWLEVEL = false;
@@ -67,12 +70,14 @@ const CONST_FPS = false;
 const CONST_P2_PHYSICS = false;
 const CONST_DEBUG = false;
 const CONST_CHEAT = false;
+const CONST_MUTE = true;
+const CONST_PAUSE = false;
+
 const CONST_CANVAS_X = 960;
 const CONST_CANVAS_Y = 600;
 const CONST_WORLD_CENTER_X = CONST_CANVAS_X / 2;
 const CONST_WORLD_CENTER_Y = CONST_CANVAS_Y / 2;
 
-const CONST_WASD_CONTROLS = false;
 
 var DIFFICULTY = Object.freeze({"easy": 1, "normal": 2, "hard": 3})
 var version = '';
@@ -88,6 +93,10 @@ var jumps_last_level = 0;
 var movementinputs_last_level = 0;
 var enemies_last_level = 0;
 var coins_last_level = 0;
+var eastereggs_last_level = 0;
+var specialname_last_level = 0;
+
+
 var difficulty = DIFFICULTY.normal;
 var selected_level = -1;
 
@@ -149,9 +158,9 @@ window.createGame = function (canvas, scope) {
 
     game.global = {
         coinPickupCount: 0,
-        powerupPickupCount:0,
-        eastereggPickupCount:0,
-        specialName:0,
+        powerupPickupCount: 0,
+        eastereggPickupCount: 0,
+        specialName: 0,
         enemiesDefeatedCount: 0,
         timeElapsed: 0,
         gameInfo: {},
@@ -190,7 +199,7 @@ function getInfo() {
     var username = account["username"];
 
     if (account["versionlabel"] != versionlabel) {
-        console.log("increase versionlabel");
+        // console.log("increase versionlabel");
         increase_versionlabel(username, true);
     }
 
@@ -226,10 +235,10 @@ function updateInfo(isHighscore) {
         game.gameInfo["enemies_killed"] = game.gameInfo["enemies_killed"] + game.enemiesDefeatedCount;
 
         //max count of eastereggs
-        game.gameInfo["eastereggs_found"] = Math.max(game.gameInfo["eastereggs_found"],game.eastereggPickupCount);
+        game.gameInfo["eastereggs_found"] = Math.max(game.gameInfo["eastereggs_found"], game.eastereggPickupCount);
 
         //keep only highest specialname
-        game.gameInfo["special_name"] = Math.max(game.gameInfo["special_name"],game.specialName);
+        game.gameInfo["special_name"] = Math.max(game.gameInfo["special_name"], game.specialName);
 
 
         game.gameInfo["jumps"] = game.gameInfo["jumps"] + game.jumps;
@@ -280,14 +289,15 @@ function updateInfo(isHighscore) {
         // console.error("return: " + ret);
     }
 
-    resetStats();
 
 }
 
-function setLevelInfo(level, status) {
+function setLevelInfo(level, status, isHighscore) {
     var username = getUsername();
     var time = time_finished;
     var final_time = ((time - time_last_level) * 1000).toFixed(0);
+
+
     var data = {
         "username": username,
         "version": version,
@@ -297,17 +307,28 @@ function setLevelInfo(level, status) {
         "jumps": game.jumps - jumps_last_level,
         "movement_inputs": game.movement_inputs - movementinputs_last_level,
         "enemies_killed": game.enemiesDefeatedCount - enemies_last_level,
-        "coins_collected": game.coinPickupCount - coins_last_level
+        "coins_collected": game.coinPickupCount - coins_last_level,
+        "eastereggs_found": game.eastereggPickupCount - eastereggs_last_level,
+        "special_name": game.specialName - specialname_last_level
     };
+
+    if (isHighscore) {
+        data['highscore'] = game.gameInfo["highscore"];
+        resetStats();
+    }
 
     $.ajax({
         url: '/sendgamedata/',
         cache: false,
         data: data,
-        success: function (data) {
+        success: function (data_new) {
+            if (isHighscore) {
+                data["type"] = 'highscore_broadcast';
+                highscoreSocket.send(JSON.stringify(data));
+            }
         },
         error: function (data) {
-            console.log("time:" + time + ' . ' + data);
+            // console.log("time:" + time + ' . ' + data);
         }
     });
 }
@@ -326,70 +347,22 @@ function resetStats() {
     game.specialName = 0;
 }
 
-function increase_versionlabel(username, cookie_increase) {
-    var data = []
+function increase_versionlabel(cookie_increase) {
+    var data = [];
 
     $.ajax({
         url: '/createGamedata/',
         data: data,
         success: function (data) {
-            // log(data);
+            if (cookie_increase) {
+                account["versionlabel"] = versionlabel;
+                setCookie("authenticatedAccount", JSON.stringify(account), 365);
+            }
         },
         error: function (data) {
             log("error", data);
         }
     });
-    // var data = {
-    //     "rounds_started": 0,
-    //     "rounds_won": 0,
-    //     "enemies_killed": 0,
-    //     "coins_collected": 0,
-    //     "highscore": -1,
-    //     "movement_inputs": 0,
-    //     "jumps": 0,
-    //     "deaths": 0,
-    //     "restarts": 0,
-    //     "time_spent_game": 0
-    // };
-    //
-    // $.ajax({
-    //     url: '/api/v1/gameinfo/',
-    //     type: 'POST',
-    //     cache: false,
-    //     data: JSON.stringify(data),
-    //     dataType: 'json',
-    //     processData: false,
-    //     contentType: "application/json",
-    //     success: function (data) {
-    //         console.log(data);
-    //
-    //         $.ajax({
-    //             url: '/api/v1/accounts/' + username + '/',
-    //             method: 'PATCH',
-    //             cache: false,
-    //             data: JSON.stringify({"versionlabel": versionlabel}),
-    //             dataType: 'json',
-    //             processData: false,
-    //             contentType: "application/json",
-    //             success: function (data) {
-    //
-    //                 console.log("success1");
-    //                 if (cookie_increase) {
-    //                     account["versionlabel"] = versionlabel;
-    //                     setCookie("authenticatedAccount", JSON.stringify(account), 365);
-    //                 }
-    //             },
-    //             error: function (data) {
-    //                 console.error(data);
-    //             }
-    //         });
-    //
-    //     },
-    //     error: function (data) {
-    //         console.error(data);
-    //     }
-    // });
-
 }
 
 function setInfoLastLevel() {
@@ -398,12 +371,14 @@ function setInfoLastLevel() {
     movementinputs_last_level = game.movement_inputs;
     enemies_last_level = game.enemiesDefeatedCount;
     coins_last_level = game.coinPickupCount;
+    eastereggs_last_level = game.eastereggPickupCount;
+    specialname_last_level = game.specialName;
 
 }
 
 function backToMainMenu() {
     setLevelInfo(this.level + 1, "back to start menu");
-    updateInfo(false);
+    // updateInfo(false);
     this.game.time.reset();
     this.game.state.start("Startmenu");
 }

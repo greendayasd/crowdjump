@@ -34,8 +34,10 @@
             <h4 class="text-center" id="instructions" style="color: white; padding-right: 3%;">
                 The goal is simple: Control the alien by using the <b>arrow keys</b>
                 to move (or <b>space</b> to jump) to get to the flag. <br>
+                Each coin you collect reduces your final time by half a second <br>
                 If you get stuck, you can reset the game pressing <b>R</b>.
-                Press <b>Escape</b> to get back to the main menu.
+                Press <b>Escape</b> to get back to the main menu. <br>
+                To mute or unmute the game, press <b>M</b>.
                 <!---You can press F to go invincible for a short time! <br>
                 Use the mouse to aim and the left mouse button to shoot bullets! -->
             </h4>
@@ -71,7 +73,8 @@
                     <th scope="col">Position</th>
                     <th scope="col">User</th>
                     <th scope="col">Time in seconds</th>
-                    <!--<th scope="col">Eastereggs found</th>-->
+                    <th scope="col">max Coins</th>
+                    <th scope="col">max Eastereggs</th>
                 </tr>
                 </thead>
                 <tbody ng-repeat="stat in statistics">
@@ -83,7 +86,8 @@
                         {{$index + 1}}</td>
                     <td ng-style=stat.color>{{ stat.user.username }}</td>
                     <td>{{ stat.highscore / 1000 | number:3}}</td>
-                    <!--<td>{{ stat.eastereggs_found}}</td>-->
+                    <td>{{ stat.coins_collected}}</td>
+                    <td>{{ stat.eastereggs_found}}</td>
                 </tr>
 
                 </tbody>

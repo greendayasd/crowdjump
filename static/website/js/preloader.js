@@ -51,6 +51,7 @@ Crowdjump.Preloader.prototype = {
         this.load.image('ground', files + 'ground.png');
         this.load.image('ground:1x1', files + 'ground_1x1.png');
         this.load.image('ground:1x2', files + 'ground_1x2.png');
+        this.load.image('ground:1x3', files + 'ground_1x3.png');
         this.load.image('ground:1x4', files + 'ground_1x4.png');
         this.load.image('ground:1x6', files + 'ground_1x6.png');
         this.load.image('ground:1x8', files + 'ground_1x8.png');
@@ -60,7 +61,11 @@ Crowdjump.Preloader.prototype = {
         this.load.image('ground:2x2', files + 'ground_2x2.png');
         this.load.image('ground:4x1', files + 'ground_4x1.png');
         this.load.image('ground:4x2', files + 'ground_4x2.png');
+        this.load.image('ground:5x1', files + 'ground_5x1.png');
         this.load.image('ground:6x1', files + 'ground_6x1.png');
+        this.load.image('ground:8x1', files + 'ground_8x1.png');
+        this.load.image('ground:10x1', files + 'ground_10x1.png');
+        this.load.image('ground:12x1', files + 'ground_12x1.png');
         this.load.image('ground:20x1', files + 'ground_20x1.png');
 
         this.load.image('fakeground:1x1', files + 'fakeground_1x1.png');
@@ -82,8 +87,6 @@ Crowdjump.Preloader.prototype = {
         this.load.image('lava:2x1', files + 'lava2_2x1.png');
 
         this.load.image('bounce:1x1', files + 'bounce_1x1.png');
-        this.load.image('conveyor_right:1x1', files + 'conveyor_right_1x1.png');
-        this.load.image('conveyor_left:1x1', files + 'conveyor_left_1x1.png');
 
         if (CONST_DEBUG) {
             this.load.image('invisible_wall', files + 'invisible_wall_debug.png');
@@ -108,23 +111,35 @@ Crowdjump.Preloader.prototype = {
         this.load.image('invisible:4x1', files + 'invisible_4x1.png');
         this.load.image('invisible:8x1', files + 'invisible_8x1.png');
 
-        this.load.image('crate', files + 'crate.png');
+        if (CONST_ANIMATE_COIN) {
+            this.load.spritesheet('coin', files + 'coin_animated.png', 22, 22);
+        } else {
+            this.load.image('coin', files + 'coin_icon.png');
+        }
+            this.load.image('icon:coin', files + 'coin_icon.png');
 
-        this.load.image('icon:coin', files + 'coin_icon.png');
+        if (CONST_ANIMATE_CONVEYOR) {
+
+        } else {
+            this.load.image('conveyor_right:1x1', files + 'conveyor_right_1x1.png');
+            this.load.image('conveyor_left:1x1', files + 'conveyor_left_1x1.png');
+        }
+
         this.load.image('easteregg:specialname', files + 'easteregg_specialname.png');
         this.load.image('easteregg:time', files + 'easteregg_time.png');
         this.load.image('easteregg:movementspeed', files + 'easteregg_movementspeed.png');
+        this.load.image('easteregg:money', files + 'easteregg_money.png');
 
         this.load.image('powerup:lavaorb', files + 'powerup_lavaorb.png');
         this.load.image('powerup:jumpboost', files + 'powerup_jumpboost.png');
 
+        this.load.image('crate', files + 'crate.png');
+
+        this.load.image('bullet', files + 'bullet.png');
+
         //character
         if (CONST_ANIMATE_CHARACTER) {
             this.load.spritesheet('hero', files + 'zhonya template2.png', 34, 42);
-            // if (CONST_ZHONYA) {
-            // } else {
-            //     this.load.spritesheet('hero', files + 'hero.png', 36, 42);
-            // }
         }
         else {
             this.load.image('hero', files + 'hero_stopped.png');
@@ -141,11 +156,9 @@ Crowdjump.Preloader.prototype = {
         this.load.audio('sfx:powerup', audio + 'powerup.mp3');
         this.load.audio('sfx:easteregg', audio + 'easteregg.wav');
 
-        //sprites
-        this.load.spritesheet('coin', files + 'coin_animated.png', 22, 22);
         this.load.spritesheet('spider', files + 'spider2.png', 42, 32);
+
         this.load.spritesheet('flag', files + 'flag.png', 42, 66);
-        this.load.image('bullet', files + 'bullet.png');
 
         //fonts
         this.load.image('font:numbers', files + 'numbers.png');

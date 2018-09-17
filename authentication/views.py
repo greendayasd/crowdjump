@@ -114,8 +114,8 @@ def CreateGamedata(request):
     try:
         # if found return
         gameinfo = GameInfo.objects.filter(user_id=userid, version_id=v.id)
-        gameinfo.highscore = gameinfo.highscore
-        return JsonResponse({}, safe=False)
+        if gameinfo.user_id == userid:
+            return JsonResponse({}, safe=False)
 
     except:
         gameinfo = GameInfo(user_id=userid, version_id=v.id)
@@ -221,14 +221,79 @@ def GetAllTrackingData(request):
         return JsonResponse('{"failure":"' + res[:-2] + '"}', safe=False)
 
 
+def AntiCheat(status, level, timeneeded, jumps, movement_inputs, enemies_killed, coins_collected, eastereggs_found,
+              special_name):
+    # Anticheat
+    cheated = 'cheat_'
+
+    # time
+    if (status == 'completed'):
+        if (int(level) == 1 and int(timeneeded) < 7500
+                or int(level) == 2 and int(timeneeded) < 4000
+                or int(level) == 3 and int(timeneeded) < 4000
+                or int(level) == 4 and int(timeneeded) < 4000):
+            cheated += '_time'
+
+    # jumps
+    if (status == 'completed'):
+        if (int(level) == 1 and int(jumps) < 7
+                or int(level) == 2 and int(jumps) < 4
+                or int(level) == 3 and int(jumps) < 5
+                or int(level) == 4 and int(jumps) < 3):
+            cheated += '_jumps'
+
+    # movement
+    if (status == 'completed'):
+        if (int(level) == 1 and int(movement_inputs) < 1
+                or int(level) == 2 and int(movement_inputs) < 1
+                or int(level) == 3 and int(movement_inputs) < 1
+                or int(level) == 4 and int(movement_inputs) < 1):
+            cheated += '_movementInputs'
+
+    # enemies killed
+    if (int(level) == 1 and int(enemies_killed) > 1
+            or int(level) == 2 and int(enemies_killed) > 1
+            or int(level) == 3 and int(enemies_killed) > 1
+            or int(level) == 4 and int(enemies_killed) > 1):
+        cheated += '_enemiesKilled'
+
+    # coins (+10 per coin easteregg)
+    if (int(level) == 1 and int(coins_collected) > 31
+            or int(level) == 2 and int(coins_collected) > 1
+            or int(level) == 3 and int(coins_collected) > 1
+            or int(level) == 4 and int(coins_collected) > 1):
+        cheated += '_coinsCollected'
+
+    # eastereggs
+    if (int(level) == 1 and int(eastereggs_found) > 3
+            or int(level) == 2 and int(eastereggs_found) > 1
+            or int(level) == 3 and int(eastereggs_found) > 1
+            or int(level) == 4 and int(eastereggs_found) > 1):
+        cheated += '_eastereggsFound'
+
+    # specialname
+    if (int(level) == 1 and int(special_name) > 1
+            or int(level) == 2 and int(special_name) > 1
+            or int(level) == 3 and int(special_name) > 1
+            or int(level) == 4 and int(special_name) > 1):
+        cheated += '_specialName'
+
+    if cheated != 'cheat_':
+        return cheated
+
+    return status
+
+
 def SendGameData(request):
     username = request.GET.get('username')
     if request.user.is_authenticated:
         username2 = request.user.username
         if username != username2:
             return JsonResponse('{"success":"' + username2 + '"}', safe=False)
-        username = username2
+        DBChange = True
 
+    else:
+        DBChange = False
     version = request.GET.get('version')
 
     try:
@@ -237,6 +302,11 @@ def SendGameData(request):
     except:
         correct_version = '0.06'  # get correct version
         print("no Version found")
+        return JsonResponse('{"success":"' + version + '"}', safe=False)
+
+    # check version
+    if version != correct_version:
+        return JsonResponse('{"success":"wrong_version"}', safe=False)
 
     level = request.GET.get('level')
     status = request.GET.get('status')
@@ -245,84 +315,42 @@ def SendGameData(request):
     movement_inputs = request.GET.get('movement_inputs')
     enemies_killed = request.GET.get('enemies_killed')
     coins_collected = request.GET.get('coins_collected')
-    eastereggs_found = request.GET.get('coins_collected')
-    special_name = request.GET.get('coins_collected')
+    eastereggs_found = request.GET.get('eastereggs_found')
+    special_name = request.GET.get('special_name')
 
-    # Anticheat
-    cheated = 'cheat'
-    # version
-    if (version != correct_version):
-        # cheated
-        cheated += '_version'
+    try:
+        highscore = request.GET.get('highscore')
+        if (highscore == none):
+            highscore = -1
+    except:
+        highscore = -1
+        print('no highscore sent')
 
-    # time
-    if (status == 'completed'):
-        if (int(level) == 0 and int(timeneeded) < 4400
-                or int(level) == 1 and int(timeneeded) < 4000
-                or int(level) == 2 and int(timeneeded) < 4000
-                or int(level) == 3 and int(timeneeded) < 4000):
-            # cheated
-            cheated += '_time'
+    newstatus = ''
+    if status == 'completed':
+        newstatus = 'c'
 
-    # jumps
-    if (status == 'completed'):
-        if (int(level) == 0 and int(jumps) < 4
-                or int(level) == 1 and int(jumps) < 4
-                or int(level) == 2 and int(jumps) < 5
-                or int(level) == 3 and int(jumps) < 3):
-            # cheated
-            cheated += '_jumps'
+    elif status == 'restart':
+        newstatus = 'r'
 
-    # movement
-    if (status == 'completed'):
-        if (int(level) == 0 and int(movement_inputs) < 3
-                or int(level) == 1 and int(movement_inputs) < 1
-                or int(level) == 2 and int(movement_inputs) < 1
-                or int(level) == 3 and int(movement_inputs) < 1):
-            # cheated
-            cheated += '_movementInputs'
+    else:
+        newstatus = 'd'
 
-    # coins
-    if (int(level) == 0 and int(coins_collected) > 3
-            or int(level) == 1 and int(coins_collected) > 1
-            or int(level) == 2 and int(coins_collected) > 1
-            or int(level) == 3 and int(coins_collected) > 1):
-            # cheated
-            cheated += '_coinsCollected'
-
-    # eastereggs
-    if (int(level) == 0 and int(eastereggs_found) > 3
-            or int(level) == 1 and int(eastereggs_found) > 1
-            or int(level) == 2 and int(eastereggs_found) > 1
-            or int(level) == 3 and int(eastereggs_found) > 1):
-            # cheated
-            cheated += '_eastereggsFound'
-
-    # specialname
-    if (int(level) == 0 and int(special_name) > 1
-            or int(level) == 1 and int(special_name) > 1
-            or int(level) == 2 and int(special_name) > 1
-            or int(level) == 3 and int(special_name) > 1):
-            # cheated
-            cheated += '_specialName'
-
-
-
-    if cheated != 'cheat':
-        status = 'cheated?' + cheated
+    status = AntiCheat(status, level, timeneeded, jumps, movement_inputs, enemies_killed, coins_collected,
+                       eastereggs_found, special_name)
 
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-    data =  '{"timestamp":"' + st +\
-            '", "level":"' + level +\
-            '", "status":"' + status +\
-            '", "time":"' + timeneeded + \
-            '", "jumps":"' + jumps +\
-            '", "movement_inputs":"' + movement_inputs +\
-            '", "coins_collected":"' + coins_collected +\
-            '", eastereggs_found":"' + eastereggs_found + \
-            '", special_name":"' + special_name +\
-            '" }'
+    data = '{"timestamp":"' + st + \
+           '", "level":"' + level + \
+           '", "status":"' + status + \
+           '", "time":"' + timeneeded + \
+           '", "jumps":"' + jumps + \
+           '", "movement_inputs":"' + movement_inputs + \
+           '", "coins_collected":"' + coins_collected + \
+           '", eastereggs_found":"' + eastereggs_found + \
+           '", special_name":"' + special_name + \
+           '" }'
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     folder_path = os.path.join(BASE_DIR, 'data')
@@ -344,6 +372,46 @@ def SendGameData(request):
     except:
         with open(save_path, 'w+') as outfile:
             outfile.write(data)
+
+
+
+    if DBChange:
+        try:
+            acc = GameInfo.objects.filter(user_id=request.user.id, version_id=v.id)[0]
+
+        except:
+            CreateGamedata(request)
+            acc = GameInfo.objects.filter(user_id=request.user.id, version_id=v.id)[0]
+
+        acc.coins_collected += int(coins_collected)
+        acc.enemies_killed += int(enemies_killed)
+        acc.eastereggs_found = max(acc.eastereggs_found, int(eastereggs_found))
+        acc.special_name = max(acc.special_name, int(special_name))
+        acc.jumps += int(jumps)
+        acc.movement_inputs += int(movement_inputs)
+
+        if level == 1 or level == '1':
+            acc.rounds_started += 1
+
+        if newstatus == 'c':
+            acc.rounds_won += 1
+        if newstatus == 'r':
+            acc.restarts += 1
+        if newstatus == 'd':
+            acc.deaths += 1
+
+        acc.time_spent_game += int(timeneeded)
+
+        acc.highest_level = max(acc.highest_level, int(level))
+
+
+        if acc.highscore == -1:
+            acc.highscore = int(highscore)
+        elif int(highscore) > -1:
+            acc.highscore = min(acc.highscore, int(highscore))
+
+
+        acc.save()
 
     return JsonResponse('{"success":"true"}', safe=False)
 
