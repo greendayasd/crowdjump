@@ -405,7 +405,7 @@ def SendGameData(request):
         acc.highest_level = max(acc.highest_level, int(level))
 
 
-        if acc.highscore == -1:
+        if acc.highscore <= -1:
             acc.highscore = int(highscore)
         elif int(highscore) > -1:
             acc.highscore = min(acc.highscore, int(highscore))
