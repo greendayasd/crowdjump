@@ -320,7 +320,7 @@ def SendGameData(request):
 
     try:
         highscore = request.GET.get('highscore')
-        if (highscore == none):
+        if (highscore == 'none' or highscore == none):
             highscore = -1
     except:
         highscore = -1
