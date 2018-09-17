@@ -89,9 +89,12 @@
         };
 
         function receive_highscore(data) {
-            // console.log(data);
+            console.log(data);
+            console.log(JSON.stringify(data));
             var user = data["username"];
-            // var user = data["user"]["username"];
+            if (user == ''){
+                user = data["user"]["username"];
+            }
             var highscore = data["highscore"];
             if(highscore == "-0.001"){
                 console.error(data + '\n' + $scope.statistics);
