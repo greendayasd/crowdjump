@@ -385,7 +385,7 @@ def SendGameData(request):
             CreateGamedata(request)
             acc = GameInfo.objects.filter(user_id=request.user.id, version_id=v.id)[0]
 
-        acc.coins_collected += int(coins_collected)
+        acc.coins_collected = max(acc.coins_collected, int(coins_collected))
         acc.enemies_killed += int(enemies_killed)
         acc.eastereggs_found = max(acc.eastereggs_found, int(eastereggs_found))
         acc.special_name = max(acc.special_name, int(special_name))

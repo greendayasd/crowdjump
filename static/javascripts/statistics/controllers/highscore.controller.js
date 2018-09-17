@@ -98,7 +98,7 @@
         function receive_highscore(data) {
             var username = data["username"];
             data["user"]["username"] = username;
-            
+
             var highscore = data["highscore"];
             if (highscore == "-0.001") {
                 console.error(data + '\n' + $scope.statistics);
