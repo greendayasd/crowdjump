@@ -29,12 +29,19 @@
 
             function statisticsSuccessFn(data, status, headers, config) {
                 $scope.statistics = data.data["results"];
-                for (var i = 0; i < $scope.statistics.length; i++){
-                    switch ($scope.statistics[i].special_name){
-                        case 0: $scope.statistics[i].color = {"color" :" black"}; break;
-                        case 1: $scope.statistics[i].color = {"color" :" blue"}; break;
-                        case 2: $scope.statistics[i].color = {"color" :" red"}; break;
-                        default: $scope.statistics[i].color = {"color" :" black"};
+                for (var i = 0; i < $scope.statistics.length; i++) {
+                    switch ($scope.statistics[i].special_name) {
+                        case 0:
+                            $scope.statistics[i].color = {"color": " black"};
+                            break;
+                        case 1:
+                            $scope.statistics[i].color = {"color": " blue"};
+                            break;
+                        case 2:
+                            $scope.statistics[i].color = {"color": " red"};
+                            break;
+                        default:
+                            $scope.statistics[i].color = {"color": " black"};
                     }
 
                 }
@@ -89,12 +96,11 @@
         };
 
         function receive_highscore(data) {
-            var user = data["username"];
-            if (user == ''){
-                user = data["user"]["username"];
-            }
+            var username = data["username"];
+            data["user"]["username"] = username;
+            
             var highscore = data["highscore"];
-            if(highscore == "-0.001"){
+            if (highscore == "-0.001") {
                 console.error(data + '\n' + $scope.statistics);
             }
             // console.log(user);
