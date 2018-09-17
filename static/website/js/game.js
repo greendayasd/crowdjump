@@ -1660,6 +1660,14 @@ Crowdjump.Game.showMessage = function (message, time, fill,font) {
 
 };
 
+Crowdjump.Game.showImage = function (imageName, time) {
+    message_image = this.add.sprite(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y, imageName);
+    message_image.anchor.set(0.5);
+    message_image.fixedToCamera = true;
+    tween = game.add.tween(message_image).to({alpha: 0}, time, Phaser.Easing.Linear.None, true);
+
+};
+
 Crowdjump.Game.showEastereggMessage = function (message){
     this.showMessage(message,3000,'#000000','')
 }
@@ -1686,10 +1694,10 @@ Crowdjump.Game.restart = function () {
 Crowdjump.Game.toggleMute = function () {
     if (this.game.sound.mute) {
         this.game.sound.mute = false;
-        // log(this.game.sound.muted, this.game);
+        this.showImage('unmute',1500);
     } else {
         this.game.sound.mute = true;
-        // log(this.game.sound.muted, this.game);
+        this.showImage('mute',1500);
     }
 };
 

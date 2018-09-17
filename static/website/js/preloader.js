@@ -27,6 +27,9 @@ Crowdjump.Preloader.prototype = {
         // this.load.image('select_level', images + 'select_level.png');
         this.load.image('bubble', images + 'ideabubble.png');
         this.load.image('alien_death', images + 'alien_death.png');
+        this.load.image('mute', images + 'mute.png');
+        this.load.image('unmute', images + 'unmute.png');
+
 
         // alle Level laden
 

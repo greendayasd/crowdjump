@@ -89,8 +89,6 @@
         };
 
         function receive_highscore(data) {
-            console.log(data);
-            console.log(JSON.stringify(data));
             var user = data["username"];
             if (user == ''){
                 user = data["user"]["username"];
