@@ -6,9 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/website/js/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/preloader.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,8 +39,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/authentication/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="323" column="24" selection-start-line="323" selection-start-column="24" selection-end-line="323" selection-end-column="24" />
+            <state relative-caret-position="245">
+              <caret line="409" lean-forward="true" selection-start-line="409" selection-end-line="409" />
               <folding>
                 <element signature="e#561#1673#0" />
                 <element signature="e#705#956#0" />
@@ -89,7 +88,6 @@
                 <element signature="e#9647#9817#0" />
                 <element signature="e#9913#10008#0" />
                 <element signature="e#10029#10183#0" />
-                <element signature="e#12126#12356#0" />
                 <element signature="e#12174#12255#0" />
                 <element signature="e#12282#12356#0" />
                 <element signature="e#12377#12447#0" />
@@ -124,8 +122,6 @@
                 <element signature="e#19515#20086#0" />
                 <element signature="e#20120#20856#0" />
                 <element signature="e#20252#20396#0" />
-                <element signature="e#20897#21023#0" />
-                <element signature="e#20937#21023#0" />
               </folding>
             </state>
           </provider>
@@ -152,8 +148,8 @@
       <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="1694" column="31" lean-forward="true" selection-start-line="1694" selection-start-column="31" selection-end-line="1694" selection-end-column="31" />
+            <state relative-caret-position="405">
+              <caret line="1686" column="4" selection-start-line="1686" selection-start-column="4" selection-end-line="1686" selection-end-column="4" />
               <folding>
                 <element signature="e#34#114#0" />
                 <element signature="e#240#1084#0" />
@@ -394,7 +390,6 @@
                 <element signature="e#40928#41507#0" />
                 <element signature="e#40966#41447#0" />
                 <element signature="e#41553#41619#0" />
-                <element signature="e#41666#41739#0" />
                 <element signature="e#41794#41867#0" />
                 <element signature="e#41920#42193#0" />
                 <element signature="e#41950#42191#0" />
@@ -457,8 +452,9 @@
                 <element signature="e#51236#51407#0" />
                 <element signature="e#51429#51566#0" />
                 <element signature="e#51572#51641#0" />
+                <element signature="e#51711#51984#0" />
+                <element signature="e#52051#52324#0" />
                 <element signature="e#52043#52094#0" />
-                <element signature="e#52133#52603#0" />
                 <element signature="e#52919#53077#0" />
                 <element signature="e#52988#53029#0" />
                 <element signature="e#53035#53075#0" />
@@ -488,8 +484,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="315" column="55" selection-start-line="315" selection-start-column="55" selection-end-line="315" selection-end-column="55" />
+            <state relative-caret-position="211">
+              <caret line="336" lean-forward="true" selection-start-line="336" selection-end-line="346" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -614,9 +610,9 @@
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
         <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/Crowdjump/mailFunctions.py" />
-        <option value="$PROJECT_DIR$/authentication/views.py" />
         <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
         <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
+        <option value="$PROJECT_DIR$/authentication/views.py" />
         <option value="$PROJECT_DIR$/static/website/js/game.js" />
       </list>
     </option>
@@ -1006,7 +1002,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.33716077" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20682302" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="manage.py@Crowdjump" order="12" sideWeight="0.49791667" visible="true" weight="0.3455115" />
+      <window_info active="true" anchor="bottom" id="manage.py@Crowdjump" order="12" sideWeight="0.49791667" visible="true" weight="0.3455115" />
       <window_info anchor="right" id="Database" order="3" weight="0.32949877" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24947916" />
@@ -1391,20 +1387,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="90" column="42" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="315" column="55" selection-start-line="315" selection-start-column="55" selection-end-line="315" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
@@ -1414,8 +1396,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/authentication/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="323" column="24" selection-start-line="323" selection-start-column="24" selection-end-line="323" selection-end-column="24" />
+        <state relative-caret-position="245">
+          <caret line="409" lean-forward="true" selection-start-line="409" selection-end-line="409" />
           <folding>
             <element signature="e#561#1673#0" />
             <element signature="e#705#956#0" />
@@ -1463,7 +1445,6 @@
             <element signature="e#9647#9817#0" />
             <element signature="e#9913#10008#0" />
             <element signature="e#10029#10183#0" />
-            <element signature="e#12126#12356#0" />
             <element signature="e#12174#12255#0" />
             <element signature="e#12282#12356#0" />
             <element signature="e#12377#12447#0" />
@@ -1498,9 +1479,14 @@
             <element signature="e#19515#20086#0" />
             <element signature="e#20120#20856#0" />
             <element signature="e#20252#20396#0" />
-            <element signature="e#20897#21023#0" />
-            <element signature="e#20937#21023#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="90" column="42" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1511,10 +1497,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="336" lean-forward="true" selection-start-line="336" selection-end-line="346" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="1694" column="31" lean-forward="true" selection-start-line="1694" selection-start-column="31" selection-end-line="1694" selection-end-column="31" />
+        <state relative-caret-position="405">
+          <caret line="1686" column="4" selection-start-line="1686" selection-start-column="4" selection-end-line="1686" selection-end-column="4" />
           <folding>
             <element signature="e#34#114#0" />
             <element signature="e#240#1084#0" />
@@ -1755,7 +1748,6 @@
             <element signature="e#40928#41507#0" />
             <element signature="e#40966#41447#0" />
             <element signature="e#41553#41619#0" />
-            <element signature="e#41666#41739#0" />
             <element signature="e#41794#41867#0" />
             <element signature="e#41920#42193#0" />
             <element signature="e#41950#42191#0" />
@@ -1818,8 +1810,9 @@
             <element signature="e#51236#51407#0" />
             <element signature="e#51429#51566#0" />
             <element signature="e#51572#51641#0" />
+            <element signature="e#51711#51984#0" />
+            <element signature="e#52051#52324#0" />
             <element signature="e#52043#52094#0" />
-            <element signature="e#52133#52603#0" />
             <element signature="e#52919#53077#0" />
             <element signature="e#52988#53029#0" />
             <element signature="e#53035#53075#0" />

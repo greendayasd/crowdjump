@@ -322,6 +322,8 @@ def SendGameData(request):
         highscore = request.GET.get('highscore')
         if highscore == 'none':
             highscore = -1
+        else:
+            highscore = int(highscore)
     except:
         highscore = -1
         print('no highscore sent')
@@ -406,9 +408,9 @@ def SendGameData(request):
 
 
         if acc.highscore <= -1:
-            acc.highscore = int(highscore)
-        elif int(highscore) > -1:
-            acc.highscore = min(acc.highscore, int(highscore))
+            acc.highscore = highscore
+        elif highscore > -1:
+            acc.highscore = min(acc.highscore, highscore)
 
 
         acc.save()

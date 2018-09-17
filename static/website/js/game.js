@@ -1678,14 +1678,13 @@ Crowdjump.Game.restart = function () {
     setLevelInfo(level + 1, "restart", false);
     // updateInfo(false);
     last_second = 0;
-    game.timeElapsed = 0;
     first_moved = 0;
     time_finished = 0;
     time_overall = 0;
     time_last_level_or_restart = 0;
     lives = CONST_HERO_LIVES;
-    game.eastereggPickupCount = 0;
-    game.specialName = 0;
+
+    resetStats();
 
     this.state.restart();
     this.game.time.reset();
