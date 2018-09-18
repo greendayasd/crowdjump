@@ -257,6 +257,13 @@ function setLevelInfo(level, status, isHighscore) {
             // console.log("time:" + time + ' . ' + data);
         }
     });
+
+    if (level >= CONST_LEVEL) {
+        //reset after setLevelInfo
+        first_moved = 0;
+        time_finished = 0;
+    
+    }
 }
 
 function resetStats() {
@@ -329,7 +336,7 @@ function backToMainMenu() {
     this.game.state.start("Startmenu");
 }
 
-function getFileName(filename){
-  return (/[/]/.exec(filename)) ? /[^/]+$/.exec(filename)[0] : undefined;
+function getFileName(filename) {
+    return (/[/]/.exec(filename)) ? /[^/]+$/.exec(filename)[0] : undefined;
 
 }

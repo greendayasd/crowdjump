@@ -126,8 +126,5 @@ function setInfo(isHighscore) {
     // log(JSON.stringify(this.game));
     setLevelInfo(level + 1, "completed", isHighscore);
 
-    //reset after setLevelInfo
-    first_moved = 0;
-    time_finished = 0;
     // updateInfo(isHighscore);
 }
