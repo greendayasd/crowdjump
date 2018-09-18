@@ -6,100 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crowdjump/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crowdjump/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/crowdjump.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/crowdjump.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/2grass_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/2grass_4x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/bounce_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/bullet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/coin_animated.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/coin_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/conveyor_left_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/conveyor_right_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/crate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/decor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/door.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/easteregg_money.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/easteregg_movementspeed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/easteregg_specialname.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/easteregg_time.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/fakeground_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/fakeground_1x2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/flag.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/flag_new.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/grass_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/grass_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/grass_4x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/grass_6x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/grass_8x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_10x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_12x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_1x10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_1x12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_1x2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_1x3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_1x4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_1x6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_1x8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_20x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_2x2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_4x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_4x2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_5x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_6x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ground_8x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/hero.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/hero_stopped.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/hero_zhonya.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ice_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ice_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/ice_6x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/invisible_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/invisible_1x2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/invisible_1x4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/invisible_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/invisible_4x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/invisible_8x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/invisible_wall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/invisible_wall_debug.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/invisible_wall_horizontal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/invisible_wall_horizontal_debug.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/key.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/key_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/lava2_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/lava2_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/lava_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/lava_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/lavaground_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/loading.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/move_wall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/move_wall_debug.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/move_wall_horizontal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/move_wall_horizontal_debug.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/numbers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/powerup_jumpboost.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/powerup_lavaorb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/powerup_zhonyas.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/spider.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/spider2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/white_smoke.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/zhonya template.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/zhonya template2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/endscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/endscreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/levelselection.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/levelselection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/preloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/startmenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/startmenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level0.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/javascripts.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -265,11 +172,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="302" column="34" lean-forward="true" selection-start-line="302" selection-start-column="34" selection-end-line="302" selection-end-column="34" />
+            <state relative-caret-position="490">
+              <caret line="201" column="39" selection-start-line="201" selection-start-column="39" selection-end-line="201" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -286,11 +193,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="153" column="42" selection-start-line="153" selection-start-column="42" selection-end-line="153" selection-end-column="42" />
+            <state relative-caret-position="221">
+              <caret line="151" column="29" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -327,7 +234,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>this.level</find>
       <find>log(</find>
       <find>failure un</find>
       <find>fill</find>
@@ -357,6 +263,7 @@
       <find>settings</find>
       <find>uploaded_charac</find>
       <find>charac</find>
+      <find>versionl</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -419,7 +326,6 @@
         <option value="$PROJECT_DIR$/static/javascripts/crowdjump.config.js" />
         <option value="$PROJECT_DIR$/Crowdjump/settings.py" />
         <option value="$PROJECT_DIR$/static/javascripts/crowdjump.js" />
-        <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
         <option value="$PROJECT_DIR$/static/templates/layout/game.html" />
         <option value="$PROJECT_DIR$/static/website/js/characterselection.js" />
@@ -428,6 +334,7 @@
         <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
         <option value="$PROJECT_DIR$/static/website/js/game.js" />
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
+        <option value="$PROJECT_DIR$/templates/javascripts.html" />
       </list>
     </option>
   </component>
@@ -1301,13 +1208,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="153" column="42" selection-start-line="153" selection-start-column="42" selection-end-line="153" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/game.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -1432,13 +1332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-996">
-          <caret line="136" selection-start-line="136" selection-end-line="137" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1452,10 +1345,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-996">
+          <caret line="136" selection-start-line="136" selection-end-line="137" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="302" column="34" lean-forward="true" selection-start-line="302" selection-start-column="34" selection-end-line="302" selection-end-column="34" />
+        <state relative-caret-position="490">
+          <caret line="201" column="39" selection-start-line="201" selection-start-column="39" selection-end-line="201" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="151" column="29" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
         </state>
       </provider>
     </entry>
