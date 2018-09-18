@@ -811,6 +811,8 @@
                 var fakeplatforms = '';
                 var crates = '';
                 var lava = '';
+                var spikes = '';
+                var sawblades = '';
                 var flags = '';
                 var coins = '';
                 var hero = '';
@@ -835,6 +837,10 @@
                     var line = '\t\t{"image": ' + '"' + image + '", "x": ' + array[i][0] + ', "y": ' + array[i][1];
                     if (image.startsWith("lava")) {
                         lava += line + endline;
+                        continue;
+                    }
+                    if (image.startsWith("spike")) {
+                        spikes += line + endline;
                         continue;
                     }
                     if (image.startsWith("crate")) {
@@ -878,6 +884,11 @@
                         continue;
                     }
 
+                    if (image.startsWith("sawblade")) {
+                        sawblades += line + '", "speed": 100, "orientation": "UP", "base": "sawblade_base"' + endline;
+                        continue;
+                    }
+
                     if (image.startsWith("fake")) {
                         fakeplatforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
                         continue;
@@ -917,6 +928,8 @@
                 fakeplatforms = wrapJsonLevel(fakeplatforms, "fakePlatforms");
                 crates = wrapJsonLevel(crates, "crates");
                 lava = wrapJsonLevel(lava, "lava");
+                spikes = wrapJsonLevel(spikes, "spikes");
+                sawblades = wrapJsonLevel(sawblades, "sawblades");
                 flags = wrapJsonLevel(flags, "flags");
                 coins = wrapJsonLevel(coins, "coins");
                 hero = '\t"hero":\n' + hero + '';
@@ -926,7 +939,7 @@
                 powerups = wrapJsonLevel(powerups, "powerups");
                 eastereggs = wrapJsonLevel(eastereggs, "eastereggs");
                 decorations = wrapJsonLevel(decorations, "decorations");
-                $scope.csv = '{\n' + platforms + falling_platforms + fakeplatforms + crates + lava + flags + coins + hero + enemies + enemy_walls + powerups + eastereggs + decorations + worldsize + '\n}';
+                $scope.csv = '{\n' + platforms + falling_platforms + fakeplatforms + crates + lava + spikes + sawblades + flags + coins + hero + enemies + enemy_walls + powerups + eastereggs + decorations + worldsize + '\n}';
 
             }
 

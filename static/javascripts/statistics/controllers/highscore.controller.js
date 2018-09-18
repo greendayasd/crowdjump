@@ -12,11 +12,12 @@
         $scope.statistics = [];
         $scope.versions = [];
 
+        var topcut = 10;
         activate();
 
 
         function activate() {
-            Statistics.top(5, versionnumber).then(statisticsSuccessFn, statisticsErrorFn);
+            Statistics.top(topcut, versionnumber).then(statisticsSuccessFn, statisticsErrorFn);
             get_versions();
 
             $scope.$on('statistics.created', function (event, statistics) {
@@ -129,7 +130,7 @@
         }
 
         $scope.getVersionHighscore = function (version) {
-            Statistics.top(5, version).then(statisticsSuccessFn, statisticsErrorFn);
+            Statistics.top(topcut, version).then(statisticsSuccessFn, statisticsErrorFn);
 
 
             function statisticsSuccessFn(data, status, headers, config) {

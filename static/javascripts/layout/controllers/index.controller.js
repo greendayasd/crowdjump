@@ -11,7 +11,6 @@
         var vm = this;
         vm.isAuthenticated = Authentication.isAuthenticated();
         vm.ideas = [];
-        vm.test = "test";
         activate();
 
         function activate() {
@@ -32,5 +31,22 @@
             function ideasErrorFn(data, status, headers, config) {
             }
         }
+        //
+        // vm.submit = submit;
+        //
+        // function csrfSafeMethod(method) {
+        //     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        // }
+        //
+        // function submit() {
+        //     var csrftoken = getAuthCookie('csrftoken');
+        //     $.ajaxSetup({
+        //         beforeSend: function (xhr, settings) {
+        //             if (!csrfSafeMethod(settings.type)) {
+        //                 xhr.setRequestHeader("X-CSRFTOKEN", csrftoken);
+        //             }
+        //         }
+        //     });
+        // }
     }
 })();
