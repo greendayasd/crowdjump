@@ -18,6 +18,8 @@ const CONST_TIME = true;
 const CONST_TIME_WHEN_MOVED = true;
 
 const CONST_LAVA = false;
+const CONST_SPIKES = false;
+const CONST_SAWBLADES = false;
 const CONST_LAVASWITCHINGPLATFORM = false;
 const CONST_SLIPPERYPLATFORMS = false;
 const CONST_MOVINGPLATFORMS = false;
@@ -37,6 +39,7 @@ const CONST_KILL_ENEMIES = false;
 const CONST_SPIDER_SPEED = 100;
 
 const CONST_LEVELSELECTION = false;
+const CONST_CHARACTERSELECTION = true;
 const CONST_BUBBLE = true;
 
 const CONST_WALK = false;
@@ -62,6 +65,7 @@ const CONST_SHOOT_IN_ZHONYA = false;
 const CONST_ANIMATE_CHARACTER = false;
 const CONST_ANIMATE_COIN = false;
 const CONST_ANIMATE_CONVEYOR = false;
+const CONST_CHARACTER_COUNT = 4;
 
 const CONST_COLOR = false;
 
@@ -114,6 +118,22 @@ window.createGame = function (canvas, scope) {
 
     game = new Phaser.Game(CONST_CANVAS_X, CONST_CANVAS_Y, Phaser.AUTO, canvas);
 
+    game.global = {
+        coinPickupCount: 0,
+        powerupPickupCount: 0,
+        eastereggPickupCount: 0,
+        character: 0,
+        specialName: 0,
+        enemiesDefeatedCount: 0,
+        timeElapsed: 0,
+        gameInfo: {},
+        csrftoken: '',
+        jumps: 0,
+        movement_inputs: 0,
+        deaths: 0,
+        restarts: 0,
+        authenticated: true
+    };
     game.csrftoken = getAuthCookie('csrftoken');
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
@@ -149,28 +169,12 @@ window.createGame = function (canvas, scope) {
     };
 
 
-    scope.$on('game:toggleMusic', function () {
-        Game.toggleMusic(); // some function that toggles the music
-    });
+    // scope.$on('game:toggleMusic', function () {
+    //     Game.toggleMusic(); // some function that toggles the music
+    // });
 
 
     // game.world.setBounds(0,0,1500,600);
-
-    game.global = {
-        coinPickupCount: 0,
-        powerupPickupCount: 0,
-        eastereggPickupCount: 0,
-        specialName: 0,
-        enemiesDefeatedCount: 0,
-        timeElapsed: 0,
-        gameInfo: {},
-        csrftoken: '',
-        jumps: 0,
-        movement_inputs: 0,
-        deaths: 0,
-        restarts: 0,
-        authenticated: true
-    }
 
     resetStats();
 
@@ -180,10 +184,9 @@ window.createGame = function (canvas, scope) {
     game.state.add('Game', Crowdjump.Game);
     game.state.add('Endscreen', Crowdjump.Endscreen);
     game.state.add('Gameover', Crowdjump.Gameover);
-    game.state.add('Levelselection', Crowdjump.Levelselection);
+    game.state.add('LevelSelection', Crowdjump.LevelSelection);
+    game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
     game.state.start('Boot');
-
-    return;
 }
 
 
@@ -193,8 +196,10 @@ function getInfo() {
     // console.error("account" + account);
 
     if (account == '' || account == null) {
+        game.character = 'c' + 0;
         return '';
     }
+    game.character = account.character;
 
     var username = account["username"];
 
@@ -211,86 +216,6 @@ function getInfo() {
     })
 }
 
-
-function updateInfo(isHighscore) {
-
-    if (game.authenticated) {
-        if (game.gameInfo["coins_collected"] == null || game.gameInfo["coins_collected"] == NaN || isNaN(game.gameInfo["coins_collected"])) {
-            // console.error("coins");
-            game.gameInfo["coins_collected"] = 0;
-
-        }
-        if (isNaN(game.gameInfo["enemies_killed"])) {
-            game.gameInfo["enemies_killed"] = 0;
-        }
-
-        if (isNaN(game.gameInfo["eastereggs_found"])) {
-            game.gameInfo["eastereggs_found"] = 0;
-        }
-        if (isNaN(game.gameInfo["special_name"])) {
-            game.gameInfo["special_name"] = 0;
-        }
-
-        game.gameInfo["coins_collected"] = game.gameInfo["coins_collected"] + game.coinPickupCount;
-        game.gameInfo["enemies_killed"] = game.gameInfo["enemies_killed"] + game.enemiesDefeatedCount;
-
-        //max count of eastereggs
-        game.gameInfo["eastereggs_found"] = Math.max(game.gameInfo["eastereggs_found"], game.eastereggPickupCount);
-
-        //keep only highest specialname
-        game.gameInfo["special_name"] = Math.max(game.gameInfo["special_name"], game.specialName);
-
-
-        game.gameInfo["jumps"] = game.gameInfo["jumps"] + game.jumps;
-        game.gameInfo["movement_inputs"] = game.gameInfo["movement_inputs"] + game.movement_inputs;
-        game.gameInfo["deaths"] = game.gameInfo["deaths"] + game.deaths;
-        game.gameInfo["restarts"] = game.gameInfo["restarts"] + game.restarts;
-
-        game.gameInfo["time_spent_game"] = game.gameInfo["time_spent_game"] + (game.timeElapsed * 1000);
-
-        // $.ajaxSetup({
-        //     beforeSend: function (xhr, settings) {
-        //         if (!csrfSafeMethod(settings.type)) {
-        //             xhr.setRequestHeader("X-CSRFTOKEN", game.csrftoken);
-        //         }
-        //     }
-        // });
-        //
-        // $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
-        //     jqXHR.setRequestHeader('X-CSRF-Token', game.csrftoken);
-        // });
-
-        // console.error(JSON.stringify(game.gameInfo));
-        var ret = $.ajax({
-            // type: 'POST',
-            method: 'PATCH',
-            url: '/api/v1/gameinfo/' + game.gameInfo["id"] + '/',
-            data: JSON.stringify(game.gameInfo),
-            dataType: 'json',
-            processData: false,
-            contentType: "application/json",
-            cache: false,
-            success: function (data) {
-                if (isHighscore) {
-
-                    var content = data;
-                    // console.log(data);
-                    content["type"] = 'highscore_broadcast';
-                    highscoreSocket.send(JSON.stringify(content));
-                    // console.log(JSON.stringify(content));
-
-
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error('xhr ' + JSON.stringify(xhr) + '  Error ' + error);
-            }
-        });
-        // console.error("return: " + ret);
-    }
-
-
-}
 
 function setLevelInfo(level, status, isHighscore) {
     var username = getUsername();
@@ -309,7 +234,8 @@ function setLevelInfo(level, status, isHighscore) {
         "enemies_killed": game.enemiesDefeatedCount - enemies_last_level,
         "coins_collected": game.coinPickupCount - coins_last_level,
         "eastereggs_found": game.eastereggPickupCount - eastereggs_last_level,
-        "special_name": game.specialName - specialname_last_level
+        "special_name": game.specialName - specialname_last_level,
+        "character": game.character
     };
 
     if (isHighscore) {
@@ -360,7 +286,25 @@ function increase_versionlabel(cookie_increase) {
             }
         },
         error: function (data) {
-            log("error", data);
+            log("error increase versionLabel", data);
+        }
+    });
+}
+
+function changeCharacter() {
+    var data = {
+        "character": game.character
+    };
+
+    $.ajax({
+        url: '/changeCharacter/',
+        data: data,
+        success: function (data) {
+            account["character"] = game.character;
+            setCookie("authenticatedAccount", JSON.stringify(account), 365);
+        },
+        error: function (data) {
+            log("error change Character", data);
         }
     });
 }
@@ -377,8 +321,15 @@ function setInfoLastLevel() {
 }
 
 function backToMainMenu() {
-    setLevelInfo(this.level + 1, "back to start menu");
+
+    if (game.state.current != "Endscreen") setLevelInfo(this.level + 1, "back to start menu");
+
     // updateInfo(false);
     this.game.time.reset();
     this.game.state.start("Startmenu");
+}
+
+function getFileName(filename){
+  return (/[/]/.exec(filename)) ? /[^/]+$/.exec(filename)[0] : undefined;
+
 }

@@ -56,7 +56,8 @@ Crowdjump.Game = {};
 //
 function Hero(game, x, y) {
     // call Phaser.Sprite constructor
-    Phaser.Sprite.call(this, game, x, y, 'hero');
+    if (game.character == 0) Phaser.Sprite.call(this, game, x, y, 'c0');
+    else Phaser.Sprite.call(this, game, x, y, game.character);
     this.anchor.set(0.5, 0.5);
 
     // physic properties
@@ -529,7 +530,7 @@ Crowdjump.Game.update = function () {
         }
     } else if (first_moved > 0) {
         // seconds = Math.floor(game.time.totalElapsedSeconds().toFixed(3) - first_moved) + time_finished;
-        var seconds_this_level = Math.floor(game.time.totalElapsedSeconds().toFixed(3) - first_moved - (timeeggs) - (pause_time/1000));
+        var seconds_this_level = Math.floor(game.time.totalElapsedSeconds().toFixed(3) - first_moved - (timeeggs) - (pause_time / 1000));
         seconds = ((seconds_this_level / 1) + parseFloat(time_finished)).toFixed(0);
         // seconds = seconds.toFixed(0);
     } else {
@@ -572,6 +573,13 @@ Crowdjump.Game.update = function () {
 
     if (CONST_BOUNCINGPLATFORMS) {
         if (this.hero.body.velocity.y < hero_bounce_velocity) hero_bounce_velocity = this.hero.body.velocity.y;
+    }
+
+    if (CONST_SAWBLADES) {
+        for (var i = 0; i < this.sawblades; i++) {
+            this.sawblades[i].angle += 6.5;
+            this.sawbladesBases[i].angle += 6.5;
+        }
     }
 
     if (CONST_SHOOTING && this.game.input.activePointer.isDown && (!CONST_ZHONYA || CONST_SHOOT_IN_ZHONYA)) {
@@ -678,6 +686,12 @@ Crowdjump.Game._handleCollisions = function () {
     this.game.physics.arcade.overlap(this.hero, this.eastereggs, this._onHeroVsEasteregg,
         null, this);
 
+    if (CONST_SAWBLADES) {
+        this.game.physics.arcade.overlap(this.hero, this.sawblades, this._onHeroVsSawblade,
+            null, this);
+        this.game.physics.arcade.collide(this.hero, this.sawbladesBases);
+    }
+
     if (CONST_WALL_JUMP) {
         if (this.hero.body.touching.down) {
 
@@ -697,8 +711,13 @@ Crowdjump.Game._handleCollisions = function () {
     if (CONST_LAVA && !pu_lavaorb && !death) {
         this.game.physics.arcade.overlap(this.hero, this.lava, this._onHeroVsLava,
             null, this);
+        this.game.physics.arcade.collide(this.hero, this.spikes);
     }
 
+    if (CONST_SPIKES) {
+        this.game.physics.arcade.overlap(this.hero, this.spikes, this._onHeroVsSpikes,
+            null, this);
+    }
     if (CONST_CRATES) {
         this.game.physics.arcade.collide(this.hero, this.crates);
         this.game.physics.arcade.collide(this.crates, this.platforms);
@@ -897,6 +916,18 @@ Crowdjump.Game._loadLevel = function (data) {
     if (CONST_LAVA) {
         this.lava = this.game.add.group();
         data.lava.forEach(this._spawnLava, this);
+    }
+
+    //spawn spikes and similar
+    if (CONST_SPIKES) {
+        this.spikes = this.game.add.group();
+        data.spikes.forEach(this._spawnSpikes, this);
+    }
+    //spawn sawblades
+    if (CONST_SAWBLADES) {
+        this.sawblades = this.game.add.group();
+        data.sawblades.forEach(this._spawnSawblade, this);
+        this.sawbladesBases = this.game.add.group();
     }
 
     //spawn powerups
@@ -1128,6 +1159,91 @@ Crowdjump.Game._spawnLava = function (lava) {
     sprite.body.immovable = true;
 };
 
+Crowdjump.Game._spawnSpikes = function (spike) {
+    var newx = spike.x;
+    var newy = spike.y;
+    if (CONST_P2_PHYSICS) {
+        // log(newx,newy);
+        var width = game.cache.getImage(spike.image).width;
+        var height = game.cache.getImage(spike.image).height;
+        newx += width / 2;
+        newy += height / 2;
+    }
+
+    //4 pixel down because of collision
+    newy += 4;
+
+    let sprite = this.spikes.create(
+        newx, newy, spike.image);
+
+    if (CONST_P2_PHYSICS) {
+        this.game.physics.p2.enable(sprite);
+        sprite.body.kinematic = true;
+    } else {
+        this.game.physics.enable(sprite);
+    }
+    sprite.body.allowGravity = false;
+    sprite.body.immovable = true;
+};
+
+Crowdjump.Game._spawnSawblade = function (sawblade) {
+    var newx = sawblade.x;
+    var newy = sawblade.y;
+    if (CONST_P2_PHYSICS) {
+        // log(newx,newy);
+        var width = game.cache.getImage(sawblade.image).width;
+        var height = game.cache.getImage(sawblade.image).height;
+        newx += width / 2;
+        newy += height / 2;
+    }
+
+    let sprite = this.sawblades.create(
+        newx, newy, sawblade.image);
+
+    let basesprite = this.sawbladesBases.create(
+        newx, newy, sawblade.base);
+
+
+    if (CONST_P2_PHYSICS) {
+        this.game.physics.p2.enable(sprite);
+        sprite.body.kinematic = true;
+    } else {
+        this.game.physics.enable(sprite);
+    }
+    sprite.orientation = sawblade.orientation;
+    sprite.body.allowGravity = false;
+    sprite.body.immovable = true;
+
+    switch (this.orientation) {
+        case "up":
+            sprite.body.setSize(42, 42, 21, 0);
+            sprite.x = sawblade.x;
+            sprite.y = sawblade.y - 21;
+            break;
+        case "left":
+            sprite.body.setSize(42, 42, 0, 21);
+            sprite.x = sawblade.x - 21;
+            sprite.y = sawblade.y;
+            basesprite.angle = -90;
+            break;
+        case "right":
+            sprite.body.setSize(42, 42, 42, 21);
+            sprite.x = sawblade.x + 21;
+            sprite.y = sawblade.y;
+            basesprite.angle = 90;
+            break;
+        case "down":
+            sprite.body.setSize(42, 42, 21, 42);
+            sprite.x = sawblade.x;
+            sprite.y = sawblade.y + 21;
+            basesprite.angle = 180;
+            break;
+    }
+    sprite.anchor.set(0.5);
+    basesprite.anchor.set(0.5);
+
+};
+
 Crowdjump.Game._spawnEnemyWall = function (x, y, side) {
     let sprite = this.enemyWalls.create(x, y, 'invisible-wall');
     // anchor and y displacement
@@ -1239,26 +1355,6 @@ Crowdjump.Game._spawnPowerup = function (powerup) {
     sprite.body.allowGravity = false;
 };
 
-Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
-    this.sfx.powerup.play();
-
-    switch (powerup.key) {
-        case "powerup:lavaorb":
-            this.powerup_lavaorb();
-            break;
-        case "powerup:jumpboost":
-            this.powerup_jumpboost();
-            break;
-        default:
-            console.log(powerup.key);
-        //do nothing
-    }
-
-    powerup.kill();
-
-    game.powerupPickupCount++;
-};
-
 Crowdjump.Game.powerup_lavaorb = function () {
     pu_lavaorb = true;
 }
@@ -1281,33 +1377,6 @@ Crowdjump.Game._spawnEasteregg = function (easteregg) {
 
     sprite.body.allowGravity = false;
 };
-
-Crowdjump.Game._onHeroVsEasteregg = function (hero, easteregg) {
-    this.sfx.easteregg.play();
-
-    switch (easteregg.key) {
-        case "easteregg:time":
-            this.easteregg_time()
-            break;
-        case "easteregg:movementspeed":
-            this.easteregg_movementspeed();
-            break;
-        case "easteregg:specialname":
-            this.easteregg_specialname();
-            break;
-        case "easteregg:money":
-            this.easteregg_money();
-            break;
-        default:
-            console.log(easteregg.key);
-        //do nothing
-    }
-
-    easteregg.kill();
-
-    game.eastereggPickupCount++;
-
-}
 
 Crowdjump.Game.easteregg_time = function () {
     timeeggs += 5;
@@ -1372,6 +1441,16 @@ Crowdjump.Game._onHeroVsLava = function (hero, platform) {
     this.killHero("death by lava");
 };
 
+Crowdjump.Game._onHeroVsSpikes = function (hero, spike) {
+    // game over -> restart the game
+    this.killHero("death by spikes");
+};
+
+Crowdjump.Game._onHeroVsSawblade = function (hero, sawblade) {
+    // game over -> restart the game
+    this.killHero("death by a chainsaw");
+};
+
 Crowdjump.Game._onHeroVsSpecialPlatform = function (hero, platform) {
     if (CONST_SLIPPERYPLATFORMS) hero_on_ice = platform.body.slippery;
 
@@ -1399,13 +1478,16 @@ Crowdjump.Game._onHeroVsSpecialPlatform = function (hero, platform) {
 
 Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     this.sfx.flag.play();
-    time_finished = game.time.totalElapsedSeconds() - first_moved;
-    time_finished = parseFloat(time_finished.toFixed(3));
     if (zhonya_activated) {
         this.sfx.zhonyas.stop();
     }
+
+    //dont set time_finished in the last level to avoid double time in last frame
+
     //manually selected level
     if (selected_level >= 0) {
+        time_finished = game.time.totalElapsedSeconds() - first_moved;
+        time_finished = parseFloat(time_finished.toFixed(3));
         time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds() - parseFloat(time_last_level_or_restart);
         time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
 
@@ -1418,6 +1500,8 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
         setLevelInfo(level + 1, "completed", false);
 
         if (CONST_SAVE_LEVEL_TIME) {
+            time_finished = game.time.totalElapsedSeconds() - first_moved;
+            time_finished = parseFloat(time_finished.toFixed(3));
 
             time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds() - parseFloat(time_last_level_or_restart);
             time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
@@ -1450,6 +1534,53 @@ Crowdjump.Game._onHeroVsCoin = function (hero, coin) {
     this.sfx.coin.play();
     coin.kill();
     game.coinPickupCount++;
+};
+
+Crowdjump.Game._onHeroVsEasteregg = function (hero, easteregg) {
+    this.sfx.easteregg.play();
+
+    switch (easteregg.key) {
+        case "easteregg:time":
+            this.easteregg_time()
+            break;
+        case "easteregg:movementspeed":
+            this.easteregg_movementspeed();
+            break;
+        case "easteregg:specialname":
+            this.easteregg_specialname();
+            break;
+        case "easteregg:money":
+            this.easteregg_money();
+            break;
+        default:
+            console.log(easteregg.key);
+        //do nothing
+    }
+
+    easteregg.kill();
+
+    game.eastereggPickupCount++;
+
+}
+
+Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
+    this.sfx.powerup.play();
+
+    switch (powerup.key) {
+        case "powerup:lavaorb":
+            this.powerup_lavaorb();
+            break;
+        case "powerup:jumpboost":
+            this.powerup_jumpboost();
+            break;
+        default:
+            console.log(powerup.key);
+        //do nothing
+    }
+
+    powerup.kill();
+
+    game.powerupPickupCount++;
 };
 
 Crowdjump.Game._onBulletVsPlatform = function (bullet, platform) {
@@ -1520,6 +1651,8 @@ Crowdjump.Game.updateTimer = function () {
 };
 
 Crowdjump.Game._spawnFlag = function (flagspawn) {
+    //old flag 20,45
+    //new flag 21,42
     this.flag = this.flags.create(flagspawn.x + 20, flagspawn.y + 45, 'flag');
     this.flag.anchor.setTo(0.5, 1);
     this.game.physics.enable(this.flag);
@@ -1547,7 +1680,7 @@ Crowdjump.Game._deactivateWalk = function () {
 Crowdjump.Game.paused = function () {
     if (CONST_PAUSE) {
         // this.pausedIndicator.exists = true;
-        if (first_moved >0){
+        if (first_moved > 0) {
         }
         game.elapsedTime = this.game.time;
         this.world.alpha = 0.5;
@@ -1559,7 +1692,7 @@ Crowdjump.Game.paused = function () {
 Crowdjump.Game.resumed = function () {
     if (CONST_PAUSE) {
         // this.pausedIndicator.exists = false;
-        if (first_moved > 0){
+        if (first_moved > 0) {
             pause_time += this.game.time.pauseDuration;
         }
         this.world.alpha = 1;
@@ -1652,7 +1785,7 @@ Crowdjump.Game.killHero = function (reason) {
 
 }
 
-Crowdjump.Game.showMessage = function (message, time, fill,font) {
+Crowdjump.Game.showMessage = function (message, time, fill, font) {
     message_image = this.add.text(CONST_WORLD_CENTER_X, 200, message, {fill: fill, font: font});
     message_image.anchor.set(0.5);
     message_image.fixedToCamera = true;
@@ -1668,13 +1801,12 @@ Crowdjump.Game.showImage = function (imageName, time) {
 
 };
 
-Crowdjump.Game.showEastereggMessage = function (message){
-    this.showMessage(message,3000,'#000000','')
+Crowdjump.Game.showEastereggMessage = function (message) {
+    this.showMessage(message, 3000, '#000000', '')
 }
 
 Crowdjump.Game.restart = function () {
     // game.gameInfo["rounds_started"] = game.gameInfo["rounds_started"] + 1;
-    game.restarts++;
     setLevelInfo(level + 1, "restart", false);
     // updateInfo(false);
     last_second = 0;
@@ -1693,10 +1825,10 @@ Crowdjump.Game.restart = function () {
 Crowdjump.Game.toggleMute = function () {
     if (this.game.sound.mute) {
         this.game.sound.mute = false;
-        this.showImage('unmute',1500);
+        this.showImage('unmute', 1500);
     } else {
         this.game.sound.mute = true;
-        this.showImage('mute',1500);
+        this.showImage('mute', 1500);
     }
 };
 

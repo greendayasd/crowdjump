@@ -17,6 +17,8 @@ from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrac
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 
+from Crowdjump import settings
+
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'ideas', IdeaViewSet)
@@ -98,7 +100,7 @@ urlpatterns = [
 
     url(r'^sendmail/$', mail_new_version, name='sendmail'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # this connects STATIC_URL to STATIC_ROOT
 urlpatterns += staticfiles_urlpatterns()

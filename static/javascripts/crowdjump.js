@@ -103,6 +103,8 @@
     function run($http) {
         $http.defaults.xsrfHeaderName = 'X-CSRFToken';
         $http.defaults.xsrfCookieName = 'csrftoken';
+
+        $http.defaults.headers.post['X-CSRFToken'] = getCookie('csrftoken');
     }
 
     function removeDummy() {

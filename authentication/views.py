@@ -423,12 +423,11 @@ def ChangeCharacter(request):
     else:
         return JsonResponse('{"success":"' + 'user' + '"}', safe=False)
 
-    character = int(request.GET.get('character'))
+    character = request.GET.get('character')
 
-    if character < 4:
-        acc = Account.objects.filter(id=userid)[0]
-        acc.character = character
-        acc.save()
+    acc = Account.objects.filter(id=userid)[0]
+    acc.character = character
+    acc.save()
 
     return JsonResponse('{"success":"true"}', safe=False)
 

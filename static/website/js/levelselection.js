@@ -1,11 +1,11 @@
 var Crowdjump = Crowdjump || {};
 
-Crowdjump.Levelselection = function (game) {
+Crowdjump.LevelSelection = function (game) {
     var text = [];
     var group;
 };
 
-Crowdjump.Levelselection.prototype = {
+Crowdjump.LevelSelection.prototype = {
     create: function () {
         var rows = 4,
             columns = -1,

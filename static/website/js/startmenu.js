@@ -17,7 +17,7 @@ Crowdjump.Menu.prototype = {
             CONST_WORLD_CENTER_Y - 80, 'logo');
         logo.anchor.set(0.5);
         //+40 with level selection, font 40
-        startGame = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 60, "Play", {
+        startGame = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 40, "Play", {
             font: "50px Arial",
             fill: '#dbdbdb'
         });
@@ -25,21 +25,36 @@ Crowdjump.Menu.prototype = {
         startGame.inputEnabled = true;
         startGame.events.onInputDown.add(this.phasergame, this);
 
+        if (CONST_CHARACTERSELECTION) {
+            selectCharacter = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 120, "Select Character", {
+                font: "40px Arial",
+                fill: '#dbdbdb'
+            });
+            selectCharacter.anchor.set(0.5);
+            selectCharacter.inputEnabled = true;
+            selectCharacter.events.onInputDown.add(this.characterSelection, this);
 
-        // selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 120, "Select Level", {
-        //     font: "40px Arial",
-        //     fill: '#dbdbdb'
-        // });
-        // selectLevel.anchor.set(0.5);
-        // selectLevel.inputEnabled = true;
-        // selectLevel.events.onInputDown.add(this.levelselection, this);
+            key2 = game.input.keyboard.addKey(Phaser.Keyboard.TWO);
+            key2.onDown.add(this.characterSelection, this);
+        }
+
+
+        if (CONST_LEVELSELECTION) {
+            selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 120, "Select Level", {
+                font: "40px Arial",
+                fill: '#dbdbdb'
+            });
+            selectLevel.anchor.set(0.5);
+            selectLevel.inputEnabled = true;
+            selectLevel.events.onInputDown.add(this.levelSelection, this);
+
+            key2 = game.input.keyboard.addKey(Phaser.Keyboard.TWO);
+            key2.onDown.add(this.levelSelection, this);
+        }
 
 
         key1 = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
         key1.onDown.add(this.phasergame, this);
-
-        key2 = game.input.keyboard.addKey(Phaser.Keyboard.TWO);
-        key2.onDown.add(this.levelselection, this);
 
 
         var instructionText = "The goal is simple: Control the alien by using the arrow keys \n" +
@@ -57,8 +72,12 @@ Crowdjump.Menu.prototype = {
         game.state.start('Game');
     },
 
-    levelselection: function () {
-        game.state.start('Levelselection');
+    levelSelection: function () {
+        game.state.start('LevelSelection');
+    },
+
+    characterSelection: function () {
+        game.state.start('CharacterSelection');
     },
 
     endscreen: function () {

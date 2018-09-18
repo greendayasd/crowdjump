@@ -124,7 +124,7 @@ function setInfo(isHighscore) {
         game.gameInfo["rounds_won"] = game.gameInfo["rounds_won"] + 1;
     }
     // log(JSON.stringify(this.game));
-    setLevelInfo(this.level + 1, "completed", isHighscore);
+    setLevelInfo(level + 1, "completed", isHighscore);
 
     //reset after setLevelInfo
     first_moved = 0;
