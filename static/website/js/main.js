@@ -17,8 +17,8 @@ const CONST_LEVEL = 1;
 const CONST_TIME = true;
 const CONST_TIME_WHEN_MOVED = true;
 
-const CONST_LAVA = false;
-const CONST_SPIKES = false;
+const CONST_LAVA = true;
+const CONST_SPIKES = true;
 const CONST_SAWBLADES = false;
 const CONST_LAVASWITCHINGPLATFORM = false;
 const CONST_SLIPPERYPLATFORMS = false;

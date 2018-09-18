@@ -109,6 +109,7 @@ Crowdjump.Endscreen.prototype = {
     replay: function () {
         //reset time
         this.game.time.reset();
+        resetStats();
         this.state.start('Game');
     },
 
