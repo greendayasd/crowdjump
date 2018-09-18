@@ -237,7 +237,7 @@
                 }
             });
 
-        }
+        };
 
         var transferTrackingData = function (token, username) {
             if (token == username) return
@@ -258,7 +258,7 @@
             });
             deleteIdentifier();
             //console.log(token + ' to ' + username);
-        }
+        };
 
         var transferGameData = function (token, username) {
             if (token == username) return
@@ -278,7 +278,7 @@
                 error: function (data) {
                 }
             });
-        }
+        };
 
         var tracksite = function () {
             var url = window.location.pathname;
@@ -292,6 +292,31 @@
             //console.log(getCookie('lastpage')+','+getCookie('page')+','+getCookie('time'));
             startClock();
 
+
+        };
+
+        var refreshAccount = function () {
+            log("refresh");
+
+            account = JSON.parse(getAuthCookie('authenticatedAccount'));
+            account.uploaded_character = "/media/characters/" +  account.id + ".png";
+            setCookie("authenticatedAccount", JSON.stringify(account), 365);
+            /*var data = {};
+
+            $.ajax({
+                url: '/refreshAccount/',
+                data: data,
+                success: function (data) {
+                    var acc = data.data;
+                    log(data.data);
+                    var expireDate = new Date();
+                    expireDate.setDate(expireDate.getDate() + 365);
+                    $cookies.put("authenticatedAccount", JSON.stringify(acc), {'expires': expireDate});
+                },
+                error: function (data) {
+                    console.log("error refresh: " + JSON.stringify(data));
+                }
+            });*/
 
         }
 

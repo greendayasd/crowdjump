@@ -12,6 +12,7 @@ from django.shortcuts import render
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.views.decorators.csrf import csrf_exempt
 
+
 class AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
     queryset = Account.objects.all()
@@ -77,6 +78,17 @@ class LoginView(views.APIView):
             }, status=status.HTTP_401_UNAUTHORIZED)
 
 
+def RefreshAccount(request):
+    if request.user.is_authenticated:
+        userid = request.user.id
+    else:
+        return JsonResponse({}, safe=False)
+    acc = Account.objects.filter(id=userid)[0]
+    serialized = AccountSerializer(acc)
+    print(serialized)
+    return Response(serialized.data)
+
+
 class LogoutView(views.APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
@@ -117,6 +129,7 @@ def CreateGamedata(request):
             return JsonResponse({}, safe=False)
 
     except:
+        print('new GameInfo')
         gameinfo = GameInfo(user_id=userid, version_id=v.id)
         gameinfo.save()
 
@@ -446,15 +459,14 @@ def UploadCharacter(request):
             acc = Account.objects.filter(id=userid)[0]
             image = form.cleaned_data['image']
             size = len(image)
-            if (size > 20*1024):
+            if (size > 20 * 1024):
                 return JsonResponse('{"Image to big! Max size is 20kb":"' + str(size) + '"}', safe=False)
             acc.uploaded_character = form.cleaned_data['image']
             acc.save()
 
-            template_name = static('templates/layout/game.html')
-            # return render(request, template_name)
+            # change cookie
             print("test2")
-            return HttpResponseRedirect('/game')
+            return HttpResponseRedirect('/game2')
         return HttpResponseRedirect('/game')
     else:
         return HttpResponseForbidden('allowed only via POST')

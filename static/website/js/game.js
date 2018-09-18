@@ -1508,10 +1508,6 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
 
             time_last_level_or_restart = game.time.totalElapsedSeconds().toFixed(3);
         } else {
-            //find better way
-            time_finished = game.time.totalElapsedSeconds() - first_moved;
-            time_finished = parseFloat(time_finished.toFixed(3));
-
             time_overall = parseFloat(time_overall) + (game.time.totalElapsedSeconds() - first_moved);
             time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
 
@@ -1770,6 +1766,8 @@ Crowdjump.Game.killHero = function (reason) {
     console.log("you died because of " + reason);
     this.timeFont.text = '0';
     setLevelInfo(level + 1, reason, false);
+    time_finished = game.time.totalElapsedSeconds() - first_moved;
+    time_finished = parseFloat(time_finished.toFixed(3));
     lives -= 1;
 
     if (CONST_REPLAY_LEVEL) {
@@ -1779,9 +1777,17 @@ Crowdjump.Game.killHero = function (reason) {
     }
 
     if (lives <= 0) {
-        // updateInfo(false);
-        this.game.time.reset();
-        game.timeElapsed = 0;
+        // reset?
+        // this.game.time.reset();
+        // game.timeElapsed = 0;
+        //
+        // last_second = 0;
+        // first_moved = 0;
+        // time_finished = 0;
+        // time_overall = 0;
+        // time_last_level_or_restart = 0;
+        // resetStats();
+
         this.state.start('Gameover');
     } else {
         this.game.state.restart(true, false, {level: level});
@@ -1810,14 +1816,20 @@ Crowdjump.Game.showEastereggMessage = function (message) {
 }
 
 Crowdjump.Game.restart = function () {
-    // game.gameInfo["rounds_started"] = game.gameInfo["rounds_started"] + 1;
+    time_finished = game.time.totalElapsedSeconds() - first_moved;
+    time_finished = parseFloat(time_finished.toFixed(3));
+    if (first_moved == 0) time_finished = 0;
+
+
     setLevelInfo(level + 1, "restart", false);
     // updateInfo(false);
+
     last_second = 0;
     first_moved = 0;
     time_finished = 0;
     time_overall = 0;
     time_last_level_or_restart = 0;
+    resetStats();
     lives = CONST_HERO_LIVES;
 
     resetStats();

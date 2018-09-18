@@ -204,7 +204,6 @@ function getInfo() {
     var username = account["username"];
 
     if (account["versionlabel"] != versionlabel) {
-        // console.log("increase versionlabel");
         increase_versionlabel(username, true);
     }
 
@@ -221,7 +220,6 @@ function setLevelInfo(level, status, isHighscore) {
     var username = getUsername();
     var time = time_finished;
     var final_time = ((time - time_last_level) * 1000).toFixed(0);
-
 
     var data = {
         "username": username,
@@ -328,7 +326,11 @@ function setInfoLastLevel() {
 }
 
 function backToMainMenu() {
-
+    if (game.state.current == "Game") {
+        time_finished = game.time.totalElapsedSeconds() - first_moved;
+        time_finished = parseFloat(time_finished.toFixed(3));
+        if (first_moved == 0) time_finished = 0;
+    }
     if (game.state.current != "Endscreen") setLevelInfo(this.level + 1, "back to start menu");
 
     // updateInfo(false);

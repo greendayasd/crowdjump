@@ -20,6 +20,9 @@ Crowdjump.Endscreen.prototype = {
 
 
         if (CONST_TIME) {
+
+            time_finished = parseFloat(time_overall);
+            time_finished = parseFloat(time_finished.toFixed(3));
             time_score = parseFloat((parseFloat(time_overall) - (game.coinPickupCount * 0.5)).toFixed(3));
             time_overall = 0;
         }
@@ -125,6 +128,7 @@ function setInfo(isHighscore) {
     }
     // log(JSON.stringify(this.game));
     setLevelInfo(level + 1, "completed", isHighscore);
+    time_finished = 0;
 
     // updateInfo(isHighscore);
 }

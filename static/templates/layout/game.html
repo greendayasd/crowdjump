@@ -122,7 +122,7 @@
 
     <div class="row" ng-controller="IndexController as vm" ng-show="vm.isAuthenticated">
         <br>
-        <h4 style="color:black;margin-left: 0px">Here you can upload your own skin (max 34x42px, 20kb). Just post your
+        <h4 style="color:black;margin-left: 0px">Here you can upload your own skin (.png, max 34x42px, 20kb). Just post your
             file here! </h4>
         <form action="uploadCharacter/" method="post" enctype="multipart/form-data">
             <div class="alert alert-danger" ng-show="error" ng-bind="error"></div>
@@ -130,7 +130,7 @@
             <div class="form-group">
                 <div class="fileUpload btn btn-primary">
                     <span>Upload</span>
-                    <input id="file" type="file" class="upload" name="image" accept="image/*">
+                    <input id="file" type="file" class="upload" name="image" accept="image/png">
                 </div>
                 <input id="uploadFile" placeholder="Choose File" disabled="disabled"/>
                 <input id="submitFile" type="submit" value="Submit" class="btn btn-primary"

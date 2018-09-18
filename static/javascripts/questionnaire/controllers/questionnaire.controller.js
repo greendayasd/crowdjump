@@ -89,6 +89,10 @@
                 window.location.href = '/';
             }
 
+            if(vm.url.includes("game2")){
+                refreshAccount();
+            }
+
             // else if (vm.surveystatus > 3 && !vm.url.includes("postsurvey" + vm.surveystatus)) {
             //     console.log(vm.surveystatus);
             //     window.location.href = '/survey' + vm.surveystatus;

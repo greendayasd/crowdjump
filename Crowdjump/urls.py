@@ -12,7 +12,7 @@ from Crowdjump.mailFunctions import mail_new_version
 
 from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData, GetTrackingData, \
     GetAllTrackingData, TransferData, SendGameData, GetGameData, GetAllGameDataUser, GetAllGameData, GetAllUserGame, \
-    Unsubscribe, CreateGamedata, ChangeCharacter, UploadCharacter
+    Unsubscribe, CreateGamedata, ChangeCharacter, UploadCharacter, RefreshAccount
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
@@ -49,6 +49,7 @@ urlpatterns = [
     # redirects
     url(r'^ideas/$', IndexView.as_view()),
     url(r'^game/$', IndexView.as_view()),
+    url(r'^game2/$', IndexView.as_view()),
     url(r'^history/$', IndexView.as_view()),
     url(r'^login/$', IndexView.as_view()),
     url(r'^register/$', IndexView.as_view()),
@@ -97,6 +98,7 @@ urlpatterns = [
     url(r'^createGamedata/$', CreateGamedata, name='createGamedata'),
     url(r'^changeCharacter/$', ChangeCharacter, name='changeCharacter'),
     url(r'^uploadCharacter/$', UploadCharacter, name='uploadCharacter'),
+    url(r'^refreshAccount/$', RefreshAccount, name='refreshAccount'),
 
     url(r'^sendmail/$', mail_new_version, name='sendmail'),
 

@@ -110,7 +110,7 @@
             var found = false;
             //is player already in highscore list?
             for (var i = 0; i < $scope.statistics.length; i++) {
-                if ($scope.statistics[i].user.username == user) {
+                if ($scope.statistics[i].user.username == username) {
                     found = true;
                     $scope.statistics[i].highscore = highscore;
                     $scope.sort_all();

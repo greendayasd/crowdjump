@@ -129,6 +129,7 @@
                     if (cookie_increase) {
                         var res = $cookies.getObject("authenticatedAccount");
                         res["versionlabel"] = versionlabel;
+                        window.location.href = '/game';
                     }
                 },
                 error: function (data) {

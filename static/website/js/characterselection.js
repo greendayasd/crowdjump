@@ -37,6 +37,7 @@ Crowdjump.CharacterSelection.prototype = {
         group.x = border_horizontal;
         group.y = border_vertical;
 
+        log(account);
         if (account.uploaded_character != '' && account.uploaded_character != null) {
             own_character = this.add.sprite(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 50, getFileName(account.uploaded_character));
             own_character.anchor.set(0.5);

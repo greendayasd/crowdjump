@@ -38,6 +38,11 @@
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/game.html'
 
+        }).when('/game2', {
+            controller: 'GameController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/layout/game.html'
+
         }).when('/chat', {
             controller: 'ChatController',
             controllerAs: 'vm',
