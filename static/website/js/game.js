@@ -1508,6 +1508,10 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
 
             time_last_level_or_restart = game.time.totalElapsedSeconds().toFixed(3);
         } else {
+            //find better way
+            time_finished = game.time.totalElapsedSeconds() - first_moved;
+            time_finished = parseFloat(time_finished.toFixed(3));
+
             time_overall = parseFloat(time_overall) + (game.time.totalElapsedSeconds() - first_moved);
             time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
 

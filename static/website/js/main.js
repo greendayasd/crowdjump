@@ -262,7 +262,7 @@ function setLevelInfo(level, status, isHighscore) {
         //reset after setLevelInfo
         first_moved = 0;
         time_finished = 0;
-    
+
     }
 }
 
