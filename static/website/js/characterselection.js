@@ -37,14 +37,15 @@ Crowdjump.CharacterSelection.prototype = {
         group.x = border_horizontal;
         group.y = border_vertical;
 
-        log(account);
-        if (account.uploaded_character != '' && account.uploaded_character != null) {
-            own_character = this.add.sprite(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 50, getFileName(account.uploaded_character));
-            own_character.anchor.set(0.5);
-            own_character.inputEnabled = true;
-            own_character.character = getFileName(account.uploaded_character);
-            own_character.events.onInputDown.add(this.selectCharacter, this);
+        if (account != null) {
+            if (account.uploaded_character != '' && account.uploaded_character != null) {
+                own_character = this.add.sprite(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 50, getFileName(account.uploaded_character));
+                own_character.anchor.set(0.5);
+                own_character.inputEnabled = true;
+                own_character.character = getFileName(account.uploaded_character);
+                own_character.events.onInputDown.add(this.selectCharacter, this);
 
+            }
         }
 
         // upload = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 150, "Upload", {
