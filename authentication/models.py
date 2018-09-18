@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from website.models import Version
+import os
+from authentication.storage import OverwriteStorage
+from django.core.exceptions import ValidationError
 
 
 class AccountManager(BaseUserManager):
@@ -29,15 +32,30 @@ class AccountManager(BaseUserManager):
         return account
 
 
-class Account(AbstractBaseUser):
+def validate_character_size(image):
+    validate_file_size(image, 20 * 1024)
 
+
+def validate_file_size(file, bytes):
+    file_size = file.file.size
+    print(file_size)
+    if file_size > bytes:
+        raise ValidationError("Max size of file is %s Bytes" % bytes)
+
+
+def character_upload(instance, filename):
+    filename, file_extension = os.path.splitext('/' + filename)
+    filename = str(instance.id) + file_extension
+    return os.path.join('characters/', filename)
+
+
+class Account(AbstractBaseUser):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=40, unique=True)
 
     first_name = models.CharField(max_length=40, blank=True)
     last_name = models.CharField(max_length=40, blank=True)
     tagline = models.CharField(max_length=140, blank=True)
-
 
     requests_left = models.IntegerField(default=1)
     votes_left = models.IntegerField(default=1)
@@ -47,7 +65,7 @@ class Account(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     is_activated = models.BooleanField(default=True)
 
-    #weight
+    # weight
     vote_weight = models.IntegerField(default=1)
     vote_multiplier = models.DecimalField(default=1, max_digits=5, decimal_places=2)
 
@@ -57,6 +75,10 @@ class Account(AbstractBaseUser):
     updated_at = models.DateTimeField(auto_now=True)
 
     versionlabel = models.CharField(max_length=40, blank=True, default='0.01')
+
+    character = models.CharField(max_length=40, blank=True)
+    uploaded_character = models.ImageField(upload_to=character_upload, storage=OverwriteStorage(), null=True,
+                                           validators=[validate_character_size])
 
     objects = AccountManager()
 
@@ -84,9 +106,9 @@ class Account(AbstractBaseUser):
     def __str__(self):
         return self.username
 
-    def current_version_beaten (self):
+    def current_version_beaten(self):
         ver = Version.objects.all().order_by('-id')[0]
-        current = GameInfo.objects.all().filter(version=ver,user=self.user)
+        current = GameInfo.objects.all().filter(version=ver, user=self.user)
         return current.rounds_won >= 1
 
 
@@ -115,7 +137,6 @@ class GameInfo(models.Model):
     def __str__(self):
         return self.version.label + '  ' + self.user.username + '  ' + self.rounds_won + ...
         '/' + self.rounds_started
-
 
     def __unicode__(self):
         return '{0}'.format(self.description)

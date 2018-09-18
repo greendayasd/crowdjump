@@ -5,10 +5,12 @@ from authentication.permissions import IsAccountOwner
 from authentication.serializers import AccountSerializer, AccountSerializerPrivate
 from rest_framework.response import Response
 from rest_framework import status, permissions, viewsets, views
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseForbidden, HttpResponseRedirect
 from website.models import Version
-import http.cookiejar, urllib.request, requests
-
+from authentication.forms import ImageUploadForm
+from django.shortcuts import render
+from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.views.decorators.csrf import csrf_exempt
 
 class AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
@@ -106,15 +108,12 @@ def CreateGamedata(request):
     else:
         return JsonResponse({}, safe=False)
 
-    try:
-        v = Version.objects.order_by('-id')[0]
-    except:
-        print("no Version found")
+    v = Version.objects.order_by('-id')[0]
 
     try:
         # if found return
         gameinfo = GameInfo.objects.filter(user_id=userid, version_id=v.id)
-        if gameinfo.user_id == userid:
+        if gameinfo.user_id == int(userid):
             return JsonResponse({}, safe=False)
 
     except:
@@ -317,6 +316,7 @@ def SendGameData(request):
     coins_collected = request.GET.get('coins_collected')
     eastereggs_found = request.GET.get('eastereggs_found')
     special_name = request.GET.get('special_name')
+    character = request.GET.get('character')
 
     try:
         highscore = request.GET.get('highscore')
@@ -335,6 +335,9 @@ def SendGameData(request):
     elif status == 'restart':
         newstatus = 'r'
 
+    elif status == 'back to start menu':
+        newstatus = 'menu'
+
     else:
         newstatus = 'd'
 
@@ -352,7 +355,8 @@ def SendGameData(request):
            '", "coins_collected":"' + coins_collected + \
            '", eastereggs_found":"' + eastereggs_found + \
            '", special_name":"' + special_name + \
-           '" }'
+           '", character":"' + character + \
+           '"}'
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     folder_path = os.path.join(BASE_DIR, 'data')
@@ -375,15 +379,12 @@ def SendGameData(request):
         with open(save_path, 'w+') as outfile:
             outfile.write(data)
 
-
-
     if DBChange:
         try:
             acc = GameInfo.objects.filter(user_id=request.user.id, version_id=v.id)[0]
 
         except:
-            CreateGamedata(request)
-            acc = GameInfo.objects.filter(user_id=request.user.id, version_id=v.id)[0]
+            return JsonResponse('{"success":"no gamedata"}', safe=False)
 
         acc.coins_collected = max(acc.coins_collected, int(coins_collected))
         acc.enemies_killed += int(enemies_killed)
@@ -406,16 +407,58 @@ def SendGameData(request):
 
         acc.highest_level = max(acc.highest_level, int(level))
 
-
         if acc.highscore <= -1:
             acc.highscore = highscore
         elif highscore > -1:
             acc.highscore = min(acc.highscore, highscore)
 
-
         acc.save()
 
     return JsonResponse('{"success":"true"}', safe=False)
+
+
+def ChangeCharacter(request):
+    if request.user.is_authenticated:
+        userid = request.user.id
+    else:
+        return JsonResponse('{"success":"' + 'user' + '"}', safe=False)
+
+    character = int(request.GET.get('character'))
+
+    if character < 4:
+        acc = Account.objects.filter(id=userid)[0]
+        acc.character = character
+        acc.save()
+
+    return JsonResponse('{"success":"true"}', safe=False)
+
+
+@csrf_exempt
+def UploadCharacter(request):
+    if request.user.is_authenticated:
+        userid = request.user.id
+    else:
+        return JsonResponse('{"success":"' + 'user' + '"}', safe=False)
+    print(request.method)
+    if request.method == 'POST' or request.method == 'GET':
+        form = ImageUploadForm(request.POST, request.FILES)
+        print(form)
+        if form.is_valid():
+            acc = Account.objects.filter(id=userid)[0]
+            image = form.cleaned_data['image']
+            size = len(image)
+            if (size > 20*1024):
+                return JsonResponse('{"Image to big! Max size is 20kb":"' + str(size) + '"}', safe=False)
+            acc.uploaded_character = form.cleaned_data['image']
+            acc.save()
+
+            template_name = static('templates/layout/game.html')
+            # return render(request, template_name)
+            print("test2")
+            return HttpResponseRedirect('/game')
+        return HttpResponseRedirect('/game')
+    else:
+        return HttpResponseForbidden('allowed only via POST')
 
 
 def GetGameData(request):
