@@ -78,7 +78,7 @@ const CONST_CHARACTER_COUNT = 4;
 const CONST_COLOR = false;
 
 const CONST_SHOWLEVEL = false;
-const CONST_FPS = false;
+const CONST_FPS = true;
 const CONST_P2_PHYSICS = false;
 const CONST_DEBUG = false;
 const CONST_CHEAT = false;

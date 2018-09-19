@@ -44,6 +44,7 @@ Crowdjump.Game = function (game) {
 
     var tween = null;
 
+    var show_fps = false;
     var first_moved = -1;
     var timeeggs = 0;
 }
@@ -401,6 +402,7 @@ Crowdjump.Game.init = function (data) {
     lavaConverts = [];
     oldGround = [];
     newLava = [];
+    show_fps = false;
 
     try {
         if (level == 0 && (lives == undefined || lives <= 0)) lives = CONST_HERO_LIVES;
@@ -503,6 +505,7 @@ Crowdjump.Game.create = function () {
         this.input.keyboard.addKey(Phaser.KeyCode.M).onUp.add(this.toggleMute, this);
     }
 
+    if (CONST_FPS) this.input.keyboard.addKey(Phaser.KeyCode.F).onUp.add(this.toggleFPS, this);
 
     this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
     this.game.camera.follow(this.hero);
@@ -556,7 +559,7 @@ Crowdjump.Game.update = function () {
     this.timeFont.text = `${seconds}`;
     this.coinFont.text = `x${game.coinPickupCount}`;
 
-    if (CONST_FPS && this.game.time.fps !== 0) {
+    if (CONST_FPS && this.game.time.fps !== 0 && show_fps) {
         fpsText.setText(this.game.time.fps + ' FPS');
 
     }
@@ -1894,4 +1897,8 @@ Crowdjump.Game.togglePause = function () {
     } else {
         this.game.paused = true;
     }
+};
+
+Crowdjump.Game.toggleFPS = function () {
+    show_fps = !show_fps;
 };
