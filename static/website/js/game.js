@@ -1800,9 +1800,9 @@ Crowdjump.Game.killHero = function (reason) {
     this.hero.kill();
     console.log("you died because of " + reason);
     this.timeFont.text = '0';
-    setLevelInfo(level + 1, reason, false);
     time_finished = game.time.totalElapsedSeconds() - first_moved;
     time_finished = parseFloat(time_finished.toFixed(3));
+    setLevelInfo(level + 1, reason, false);
     lives -= 1;
 
     if (CONST_REPLAY_LEVEL) {
