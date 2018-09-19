@@ -122,7 +122,10 @@
                 $scope.statistics.push(data);
                 $scope.sort_all();
                 $scope.$apply();
-                $scope.statistics.pop();
+                if ($scope.statistics.length > topcut){
+                    $scope.statistics.pop();
+                }
+
 
 
             }
