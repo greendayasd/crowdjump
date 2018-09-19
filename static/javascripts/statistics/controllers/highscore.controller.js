@@ -152,6 +152,14 @@
                 $scope.versions_max = data.data;
                 // $scope.versions.unshift({id: -1, label: "all"});
                 $scope.newestVersion = $scope.versions[0];
+                for (var i=$scope.versions.length-1; i>= 0;i--){
+                    switch($scope.versions[i].id){
+                        case 4:
+                        case 5:
+                            $scope.versions.splice(i, 1);
+                            break;
+                    }
+                }
 
 
             }
