@@ -270,7 +270,7 @@ def AntiCheat(status, level, timeneeded, jumps, movement_inputs, enemies_killed,
         cheated += '_enemiesKilled'
 
     # coins (+10 per coin easteregg)
-    if (int(level) == 1 and int(coins_collected) > 31
+    if (int(level) == 1 and int(coins_collected) > 62
             or int(level) == 2 and int(coins_collected) > 1
             or int(level) == 3 and int(coins_collected) > 1
             or int(level) == 4 and int(coins_collected) > 1):
@@ -366,9 +366,9 @@ def SendGameData(request):
            '", "jumps":"' + jumps + \
            '", "movement_inputs":"' + movement_inputs + \
            '", "coins_collected":"' + coins_collected + \
-           '", eastereggs_found":"' + eastereggs_found + \
-           '", special_name":"' + special_name + \
-           '", character":"' + character + \
+           '", "eastereggs_found":"' + eastereggs_found + \
+           '", "special_name":"' + special_name + \
+           '", "character":"' + character + \
            '"}'
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
