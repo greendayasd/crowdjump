@@ -17,6 +17,7 @@
                 <button type="button" class="btn btn-xs btn-primary" ng-click="getQuestionnaire('kim')">KIM
                 </button><br>
 
+
                 <h3>Ideas</h3>
 
                 <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('active_ideacomments')">Active
@@ -30,8 +31,9 @@
                 <button type="button" class="btn btn-xs btn-primary" ng-click="getCsv('implemented_ideas')">
                     Implemented Ideas (grouped by user)
                 </button>
-
                 <br>
+
+
                 <h3>Usertracking</h3>
                 <input type="text" name="Username" ng-model="username">
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_tracking_user(username,false)">
@@ -48,6 +50,7 @@
                 </button>
                 <br>
 
+
                 <h3>Gamedata</h3>
                 <select ng-model="newestVersion"
                         ng-options="template.label for template in versions track by template.id"
@@ -56,6 +59,8 @@
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_game_user_version()">Get users
                 </button>
                 <br><br>
+
+
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_gamedata_user(username,false)">
                     Gamedata user version
                 </button>
@@ -76,6 +81,8 @@
                     grouped by level and status
                 </button>
                 <br><br>
+
+
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_gamedata_user(username,false,true)">
                     Gamedata user version time
                 </button>
@@ -87,10 +94,15 @@
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_all_gamedata(false,true,true)">All gamedata time
                 </button>
                 <br><br>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_json_sum()">Sum up Json
+                </button>
+                <br><br>
+
                 <!--<h3>Random Org</h3>
                 <button type="button" class="btn btn-xs btn-primary" ng-click="get_idea_list()">get Idea List
                 </button>
                 <br>-->
+
 
                 <a href="javascript:void(0)" id="dlcsv">
                     <button>Download Csv</button>

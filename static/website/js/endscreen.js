@@ -64,7 +64,7 @@ Crowdjump.Endscreen.prototype = {
 
             scoreText = "Congratulations, you beat the game in " + time_score + " seconds!" + highscore_text;
         }
-        score = this.add.text(CONST_WORLD_CENTER_X, 60, scoreText, {fill: '#dbdbdb'});
+        score = this.add.text(CONST_WORLD_CENTER_X, 60, scoreText, {fill: '#dbdbdb', align:"center"});
         score.anchor.set(0.5);
 
         if (old_time == -2) {

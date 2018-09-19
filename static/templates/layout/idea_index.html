@@ -177,11 +177,9 @@
                                 </div>
                                 <br>
                                 <div class="idea__content">
-                                    <b>Title </b><br>
-                                    {{ idea.request_text }} <span style="color:#2e8020; font-weight: bold"
-                                                                  ng-if="idea.implemented == true"> (already implemented) </span>
-                                    <br><br>
-                                    <b>Description </b><br>
+                                    <b><h4>{{ idea.request_text }}</b> <span style="color:#2e8020; font-weight: bold"
+                                                                  ng-if="idea.implemented == true"> (already implemented) </span></h5>
+                                    <b>Description</b><br>
                                     {{ idea.description }} <br>
                                 </div>
                                 <div class="idea__estimated_time" ng-if="idea.estimated_time != Null">

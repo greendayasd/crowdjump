@@ -36,8 +36,11 @@ Crowdjump.Preloader.prototype = {
         // this.load.image('select_level', images + 'select_level.png');
         this.load.image('bubble', images + 'ideabubble.png');
         this.load.image('alien_death', images + 'alien_death.png');
-        this.load.image('mute', images + 'mute.png');
-        this.load.image('unmute', images + 'unmute.png');
+
+        if (CONST_MUTE) {
+            this.load.image('mute', images + 'mute.png');
+            this.load.image('unmute', images + 'unmute.png');
+        }
 
 
         // alle Level laden
@@ -79,22 +82,30 @@ Crowdjump.Preloader.prototype = {
         this.load.image('fakeground:1x1', tiles + 'fakeground_1x1.png');
         this.load.image('fakeground:1x2', tiles + 'fakeground_1x2.png');
 
-        this.load.image('lavaground:2x1', tiles + 'lavaground_2x1.png');
-
         this.load.image('grass:1x1', tiles + 'grass_1x1.png');
         this.load.image('grass:2x1', tiles + 'grass_2x1.png');
         this.load.image('grass:4x1', tiles + 'grass_4x1.png');
         this.load.image('grass:6x1', tiles + 'grass_6x1.png');
         this.load.image('grass:8x1', tiles + 'grass_8x1.png');
 
-        this.load.image('ice:1x1', tiles + 'ice_1x1.png');
-        this.load.image('ice:2x1', tiles + 'ice_2x1.png');
-        this.load.image('ice:6x1', tiles + 'ice_6x1.png');
+        if (CONST_SLIPPERYPLATFORMS) {
+            this.load.image('ice:1x1', tiles + 'ice_1x1.png');
+            this.load.image('ice:2x1', tiles + 'ice_2x1.png');
+            this.load.image('ice:6x1', tiles + 'ice_6x1.png');
+        }
 
-        this.load.image('lava:1x1', tiles + 'lava_1x1.png');
-        this.load.image('lava:2x1', tiles + 'lava_2x1.png');
+        if (CONST_LAVA) {
+            this.load.image('lava:1x1', tiles + 'lava_1x1.png');
+            this.load.image('lava:2x1', tiles + 'lava_2x1.png');
+            this.load.image('lavabase:1x1', tiles + 'lavabase_1x1.png');
+            this.load.image('lavabase:2x2', tiles + 'lavabase_2x2.png');
+        }
 
-        this.load.image('bounce:1x1', tiles + 'bounce_1x1.png');
+        if (CONST_LAVASWITCHINGPLATFORM) {
+            this.load.image('lavaground:2x1', tiles + 'lavaground_2x1.png');
+        }
+
+        if (CONST_BOUNCINGPLATFORMS) this.load.image('bounce:1x1', tiles + 'bounce_1x1.png');
 
         if (CONST_DEBUG) {
             this.load.image('invisible_wall', tiles + 'invisible_wall_debug.png');
@@ -117,11 +128,13 @@ Crowdjump.Preloader.prototype = {
         this.load.image('invisible:4x1', tiles + 'invisible_4x1.png');
         this.load.image('invisible:8x1', tiles + 'invisible_8x1.png');
 
-        if (CONST_ANIMATE_CONVEYOR) {
+        if (CONST_CONVEYORPLATFORMS) {
+            if (CONST_ANIMATE_CONVEYOR) {
 
-        } else {
-            this.load.image('conveyor_right:1x1', tiles + 'conveyor_right_1x1.png');
-            this.load.image('conveyor_left:1x1', tiles + 'conveyor_left_1x1.png');
+            } else {
+                this.load.image('conveyor_right:1x1', tiles + 'conveyor_right_1x1.png');
+                this.load.image('conveyor_left:1x1', tiles + 'conveyor_left_1x1.png');
+            }
         }
 
         //characters
@@ -139,48 +152,59 @@ Crowdjump.Preloader.prototype = {
 
 
         //obstacles
-        this.load.image('spikes:1x1', obstacles + 'spikes_1x1.png');
+        if (CONST_SPIKES) this.load.image('spikes:1x1', obstacles + 'spikes_1x1.png');
 
         //collectibles
-        this.load.image('easteregg:specialname', collectibles + 'easteregg_specialname.png');
-        this.load.image('easteregg:time', collectibles + 'easteregg_time.png');
-        this.load.image('easteregg:movementspeed', collectibles + 'easteregg_movementspeed.png');
-        this.load.image('easteregg:money', collectibles + 'easteregg_money.png');
-
-        this.load.image('powerup:lavaorb', collectibles + 'powerup_lavaorb.png');
-        this.load.image('powerup:jumpboost', collectibles + 'powerup_jumpboost.png');
-        this.load.image('powerup:zhonyas', collectibles + 'powerup_zhonyas.png');
-
-
-        if (CONST_ANIMATE_COIN) {
-            this.load.spritesheet('coin', collectibles + 'coin_animated.png', 22, 22);
-        } else {
-            this.load.image('coin', collectibles + 'coin_icon.png');
+        if (CONST_EASTEREGGS) {
+            this.load.image('easteregg:specialname', collectibles + 'easteregg_specialname.png');
+            this.load.image('easteregg:time', collectibles + 'easteregg_time.png');
+            this.load.image('easteregg:movementspeed', collectibles + 'easteregg_movementspeed.png');
+            this.load.image('easteregg:money', collectibles + 'easteregg_money.png');
         }
-        this.load.image('icon:coin', collectibles + 'coin_icon.png');
+
+        if (CONST_POWERUPS) {
+            this.load.image('powerup:throughwalls', collectibles + 'powerup_throughwalls.png');
+            this.load.image('powerup:permjumpboost', collectibles + 'powerup_permjumpboost.png');
+            // this.load.image('powerup:lavaorb', collectibles + 'powerup_lavaorb.png');
+            // this.load.image('powerup:jumpboost', collectibles + 'powerup_jumpboost.png');
+            // this.load.image('powerup:zhonyas', collectibles + 'powerup_zhonyas.png');
+        }
+
+        if (CONST_COINS) {
+            if (CONST_ANIMATE_COIN) {
+                this.load.spritesheet('coin', collectibles + 'coin_animated.png', 22, 22);
+            } else {
+                this.load.image('coin', collectibles + 'coin_icon.png');
+            }
+            this.load.image('icon:coin', collectibles + 'coin_icon.png');
+        }
 
         //misc
         this.load.image('background', misc + 'background.png');
-        this.load.image('white_smoke', misc + 'white_smoke.png');
-        this.load.image('crate', misc + 'crate.png');
-        this.load.image('bullet', misc + 'bullet.png');
         // this.load.image('flag', misc + 'flag_new.png');
         this.load.spritesheet('flag', misc + 'flag.png', 42, 66);
 
+        if (CONST_CRATES) this.load.image('crate', misc + 'crate.png');
+        if (CONST_SHOOTING) this.load.image('bullet', misc + 'bullet.png');
+
+        // this.load.image('white_smoke', misc + 'white_smoke.png');
+
         //enemies
-        this.load.spritesheet('spider', enemies + 'spider2.png', 42, 32);
+        if (CONST_ENEMIES) {
+            this.load.spritesheet('spider', enemies + 'spider2.png', 42, 32);
+        }
 
 
         //audio
         this.load.audio('sfx:jump', audio + 'jump.wav');
-        this.load.audio('sfx:coin', audio + 'coin.wav');
-        this.load.audio('sfx:stomp', audio + 'stomp.wav');
         this.load.audio('sfx:flag', audio + 'flag.wav');
-        this.load.audio('sfx:zhonya', audio + 'zhonya.wav');
-        this.load.audio('sfx:shoot', audio + 'shoot.mp3');
-        this.load.audio('sfx:empty_magazine', audio + 'empty_magazine.wav');
-        this.load.audio('sfx:powerup', audio + 'powerup.mp3');
-        this.load.audio('sfx:easteregg', audio + 'easteregg.wav');
+        if (CONST_COINS) this.load.audio('sfx:coin', audio + 'coin.wav');
+        if (CONST_POWERUPS) this.load.audio('sfx:powerup', audio + 'powerup.mp3');
+        if (CONST_EASTEREGGS) this.load.audio('sfx:easteregg', audio + 'easteregg.wav');
+        if (CONST_ENEMIES) this.load.audio('sfx:stomp', audio + 'stomp.wav');
+        if (CONST_ZHONYA) this.load.audio('sfx:zhonya', audio + 'zhonya.wav');
+        if (CONST_SHOOTING) this.load.audio('sfx:shoot', audio + 'shoot.mp3');
+        if (CONST_MAGAZINE > 0) this.load.audio('sfx:empty_magazine', audio + 'empty_magazine.wav');
 
 
         //fonts
@@ -208,7 +232,7 @@ Crowdjump.Preloader.prototype = {
             game.authenticated = true;
 
             if (game.gameInfo == '' || game.gameInfo == undefined) game.authenticated = false;
-            else if (account.uploaded_character != '' && account.uploaded_character != null){
+            else if (account.uploaded_character != '' && account.uploaded_character != null) {
                 game.load.image(getFileName(account.uploaded_character), account.uploaded_character);
                 game.load.start();
             }

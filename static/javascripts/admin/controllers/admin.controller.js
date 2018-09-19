@@ -736,7 +736,6 @@
 
             }
 
-
             $scope.checkIdeas = function () {
                 $scope.csv = '';
 
@@ -771,8 +770,74 @@
                 return new Array(num);
             }
 
+            $scope.get_json_sum = function () {
+                var data = JSON.parse('[' + $scope.csv + ']');
+                var rounds_won = 0,
+                    enemies_killed = 0,
+                    coins_collected = 0,
+                    highscore = 999999,
+                    time_spend_game = 0,
+                    jumps = 0,
+                    restarts = 0,
+                    deaths = 0,
+                    highest_level = 0,
+                    movement_inputs = 0,
+                    eastereggs_found = 0,
+                    special_name = 0;
+
+                for (var i = 0; i < data.length; i++) {
+                    var g = data[i];
+                    enemies_killed += parseInt(g.enemies_killed);
+                    time_spend_game += parseInt(g.time);
+                    jumps += parseInt(g.jumps);
+                    movement_inputs += parseInt(g.movement_inputs);
+                    coins_collected = Math.max(coins_collected, parseInt(g.coins_collected));
+                    eastereggs_found = Math.max(eastereggs_found, parseInt(g.eastereggs_found));
+                    special_name = Math.max(special_name, parseInt(g.special_name));
+
+                    switch (g.status) {
+                        case "completed":
+                            rounds_won++;
+                            highest_level = Math.max(highest_level, parseInt(g.level));
+                            highscore = Math.min(highscore, (parseInt(g.time) - (parseInt(g.coins_collected) * 500)));
+                            break;
+                        case "restart":
+                            restarts++;
+                            break;
+                        case "back to start menu":
+                            break;
+                        default:
+                            deaths++;
+                    }
+
+                }
+                $scope.csv = "rounds_started: " + data.length + '\n' +
+                    "rounds_won: " + rounds_won + '\n' +
+                    "enemies_killed: " + enemies_killed + '\n' +
+                    "coins_collected: " + coins_collected + '\n' +
+                    "time_spend_game: " + time_spend_game + '\n' +
+                    "highscore: " + highscore + '\n' +
+                    "jumps: " + jumps + '\n' +
+                    "restarts: " + restarts + '\n' +
+                    "deaths: " + deaths + '\n' +
+                    "highest_level: " + highest_level + '\n' +
+                    "movement_inputs:" + movement_inputs + '\n' +
+                    "eastereggs_found: " + eastereggs_found + '\n' +
+                    "special_name: " + special_name;
+
+            }
+
             $scope.level_json = function () {
                 var data = $scope.csv.replaceAll("this.add.sprite", "");
+
+                //remove first 35 lines
+                // data.split("\n").slice(37).join("\n");
+                // console.log(data);
+                var lines = data.split('\n');
+                lines.splice(0,35);
+                data = lines.join('\n');
+
+
                 //replace function
                 var levelstring1 = 'Level';
                 var levelstring2 = '.prototype.create = function ';

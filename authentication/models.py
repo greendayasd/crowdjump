@@ -133,6 +133,11 @@ class GameInfo(models.Model):
     restarts = models.IntegerField(default=0)
     eastereggs_found = models.IntegerField(default=0)
     special_name = models.IntegerField(default=0)
+    powerups = models.IntegerField(default=0)
+
+    overall_coins = models.IntegerField(default=0)
+    overall_eastereggs = models.IntegerField(default=0)
+    overall_powerups = models.IntegerField(default=0)
 
     def __str__(self):
         return self.version.label + '  ' + self.user.username + '  ' + self.rounds_won + ...

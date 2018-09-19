@@ -26,6 +26,9 @@ Crowdjump.Game = function (game) {
 
     var pu_lavaorb = false;
     var pu_jumpboost = false;
+    var pu_permjumpboost = false;
+    var pu_throughwalls = false;
+
     var movespeed_boost = 0;
 
     var zhonya_activated = false;
@@ -172,6 +175,9 @@ Hero.prototype.move = function (direction) {
 
 Hero.prototype.jump = function () {
     var canJump = CONST_CHEAT;
+    var jump_speed = CONST_JUMP_SPEED;
+    if (pu_permjumpboost) jump_speed = jump_speed * CONST_POWERUPS_PERMJUMPBOOST;
+
     if (first_moved == -1 && CONST_TIME_WHEN_MOVED) first_moved = game.time.totalElapsedSeconds().toFixed(3);
 
     if (CONST_P2_PHYSICS) {
@@ -184,38 +190,35 @@ Hero.prototype.jump = function () {
         }
     }
 
-
     if (CONST_LONG_JUMP) {
         if (canJump) jumpTimer = 0;
         if ((Crowdjump.Game.keys.up.isDown || Crowdjump.Game.keys.space.isDown || Crowdjump.Game.wasd.up.isDown) && (jumpTimer > 0)) {
             //jump higher
-            this.body.velocity.y = -CONST_JUMP_SPEED;
+            this.body.velocity.y = -jump_speed;
             jumpTimer++;
             if (jumpTimer == CONST_MAX_LONG_JUMP) {
                 jumpTimer = 0;
             }
             return;
         }
-
     }
-
 
     if (canJump || (hero_on_wall && CONST_WALL_JUMP)) {
         if (pu_jumpboost) {
-            this.body.velocity.y = -(1.4 * CONST_JUMP_SPEED);
+            this.body.velocity.y = -(CONST_POWERUPS_JUMPBOOST * jump_speed);
             pu_jumpboost = false;
         } else {
-            this.body.velocity.y = -CONST_JUMP_SPEED;
+            this.body.velocity.y = -jump_speed;
         }
         jumpTimer = 1;
         game.jumps++;
     } else {
         if (second_jump && CONST_DOUBLE_JUMP) {
             if (pu_jumpboost) {
-                this.body.velocity.y = -(1.1 * CONST_JUMP_SPEED);
+                this.body.velocity.y = -(1.1 * jump_speed);
                 pu_jumpboost = false;
             } else {
-                this.body.velocity.y = -(CONST_JUMP_SPEED * 0.8);
+                this.body.velocity.y = -(jump_speed * 0.8);
             }
             game.jumps++;
             second_jump = false;
@@ -311,6 +314,7 @@ Spider.prototype.die = function () {
 
 
 Crowdjump.Game.init = function (data) {
+    //executed per LEVEL
     this.game.renderer.renderSession.roundPixels = true;
 
     this.keys = this.game.input.keyboard.addKeys({
@@ -376,13 +380,19 @@ Crowdjump.Game.init = function (data) {
     hero_on_ice = false;
     hero_bounce_velocity = 0;
     last_second = 0;
-    nextFire = 0;
 
+    //powerups
     pu_jumpboost = false;
     pu_lavaorb = false;
+    pu_permjumpboost = false;
+    pu_throughwalls = false;
+
+    //easeggs
     movespeed_boost = 0;
     timeeggs = 0;
+
     bullets_left = CONST_MAGAZINE;
+    nextFire = 0;
 
     jumpTimer = 0;
     pause_time = 0;
@@ -639,7 +649,11 @@ Crowdjump.Game._handleCollisions = function () {
 
     }
 
-    this.game.physics.arcade.collide(this.hero, this.platforms, this._onHeroVsSpecialPlatform, null, this);
+    //allow powerup to jump through walls
+    if (!pu_throughwalls || this.hero.body.velocity.y >= 0) {
+        this.game.physics.arcade.collide(this.hero, this.platforms, this._onHeroVsSpecialPlatform, null, this);
+    } else {
+    }
 
 
     if (CONST_MOVINGPLATFORMS) {
@@ -677,13 +691,13 @@ Crowdjump.Game._handleCollisions = function () {
         }
     }
 
-    this.game.physics.arcade.overlap(this.hero, this.coins, this._onHeroVsCoin,
+    if (CONST_COINS) this.game.physics.arcade.overlap(this.hero, this.coins, this._onHeroVsCoin,
         null, this);
 
-    this.game.physics.arcade.overlap(this.hero, this.powerups, this._onHeroVsPowerup,
+    if (CONST_POWERUPS) this.game.physics.arcade.overlap(this.hero, this.powerups, this._onHeroVsPowerup,
         null, this);
 
-    this.game.physics.arcade.overlap(this.hero, this.eastereggs, this._onHeroVsEasteregg,
+    if (CONST_EASTEREGGS) this.game.physics.arcade.overlap(this.hero, this.eastereggs, this._onHeroVsEasteregg,
         null, this);
 
     if (CONST_SAWBLADES) {
@@ -711,12 +725,12 @@ Crowdjump.Game._handleCollisions = function () {
     if (CONST_LAVA && !pu_lavaorb && !death) {
         this.game.physics.arcade.overlap(this.hero, this.lava, this._onHeroVsLava,
             null, this);
-        this.game.physics.arcade.collide(this.hero, this.spikes);
     }
 
     if (CONST_SPIKES) {
-        this.game.physics.arcade.overlap(this.hero, this.spikes, this._onHeroVsSpikes,
-            null, this);
+        // this.game.physics.arcade.overlap(this.hero, this.spikes, this._onHeroVsSpikes,
+        //     null, this);
+        this.game.physics.arcade.collide(this.hero, this.spikes, this._onHeroVsSpikes, null, this);
     }
     if (CONST_CRATES) {
         this.game.physics.arcade.collide(this.hero, this.crates);
@@ -977,7 +991,7 @@ Crowdjump.Game._loadLevel = function (data) {
 };
 
 Crowdjump.Game._spawnPlatform = function (platform) {
-
+    //von unten durch plattform : sprite.body.checkCollision.down = false;
     var sprite;
     var already_moving = false;
     var already_slippery = false;
@@ -1143,8 +1157,13 @@ Crowdjump.Game._spawnLava = function (lava) {
         newy += height / 2;
     }
 
-    //4 pixel down because of collision
-    newy += 4;
+    //4 pixel down because of collision, not for baseblock
+    switch (lava.image) {
+        case 'lava:1x1':
+        case 'lava:2x1':
+            newy += 4;
+            break
+    }
 
     let sprite = this.lava.create(
         newx, newy, lava.image); //for chest +8
@@ -1363,6 +1382,16 @@ Crowdjump.Game.powerup_jumpboost = function () {
     pu_jumpboost = true;
 }
 
+Crowdjump.Game.powerup_permjumpboost = function () {
+    pu_permjumpboost = true;
+    this.showPowerupMessage('Jumpboost');
+}
+
+Crowdjump.Game.powerup_throughwalls = function () {
+    pu_throughwalls = true;
+    this.showPowerupMessage('Jump through walls');
+}
+
 Crowdjump.Game._spawnEasteregg = function (easteregg) {
     //+21, 42x42 tile
     if (easteregg == undefined) return;
@@ -1379,17 +1408,17 @@ Crowdjump.Game._spawnEasteregg = function (easteregg) {
 };
 
 Crowdjump.Game.easteregg_time = function () {
-    timeeggs += 5;
+    timeeggs += CONST_EASTEREGGS_TIME_TIMESECONDS;
     this.showEastereggMessage("more time");
 }
 
 Crowdjump.Game.easteregg_money = function () {
-    game.coinPickupCount += 10;
+    game.coinPickupCount += CONST_EASTEREGGS_MONEY_COINAMOUNT;
     this.showEastereggMessage("$$$");
 }
 
 Crowdjump.Game.easteregg_movementspeed = function () {
-    movespeed_boost = 100;
+    movespeed_boost = CONST_EASTEREGGS_MOVEMENTSPEED;
     this.showEastereggMessage("be fast!");
 }
 
@@ -1572,6 +1601,12 @@ Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
             break;
         case "powerup:jumpboost":
             this.powerup_jumpboost();
+            break;
+        case "powerup:throughwalls":
+            this.powerup_throughwalls();
+            break;
+        case "powerup:permjumpboost":
+            this.powerup_permjumpboost();
             break;
         default:
             console.log(powerup.key);
@@ -1778,15 +1813,15 @@ Crowdjump.Game.killHero = function (reason) {
 
     if (lives <= 0) {
         // reset?
-        // this.game.time.reset();
-        // game.timeElapsed = 0;
-        //
-        // last_second = 0;
-        // first_moved = 0;
-        // time_finished = 0;
-        // time_overall = 0;
-        // time_last_level_or_restart = 0;
-        // resetStats();
+        this.game.time.reset();
+        game.timeElapsed = 0;
+
+        last_second = 0;
+        first_moved = 0;
+        time_finished = 0;
+        time_overall = 0;
+        time_last_level_or_restart = 0;
+        resetStats();
 
         this.state.start('Gameover');
     } else {
@@ -1796,7 +1831,7 @@ Crowdjump.Game.killHero = function (reason) {
 }
 
 Crowdjump.Game.showMessage = function (message, time, fill, font) {
-    message_image = this.add.text(CONST_WORLD_CENTER_X, 200, message, {fill: fill, font: font});
+    message_image = this.add.text(CONST_WORLD_CENTER_X, 200, message, {fill: fill, font: font, align:"center"});
     message_image.anchor.set(0.5);
     message_image.fixedToCamera = true;
     tween = game.add.tween(message_image).to({alpha: 0}, time, Phaser.Easing.Linear.None, true);
@@ -1813,6 +1848,10 @@ Crowdjump.Game.showImage = function (imageName, time) {
 
 Crowdjump.Game.showEastereggMessage = function (message) {
     this.showMessage(message, 3000, '#000000', '')
+}
+
+Crowdjump.Game.showPowerupMessage = function (message) {
+    this.showMessage('You found a powerup!\n' + message, 3000, '#000000', '')
 }
 
 Crowdjump.Game.restart = function () {

@@ -18,7 +18,7 @@
         })(!window['safari'] || safari.pushNotification);
 
         if (isSafari){
-            alert("If you have the Safari update from 19.09 the game will not work anymore! Please use a different browser");
+            alert("If you have the Safari update from 19.09 (Update 12) the game will not work anymore! Please use a different browser");
         }
 
         var topcut = 10;
@@ -167,6 +167,8 @@
                     switch ($scope.versions[i].id) {
                         case 4:
                         case 5:
+                        case 8:
+                        case 9:
                             $scope.versions.splice(i, 1);
                             break;
                     }

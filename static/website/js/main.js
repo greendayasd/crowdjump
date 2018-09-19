@@ -29,9 +29,17 @@ const CONST_SLIDEPLATFORMS = false;
 const CONST_FALLINGPLATFORMS = false;
 const CONST_CONVEYORPLATFORMS = false;
 
-const CONST_POWERUPS = false;
 const CONST_COINS = true;
+
+const CONST_POWERUPS = true;
+const CONST_POWERUPS_JUMPBOOST = 1.4;
+const CONST_POWERUPS_PERMJUMPBOOST = 1.25;
+
 const CONST_EASTEREGGS = true;
+const CONST_EASTEREGGS_MONEY_COINAMOUNT = 10;
+const CONST_EASTEREGGS_TIME_TIMESECONDS = 5;
+const CONST_EASTEREGGS_MOVEMENTSPEED = 100;
+
 const CONST_CRATES = false;
 
 const CONST_ENEMIES = false;
@@ -98,6 +106,7 @@ var movementinputs_last_level = 0;
 var enemies_last_level = 0;
 var coins_last_level = 0;
 var eastereggs_last_level = 0;
+var powerups_last_level = 0;
 var specialname_last_level = 0;
 
 
@@ -195,7 +204,7 @@ function getInfo() {
     account = JSON.parse(getAuthCookie('authenticatedAccount'));
     // console.error("account" + account);
 
-    if (account == '' || account == null) {
+    if (account == '' || account == null || account == undefined) {
         game.character = 'c' + 0;
         return '';
     }
@@ -232,6 +241,7 @@ function setLevelInfo(level, status, isHighscore) {
         "enemies_killed": game.enemiesDefeatedCount - enemies_last_level,
         "coins_collected": game.coinPickupCount - coins_last_level,
         "eastereggs_found": game.eastereggPickupCount - eastereggs_last_level,
+        "powerups": game.powerupPickupCount - powerups_last_level,
         "special_name": game.specialName - specialname_last_level,
         "character": game.character
     };
@@ -321,6 +331,7 @@ function setInfoLastLevel() {
     enemies_last_level = game.enemiesDefeatedCount;
     coins_last_level = game.coinPickupCount;
     eastereggs_last_level = game.eastereggPickupCount;
+    powerups_last_level = game.powerupPickupCount;
     specialname_last_level = game.specialName;
 
 }

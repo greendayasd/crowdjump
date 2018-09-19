@@ -1,0 +1,166 @@
+{
+	"platforms": [
+		{"image": "ground:20x1", "x": 0, "y": 1050, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:6x1", "x": 42, "y": 840, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:2x1", "x": 840, "y": 630, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:4x1", "x": 294, "y": 714, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:4x1", "x": 546, "y": 630, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 546, "y": 756, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "invisible:1x1", "x": 0, "y": 714, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "invisible:1x1", "x": 0, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "invisible:1x1", "x": 0, "y": 462, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "invisible:1x1", "x": 0, "y": 336, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "invisible:1x2", "x": 798, "y": 1092, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "invisible:4x1", "x": 840, "y": 1176, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "invisible:4x1", "x": 1008, "y": 1176, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "invisible:1x1", "x": 0, "y": 840, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "invisible:1x2", "x": 1134, "y": 1092, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x8", "x": 1008, "y": 714, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 882, "y": 798, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x2", "x": 714, "y": 966, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x2", "x": 672, "y": 840, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x1", "x": 630, "y": 882, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:4x1", "x": 1176, "y": 630, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 1470, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 1596, "y": 420, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x2", "x": 1218, "y": 966, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x2", "x": 1470, "y": 966, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:4x1", "x": 1722, "y": 1050, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 1806, "y": 420, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:4x1", "x": 1806, "y": 714, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x8", "x": 1974, "y": 714, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x8", "x": 1974, "y": 378, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x4", "x": 1974, "y": 126, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:2x1", "x": 1596, "y": 840, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 1638, "y": 714, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:20x1", "x": 1890, "y": 1050, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:5x1", "x": 546, "y": 924, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x3", "x": 504, "y": 924, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:12x1", "x": 882, "y": 1050, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:6x1", "x": 1470, "y": 1050, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:4x1", "x": 1344, "y": 1092, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:4x1", "x": 1344, "y": 336, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x2", "x": 1302, "y": 294, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x2", "x": 1512, "y": 294, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:4x1", "x": 1008, "y": 294, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x2", "x": 924, "y": 252, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x2", "x": 1176, "y": 252, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "invisible:1x1", "x": 1134, "y": 210, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x1", "x": 966, "y": 294, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:6x1", "x": 630, "y": 210, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:2x1", "x": 840, "y": 924, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:2x1", "x": 924, "y": 966, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
+	],
+	"fallingPlatforms": [
+
+	],
+	"fakePlatforms": [
+		{"image": "fakeground:1x1", "x": 840, "y": 1050, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "fakeground:1x2", "x": 840, "y": 966, "p_types": "1x2", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "fakeground:1x2", "x": 1974, "y": 294, "p_types": "1x2", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "fakeground:1x1", "x": 882, "y": 966, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
+	],
+	"crates": [
+
+	],
+	"lava": [
+		{"image": "lava:2x1", "x": 1386, "y": 1050},
+		{"image": "lava:2x1", "x": 1428, "y": 294},
+		{"image": "lava:2x1", "x": 1344, "y": 294},
+		{"image": "lava:2x1", "x": 1092, "y": 252},
+		{"image": "lava:2x1", "x": 1008, "y": 252},
+		{"image": "lava:1x1", "x": 966, "y": 252},
+		{"image": "lava:2x1", "x": 924, "y": 924}
+	],
+	"spikes": [
+		{"image": "spikes:1x1", "x": 294, "y": 1008},
+		{"image": "spikes:1x1", "x": 1764, "y": 1008},
+		{"image": "spikes:1x1", "x": 1218, "y": 588},
+		{"image": "spikes:1x1", "x": 1260, "y": 588},
+		{"image": "spikes:1x1", "x": 1176, "y": 210},
+		{"image": "spikes:1x1", "x": 210, "y": 798},
+		{"image": "spikes:1x1", "x": 252, "y": 798}
+	],
+	"sawblades": [
+
+	],
+	"flags": [
+		{"image": "flag", "x": 1932, "y": 672},
+		{"image": "flag", "x": 2688, "y": 1008},
+		{"image": "flag", "x": 714, "y": 168}
+	],
+	"coins": [
+		{"image": "coin", "x": 126, "y": 798},
+		{"image": "coin", "x": 168, "y": 798},
+		{"image": "coin", "x": 84, "y": 798},
+		{"image": "coin", "x": 294, "y": 672},
+		{"image": "coin", "x": 336, "y": 672},
+		{"image": "coin", "x": 378, "y": 672},
+		{"image": "coin", "x": 924, "y": 840},
+		{"image": "coin", "x": 924, "y": 798},
+		{"image": "coin", "x": 588, "y": 882},
+		{"image": "coin", "x": 630, "y": 840},
+		{"image": "coin", "x": 672, "y": 798},
+		{"image": "coin", "x": 1218, "y": 504},
+		{"image": "coin", "x": 1260, "y": 504},
+		{"image": "coin", "x": 1470, "y": 420},
+		{"image": "coin", "x": 1302, "y": 210},
+		{"image": "coin", "x": 1344, "y": 756},
+		{"image": "coin", "x": 1386, "y": 798},
+		{"image": "coin", "x": 1302, "y": 798},
+		{"image": "coin", "x": 1512, "y": 210},
+		{"image": "coin", "x": 1806, "y": 378},
+		{"image": "coin", "x": 2604, "y": 966},
+		{"image": "coin", "x": 1344, "y": 168},
+		{"image": "coin", "x": 1386, "y": 126},
+		{"image": "coin", "x": 1428, "y": 126},
+		{"image": "coin", "x": 1470, "y": 168},
+		{"image": "coin", "x": 714, "y": 84},
+		{"image": "coin", "x": 756, "y": 84},
+		{"image": "coin", "x": 798, "y": 84},
+		{"image": "coin", "x": 798, "y": 84},
+		{"image": "coin", "x": 798, "y": 126},
+		{"image": "coin", "x": 756, "y": 126},
+		{"image": "coin", "x": 672, "y": 126},
+		{"image": "coin", "x": 798, "y": 168},
+		{"image": "coin", "x": 756, "y": 168},
+		{"image": "coin", "x": 672, "y": 168},
+		{"image": "coin", "x": 630, "y": 168},
+		{"image": "coin", "x": 630, "y": 126},
+		{"image": "coin", "x": 630, "y": 84},
+		{"image": "coin", "x": 630, "y": 42},
+		{"image": "coin", "x": 672, "y": 42},
+		{"image": "coin", "x": 672, "y": 84},
+		{"image": "coin", "x": 714, "y": 42},
+		{"image": "coin", "x": 756, "y": 42},
+		{"image": "coin", "x": 798, "y": 42},
+		{"image": "coin", "x": 924, "y": 168},
+		{"image": "coin", "x": 1134, "y": 168},
+		{"image": "coin", "x": 966, "y": 126},
+		{"image": "coin", "x": 1008, "y": 84},
+		{"image": "coin", "x": 1050, "y": 84},
+		{"image": "coin", "x": 1092, "y": 126},
+		{"image": "coin", "x": 966, "y": 798},
+		{"image": "coin", "x": 966, "y": 840}
+	],
+	"hero":
+		{"image": "hero", "x": 0, "y": 1008},
+	"enemies": [
+
+	],
+	"enemyWalls": [
+
+	],
+	"powerups": [
+
+	],
+	"eastereggs": [
+		{"image": "easteregg:specialname", "x": 0, "y": 210, "type":"specialname"},
+		{"image": "easteregg:movementspeed", "x": 1092, "y": 1134, "type":"movementspeed"},
+		{"image": "easteregg:money", "x": 2604, "y": 1008, "type":"money"}
+	],
+	"decorations": [
+
+	],
+	"size": {"x": 2730, "y": 1188}
+}

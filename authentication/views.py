@@ -270,21 +270,21 @@ def AntiCheat(status, level, timeneeded, jumps, movement_inputs, enemies_killed,
         cheated += '_enemiesKilled'
 
     # coins (+10 per coin easteregg)
-    if (int(level) == 1 and int(coins_collected) > 62
+    if (int(level) == 1 and int(coins_collected) > 80
             or int(level) == 2 and int(coins_collected) > 1
             or int(level) == 3 and int(coins_collected) > 1
             or int(level) == 4 and int(coins_collected) > 1):
         cheated += '_coinsCollected'
 
     # eastereggs
-    if (int(level) == 1 and int(eastereggs_found) > 3
+    if (int(level) == 1 and int(eastereggs_found) > 4
             or int(level) == 2 and int(eastereggs_found) > 1
             or int(level) == 3 and int(eastereggs_found) > 1
             or int(level) == 4 and int(eastereggs_found) > 1):
         cheated += '_eastereggsFound'
 
     # specialname
-    if (int(level) == 1 and int(special_name) > 1
+    if (int(level) == 1 and int(special_name) > 2
             or int(level) == 2 and int(special_name) > 1
             or int(level) == 3 and int(special_name) > 1
             or int(level) == 4 and int(special_name) > 1):
@@ -312,7 +312,7 @@ def SendGameData(request):
         v = Version.objects.order_by('-id')[0]
         correct_version = v.label  # get correct version
     except:
-        correct_version = '0.06'  # get correct version
+        correct_version = '0.10'  # get correct version
         print("no Version found")
         return JsonResponse('{"success":"' + version + '"}', safe=False)
 
@@ -330,6 +330,7 @@ def SendGameData(request):
     eastereggs_found = request.GET.get('eastereggs_found')
     special_name = request.GET.get('special_name')
     character = request.GET.get('character')
+    powerups = request.GET.get('powerups')
 
     try:
         highscore = request.GET.get('highscore')
@@ -369,6 +370,7 @@ def SendGameData(request):
            '", "eastereggs_found":"' + eastereggs_found + \
            '", "special_name":"' + special_name + \
            '", "character":"' + character + \
+           '", "powerups":"' + powerups + \
            '"}'
 
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -400,11 +402,16 @@ def SendGameData(request):
             return JsonResponse('{"success":"no gamedata"}', safe=False)
 
         acc.coins_collected = max(acc.coins_collected, int(coins_collected))
+        acc.overall_coins += int(coins_collected)
         acc.enemies_killed += int(enemies_killed)
         acc.eastereggs_found = max(acc.eastereggs_found, int(eastereggs_found))
+        acc.overall_eastereggs += int(eastereggs_found)
         acc.special_name = max(acc.special_name, int(special_name))
         acc.jumps += int(jumps)
         acc.movement_inputs += int(movement_inputs)
+
+        acc.powerups = max(acc.powerups, int(powerups))
+        acc.overall_powerups += int(powerups)
 
         if level == 1 or level == '1':
             acc.rounds_started += 1
