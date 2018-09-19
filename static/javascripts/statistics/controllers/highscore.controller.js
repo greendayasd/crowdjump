@@ -12,6 +12,15 @@
         $scope.statistics = [];
         $scope.versions = [];
 
+        // Safari 3.0+ "[object HTMLElementConstructor]"
+        var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) {
+            return p.toString() === "[object SafariRemoteNotification]";
+        })(!window['safari'] || safari.pushNotification);
+
+        if (isSafari){
+            alert("If you have the Safari update from 19.09 the game will not work anymore! Please use a different browser");
+        }
+
         var topcut = 10;
         activate();
 
@@ -122,10 +131,9 @@
                 $scope.statistics.push(data);
                 $scope.sort_all();
                 $scope.$apply();
-                if ($scope.statistics.length > topcut){
+                if ($scope.statistics.length > topcut) {
                     $scope.statistics.pop();
                 }
-
 
 
             }
@@ -155,8 +163,8 @@
                 $scope.versions_max = data.data;
                 // $scope.versions.unshift({id: -1, label: "all"});
                 $scope.newestVersion = $scope.versions[0];
-                for (var i=$scope.versions.length-1; i>= 0;i--){
-                    switch($scope.versions[i].id){
+                for (var i = $scope.versions.length - 1; i >= 0; i--) {
+                    switch ($scope.versions[i].id) {
                         case 4:
                         case 5:
                             $scope.versions.splice(i, 1);
