@@ -431,7 +431,7 @@ def SendGameData(request):
         #allow negative highscores
         if acc.highscore == -1:
             acc.highscore = highscore
-        else:
+        elif highscore!= -1:
             acc.highscore = min(acc.highscore, highscore)
 
         acc.save()

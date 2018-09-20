@@ -222,7 +222,6 @@ function getInfo() {
     jQuery.get(path, function (data) {
         g_gameinfo = data[0];
     })
-    console.log(game.gameInfo);
 }
 
 
