@@ -26,7 +26,7 @@
         function top(x, version){
             //allow negative highscores
             // return $http.get('/api/v1/gameinfo/?version__id=' + version + '&highscore__gt=0' + '&user__username!=admin' + '&limit=' + x);
-            return $http.get('/api/v1/gameinfo/?version__id=' + version + '&highscore__ne=-1' + '&user__username!=admin' + '&limit=' + x);
+            return $http.get('/api/v1/gameinfo/?version__id=' + version + '&highscore!=-1' + '&user__username!=admin' + '&limit=' + x);
         }
 
         function newVersion(){
