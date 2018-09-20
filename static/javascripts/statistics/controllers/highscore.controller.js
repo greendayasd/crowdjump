@@ -17,7 +17,7 @@
             return p.toString() === "[object SafariRemoteNotification]";
         })(!window['safari'] || safari.pushNotification);
 
-        if (isSafari){
+        if (isSafari) {
             alert("If you have the Safari update from 19.09 (Update 12) the game will not work anymore! Please use a different browser");
         }
 
@@ -169,6 +169,8 @@
                         case 5:
                         case 8:
                         case 9:
+                        case 11:
+
                             $scope.versions.splice(i, 1);
                             break;
                     }

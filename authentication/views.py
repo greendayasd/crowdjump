@@ -248,7 +248,7 @@ def AntiCheat(status, level, timeneeded, jumps, movement_inputs, enemies_killed,
 
     # jumps
     if (status == 'completed'):
-        if (int(level) == 1 and int(jumps) < 7
+        if (int(level) == 1 and int(jumps) < 8
                 or int(level) == 2 and int(jumps) < 4
                 or int(level) == 3 and int(jumps) < 5
                 or int(level) == 4 and int(jumps) < 3):
@@ -263,7 +263,7 @@ def AntiCheat(status, level, timeneeded, jumps, movement_inputs, enemies_killed,
             cheated += '_movementInputs'
 
     # enemies killed
-    if (int(level) == 1 and int(enemies_killed) > 1
+    if (int(level) == 1 and int(enemies_killed) > 6
             or int(level) == 2 and int(enemies_killed) > 1
             or int(level) == 3 and int(enemies_killed) > 1
             or int(level) == 4 and int(enemies_killed) > 1):
@@ -367,6 +367,7 @@ def SendGameData(request):
            '", "jumps":"' + jumps + \
            '", "movement_inputs":"' + movement_inputs + \
            '", "coins_collected":"' + coins_collected + \
+           '", "enemies_killed":"' + enemies_killed + \
            '", "eastereggs_found":"' + eastereggs_found + \
            '", "special_name":"' + special_name + \
            '", "character":"' + character + \
@@ -427,9 +428,10 @@ def SendGameData(request):
 
         acc.highest_level = max(acc.highest_level, int(level))
 
-        if acc.highscore <= -1:
+        #allow negative highscores
+        if acc.highscore == -1:
             acc.highscore = highscore
-        elif highscore > -1:
+        else:
             acc.highscore = min(acc.highscore, highscore)
 
         acc.save()
