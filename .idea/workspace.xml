@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,11 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/authentication/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="433" column="27" selection-start-line="433" selection-start-column="27" selection-end-line="433" selection-end-column="27" />
+            <state relative-caret-position="573">
+              <caret line="433" column="23" selection-start-line="433" selection-start-column="23" selection-end-line="433" selection-end-column="23" />
               <folding>
                 <element signature="e#767#1879#0" />
                 <element signature="e#911#1162#0" />
@@ -118,11 +118,52 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="highscore.controller.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="highscore.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1220">
-              <caret line="158" column="22" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
+            <state relative-caret-position="427">
+              <caret line="129" column="12" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
+              <folding>
+                <element signature="e#557#641#0" />
+                <element signature="e#712#861#0" />
+                <element signature="e#1139#1206#0" />
+                <element signature="e#1273#1328#0" />
+                <element signature="e#1404#2196#0" />
+                <element signature="e#2268#2326#0" />
+                <element signature="e#2413#2809#0" />
+                <element signature="e#2476#2539#0" />
+                <element signature="e#2571#2626#0" />
+                <element signature="e#2706#2799#0" />
+                <element signature="e#2849#2936#0" />
+                <element signature="e#3105#3139#0" />
+                <element signature="e#3346#3565#0" />
+                <element signature="e#3498#3554#0" />
+                <element signature="e#3609#4733#0" />
+                <element signature="e#3843#3922#0" />
+                <element signature="e#3935#3956#0" />
+                <element signature="e#4141#4446#0" />
+                <element signature="e#4211#4432#0" />
+                <element signature="e#4471#4722#0" />
+                <element signature="e#4642#4706#0" />
+                <element signature="e#5103#5161#0" />
+                <element signature="e#5973#6031#0" />
+                <element signature="e#5483#6203#0" />
+                <element signature="e#5552#6202#0" />
+                <element signature="e#5574#6183#0" />
+                <element signature="e#5636#5748#0" />
+                <element signature="e#5769#5880#0" />
+                <element signature="e#5901#6011#0" />
+                <element signature="e#6032#6114#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/layout/game.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1472">
+              <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -273,13 +314,13 @@
         <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
         <option value="$PROJECT_DIR$/static/website/js/game.js" />
-        <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/statistics/services/statistics.service.js" />
         <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
         <option value="$PROJECT_DIR$/Crowdjump/mailFunctions.py" />
         <option value="$PROJECT_DIR$/static/website/level/level0.json" />
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
         <option value="$PROJECT_DIR$/authentication/views.py" />
+        <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
       </list>
     </option>
   </component>
@@ -767,7 +808,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="124" />
+      <option name="time" value="126" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -962,13 +1003,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-10">
           <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/game.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1477,13 +1511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1220">
-          <caret line="158" column="22" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-954">
@@ -1826,8 +1853,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/authentication/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="433" column="27" selection-start-line="433" selection-start-column="27" selection-end-line="433" selection-end-column="27" />
+        <state relative-caret-position="573">
+          <caret line="433" column="23" selection-start-line="433" selection-start-column="23" selection-end-line="433" selection-end-column="23" />
           <folding>
             <element signature="e#767#1879#0" />
             <element signature="e#911#1162#0" />
@@ -1873,6 +1900,52 @@
             <element signature="e#10131#10301#0" />
             <element signature="e#10397#10492#0" />
             <element signature="e#10513#10667#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/game.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1472">
+          <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="129" column="12" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
+          <folding>
+            <element signature="e#557#641#0" />
+            <element signature="e#712#861#0" />
+            <element signature="e#1139#1206#0" />
+            <element signature="e#1273#1328#0" />
+            <element signature="e#1404#2196#0" />
+            <element signature="e#2268#2326#0" />
+            <element signature="e#2413#2809#0" />
+            <element signature="e#2476#2539#0" />
+            <element signature="e#2571#2626#0" />
+            <element signature="e#2706#2799#0" />
+            <element signature="e#2849#2936#0" />
+            <element signature="e#3105#3139#0" />
+            <element signature="e#3346#3565#0" />
+            <element signature="e#3498#3554#0" />
+            <element signature="e#3609#4733#0" />
+            <element signature="e#3843#3922#0" />
+            <element signature="e#3935#3956#0" />
+            <element signature="e#4141#4446#0" />
+            <element signature="e#4211#4432#0" />
+            <element signature="e#4471#4722#0" />
+            <element signature="e#4642#4706#0" />
+            <element signature="e#5103#5161#0" />
+            <element signature="e#5973#6031#0" />
+            <element signature="e#5483#6203#0" />
+            <element signature="e#5552#6202#0" />
+            <element signature="e#5574#6183#0" />
+            <element signature="e#5636#5748#0" />
+            <element signature="e#5769#5880#0" />
+            <element signature="e#5901#6011#0" />
+            <element signature="e#6032#6114#0" />
           </folding>
         </state>
       </provider>

@@ -39,22 +39,7 @@
 
             function statisticsSuccessFn(data, status, headers, config) {
                 $scope.statistics = data.data["results"];
-                for (var i = 0; i < $scope.statistics.length; i++) {
-                    switch ($scope.statistics[i].special_name) {
-                        case 0:
-                            $scope.statistics[i].color = {"color": " black"};
-                            break;
-                        case 1:
-                            $scope.statistics[i].color = {"color": " blue"};
-                            break;
-                        case 2:
-                            $scope.statistics[i].color = {"color": " red"};
-                            break;
-                        default:
-                            $scope.statistics[i].color = {"color": " black"};
-                    }
-
-                }
+                setNameColor();
 
             }
 
@@ -142,10 +127,10 @@
 
         $scope.getVersionHighscore = function (version) {
             Statistics.top(topcut, version).then(statisticsSuccessFn, statisticsErrorFn);
-
-
+            
             function statisticsSuccessFn(data, status, headers, config) {
                 $scope.statistics = data.data["results"];
+                setNameColor();
 
             }
 
@@ -170,7 +155,6 @@
                         case 8:
                         case 9:
                         case 11:
-
                             $scope.versions.splice(i, 1);
                             break;
                     }
@@ -181,6 +165,25 @@
 
             function historyErrorFn(data, status, headers, config) {
                 console.error(data.error);
+            }
+        }
+
+        function setNameColor() {
+            for (var i = 0; i < $scope.statistics.length; i++) {
+                switch ($scope.statistics[i].special_name) {
+                    case 0:
+                        $scope.statistics[i].color = {"color": " black"};
+                        break;
+                    case 1:
+                        $scope.statistics[i].color = {"color": " blue"};
+                        break;
+                    case 2:
+                        $scope.statistics[i].color = {"color": " red"};
+                        break;
+                    default:
+                        $scope.statistics[i].color = {"color": " black"};
+                }
+
             }
         }
     }
