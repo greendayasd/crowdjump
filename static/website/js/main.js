@@ -42,8 +42,8 @@ const CONST_EASTEREGGS_MOVEMENTSPEED = 100;
 
 const CONST_CRATES = false;
 
-const CONST_ENEMIES = false;
-const CONST_KILL_ENEMIES = false;
+const CONST_ENEMIES = true;
+const CONST_KILL_ENEMIES = true;
 const CONST_SPIDER_SPEED = 100;
 
 const CONST_LEVELSELECTION = false;
@@ -125,7 +125,7 @@ function csrfSafeMethod(method) {
 window.createGame = function (canvas, scope) {
     version = versionlabel;
 
-    game = new Phaser.Game(CONST_CANVAS_X, CONST_CANVAS_Y, Phaser.AUTO, canvas);
+    game = new Phaser.Game(CONST_CANVAS_X, CONST_CANVAS_Y, Phaser.CANVAS, canvas);
 
     game.global = {
         coinPickupCount: 0,
@@ -222,6 +222,7 @@ function getInfo() {
     jQuery.get(path, function (data) {
         g_gameinfo = data[0];
     })
+    console.log(game.gameInfo);
 }
 
 

@@ -507,7 +507,7 @@ Crowdjump.Game.create = function () {
 
     if (CONST_FPS) this.input.keyboard.addKey(Phaser.KeyCode.F).onUp.add(this.toggleFPS, this);
 
-    this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
+    // this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
     this.game.camera.follow(this.hero);
     try {
         if (time_last_level == undefined || time_last_level <= 1) time_last_level = 0;
@@ -1460,7 +1460,7 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
 
 Crowdjump.Game._killEnemy = function (enemy, bounce) {
     if (bounce) {
-        this.game.hero.bounce();
+        this.hero.bounce();
         this.sfx.stomp.play();
     }
     enemy.die();
