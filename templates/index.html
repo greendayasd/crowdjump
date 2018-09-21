@@ -29,50 +29,46 @@
 
     <div class="ng-scope" id="content" style=" width: 100%">
 
-        <div class="container">
-            <div class="row">
-                <br>
-            </div>
-            <div ng-view>
+        <div ng-view>
+        </div>
+    </div>
 
+    {% if user.is_authenticated and FALSE %}
+        <div ng-controller="ChatController as vm">
+            {% verbatim %}
+            <button type="button" id="sidebarCollapse" class="btn-btn" ng-click="resetUnread()">
+                <i class="glyphicon glyphicon-align-left"><span ng-show=" {{ unreadMessagesNotZero}}">{{ unreadMessages }}</span></i>
+
+            </button>
+            {% endverbatim %}
+            <div class="well" id="sidebar">
+                <div class="sidebar-header">
+                    <h1>Chat</h1>
+                </div>
+                {% include 'chatcolumn.html' %}
             </div>
         </div>
-        {% if user.is_authenticated and FALSE %}
-            <div ng-controller="ChatController as vm">
-                {% verbatim %}
-                <button type="button" id="sidebarCollapse" class="btn-btn" ng-click="resetUnread()">
-                    <i class="glyphicon glyphicon-align-left"><span ng-show=" {{ unreadMessagesNotZero}}">{{ unreadMessages }}</span></i>
+    {% else %}
+    {% endif %}
+    <script type="text/javascript">
+        //IE redirect
+        if ((false || !!document.documentMode) && !(window.location.pathname == "/oldbrowser/")) {
+            console.log("IE");
+            window.location.href = '/oldbrowser';
+        } else {
+            //console.log(document.documentMode);
+        }
 
-                </button>
-                {% endverbatim %}
-                <div class="well" id="sidebar">
-                    <div class="sidebar-header">
-                        <h1>Chat</h1>
-                    </div>
-                    {% include 'chatcolumn.html' %}
-                </div>
-            </div>
-        {% else %}
-        {% endif %}
-        <script type="text/javascript">
-            //IE redirect
-            if ((false || !!document.documentMode) && !(window.location.pathname == "/oldbrowser/")) {
-                console.log("IE");
-                window.location.href = '/oldbrowser';
-            } else {
-                //console.log(document.documentMode);
-            }
-
-            $(document).ready(function () {
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar').toggleClass('active');
-                    $('#content').toggleClass('active');
-                    $('#wrapper').toggleClass('active');
-                });
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $('#content').toggleClass('active');
+                $('#wrapper').toggleClass('active');
             });
-        </script>
-        <div id="toast-container"></div>
-    </div>
+        });
+    </script>
+    <div id="toast-container"></div>
+</div>
 
 </body>
 </html>
