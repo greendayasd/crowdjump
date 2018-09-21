@@ -537,18 +537,21 @@ Crowdjump.Game.update = function () {
     var seconds = 0;
 
     if (CONST_SAVE_LEVEL_TIME) {
-        seconds = (Math.abs(Math.floor(game.time.totalElapsedSeconds().toFixed(3) / 1)) - Math.abs(Math.floor(time_last_level_or_restart / 1))) + Math.floor(time_overall / 1);
+        seconds = (Math.abs(game.time.totalElapsedSeconds().toFixed(3) / 1) - Math.abs(time_last_level_or_restart / 1));
+        seconds += time_overall;
         if (time_overall != 0) {
 
         }
     } else if (first_moved > 0) {
         // seconds = Math.floor(game.time.totalElapsedSeconds().toFixed(3) - first_moved) + time_finished;
-        var seconds_this_level = Math.floor(game.time.totalElapsedSeconds().toFixed(3) - first_moved - (timeeggs) - (pause_time / 1000));
+        var seconds_this_level = game.time.totalElapsedSeconds().toFixed(3) - first_moved - (timeeggs) - (pause_time / 1000);
         seconds = ((seconds_this_level / 1) + parseFloat(time_finished)).toFixed(0);
         // seconds = seconds.toFixed(0);
     } else {
         seconds = (parseFloat(time_finished)).toFixed(0);
     }
+    if (CONST_COIN_SHOW_TIMEREDUCTION) seconds -= ((CONST_COIN_TIME_REDUCTION / 1000) * game.coinPickupCount);
+    seconds = Math.floor(seconds);
     if (seconds != last_second) {
         last_second = seconds;
         if (level_data.repeats) {
@@ -1834,7 +1837,7 @@ Crowdjump.Game.killHero = function (reason) {
 }
 
 Crowdjump.Game.showMessage = function (message, time, fill, font) {
-    message_image = this.add.text(CONST_WORLD_CENTER_X, 200, message, {fill: fill, font: font, align:"center"});
+    message_image = this.add.text(CONST_WORLD_CENTER_X, 200, message, {fill: fill, font: font, align: "center"});
     message_image.anchor.set(0.5);
     message_image.fixedToCamera = true;
     tween = game.add.tween(message_image).to({alpha: 0}, time, Phaser.Easing.Linear.None, true);

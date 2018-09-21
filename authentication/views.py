@@ -124,12 +124,11 @@ def CreateGamedata(request):
 
     try:
         # if found return
-        gameinfo = GameInfo.objects.filter(user_id=userid, version_id=v.id)
+        gameinfo = GameInfo.objects.filter(user_id=userid, version_id=v.id)[0]
         if gameinfo.user_id == int(userid):
             return JsonResponse({}, safe=False)
 
     except:
-        print('new GameInfo')
         gameinfo = GameInfo(user_id=userid, version_id=v.id)
         gameinfo.save()
 
@@ -138,7 +137,6 @@ def CreateGamedata(request):
         acc.versionlabel = v.label
         acc.save()
     except:
-        print("failure creating gamedata")
         JsonResponse({}, safe=False)
 
     return JsonResponse({}, safe=False)

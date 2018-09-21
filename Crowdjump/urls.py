@@ -55,6 +55,7 @@ urlpatterns = [
     url(r'^register/$', IndexView.as_view()),
 
     url(r'^admin/$', AdminView.as_view()),
+    url(r'^data/$', AdminView.as_view()),
     url(r'^profile/$', IndexView.as_view()),
 
     url(r'^survey0/$', IndexView.as_view()),

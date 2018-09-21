@@ -30,6 +30,8 @@ const CONST_FALLINGPLATFORMS = false;
 const CONST_CONVEYORPLATFORMS = false;
 
 const CONST_COINS = true;
+const CONST_COIN_TIME_REDUCTION = 500; //ms
+const CONST_COIN_SHOW_TIMEREDUCTION = true;
 
 const CONST_POWERUPS = true;
 const CONST_POWERUPS_JUMPBOOST = 1.4;
@@ -52,7 +54,7 @@ const CONST_BUBBLE = true;
 
 const CONST_WALK = false;
 const CONST_SPRINT = false;
-const CONST_WASD_CONTROLS = false;
+const CONST_WASD_CONTROLS = true;
 
 const CONST_DOUBLE_JUMP = false;
 const CONST_WALL_JUMP = false;
@@ -118,6 +120,7 @@ var time_finished = 0; //Synchronisation von DB und tracking
 var time_overall = 0;
 var time_last_level_or_restart = 0;
 
+
 function csrfSafeMethod(method) {
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
@@ -156,7 +159,54 @@ window.createGame = function (canvas, scope) {
         jqXHR.setRequestHeader('X-CSRF-Token', game.csrftoken);
     });
 
-    getInfo();
+
+    account = JSON.parse(getAuthCookie('authenticatedAccount'));
+    // console.error("account" + account);
+
+    if (account == '' || account == null || account == undefined) {
+        game.character = 'c' + 0;
+        console.log("not logged in");
+        resetStats();
+
+        game.state.add('Boot', Crowdjump.Boot);
+        game.state.add('Preloader', Crowdjump.Preloader);
+        game.state.add('Startmenu', Crowdjump.Menu);
+        game.state.add('Game', Crowdjump.Game);
+        game.state.add('Endscreen', Crowdjump.Endscreen);
+        game.state.add('Gameover', Crowdjump.Gameover);
+        game.state.add('LevelSelection', Crowdjump.LevelSelection);
+        game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
+        game.state.start('Boot');
+        return '';
+    }
+    game.character = account.character;
+
+    var username = account["username"];
+
+    if (account["versionlabel"] != versionlabel) {
+        increase_versionlabel(username, true);
+    } else {
+    }
+
+
+    var path = '/api/v1/gameinfo/?format=json&user__username=' + username + '&version__label=' + version;
+
+    jQuery.get(path, function (data) {
+        g_gameinfo = data[0];
+
+        resetStats();
+
+        game.state.add('Boot', Crowdjump.Boot);
+        game.state.add('Preloader', Crowdjump.Preloader);
+        game.state.add('Startmenu', Crowdjump.Menu);
+        game.state.add('Game', Crowdjump.Game);
+        game.state.add('Endscreen', Crowdjump.Endscreen);
+        game.state.add('Gameover', Crowdjump.Gameover);
+        game.state.add('LevelSelection', Crowdjump.LevelSelection);
+        game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
+        game.state.start('Boot');
+    });
+
 
     scope.$on('$destroy', function () {
         game.destroy(); // Clean up the game when we leave this scope
@@ -181,47 +231,6 @@ window.createGame = function (canvas, scope) {
     // scope.$on('game:toggleMusic', function () {
     //     Game.toggleMusic(); // some function that toggles the music
     // });
-
-
-    // game.world.setBounds(0,0,1500,600);
-
-    resetStats();
-
-    game.state.add('Boot', Crowdjump.Boot);
-    game.state.add('Preloader', Crowdjump.Preloader);
-    game.state.add('Startmenu', Crowdjump.Menu);
-    game.state.add('Game', Crowdjump.Game);
-    game.state.add('Endscreen', Crowdjump.Endscreen);
-    game.state.add('Gameover', Crowdjump.Gameover);
-    game.state.add('LevelSelection', Crowdjump.LevelSelection);
-    game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
-    game.state.start('Boot');
-}
-
-
-function getInfo() {
-
-    account = JSON.parse(getAuthCookie('authenticatedAccount'));
-    // console.error("account" + account);
-
-    if (account == '' || account == null || account == undefined) {
-        game.character = 'c' + 0;
-        return '';
-    }
-    game.character = account.character;
-
-    var username = account["username"];
-
-    if (account["versionlabel"] != versionlabel) {
-        increase_versionlabel(username, true);
-    }
-
-
-    var path = '/api/v1/gameinfo/?format=json&user__username=' + username + '&version__label=' + version;
-
-    jQuery.get(path, function (data) {
-        g_gameinfo = data[0];
-    })
 }
 
 
