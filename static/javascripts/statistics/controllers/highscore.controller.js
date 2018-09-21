@@ -127,7 +127,7 @@
 
         $scope.getVersionHighscore = function (version) {
             Statistics.top(topcut, version).then(statisticsSuccessFn, statisticsErrorFn);
-            
+
             function statisticsSuccessFn(data, status, headers, config) {
                 $scope.statistics = data.data["results"];
                 setNameColor();
