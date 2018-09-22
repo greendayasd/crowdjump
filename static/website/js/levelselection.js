@@ -56,14 +56,12 @@ Crowdjump.LevelSelection.prototype = {
 
     startlevel: function (text) {
         selected_level = text.level;
-        this.game.time.reset();
-        game.state.start('Game');
+        this.startGameRoutine();
     },
 
     startlevelKey: function (i) {
         selected_level = i;
-        this.game.time.reset();
-        game.state.start('Game');
+        this.startGameRoutine();
     },
     startlevelKey1: function () {
         this.startlevelKey(0);

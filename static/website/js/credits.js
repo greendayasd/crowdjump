@@ -7,7 +7,7 @@ Crowdjump.Credits = function (game) {
 
 Crowdjump.Credits.prototype = {
     create: function () {
-        levelmusic = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y -200, "Levelmusic: Overgrown Lavyrinth by Visager, licensed under a Attribution-ShareAlike License. ", {
+        levelmusic = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y -200, "Levelmusic: Overgrown Labyrinth by Visager, licensed under a Attribution-ShareAlike License. ", {
             font: "20px Arial",
             fill: '#dbdbdb'
         });

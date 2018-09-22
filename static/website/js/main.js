@@ -327,6 +327,13 @@ function setInfoLastLevel() {
 
 }
 
+function startGameRoutine() {
+    this.game.time.reset();
+    resetStats();
+    levelmusic.play();
+    game.state.start('Game');
+}
+
 function backToMainMenu() {
     if (game.state.current == "Game") {
         time_finished = game.time.totalElapsedSeconds() - first_moved;
@@ -337,27 +344,28 @@ function backToMainMenu() {
 
     // updateInfo(false);
     this.game.time.reset();
-    try{
-    levelmusic.pause();}
-    catch (e){
+    try {
+        levelmusic.pause();
+    }
+    catch (e) {
 
     }
     this.game.state.start("Startmenu");
 }
 
-function loadStates(){
-        resetStats();
+function loadStates() {
+    resetStats();
 
-        game.state.add('Boot', Crowdjump.Boot);
-        game.state.add('Preloader', Crowdjump.Preloader);
-        game.state.add('Startmenu', Crowdjump.Menu);
-        game.state.add('Game', Crowdjump.Game);
-        game.state.add('Endscreen', Crowdjump.Endscreen);
-        game.state.add('Gameover', Crowdjump.Gameover);
-        game.state.add('LevelSelection', Crowdjump.LevelSelection);
-        game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
-        game.state.add('Credits', Crowdjump.Credits);
-        game.state.start('Boot');
+    game.state.add('Boot', Crowdjump.Boot);
+    game.state.add('Preloader', Crowdjump.Preloader);
+    game.state.add('Startmenu', Crowdjump.Menu);
+    game.state.add('Game', Crowdjump.Game);
+    game.state.add('Endscreen', Crowdjump.Endscreen);
+    game.state.add('Gameover', Crowdjump.Gameover);
+    game.state.add('LevelSelection', Crowdjump.LevelSelection);
+    game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
+    game.state.add('Credits', Crowdjump.Credits);
+    game.state.start('Boot');
 }
 
 function getFileName(filename) {

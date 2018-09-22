@@ -80,10 +80,8 @@ Crowdjump.Menu.prototype = {
     },
 
     phasergame: function () {
-        this.game.time.reset();
         selected_level = -1;
-        levelmusic.play();
-        game.state.start('Game');
+        startGameRoutine();
     },
 
     levelSelection: function () {

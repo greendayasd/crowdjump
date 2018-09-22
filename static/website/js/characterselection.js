@@ -72,10 +72,9 @@ Crowdjump.CharacterSelection.prototype = {
     },
     selectCharacter: function (char) {
         game.character = char.character;
-        changeCharacter();
-        this.game.time.reset();
         selected_level = -1;
-        game.state.start('Game');
+        changeCharacter();
+        startGameRoutine();
     },
     uploadFile: function () {
 
