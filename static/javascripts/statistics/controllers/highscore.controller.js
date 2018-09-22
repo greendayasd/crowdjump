@@ -156,6 +156,7 @@
                         case 9:
                         case 11:
                         case 13:
+                        case 15:
                             $scope.versions.splice(i, 1);
                             break;
                     }

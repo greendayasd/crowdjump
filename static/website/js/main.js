@@ -78,6 +78,7 @@ const CONST_ANIMATE_CONVEYOR = false;
 const CONST_CHARACTER_COUNT = 4;
 
 const CONST_COLOR = false;
+const CONST_BACKGROUNDIMAGE = true;
 
 const CONST_SHOWLEVEL = false;
 const CONST_FPS = true;
@@ -86,6 +87,8 @@ const CONST_DEBUG = false;
 const CONST_CHEAT = false;
 const CONST_MUTE = true;
 const CONST_PAUSE = false;
+const CONST_CREDITS = true;
+const CONST_LEVELMUSIC = true;
 
 const CONST_CANVAS_X = 960;
 const CONST_CANVAS_Y = 600;
@@ -118,6 +121,7 @@ var time_finished = 0; //Synchronisation von DB und tracking
 
 var time_overall = 0;
 var time_last_level_or_restart = 0;
+var music;
 
 
 function csrfSafeMethod(method) {
@@ -165,18 +169,7 @@ window.createGame = function (canvas, scope) {
     if (account == '' || account == null || account == undefined) {
         console.log("account not found");
         game.character = 'c' + 0;
-        console.log("not logged in");
-        resetStats();
-
-        game.state.add('Boot', Crowdjump.Boot);
-        game.state.add('Preloader', Crowdjump.Preloader);
-        game.state.add('Startmenu', Crowdjump.Menu);
-        game.state.add('Game', Crowdjump.Game);
-        game.state.add('Endscreen', Crowdjump.Endscreen);
-        game.state.add('Gameover', Crowdjump.Gameover);
-        game.state.add('LevelSelection', Crowdjump.LevelSelection);
-        game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
-        game.state.start('Boot');
+        loadStates();
         return '';
     }
     game.character = account.character;
@@ -193,17 +186,7 @@ window.createGame = function (canvas, scope) {
 
     jQuery.get(path, function (data) {
         game.gameInfo = data[0];
-        resetStats();
-
-        game.state.add('Boot', Crowdjump.Boot);
-        game.state.add('Preloader', Crowdjump.Preloader);
-        game.state.add('Startmenu', Crowdjump.Menu);
-        game.state.add('Game', Crowdjump.Game);
-        game.state.add('Endscreen', Crowdjump.Endscreen);
-        game.state.add('Gameover', Crowdjump.Gameover);
-        game.state.add('LevelSelection', Crowdjump.LevelSelection);
-        game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
-        game.state.start('Boot');
+        loadStates();
     });
 
 
@@ -354,10 +337,29 @@ function backToMainMenu() {
 
     // updateInfo(false);
     this.game.time.reset();
+    try{
+    levelmusic.pause();}
+    catch (e){
+
+    }
     this.game.state.start("Startmenu");
+}
+
+function loadStates(){
+        resetStats();
+
+        game.state.add('Boot', Crowdjump.Boot);
+        game.state.add('Preloader', Crowdjump.Preloader);
+        game.state.add('Startmenu', Crowdjump.Menu);
+        game.state.add('Game', Crowdjump.Game);
+        game.state.add('Endscreen', Crowdjump.Endscreen);
+        game.state.add('Gameover', Crowdjump.Gameover);
+        game.state.add('LevelSelection', Crowdjump.LevelSelection);
+        game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
+        game.state.add('Credits', Crowdjump.Credits);
+        game.state.start('Boot');
 }
 
 function getFileName(filename) {
     return (/[/]/.exec(filename)) ? /[^/]+$/.exec(filename)[0] : undefined;
-
 }

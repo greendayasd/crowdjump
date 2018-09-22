@@ -314,8 +314,8 @@ Spider.prototype.die = function () {
 // =============================================================================
 
 
+//executed per LEVEL
 Crowdjump.Game.init = function (data) {
-    //executed per LEVEL
     this.game.renderer.renderSession.roundPixels = true;
 
     this.keys = this.game.input.keyboard.addKeys({
@@ -427,7 +427,7 @@ Crowdjump.Game.create = function () {
     // create sound entities
     this.sfx = {
         jump: this.game.add.audio('sfx:jump'),
-        coin: this.game.add.audio('sfx:coin'),
+        coin: this.game.add.audio('sfx:coin', 0.8),
         stomp: this.game.add.audio('sfx:stomp'),
         flag: this.game.add.audio('sfx:flag'),
         zhonyas: this.game.add.audio('sfx:zhonya'),
@@ -437,12 +437,48 @@ Crowdjump.Game.create = function () {
         easteregg: this.game.add.audio('sfx:easteregg'),
     };
 
-    // this.game.physics.startSystem(Phaser.Physics.P2);
 
-    // this.game.add.image(0, 0, 'background');
-    var c = Phaser.Color.getRandomColor(255, 255, 255);
+    //Background
+    if (CONST_BACKGROUNDIMAGE) {
+        this.game.stage.backgroundColor = '#545d8f';
 
-    this.game.stage.backgroundColor = c;
+        this.stars = this.game.add.tileSprite(0,
+            this.game.height - this.game.cache.getImage('stars').height,
+            this.game.width,
+            this.game.cache.getImage('stars').height,
+            'stars'
+        );
+        this.stars.fixedToCamera = true;
+
+        this.hillsBack = this.game.add.tileSprite(0,
+            this.game.height - this.game.cache.getImage('hillsBack').height,
+            this.game.width,
+            this.game.cache.getImage('hillsBack').height,
+            'hillsBack'
+        );
+        this.hillsBack.fixedToCamera = true;
+
+        this.hillsMiddle = this.game.add.tileSprite(0,
+            this.game.height - this.game.cache.getImage('hillsMiddle').height,
+            this.game.width,
+            this.game.cache.getImage('hillsMiddle').height,
+            'hillsMiddle'
+        );
+        this.hillsMiddle.fixedToCamera = true;
+
+        this.hillsFore = this.game.add.tileSprite(0,
+            this.game.height - this.game.cache.getImage('hillsFore').height,
+            this.game.width,
+            this.game.cache.getImage('hillsFore').height,
+            'hillsFore'
+        );
+        this.hillsFore.fixedToCamera = true;
+    }
+    else {
+        var c = Phaser.Color.getRandomColor(255, 255, 255);
+        this.game.stage.backgroundColor = c;
+    }
+
     zhonya_activated = false;
     zhonya_cooldown = false;
     time_zhonya_activated = 0;
@@ -523,6 +559,14 @@ Crowdjump.Game.create = function () {
 };
 
 Crowdjump.Game.update = function () {
+    if (CONST_BACKGROUNDIMAGE) {
+        // this.stars.tilePosition.x = game.camera.x*-0.02;
+        this.hillsBack.tilePosition.x = game.camera.x*-0.02;
+        this.hillsMiddle.tilePosition.x = game.camera.x*-0.1 +300;
+        this.hillsFore.tilePosition.x = game.camera.x*-0.2 +150;
+    }
+
+
     if (CONST_P2_PHYSICS) {
         this._handleCollisionsP2();
     } else {

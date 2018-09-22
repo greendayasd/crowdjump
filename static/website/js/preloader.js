@@ -180,7 +180,12 @@ Crowdjump.Preloader.prototype = {
         }
 
         //misc
-        this.load.image('background', misc + 'background.png');
+        if (CONST_BACKGROUNDIMAGE) {
+            this.load.image('stars', misc + 'stars.png');
+            this.load.image('hillsBack', misc + 'hillsBack.png');
+            this.load.image('hillsMiddle', misc + 'hillsMiddle.png');
+            this.load.image('hillsFore', misc + 'hillsFore.png');
+        }
         // this.load.image('flag', misc + 'flag_new.png');
         this.load.spritesheet('flag', misc + 'flag.png', 42, 66);
 
@@ -206,6 +211,10 @@ Crowdjump.Preloader.prototype = {
         if (CONST_SHOOTING) this.load.audio('sfx:shoot', audio + 'shoot.mp3');
         if (CONST_MAGAZINE > 0) this.load.audio('sfx:empty_magazine', audio + 'empty_magazine.wav');
 
+        if (CONST_LEVELMUSIC) {
+            this.load.audio('sfx:levelmusic', audio + 'levelmusic.ogg');
+            levelmusic = game.add.audio('sfx:levelmusic');
+        }
 
         //fonts
         this.load.image('font:numbers', fonts + 'numbers.png');
@@ -230,15 +239,16 @@ Crowdjump.Preloader.prototype = {
 
             game.authenticated = true;
             if (game.gameInfo == '' || game.gameInfo == undefined) game.authenticated = false;
-
             else if (account.uploaded_character != '' && account.uploaded_character != null) {
                 game.load.image(getFileName(account.uploaded_character), account.uploaded_character);
                 game.load.start();
             }
 
+
             if (CONST_LEVELSELECTION || CONST_CHARACTERSELECTION) {
                 this.state.start('Startmenu');
             } else {
+                levelmusic.play();
                 this.state.start('Game');
             }
         }

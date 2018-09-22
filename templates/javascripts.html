@@ -54,6 +54,7 @@
     <script type="text/javascript" src="/static/website/js/gameover.js"></script>
     <script type="text/javascript" src="/static/website/js/levelselection.js"></script>
     <script type="text/javascript" src="/static/website/js/characterselection.js"></script>
+    <script type="text/javascript" src="/static/website/js/credits.js"></script>
 
 
 
@@ -150,7 +151,7 @@
 
     <script type="text/javascript">
         var isonfocus = true;
-        var versionnumber = 14;
+        var versionnumber = 16;
         var versionlabel = versionnumber < 10 ? '0.0' + versionnumber : '0.' + versionnumber;
         var nextVote = moment('22-09-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix();
 
@@ -444,6 +445,30 @@
             string20 != undefined ? res += ' , ' + string20 : false;
 
             return res + '\n';
+        }
+
+        function wrapForDB(string1, string2, string3, string4, string5, string6, string7, string8, string9, string10, string11, string12, string13, string14, string15, string16, string17, string18, string19, string20) {
+            var res = '"' + string1 + '"';
+            string2 != undefined ? res += '\t"' + string2 + '"' : false;
+            string3 != undefined ? res += '\t"' + string3 + '"' : false;
+            string4 != undefined ? res += '\t"' + string4 + '"' : false;
+            string5 != undefined ? res += '\t"' + string5 + '"' : false;
+            string6 != undefined ? res += '\t"' + string6 + '"' : false;
+            string7 != undefined ? res += '\t"' + string7 + '"' : false;
+            string8 != undefined ? res += '\t"' + string8 + '"' : false;
+            string9 != undefined ? res += '\t"' + string9 + '"' : false;
+            string10 != undefined ? res += '\t"' + string10 + '"' : false;
+            string11 != undefined ? res += '\t"' + string11 + '"' : false;
+            string12 != undefined ? res += '\t"' + string12 + '"' : false;
+            string13 != undefined ? res += '\t"' + string13 + '"' : false;
+            string14 != undefined ? res += '\t"' + string14 + '"' : false;
+            string15 != undefined ? res += '\t"' + string15 + '"' : false;
+            string16 != undefined ? res += '\t"' + string16 + '"' : false;
+            string17 != undefined ? res += '\t"' + string17 + '"' : false;
+            string18 != undefined ? res += '\t"' + string18 + '"' : false;
+            string19 != undefined ? res += '\t"' + string19 + '"' : false;
+            string20 != undefined ? res += '\t"' + string20 + '"' : false;
+            return res;
         }
 
         function arrayContains(arr, str) {

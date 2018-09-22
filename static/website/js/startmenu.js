@@ -11,7 +11,7 @@ Crowdjump.Menu = function (game) {
 Crowdjump.Menu.prototype = {
     create: function () {
         this.game.stage.backgroundColor = '#1948cd';
-
+        levelmusic = game.add.audio('sfx:levelmusic', 1, true);
 
         logo = this.add.sprite(CONST_WORLD_CENTER_X,
             CONST_WORLD_CENTER_Y - 80, 'logo');
@@ -53,6 +53,19 @@ Crowdjump.Menu.prototype = {
         }
 
 
+        if (CONST_CREDITS) {
+            credits = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 170, "Credits", {
+                font: "40px Arial",
+                fill: '#dbdbdb'
+            });
+            credits.anchor.set(0.5);
+            credits.inputEnabled = true;
+            credits.events.onInputDown.add(this.credits, this);
+
+            key3 = game.input.keyboard.addKey(Phaser.Keyboard.THREE);
+            key3.onDown.add(this.credits, this);
+        }
+
         key1 = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
         key1.onDown.add(this.phasergame, this);
 
@@ -69,6 +82,7 @@ Crowdjump.Menu.prototype = {
     phasergame: function () {
         this.game.time.reset();
         selected_level = -1;
+        levelmusic.play();
         game.state.start('Game');
     },
 
@@ -78,6 +92,10 @@ Crowdjump.Menu.prototype = {
 
     characterSelection: function () {
         game.state.start('CharacterSelection');
+    },
+
+    credits: function () {
+        game.state.start('Credits');
     },
 
     endscreen: function () {

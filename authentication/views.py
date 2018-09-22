@@ -11,7 +11,7 @@ from authentication.forms import ImageUploadForm
 from django.shortcuts import render
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.views.decorators.csrf import csrf_exempt
-
+import math
 
 class AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
@@ -329,6 +329,11 @@ def SendGameData(request):
     special_name = request.GET.get('special_name')
     character = request.GET.get('character')
     powerups = request.GET.get('powerups')
+
+
+    if math.isnan(float(level)):
+        level = '-1'
+        print(level)
 
     try:
         highscore = request.GET.get('highscore')

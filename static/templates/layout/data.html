@@ -2,7 +2,9 @@
     <div class="row" id="main-row">
         <div class="col-sm-12 col-centered" id="main-col">
             <div>
-                <h3>Survey</h3>
+                <button type="button" class="btn btn-xs btn-primary" ng-click="get_json_sum()">Sum up Json
+                </button>
+                <br><br>
                 <button type="button" class="btn btn-xs btn-primary" ng-click="sortByUserData()">UserData
                 </button><br><br>
 
@@ -12,9 +14,14 @@
                 </a>
 
                 <textarea class="form-control textarea  empty"
-                          rows="10" cols="12"
+                          rows="40" cols="12"
 
                           ng-model=csv></textarea>
+                <br>
+                <textarea class="form-control textarea  empty"
+                          rows="10" cols="12"
+
+                          ng-model=stats></textarea>
                 <br>
             </div>
         </div>
