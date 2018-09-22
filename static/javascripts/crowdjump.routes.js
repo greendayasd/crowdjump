@@ -69,6 +69,10 @@
             templateUrl: '/static/templates/layout/profile.html'
 
 
+        }).when('/data', {
+            controller: 'DataController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/layout/data.html'
         }).when('/admin', {
             controller: 'AdminController',
             controllerAs: 'vm',

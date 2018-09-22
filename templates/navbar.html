@@ -43,6 +43,7 @@
                     {#                    <li><a class="nav-link" href="chat/lobby">Chat</a></li>#}
                     {% if user.username == 'admin' %}
                         <li><a class="nav-link" href="admin">Admin</a></li>
+                        <li><a class="nav-link" href="data">Data</a></li>
                     {% else %}
                     <li>
                         <a class="no-hover">Welcome, {{ user.username }}</a>

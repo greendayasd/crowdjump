@@ -76,6 +76,7 @@
 
     <script type="text/javascript" src="{% static 'javascripts/admin/admin.module.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/admin/controllers/admin.controller.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascripts/admin/controllers/data.controller.js' %}"></script>
 
     <script type="text/javascript" src="{% static 'javascripts/chat/chat.module.js' %}"></script>
     <script type="text/javascript" src="{% static 'javascripts/chat/controllers/chat.controller.js' %}"></script>
@@ -151,7 +152,7 @@
         var isonfocus = true;
         var versionnumber = 14;
         var versionlabel = versionnumber < 10 ? '0.0' + versionnumber : '0.' + versionnumber;
-        var nextVote = moment('22-09-2018 09:00:00', 'DD-MM-YYYY HH:mm:ss').unix();
+        var nextVote = moment('22-09-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix();
 
         window.onblur = function () {
             isonfocus = false;
@@ -299,7 +300,7 @@
             log("refresh");
 
             account = JSON.parse(getAuthCookie('authenticatedAccount'));
-            account.uploaded_character = "/media/characters/" +  account.id + ".png";
+            account.uploaded_character = "/media/characters/" + account.id + ".png";
             setCookie("authenticatedAccount", JSON.stringify(account), 365);
             /*var data = {};
 
@@ -418,6 +419,31 @@
             string10 != undefined ? res += ' , ' + string10 : false;
 
             console.log(res);
+        }
+
+        function form_csv(string1, string2, string3, string4, string5, string6, string7, string8, string9, string10, string11, string12, string13, string14, string15, string16, string17, string18, string19, string20) {
+            var res = string1;
+            string2 != undefined ? res += ' , ' + string2 : false;
+            string3 != undefined ? res += ' , ' + string3 : false;
+            string4 != undefined ? res += ' , ' + string4 : false;
+            string5 != undefined ? res += ' , ' + string5 : false;
+            string6 != undefined ? res += ' , ' + string6 : false;
+            string7 != undefined ? res += ' , ' + string7 : false;
+            string8 != undefined ? res += ' , ' + string8 : false;
+            string9 != undefined ? res += ' , ' + string9 : false;
+            string10 != undefined ? res += ' , ' + string10 : false;
+            string11 != undefined ? res += ' , ' + string11 : false;
+            string12 != undefined ? res += ' , ' + string12 : false;
+            string13 != undefined ? res += ' , ' + string13 : false;
+            string14 != undefined ? res += ' , ' + string14 : false;
+            string15 != undefined ? res += ' , ' + string15 : false;
+            string16 != undefined ? res += ' , ' + string16 : false;
+            string17 != undefined ? res += ' , ' + string17 : false;
+            string18 != undefined ? res += ' , ' + string18 : false;
+            string19 != undefined ? res += ' , ' + string19 : false;
+            string20 != undefined ? res += ' , ' + string20 : false;
+
+            return res + '\n';
         }
 
         function arrayContains(arr, str) {
