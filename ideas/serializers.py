@@ -70,7 +70,7 @@ class IdeaNewestCommentPermissionSerializer(serializers.ModelSerializer):
 class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
     user = AccountSerializerPrivate(read_only=True, required=False)
     # version = VersionSerializer(read_only=True, required=False)
-    version = Version.objects.all().order_by('-id')[0]
+    version = VersionSerializer(read_only=True, required=False)
 
     class Meta:
         model = GameInfo

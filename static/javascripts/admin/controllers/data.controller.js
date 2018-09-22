@@ -98,8 +98,19 @@
             $scope.sortByUserData = function () {
                 var statistics = '';
                 var today = new Date();
-                var firstVersion = new Date(2018,9,14);
-                var header = form_csv('id', 'username', 'register_version', 'ideas', 'versions_played (of ' + (today.getDate()-firstVersion.getDate()) + ')', 'ideavotes', 'active');
+                var firstVersion = new Date(2018, 9, 14);
+                var amountVersions = today.getDate() - firstVersion.getDate();
+                var header = form_csv('id', 'username', 'register_version', 'ideas', 'versions_played (of ' + amountVersions + ')', 'ideavotes', 'activeAnd', 'activeOr', 'last_online');
+
+                var playedIdea80 = 0;
+                var playedIdea50 = 0;
+                var playedIdea20 = 0;
+                var playedIdea = 0;
+                var playedOrIdea80 = 0;
+                var playedOrIdea50 = 0;
+                var playedOrIdea20 = 0;
+                var playedOrIdea = 0;
+
 
                 //find own votes for ideas
                 $scope.accounts = $.map($scope.accounts, function (user) {
@@ -122,7 +133,7 @@
                     }
 
                     var gameinfos = $.grep($scope.gameinfo, function (gameinfo) {
-                        return (gameinfo.user.id === user.id && gameinfo.rounds_started >0);
+                        return (gameinfo.user.id === user.id && gameinfo.rounds_started > 0);
                     });
                     if (typeof gameinfos !== 'undefined') {
                         user.gameinfos = gameinfos;
@@ -135,21 +146,92 @@
 
                 for (var i = 0; i < $scope.accounts.length; i++) {
                     var acc = $scope.accounts[i];
-                    var dates = new Set();
+                    var last_online = convertJSDateFull(acc.created_at);
 
-                    for (var gcount = 0; gcount < acc.gameinfos.length; gcount++){
-                        log(getDateFromVersion(acc.gameinfos[gcount].version_id));
-                        dates.add(acc.gameinfos[gcount].version_id);
+                    //filter accounts
+                    switch (acc.id) {
+                        case 1:
+                        case 21:
+                        case 22:
+                            continue;
                     }
-                    statistics += form_csv(acc.id, acc.username, '', acc.ideas.length, acc.gameinfos.length, acc.ideavotes.length, dates.length);
+
+                    var datesIdeas = new Set();
+                    var datesOr = new Set();
+                    for (var gcount = 0; gcount < acc.gameinfos.length; gcount++) {
+
+                        var g = acc.gameinfos[gcount];
+                        if (last_online - getDateFromVersion(g.version.id) < 0) last_online = getDateFromVersion(g.version.id);
+
+                        datesOr.add(convertJSDate(g.version.created_at));
+
+                    }
+                    for (var icount = 0; icount < acc.ideas.length; icount++) {
+
+                        var idea = acc.ideas[icount];
+                        if (last_online - convertJSDateFull(idea.created_at) < 0) last_online = convertJSDateFull(idea.created_at);
+
+                        datesIdeas.add(convertJSDate(idea.created_at));
+                    }
+
+                    for (var vcount = 0; vcount < acc.ideavotes.length; vcount++) {
+                        var vote = acc.ideavotes[vcount];
+                        if (last_online - convertJSDateFull(vote.created_at) < 0) last_online = convertJSDateFull(vote.created_at);
+
+                        datesIdeas.add(convertJSDate(vote.created_at));
+                    }
+
+                    var datesAnd = new Set([...datesIdeas].filter(x=> datesOr.has(x)));
+                    var datesOr = new Set([...datesOr,...datesIdeas]);
+                    // var datesAnd = new Set([...datesIdeas].filter(x=> datesOr.has(x)));
+                    // var datesOr = new Set([...datesOr,...datesIdeas]);
+
+                    var andPercentage = datesAnd.size / amountVersions;
+                    var orPercentage = datesOr.size / amountVersions;
+
+                    if (andPercentage >= 0.8) playedIdea80++;
+                    if (andPercentage >= 0.5) playedIdea50++;
+                    if (andPercentage >= 0.2) playedIdea20++;
+                    if (andPercentage > 0) playedIdea++;
+
+                    if (orPercentage >= 0.8) playedOrIdea80++;
+                    if (orPercentage >= 0.5) playedOrIdea50++;
+                    if (orPercentage >= 0.2) playedOrIdea20++;
+                    if (orPercentage > 0) playedOrIdea++;
+
+                    last_online = moment(last_online);
+                    var creationDate = moment(convertJSDateFull(acc.created_at));
+                    statistics += form_csv(acc.id, acc.username, creationDate.format('DD-MM-YYYY'), acc.ideas.length, acc.gameinfos.length, acc.ideavotes.length, datesAnd.size, datesOr.size, last_online.format('DD-MM-YYYY'));
                 }
                 $scope.csv = header + statistics;
+                $scope.stats = '80% played + idea ' + playedIdea80 + '\n';
+                $scope.stats += '50% played + idea ' + playedIdea50 + '\n';
+                $scope.stats += '20% played + idea ' + playedIdea20 + '\n';
+                $scope.stats += 'at least one played + idea ' + playedIdea + '\n\n';
+
+                $scope.stats += '80% played OR idea ' + playedOrIdea80 + '\n';
+                $scope.stats += '50% played OR idea ' + playedOrIdea50 + '\n';
+                $scope.stats += '20% played OR idea ' + playedOrIdea20 + '\n';
+                $scope.stats += 'at least one played OR idea ' + playedOrIdea;
 
             };
 
-            function getDateFromVersion (versionid){
-                return $scope.versions[versionid-1].created_at.getDate();
+            function convertJSDate(date) {
+                var dateParts = date.split("-");
+                var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2));
+                return jsDate.getDate();
             }
+
+            function convertJSDateFull(date) {
+                var dateParts = date.split("-");
+                var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2));
+                return jsDate;
+            }
+
+            function getDateFromVersion(version){
+                return convertJSDateFull($scope.versions[version-1].created_at);
+            }
+
             $scope.get_json_sum = function () {
                 var data = JSON.parse('[' + $scope.csv + ']');
                 var rounds_won = 0,
@@ -214,6 +296,7 @@
                 $scope.csv += '\n' + wrapForDB(data.length, rounds_won, enemies_killed, coins_collected, highscore, time_spend_game, jumps, restarts, '', deaths, highest_level, movement_inputs, eastereggs_found, special_name);
 
             }
+
         }
     }
 
