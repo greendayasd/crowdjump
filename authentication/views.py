@@ -16,7 +16,7 @@ from django.views.decorators.csrf import csrf_exempt
 class AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
     queryset = Account.objects.all()
-    serializer_class = AccountSerializerPrivate
+    serializer_class = AccountSerializer
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
@@ -43,7 +43,7 @@ class AccountViewSet(viewsets.ModelViewSet):
     def get(self, request, format=None):
         users = Account.objects.all()
 
-        serializer = AccountSerializer(users, many=True, context={'request': request})
+        serializer = AccountSerializerPrivate(users, many=True, context={'request': request})
         return Response(serializer.data)
 
 
