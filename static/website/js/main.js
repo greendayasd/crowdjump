@@ -97,7 +97,6 @@ var DIFFICULTY = Object.freeze({"easy": 1, "normal": 2, "hard": 3})
 var version = '';
 
 var game;
-var g_gameinfo = '';
 var highscoreSocket;
 var account;
 
@@ -164,6 +163,7 @@ window.createGame = function (canvas, scope) {
     // console.error("account" + account);
 
     if (account == '' || account == null || account == undefined) {
+        console.log("account not found");
         game.character = 'c' + 0;
         console.log("not logged in");
         resetStats();
@@ -192,7 +192,7 @@ window.createGame = function (canvas, scope) {
     var path = '/api/v1/gameinfo/?format=json&user__username=' + username + '&version__label=' + version;
 
     jQuery.get(path, function (data) {
-        g_gameinfo = data[0];
+        game.gameinfo = data[0];
 
         resetStats();
 
