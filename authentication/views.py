@@ -43,7 +43,7 @@ class AccountViewSet(viewsets.ModelViewSet):
     def get(self, request, format=None):
         users = Account.objects.all()
 
-        serializer = AccountSerializerPrivate(users, many=True, context={'request': request})
+        serializer = AccountSerializer(users, many=True, context={'request': request})
         return Response(serializer.data)
 
 
