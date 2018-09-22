@@ -229,14 +229,12 @@ Crowdjump.Preloader.prototype = {
             text.setText('');
 
             game.authenticated = true;
-
             if (game.gameInfo == '' || game.gameInfo == undefined) game.authenticated = false;
 
             else if (account.uploaded_character != '' && account.uploaded_character != null) {
                 game.load.image(getFileName(account.uploaded_character), account.uploaded_character);
                 game.load.start();
             }
-            console.log(game.authenticated);
 
             if (CONST_LEVELSELECTION || CONST_CHARACTERSELECTION) {
                 this.state.start('Startmenu');

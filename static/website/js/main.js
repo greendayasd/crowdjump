@@ -192,8 +192,7 @@ window.createGame = function (canvas, scope) {
     var path = '/api/v1/gameinfo/?format=json&user__username=' + username + '&version__label=' + version;
 
     jQuery.get(path, function (data) {
-        game.gameinfo = data[0];
-
+        game.gameInfo = data[0];
         resetStats();
 
         game.state.add('Boot', Crowdjump.Boot);
