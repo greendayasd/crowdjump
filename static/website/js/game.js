@@ -175,7 +175,11 @@ Hero.prototype.move = function (direction) {
 };
 
 Hero.prototype.jump = function () {
-    var canJump = (CONST_CHEAT && account.username == 'admin');
+    var cheat = false;
+    if (account != null) {
+        cheat = (CONST_CHEAT && account.username == 'admin')
+    }
+    var canJump = cheat;
     var jump_speed = CONST_JUMP_SPEED;
     if (pu_permjumpboost) jump_speed = jump_speed * CONST_POWERUPS_PERMJUMPBOOST;
 
@@ -185,7 +189,7 @@ Hero.prototype.jump = function () {
         canJump = true;
         second_jump = true;
     } else {
-        canJump = (this.body.touching.down || CONST_CHEAT);
+        canJump = (this.body.touching.down || cheat);
         if (this.body.touching.down) {
             second_jump = true;
         }
@@ -1184,7 +1188,6 @@ Crowdjump.Game._spawnPlatform = function (platform) {
 Crowdjump.Game._spawnFakePlatform = function (platform) {
 
     var sprite;
-    console.log(platform);
     var newx = platform.x;
     var newy = platform.y;
 
