@@ -6,11 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/fakelava_1x1.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/gamefiles/tiles/fakelava_1x1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/website/js/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/preloader.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -75,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1387">
-              <caret line="980" column="16" lean-forward="true" selection-start-line="980" selection-start-column="16" selection-end-line="980" selection-end-column="16" />
+            <state relative-caret-position="170">
+              <caret line="343" column="23" selection-start-line="343" selection-start-column="23" selection-end-line="343" selection-end-column="23" />
               <folding>
                 <element signature="e#34#114#0" />
                 <element signature="e#240#1178#0" />
@@ -92,7 +88,6 @@
                 <element signature="e#2396#2490#0" />
                 <element signature="e#2822#2854#0" />
                 <element signature="e#3295#3334#0" />
-                <element signature="e#3505#5475#0" />
                 <element signature="e#3577#3625#0" />
                 <element signature="e#3631#3676#0" />
                 <element signature="e#3856#4143#0" />
@@ -137,14 +132,11 @@
                 <element signature="e#9113#9247#0" />
                 <element signature="e#9209#9237#0" />
                 <element signature="e#9250#9330#0" />
-                <element signature="e#9488#12201#0" />
                 <element signature="e#9597#9909#0" />
                 <element signature="e#9936#10073#0" />
                 <element signature="e#9999#10067#0" />
                 <element signature="e#10226#10359#0" />
                 <element signature="e#10380#10511#0" />
-                <element signature="e#10695#11023#0" />
-                <element signature="e#10795#11015#0" />
                 <element signature="e#11063#11099#0" />
                 <element signature="e#11105#11131#0" />
                 <element signature="e#11174#11332#0" />
@@ -234,13 +226,8 @@
                 <element signature="e#29449#29508#0" />
                 <element signature="e#29884#30003#0" />
                 <element signature="e#30143#31159#0" />
-                <element signature="e#30176#30229#0" />
-                <element signature="e#30267#30320#0" />
-                <element signature="e#30355#30574#0" />
-                <element signature="e#30392#30436#0" />
                 <element signature="e#30470#30512#0" />
                 <element signature="e#30518#30568#0" />
-                <element signature="e#30584#30626#0" />
                 <element signature="e#30652#31157#0" />
                 <element signature="e#30713#30754#0" />
                 <element signature="e#30785#30884#0" />
@@ -253,11 +240,13 @@
                 <element signature="e#31304#31351#0" />
                 <element signature="e#31440#31487#0" />
                 <element signature="e#31540#31684#0" />
+                <element signature="e#31730#34185#0" />
                 <element signature="e#31759#31798#0" />
                 <element signature="e#31804#31847#0" />
                 <element signature="e#31920#32085#0" />
                 <element signature="e#32119#32180#0" />
                 <element signature="e#32205#32310#0" />
+                <element signature="e#32349#32449#0" />
                 <element signature="e#32504#32610#0" />
                 <element signature="e#32658#32825#0" />
                 <element signature="e#32872#32983#0" />
@@ -412,7 +401,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="495">
@@ -556,7 +545,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>play</find>
       <find>sfx</find>
       <find>highest</find>
       <find>hil</find>
@@ -584,8 +572,9 @@
       <find>mail</find>
       <find>cheat</find>
       <find>spike</find>
-      <find>chea</find>
       <find>spawnlava</find>
+      <find>chea</find>
+      <find>wasd</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -653,10 +642,10 @@
         <option value="$PROJECT_DIR$/static/templates/layout/game.html" />
         <option value="$PROJECT_DIR$/static/website/js/endscreen.js" />
         <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
-        <option value="$PROJECT_DIR$/static/website/js/game.js" />
         <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
         <option value="$PROJECT_DIR$/authentication/views.py" />
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
+        <option value="$PROJECT_DIR$/static/website/js/game.js" />
       </list>
     </option>
   </component>
@@ -1072,9 +1061,9 @@
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32776618" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="15" sideWeight="0.49946696" weight="0.33716077" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23134328" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23134328" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="manage.py@Crowdjump" order="11" sideWeight="0.49733475" visible="true" weight="0.3455115" />
+      <window_info active="true" anchor="bottom" id="manage.py@Crowdjump" order="11" sideWeight="0.49733475" visible="true" weight="0.3455115" />
       <window_info anchor="right" id="Database" order="3" weight="0.32949877" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.29853863" />
       <window_info anchor="right" id="SciView" order="4" />
@@ -1927,10 +1916,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="239" column="48" selection-start-line="239" selection-start-column="48" selection-end-line="239" selection-end-column="48" />
+          <folding>
+            <element signature="e#3318#3377#0" />
+            <element signature="e#3424#5754#0" />
+            <element signature="e#3557#3918#0" />
+            <element signature="e#3985#4182#0" />
+            <element signature="e#4032#4176#0" />
+            <element signature="e#4082#4166#0" />
+            <element signature="e#4249#4320#0" />
+            <element signature="e#4500#4624#0" />
+            <element signature="e#4756#4810#0" />
+            <element signature="e#4816#4823#0" />
+            <element signature="e#4970#5032#0" />
+            <element signature="e#5075#5152#0" />
+            <element signature="e#5329#5381#0" />
+            <element signature="e#5546#5616#0" />
+            <element signature="e#5624#5670#0" />
+            <element signature="e#6639#6724#0" />
+            <element signature="e#6849#7019#0" />
+            <element signature="e#6880#7009#0" />
+            <element signature="e#7052#7122#0" />
+            <element signature="e#7162#7257#0" />
+            <element signature="e#7283#7566#0" />
+            <element signature="e#7616#8042#0" />
+            <element signature="e#7649#8038#0" />
+            <element signature="e#7737#7934#0" />
+            <element signature="e#7772#7924#0" />
+            <element signature="e#7967#8032#0" />
+            <element signature="e#8071#8476#0" />
+            <element signature="e#8088#8131#0" />
+            <element signature="e#8145#8472#0" />
+            <element signature="e#8234#8373#0" />
+            <element signature="e#8406#8466#0" />
+            <element signature="e#8945#9047#0" />
+            <element signature="e#9075#9563#0" />
+            <element signature="e#9115#9304#0" />
+            <element signature="e#9463#9498#0" />
+            <element signature="e#9513#9521#0" />
+            <element signature="e#9587#10122#0" />
+            <element signature="e#10155#10234#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1387">
-          <caret line="980" column="16" lean-forward="true" selection-start-line="980" selection-start-column="16" selection-end-line="980" selection-end-column="16" />
+        <state relative-caret-position="170">
+          <caret line="343" column="23" selection-start-line="343" selection-start-column="23" selection-end-line="343" selection-end-column="23" />
           <folding>
             <element signature="e#34#114#0" />
             <element signature="e#240#1178#0" />
@@ -1943,7 +1979,6 @@
             <element signature="e#2396#2490#0" />
             <element signature="e#2822#2854#0" />
             <element signature="e#3295#3334#0" />
-            <element signature="e#3505#5475#0" />
             <element signature="e#3577#3625#0" />
             <element signature="e#3631#3676#0" />
             <element signature="e#3856#4143#0" />
@@ -1988,14 +2023,11 @@
             <element signature="e#9113#9247#0" />
             <element signature="e#9209#9237#0" />
             <element signature="e#9250#9330#0" />
-            <element signature="e#9488#12201#0" />
             <element signature="e#9597#9909#0" />
             <element signature="e#9936#10073#0" />
             <element signature="e#9999#10067#0" />
             <element signature="e#10226#10359#0" />
             <element signature="e#10380#10511#0" />
-            <element signature="e#10695#11023#0" />
-            <element signature="e#10795#11015#0" />
             <element signature="e#11063#11099#0" />
             <element signature="e#11105#11131#0" />
             <element signature="e#11174#11332#0" />
@@ -2085,13 +2117,8 @@
             <element signature="e#29449#29508#0" />
             <element signature="e#29884#30003#0" />
             <element signature="e#30143#31159#0" />
-            <element signature="e#30176#30229#0" />
-            <element signature="e#30267#30320#0" />
-            <element signature="e#30355#30574#0" />
-            <element signature="e#30392#30436#0" />
             <element signature="e#30470#30512#0" />
             <element signature="e#30518#30568#0" />
-            <element signature="e#30584#30626#0" />
             <element signature="e#30652#31157#0" />
             <element signature="e#30713#30754#0" />
             <element signature="e#30785#30884#0" />
@@ -2104,11 +2131,13 @@
             <element signature="e#31304#31351#0" />
             <element signature="e#31440#31487#0" />
             <element signature="e#31540#31684#0" />
+            <element signature="e#31730#34185#0" />
             <element signature="e#31759#31798#0" />
             <element signature="e#31804#31847#0" />
             <element signature="e#31920#32085#0" />
             <element signature="e#32119#32180#0" />
             <element signature="e#32205#32310#0" />
+            <element signature="e#32349#32449#0" />
             <element signature="e#32504#32610#0" />
             <element signature="e#32658#32825#0" />
             <element signature="e#32872#32983#0" />
@@ -2258,53 +2287,6 @@
             <element signature="e#60825#60866#0" />
             <element signature="e#60872#60912#0" />
             <element signature="e#60956#60985#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="239" column="48" selection-start-line="239" selection-start-column="48" selection-end-line="239" selection-end-column="48" />
-          <folding>
-            <element signature="e#3318#3377#0" />
-            <element signature="e#3424#5754#0" />
-            <element signature="e#3557#3918#0" />
-            <element signature="e#3985#4182#0" />
-            <element signature="e#4032#4176#0" />
-            <element signature="e#4082#4166#0" />
-            <element signature="e#4249#4320#0" />
-            <element signature="e#4500#4624#0" />
-            <element signature="e#4756#4810#0" />
-            <element signature="e#4816#4823#0" />
-            <element signature="e#4970#5032#0" />
-            <element signature="e#5075#5152#0" />
-            <element signature="e#5329#5381#0" />
-            <element signature="e#5546#5616#0" />
-            <element signature="e#5624#5670#0" />
-            <element signature="e#6639#6724#0" />
-            <element signature="e#6849#7019#0" />
-            <element signature="e#6880#7009#0" />
-            <element signature="e#7052#7122#0" />
-            <element signature="e#7162#7257#0" />
-            <element signature="e#7283#7566#0" />
-            <element signature="e#7616#8042#0" />
-            <element signature="e#7649#8038#0" />
-            <element signature="e#7737#7934#0" />
-            <element signature="e#7772#7924#0" />
-            <element signature="e#7967#8032#0" />
-            <element signature="e#8071#8476#0" />
-            <element signature="e#8088#8131#0" />
-            <element signature="e#8145#8472#0" />
-            <element signature="e#8234#8373#0" />
-            <element signature="e#8406#8466#0" />
-            <element signature="e#8945#9047#0" />
-            <element signature="e#9075#9563#0" />
-            <element signature="e#9115#9304#0" />
-            <element signature="e#9463#9498#0" />
-            <element signature="e#9513#9521#0" />
-            <element signature="e#9587#10122#0" />
-            <element signature="e#10155#10234#0" />
           </folding>
         </state>
       </provider>

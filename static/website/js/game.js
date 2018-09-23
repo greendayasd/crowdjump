@@ -339,6 +339,11 @@ Crowdjump.Game.init = function (data) {
     this.keys.left.onDown.add(this._countMovementInput, this);
     this.keys.right.onDown.add(this._countMovementInput, this);
 
+    if (CONST_WASD_CONTROLS) {
+        this.wasd.left.onDown.add(this._countMovementInput, this);
+        this.wasd.right.onDown.add(this._countMovementInput, this);
+    }
+
     if (CONST_SPRINT) {
         this.keys.ctrl.onDown.add(this._activateSprint, this);
         this.keys.ctrl.onUp.add(this._deactivateSprint, this);
