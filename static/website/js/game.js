@@ -1588,12 +1588,12 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
             // time_finished = game.time.totalElapsedSeconds() - first_moved;
             // time_finished = parseFloat(time_finished.toFixed(3));
         } else {
-            log(time_overall, game.time.totalElapsedSeconds(), first_moved);
+            // log(time_overall, game.time.totalElapsedSeconds(), first_moved);
             time_overall = parseFloat(time_overall) + (game.time.totalElapsedSeconds() - first_moved);
             time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
-            console.log(time_overall);
+            // console.log(time_overall);
             time_finished = parseFloat(game.time.totalElapsedSeconds().toFixed(3)) - first_moved;
-            ;
+
             time_finished = parseFloat(time_finished.toFixed(3));
 
         }

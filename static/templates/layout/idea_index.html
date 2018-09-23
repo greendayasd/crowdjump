@@ -67,6 +67,9 @@
                         <tr>
                             <td>{{ idea.description }}</td>
                         </tr>
+                        <tr ng-show="idea.admin_comment != ''">
+                            <td style="color:red">{{ idea.admin_comment }}</td>
+                        </tr>
                         <tr>
                             <td>
                                 <img src="/static/website/images/upvote.png"/> {{ idea.upvotes }}
