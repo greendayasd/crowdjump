@@ -21,7 +21,7 @@ Crowdjump.Endscreen.prototype = {
 
         if (CONST_TIME) {
 
-            time_finished = parseFloat(time_overall);
+            time_finished = parseFloat(game.time.totalElapsedSeconds().toFixed(3)) - first_moved;;
             time_finished = parseFloat(time_finished.toFixed(3));
             time_score = parseFloat((parseFloat(time_overall) - (game.coinPickupCount * (CONST_COIN_TIME_REDUCTION/1000))).toFixed(3));
             time_overall = 0;

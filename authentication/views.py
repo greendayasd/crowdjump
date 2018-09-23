@@ -248,7 +248,7 @@ def AntiCheat(status, level, timeneeded, jumps, movement_inputs, enemies_killed,
     if (status == 'completed'):
         if (int(level) == 1 and int(jumps) < 8
                 or int(level) == 2 and int(jumps) < 4
-                or int(level) == 3 and int(jumps) < 5
+                or int(level) == 3 and int(jumps) < 5 #in 4 theoretisch möglich
                 or int(level) == 4 and int(jumps) < 3):
             cheated += '_jumps'
 
@@ -256,28 +256,28 @@ def AntiCheat(status, level, timeneeded, jumps, movement_inputs, enemies_killed,
     if (status == 'completed'):
         if (int(level) == 1 and int(movement_inputs) < 1
                 or int(level) == 2 and int(movement_inputs) < 1
-                or int(level) == 3 and int(movement_inputs) < 1
+                or int(level) == 3 and int(movement_inputs) < 3
                 or int(level) == 4 and int(movement_inputs) < 1):
             cheated += '_movementInputs'
 
     # enemies killed
     if (int(level) == 1 and int(enemies_killed) > 6
-            or int(level) == 2 and int(enemies_killed) > 1
-            or int(level) == 3 and int(enemies_killed) > 1
+            or int(level) == 2 and int(enemies_killed) > 10
+            or int(level) == 3 and int(enemies_killed) > 21
             or int(level) == 4 and int(enemies_killed) > 1):
         cheated += '_enemiesKilled'
 
     # coins (+10 per coin easteregg)
     if (int(level) == 1 and int(coins_collected) > 80
-            or int(level) == 2 and int(coins_collected) > 1
-            or int(level) == 3 and int(coins_collected) > 1
+            or int(level) == 2 and int(coins_collected) > 6
+            or int(level) == 3 and int(coins_collected) > 7
             or int(level) == 4 and int(coins_collected) > 1):
         cheated += '_coinsCollected'
 
     # eastereggs
     if (int(level) == 1 and int(eastereggs_found) > 4
-            or int(level) == 2 and int(eastereggs_found) > 1
-            or int(level) == 3 and int(eastereggs_found) > 1
+            or int(level) == 2 and int(eastereggs_found) > 2
+            or int(level) == 3 and int(eastereggs_found) > 2
             or int(level) == 4 and int(eastereggs_found) > 1):
         cheated += '_eastereggsFound'
 

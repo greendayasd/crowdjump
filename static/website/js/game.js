@@ -561,9 +561,9 @@ Crowdjump.Game.create = function () {
 Crowdjump.Game.update = function () {
     if (CONST_BACKGROUNDIMAGE) {
         // this.stars.tilePosition.x = game.camera.x*-0.02;
-        this.hillsBack.tilePosition.x = game.camera.x*-0.02;
-        this.hillsMiddle.tilePosition.x = game.camera.x*-0.1 +300;
-        this.hillsFore.tilePosition.x = game.camera.x*-0.2 +150;
+        this.hillsBack.tilePosition.x = game.camera.x * -0.02;
+        this.hillsMiddle.tilePosition.x = game.camera.x * -0.1 + 300;
+        this.hillsFore.tilePosition.x = game.camera.x * -0.2 + 150;
     }
 
 
@@ -579,6 +579,7 @@ Crowdjump.Game.update = function () {
     }
 
     var seconds = 0;
+    var coins_this_round = (game.coinPickupCount - coins_last_level);
 
     if (CONST_SAVE_LEVEL_TIME) {
         seconds = (Math.abs(game.time.totalElapsedSeconds().toFixed(3) / 1) - Math.abs(time_last_level_or_restart / 1));
@@ -588,15 +589,16 @@ Crowdjump.Game.update = function () {
         }
     } else if (first_moved > 0) {
         // seconds = Math.floor(game.time.totalElapsedSeconds().toFixed(3) - first_moved) + time_finished;
-        var seconds_this_level = game.time.totalElapsedSeconds().toFixed(3) - first_moved - (timeeggs) - (pause_time / 1000);
-        seconds = ((seconds_this_level / 1) + parseFloat(time_finished)).toFixed(0);
+        var seconds_this_level = parseFloat(game.time.totalElapsedSeconds().toFixed(3)) - first_moved - (timeeggs);
+        seconds = ((seconds_this_level / 1) + parseFloat(time_overall)).toFixed(3);
         // seconds = seconds.toFixed(0);
     } else {
-        seconds = (parseFloat(time_finished)).toFixed(0);
+        seconds = (parseFloat(time_overall)).toFixed(0);// - ((CONST_COIN_TIME_REDUCTION / 1000) * game.coinPickupCount);
     }
     if (CONST_COIN_SHOW_TIMEREDUCTION) seconds -= ((CONST_COIN_TIME_REDUCTION / 1000) * game.coinPickupCount);
     seconds = Math.floor(seconds);
     if (seconds != last_second) {
+        // log("seconds " + seconds, "seconds level " + seconds_this_level, "gametime " + game.time.totalElapsedSeconds().toFixed(3), "first moved " + first_moved, "time finished " + time_finished, "time overall " + time_overall, "coins " + game.coinPickupCount, "coins last level " + coins_this_round);
         last_second = seconds;
         if (level_data.repeats) {
             this._newSpawns({spiders: level_data.repeat_spiders});
@@ -1576,21 +1578,27 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     }
     //not the last level
     else if (level < CONST_LEVEL - 1) {
-        setLevelInfo(level + 1, "completed", false);
 
         if (CONST_SAVE_LEVEL_TIME) {
-            time_finished = game.time.totalElapsedSeconds() - first_moved;
-            time_finished = parseFloat(time_finished.toFixed(3));
 
             time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds() - parseFloat(time_last_level_or_restart);
             time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
 
             time_last_level_or_restart = game.time.totalElapsedSeconds().toFixed(3);
+            // time_finished = game.time.totalElapsedSeconds() - first_moved;
+            // time_finished = parseFloat(time_finished.toFixed(3));
         } else {
+            log(time_overall, game.time.totalElapsedSeconds(), first_moved);
             time_overall = parseFloat(time_overall) + (game.time.totalElapsedSeconds() - first_moved);
             time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
+            console.log(time_overall);
+            time_finished = parseFloat(game.time.totalElapsedSeconds().toFixed(3)) - first_moved;
+            ;
+            time_finished = parseFloat(time_finished.toFixed(3));
 
         }
+        setLevelInfo(level + 1, "completed", false);
+        first_moved = -1;
         this.game.state.restart(true, false, {level: level + 1});
     }
     //last level

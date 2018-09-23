@@ -13,7 +13,6 @@ const CONST_HERO_LIVES = 1;
 const CONST_REPLAY_LEVEL = false;
 const CONST_SAVE_LEVEL_TIME = false;
 
-const CONST_LEVEL = 1;
 const CONST_TIME = true;
 const CONST_TIME_WHEN_MOVED = true;
 
@@ -94,6 +93,7 @@ const CONST_CANVAS_X = 960;
 const CONST_CANVAS_Y = 600;
 const CONST_WORLD_CENTER_X = CONST_CANVAS_X / 2;
 const CONST_WORLD_CENTER_Y = CONST_CANVAS_Y / 2;
+const CONST_LEVEL = 3;
 
 
 var DIFFICULTY = Object.freeze({"easy": 1, "normal": 2, "hard": 3})

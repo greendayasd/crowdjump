@@ -155,6 +155,7 @@
                     <th scope="col">Position</th>
                     <th scope="col">User</th>
                     <th scope="col">Time in seconds</th>
+                    <!--<th scope="col">Highest Level</th>-->
                     <th scope="col">max Coins this version</th>
                     <th scope="col">max Eastereggs this version</th>
                 </tr>
@@ -168,6 +169,7 @@
                         {{$index + 1}}</td>
                     <td ng-style=stat.color>{{ stat.user.username }}</td>
                     <td>{{ stat.highscore / 1000 | number:3}}</td>
+                    <!--<td>{{ stat.highest_level}}</td>-->
                     <td>{{ stat.coins_collected }}</td>
                     <td>{{ stat.eastereggs_found }}</td>
                 </tr>

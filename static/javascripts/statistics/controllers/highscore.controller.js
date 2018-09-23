@@ -100,11 +100,9 @@
             var eastereggs = parseInt(data["eastereggs_found"]);
             var coins = parseInt(data["coins_collected"]);
 
-            if (highscore == "-0.001") {
+            if (highscore == "-1") {
                 console.error(data + '\n' + $scope.statistics);
             }
-            // console.log(user);
-            // console.log(highscore);
             var found = false;
             //is player already in highscore list?
             for (var i = 0; i < $scope.statistics.length; i++) {
@@ -136,6 +134,7 @@
 
             function statisticsSuccessFn(data, status, headers, config) {
                 $scope.statistics = data.data["results"];
+                console.log($scope.statistics);
                 setNameColor();
 
             }
@@ -184,9 +183,21 @@
                         $scope.statistics[i].color = {"color": " black"};
                         break;
                     case 1:
-                        $scope.statistics[i].color = {"color": " blue"};
+                        $scope.statistics[i].color = {"color": " cyan"};
                         break;
                     case 2:
+                        $scope.statistics[i].color = {"color": " blue"};
+                        break;
+                    case 3:
+                        $scope.statistics[i].color = {"color": " MidnightBlue"};
+                        break;
+                    case 4:
+                        $scope.statistics[i].color = {"color": " DarkMagenta"};
+                        break;
+                    case 5:
+                        $scope.statistics[i].color = {"color": " DarkRed"};
+                        break;
+                    case 6:
                         $scope.statistics[i].color = {"color": " red"};
                         break;
                     default:

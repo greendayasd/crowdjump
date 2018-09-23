@@ -40,7 +40,6 @@ class IdeaVotingPermissionSerializer(serializers.ModelSerializer):
         fields = ('id', 'user', 'version', 'upvotes', 'downvotes', 'created_at', 'updated_at', 'deleted',)
         read_only_fields = ('id', 'user', 'version', 'created_at', 'updated_at', 'deleted')
 
-
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(IdeaSerializer, self).get_validation_exclusions()
 
@@ -60,7 +59,6 @@ class IdeaNewestCommentPermissionSerializer(serializers.ModelSerializer):
         fields = ('id', 'user', 'version', 'newest_comment', 'created_at', 'updated_at', 'deleted',)
         read_only_fields = ('id', 'user', 'version', 'created_at', 'updated_at', 'deleted')
 
-
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(IdeaSerializer, self).get_validation_exclusions()
 
@@ -76,7 +74,8 @@ class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
         model = GameInfo
         fields = (
             'id', 'user', 'version', 'rounds_started', 'rounds_won', 'enemies_killed', 'coins_collected', 'highscore',
-            'jumps', 'deaths', 'restarts', 'movement_inputs', 'time_spent_game', 'eastereggs_found', "special_name")
+            'jumps', 'deaths', 'restarts', 'movement_inputs', 'time_spent_game', 'eastereggs_found', "special_name",
+            'highest_level')
 
     def get_validation_exclusions(self, *args, **kwargs):
         exclusions = super(GameInfoSerializer, self).get_validation_exclusions()
@@ -86,13 +85,14 @@ class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     user = AccountSerializerPrivate(read_only=True, required=False)
+
     # idea = IdeaSerializer(read_only=True)#(read_only=True, required=False)
 
     class Meta:
         model = Comment
 
-        fields = ('id', 'user','idea', 'text',
-                  'created_at', 'updated_at','status',
+        fields = ('id', 'user', 'idea', 'text',
+                  'created_at', 'updated_at', 'status',
                   'upvotes', 'downvotes', 'deleted')
 
         read_only_fields = ('id', 'created_at', 'updated_at')
@@ -105,6 +105,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class IdeaVoteSerializer(serializers.ModelSerializer):
     user = AccountSerializerPrivate(read_only=True, required=False)
+
     # idea = IdeaSerializer(read_only=False, required=False)
 
     # vote = serializers.IntegerField()

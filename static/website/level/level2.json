@@ -1,0 +1,164 @@
+{
+	"platforms": [
+		{"image": "ground:20x1", "x": 84, "y": 1218, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:20x1", "x": 84, "y": 1092, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:20x1", "x": 84, "y": 966, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:20x1", "x": 84, "y": 840, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:20x1", "x": 84, "y": 714, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:20x1", "x": 84, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x8", "x": 42, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x2", "x": 42, "y": 924, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x4", "x": 42, "y": 1092, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:2x1", "x": 378, "y": 1722, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x1", "x": 294, "y": 1722, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:10x1", "x": 798, "y": 1848, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x1", "x": 378, "y": 1848, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:8x1", "x": 0, "y": 1848, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:8x1", "x": 462, "y": 1848, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:5x1", "x": 294, "y": 1890, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:2x1", "x": 546, "y": 1722, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x1", "x": 378, "y": 1596, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x1", "x": 546, "y": 1596, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:4x1", "x": 924, "y": 1218, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:8x1", "x": 924, "y": 1092, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:12x1", "x": 924, "y": 966, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:12x1", "x": 924, "y": 840, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:4x1", "x": 1428, "y": 840, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:20x1", "x": 924, "y": 714, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:20x1", "x": 924, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x3", "x": 1092, "y": 1134, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x3", "x": 1260, "y": 1008, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x3", "x": 1428, "y": 882, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x3", "x": 1596, "y": 756, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:2x1", "x": 1554, "y": 462, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:1x6", "x": 1764, "y": 504, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 0, "y": 294, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:4x1", "x": 1512, "y": 210, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:2x1", "x": 1428, "y": 168, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:2x1", "x": 1680, "y": 168, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:2x1", "x": 1554, "y": 336, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:2x1", "x": 1554, "y": 84, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:2x1", "x": 1386, "y": 420, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:2x1", "x": 1218, "y": 378, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 1260, "y": 252, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 1344, "y": 168, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
+	],
+	"fallingPlatforms": [
+
+	],
+	"fakePlatforms": [
+		{"image": "fakeground:1x2", "x": 42, "y": 1008, "p_types": "1x2", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "fakelavabase:1x1", "x": 0, "y": 1050, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "fakelavabase:1x1", "x": 0, "y": 1092, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "fakelavabase:1x1", "x": 0, "y": 1134, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "fakelavabase:1x1", "x": 0, "y": 1176, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "fakelavabase:1x1", "x": 0, "y": 1218, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "fakelavabase:1x1", "x": 0, "y": 1008, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
+	],
+	"crates": [
+
+	],
+	"lava": [
+		{"image": "lava:1x1", "x": 336, "y": 1848},
+		{"image": "lava:1x1", "x": 420, "y": 1848},
+		{"image": "lavabase:1x1", "x": 0, "y": 630},
+		{"image": "lavabase:1x1", "x": 0, "y": 672},
+		{"image": "lavabase:1x1", "x": 0, "y": 714},
+		{"image": "lavabase:1x1", "x": 0, "y": 756},
+		{"image": "lavabase:1x1", "x": 0, "y": 798},
+		{"image": "lavabase:1x1", "x": 0, "y": 840},
+		{"image": "lavabase:1x1", "x": 0, "y": 882},
+		{"image": "lavabase:1x1", "x": 0, "y": 924},
+		{"image": "lavabase:1x1", "x": 0, "y": 966},
+		{"image": "lava:1x1", "x": 0, "y": 588},
+		{"image": "lava:2x1", "x": 1512, "y": 168},
+		{"image": "lava:2x1", "x": 1596, "y": 168}
+	],
+	"spikes": [
+		{"image": "spikes:1x1", "x": 0, "y": 1806},
+		{"image": "spikes:1x1", "x": 210, "y": 1806},
+		{"image": "spikes:1x1", "x": 252, "y": 1806},
+		{"image": "spikes:1x1", "x": 378, "y": 1680},
+		{"image": "spikes:1x1", "x": 420, "y": 1680},
+		{"image": "spikes:1x1", "x": 504, "y": 1806},
+		{"image": "spikes:1x1", "x": 588, "y": 1806},
+		{"image": "spikes:1x1", "x": 546, "y": 1806},
+		{"image": "spikes:1x1", "x": 546, "y": 1680},
+		{"image": "spikes:1x1", "x": 42, "y": 1806},
+		{"image": "spikesRight:1x1", "x": 1050, "y": 1134},
+		{"image": "spikesRight:1x1", "x": 1050, "y": 1176},
+		{"image": "spikesRight:1x1", "x": 1218, "y": 1008},
+		{"image": "spikesRight:1x1", "x": 1218, "y": 1050},
+		{"image": "spikesRight:1x1", "x": 1386, "y": 882},
+		{"image": "spikesRight:1x1", "x": 1386, "y": 924},
+		{"image": "spikesRight:1x1", "x": 1554, "y": 756},
+		{"image": "spikesRight:1x1", "x": 1554, "y": 798},
+		{"image": "spikesRight:1x1", "x": 1722, "y": 630},
+		{"image": "spikesRight:1x1", "x": 1722, "y": 672},
+		{"image": "spikesRight:1x1", "x": 1722, "y": 546},
+		{"image": "spikesRight:1x1", "x": 1722, "y": 504}
+	],
+	"sawblades": [
+
+	],
+	"flags": [
+		{"image": "flag", "x": 1176, "y": 1806},
+		{"image": "flag", "x": 1596, "y": 42}
+	],
+	"coins": [
+		{"image": "coin", "x": 840, "y": 1806},
+		{"image": "coin", "x": 882, "y": 1806},
+		{"image": "coin", "x": 924, "y": 1806},
+		{"image": "coin", "x": 966, "y": 1806},
+		{"image": "coin", "x": 1008, "y": 1806},
+		{"image": "coin", "x": 1050, "y": 1806},
+		{"image": "coin", "x": 798, "y": 1806}
+	],
+	"hero":
+		{"image": "hero", "x": 294, "y": 1176},
+	"enemies": [
+		{"image": "enemy:spider", "x": 126, "y": 1176, "type":"spider"},
+		{"image": "enemy:spider", "x": 252, "y": 1050, "type":"spider"},
+		{"image": "enemy:spider", "x": 378, "y": 924, "type":"spider"},
+		{"image": "enemy:spider", "x": 504, "y": 798, "type":"spider"},
+		{"image": "enemy:spider", "x": 252, "y": 798, "type":"spider"},
+		{"image": "enemy:spider", "x": 126, "y": 924, "type":"spider"},
+		{"image": "enemy:spider", "x": 378, "y": 798, "type":"spider"},
+		{"image": "enemy:spider", "x": 126, "y": 798, "type":"spider"},
+		{"image": "enemy:spider", "x": 126, "y": 1050, "type":"spider"},
+		{"image": "enemy:spider", "x": 252, "y": 924, "type":"spider"},
+		{"image": "enemy:spider", "x": 504, "y": 672, "type":"spider"},
+		{"image": "enemy:spider", "x": 252, "y": 672, "type":"spider"},
+		{"image": "enemy:spider", "x": 378, "y": 672, "type":"spider"},
+		{"image": "enemy:spider", "x": 126, "y": 672, "type":"spider"},
+		{"image": "enemy:spider", "x": 504, "y": 546, "type":"spider"},
+		{"image": "enemy:spider", "x": 252, "y": 546, "type":"spider"},
+		{"image": "enemy:spider", "x": 378, "y": 546, "type":"spider"},
+		{"image": "enemy:spider", "x": 126, "y": 546, "type":"spider"},
+		{"image": "enemy:spider", "x": 630, "y": 672, "type":"spider"},
+		{"image": "enemy:spider", "x": 630, "y": 546, "type":"spider"},
+		{"image": "enemy:spider", "x": 756, "y": 546, "type":"spider"}
+	],
+	"enemyWalls": [
+		{"image": "invisible_wall", "x": 84, "y": 1050},
+		{"image": "invisible_wall", "x": 42, "y": 546},
+		{"image": "invisible_wall", "x": 1050, "y": 1176},
+		{"image": "invisible_wall", "x": 1218, "y": 1050},
+		{"image": "invisible_wall", "x": 1386, "y": 924},
+		{"image": "invisible_wall", "x": 1554, "y": 798},
+		{"image": "invisible_wall", "x": 1722, "y": 672},
+		{"image": "invisible_wall", "x": 1722, "y": 546}
+	],
+	"powerups": [
+		{"image": "powerup:throughwalls", "x": 588, "y": 1176, "type":"throughwalls"},
+		{"image": "powerup:permjumpboost", "x": 84, "y": 672, "type":"permjumpboost"}
+	],
+	"eastereggs": [
+		{"image": "easteregg:specialname", "x": 378, "y": 1806, "type":"specialname"},
+		{"image": "easteregg:movementspeed", "x": 0, "y": 252, "type":"movementspeed"}
+	],
+	"decorations": [
+
+	],
+	"size": {"x": 1806, "y": 1902}
+}

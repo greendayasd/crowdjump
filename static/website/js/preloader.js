@@ -44,9 +44,9 @@ Crowdjump.Preloader.prototype = {
 
 
         // alle Level laden
-        var test = true;
+        var test = false;
         if (test) {
-            this.load.json('level:0', level + 'level2.json');
+            this.load.json('level:0', level + 'level1.json');
 
         } else {
             for (var i = 0; i < CONST_LEVEL; i++) {
@@ -99,6 +99,8 @@ Crowdjump.Preloader.prototype = {
             this.load.image('lava:2x1', tiles + 'lava_2x1.png');
             this.load.image('lavabase:1x1', tiles + 'lavabase_1x1.png');
             this.load.image('lavabase:2x2', tiles + 'lavabase_2x2.png');
+            this.load.image('fakelavabase:1x1', tiles + 'fakelavabase_1x1.png');
+            this.load.image('fakelava:1x1', tiles + 'fakelava_1x1.png');
         }
 
         if (CONST_LAVASWITCHINGPLATFORM) {
