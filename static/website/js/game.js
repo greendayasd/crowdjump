@@ -1483,9 +1483,24 @@ Crowdjump.Game.easteregg_specialname = function () {
     game.specialName++;
     switch (game.specialName) {
         case 1:
-            this.showEastereggMessage("I'm blue");
+            this.showEastereggMessage("First steps");
             break;
         case 2:
+            this.showEastereggMessage("I'm blue");
+            break;
+        case 3:
+            this.showEastereggMessage("Getting dark");
+            break;
+        case 4:
+            this.showEastereggMessage("Big Purple");
+            break;
+        case 5:
+            this.showEastereggMessage("Lust for blood");
+            break;
+        case 6:
+            this.showEastereggMessage("Red Pill");
+            break;
+        case 7:
             this.showEastereggMessage("Red Pill");
             break;
         default:
