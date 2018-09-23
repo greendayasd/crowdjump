@@ -6,9 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/ideas/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/ideas/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/data.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/javascripts.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="146">
-              <caret line="155" column="54" selection-start-line="155" selection-start-column="54" selection-end-line="155" selection-end-column="73" />
+              <caret line="155" column="43" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
               <folding>
                 <element signature="e#69#176#0#DjangoTemplate" />
                 <element signature="e#291#427#0#HTML" />
@@ -180,7 +178,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data.controller.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="data.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="503">
@@ -190,6 +188,15 @@
                 <element signature="e#3670#4852#0" />
                 <element signature="e#5692#8925#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="idea_index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1224">
+              <caret line="72" column="73" selection-start-line="72" selection-start-column="73" selection-end-line="72" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -308,7 +315,6 @@
         <option value="$PROJECT_DIR$/static/website/js/game.js" />
         <option value="$PROJECT_DIR$/Crowdjump/mailFunctions.py" />
         <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
-        <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
         <option value="$PROJECT_DIR$/static/website/js/credits.js" />
         <option value="$PROJECT_DIR$/static/website/js/characterselection.js" />
@@ -318,6 +324,7 @@
         <option value="$PROJECT_DIR$/ideas/serializers.py" />
         <option value="$PROJECT_DIR$/static/templates/layout/data.html" />
         <option value="$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js" />
+        <option value="$PROJECT_DIR$/templates/javascripts.html" />
       </list>
     </option>
   </component>
@@ -790,13 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2176">
           <caret line="128" column="52" selection-start-line="128" selection-start-column="52" selection-end-line="128" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="72" column="73" selection-start-line="72" selection-start-column="73" selection-end-line="72" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -1797,10 +1797,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/data.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="203" column="223" selection-start-line="203" selection-start-column="223" selection-end-line="203" selection-end-column="223" />
+          <folding>
+            <element signature="e#626#799#0" />
+            <element signature="e#3670#4852#0" />
+            <element signature="e#5692#8925#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="72" column="73" selection-start-line="72" selection-start-column="73" selection-end-line="72" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
-          <caret line="155" column="54" selection-start-line="155" selection-start-column="54" selection-end-line="155" selection-end-column="73" />
+          <caret line="155" column="43" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
           <folding>
             <element signature="e#69#176#0#DjangoTemplate" />
             <element signature="e#291#427#0#HTML" />
@@ -1881,25 +1907,6 @@
             <element signature="e#22680#22931#0#HTML" />
             <element signature="e#22758#22856#0#HTML" />
             <element signature="e#22905#22920#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/data.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="203" column="223" selection-start-line="203" selection-start-column="223" selection-end-line="203" selection-end-column="223" />
-          <folding>
-            <element signature="e#626#799#0" />
-            <element signature="e#3670#4852#0" />
-            <element signature="e#5692#8925#0" />
           </folding>
         </state>
       </provider>
