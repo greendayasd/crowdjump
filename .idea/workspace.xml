@@ -6,7 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/website/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/website/js/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/website/js/preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/preloader.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,11 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="preloader.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="preloader.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1734">
-              <caret line="102" column="61" selection-start-line="102" selection-start-column="61" selection-end-line="102" selection-end-column="61" />
+            <state relative-caret-position="425">
+              <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -74,8 +75,8 @@
       <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="357" column="76" selection-start-line="357" selection-start-column="76" selection-end-line="357" selection-end-column="76" />
+            <state relative-caret-position="174">
+              <caret line="177" column="46" selection-start-line="177" selection-start-column="46" selection-end-line="177" selection-end-column="46" />
               <folding>
                 <element signature="e#34#114#0" />
                 <element signature="e#240#1178#0" />
@@ -101,7 +102,6 @@
                 <element signature="e#5184#5253#0" />
                 <element signature="e#5340#5382#0" />
                 <element signature="e#5426#5467#0" />
-                <element signature="e#5512#7173#0" />
                 <element signature="e#5804#5863#0" />
                 <element signature="e#5869#6017#0" />
                 <element signature="e#5968#6011#0" />
@@ -401,14 +401,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+            <state relative-caret-position="395">
+              <caret line="178" column="15" selection-start-line="178" selection-start-column="8" selection-end-line="178" selection-end-column="15" />
               <folding>
                 <element signature="e#3318#3377#0" />
-                <element signature="e#3424#5754#0" />
                 <element signature="e#3557#3918#0" />
                 <element signature="e#3985#4182#0" />
                 <element signature="e#4032#4176#0" />
@@ -545,8 +544,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sfx</find>
-      <find>highest</find>
       <find>hil</find>
       <find>sum</find>
       <find>trees</find>
@@ -573,8 +570,10 @@
       <find>cheat</find>
       <find>spike</find>
       <find>spawnlava</find>
+      <find>CONST_CHEAT</find>
       <find>chea</find>
       <find>wasd</find>
+      <find>account</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -642,10 +641,10 @@
         <option value="$PROJECT_DIR$/static/templates/layout/game.html" />
         <option value="$PROJECT_DIR$/static/website/js/endscreen.js" />
         <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
-        <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
         <option value="$PROJECT_DIR$/authentication/views.py" />
-        <option value="$PROJECT_DIR$/static/website/js/game.js" />
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
+        <option value="$PROJECT_DIR$/static/website/js/game.js" />
+        <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
       </list>
     </option>
   </component>
@@ -1853,13 +1852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="102" column="61" selection-start-line="102" selection-start-column="61" selection-end-line="102" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/game.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -1918,8 +1910,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="357" column="76" selection-start-line="357" selection-start-column="76" selection-end-line="357" selection-end-column="76" />
+        <state relative-caret-position="174">
+          <caret line="177" column="46" selection-start-line="177" selection-start-column="46" selection-end-line="177" selection-end-column="46" />
           <folding>
             <element signature="e#34#114#0" />
             <element signature="e#240#1178#0" />
@@ -1945,7 +1937,6 @@
             <element signature="e#5184#5253#0" />
             <element signature="e#5340#5382#0" />
             <element signature="e#5426#5467#0" />
-            <element signature="e#5512#7173#0" />
             <element signature="e#5804#5863#0" />
             <element signature="e#5869#6017#0" />
             <element signature="e#5968#6011#0" />
@@ -2246,11 +2237,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        <state relative-caret-position="395">
+          <caret line="178" column="15" selection-start-line="178" selection-start-column="8" selection-end-line="178" selection-end-column="15" />
           <folding>
             <element signature="e#3318#3377#0" />
-            <element signature="e#3424#5754#0" />
             <element signature="e#3557#3918#0" />
             <element signature="e#3985#4182#0" />
             <element signature="e#4032#4176#0" />
@@ -2288,6 +2278,13 @@
             <element signature="e#9587#10122#0" />
             <element signature="e#10155#10234#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="46" column="24" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
         </state>
       </provider>
     </entry>

@@ -44,7 +44,7 @@ Crowdjump.Preloader.prototype = {
 
 
         // alle Level laden
-        var test = true;
+        var test = false;
         if (test) {
             this.load.json('level:0', level + 'level1.json');
 

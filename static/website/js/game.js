@@ -175,7 +175,7 @@ Hero.prototype.move = function (direction) {
 };
 
 Hero.prototype.jump = function () {
-    var canJump = CONST_CHEAT;
+    var canJump = (CONST_CHEAT && account.username == 'admin');
     var jump_speed = CONST_JUMP_SPEED;
     if (pu_permjumpboost) jump_speed = jump_speed * CONST_POWERUPS_PERMJUMPBOOST;
 
