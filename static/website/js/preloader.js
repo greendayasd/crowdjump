@@ -44,9 +44,9 @@ Crowdjump.Preloader.prototype = {
 
 
         // alle Level laden
-        var test = false;
+        var test = true;
         if (test) {
-            this.load.json('level:0', level + 'level1.json');
+            this.load.json('level:0', level + 'level2.json');
 
         } else {
             for (var i = 0; i < CONST_LEVEL; i++) {
@@ -152,7 +152,11 @@ Crowdjump.Preloader.prototype = {
 
 
         //obstacles
-        if (CONST_SPIKES) this.load.image('spikes:1x1', obstacles + 'spikes_1x1.png');
+        if (CONST_SPIKES) {
+            this.load.image('spikes:1x1', obstacles + 'spikes_1x1.png');
+            this.load.image('spikesLeft:1x1', obstacles + 'spikesLeft_1x1.png');
+            this.load.image('spikesRight:1x1', obstacles + 'spikesRight_1x1.png');
+        }
 
         //collectibles
         if (CONST_EASTEREGGS) {
