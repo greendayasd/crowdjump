@@ -92,10 +92,14 @@
 
         function receive_highscore(data) {
             var username = data["username"];
+            if (username == 'admin') return;
             data["user"] = {"username": username};
             data["user"]["username"] = username;
 
             var highscore = data["highscore"];
+            var eastereggs = parseInt(data["eastereggs_found"]);
+            var coins = parseInt(data["coins_collected"]);
+
             if (highscore == "-0.001") {
                 console.error(data + '\n' + $scope.statistics);
             }
@@ -107,6 +111,8 @@
                 if ($scope.statistics[i].user.username == username) {
                     found = true;
                     $scope.statistics[i].highscore = highscore;
+                    $scope.statistics[i].coins_collected = Math.max($scope.statistics[i].coins_collected, coins);
+                    $scope.statistics[i].eastereggs_found = Math.max($scope.statistics[i].eastereggs_found, eastereggs);
                     $scope.sort_all();
                     $scope.$apply();
                     return;
@@ -157,6 +163,7 @@
                         case 11:
                         case 13:
                         case 15:
+                        case 17:
                             $scope.versions.splice(i, 1);
                             break;
                     }
