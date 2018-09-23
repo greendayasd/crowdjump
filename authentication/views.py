@@ -325,10 +325,14 @@ def SendGameData(request):
     movement_inputs = request.GET.get('movement_inputs')
     enemies_killed = request.GET.get('enemies_killed')
     coins_collected = request.GET.get('coins_collected')
+    overall_coins = request.GET.get('overall_coins')
     eastereggs_found = request.GET.get('eastereggs_found')
+    overall_eastereggs = request.GET.get('overall_eastereggs')
     special_name = request.GET.get('special_name')
+    overall_special_name = request.GET.get('overall_special_name')
     character = request.GET.get('character')
     powerups = request.GET.get('powerups')
+    overall_powerups = request.GET.get('overall_powerups')
 
 
     if math.isnan(float(level)):
@@ -405,16 +409,16 @@ def SendGameData(request):
         except:
             return JsonResponse('{"success":"no gamedata"}', safe=False)
 
-        acc.coins_collected = max(acc.coins_collected, int(coins_collected))
+        acc.coins_collected = max(acc.coins_collected, int(overall_coins))
         acc.overall_coins += int(coins_collected)
         acc.enemies_killed += int(enemies_killed)
-        acc.eastereggs_found = max(acc.eastereggs_found, int(eastereggs_found))
+        acc.eastereggs_found = max(acc.eastereggs_found, int(overall_eastereggs))
         acc.overall_eastereggs += int(eastereggs_found)
-        acc.special_name = max(acc.special_name, int(special_name))
+        acc.special_name = max(acc.special_name, int(overall_special_name))
         acc.jumps += int(jumps)
         acc.movement_inputs += int(movement_inputs)
 
-        acc.powerups = max(acc.powerups, int(powerups))
+        acc.powerups = max(acc.powerups, int(overall_powerups))
         acc.overall_powerups += int(powerups)
 
         if level == 1 or level == '1':

@@ -7,7 +7,7 @@ const CONST_GRAVITY = 1400;
 const CONST_USE_ACCELERATION = false;
 const CONST_ACCELERATION = 2000; //for slippery
 const CONST_MAX_SPEED = 1000;
-const CONST_MOVE_SPEED = 200;
+const CONST_MOVE_SPEED = 600; //200 normal
 const CONST_HERO_WEIGHT = 100;
 const CONST_HERO_LIVES = 1;
 const CONST_REPLAY_LEVEL = false;
@@ -83,7 +83,7 @@ const CONST_SHOWLEVEL = false;
 const CONST_FPS = true;
 const CONST_P2_PHYSICS = false;
 const CONST_DEBUG = false;
-const CONST_CHEAT = false;
+const CONST_CHEAT = true;
 const CONST_MUTE = true;
 const CONST_PAUSE = false;
 const CONST_CREDITS = true;
@@ -231,9 +231,13 @@ function setLevelInfo(level, status, isHighscore) {
         "movement_inputs": game.movement_inputs - movementinputs_last_level,
         "enemies_killed": game.enemiesDefeatedCount - enemies_last_level,
         "coins_collected": game.coinPickupCount - coins_last_level,
+        "overall_coins": game.coinPickupCount,
         "eastereggs_found": game.eastereggPickupCount - eastereggs_last_level,
+        "overall_eastereggs": game.eastereggPickupCount,
         "powerups": game.powerupPickupCount - powerups_last_level,
+        "overall_powerups": game.powerupPickupCount,
         "special_name": game.specialName - specialname_last_level,
+        "overall_special_name": game.specialName,
         "character": game.character
     };
 

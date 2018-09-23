@@ -1182,7 +1182,7 @@ Crowdjump.Game._spawnPlatform = function (platform) {
 Crowdjump.Game._spawnFakePlatform = function (platform) {
 
     var sprite;
-
+    console.log(platform);
     var newx = platform.x;
     var newy = platform.y;
 
