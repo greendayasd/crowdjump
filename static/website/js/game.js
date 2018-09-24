@@ -1460,7 +1460,7 @@ Crowdjump.Game._newSpawns = function (data) {
 
         }, this);
     }
-}
+};
 
 Crowdjump.Game._newCannonballs = function (seconds) {
     if (CONST_CANNONS) {
@@ -1474,17 +1474,16 @@ Crowdjump.Game._newCannonballs = function (seconds) {
             var ygoal = 0;
             if (cannon.key == 'cannonRight'){
                 ygoal = sizex;
-                cannonball.reset(cannon.position.x +42, cannon.position.y);
+                cannonball.reset(cannon.position.x +82, cannon.position.y+5);
             } else {
-                cannonball.reset(cannon.position.x +42, cannon.position.y );
+                cannonball.reset(cannon.position.x -28, cannon.position.y+5);
             }
-
 
             this.game.physics.arcade.moveToXY(cannonball,ygoal, cannon.position.y, CONST_CANNON_BULLETSPEED);
 
         }, this);
     }
-}
+};
 
 Crowdjump.Game._spawnCrate = function (platform) {
     var newx = platform.x;
