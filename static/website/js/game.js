@@ -621,18 +621,21 @@ Crowdjump.Game.update = function () {
         seconds = ((seconds_this_level / 1) + parseFloat(time_overall)).toFixed(3);
         // seconds = seconds.toFixed(0);
     } else {
-        seconds = (parseFloat(time_overall)).toFixed(0);// - ((CONST_COIN_TIME_REDUCTION / 1000) * game.coinPickupCount);
+        seconds = (parseFloat(time_overall)).toFixed(0);
+        /* - ((CONST_COIN_TIME_REDUCTION / 1000) * game.coinPickupCount);*/
     }
-    if (CONST_COIN_SHOW_TIMEREDUCTION) seconds -= ((CONST_COIN_TIME_REDUCTION / 1000) * game.coinPickupCount);
+    seconds = Math.floor(seconds);
+    if (seconds != last_second) {
         if (level_data.repeats) {
             this._newSpawns({spiders: level_data.repeat_spiders});
         }
         if (CONST_CANNONS && seconds > next_cannon_fire) {
             this._newCannonballs(seconds);
         }
+    }
+    if (CONST_COIN_SHOW_TIMEREDUCTION) seconds -= ((CONST_COIN_TIME_REDUCTION / 1000) * game.coinPickupCount);
     seconds = Math.floor(seconds);
     if (seconds != last_second) {
-        // log("seconds " + seconds, "seconds level " + seconds_this_level, "gametime " + game.time.totalElapsedSeconds().toFixed(3), "first moved " + first_moved, "time finished " + time_finished, "time overall " + time_overall, "coins " + game.coinPickupCount, "coins last level " + coins_this_round);
         last_second = seconds;
     }
 
@@ -835,6 +838,8 @@ Crowdjump.Game._handleCollisions = function () {
         this.game.physics.arcade.overlap(cannonballs, this.spiders, this._onCannonballVsEnemy,
             null, this);
         this.game.physics.arcade.overlap(cannonballs, this.platforms, this._onCannonballVsPlatform,
+            null, this);
+        this.game.physics.arcade.overlap(cannonballs, this.cannons, this._onCannonballVsPlatform,
             null, this);
         this.game.physics.arcade.overlap(cannonballs, this.hero, this._onHeroVsCannonball,
             null, this);
@@ -1465,21 +1470,21 @@ Crowdjump.Game._newSpawns = function (data) {
 Crowdjump.Game._newCannonballs = function (seconds) {
     if (CONST_CANNONS) {
         // spawn cannonballs for each cannon
-        next_cannon_fire = seconds + CONST_CANNON_FIRERATE/1000;
+        next_cannon_fire = seconds + CONST_CANNON_FIRERATE / 1000;
         this.cannons.forEach(function (cannon) {
             this.sfx.cannonfire.play();
 
             var cannonball = cannonballs.getFirstDead();
 
             var ygoal = 0;
-            if (cannon.key == 'cannonRight'){
+            if (cannon.key == 'cannonRight') {
                 ygoal = sizex;
-                cannonball.reset(cannon.position.x +82, cannon.position.y+5);
+                cannonball.reset(cannon.position.x + 82, cannon.position.y + 5);
             } else {
-                cannonball.reset(cannon.position.x -28, cannon.position.y+5);
+                cannonball.reset(cannon.position.x - 28, cannon.position.y + 5);
             }
 
-            this.game.physics.arcade.moveToXY(cannonball,ygoal, cannon.position.y, CONST_CANNON_BULLETSPEED);
+            this.game.physics.arcade.moveToXY(cannonball, ygoal, cannon.position.y, CONST_CANNON_BULLETSPEED);
 
         }, this);
     }
