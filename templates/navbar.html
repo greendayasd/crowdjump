@@ -32,8 +32,10 @@
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li></li>
+                {% verbatim %} <li style="text-align: center;padding-top:10px;margin:0"><span class="nav-link" style="text-align: center;padding:0;margin:0"><a class="fa fa-trophy" style="font-size:30px;color:red;text-align: center;padding:0;margin:0"
+                       href="javascript:void(0)"
+                       ng-dialog="/static/templates/layout/winner_shoutout.html">{{ winner }}</a><a class="fa fa-trophy" style="font-size:30px;color:red;text-align: center;padding:0;margin:0"></a></span></li>{% endverbatim %}
                 {% verbatim %} <li><a class="nav-link"
-                       ng-dialog-controller="PrivacyController as vm"
                        href="javascript:void(0)"
                        ng-dialog="/static/templates/layout/countdowninfo.html">{{ clock }}</a></li>{% endverbatim %}
                 <li><a class="nav-link" href="game">Game</a></li>

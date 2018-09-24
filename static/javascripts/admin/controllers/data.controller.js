@@ -130,7 +130,8 @@
                             "ideas": 0,
                             "ideavotes": 0,
                             "rounds_started": 0,
-                            "rounds_won": 0
+                            "rounds_won": 0,
+                            "comments": 0
                         };
                         dailyList[a].push(accjson);
                     }
@@ -257,7 +258,7 @@
 
                 setTimeout($scope.createFile($scope.csv, 'user stats ' + today.getDate() + '-' + (today.getMonth()+1) + '.csv', 'text/csv', 'dlcsv'));
 
-                $scope.daily = 'day, user, ideas, votes, rounds started, rounds_won\n';
+                $scope.daily = 'day, user, ideas, votes, rounds started, rounds_won, comments\n';
 
                 for (var d = 0; d < dailyList.length; d++){
                     var list = dailyList[d];
@@ -267,7 +268,7 @@
                     for (var u = 0; u < list.length; u++){
                         var user = list[u];
                         if (user.ideas == 0 && user.ideavotes == 0 && user.rounds_started == 0) continue;
-                        else $scope.daily += form_csv(date, user.username, user.ideas, user.ideavotes, user.rounds_started, user.rounds_won);
+                        else $scope.daily += form_csv(date, user.username, user.ideas, user.ideavotes, user.rounds_started, user.rounds_won, user.comments);
                     }
                     $scope.daily += '\n'
                 }

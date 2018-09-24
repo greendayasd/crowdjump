@@ -37,6 +37,7 @@ Crowdjump.Game = function (game) {
     var time_zhonya_cooldown = 0;
 
     var nextFire = 0;
+    var next_cannon_fire = 0;
     var bulletsprite;
     var bullets;
     var death;
@@ -47,6 +48,9 @@ Crowdjump.Game = function (game) {
     var show_fps = false;
     var first_moved = -1;
     var timeeggs = 0;
+
+    var sizex = 960;
+    var sizey = 600
 }
 
 Crowdjump.Game = {};
@@ -401,6 +405,9 @@ Crowdjump.Game.init = function (data) {
     bullets_left = CONST_MAGAZINE;
     nextFire = 0;
 
+    //cannons
+    next_cannon_fire = 0;
+
     jumpTimer = 0;
     pause_time = 0;
     is_sprinting = false;
@@ -409,6 +416,9 @@ Crowdjump.Game.init = function (data) {
     oldGround = [];
     newLava = [];
     show_fps = false;
+
+    sizex = 960;
+    sizey = 600;
 
     try {
         if (level == 0 && (lives == undefined || lives <= 0)) lives = CONST_HERO_LIVES;
@@ -438,6 +448,7 @@ Crowdjump.Game.create = function () {
         flag: this.game.add.audio('sfx:flag'),
         zhonyas: this.game.add.audio('sfx:zhonya'),
         shoot: this.game.add.audio('sfx:shoot'),
+        cannonfire: this.game.add.audio('sfx:cannon_fire'),
         empty_magazine: this.game.add.audio('sfx:empty_magazine'),
         powerup: this.game.add.audio('sfx:powerup'),
         easteregg: this.game.add.audio('sfx:easteregg'),
@@ -533,8 +544,19 @@ Crowdjump.Game.create = function () {
         bullets.setAll('outOfBoundsKill', true);
         if (!CONST_BULLETDROP) {
             bullets.setAll('body.allowGravity', false);
-
         }
+    }
+
+    if (CONST_CANNONS) {
+        cannonballs = this.game.add.group();
+        cannonballs.enableBody = true;
+        cannonballs.physicsBodyType = Phaser.Physics.ARCADE;
+
+        cannonballs.createMultiple(50, 'cannonball');
+        cannonballs.setAll('checkWorldBounds', true);
+        cannonballs.setAll('collideWorldBounds', true);
+        cannonballs.setAll('outOfBoundsKill', true);
+        cannonballs.setAll('body.allowGravity', false);
     }
 
     if (CONST_ZHONYA) {
@@ -602,15 +624,19 @@ Crowdjump.Game.update = function () {
         seconds = (parseFloat(time_overall)).toFixed(0);// - ((CONST_COIN_TIME_REDUCTION / 1000) * game.coinPickupCount);
     }
     if (CONST_COIN_SHOW_TIMEREDUCTION) seconds -= ((CONST_COIN_TIME_REDUCTION / 1000) * game.coinPickupCount);
+        if (level_data.repeats) {
+            this._newSpawns({spiders: level_data.repeat_spiders});
+        }
+        if (CONST_CANNONS && seconds > next_cannon_fire) {
+            this._newCannonballs(seconds);
+        }
     seconds = Math.floor(seconds);
     if (seconds != last_second) {
         // log("seconds " + seconds, "seconds level " + seconds_this_level, "gametime " + game.time.totalElapsedSeconds().toFixed(3), "first moved " + first_moved, "time finished " + time_finished, "time overall " + time_overall, "coins " + game.coinPickupCount, "coins last level " + coins_this_round);
         last_second = seconds;
-        if (level_data.repeats) {
-            this._newSpawns({spiders: level_data.repeat_spiders});
-        }
-
     }
+
+
     this.timeFont.text = `${seconds}`;
     this.coinFont.text = `x${game.coinPickupCount}`;
 
@@ -803,9 +829,17 @@ Crowdjump.Game._handleCollisions = function () {
             null, this);
         this.game.physics.arcade.overlap(bullets, this.platforms, this._onBulletVsPlatform,
             null, this);
-
     }
 
+    if (CONST_CANNONS) {
+        this.game.physics.arcade.overlap(cannonballs, this.spiders, this._onCannonballVsEnemy,
+            null, this);
+        this.game.physics.arcade.overlap(cannonballs, this.platforms, this._onCannonballVsPlatform,
+            null, this);
+        this.game.physics.arcade.overlap(cannonballs, this.hero, this._onHeroVsCannonball,
+            null, this);
+        this.game.physics.arcade.collide(this.hero, this.cannons);
+    }
     if (!CONST_ZHONYA || !zhonya_activated || CONST_KILL_IN_ZHONYA) {
         this.game.physics.arcade.overlap(this.hero, this.spiders,
             this._onHeroVsEnemy, null, this);
@@ -888,7 +922,15 @@ Crowdjump.Game._handleCollisionsP2 = function () {
             null, this);
         this.game.physics.arcade.overlap(bullets, this.platforms, this._onBulletVsPlatform,
             null, this);
+    }
 
+    if (CONST_CANNONS) {
+        this.game.physics.arcade.overlap(cannonballs, this.spiders, this._onCannonballVsEnemy,
+            null, this);
+        this.game.physics.arcade.overlap(cannonballs, this.platforms, this._onCannonballVsPlatform,
+            null, this);
+        this.game.physics.arcade.overlap(cannonballs, this.hero, this._onHeroVsCannonball,
+            null, this);
     }
 
     if (!CONST_ZHONYA || !zhonya_activated || CONST_KILL_IN_ZHONYA) {
@@ -995,11 +1037,18 @@ Crowdjump.Game._loadLevel = function (data) {
         this.spikes = this.game.add.group();
         data.spikes.forEach(this._spawnSpikes, this);
     }
+
     //spawn sawblades
     if (CONST_SAWBLADES) {
         this.sawblades = this.game.add.group();
         data.sawblades.forEach(this._spawnSawblade, this);
         this.sawbladesBases = this.game.add.group();
+    }
+
+    //spawn sawblades
+    if (CONST_CANNONS) {
+        this.cannons = this.game.add.group();
+        data.cannons.forEach(this._spawnCannon, this);
     }
 
     //spawn powerups
@@ -1045,7 +1094,9 @@ Crowdjump.Game._loadLevel = function (data) {
 
     seconds_last_level = Math.abs(Math.floor(game.timeElapsed / 1));
     setInfoLastLevel();
-    this.world.resize(data.size.x, data.size.y);
+    sizex = data.size.x;
+    sizey = data.size.y;
+    this.world.resize(sizex, sizey);
 };
 
 Crowdjump.Game._spawnPlatform = function (platform) {
@@ -1320,6 +1371,33 @@ Crowdjump.Game._spawnSawblade = function (sawblade) {
 
 };
 
+Crowdjump.Game._spawnCannon = function (cannon) {
+    var newx = cannon.x;
+    var newy = cannon.y;
+    if (CONST_P2_PHYSICS) {
+        // log(newx,newy);
+        var width = game.cache.getImage(cannon.image).width;
+        var height = game.cache.getImage(cannon.image).height;
+        newx += width / 2;
+        newy += height / 2;
+    }
+
+    let sprite = this.cannons.create(
+        newx, newy, cannon.image);
+
+
+    if (CONST_P2_PHYSICS) {
+        this.game.physics.p2.enable(sprite);
+        sprite.body.kinematic = true;
+    } else {
+        this.game.physics.enable(sprite);
+    }
+    sprite.body.allowGravity = false;
+    sprite.body.immovable = true;
+
+
+};
+
 Crowdjump.Game._spawnEnemyWall = function (x, y, side) {
     let sprite = this.enemyWalls.create(x, y, 'invisible-wall');
     // anchor and y displacement
@@ -1379,6 +1457,30 @@ Crowdjump.Game._newSpawns = function (data) {
                     }
                 }
             }
+
+        }, this);
+    }
+}
+
+Crowdjump.Game._newCannonballs = function (seconds) {
+    if (CONST_CANNONS) {
+        // spawn cannonballs for each cannon
+        next_cannon_fire = seconds + CONST_CANNON_FIRERATE/1000;
+        this.cannons.forEach(function (cannon) {
+            this.sfx.cannonfire.play();
+
+            var cannonball = cannonballs.getFirstDead();
+
+            var ygoal = 0;
+            if (cannon.key == 'cannonRight'){
+                ygoal = sizex;
+                cannonball.reset(cannon.position.x +42, cannon.position.y);
+            } else {
+                cannonball.reset(cannon.position.x +42, cannon.position.y );
+            }
+
+
+            this.game.physics.arcade.moveToXY(cannonball,ygoal, cannon.position.y, CONST_CANNON_BULLETSPEED);
 
         }, this);
     }
@@ -1696,6 +1798,12 @@ Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
     game.powerupPickupCount++;
 };
 
+Crowdjump.Game._onHeroVsCannonball = function (hero, cannonball) {
+    // game over -> restart the game
+    cannonball.reset();
+    this.killHero("death by cannonball");
+};
+
 Crowdjump.Game._onBulletVsPlatform = function (bullet, platform) {
     bullet.reset();
 };
@@ -1703,6 +1811,15 @@ Crowdjump.Game._onBulletVsPlatform = function (bullet, platform) {
 Crowdjump.Game._onBulletVsEnemy = function (bullet, enemy) {
     this._killEnemy(enemy, false);
     bullet.reset();
+};
+
+Crowdjump.Game._onCannonballVsPlatform = function (cannonball, platform) {
+    cannonball.reset();
+};
+
+Crowdjump.Game._onCannonballVsEnemy = function (cannonball, enemy) {
+    this._killEnemy(enemy, false);
+    cannonball.reset();
 };
 
 Crowdjump.Game._createHud = function () {

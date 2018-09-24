@@ -446,6 +446,16 @@ def SendGameData(request):
     return JsonResponse('{"success":"true"}', safe=False)
 
 
+def GetWinnerOfXDays(request):
+    days = request.GET.get('days')
+
+    v = Version.objects.order_by('-id')[0]
+    acc = GameInfo.objects.filter(user_id=request.user.id, version_id=v.id)[0]
+    winner = 'SSnake'
+    wins = 5;
+    return JsonResponse('{"winner":"' + winner + ' ,"wins":"' + wins + '"}', safe=False)
+
+
 def ChangeCharacter(request):
     if request.user.is_authenticated:
         userid = request.user.id

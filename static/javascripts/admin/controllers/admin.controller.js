@@ -829,6 +829,7 @@
                 var enemies = '';
                 var enemy_walls = '';
                 var eastereggs = '';
+                var cannons = '';
 
                 var maxX = 918;
                 var maxY = 588;
@@ -893,7 +894,12 @@
                     }
 
                     if (image.startsWith("sawblade")) {
-                        sawblades += line + '", "speed": 100, "orientation": "UP", "base": "sawblade_base"' + endline;
+                        sawblades += line + ', "speed": 100, "orientation": "UP", "base": "sawblade_base"' + endline;
+                        continue;
+                    }
+
+                    if (image.startsWith("cannon")) {
+                        cannons += line + ', "ballpos":"0"' + endline;
                         continue;
                     }
 
@@ -938,6 +944,7 @@
                 lava = wrapJsonLevel(lava, "lava");
                 spikes = wrapJsonLevel(spikes, "spikes");
                 sawblades = wrapJsonLevel(sawblades, "sawblades");
+                cannons = wrapJsonLevel(cannons, "cannons");
                 flags = wrapJsonLevel(flags, "flags");
                 coins = wrapJsonLevel(coins, "coins");
                 hero = '\t"hero":\n' + hero + '';
@@ -947,7 +954,7 @@
                 powerups = wrapJsonLevel(powerups, "powerups");
                 eastereggs = wrapJsonLevel(eastereggs, "eastereggs");
                 decorations = wrapJsonLevel(decorations, "decorations");
-                $scope.csv = '{\n' + platforms + falling_platforms + fakeplatforms + crates + lava + spikes + sawblades + flags + coins + hero + enemies + enemy_walls + powerups + eastereggs + decorations + worldsize + '\n}';
+                $scope.csv = '{\n' + platforms + falling_platforms + fakeplatforms + crates + lava + spikes + sawblades + cannons + flags + coins + hero + enemies + enemy_walls + powerups + eastereggs + decorations + worldsize + '\n}';
 
             }
 

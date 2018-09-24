@@ -75,10 +75,7 @@
 		{"image": "grass:4x1", "x": 336, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:4x1", "x": 798, "y": 924, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "invisible:2x1", "x": 2352, "y": 126, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "grass:2x1", "x": 1806, "y": 1260, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:2x1", "x": 0, "y": 840, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "invisible:1x1", "x": 0, "y": 546, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:2x1", "x": 0, "y": 588, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
+		{"image": "grass:2x1", "x": 1806, "y": 1260, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
 	],
 	"fallingPlatforms": [
 
@@ -132,11 +129,6 @@
 	],
 	"sawblades": [
 
-	],
-	"cannons": [
-		{"image": "cannonRight", "x": 0, "y": 798, "ballpos":"0"},
-		{"image": "cannonLeft", "x": 588, "y": 924, "ballpos":"0"},
-		{"image": "cannonRight", "x": 0, "y": 546, "ballpos":"0"}
 	],
 	"flags": [
 		{"image": "flag", "x": 1932, "y": 756},

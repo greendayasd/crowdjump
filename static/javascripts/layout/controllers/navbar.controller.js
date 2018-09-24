@@ -10,6 +10,8 @@
     function NavbarController($scope, Authentication, History) {
         var vm = this;
         var cookie = Authentication.getAuthenticatedAccount();
+        $scope.winner = winner7days;
+        $scope.wins = wins7days;
 
 
         $scope.version = versionlabel;

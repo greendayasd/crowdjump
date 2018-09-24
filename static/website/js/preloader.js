@@ -24,6 +24,8 @@ Crowdjump.Preloader.prototype = {
         var enemies = files + 'enemies/';
         var obstacles = files + 'obstacles/';
         var misc = files + 'misc/';
+        var bases = files + 'bases/';
+        var cannons = files + 'cannons/';
 
 
         var level = '/static/website/level/';
@@ -160,6 +162,12 @@ Crowdjump.Preloader.prototype = {
             this.load.image('spikesRight:1x1', obstacles + 'spikesRight_1x1.png');
         }
 
+        //Cannons
+        if (CONST_CANNONS) {
+            this.load.image('cannonLeft', cannons + 'cannonLeft.png');
+            this.load.image('cannonRight', cannons + 'cannonRight.png');
+        }
+
         //collectibles
         if (CONST_EASTEREGGS) {
             this.load.image('easteregg:specialname', collectibles + 'easteregg_specialname.png');
@@ -197,6 +205,7 @@ Crowdjump.Preloader.prototype = {
 
         if (CONST_CRATES) this.load.image('crate', misc + 'crate.png');
         if (CONST_SHOOTING) this.load.image('bullet', misc + 'bullet.png');
+        if (CONST_CANNONS) this.load.image('cannonball', misc + 'cannonball.png');
 
         // this.load.image('white_smoke', misc + 'white_smoke.png');
 
@@ -215,6 +224,7 @@ Crowdjump.Preloader.prototype = {
         if (CONST_ENEMIES) this.load.audio('sfx:stomp', audio + 'stomp.wav');
         if (CONST_ZHONYA) this.load.audio('sfx:zhonya', audio + 'zhonya.wav');
         if (CONST_SHOOTING) this.load.audio('sfx:shoot', audio + 'shoot.mp3');
+        if (CONST_CANNONS) this.load.audio('sfx:cannon_fire', audio + 'cannon_fire.wav');
         if (CONST_MAGAZINE > 0) this.load.audio('sfx:empty_magazine', audio + 'empty_magazine.wav');
 
         if (CONST_LEVELMUSIC) {

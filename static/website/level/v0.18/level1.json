@@ -71,6 +71,8 @@
 
 	],
 	"fakePlatforms": [
+		{"image": "fakelavabase:1x1", "x": 1974, "y": 882, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "fakelavabase:1x1", "x": 1974, "y": 924, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "fakelava:1x1", "x": 2562, "y": 840, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "fakelavabase:1x1", "x": 2562, "y": 882, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "fakelavabase:1x1", "x": 2562, "y": 924, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
@@ -84,19 +86,13 @@
 		{"image": "lavabase:2x2", "x": 2016, "y": 882},
 		{"image": "lava:1x1", "x": 2604, "y": 840},
 		{"image": "lavabase:1x1", "x": 2604, "y": 882},
-		{"image": "lavabase:1x1", "x": 2604, "y": 924},
-		{"image": "lavabase:1x1", "x": 1974, "y": 882},
-		{"image": "lavabase:1x1", "x": 1974, "y": 924}
+		{"image": "lavabase:1x1", "x": 2604, "y": 924}
 	],
 	"spikes": [
 
 	],
 	"sawblades": [
 
-	],
-	"cannons": [
-		{"image": "cannonLeft", "x": 1596, "y": 630, "ballpos":"0"},
-		{"image": "cannonLeft", "x": 3024, "y": 630, "ballpos":"0"}
 	],
 	"flags": [
 		{"image": "flag", "x": 3738, "y": 252},
