@@ -6,7 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/website/js/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/javascripts.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,16 +36,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="highscore.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
+      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="186" column="30" lean-forward="true" selection-start-line="186" selection-start-column="30" selection-end-line="186" selection-end-column="30" />
+            <state relative-caret-position="146">
+              <caret line="155" column="43" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
+              <folding>
+                <element signature="e#69#176#0#DjangoTemplate" />
+                <element signature="e#1361#1391#0#DjangoTemplate" />
+                <element signature="e#1766#1874#0#DjangoTemplate" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="highscore.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="347">
+              <caret line="191" column="73" selection-start-line="191" selection-start-column="73" selection-end-line="191" selection-end-column="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="473">
@@ -657,10 +672,8 @@
         <option value="$PROJECT_DIR$/static/website/js/startmenu.js" />
         <option value="$PROJECT_DIR$/static/templates/layout/data.html" />
         <option value="$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js" />
-        <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/website/level/level2.json" />
         <option value="$PROJECT_DIR$/static/website/level/level1.json" />
-        <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
         <option value="$PROJECT_DIR$/Database Backups/Vorabstudie/Local/Database 21.06/ideas/serializers.py" />
         <option value="$PROJECT_DIR$/ideas/serializers.py" />
         <option value="$PROJECT_DIR$/static/templates/layout/game.html" />
@@ -670,6 +683,8 @@
         <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
         <option value="$PROJECT_DIR$/static/website/js/game.js" />
+        <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
+        <option value="$PROJECT_DIR$/templates/javascripts.html" />
       </list>
     </option>
   </component>
@@ -1511,94 +1526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="155" column="43" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
-          <folding>
-            <element signature="e#69#176#0#DjangoTemplate" />
-            <element signature="e#291#427#0#HTML" />
-            <element signature="e#432#567#0#HTML" />
-            <element signature="e#1361#1391#0#DjangoTemplate" />
-            <element signature="e#1766#1874#0#DjangoTemplate" />
-            <element signature="e#3529#3664#0#HTML" />
-            <element signature="e#3669#3804#0#HTML" />
-            <element signature="e#3809#3941#0#HTML" />
-            <element signature="e#3946#4084#0#HTML" />
-            <element signature="e#6265#6394#0#HTML" />
-            <element signature="e#6755#6884#0#HTML" />
-            <element signature="e#7453#7585#0#HTML" />
-            <element signature="e#7708#7847#0#HTML" />
-            <element signature="e#7852#7985#0#HTML" />
-            <element signature="e#7990#8123#0#HTML" />
-            <element signature="e#8250#8379#0#HTML" />
-            <element signature="e#8384#8519#0#HTML" />
-            <element signature="e#8524#8653#0#HTML" />
-            <element signature="e#8658#8787#0#HTML" />
-            <element signature="e#8792#8925#0#HTML" />
-            <element signature="e#8930#9059#0#HTML" />
-            <element signature="e#9064#9195#0#HTML" />
-            <element signature="e#9200#9335#0#HTML" />
-            <element signature="e#9572#9705#0#HTML" />
-            <element signature="e#9710#9842#0#HTML" />
-            <element signature="e#9847#9977#0#HTML" />
-            <element signature="e#10292#10334#0#HTML" />
-            <element signature="e#10372#10413#0#HTML" />
-            <element signature="e#10454#10751#0#HTML" />
-            <element signature="e#10583#10671#0#HTML" />
-            <element signature="e#10677#10740#0#HTML" />
-            <element signature="e#10789#10882#0#HTML" />
-            <element signature="e#10927#10978#0#HTML" />
-            <element signature="e#11027#11798#0#HTML" />
-            <element signature="e#11177#11479#0#HTML" />
-            <element signature="e#11497#11787#0#HTML" />
-            <element signature="e#11583#11773#0#HTML" />
-            <element signature="e#11838#12412#0#HTML" />
-            <element signature="e#11935#12370#0#HTML" />
-            <element signature="e#12052#12356#0#HTML" />
-            <element signature="e#12191#12338#0#HTML" />
-            <element signature="e#12477#12933#0#HTML" />
-            <element signature="e#12545#12695#0#HTML" />
-            <element signature="e#12717#12920#0#HTML" />
-            <element signature="e#12827#12846#0#HTML" />
-            <element signature="e#12887#12906#0#HTML" />
-            <element signature="e#12998#13521#0#HTML" />
-            <element signature="e#13066#13198#0#HTML" />
-            <element signature="e#13220#13423#0#HTML" />
-            <element signature="e#13330#13349#0#HTML" />
-            <element signature="e#13390#13409#0#HTML" />
-            <element signature="e#13582#14066#0#HTML" />
-            <element signature="e#13686#13829#0#HTML" />
-            <element signature="e#13851#14054#0#HTML" />
-            <element signature="e#13961#13980#0#HTML" />
-            <element signature="e#14021#14040#0#HTML" />
-            <element signature="e#14105#14538#0#HTML" />
-            <element signature="e#14582#15490#0#HTML" />
-            <element signature="e#14860#15479#0#HTML" />
-            <element signature="e#15560#17266#0#HTML" />
-            <element signature="e#16020#17244#0#HTML" />
-            <element signature="e#16064#17230#0#HTML" />
-            <element signature="e#16129#16260#0#HTML" />
-            <element signature="e#16684#16871#0#HTML" />
-            <element signature="e#17311#17374#0#HTML" />
-            <element signature="e#17426#17674#0#HTML" />
-            <element signature="e#17710#18152#0#HTML" />
-            <element signature="e#17845#18119#0#HTML" />
-            <element signature="e#17921#17980#0#HTML" />
-            <element signature="e#18023#18105#0#HTML" />
-            <element signature="e#18198#18293#0#HTML" />
-            <element signature="e#18323#18423#0#HTML" />
-            <element signature="e#18537#19215#0#HTML" />
-            <element signature="e#19434#20803#0#HTML" />
-            <element signature="e#21023#22510#0#HTML" />
-            <element signature="e#22553#22656#0#HTML" />
-            <element signature="e#22680#22931#0#HTML" />
-            <element signature="e#22758#22856#0#HTML" />
-            <element signature="e#22905#22920#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2274">
@@ -1980,13 +1907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="186" column="30" lean-forward="true" selection-start-line="186" selection-start-column="30" selection-end-line="186" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="473">
@@ -2362,6 +2282,25 @@
             <element signature="e#60825#60866#0" />
             <element signature="e#60872#60912#0" />
             <element signature="e#60956#60985#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="191" column="73" selection-start-line="191" selection-start-column="73" selection-end-line="191" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="155" column="43" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
+          <folding>
+            <element signature="e#69#176#0#DjangoTemplate" />
+            <element signature="e#1361#1391#0#DjangoTemplate" />
+            <element signature="e#1766#1874#0#DjangoTemplate" />
           </folding>
         </state>
       </provider>

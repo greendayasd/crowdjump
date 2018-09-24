@@ -189,7 +189,7 @@
                         $scope.statistics[i].color = {"color": " blue"};
                         break;
                     case 3:
-                        $scope.statistics[i].color = {"color": " MidnightBlue"};
+                        $scope.statistics[i].color = {"color": " DarkBlue"};
                         break;
                     case 4:
                         $scope.statistics[i].color = {"color": " DarkMagenta"};
