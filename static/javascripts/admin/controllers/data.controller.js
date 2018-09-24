@@ -100,7 +100,7 @@
                 var today = new Date();
                 var firstVersion = new Date(2018, 9, 14);
                 var amountVersions = today.getDate() - firstVersion.getDate();
-                var header = form_csv('id', 'username', 'register_version', 'ideas', 'versions_played (of ' + amountVersions + ')', 'ideavotes', 'activeAnd', 'activeOr', 'last_online');
+                var header = form_csv('id', 'username', 'register_version', 'ideas', 'ideavotes', 'versions_played (of ' + amountVersions + ')', 'activeAnd', 'activeOr', 'last_online');
 
                 var playedIdea80 = 0;
                 var playedIdea50 = 0;
@@ -181,6 +181,7 @@
                         datesIdeas.add(convertJSDate(vote.created_at));
                     }
 
+                    //intersect and union
                     var datesAnd = new Set([...datesIdeas].filter(x=> datesOr.has(x)));
                     var datesOr = new Set([...datesOr,...datesIdeas]);
                     // var datesAnd = new Set([...datesIdeas].filter(x=> datesOr.has(x)));
@@ -201,7 +202,7 @@
 
                     last_online = moment(last_online);
                     var creationDate = moment(convertJSDateFull(acc.created_at));
-                    statistics += form_csv(acc.id, acc.username, creationDate.format('DD-MM-YYYY'), acc.ideas.length, acc.gameinfos.length, acc.ideavotes.length, datesAnd.size, datesOr.size, last_online.format('DD-MM-YYYY'));
+                    statistics += form_csv(acc.id, acc.username, creationDate.format('DD-MM-YYYY'), acc.ideas.length, acc.ideavotes.length, acc.gameinfos.length, datesAnd.size, datesOr.size, last_online.format('DD-MM-YYYY'));
                 }
                 $scope.csv = header + statistics;
                 $scope.stats = '80% played + idea ' + playedIdea80 + '\n';
@@ -218,13 +219,24 @@
 
             function convertJSDate(date) {
                 var dateParts = date.split("-");
+                var afterDate = date.split("T");
+                var beforehours = afterDate[1].split(".");
+                var time = beforehours[0].split(":");
                 var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2));
-                return jsDate.getDate();
+
+                if (time[0] > 19){
+                    return jsDate.getDate()+1;
+                }else{
+                    return jsDate.getDate();
+                }
             }
 
             function convertJSDateFull(date) {
                 var dateParts = date.split("-");
-                var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2));
+                var afterDate = date.split("T");
+                var beforehours = afterDate[1].split(".");
+                var time = beforehours[0].split(":");
+                var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2),time[0], time[1], time[2]);
                 return jsDate;
             }
 
