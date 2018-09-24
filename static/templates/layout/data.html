@@ -8,18 +8,25 @@
                 <button type="button" class="btn btn-xs btn-primary" ng-click="sortByUserData()">UserData
                 </button><br><br>
 
-
-                <a href="javascript:void(0)" id="dlcsv">
-                    <button>Download Csv</button>
-                </a>
-
                 <textarea class="form-control textarea  empty"
                           rows="8" cols="12"
 
                           ng-model=stats></textarea>
                 <br>
+
+                <a href="javascript:void(0)" id="dldaily">
+                    <button>Download Daily report</button>
+                </a>
                 <textarea class="form-control textarea  empty"
-                          rows="40" cols="12"
+                          rows="30" cols="12"
+
+                          ng-model=daily></textarea>
+                <br>
+                <a href="javascript:void(0)" id="dlcsv">
+                    <button>Download User Report</button>
+                </a>
+                <textarea class="form-control textarea  empty"
+                          rows="30" cols="12"
 
                           ng-model=csv></textarea>
                 <br>

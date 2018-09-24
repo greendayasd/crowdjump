@@ -111,6 +111,31 @@
                 var playedOrIdea20 = 0;
                 var playedOrIdea = 0;
 
+                var dailyList = [];
+                var accidToLocationJson = {};
+                for (var a = 0; a <21; a++){
+                    //days
+                    var dayArray = [];
+                    dailyList.push(dayArray);
+
+                    //day -> users
+                    for(var us = 0; us < $scope.accounts.length; us++){
+                        var usArray = [];
+                        // dailyList[a].push(usArray);
+                        accidToLocationJson[$scope.accounts[us].id] = us;
+
+                        //day -> user -> data
+                        var accjson = {
+                            "username": $scope.accounts[us].username,
+                            "ideas": 0,
+                            "ideavotes": 0,
+                            "rounds_started": 0,
+                            "rounds_won": 0
+                        };
+                        dailyList[a].push(accjson);
+                    }
+                }
+
 
                 //find own votes for ideas
                 $scope.accounts = $.map($scope.accounts, function (user) {
@@ -146,6 +171,7 @@
 
                 for (var i = 0; i < $scope.accounts.length; i++) {
                     var acc = $scope.accounts[i];
+                    var accPos = accidToLocationJson[acc.id];
                     var last_online = convertJSDateFull(acc.created_at);
 
                     //filter accounts
@@ -159,26 +185,40 @@
                     var datesIdeas = new Set();
                     var datesOr = new Set();
                     for (var gcount = 0; gcount < acc.gameinfos.length; gcount++) {
-
                         var g = acc.gameinfos[gcount];
+                        var gdate = convertJSDate(g.version.created_at);
+                        var version = dateToArrayPos(gdate);
+
+                        dailyList[version][accPos]["rounds_started"] = g.rounds_started;
+                        dailyList[version][accPos]["rounds_won"] = g.rounds_won;
+
                         if (last_online - getDateFromVersion(g.version.id) < 0) last_online = getDateFromVersion(g.version.id);
 
-                        datesOr.add(convertJSDate(g.version.created_at));
+                        datesOr.add(gdate);
 
                     }
                     for (var icount = 0; icount < acc.ideas.length; icount++) {
-
                         var idea = acc.ideas[icount];
+                        var idate = convertJSDate(idea.created_at);
+                        var version = dateToArrayPos(idate);
+
+                        dailyList[version][accPos]["ideas"] ++;
+
                         if (last_online - convertJSDateFull(idea.created_at) < 0) last_online = convertJSDateFull(idea.created_at);
 
-                        datesIdeas.add(convertJSDate(idea.created_at));
+                        datesIdeas.add(idate);
                     }
 
                     for (var vcount = 0; vcount < acc.ideavotes.length; vcount++) {
                         var vote = acc.ideavotes[vcount];
+                        var vdate = convertJSDate(vote.created_at);
+                        var version = dateToArrayPos(vdate);
+
+                        dailyList[version][accPos]["ideavotes"] ++;
+
                         if (last_online - convertJSDateFull(vote.created_at) < 0) last_online = convertJSDateFull(vote.created_at);
 
-                        datesIdeas.add(convertJSDate(vote.created_at));
+                        datesIdeas.add(vdate);
                     }
 
                     //intersect and union
@@ -215,6 +255,24 @@
                 $scope.stats += '20% played OR idea ' + playedOrIdea20 + '\n';
                 $scope.stats += 'at least one played OR idea ' + playedOrIdea;
 
+                setTimeout($scope.createFile($scope.csv, 'user stats ' + today.getDate() + '-' + (today.getMonth()+1) + '.csv', 'text/csv', 'dlcsv'));
+
+                $scope.daily = 'day, user, ideas, votes, rounds started, rounds_won\n';
+
+                for (var d = 0; d < dailyList.length; d++){
+                    var list = dailyList[d];
+                    var date = '';
+                    if (d>= 17) date = d-16 + '.10';
+                    else date = d+14 + '.09';
+                    for (var u = 0; u < list.length; u++){
+                        var user = list[u];
+                        if (user.ideas == 0 && user.ideavotes == 0 && user.rounds_started == 0) continue;
+                        else $scope.daily += form_csv(date, user.username, user.ideas, user.ideavotes, user.rounds_started, user.rounds_won);
+                    }
+                    $scope.daily += '\n'
+                }
+                setTimeout($scope.createFile($scope.daily, 'daily report ' + today.getDate() + '-' + (today.getMonth()+1) + '.csv', 'text/csv', 'dldaily'));
+
             };
 
             function convertJSDate(date) {
@@ -223,7 +281,6 @@
                 var beforehours = afterDate[1].split(".");
                 var time = beforehours[0].split(":");
                 var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2));
-
                 if (time[0] > 19){
                     return jsDate.getDate()+1;
                 }else{
@@ -244,8 +301,20 @@
                 return convertJSDateFull($scope.versions[version-1].created_at);
             }
 
+            function dateToArrayPos(date){
+                if (date <30) return date-14;
+                else return date + 16;
+            }
+
+            $scope.createFile = function (text, name, type, elementname) {
+                var dlcsv = document.getElementById(elementname);
+                var file = new Blob([text], {type: type});
+                dlcsv.href = URL.createObjectURL(file);
+                dlcsv.download = name;
+            }
+
             $scope.get_json_sum = function () {
-                var data = JSON.parse('[' + $scope.csv + ']');
+                var data = JSON.parse('[' + $scope.stats + ']');
                 var rounds_won = 0,
                     enemies_killed = 0,
                     coins_collected = 0,
