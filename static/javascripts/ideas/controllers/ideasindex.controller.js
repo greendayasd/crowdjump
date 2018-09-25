@@ -18,6 +18,9 @@
             var last_idea_id = 34;
             var last_idea_id2 = 41;
 
+            get_ideavotes();
+            get_Comments();
+
             //Filter/Ordering
             $scope.filterReset = function () {
                 $scope.search = {
@@ -165,13 +168,6 @@
                 // console.log($scope.userid + ' ' + $scope.username2);
             }
 
-            get_ideavotes();
-            if (activate_comments == true) {
-                get_comments();
-            }
-
-            activate();
-            get_versions();
 
 
             //Pagination
@@ -231,11 +227,14 @@
                 }
             }
 
-            function get_comments() {
+            function get_Comments() {
                 Comments.all().then(commentsSuccessFn, commentsErrorFn);
 
                 function commentsSuccessFn(data, status, headers, config) {
                     $scope.comments = data.data;
+
+                    activate();
+                    get_versions();
                 }
 
                 function commentsErrorFn(data, status, headers, config) {

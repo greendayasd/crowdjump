@@ -49,6 +49,7 @@ Crowdjump.Preloader.prototype = {
         var test = false;
         if (test) {
             this.load.json('level:0', level + 'level1.json');
+            this.load.json('level:1', level + 'level2.json');
 
         } else {
             for (var i = 0; i < CONST_LEVEL; i++) {
@@ -89,6 +90,13 @@ Crowdjump.Preloader.prototype = {
         this.load.image('grass:4x1', tiles + 'grass_4x1.png');
         this.load.image('grass:6x1', tiles + 'grass_6x1.png');
         this.load.image('grass:8x1', tiles + 'grass_8x1.png');
+
+        if (CONST_BUTTONS_AND_GATES){
+            this.load.spritesheet('spawnBlue:1x1', tiles + 'spawnBlue_1x1.png',42,42);
+            this.load.spritesheet('spawnBlue:2x1', tiles + 'spawnBlue_2x1.png',84,42);
+            this.load.spritesheet('spawnRed:1x1', tiles + 'spawnRed_1x1.png',42,42);
+            this.load.spritesheet('spawnRed:2x1', tiles + 'spawnRed_2x1.png',84,42);
+        }
 
         if (CONST_SLIPPERYPLATFORMS) {
             this.load.image('ice:1x1', tiles + 'ice_1x1.png');
@@ -150,9 +158,6 @@ Crowdjump.Preloader.prototype = {
                 game.load.image('c' + i, characters + 'character' + i + '.png');
             }
         }
-        //test own characters
-        // var own_characters ='/media/characters';
-        // game.load.image('1.png', own_characters + '/1.png');
 
 
         //obstacles
@@ -207,11 +212,19 @@ Crowdjump.Preloader.prototype = {
         if (CONST_SHOOTING) this.load.image('bullet', misc + 'bullet.png');
         if (CONST_CANNONS) this.load.image('cannonball', misc + 'cannonball.png');
 
+        if (CONST_BUTTONS_AND_GATES) {
+            this.load.spritesheet('buttonRed', misc + 'button_red.png', 42, 5);
+            this.load.spritesheet('buttonBlue', misc + 'button_blue.png', 42, 5);
+
+            this.load.spritesheet('gateRed', misc + 'gate_red.png', 42, 84);
+            this.load.spritesheet('gateBlue', misc + 'gate_blue.png', 42, 84);
+        }
+
         // this.load.image('white_smoke', misc + 'white_smoke.png');
 
         //enemies
         if (CONST_ENEMIES) {
-            this.load.spritesheet('spider', enemies + 'spider2.png', 42, 32);
+            this.load.spritesheet('spider', enemies + 'spider2.png', 42, 30);
         }
 
 
@@ -226,6 +239,12 @@ Crowdjump.Preloader.prototype = {
         if (CONST_SHOOTING) this.load.audio('sfx:shoot', audio + 'shoot.mp3');
         if (CONST_CANNONS) this.load.audio('sfx:cannon_fire', audio + 'cannon_fire.wav');
         if (CONST_MAGAZINE > 0) this.load.audio('sfx:empty_magazine', audio + 'empty_magazine.wav');
+
+        if (CONST_BUTTONS_AND_GATES) {
+            this.load.audio('sfx:open_gate', audio + 'open_gate.wav');
+            this.load.audio('sfx:press_button', audio + 'press_button.wav');
+            this.load.audio('sfx:spawn_platform', audio + 'spawn_platform.ogg');
+        }
 
         if (CONST_LEVELMUSIC) {
             this.load.audio('sfx:levelmusic', audio + 'levelmusic.ogg');

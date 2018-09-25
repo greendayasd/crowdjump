@@ -18,6 +18,8 @@ Crowdjump.Game = function (game) {
     var newLava = [];
     var oldGround = [];
 
+    var spawnPlattforms = [];
+
     var level_data;
     var level;
     var last_second = 0;
@@ -273,7 +275,6 @@ Hero.prototype._getAnimationName = function () {
     return name;
 };
 
-
 function Spider(game, x, y) {
     Phaser.Sprite.call(this, game, x, y, 'spider');
 
@@ -340,7 +341,7 @@ Crowdjump.Game.init = function (data) {
     jump = function () {
         let didJump = this.hero.jump();
         if (didJump) {
-            this.sfx.jump.play("", 0, 0.3, false, true);
+            this.sfx.jump.play("", 0, 0.2, false, true);
         }
     };
 
@@ -394,9 +395,20 @@ Crowdjump.Game.init = function (data) {
 
     //powerups
     pu_jumpboost = false;
-    pu_lavaorb = false;
     pu_permjumpboost = false;
-    pu_throughwalls = false;
+
+    var cheat = false;
+    if (account != null) {
+        cheat = (CONST_CHEAT && account.username == 'admin')
+    }
+    if (cheat) {
+        pu_lavaorb = true;
+        pu_throughwalls = true;
+
+    } else {
+        pu_lavaorb = false;
+        pu_throughwalls = false;
+    }
 
     //easeggs
     movespeed_boost = 0;
@@ -415,6 +427,9 @@ Crowdjump.Game.init = function (data) {
     lavaConverts = [];
     oldGround = [];
     newLava = [];
+
+    spawnPlatforms = [];
+
     show_fps = false;
 
     sizex = 960;
@@ -452,6 +467,9 @@ Crowdjump.Game.create = function () {
         empty_magazine: this.game.add.audio('sfx:empty_magazine'),
         powerup: this.game.add.audio('sfx:powerup'),
         easteregg: this.game.add.audio('sfx:easteregg'),
+        open_gate: this.game.add.audio('sfx:open_gate'),
+        press_button: this.game.add.audio('sfx:press_button'),
+        spawn_platform: this.game.add.audio('sfx:spawn_platform'),
     };
 
 
@@ -587,6 +605,7 @@ Crowdjump.Game.create = function () {
 };
 
 Crowdjump.Game.update = function () {
+
     if (CONST_BACKGROUNDIMAGE) {
         // this.stars.tilePosition.x = game.camera.x*-0.02;
         this.hillsBack.tilePosition.x = game.camera.x * -0.02;
@@ -739,6 +758,13 @@ Crowdjump.Game._handleCollisions = function () {
     //allow powerup to jump through walls
     if (!pu_throughwalls || this.hero.body.velocity.y >= 0) {
         this.game.physics.arcade.collide(this.hero, this.platforms, this._onHeroVsSpecialPlatform, null, this);
+
+        if (CONST_CANNONS) this.game.physics.arcade.collide(this.hero, this.cannons);
+        if (CONST_BUTTONS_AND_GATES) {
+            this.game.physics.arcade.collide(this.hero, this.buttons, this._onHeroVsButton, null, this);
+            this.game.physics.arcade.collide(this.hero, this.spawns);
+        }
+
     } else {
     }
 
@@ -843,8 +869,18 @@ Crowdjump.Game._handleCollisions = function () {
             null, this);
         this.game.physics.arcade.overlap(cannonballs, this.hero, this._onHeroVsCannonball,
             null, this);
-        this.game.physics.arcade.collide(this.hero, this.cannons);
+        if (CONST_BUTTONS_AND_GATES) {
+            this.game.physics.arcade.overlap(cannonballs, this.spawns, this._onCannonballVsPlatform,
+                null, this);
+            this.game.physics.arcade.overlap(cannonballs, this.gates, this._onCannonballVsPlatform,
+                null, this);
+        }
     }
+
+    if (CONST_BUTTONS_AND_GATES) {
+        this.game.physics.arcade.collide(this.hero, this.gates);
+    }
+
     if (!CONST_ZHONYA || !zhonya_activated || CONST_KILL_IN_ZHONYA) {
         this.game.physics.arcade.overlap(this.hero, this.spiders,
             this._onHeroVsEnemy, null, this);
@@ -1048,6 +1084,17 @@ Crowdjump.Game._loadLevel = function (data) {
         this.sawblades = this.game.add.group();
         data.sawblades.forEach(this._spawnSawblade, this);
         this.sawbladesBases = this.game.add.group();
+    }
+
+    if (CONST_BUTTONS_AND_GATES) {
+        this.buttons = this.game.add.group();
+        data.buttons.forEach(this._spawnButton, this);
+        this.gates = this.game.add.group();
+        data.gates.forEach(this._spawnGate, this);
+
+        this.spawns = this.game.add.group();
+        data.spawns.forEach(this._spawnSpawn, this);
+
     }
 
     //spawn sawblades
@@ -1316,6 +1363,11 @@ Crowdjump.Game._spawnSpikes = function (spike) {
     }
     sprite.body.allowGravity = false;
     sprite.body.immovable = true;
+    // sprite.body.anchor = (0.5, 0.5);
+    // sprite.angle = spike.angle;
+    // sprite.body.rotation = spike.angle;
+    // sprite.scale.set(spike.scalex, spike.scaley);
+    // sprite.scale.set(-1.0, -3.0);
 };
 
 Crowdjump.Game._spawnSawblade = function (sawblade) {
@@ -1379,6 +1431,7 @@ Crowdjump.Game._spawnSawblade = function (sawblade) {
 Crowdjump.Game._spawnCannon = function (cannon) {
     var newx = cannon.x;
     var newy = cannon.y;
+
     if (CONST_P2_PHYSICS) {
         // log(newx,newy);
         var width = game.cache.getImage(cannon.image).width;
@@ -1399,7 +1452,61 @@ Crowdjump.Game._spawnCannon = function (cannon) {
     }
     sprite.body.allowGravity = false;
     sprite.body.immovable = true;
+    // sprite.scale = (cannon.scalex, cannon.scaley);
 
+
+};
+
+Crowdjump.Game._spawnButton = function (button) {
+    var newx = button.x;
+    var newy = button.y + 37; //5px height
+
+    let sprite = this.buttons.create(
+        newx, newy, button.image);
+
+    this.game.physics.enable(sprite);
+
+    sprite.animations.add('button_pressed', [1]);
+    sprite.body.allowGravity = false;
+    sprite.body.immovable = true;
+    sprite.pressed = false;
+    sprite.buttonnr = button.buttonnr;
+
+};
+
+Crowdjump.Game._spawnSpawn = function (spawn) {
+    var newx = spawn.x;
+    var newy = spawn.y + 37; //5px height
+
+    let sprite = this.spawns.create(
+        newx, newy, spawn.image);
+
+    // this.game.physics.enable(sprite);
+
+    this.game.physics.enable(sprite);
+    sprite.animations.add('spawn', [0, 1, 2, 3, 4, 5], 9);
+    sprite.body.allowGravity = false;
+    sprite.body.immovable = true;
+    sprite.body.enable = false;
+    // sprite.body.
+    sprite.needs_buttonnr = spawn.needs_buttonnr;
+    //p_types and co
+
+};
+
+Crowdjump.Game._spawnGate = function (gate) {
+    var newx = gate.x;
+    var newy = gate.y;
+
+    let sprite = this.gates.create(
+        newx, newy, gate.image);
+
+    this.game.physics.enable(sprite);
+
+    sprite.animations.add('open', [0, 0, 1, 2, 3, 3, 3, 4, 5, 6, 7, 8, 9], 6);
+    sprite.body.allowGravity = false;
+    sprite.body.immovable = true;
+    sprite.needs_buttonnr = gate.needs_buttonnr;
 
 };
 
@@ -1628,7 +1735,7 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
         this._killEnemy(enemy, true);
     }
     else { // game over -> restart the game
-        this.sfx.stomp.play();
+        this.sfx.stomp.play("","",0.6);
         this.killHero("killed by " + enemy.key);
     }
 };
@@ -1744,7 +1851,7 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
 };
 
 Crowdjump.Game._onHeroVsCoin = function (hero, coin) {
-    this.sfx.coin.play();
+    this.sfx.coin.play("","",0.4);
     coin.kill();
     game.coinPickupCount++;
 };
@@ -1804,8 +1911,17 @@ Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
 
 Crowdjump.Game._onHeroVsCannonball = function (hero, cannonball) {
     // game over -> restart the game
-    cannonball.reset();
+    cannonball.kill();
     this.killHero("death by cannonball");
+};
+
+Crowdjump.Game._onHeroVsButton = function (hero, button) {
+    if (!button.pressed) {
+        button.animations.play("button_pressed");
+        this.sfx.press_button.play();
+        this.checkButtonPress(button.buttonnr);
+        button.pressed = true;
+    }
 };
 
 Crowdjump.Game._onBulletVsPlatform = function (bullet, platform) {
@@ -1818,12 +1934,12 @@ Crowdjump.Game._onBulletVsEnemy = function (bullet, enemy) {
 };
 
 Crowdjump.Game._onCannonballVsPlatform = function (cannonball, platform) {
-    cannonball.reset();
+    cannonball.kill();
 };
 
 Crowdjump.Game._onCannonballVsEnemy = function (cannonball, enemy) {
     this._killEnemy(enemy, false);
-    cannonball.reset();
+    cannonball.kill();
 };
 
 Crowdjump.Game._createHud = function () {
@@ -1963,6 +2079,29 @@ Crowdjump.Game.ready_Zhonyas = function () {
 
     zhonya_cooldown = false;
 
+};
+
+Crowdjump.Game.checkButtonPress = function (nr) {
+    this.gates.forEach(this.openGate, this, true, nr);
+    this.spawns.forEach(this.setSpawn, this, true, nr);
+};
+
+
+Crowdjump.Game.setSpawn = function (spawn, nr) {
+    if (spawn.needs_buttonnr == nr) {
+        spawn.animations.play('spawn');
+        this.sfx.spawn_platform.play();
+        spawn.body.enable = true;
+    }
+};
+
+Crowdjump.Game.openGate = function (gate, nr) {
+    if (gate.needs_buttonnr == nr) {
+        this.sfx.open_gate.play();
+        gate.animations.play('open').onComplete.addOnce(function () {
+            gate.kill();
+        }, this);
+    }
 };
 
 Crowdjump.Game.fire_Bullet = function () {

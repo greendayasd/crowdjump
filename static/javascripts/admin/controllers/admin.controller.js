@@ -30,8 +30,6 @@
                 get_pre();
                 get_post();
                 get_comments();
-                get_ideavotes();
-                get_ideas();
                 get_versions();
             }
 
@@ -40,7 +38,7 @@
                 var file = new Blob([text], {type: type});
                 dlcsv.href = URL.createObjectURL(file);
                 dlcsv.download = name;
-            }
+            };
 
             $scope.csv = '';
 
@@ -71,6 +69,7 @@
 
                 function commentsSuccessFn(data, status, headers, config) {
                     $scope.comments = data.data;
+                    get_ideavotes();
                 }
 
                 function commentsErrorFn(data, status, headers, config) {
@@ -82,6 +81,7 @@
 
                 function ideavotesSuccessFn(data, status, headers, config) {
                     $scope.ideavotes = data.data;
+                    get_ideas();
                 }
 
                 function ideavotesErrorFn(data, status, headers, config) {
@@ -778,6 +778,7 @@
                 // console.log(data);
                 var lines = data.split('\n');
                 lines.splice(0, 35);
+                lines.splice(lines.length-7, lines.length-1);
                 data = lines.join('\n');
 
 
@@ -792,7 +793,7 @@
                 data = data.replaceAll("};", "");
 
                 //replace tabs and linebreaks
-                data = data.replaceAll(";\n", ",");
+                // data = data.replaceAll(";\n", ",");
                 data = data.replaceAll("\t", "");
                 data = data.replaceAll(";", "");
                 data = data.replaceAll("'", "\"");
@@ -801,19 +802,25 @@
                 data = data.replaceAll(/\(/, "[");
                 data = data.replaceAll(/\)/, "]");
 
+
                 //cut of paranthesis at the beginning and comma/line breaks at the end
-                data = data.substring(5, data.length);
-                var string_unfinished = true;
-                var maxcount = 10;
-                while (string_unfinished) {
-                    var last_char = data.substring(data.length - 1, data.length);
-                    last_char == "]" ? string_unfinished = false : data = data.substring(0, data.length - 1);
-                    maxcount--;
-                    maxcount == 0 ? string_unfinished = true : maxcount;
+                data = data.substring(6, data.length);
+                // data = data.substring(0, data.length -25);
+                // log(data);
 
-                }
+                // var string_unfinished = true;
+                // var maxcount = 10;
+                // while (string_unfinished) {
+                //     var last_char = data.substring(data.length - 1, data.length);
+                //     last_char == "]" ? string_unfinished = false : data = data.substring(0, data.length - 1);
+                //     maxcount--;
+                //     maxcount == 0 ? string_unfinished = true : maxcount;
+                //
+                // }
 
-                var array = JSON.parse("[" + data + "]");
+                var objects = data.split('\n\n');
+
+                // var array = JSON.parse("[" + data + "]");
                 var platforms = '';
                 var falling_platforms = '';
                 var fakeplatforms = '';
@@ -830,20 +837,50 @@
                 var enemy_walls = '';
                 var eastereggs = '';
                 var cannons = '';
+                var buttons = '';
+                var gates = '';
+                var spawns = '';
 
                 var maxX = 918;
                 var maxY = 588;
 
-                for (var i = 0; i < array.length; i++) {
-                    var image = array[i][2];
+                for (var i = 0; i < objects.length; i++) {
+                    var line = objects[i];
+                    var angle = 0.0;
+                    var scalex = 1.0;
+                    var scaley = 1.0;
+                    //multiple arguments
+                    if (line.startsWith("var")) {
+                        //get arguments
+                        var argumentArr = line.split('\n');
+                        line = '[' + argumentArr[0].split('[')[1];
+
+                        for (var count = 1; count < argumentArr.length; count++) {
+                            var def = argumentArr[count].split('.')[1];
+                            if (def.startsWith("angle")) {
+                                angle = argumentArr[count].split(' ')[2];
+                                angle = angle.substring(0, angle.length - 2);
+                                log(angle);
+                            }
+                            if (def.startsWith("scale")) {
+                                var scales = argumentArr[count].split("[")[1];
+                                scales = scales.substring(0, scales.length - 1).split(', ');
+                                scalex = scales[0];
+                                scaley = scales[1];
+                            }
+                        }
+                    }
+                    line = JSON.parse(line);
+                    var image = line[2];
                     var split = image.split(":");
                     var type = split[1];
                     var fulltype = ', "type":"' + split[1] + '"';
+                    var standartOptions = ', "angle":' + angle +  ', "scalex":' + scalex + ', "scaley":' + scaley;
                     var endline = '},\n';
 
-                    maxX = Math.max(maxX, array[i][0]);
-                    maxY = Math.max(maxY, array[i][1]);
-                    var line = '\t\t{"image": ' + '"' + image + '", "x": ' + array[i][0] + ', "y": ' + array[i][1];
+                    maxX = Math.max(maxX, line[0]);
+                    maxY = Math.max(maxY, line[1]);
+                    var line = '\t\t{"image": ' + '"' + image + '", "x": ' + line[0] + ', "y": ' + line[1] + standartOptions;
                     if (image.startsWith("lava")) {
                         lava += line + endline;
                         continue;
@@ -903,6 +940,27 @@
                         continue;
                     }
 
+                    if (image.startsWith("button")) {
+                        var default_buttonnr = 0;
+                        if (image.startsWith("buttonBlue")) default_buttonnr = 1;
+                        buttons += line + ', "buttonnr":' + default_buttonnr + endline;
+                        continue;
+                    }
+
+                    if (image.startsWith("gate")) {
+                        var default_buttonnr = 0;
+                        if (image.startsWith("gateBlue")) default_buttonnr = 1;
+                        gates += line + ', "needs_buttonnr":' + default_buttonnr + endline;
+                        continue;
+                    }
+
+                    if (image.startsWith("spawn")) {
+                        var default_buttonnr = 0;
+                        if (image.startsWith("spawnBlue")) default_buttonnr = 1;
+                        spawns += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + ', "needs_buttonnr":' + default_buttonnr + endline;
+                        continue;
+                    }
+
                     if (image.startsWith("fake")) {
                         fakeplatforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
                         continue;
@@ -933,28 +991,145 @@
                         continue;
                     }
                     platforms += line + ', "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+
                 }
+
+                //old convertions
+                // for (var i = 0; i < array.length; i++) {
+                //     var image = array[i][2];
+                //     var split = image.split(":");
+                //     var type = split[1];
+                //     var fulltype = ', "type":"' + split[1] + '"';
+                //     var endline = '},\n';
+                //
+                //     maxX = Math.max(maxX, array[i][0]);
+                //     maxY = Math.max(maxY, array[i][1]);
+                //     var line = '\t\t{"image": ' + '"' + image + '", "x": ' + array[i][0] + ', "y": ' + array[i][1];
+                //     if (image.startsWith("lava")) {
+                //         lava += line + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("spike")) {
+                //         spikes += line + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("crate")) {
+                //         crates += line + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("falling")) {
+                //         falling_platforms += line + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("flag")) {
+                //         flags += line + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("coin")) {
+                //         coins += line + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("hero")) {
+                //         hero += line + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("powerup")) {
+                //         powerups += line + fulltype + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("easteregg")) {
+                //         eastereggs += line + fulltype + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("deco")) {
+                //         decorations += line + fulltype + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("enemy")) {
+                //         enemies += line + fulltype + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("invisible_wall")) {
+                //         enemy_walls += line + endline;
+                //         continue;
+                //     }
+                //
+                //     if (image.startsWith("sawblade")) {
+                //         sawblades += line + ', "speed": 100, "orientation": "UP", "base": "sawblade_base"' + endline;
+                //         continue;
+                //     }
+                //
+                //     if (image.startsWith("cannon")) {
+                //         cannons += line + ', "ballpos":"0"' + endline;
+                //         continue;
+                //     }
+                //
+                //     if (image.startsWith("fake")) {
+                //         fakeplatforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("bounce")) {
+                //         type = 'bouncing';
+                //         platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("lavaground")) {
+                //         type = 'lavaswitch';
+                //         platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("ice")) {
+                //         type = 'slippery';
+                //         platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("conveyor_l")) {
+                //         type = 'con_l';
+                //         platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                //         continue;
+                //     }
+                //     if (image.startsWith("conveyor_r")) {
+                //         type = 'con_r';
+                //         platforms += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                //         continue;
+                //     }
+                //     platforms += line + ', "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + endline;
+                // }
 
                 var worldsize = '\t"size": {"x": ' + (maxX + 42) + ', "y": ' + (maxY + 12) + '}';
 
                 platforms = wrapJsonLevel(platforms, "platforms");
                 falling_platforms = wrapJsonLevel(falling_platforms, "fallingPlatforms");
                 fakeplatforms = wrapJsonLevel(fakeplatforms, "fakePlatforms");
+
                 crates = wrapJsonLevel(crates, "crates");
+                buttons = wrapJsonLevel(buttons, "buttons");
+                gates = wrapJsonLevel(gates, "gates");
+                spawns = wrapJsonLevel(spawns, "spawns");
+
+                coins = wrapJsonLevel(coins, "coins");
+                powerups = wrapJsonLevel(powerups, "powerups");
+                eastereggs = wrapJsonLevel(eastereggs, "eastereggs");
+
                 lava = wrapJsonLevel(lava, "lava");
                 spikes = wrapJsonLevel(spikes, "spikes");
                 sawblades = wrapJsonLevel(sawblades, "sawblades");
                 cannons = wrapJsonLevel(cannons, "cannons");
-                flags = wrapJsonLevel(flags, "flags");
-                coins = wrapJsonLevel(coins, "coins");
-                hero = '\t"hero":\n' + hero + '';
+
                 enemies = wrapJsonLevel(enemies, "enemies");
                 enemy_walls = wrapJsonLevel(enemy_walls, "enemyWalls");
-                // move_walls = wrapJsonLevel(move_walls, "moveWalls");
-                powerups = wrapJsonLevel(powerups, "powerups");
-                eastereggs = wrapJsonLevel(eastereggs, "eastereggs");
+
+                flags = wrapJsonLevel(flags, "flags");
+                hero = '\t"hero":\n' + hero + '';
+
                 decorations = wrapJsonLevel(decorations, "decorations");
-                $scope.csv = '{\n' + platforms + falling_platforms + fakeplatforms + crates + lava + spikes + sawblades + cannons + flags + coins + hero + enemies + enemy_walls + powerups + eastereggs + decorations + worldsize + '\n}';
+
+                $scope.csv = '{\n' + platforms + falling_platforms + fakeplatforms;
+                $scope.csv += crates + buttons + gates + spawns;
+                $scope.csv += coins + powerups + eastereggs;
+                $scope.csv += lava + spikes + sawblades + cannons;
+                $scope.csv += enemies + enemy_walls;
+                $scope.csv += flags + hero + decorations + worldsize + '\n}';
 
             }
 

@@ -134,7 +134,7 @@
 
             function statisticsSuccessFn(data, status, headers, config) {
                 $scope.statistics = data.data["results"];
-                console.log($scope.statistics);
+                // console.log($scope.statistics);
                 setNameColor();
 
             }
@@ -164,6 +164,7 @@
                         case 15:
                         case 17:
                         case 19:
+                        case 21:
                             $scope.versions.splice(i, 1);
                             break;
                     }

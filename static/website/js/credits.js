@@ -7,11 +7,13 @@ Crowdjump.Credits = function (game) {
 
 Crowdjump.Credits.prototype = {
     create: function () {
-        levelmusic = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y -200, "Levelmusic: Overgrown Labyrinth by Visager, licensed under a Attribution-ShareAlike License. ", {
+        audio = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y -200, "Levelmusic: Overgrown Labyrinth by Visager, licensed under a Attribution-ShareAlike License.\n" +
+            "Buttonsound: Button_04 by distillerystudio, licensed under Attribution 3.0 Unported. \n" +
+            "Gatesound: Chain_Door_Squeak_Open_001 by JoelAudio, licensed under Attribution 3.0 Unported. \n", {
             font: "20px Arial",
             fill: '#dbdbdb'
         });
-        levelmusic.anchor.set(0.5);
+        audio.anchor.set(0.5);
 
         backToMenu = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 220, "Back", {
             font: "40px Arial",
