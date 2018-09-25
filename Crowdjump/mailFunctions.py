@@ -9,11 +9,11 @@ def mail_new_version(request):
     if username != 'admin':
         return 'Wrong User'
 
-    version = 'version 0.20'
-    subject = 'Cannons and a new master in Crowdjump ' + version + '!'
+    version = 'version 0.22'
+    subject = 'Crowdjump just got a little more tricky in ' + version + '!'
     message1 = 'Hello '
     message2 = ',<br>check out ' + version + ' of Crowdjump, the newest feature are '
-    feature = "cannons which try to kill you and a shoutout to the best player of the last week! Don't forget, there are still a lot of ideas waiting for your vote, help to make Crowdjump better!"
+    feature = "gates and spawnable platforms which only activate, when you press a specific button! Also the levels got a bit longer."
     message3 = '<br>To play the game, vote for ideas or submit your own, visit  '
     html_content = '<a href="https://www.crowdjump.win">Crowdjump.win :)</a>'
     unsubscribe = '<br><br><a href="https://www.crowdjump.win/unsubscribe">Click here if you dont want to get this newsletter anymore</a>'
