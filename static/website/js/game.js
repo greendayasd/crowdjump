@@ -1469,6 +1469,8 @@ Crowdjump.Game._spawnButton = function (button) {
     sprite.animations.add('button_pressed', [1]);
     sprite.body.allowGravity = false;
     sprite.body.immovable = true;
+    sprite.body.checkCollision.right = false;
+    sprite.body.checkCollision.left = false;
     sprite.pressed = false;
     sprite.buttonnr = button.buttonnr;
 
