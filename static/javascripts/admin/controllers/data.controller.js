@@ -239,7 +239,6 @@
                         var vote = acc.ideavotes[vcount];
                         var vdate = convertJSDate(vote.created_at);
                         var version = dateToArrayPos(vdate);
-                        // if (acc.id == 34) log(version,vdate,vote);
 
                         dailyList[version][accPos]["ideavotes"] ++;
 
@@ -373,7 +372,7 @@
                             version_day = '0.44';
                             break;
                         case 22:
-                            version_day = '0.01';
+                            version_day = '0.45';
                             break;
                     }
                     version_day = 'v' + version_day + date;
@@ -395,7 +394,7 @@
                 var time = beforehours[0].split(":");
                 var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2),time[0], time[1], time[2]);
                 if (jsDate.getDate() == 14) return (jsDate.getDate()+1);
-                if (time[0] > 17){
+                if (time[0] > 19){
                     return jsDate.getDate()+1;
                 }else{
                     return jsDate.getDate();
@@ -407,7 +406,7 @@
                 var afterDate = date.split("T");
                 var beforehours = afterDate[1].split(".");
                 var time = beforehours[0].split(":");
-                var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2),time[0] + 2, time[1], time[2]);
+                var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2),time[0], time[1], time[2]);
                 return jsDate;
             }
 
