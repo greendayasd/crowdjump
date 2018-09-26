@@ -1733,7 +1733,8 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
         }
 
     }
-    if (((hero.body.velocity.y > 0 && hero.body.position.y + 5 < enemy.body.position.y) || hero.body.position.y + 10 < enemy.body.position.y) && CONST_KILL_ENEMIES) {
+    if (((hero.body.velocity.y > 0 && hero.body.position.y + 5 < enemy.body.position.y) || hero.body.position.y + 12 < enemy.body.position.y) && CONST_KILL_ENEMIES) {
+        log(hero.body.velocity,hero.body.position,enemy.body.position);
         this._killEnemy(enemy, true);
     }
     else { // game over -> restart the game
@@ -1744,7 +1745,7 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
 
 Crowdjump.Game._killEnemy = function (enemy, bounce) {
     if (bounce) {
-        this.hero.bounce();
+        this.hero.bounce("","",0.6);
         this.sfx.stomp.play();
     }
     enemy.die();
