@@ -248,7 +248,7 @@ def AntiCheat(status, level, timeneeded, jumps, movement_inputs, enemies_killed,
     if (status == 'completed'):
         if (int(level) == 1 and int(jumps) < 8
                 or int(level) == 2 and int(jumps) < 4
-                or int(level) == 3 and int(jumps) < 5 #in 4 theoretisch möglich
+                or int(level) == 3 and int(jumps) < 4 #in 4 theoretisch möglich
                 or int(level) == 4 and int(jumps) < 3):
             cheated += '_jumps'
 
@@ -317,6 +317,8 @@ def SendGameData(request):
     # check version
     if version != correct_version:
         return JsonResponse('{"success":"wrong_version"}', safe=False)
+
+    levelcount = 3
 
     level = request.GET.get('level')
     status = request.GET.get('status')
@@ -424,7 +426,7 @@ def SendGameData(request):
         if level == 1 or level == '1':
             acc.rounds_started += 1
 
-        if newstatus == 'c':
+        if newstatus == 'c' and level == levelcount:
             acc.rounds_won += 1
         if newstatus == 'r':
             acc.restarts += 1
