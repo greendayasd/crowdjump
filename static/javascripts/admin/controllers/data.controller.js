@@ -301,7 +301,7 @@
                 for (var d = 0; d < dailyList.length; d++){
                     var list = dailyList[d];
                     var version_day = '';
-                    var date = 'bis ';
+                    var date = ' bis ';
                     if (d>= 16) date += d-16 + '.10';
                     else date += d+15 + '.09';
                     date += ' 19:00';
@@ -376,7 +376,7 @@
                             version_day = '0.01';
                             break;
                     }
-
+                    version_day = 'v' + version_day + date;
                     for (var u = 0; u < list.length; u++){
                         var user = list[u];
                         if (user.ideas == 0 && user.ideavotes == 0 && user.rounds_started == 0) continue;

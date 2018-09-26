@@ -2089,7 +2089,6 @@ Crowdjump.Game.checkButtonPress = function (nr) {
     this.spawns.forEach(this.setSpawn, this, true, nr);
 };
 
-
 Crowdjump.Game.setSpawn = function (spawn, nr) {
     if (spawn.needs_buttonnr == nr) {
         spawn.animations.play('spawn');
