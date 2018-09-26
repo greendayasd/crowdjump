@@ -56,8 +56,8 @@
       <file leaf-file-name="data.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="243" column="66" selection-start-line="243" selection-start-column="66" selection-end-line="243" selection-end-column="66" />
+            <state relative-caret-position="208">
+              <caret line="33" column="17" lean-forward="true" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
               <folding>
                 <element signature="e#12833#15570#0" />
               </folding>
@@ -565,7 +565,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>data.sa</find>
       <find>spawnEne</find>
       <find>spawnSp</find>
       <find>const_ene</find>
@@ -592,9 +591,10 @@
       <find>924</find>
       <find>button</find>
       <find>16</find>
-      <find>14</find>
       <find>_killEne</find>
       <find>coins</find>
+      <find>14</find>
+      <find>log</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -698,7 +698,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-384" />
+    <option name="x" value="2217" />
     <option name="y" value="-8" />
     <option name="width" value="1156" />
     <option name="height" value="1050" />
@@ -1101,7 +1101,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32881" />
@@ -2038,8 +2038,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="243" column="66" selection-start-line="243" selection-start-column="66" selection-end-line="243" selection-end-column="66" />
+        <state relative-caret-position="208">
+          <caret line="33" column="17" lean-forward="true" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
           <folding>
             <element signature="e#12833#15570#0" />
           </folding>

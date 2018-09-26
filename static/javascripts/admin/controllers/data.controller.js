@@ -10,7 +10,7 @@
         function DataController($scope, Authentication, Ideas, Comments, History, Votes, $http) {
             var vm = this;
             var millisecondsPerMinute = 60000;
-            var millisecondsPerHour = millisecondsPerMinute *60;
+            var millisecondsPerHour = millisecondsPerMinute * 60;
 
             vm.isAuthenticated = Authentication.isAuthenticated();
             vm.cookie = Authentication.getAuthenticatedAccount();
@@ -108,6 +108,7 @@
 
                 function commentsErrorFn(data, status, headers, config) {
                 }
+
                 console.log("Comments finished 6 of 6");
             }
 
@@ -129,13 +130,13 @@
 
                 var dailyList = [];
                 var accidToLocationJson = {};
-                for (var a = 0; a <21; a++){
+                for (var a = 0; a < 21; a++) {
                     //days
                     var dayArray = [];
                     dailyList.push(dayArray);
 
                     //day -> users
-                    for(var us = 0; us < $scope.accounts.length; us++){
+                    for (var us = 0; us < $scope.accounts.length; us++) {
                         var usArray = [];
                         // dailyList[a].push(usArray);
                         accidToLocationJson[$scope.accounts[us].id] = us;
@@ -228,7 +229,7 @@
                         var idate = convertJSDate(idea.created_at);
                         var version = dateToArrayPos(idate);
 
-                        dailyList[version][accPos]["ideas"] ++;
+                        dailyList[version][accPos]["ideas"]++;
 
                         if (last_online - convertJSDateFull(idea.created_at) < 0) last_online = convertJSDateFull(idea.created_at);
 
@@ -240,7 +241,7 @@
                         var vdate = convertJSDate(vote.created_at);
                         var version = dateToArrayPos(vdate);
 
-                        dailyList[version][accPos]["ideavotes"] ++;
+                        dailyList[version][accPos]["ideavotes"]++;
 
                         if (last_online - convertJSDateFull(vote.created_at) < 0) last_online = convertJSDateFull(vote.created_at);
 
@@ -252,7 +253,7 @@
                         var cdate = convertJSDate(vote.created_at);
                         var version = dateToArrayPos(cdate);
 
-                        dailyList[version][accPos]["comments"] ++;
+                        dailyList[version][accPos]["comments"]++;
 
                         if (last_online - convertJSDateFull(comment.created_at) < 0) last_online = convertJSDateFull(comment.created_at);
 
@@ -293,18 +294,18 @@
                 $scope.stats += '20% played OR idea OR Comment ' + playedOrIdea20 + '\n';
                 $scope.stats += 'at least one played OR idea OR Comment ' + playedOrIdea;
 
-                setTimeout($scope.createFile($scope.csv, 'user stats ' + today.getDate() + '-' + (today.getMonth()+1) + '.csv', 'text/csv', 'dlcsv'));
+                setTimeout($scope.createFile($scope.csv, 'user stats ' + today.getDate() + '-' + (today.getMonth() + 1) + '.csv', 'text/csv', 'dlcsv'));
 
                 $scope.daily = 'version, user, ideas, votes, rounds started, rounds_won, comments\n';
 
-                for (var d = 0; d < dailyList.length; d++){
+                for (var d = 0; d < dailyList.length; d++) {
                     var list = dailyList[d];
                     var version_day = '';
                     var date = ' bis ';
-                    if (d>= 16) date += d-16 + '.10';
-                    else date += d+15 + '.09';
+                    if (d >= 16) date += d - 16 + '.10';
+                    else date += d + 15 + '.09';
                     date += ' 19:00';
-                    switch (d){
+                    switch (d) {
                         case 0:
                             version_day = '0.01';
                             break;
@@ -376,14 +377,14 @@
                             break;
                     }
                     version_day = 'v' + version_day + date;
-                    for (var u = 0; u < list.length; u++){
+                    for (var u = 0; u < list.length; u++) {
                         var user = list[u];
                         if (user.ideas == 0 && user.ideavotes == 0 && user.rounds_started == 0) continue;
                         else $scope.daily += form_csv(version_day, user.username, user.ideas, user.ideavotes, user.rounds_started, user.rounds_won, user.comments);
                     }
                     $scope.daily += '\n'
                 }
-                setTimeout($scope.createFile($scope.daily, 'daily report ' + today.getDate() + '-' + (today.getMonth()+1) + '.csv', 'text/csv', 'dldaily'));
+                setTimeout($scope.createFile($scope.daily, 'daily report ' + today.getDate() + '-' + (today.getMonth() + 1) + '.csv', 'text/csv', 'dldaily'));
 
             };
 
@@ -392,11 +393,11 @@
                 var afterDate = date.split("T");
                 var beforehours = afterDate[1].split(".");
                 var time = beforehours[0].split(":");
-                var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2),time[0], time[1], time[2]);
-                if (jsDate.getDate() == 14) return (jsDate.getDate()+1);
-                if (time[0] > 19){
-                    return jsDate.getDate()+1;
-                }else{
+                var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2), time[0], time[1], time[2]);
+                if (jsDate.getDate() == 14) return (jsDate.getDate() + 1);
+                if (time[0] >= 19) {
+                    return jsDate.getDate() + 1;
+                } else {
                     return jsDate.getDate();
                 }
             }
@@ -406,16 +407,16 @@
                 var afterDate = date.split("T");
                 var beforehours = afterDate[1].split(".");
                 var time = beforehours[0].split(":");
-                var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2),time[0], time[1], time[2]);
+                var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2), time[0], time[1], time[2]);
                 return jsDate;
             }
 
-            function getDateFromVersion(version){
-                return convertJSDateFull($scope.versions[version-1].created_at);
+            function getDateFromVersion(version) {
+                return convertJSDateFull($scope.versions[version - 1].created_at);
             }
 
-            function dateToArrayPos(date){
-                if (date <30) return date-15;
+            function dateToArrayPos(date) {
+                if (date < 30) return date - 15;
                 else return date + 16;
             }
 
