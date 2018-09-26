@@ -190,12 +190,13 @@ Crowdjump.Preloader.prototype = {
         }
 
         if (CONST_COINS) {
-            if (CONST_ANIMATE_COIN) {
-                this.load.spritesheet('coin', collectibles + 'coin_animated.png', 22, 22);
+            if (CONST_COIN_ANIMATE) {
+                this.load.spritesheet('coin', collectibles + 'coin_animated.png', 38, 38);
+                this.load.spritesheet('icon:coin', collectibles + 'coin_animated.png', 38, 38);
             } else {
                 this.load.image('coin', collectibles + 'coin_icon.png');
-            }
             this.load.image('icon:coin', collectibles + 'coin_icon.png');
+            }
         }
 
         //misc
@@ -207,6 +208,7 @@ Crowdjump.Preloader.prototype = {
         }
         // this.load.image('flag', misc + 'flag_new.png');
         this.load.spritesheet('flag', misc + 'flag.png', 42, 66);
+        this.load.image('icon:heart', misc + 'heart.png');
 
         if (CONST_CRATES) this.load.image('crate', misc + 'crate.png');
         if (CONST_SHOOTING) this.load.image('bullet', misc + 'bullet.png');
@@ -231,7 +233,7 @@ Crowdjump.Preloader.prototype = {
         //audio
         this.load.audio('sfx:jump', audio + 'jump.wav');
         this.load.audio('sfx:flag', audio + 'flag.wav');
-        if (CONST_COINS) this.load.audio('sfx:coin', audio + 'coin.wav');
+        if (CONST_COINS) this.load.audio('sfx:coin', audio + 'coin.wav'); this.load.audio('sfx:levelup', audio + 'levelup.wav');
         if (CONST_POWERUPS) this.load.audio('sfx:powerup', audio + 'powerup.mp3');
         if (CONST_EASTEREGGS) this.load.audio('sfx:easteregg', audio + 'easteregg.wav');
         if (CONST_ENEMIES) this.load.audio('sfx:stomp', audio + 'stomp.wav');

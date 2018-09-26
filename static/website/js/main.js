@@ -9,7 +9,7 @@ const CONST_ACCELERATION = 2000; //for slippery
 const CONST_MAX_SPEED = 1000;
 const CONST_MOVE_SPEED = 200; //200 normal
 const CONST_HERO_WEIGHT = 100;
-const CONST_HERO_LIVES = 1;
+const CONST_HERO_LIVES = 3;
 const CONST_REPLAY_LEVEL = false;
 const CONST_SAVE_LEVEL_TIME = false;
 
@@ -31,6 +31,7 @@ const CONST_CONVEYORPLATFORMS = false;
 const CONST_COINS = true;
 const CONST_COIN_TIME_REDUCTION = 500; //ms
 const CONST_COIN_SHOW_TIMEREDUCTION = true;
+const CONST_COIN_ANIMATE = true;
 
 const CONST_POWERUPS = true;
 const CONST_POWERUPS_JUMPBOOST = 1.4;
@@ -76,7 +77,6 @@ const CONST_MAGAZINE = 10;
 const CONST_SHOOT_IN_ZHONYA = false;
 
 const CONST_ANIMATE_CHARACTER = false;
-const CONST_ANIMATE_COIN = false;
 const CONST_ANIMATE_CONVEYOR = false;
 const CONST_CHARACTER_COUNT = 4;
 
@@ -99,6 +99,7 @@ const CONST_WORLD_CENTER_X = CONST_CANVAS_X / 2;
 const CONST_WORLD_CENTER_Y = CONST_CANVAS_Y / 2;
 const CONST_LEVEL = 3;
 
+const NUMBERS_STR = '0123456789X ';
 
 var DIFFICULTY = Object.freeze({"easy": 1, "normal": 2, "hard": 3})
 var version = '';

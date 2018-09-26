@@ -13,6 +13,8 @@ Crowdjump.Game = function (game) {
     var hero_bounce_velocity = 0;
     var jumpTimer = 0;
     var lives = CONST_HERO_LIVES;
+    var cheat_activated = false;
+    var cheat_possible = false
 
     var lavaConverts = [];
     var newLava = [];
@@ -181,11 +183,7 @@ Hero.prototype.move = function (direction) {
 };
 
 Hero.prototype.jump = function () {
-    var cheat = false;
-    if (account != null) {
-        cheat = (CONST_CHEAT && account.username == 'admin')
-    }
-    var canJump = cheat;
+    var canJump = cheat_activated;
     var jump_speed = CONST_JUMP_SPEED;
     if (pu_permjumpboost) jump_speed = jump_speed * CONST_POWERUPS_PERMJUMPBOOST;
 
@@ -195,7 +193,7 @@ Hero.prototype.jump = function () {
         canJump = true;
         second_jump = true;
     } else {
-        canJump = (this.body.touching.down || cheat);
+        canJump = (this.body.touching.down || cheat_activated);
         if (this.body.touching.down) {
             second_jump = true;
         }
@@ -396,19 +394,8 @@ Crowdjump.Game.init = function (data) {
     //powerups
     pu_jumpboost = false;
     pu_permjumpboost = false;
-
-    var cheat = false;
-    if (account != null) {
-        cheat = (CONST_CHEAT && account.username == 'admin')
-    }
-    if (cheat) {
-        pu_lavaorb = true;
-        pu_throughwalls = true;
-
-    } else {
-        pu_lavaorb = false;
-        pu_throughwalls = false;
-    }
+    pu_lavaorb = false;
+    pu_throughwalls = false;
 
     //easeggs
     movespeed_boost = 0;
@@ -470,6 +457,7 @@ Crowdjump.Game.create = function () {
         open_gate: this.game.add.audio('sfx:open_gate'),
         press_button: this.game.add.audio('sfx:press_button'),
         spawn_platform: this.game.add.audio('sfx:spawn_platform'),
+        levelup: this.game.add.audio('sfx:levelup'),
     };
 
 
@@ -523,10 +511,18 @@ Crowdjump.Game.create = function () {
     } else {
         level_data = this.game.cache.getJSON(`level:${level}`);
     }
+
+    cheat_activated = false;
+    cheat_possible = false
+    if (account != null) {
+        cheat_possible = (CONST_CHEAT && account.username == 'admin')
+    }
+
     this._loadLevel(level_data);
 
     this._createHud();
     this._createTimerHud();
+    this._createLivesHud();
 
     if (CONST_FPS) {
         game.time.advancedTiming = true;
@@ -585,9 +581,11 @@ Crowdjump.Game.create = function () {
 
     if (CONST_MUTE) {
         this.input.keyboard.addKey(Phaser.KeyCode.M).onUp.add(this.toggleMute, this);
+        this.input.keyboard.addKey(Phaser.KeyCode.O).onUp.add(this.stopMusic, this);
     }
 
     if (CONST_FPS) this.input.keyboard.addKey(Phaser.KeyCode.F).onUp.add(this.toggleFPS, this);
+    if (CONST_CHEAT) this.input.keyboard.addKey(Phaser.KeyCode.I).onUp.add(this.toggleCheat, this);
 
     // this.roundTimer = game.time.events.loop(Phaser.Timer.SECOND, this.updateTimer, this);
     this.game.camera.follow(this.hero);
@@ -640,7 +638,7 @@ Crowdjump.Game.update = function () {
         seconds = ((seconds_this_level / 1) + parseFloat(time_overall)).toFixed(3);
         // seconds = seconds.toFixed(0);
     } else {
-        seconds = (parseFloat(time_overall)).toFixed(0);
+        seconds = (parseFloat(time_overall)).toFixed(3);
         /* - ((CONST_COIN_TIME_REDUCTION / 1000) * game.coinPickupCount);*/
     }
     seconds = Math.floor(seconds);
@@ -658,7 +656,7 @@ Crowdjump.Game.update = function () {
         last_second = seconds;
     }
 
-
+    this.livesFont.text = `${lives}x`;
     this.timeFont.text = `${seconds}`;
     this.coinFont.text = `x${game.coinPickupCount}`;
 
@@ -1628,8 +1626,10 @@ Crowdjump.Game._spawnCoin = function (coin) {
     this.game.physics.enable(sprite);
     sprite.body.allowGravity = false;
 
-    sprite.animations.add('rotate', [0, 1, 2, 1], 6, true); // 6fps, looped
-    sprite.animations.play('rotate');
+    if (CONST_COIN_ANIMATE) {
+        sprite.animations.add('rotate', [0, 1, 2, 3, 4, 5, 6], 6, true); // 6fps, looped
+        sprite.animations.play('rotate');
+    }
 };
 
 Crowdjump.Game._spawnPowerup = function (powerup) {
@@ -1734,18 +1734,17 @@ Crowdjump.Game._onHeroVsEnemy = function (hero, enemy) {
 
     }
     if (((hero.body.velocity.y > 0 && hero.body.position.y + 5 < enemy.body.position.y) || hero.body.position.y + 12 < enemy.body.position.y) && CONST_KILL_ENEMIES) {
-        log(hero.body.velocity,hero.body.position,enemy.body.position);
         this._killEnemy(enemy, true);
     }
     else { // game over -> restart the game
-        this.sfx.stomp.play("","",0.6);
+        this.sfx.stomp.play("", "", 0.6);
         this.killHero("killed by " + enemy.key);
     }
 };
 
 Crowdjump.Game._killEnemy = function (enemy, bounce) {
     if (bounce) {
-        this.hero.bounce("","",0.6);
+        this.hero.bounce("", "", 0.6);
         this.sfx.stomp.play();
     }
     enemy.die();
@@ -1854,9 +1853,12 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
 };
 
 Crowdjump.Game._onHeroVsCoin = function (hero, coin) {
-    this.sfx.coin.play("","",0.4);
+    this.sfx.coin.play("", "", 0.4);
     coin.kill();
     game.coinPickupCount++;
+
+    if (CONST_COIN_ANIMATE) this.coinIcon.animations.play('rotate');
+    if(game.coinPickupCount % 30 == 0) this.increaseLives();
 };
 
 Crowdjump.Game._onHeroVsEasteregg = function (hero, easteregg) {
@@ -1946,8 +1948,6 @@ Crowdjump.Game._onCannonballVsEnemy = function (cannonball, enemy) {
 };
 
 Crowdjump.Game._createHud = function () {
-    const NUMBERS_STR = '0123456789X ';
-    // const TEXT_STR = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!?,:';
 
     this.coinFont = this.game.add.retroFont('font:numbers', 20, 26,
         NUMBERS_STR, 6);
@@ -1955,14 +1955,19 @@ Crowdjump.Game._createHud = function () {
     //     TEXT_STR + NUMBERS_STR, 6);
     // this.zhonyaFont.fixedToCamera = true;
 
-    let coinIcon = this.game.make.image(0, 0, 'icon:coin');
-    let coinScoreImg = this.game.make.image(coinIcon.x + coinIcon.width,
-        coinIcon.height / 2, this.coinFont);
+    this.coinIcon = this.game.make.image(0, 0, 'icon:coin');
+    if (CONST_COIN_ANIMATE) {
+        this.coinIcon.animations.add('rotate', [0, 1, 2, 3, 4, 5, 6, 0], 12);
+    }
+
+    console.log(this.coinIcon);
+    let coinScoreImg = this.game.make.image(this.coinIcon.x + this.coinIcon.width,
+        this.coinIcon.height / 2, this.coinFont);
     coinScoreImg.anchor.set(0, 0.5);
 
     this.hud = this.game.add.group();
     if (CONST_COINS) {
-        this.hud.add(coinIcon);
+        this.hud.add(this.coinIcon);
         this.hud.add(coinScoreImg);
     }
 
@@ -1979,15 +1984,33 @@ Crowdjump.Game._createHud = function () {
     this.hud.fixedToCamera = true;
 };
 
+Crowdjump.Game._createLivesHud = function () {
+
+    this.livesFont = this.game.add.retroFont('font:numbers', 20, 26,
+        NUMBERS_STR, 6);
+
+    let heartIcon = this.game.make.image(CONST_CANVAS_X - 36, 10, 'icon:heart');
+    let livesRemainingImg = this.game.make.image(CONST_CANVAS_X - 80, 19, this.livesFont);
+    livesRemainingImg.anchor.set(0, 0.5);
+
+    this.livesHud = this.game.add.group();
+    if (CONST_HERO_LIVES > 1) {
+        this.livesHud.add(livesRemainingImg);
+        this.livesHud.add(heartIcon);
+    }
+
+    // this.livesHud.position.set(CONST_CANVAS_X-80, 10);
+    this.livesHud.fixedToCamera = true;
+};
+
 Crowdjump.Game._createTimerHud = function () {
-    const NUMBERS_STR = '0123456789X ';
 
     this.timeFont = this.game.add.retroFont('font:numbers', 20, 26,
         NUMBERS_STR, 6);
 
     this.timehud = this.game.add.group();
     if (CONST_TIME) {
-        let timeImg = this.game.make.image(480, 20, this.timeFont);
+        let timeImg = this.game.make.image(466, 20, this.timeFont);
         timeImg.anchor.set(0.5, 0);
 
         this.timehud.add(timeImg);
@@ -2138,12 +2161,16 @@ Crowdjump.Game.killHero = function (reason) {
     death = true;
     game.deaths++;
     this.hero.kill();
-    console.log("you died because of " + reason);
+
     this.timeFont.text = '0';
     time_finished = game.time.totalElapsedSeconds() - first_moved;
     time_finished = parseFloat(time_finished.toFixed(3));
+
     setLevelInfo(level + 1, reason, false);
+
     lives -= 1;
+
+    log("you died because of " + reason, lives +" lives left");
 
     if (CONST_REPLAY_LEVEL) {
         time_last_level_or_restart = this.game.time.totalElapsedSeconds().toFixed(3);
@@ -2165,9 +2192,35 @@ Crowdjump.Game.killHero = function (reason) {
 
         this.state.start('Gameover');
     } else {
+        if (CONST_SAVE_LEVEL_TIME) {
+
+            time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds() - parseFloat(time_last_level_or_restart);
+            time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
+
+            time_last_level_or_restart = game.time.totalElapsedSeconds().toFixed(3);
+            // time_finished = game.time.totalElapsedSeconds() - first_moved;
+            // time_finished = parseFloat(time_finished.toFixed(3));
+        } else {
+            // log(time_overall, game.time.totalElapsedSeconds(), first_moved);
+            time_overall = parseFloat(time_overall) + (game.time.totalElapsedSeconds() - first_moved);
+            time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
+            // console.log(time_overall);
+            time_finished = parseFloat(game.time.totalElapsedSeconds().toFixed(3)) - first_moved;
+
+            time_finished = parseFloat(time_finished.toFixed(3));
+
+        }
+        first_moved = -1;
         this.game.state.restart(true, false, {level: level});
     }
 
+}
+
+Crowdjump.Game.increaseLives = function(amount){
+
+    this.sfx.levelup.play();
+    if (amount != undefined) lives += amount;
+    else lives ++;
 }
 
 Crowdjump.Game.showMessage = function (message, time, fill, font) {
@@ -2224,6 +2277,25 @@ Crowdjump.Game.toggleMute = function () {
     } else {
         this.game.sound.mute = true;
         this.showImage('mute', 1500);
+    }
+};
+
+Crowdjump.Game.stopMusic = function () {
+    levelmusic.stop();
+};
+
+Crowdjump.Game.toggleCheat = function () {
+    if (!cheat_possible) return;
+    cheat_activated = !cheat_activated;
+
+    if (cheat_activated) {
+        pu_lavaorb = true;
+        pu_throughwalls = true;
+        // lives++;
+
+    } else {
+        pu_lavaorb = false;
+        pu_throughwalls = false;
     }
 };
 

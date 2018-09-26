@@ -1198,6 +1198,8 @@
                         "Other players interfered with the development.",
                         "The other players and I worked as a team.",
                         "My opinion was not heard.",
+                        "There were too many bugs.",
+                        "The performance of the game was good."
                     ]);
                     $scope.sur9q0Choices = $scope.sur9q0ChoicesOG[0];
                     $scope.sur9q0Ordering = $scope.sur9q0ChoicesOG[1];

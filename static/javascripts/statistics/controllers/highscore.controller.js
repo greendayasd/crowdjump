@@ -165,6 +165,17 @@
                         case 17:
                         case 19:
                         case 21:
+                        case 23:
+                        case 25:
+                        case 27:
+                        case 29:
+                        case 31:
+                        case 33:
+                        case 35:
+                        case 37:
+                        case 39:
+                        case 41:
+                        case 43:
                             $scope.versions.splice(i, 1);
                             break;
                     }
