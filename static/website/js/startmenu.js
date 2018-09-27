@@ -25,6 +25,9 @@ Crowdjump.Menu.prototype = {
         startGame.inputEnabled = true;
         startGame.events.onInputDown.add(this.phasergame, this);
 
+        key1 = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
+        key1.onDown.add(this.phasergame, this);
+
         if (CONST_CHARACTERSELECTION) {
             selectCharacter = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 120, "Select Character", {
                 font: "40px Arial",
@@ -40,7 +43,7 @@ Crowdjump.Menu.prototype = {
 
 
         if (CONST_LEVELSELECTION) {
-            selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 120, "Select Level", {
+            selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 170, "Select Level", {
                 font: "40px Arial",
                 fill: '#dbdbdb'
             });
@@ -48,13 +51,13 @@ Crowdjump.Menu.prototype = {
             selectLevel.inputEnabled = true;
             selectLevel.events.onInputDown.add(this.levelSelection, this);
 
-            key2 = game.input.keyboard.addKey(Phaser.Keyboard.TWO);
-            key2.onDown.add(this.levelSelection, this);
+            key3 = game.input.keyboard.addKey(Phaser.Keyboard.THREE);
+            key3.onDown.add(this.levelSelection, this);
         }
 
 
         if (CONST_CREDITS) {
-            credits = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 170, "Credits", {
+            credits = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 220, "Credits", {
                 font: "40px Arial",
                 fill: '#dbdbdb'
             });
@@ -62,12 +65,9 @@ Crowdjump.Menu.prototype = {
             credits.inputEnabled = true;
             credits.events.onInputDown.add(this.credits, this);
 
-            key3 = game.input.keyboard.addKey(Phaser.Keyboard.THREE);
-            key3.onDown.add(this.credits, this);
+            key4 = game.input.keyboard.addKey(Phaser.Keyboard.FOUR);
+            key4.onDown.add(this.credits, this);
         }
-
-        key1 = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
-        key1.onDown.add(this.phasergame, this);
 
 
         var instructionText = "The goal is simple: Control the alien by using the arrow keys \n" +

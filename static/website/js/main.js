@@ -36,6 +36,7 @@ const CONST_COIN_ANIMATE = true;
 const CONST_POWERUPS = true;
 const CONST_POWERUPS_JUMPBOOST = 1.4;
 const CONST_POWERUPS_PERMJUMPBOOST = 1.25;
+const CONST_POWERUPS_TIMESLOW = 0.5;
 
 const CONST_EASTEREGGS = true;
 const CONST_EASTEREGGS_MONEY_COINAMOUNT = 10;
@@ -52,8 +53,6 @@ const CONST_CANNONS = true;
 const CONST_CANNON_FIRERATE = 3000;
 const CONST_CANNON_BULLETSPEED = 300;
 
-const CONST_LEVELSELECTION = false;
-const CONST_CHARACTERSELECTION = true;
 const CONST_BUBBLE = true;
 
 const CONST_WALK = false;
@@ -90,8 +89,11 @@ const CONST_DEBUG = false;
 const CONST_CHEAT = true;
 const CONST_MUTE = true;
 const CONST_PAUSE = false;
-const CONST_CREDITS = true;
 const CONST_LEVELMUSIC = true;
+
+const CONST_CREDITS = true;
+const CONST_LEVELSELECTION = true;
+const CONST_CHARACTERSELECTION = true;
 
 const CONST_CANVAS_X = 960;
 const CONST_CANVAS_Y = 600;
@@ -99,7 +101,7 @@ const CONST_WORLD_CENTER_X = CONST_CANVAS_X / 2;
 const CONST_WORLD_CENTER_Y = CONST_CANVAS_Y / 2;
 const CONST_LEVEL = 3;
 
-const NUMBERS_STR = '0123456789X ';
+const NUMBERS_STR = '0123456789X -';
 
 var DIFFICULTY = Object.freeze({"easy": 1, "normal": 2, "hard": 3})
 var version = '';
@@ -137,7 +139,6 @@ window.createGame = function (canvas, scope) {
     version = versionlabel;
 
     game = new Phaser.Game(CONST_CANVAS_X, CONST_CANVAS_Y, Phaser.CANVAS, canvas);
-
     game.global = {
         coinPickupCount: 0,
         powerupPickupCount: 0,
@@ -225,6 +226,10 @@ function setLevelInfo(level, status, isHighscore) {
     var username = getUsername();
     var time = time_finished;
     var final_time = ((time - time_last_level) * 1000).toFixed(0);
+
+    if (status == 'completed'){
+        game.gameInfo.highest_level = Math.max(game.gameInfo.highest_level,level);
+    }
 
     var data = {
         "username": username,

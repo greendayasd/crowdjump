@@ -21,9 +21,9 @@ Crowdjump.Endscreen.prototype = {
 
         if (CONST_TIME) {
 
-            time_finished = parseFloat(game.time.totalElapsedSeconds().toFixed(3)) - first_moved;;
+            time_finished = parseFloat(game.time.totalElapsedSeconds().toFixed(3)) - first_moved;
             time_finished = parseFloat(time_finished.toFixed(3));
-            time_score = parseFloat((parseFloat(time_overall) - (game.coinPickupCount * (CONST_COIN_TIME_REDUCTION/1000))).toFixed(3));
+            time_score = parseFloat((parseFloat(time_overall) - (game.coinPickupCount * (CONST_COIN_TIME_REDUCTION / 1000))).toFixed(3));
             time_overall = 0;
         }
 
@@ -64,7 +64,7 @@ Crowdjump.Endscreen.prototype = {
 
             scoreText = "Congratulations, you beat the game in " + time_score + " seconds!" + highscore_text;
         }
-        score = this.add.text(CONST_WORLD_CENTER_X, 60, scoreText, {fill: '#dbdbdb', align:"center"});
+        score = this.add.text(CONST_WORLD_CENTER_X, 60, scoreText, {fill: '#dbdbdb', align: "center"});
         score.anchor.set(0.5);
 
         if (old_time == -2) {
@@ -99,7 +99,6 @@ Crowdjump.Endscreen.prototype = {
 
         this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.replay, this);
         this.input.keyboard.addKey(Phaser.KeyCode.ESC).onDown.add(backToMainMenu);
-        // console.error("Gameinfo!: " + gameinfo);
 
 
         setInfo(isHighscore);
@@ -124,12 +123,13 @@ Crowdjump.Endscreen.prototype = {
 }
 
 function setInfo(isHighscore) {
-    if (game.authenticated) {
-        game.gameInfo["rounds_won"] = game.gameInfo["rounds_won"] + 1;
+    if (selected_level >= 0) setLevelInfo(selected_level + 1, "completed_training", false);
+    else {
+        if (game.authenticated) {
+            game.gameInfo["rounds_won"] = game.gameInfo["rounds_won"] + 1;
+        }
+        setLevelInfo(level + 1, "completed", isHighscore);
     }
-    // log(JSON.stringify(this.game));
-    setLevelInfo(level + 1, "completed", isHighscore);
     time_finished = 0;
 
-    // updateInfo(isHighscore);
 }

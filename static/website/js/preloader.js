@@ -56,7 +56,7 @@ Crowdjump.Preloader.prototype = {
                 var levelname = 'level';
                 levelname += i + '';
 
-                this.load.json('level:' + i, level + levelname + '.json');
+                this.load.json('level:' + i, level + levelname + '.json?v=1');
             }
         }
 
@@ -184,6 +184,7 @@ Crowdjump.Preloader.prototype = {
         if (CONST_POWERUPS) {
             this.load.image('powerup:throughwalls', collectibles + 'powerup_throughwalls.png');
             this.load.image('powerup:permjumpboost', collectibles + 'powerup_permjumpboost.png');
+            this.load.image('powerup:time', collectibles + 'powerup_time.png');
             // this.load.image('powerup:lavaorb', collectibles + 'powerup_lavaorb.png');
             // this.load.image('powerup:jumpboost', collectibles + 'powerup_jumpboost.png');
             // this.load.image('powerup:zhonyas', collectibles + 'powerup_zhonyas.png');
@@ -217,9 +218,11 @@ Crowdjump.Preloader.prototype = {
         if (CONST_BUTTONS_AND_GATES) {
             this.load.spritesheet('buttonRed', misc + 'button_red.png', 42, 5);
             this.load.spritesheet('buttonBlue', misc + 'button_blue.png', 42, 5);
+            this.load.spritesheet('buttonGreen', misc + 'button_green.png', 42, 5);
 
             this.load.spritesheet('gateRed', misc + 'gate_red.png', 42, 84);
             this.load.spritesheet('gateBlue', misc + 'gate_blue.png', 42, 84);
+            this.load.spritesheet('gateGreen', misc + 'gate_green.png', 42, 84);
         }
 
         // this.load.image('white_smoke', misc + 'white_smoke.png');

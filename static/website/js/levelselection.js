@@ -12,7 +12,7 @@ Crowdjump.LevelSelection.prototype = {
             border_horizontal = 170,
             border_vertical = 70;
         group = this.game.add.group();
-        for (var i = 0; i < CONST_LEVEL; i++) {
+        for (var i = 0; i < game.gameInfo.highest_level; i++) {
             text[i] = this.add.text(0, 0, "Level" + (i + 1), {
                 font: "35px Arial",
                 fill: '#dbdbdb',
@@ -20,7 +20,8 @@ Crowdjump.LevelSelection.prototype = {
             }, group);
             text[i].anchor.set(0.5);
             text[i].inputEnabled = true;
-            text[i].level = i;
+            text[i].level = {};
+            text[i].level.level = i;
             text[i].events.onInputDown.add(this.startlevel, this)
         }
         if (false) {
@@ -42,37 +43,21 @@ Crowdjump.LevelSelection.prototype = {
         this.input.keyboard.addKey(Phaser.KeyCode.ESC).onDown.add(backToMainMenu);
 
         key1 = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
-        key1.onDown.add(this.startlevelKey1, this);
+        key1.level = 0;
+        key1.onDown.add(this.startlevel, this);
 
         key2 = game.input.keyboard.addKey(Phaser.Keyboard.TWO);
-        key2.onDown.add(this.startlevelKey2, this);
+        key2.level = 1;
+        key2.onDown.add(this.startlevel, this);
 
         key3 = game.input.keyboard.addKey(Phaser.Keyboard.THREE);
-        key3.onDown.add(this.startlevelKey3, this);
+        key3.level = 2;
+        key3.onDown.add(this.startlevel, this);
 
-        key4 = game.input.keyboard.addKey(Phaser.Keyboard.FOUR);
-        key4.onDown.add(this.startlevelKey4, this);
-    },
-
-    startlevel: function (text) {
-        selected_level = text.level;
-        this.startGameRoutine();
     },
 
-    startlevelKey: function (i) {
-        selected_level = i;
-        this.startGameRoutine();
-    },
-    startlevelKey1: function () {
-        this.startlevelKey(0);
-    },
-    startlevelKey2: function () {
-        this.startlevelKey(1);
-    },
-    startlevelKey3: function () {
-        this.startlevelKey(2);
-    },
-    startlevelKey4: function () {
-        this.startlevelKey(3);
+    startlevel: function (level) {
+        selected_level = level.level;
+        startGameRoutine();
     },
 }

@@ -943,6 +943,7 @@
                     if (image.startsWith("button")) {
                         var default_buttonnr = 0;
                         if (image.startsWith("buttonBlue")) default_buttonnr = 1;
+                        if (image.startsWith("buttonGreen")) default_buttonnr = 2;
                         buttons += line + ', "buttonnr":' + default_buttonnr + endline;
                         continue;
                     }
@@ -950,6 +951,7 @@
                     if (image.startsWith("gate")) {
                         var default_buttonnr = 0;
                         if (image.startsWith("gateBlue")) default_buttonnr = 1;
+                        if (image.startsWith("gateGreen")) default_buttonnr = 2;
                         gates += line + ', "needs_buttonnr":' + default_buttonnr + endline;
                         continue;
                     }

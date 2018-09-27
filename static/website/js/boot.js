@@ -37,4 +37,4 @@ Crowdjump.Boot.prototype = {
     update:function () {
         this.state.start('Preloader');
     },
-}
+};

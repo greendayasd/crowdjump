@@ -32,6 +32,7 @@ Crowdjump.Game = function (game) {
     var pu_jumpboost = false;
     var pu_permjumpboost = false;
     var pu_throughwalls = false;
+    var pu_timeslow = 1;
 
     var movespeed_boost = 0;
 
@@ -301,10 +302,10 @@ Spider.prototype.constructor = Spider;
 Spider.prototype.update = function () {
     // check against walls and reverse direction if necessary
     if (this.body.touching.right || this.body.blocked.right) {
-        this.body.velocity.x = -CONST_SPIDER_SPEED; // turn left
+        this.body.velocity.x = -(CONST_SPIDER_SPEED*pu_timeslow); // turn left
     }
     else if (this.body.touching.left || this.body.blocked.left) {
-        this.body.velocity.x = CONST_SPIDER_SPEED; // turn right
+        this.body.velocity.x = (CONST_SPIDER_SPEED * pu_timeslow); // turn right
     }
 };
 
@@ -396,6 +397,7 @@ Crowdjump.Game.init = function (data) {
     pu_permjumpboost = false;
     pu_lavaorb = false;
     pu_throughwalls = false;
+    pu_timeslow = 1;
 
     //easeggs
     movespeed_boost = 0;
@@ -457,7 +459,7 @@ Crowdjump.Game.create = function () {
         open_gate: this.game.add.audio('sfx:open_gate'),
         press_button: this.game.add.audio('sfx:press_button'),
         spawn_platform: this.game.add.audio('sfx:spawn_platform'),
-        levelup: this.game.add.audio('sfx:levelup'),
+        levelup: this.game.add.audio('sfx:levelup')
     };
 
 
@@ -627,7 +629,7 @@ Crowdjump.Game.update = function () {
     var coins_this_round = (game.coinPickupCount - coins_last_level);
 
     if (CONST_SAVE_LEVEL_TIME) {
-        seconds = (Math.abs(game.time.totalElapsedSeconds().toFixed(3) / 1) - Math.abs(time_last_level_or_restart / 1));
+        seconds = (game.time.totalElapsedSeconds().toFixed(3) / 1) - Math.abs(time_last_level_or_restart / 1);
         seconds += time_overall;
         if (time_overall != 0) {
 
@@ -1577,7 +1579,8 @@ Crowdjump.Game._newSpawns = function (data) {
 Crowdjump.Game._newCannonballs = function (seconds) {
     if (CONST_CANNONS) {
         // spawn cannonballs for each cannon
-        next_cannon_fire = seconds + CONST_CANNON_FIRERATE / 1000;
+        var firerate = (CONST_CANNON_FIRERATE / 1000) * (1/pu_timeslow);
+        next_cannon_fire = seconds + firerate ;
         this.cannons.forEach(function (cannon) {
             this.sfx.cannonfire.play();
 
@@ -1591,7 +1594,7 @@ Crowdjump.Game._newCannonballs = function (seconds) {
                 cannonball.reset(cannon.position.x - 28, cannon.position.y + 5);
             }
 
-            this.game.physics.arcade.moveToXY(cannonball, ygoal, cannon.position.y, CONST_CANNON_BULLETSPEED);
+            this.game.physics.arcade.moveToXY(cannonball, ygoal, cannon.position.y, (CONST_CANNON_BULLETSPEED * pu_timeslow));
 
         }, this);
     }
@@ -1662,6 +1665,13 @@ Crowdjump.Game.powerup_permjumpboost = function () {
 Crowdjump.Game.powerup_throughwalls = function () {
     pu_throughwalls = true;
     this.showPowerupMessage('Jump through walls');
+}
+
+Crowdjump.Game.powerup_time = function () {
+    pu_timeslow = CONST_POWERUPS_TIMESLOW;
+    cannonballs.forEach(this.slowCannonball, this, true);
+    this.spiders.forEach(this.slowSpider, this, true);
+    this.showPowerupMessage('Slooooow');
 }
 
 Crowdjump.Game._spawnEasteregg = function (easteregg) {
@@ -1807,7 +1817,6 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
         time_overall = parseFloat(time_overall) + game.time.totalElapsedSeconds() - parseFloat(time_last_level_or_restart);
         time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
 
-        setLevelInfo(selected_level + 1, "completed", false);
         this.state.start('Endscreen');
 
     }
@@ -1904,6 +1913,9 @@ Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
         case "powerup:permjumpboost":
             this.powerup_permjumpboost();
             break;
+        case "powerup:time":
+            this.powerup_time();
+            break;
         default:
             console.log(powerup.key);
         //do nothing
@@ -1960,7 +1972,6 @@ Crowdjump.Game._createHud = function () {
         this.coinIcon.animations.add('rotate', [0, 1, 2, 3, 4, 5, 6, 0], 12);
     }
 
-    console.log(this.coinIcon);
     let coinScoreImg = this.game.make.image(this.coinIcon.x + this.coinIcon.width,
         this.coinIcon.height / 2, this.coinFont);
     coinScoreImg.anchor.set(0, 0.5);
@@ -2156,6 +2167,14 @@ Crowdjump.Game.fire_Bullet = function () {
 
 };
 
+Crowdjump.Game.slowCannonball = function(cannonball){
+    cannonball.body.velocity.x *= pu_timeslow;
+};
+
+Crowdjump.Game.slowSpider = function(spider){
+    spider.body.velocity.x *= pu_timeslow;
+};
+
 Crowdjump.Game.killHero = function (reason) {
     if (death) return; //else you can die twice!
     death = true;
@@ -2214,14 +2233,14 @@ Crowdjump.Game.killHero = function (reason) {
         this.game.state.restart(true, false, {level: level});
     }
 
-}
+};
 
 Crowdjump.Game.increaseLives = function(amount){
 
     this.sfx.levelup.play();
     if (amount != undefined) lives += amount;
     else lives ++;
-}
+};
 
 Crowdjump.Game.showMessage = function (message, time, fill, font) {
     message_image = this.add.text(CONST_WORLD_CENTER_X, 200, message, {fill: fill, font: font, align: "center"});
@@ -2241,11 +2260,11 @@ Crowdjump.Game.showImage = function (imageName, time) {
 
 Crowdjump.Game.showEastereggMessage = function (message) {
     this.showMessage(message, 3000, '#000000', '')
-}
+};
 
 Crowdjump.Game.showPowerupMessage = function (message) {
     this.showMessage('You found a powerup!\n' + message, 3000, '#000000', '')
-}
+};
 
 Crowdjump.Game.restart = function () {
     time_finished = game.time.totalElapsedSeconds() - first_moved;

@@ -83,7 +83,8 @@
 	],
 	"powerups": [
 		{"image": "powerup:throughwalls", "x": 588, "y": 1176, "angle":0, "scalex":1, "scaley":1, "type":"throughwalls"},
-		{"image": "powerup:permjumpboost", "x": 84, "y": 672, "angle":0, "scalex":1, "scaley":1, "type":"permjumpboost"}
+		{"image": "powerup:permjumpboost", "x": 84, "y": 672, "angle":0, "scalex":1, "scaley":1, "type":"permjumpboost"},
+		{"image": "powerup:time", "x": 84, "y": 1176, "angle":0, "scalex":1, "scaley":1, "type":"time"}
 	],
 	"eastereggs": [
 		{"image": "easteregg:specialname", "x": 378, "y": 1806, "angle":0, "scalex":1, "scaley":1, "type":"specialname"},
