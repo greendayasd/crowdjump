@@ -11,6 +11,8 @@
         var vm = this;
         $scope.statistics = [];
         $scope.versions = [];
+        $scope.currentVersion = '';
+        $scope.lastData = '';
 
         // Safari 3.0+ "[object HTMLElementConstructor]"
         var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) {
@@ -83,7 +85,6 @@
 
         highscoreSocket.onmessage = function (e) {
             var data = JSON.parse(e.data);
-            // console.log("type " + data["type"]);
             if (data["type"] == 'highscore_broadcast') {
                 receive_highscore(data);
             }
@@ -91,14 +92,23 @@
         };
 
         function receive_highscore(data) {
+            if ($scope.currentVersion != versionnumber) {
+                $scope.lastData = data;
+                $scope.getVersionHighscore(versionnumber, true);
+            }
+            else ($scope.updateHighscore(data));
+        }
+
+        $scope.updateHighscore = function (data) {
             var username = data["username"];
             if (username == 'admin') return;
             data["user"] = {"username": username};
             data["user"]["username"] = username;
 
+
             var highscore = data["highscore"];
-            var eastereggs = parseInt(data["eastereggs_found"]);
-            var coins = parseInt(data["coins_collected"]);
+            var eastereggs = parseInt(data["overall_eastereggs"]);
+            var coins = parseInt(data["overall_coins"]);
 
             if (highscore == "-1") {
                 console.error(data + '\n' + $scope.statistics);
@@ -123,18 +133,19 @@
                 if ($scope.statistics.length > topcut) {
                     $scope.statistics.pop();
                 }
-
-
             }
+        };
 
-        }
+        $scope.getVersionHighscore = function (version, receiveScore) {
+            $scope.currentVersion = version;
 
-        $scope.getVersionHighscore = function (version) {
+
             Statistics.top(topcut, version).then(statisticsSuccessFn, statisticsErrorFn);
 
             function statisticsSuccessFn(data, status, headers, config) {
                 $scope.statistics = data.data["results"];
-                // console.log($scope.statistics);
+
+                if (receiveScore) $scope.updateHighscore($scope.lastData);
                 setNameColor();
 
             }
@@ -153,6 +164,7 @@
                 $scope.versions_max = data.data;
                 // $scope.versions.unshift({id: -1, label: "all"});
                 $scope.newestVersion = $scope.versions[0];
+                log($scope.newestVersion.id);
                 for (var i = $scope.versions.length - 1; i >= 0; i--) {
                     switch ($scope.versions[i].id) {
                         case 4:

@@ -40,7 +40,7 @@
 
                 $cookies.put("authenticatedAccount", JSON.stringify(res));
                 return $http.patch('/api/v1/accounts/' + username + '/', {
-                    survey_status: newCount,
+                    survey_status: newCount
 
 
                 }).then(increaseSuccessFn, increaseErrorFn);
@@ -186,7 +186,7 @@
 
             }
 
-            function post_postSite(user_id, site, cont) {
+            function post_postSite(user_id, site, cont, cookie) {
                 var survey_id;
                 $http.get('/api/v1/postsurvey/?user__id=' + user_id + '&limit=1'
                 ).then(function (result) {
@@ -195,20 +195,60 @@
                         var survey = result["data"]["results"][0];
                         survey_id = survey["id"];
 
-                        if (site == 2) {
-                            for (var i = 0; i < cont.length; i++) {
-                                var n;
-                                i < 10 ? n = '0' + i : n = i + '';
-                                survey["GEQ" + n] = cont[i];
-                            }
+                        if (site == 0) {
+                            Questionnaire.increase_surveycount(cookie["username"], 7);
+
+                            $http.patch('/api/v1/presurvey/' + survey_id + '/', {
+                                site0: survey["site0"]
+                            }).then(function (result) {
+                                window.location.href = '/postsurvey' + 3;
+                                return result;
+                            }).catch(function (error) {
+                                console.log(error);
+                            });
                         }
 
                         if (site == 3) {
                             for (var i = 0; i < cont.length; i++) {
                                 var n;
                                 i < 10 ? n = '0' + i : n = i + '';
-                                survey["SPGQ" + n] = cont[i];
+                                survey["GAM" + n] = cont[i];
                             }
+                            $http.patch('/api/v1/postsurvey/' + survey_id + '/', {
+
+                                GAM00: survey["GAM00"],
+                                GAM01: survey["GAM01"],
+                                GAM02: survey["GAM02"],
+                                GAM03: survey["GAM03"],
+                                GAM04: survey["GAM04"],
+                                GAM05: survey["GAM05"],
+                                GAM06: survey["GAM06"],
+                                GAM07: survey["GAM07"],
+                                GAM08: survey["GAM08"],
+                                GAM09: survey["GAM09"],
+                                GAM10: survey["GAM10"],
+                                GAM11: survey["GAM11"],
+                                GAM12: survey["GAM12"],
+                                GAM13: survey["GAM13"],
+                                GAM14: survey["GAM14"],
+                                GAM15: survey["GAM15"],
+                                GAM16: survey["GAM16"],
+                                GAM17: survey["GAM17"],
+                                GAM18: survey["GAM18"],
+                                GAM19: survey["GAM19"],
+                                GAM20: survey["GAM20"],
+                                GAM21: survey["GAM21"],
+                                GAM22: survey["GAM22"],
+                                GAM23: survey["GAM23"],
+                                GAM24: survey["GAM24"],
+                                GAM25: survey["GAM25"],
+                                GAM26: survey["GAM26"],
+                            }).then(function (result) {
+                                Questionnaire.increase_surveycount(cookie["username"], 8);
+                                window.location.href = '/postsurvey' + 4;
+                                return result;
+                            }).catch(function (error) {
+                            });
                         }
                         if (site == 4) {
                             for (var i = 0; i < cont.length; i++) {
@@ -216,6 +256,25 @@
                                 i < 10 ? n = '0' + i : n = i + '';
                                 survey["KIM" + n] = cont[i];
                             }
+                            $http.patch('/api/v1/postsurvey/' + survey_id + '/', {
+                                KIM00: survey["KIM00"],
+                                KIM01: survey["KIM01"],
+                                KIM02: survey["KIM02"],
+                                KIM03: survey["KIM03"],
+                                KIM04: survey["KIM04"],
+                                KIM05: survey["KIM05"],
+                                KIM06: survey["KIM06"],
+                                KIM07: survey["KIM07"],
+                                KIM08: survey["KIM08"],
+                                KIM09: survey["KIM09"],
+                                KIM10: survey["KIM10"],
+                                KIM11: survey["KIM11"]
+                            }).then(function (result) {
+                                Questionnaire.increase_surveycount(cookie["username"], 9);
+                                window.location.href = '/postsurvey' + 5;
+                                return result;
+                            }).catch(function (error) {
+                            });
                         }
                         if (site == 5) {
                             for (var i = 0; i < cont.length; i++) {
@@ -223,6 +282,23 @@
                                 i < 10 ? n = '0' + i : n = i + '';
                                 survey["SUS" + n] = cont[i];
                             }
+                            $http.patch('/api/v1/postsurvey/' + survey_id + '/', {
+                                SUS00: survey["SUS00"],
+                                SUS01: survey["SUS01"],
+                                SUS02: survey["SUS02"],
+                                SUS03: survey["SUS03"],
+                                SUS04: survey["SUS04"],
+                                SUS05: survey["SUS05"],
+                                SUS06: survey["SUS06"],
+                                SUS07: survey["SUS07"],
+                                SUS08: survey["SUS08"],
+                                SUS09: survey["SUS09"],
+                            }).then(function (result) {
+                                Questionnaire.increase_surveycount(cookie["username"], 10);
+                                window.location.href = '/postsurvey' + 6;
+                                return result;
+                            }).catch(function (error) {
+                            });
                         }
                         if (site == 6) {
                             for (var i = 0; i < cont.length; i++) {
@@ -230,118 +306,52 @@
                                 i < 10 ? n = '0' + i : n = i + '';
                                 survey["General" + n] = cont[i];
                             }
+                            $http.patch('/api/v1/postsurvey/' + survey_id + '/', {
+                                General00: survey["General00"],
+                                General01: survey["General01"],
+                                General02: survey["General02"],
+                                General03: survey["General03"],
+                                General04: survey["General04"],
+                                General05: survey["General05"],
+                                General06: survey["General06"],
+                                General07: survey["General07"],
+                                General08: survey["General08"],
+                                General09: survey["General09"],
+                                General10: survey["General10"],
+                                General11: survey["General11"],
+                                General12: survey["General12"],
+                                General13: survey["General13"],
+                                General14: survey["General14"],
+                                General15: survey["General15"],
+                            }).then(function (result) {
+                                Questionnaire.increase_surveycount(cookie["username"], 11);
+                                window.location.href = '/surveyPostFinished';
+                                return result;
+                            }).catch(function (error) {
+                            });
                         }
-                        console.log(survey);
-                        $http.patch('/api/v1/postsurvey/' + survey_id + '/', {
-                            site0: survey["site0"],
 
-                            GEQ00: survey["GEQ00"],
-                            GEQ01: survey["GEQ01"],
-                            GEQ02: survey["GEQ02"],
-                            GEQ03: survey["GEQ03"],
-                            GEQ04: survey["GEQ04"],
-                            GEQ05: survey["GEQ05"],
-                            GEQ06: survey["GEQ06"],
-                            GEQ07: survey["GEQ07"],
-                            GEQ08: survey["GEQ08"],
-                            GEQ09: survey["GEQ09"],
-                            GEQ10: survey["GEQ10"],
-                            GEQ11: survey["GEQ11"],
-                            GEQ12: survey["GEQ12"],
-                            GEQ13: survey["GEQ13"],
-                            GEQ14: survey["GEQ14"],
-                            GEQ15: survey["GEQ15"],
-                            GEQ16: survey["GEQ16"],
-                            GEQ17: survey["GEQ17"],
-                            GEQ18: survey["GEQ18"],
-                            GEQ19: survey["GEQ19"],
-                            GEQ20: survey["GEQ20"],
-                            GEQ21: survey["GEQ21"],
-                            GEQ22: survey["GEQ22"],
-                            GEQ23: survey["GEQ23"],
-                            GEQ24: survey["GEQ24"],
-                            GEQ25: survey["GEQ25"],
-                            GEQ26: survey["GEQ26"],
-                            GEQ27: survey["GEQ27"],
-                            GEQ28: survey["GEQ28"],
-                            GEQ29: survey["GEQ29"],
-                            GEQ30: survey["GEQ30"],
-                            GEQ31: survey["GEQ31"],
-                            GEQ32: survey["GEQ32"],
-
-                            SPGQ00: survey["SPGQ00"],
-                            SPGQ01: survey["SPGQ01"],
-                            SPGQ02: survey["SPGQ02"],
-                            SPGQ03: survey["SPGQ03"],
-                            SPGQ04: survey["SPGQ04"],
-                            SPGQ05: survey["SPGQ05"],
-                            SPGQ06: survey["SPGQ06"],
-                            SPGQ07: survey["SPGQ07"],
-                            SPGQ08: survey["SPGQ08"],
-                            SPGQ09: survey["SPGQ09"],
-                            SPGQ10: survey["SPGQ10"],
-                            SPGQ11: survey["SPGQ11"],
-                            SPGQ12: survey["SPGQ12"],
-                            SPGQ13: survey["SPGQ13"],
-                            SPGQ14: survey["SPGQ14"],
-                            SPGQ15: survey["SPGQ15"],
-                            SPGQ16: survey["SPGQ16"],
-                            SPGQ17: survey["SPGQ17"],
-                            SPGQ18: survey["SPGQ18"],
-                            SPGQ19: survey["SPGQ19"],
-                            SPGQ20: survey["SPGQ20"],
-
-                            KIM00: survey["KIM00"],
-                            KIM01: survey["KIM01"],
-                            KIM02: survey["KIM02"],
-                            KIM03: survey["KIM03"],
-                            KIM04: survey["KIM04"],
-                            KIM05: survey["KIM05"],
-                            KIM06: survey["KIM06"],
-                            KIM07: survey["KIM07"],
-                            KIM08: survey["KIM08"],
-                            KIM09: survey["KIM09"],
-                            KIM10: survey["KIM10"],
-                            KIM11: survey["KIM11"],
-
-                            SUS00: survey["SUS00"],
-                            SUS01: survey["SUS01"],
-                            SUS02: survey["SUS02"],
-                            SUS03: survey["SUS03"],
-                            SUS04: survey["SUS04"],
-                            SUS05: survey["SUS05"],
-                            SUS06: survey["SUS06"],
-                            SUS07: survey["SUS07"],
-                            SUS08: survey["SUS08"],
-                            SUS09: survey["SUS09"],
-
-                            General00: survey["General00"],
-                            General01: survey["General01"],
-                            General02: survey["General02"],
-                            General03: survey["General03"],
-                            General04: survey["General04"],
-                            General05: survey["General05"],
-                            General06: survey["General06"],
-                            General07: survey["General07"],
-                            General08: survey["General08"],
-                            General09: survey["General09"],
-                            General10: survey["General10"],
-                        }).then(function (result) {
-                            return result;
-                        }).catch(function (error) {
-                        });
                     } else {
 
                         $http.post('/api/v1/postsurvey/', {
-                            "site0": null,
+                            "site0": null
                         }).then(function (result) {
+                            Questionnaire.increase_surveycount(cookie["username"], 7);
+                            window.location.href = '/postsurvey3';
                             return result;
                         }).catch(function (error) {
                         });
                     }
 
                 }).catch(function (error) {
-                    console.error("Could not get PostSurvey  " + JSON.stringify(error));
+                    $http.post('/api/v1/postsurvey/', {
+                        site0: null,
+                    }).then(function (result) {
+                        window.location.href = '/postsurvey' + 3;
+                        return result;
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
                 });
 
 

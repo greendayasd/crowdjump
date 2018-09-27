@@ -508,6 +508,7 @@ Crowdjump.Game.create = function () {
     zhonya_cooldown = false;
     time_zhonya_activated = 0;
     time_zhonya_cooldown = 0;
+    selected_level += 0;
     if (selected_level >= 0) {
         level_data = this.game.cache.getJSON(`level:${selected_level}`);
     } else {

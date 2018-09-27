@@ -123,7 +123,7 @@
                     // };
                     // }, 3000);
 
-                } else if (vm.surveystatus == 4) {
+                } else if (vm.surveystatus == 4  && checked) {
                     Questionnaire.post_postSite(vm.cookie["id"], 0, '', vm.cookie);
 
                 }
@@ -131,7 +131,7 @@
                     content = $scope.getContent(post_check);
                     Questionnaire.post_postSite(vm.cookie["id"], post_check - 3, content, vm.cookie);
 
-                } else if (vm.surveystatus != 3 && vm.surveystatus != 4 && vm.surveystatus != 11) {
+                } else if (vm.surveystatus != 3 && vm.surveystatus != 11) {
                     alert("Please answer all required questions first!");
                     return;
 
@@ -140,7 +140,7 @@
                 if (dontAdvance) return;
                 // console.log(next_survey_id);
                 vm.surveystatus = next_survey_id;
-                Questionnaire.increase_surveycount(vm.cookie["username"], next_survey_id);
+                // Questionnaire.increase_surveycount(vm.cookie["username"], next_survey_id);
                 // if (vm.surveystatus < 3) {
                 //     window.location.href = '/survey' + next_survey;
                 // } else if (vm.surveystatus == 3) {
@@ -340,6 +340,12 @@
                 survey["visible"] = (survey["startVisible"] || activations.size > 0);
             }
 
+            $scope.setPost = function (){
+                Questionnaire.increase_surveycount(vm.cookie["username"], 4);
+                window.location.href = '/postsurvey0';
+
+            };
+
             $scope.getNumber = function (num) {
                 return new Array(num);
             }
@@ -399,6 +405,7 @@
             var scale5 = ["not at all", "slightly", "moderately", "fairly", "extremely"];
             var scale5de = ["stimmt gar nicht", "stimmt wenig", "stimmt teils-teils", "stimmt ziemlich", "stimmt völlig"]
             var scale7 = ["not at all", , , , , , "very much"];
+            var scale7Gamex = ["strongly disagree", , , , , , "strongly agree"];
             var scale7de = ["überhaupt nicht", , , , , , "sehr"];
             var scale7AB = ["A", , , , , , "B"];
 
@@ -998,7 +1005,7 @@
 
                 } //PostSurvey0 Nur zum Speichern
 
-                if (true) {
+                if (false) {
                     $scope.sur5q0ChoicesOG = randomize(["I felt challenged",
                         "I felt pressured",
                         "I felt frustrated",
@@ -1058,7 +1065,7 @@
 
                 } //PostSurvey2 GEQ
 
-                if (true) {
+                if (false) {
                     $scope.sur6q0ChoicesOG = randomize(["I found it enjoyable to be with the other(s)",
                         "I felt schadenfreude (malicious delight)",
                         "I envied the other(s)",
@@ -1105,6 +1112,61 @@
                     };
 
                 } //PostSurvey3 SPGQ
+
+                if (true) {
+                    $scope.sur6q0ChoicesOG = randomize(["Playing the game was fun.",
+                    "I liked playing the game.",
+                    "I enjoyed playing the game very much.",
+                    "My game experience was pleasurable.",
+                    "I think playing the game is very entertaining.",
+                    "I would play this game for its own sake, not only when being asked to.",
+                    "Playing the game made me forget where I am.",
+                    "I forgot about my immediate surroundings while I played the game.",
+                    "After playing the game, I felt like coming back to the \"real world \" after a journey.",
+                    "Playing the game \" got me away from it all \".",
+                    "While playing the game I was completely oblivious to everything around me.",
+                    "While playing the game I lost track of time.",
+                    "Playing the game sparked my imagination.",
+                    "While playing the game I felt creative.",
+                    "While playing the game I felt that I could explore things.",
+                    "While playing the game I felt adventurous.",
+                    "While playing the game I felt activated.",
+                    "While playing the game I felt jittery.",
+                    "While playing the game I felt frenzied.",
+                    "While playing the game I felt excited.",
+                    "While playing the game I felt upset.",
+                    "While playing the game I felt hostile.",
+                    "While playing the game I felt frustrated.",
+                    "While playing the game I had the feeling of being in charge.",
+                    "While playing the game I felt influential.",
+                    "While playing the game I felt autonomous.",
+                    "While playing the game I felt confident."]);
+                    $scope.sur6q0Choices = $scope.sur6q0ChoicesOG[0];
+                    $scope.sur6q0Ordering = $scope.sur6q0ChoicesOG[1];
+                    $scope.survey[6][0] = {
+                        survey: 6,
+                        nr: 0,
+                        type: 'scale',
+                        text: 'Please rate the following statements on a scale from "strongly disagree" to "strongly agree". ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur6q0Choices,
+                        ordering: $scope.sur6q0Ordering,
+                        scale: scale7Gamex,
+                        nrscales: 7,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        image_url: '',
+                        showImage: false,
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
+
+                } //PostSurvey new 2/3 GAMEX
 
                 if (true) {
                     $scope.sur7q0ChoicesOG = randomize(["I believe I had some choice about doing this activity.",
@@ -1199,7 +1261,10 @@
                         "The other players and I worked as a team.",
                         "My opinion was not heard.",
                         "There were too many bugs.",
-                        "The performance of the game was good."
+                        "The performance of the game was good.",
+                        "Too many ideas were implemented each cycle.",
+                        "More ideas should be implemented each cycle.",
+                        "The amount of ideas to choose from was overwhelming.",
                     ]);
                     $scope.sur9q0Choices = $scope.sur9q0ChoicesOG[0];
                     $scope.sur9q0Ordering = $scope.sur9q0ChoicesOG[1];

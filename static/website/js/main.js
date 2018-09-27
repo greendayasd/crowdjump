@@ -227,7 +227,7 @@ function setLevelInfo(level, status, isHighscore) {
     var time = time_finished;
     var final_time = ((time - time_last_level) * 1000).toFixed(0);
 
-    if (status == 'completed'){
+    if (status == 'completed' && game.gameInfo != undefined){
         game.gameInfo.highest_level = Math.max(game.gameInfo.highest_level,level);
     }
 
@@ -251,6 +251,7 @@ function setLevelInfo(level, status, isHighscore) {
         "character": game.character
     };
 
+    isHighscore = true;
     if (isHighscore) {
         data['highscore'] = game.gameInfo["highscore"];
         resetStats();

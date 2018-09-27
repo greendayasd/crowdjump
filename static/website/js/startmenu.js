@@ -41,18 +41,19 @@ Crowdjump.Menu.prototype = {
             key2.onDown.add(this.characterSelection, this);
         }
 
+        if (CONST_LEVELSELECTION && game.gameInfo != undefined) {
+            if (game.gameInfo.highest_level > 0) {
+                selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 170, "Select Level", {
+                    font: "40px Arial",
+                    fill: '#dbdbdb'
+                });
+                selectLevel.anchor.set(0.5);
+                selectLevel.inputEnabled = true;
+                selectLevel.events.onInputDown.add(this.levelSelection, this);
 
-        if (CONST_LEVELSELECTION) {
-            selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 170, "Select Level", {
-                font: "40px Arial",
-                fill: '#dbdbdb'
-            });
-            selectLevel.anchor.set(0.5);
-            selectLevel.inputEnabled = true;
-            selectLevel.events.onInputDown.add(this.levelSelection, this);
-
-            key3 = game.input.keyboard.addKey(Phaser.Keyboard.THREE);
-            key3.onDown.add(this.levelSelection, this);
+                key3 = game.input.keyboard.addKey(Phaser.Keyboard.THREE);
+                key3.onDown.add(this.levelSelection, this);
+            }
         }
 
 

@@ -20,8 +20,7 @@ Crowdjump.LevelSelection.prototype = {
             }, group);
             text[i].anchor.set(0.5);
             text[i].inputEnabled = true;
-            text[i].level = {};
-            text[i].level.level = i;
+            text[i].level = i;
             text[i].events.onInputDown.add(this.startlevel, this)
         }
         if (false) {
@@ -54,10 +53,19 @@ Crowdjump.LevelSelection.prototype = {
         key3.level = 2;
         key3.onDown.add(this.startlevel, this);
 
+        backToMenu = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 220, "Back", {
+            font: "40px Arial",
+            fill: '#dbdbdb'
+        });
+        backToMenu.anchor.set(0.5);
+        backToMenu.inputEnabled = true;
+        backToMenu.events.onInputDown.add(backToMainMenu, this);
+        this.input.keyboard.addKey(Phaser.KeyCode.ESC).onDown.add(backToMainMenu);
+
     },
 
-    startlevel: function (level) {
-        selected_level = level.level;
+    startlevel: function (obj) {
+        selected_level = obj.level;
         startGameRoutine();
     },
 }

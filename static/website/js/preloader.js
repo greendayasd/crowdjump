@@ -17,15 +17,16 @@ Crowdjump.Preloader.prototype = {
         this.load.setPreloadSprite(this.preloadBar);
 
         var files = '/static/website/gamefiles/';
-        var tiles = files + 'tiles/';
         var fonts = files + 'fonts/';
-        var collectibles = files + 'collectibles/';
         var characters = files + 'characters/';
-        var enemies = files + 'enemies/';
+        var tiles = files + 'tiles/';
+        var collectibles = files + 'collectibles/';
         var obstacles = files + 'obstacles/';
-        var misc = files + 'misc/';
         var bases = files + 'bases/';
+        var enemies = files + 'enemies/';
         var cannons = files + 'cannons/';
+        var deco = files + 'deco/';
+        var misc = files + 'misc/';
 
 
         var level = '/static/website/level/';
@@ -60,6 +61,18 @@ Crowdjump.Preloader.prototype = {
             }
         }
 
+        //fonts
+        this.load.image('font:numbers', fonts + 'numbers.png');
+
+        //characters
+        if (CONST_ANIMATE_CHARACTER) {
+            this.load.spritesheet('hero', characters + 'zhonya template2.png', 34, 42);
+        }
+        else {
+            for (var i = 0; i < CONST_CHARACTER_COUNT; i++) {
+                game.load.image('c' + i, characters + 'character' + i + '.png');
+            }
+        }
 
         //tiles
         this.load.image('ground', tiles + 'ground.png');
@@ -149,29 +162,6 @@ Crowdjump.Preloader.prototype = {
             }
         }
 
-        //characters
-        if (CONST_ANIMATE_CHARACTER) {
-            this.load.spritesheet('hero', characters + 'zhonya template2.png', 34, 42);
-        }
-        else {
-            for (var i = 0; i < CONST_CHARACTER_COUNT; i++) {
-                game.load.image('c' + i, characters + 'character' + i + '.png');
-            }
-        }
-
-
-        //obstacles
-        if (CONST_SPIKES) {
-            this.load.image('spikes:1x1', obstacles + 'spikes_1x1.png');
-            this.load.image('spikesLeft:1x1', obstacles + 'spikesLeft_1x1.png');
-            this.load.image('spikesRight:1x1', obstacles + 'spikesRight_1x1.png');
-        }
-
-        //Cannons
-        if (CONST_CANNONS) {
-            this.load.image('cannonLeft', cannons + 'cannonLeft.png');
-            this.load.image('cannonRight', cannons + 'cannonRight.png');
-        }
 
         //collectibles
         if (CONST_EASTEREGGS) {
@@ -200,6 +190,29 @@ Crowdjump.Preloader.prototype = {
             }
         }
 
+
+        //obstacles
+        if (CONST_SPIKES) {
+            this.load.image('spikes:1x1', obstacles + 'spikes_1x1.png');
+            this.load.image('spikesLeft:1x1', obstacles + 'spikesLeft_1x1.png');
+            this.load.image('spikesRight:1x1', obstacles + 'spikesRight_1x1.png');
+        }
+
+        //enemies
+        if (CONST_ENEMIES) {
+            this.load.spritesheet('spider', enemies + 'spider2.png', 42, 30);
+        }
+
+        //Cannons
+        if (CONST_CANNONS) {
+            this.load.image('cannonLeft', cannons + 'cannonLeft.png');
+            this.load.image('cannonRight', cannons + 'cannonRight.png');
+        }
+
+
+
+        //deco
+
         //misc
         if (CONST_BACKGROUNDIMAGE) {
             this.load.image('stars', misc + 'stars.png');
@@ -225,14 +238,6 @@ Crowdjump.Preloader.prototype = {
             this.load.spritesheet('gateGreen', misc + 'gate_green.png', 42, 84);
         }
 
-        // this.load.image('white_smoke', misc + 'white_smoke.png');
-
-        //enemies
-        if (CONST_ENEMIES) {
-            this.load.spritesheet('spider', enemies + 'spider2.png', 42, 30);
-        }
-
-
         //audio
         this.load.audio('sfx:jump', audio + 'jump.wav');
         this.load.audio('sfx:flag', audio + 'flag.wav');
@@ -255,9 +260,6 @@ Crowdjump.Preloader.prototype = {
             this.load.audio('sfx:levelmusic', audio + 'levelmusic.ogg');
             levelmusic = game.add.audio('sfx:levelmusic');
         }
-
-        //fonts
-        this.load.image('font:numbers', fonts + 'numbers.png');
 
         this.load.onLoadStart.add(this.loadStart, this);
         this.load.onLoadComplete.add(this.loadComplete, this);
