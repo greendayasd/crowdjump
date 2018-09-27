@@ -426,6 +426,10 @@ def SendGameData(request):
         if level == 1 or level == '1':
             acc.rounds_started += 1
 
+        #only count highest level when completed
+        if newstatus == 'c':
+            acc.highest_level = max(acc.highest_level, int(level))
+
         if newstatus == 'c' and level == levelcount:
             acc.rounds_won += 1
         if newstatus == 'r':
@@ -435,7 +439,6 @@ def SendGameData(request):
 
         acc.time_spent_game += int(timeneeded)
 
-        acc.highest_level = max(acc.highest_level, int(level))
 
         #allow negative highscores
         if acc.highscore == -1:
