@@ -1132,7 +1132,6 @@ Crowdjump.Game._loadLevel = function (data) {
 
     //spawn all deco
     if (CONST_DECO) {
-        console.log(data);
         this.deco = this.game.add.group();
         data.deco.forEach(this._spawnDeco, this);
     }
