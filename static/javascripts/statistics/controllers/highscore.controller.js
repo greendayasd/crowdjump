@@ -106,11 +106,11 @@
             data["user"]["username"] = username;
 
 
-            var highscore = data["highscore"];
+            var highscore = parseInt(data["highscore"]);
             var eastereggs = parseInt(data["overall_eastereggs"]);
             var coins = parseInt(data["overall_coins"]);
 
-            if (highscore == "-1") {
+            if (highscore == -1) {
                 console.error(data + '\n' + $scope.statistics);
             }
             var found = false;
@@ -164,7 +164,6 @@
                 $scope.versions_max = data.data;
                 // $scope.versions.unshift({id: -1, label: "all"});
                 $scope.newestVersion = $scope.versions[0];
-                log($scope.newestVersion.id);
                 for (var i = $scope.versions.length - 1; i >= 0; i--) {
                     switch ($scope.versions[i].id) {
                         case 4:
