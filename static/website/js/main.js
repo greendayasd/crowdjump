@@ -49,6 +49,8 @@ const CONST_BUTTONS_AND_GATES = true;
 const CONST_ENEMIES = true;
 const CONST_KILL_ENEMIES = true;
 const CONST_SPIDER_SPEED = 100;
+const CONST_SPIDER_COINS = 1;
+
 const CONST_CANNONS = true;
 const CONST_CANNON_FIRERATE = 3000;
 const CONST_CANNON_BULLETSPEED = 300;
@@ -81,6 +83,7 @@ const CONST_CHARACTER_COUNT = 4;
 
 const CONST_COLOR = false;
 const CONST_BACKGROUNDIMAGE = true;
+const CONST_DECO = true;
 
 const CONST_SHOWLEVEL = false;
 const CONST_FPS = true;
@@ -251,7 +254,7 @@ function setLevelInfo(level, status, isHighscore) {
         "character": game.character
     };
 
-    isHighscore = true;
+    // isHighscore = true;
     if (isHighscore) {
         data['highscore'] = game.gameInfo["highscore"];
         resetStats();
