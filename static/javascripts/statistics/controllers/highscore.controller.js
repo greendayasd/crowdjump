@@ -112,6 +112,7 @@
 
             if (highscore == -1) {
                 console.error(data + '\n' + $scope.statistics);
+                return;
             }
             var found = false;
             //is player already in highscore list?
