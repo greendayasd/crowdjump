@@ -95,7 +95,6 @@
             <h4 class="text-center" id="instructions" style="color: white; padding-right: 3%;">
                 The goal is simple: Control the alien by using the <b>arrow keys</b> or <b>WASD</b>
                 to move (or <b>space</b> to jump) to get to the flag. <br>
-                Each coin you collect reduces your final time by half a second, 30 coins increase your lives by 1. <br>
                 To activate a colored mechanism, you first have to find a button with the same color.<br>
                 If you get stuck, you can reset the game pressing <b>R</b>.
                 Press <b>Escape</b> to get back to the main menu. <br>
@@ -112,21 +111,96 @@
             </div>
         </div>
     </div>
+    <div class="row">
+
+        <p style="margin-top: 10px">
+            Explanations for
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                Items and mechanisms
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <table class="table table-striped table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Function</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td><img class="img-fluid"
+                                 src="/static/website/gamefiles/collectibles/coin_icon.png" alt="Crowdjump">
+                        </td>
+                        <td>A coin, which reduces your time by 0.5 seconds. 30 coins increase your lives by one.</td>
+                    </tr>
+                    <tr>
+                        <td><img class="img-fluid"
+                                 src="/static/website/gamefiles/collectibles/powerup_permjumpboost.png" alt="Crowdjump">
+                        </td>
+                        <td>You can jump much higher for the rest of the level.</td>
+                    </tr>
+                    <tr>
+                        <td><img class="img-fluid"
+                                 src="/static/website/gamefiles/collectibles/powerup_time.png" alt="Crowdjump">
+                        </td>
+                        <td>Enemies and cannons will slow down.</td>
+                    </tr>
+                    <tr>
+                        <td><img class="img-fluid"
+                                 src="/static/website/gamefiles/collectibles/powerup_throughwalls.png" alt="Crowdjump">
+                        </td>
+                        <td>While jumping you can go through walls.</td>
+                    </tr>
+                    <tr>
+                        <td><img class="img-fluid"
+                                 src="/static/website/gamefiles/misc/button_blue.png" alt="Crowdjump">
+                        </td>
+                        <td>A button! Touch it to open gates and spawn platforms with the same color.</td>
+                    </tr>
+                    <tr>
+                        <td><img class="img-fluid"
+                                 src="/static/website/gamefiles/misc/gate_example.png" alt="Crowdjump">
+                        </td>
+                        <td>A gate! Touch the button with the same color to open it.</td>
+                    </tr>
+                    <tr>
+                        <td><img class="img-fluid"
+                                 src="/static/website/gamefiles/tiles/spawn_example.png" alt="Crowdjump">
+                        </td>
+                        <td>If you touch a button with the same color, a platform will spawn here.</td>
+                    </tr>
+                    <tr>
+                        <td><img class="img-fluid"
+                                 src="/static/website/gamefiles/collectibles/easteregg_unknown.png" alt="Crowdjump">
+                        </td>
+                        <td>An Easteregg! these have different, secret effects, can you find them all?</td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
     <div class="row" ng-controller="IndexController as vm" ng-show="!vm.isAuthenticated">
         <br>
         <div class="alert alert-info text-center">
             <strong>
-                <a class="" style="font-size: 28px; text-align: center" style="margin-top: 45px" href="/login?next={{ request.path }}">Remember to
+                <a class="" style="font-size: 28px; text-align: center" style="margin-top: 45px"
+                   href="/login?next={{ request.path }}">Remember to
                     login before you play, so your score is saved!</a>
             </strong>
         </div>
     </div>
 
 
-
     <div class="row" ng-controller="IndexController as vm" ng-show="vm.isAuthenticated">
         <br>
-        <h4 style="color:black;margin-left: 0px">Here you can upload your own skin (.png, max 34x42px, 20kb). Just post your
+        <h4 style="color:black;margin-left: 0px">Here you can upload your own skin (.png, max 34x42px, 20kb). Just post
+            your
             file here! </h4>
         <form action="uploadCharacter/" method="post" enctype="multipart/form-data">
             <div class="alert alert-danger" ng-show="error" ng-bind="error"></div>

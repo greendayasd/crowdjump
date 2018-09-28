@@ -148,6 +148,7 @@
 		{"image": "coin", "x": 756, "y": 462, "angle":0, "scalex":1, "scaley":1},
 		{"image": "coin", "x": 672, "y": 462, "angle":0, "scalex":1, "scaley":1},
 		{"image": "coin", "x": 798, "y": 504, "angle":0, "scalex":1, "scaley":1},
+		{"image": "coin", "x": 756, "y": 504, "angle":0, "scalex":1, "scaley":1},
 		{"image": "coin", "x": 672, "y": 504, "angle":0, "scalex":1, "scaley":1},
 		{"image": "coin", "x": 672, "y": 378, "angle":0, "scalex":1, "scaley":1},
 		{"image": "coin", "x": 672, "y": 420, "angle":0, "scalex":1, "scaley":1},
@@ -249,17 +250,8 @@
 	],
 	"hero":
 		{"image": "hero", "x": 0, "y": 1344, "angle":0, "scalex":1, "scaley":1},
-	"deco": [
-		{"image": "deco:stone1", "x": 1596, "y": 1134, "angle":0, "scalex":1, "scaley":1, "type":"stone1"},
-		{"image": "deco:stone2", "x": 210, "y": 1344, "angle":0, "scalex":1, "scaley":1, "type":"stone2"},
-		{"image": "deco:bush1", "x": 420, "y": 1344, "angle":0, "scalex":1, "scaley":1, "type":"bush1"},
-		{"image": "deco:bush2", "x": 42, "y": 1344, "angle":0, "scalex":1, "scaley":1, "type":"bush2"},
-		{"image": "deco:bush3", "x": 294, "y": 714, "angle":0, "scalex":1, "scaley":1, "type":"bush3"},
-		{"image": "deco:bush2", "x": 1050, "y": 1344, "angle":0, "scalex":1, "scaley":1, "type":"bush2"},
-		{"image": "deco:bush1", "x": 756, "y": 504, "angle":0, "scalex":1, "scaley":1, "type":"bush1"},
-		{"image": "deco:bush3", "x": 1932, "y": 1344, "angle":0, "scalex":1, "scaley":1, "type":"bush3"},
-		{"image": "deco:bush1", "x": 1176, "y": 924, "angle":0, "scalex":1, "scaley":1, "type":"bush1"},
-		{"image": "deco:tree1", "x": 1638, "y": 1176, "angle":0, "scalex":1, "scaley":1, "type":"tree1"}
+	"decorations": [
+
 	],
 	"size": {"x": 3024, "y": 1524}
 }

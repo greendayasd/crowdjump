@@ -212,6 +212,15 @@ Crowdjump.Preloader.prototype = {
 
 
         //deco
+        if (CONST_DECO){
+            this.load.image('deco:stone1', deco + 'deco_stone1.png');
+            this.load.image('deco:stone2', deco + 'deco_stone2.png');
+            this.load.image('deco:bush1', deco + 'deco_bush1.png');
+            this.load.image('deco:bush2', deco + 'deco_bush2.png');
+            this.load.image('deco:bush3', deco + 'deco_bush3.png');
+            this.load.image('deco:tree1', deco + 'deco_tree1.png');
+            this.load.image('deco:moon', deco + 'deco_moon.png');
+        }
 
         //misc
         if (CONST_BACKGROUNDIMAGE) {

@@ -832,7 +832,7 @@
                 var coins = '';
                 var hero = '';
                 var powerups = '';
-                var decorations = '';
+                var deco = '';
                 var enemies = '';
                 var enemy_walls = '';
                 var eastereggs = '';
@@ -918,7 +918,7 @@
                         continue;
                     }
                     if (image.startsWith("deco")) {
-                        decorations += line + fulltype + endline;
+                        deco += line + fulltype + endline;
                         continue;
                     }
                     if (image.startsWith("enemy")) {
@@ -1124,14 +1124,14 @@
                 flags = wrapJsonLevel(flags, "flags");
                 hero = '\t"hero":\n' + hero + '';
 
-                decorations = wrapJsonLevel(decorations, "decorations");
+                deco = wrapJsonLevel(deco, "deco");
 
                 $scope.csv = '{\n' + platforms + falling_platforms + fakeplatforms;
                 $scope.csv += crates + buttons + gates + spawns;
                 $scope.csv += coins + powerups + eastereggs;
                 $scope.csv += lava + spikes + sawblades + cannons;
                 $scope.csv += enemies + enemy_walls;
-                $scope.csv += flags + hero + decorations + worldsize + '\n}';
+                $scope.csv += flags + hero + deco + worldsize + '\n}';
 
             }
 

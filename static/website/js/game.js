@@ -288,6 +288,7 @@ function Spider(game, x, y) {
     this.game.physics.enable(this);
     this.body.collideWorldBounds = true;
     this.body.velocity.x = CONST_SPIDER_SPEED;
+    this.coinDrop = CONST_SPIDER_COINS;
 
 
     if (CONST_DEBUG) {
@@ -302,7 +303,7 @@ Spider.prototype.constructor = Spider;
 Spider.prototype.update = function () {
     // check against walls and reverse direction if necessary
     if (this.body.touching.right || this.body.blocked.right) {
-        this.body.velocity.x = -(CONST_SPIDER_SPEED*pu_timeslow); // turn left
+        this.body.velocity.x = -(CONST_SPIDER_SPEED * pu_timeslow); // turn left
     }
     else if (this.body.touching.left || this.body.blocked.left) {
         this.body.velocity.x = (CONST_SPIDER_SPEED * pu_timeslow); // turn right
@@ -474,6 +475,12 @@ Crowdjump.Game.create = function () {
             'stars'
         );
         this.stars.fixedToCamera = true;
+
+        this.moon = this.game.add.tileSprite(CONST_CANVAS_X/2 +160,42,42,
+            this.game.cache.getImage('deco:moon').height,
+            'deco:moon'
+        );
+        this.moon.fixedToCamera = true;
 
         this.hillsBack = this.game.add.tileSprite(0,
             this.game.height - this.game.cache.getImage('hillsBack').height,
@@ -1047,7 +1054,17 @@ Crowdjump.Game._loadLevel = function (data) {
         this._setupPhysicsArcade();
     }
 
-    this.bgDecoration = this.game.add.group();
+
+    // spawn the rest of the platforms
+    this.platforms = this.game.add.group();
+    data.platforms.forEach(this._spawnPlatform, this);
+
+    this.fakePlatforms = this.game.add.group();
+    data.fakePlatforms.forEach(this._spawnFakePlatform, this);
+
+    if (CONST_MOVINGPLATFORMS) {
+        this.movingPlatforms = this.game.add.group();
+    }
 
     if (CONST_ENEMIES) {
         this.spiders = this.game.add.group();
@@ -1057,18 +1074,6 @@ Crowdjump.Game._loadLevel = function (data) {
 
     }
 
-
-    if (CONST_MOVINGPLATFORMS) {
-        this.movingPlatforms = this.game.add.group();
-    }
-
-
-    if (CONST_CRATES) {
-        this.crates = this.game.add.group();
-        data.crates.forEach(this._spawnCrate, this);
-    }
-
-    //spawn lava
     if (CONST_LAVA) {
         this.lava = this.game.add.group();
         data.lava.forEach(this._spawnLava, this);
@@ -1080,13 +1085,7 @@ Crowdjump.Game._loadLevel = function (data) {
         data.spikes.forEach(this._spawnSpikes, this);
     }
 
-    //spawn sawblades
-    if (CONST_SAWBLADES) {
-        this.sawblades = this.game.add.group();
-        data.sawblades.forEach(this._spawnSawblade, this);
-        this.sawbladesBases = this.game.add.group();
-    }
-
+    //spawn Buttons, gates, spawnable platforms
     if (CONST_BUTTONS_AND_GATES) {
         this.buttons = this.game.add.group();
         data.buttons.forEach(this._spawnButton, this);
@@ -1098,39 +1097,47 @@ Crowdjump.Game._loadLevel = function (data) {
 
     }
 
-    //spawn sawblades
     if (CONST_CANNONS) {
         this.cannons = this.game.add.group();
         data.cannons.forEach(this._spawnCannon, this);
     }
 
-    //spawn powerups
     if (CONST_POWERUPS) {
         this.powerups = this.game.add.group();
         data.powerups.forEach(this._spawnPowerup, this);
     }
 
-    //spawn eastereggs
     if (CONST_EASTEREGGS) {
         this.eastereggs = this.game.add.group();
         data.eastereggs.forEach(this._spawnEasteregg, this);
     }
 
-    // spawn coins
     if (CONST_COINS) {
         this.coins = this.game.add.group();
         data.coins.forEach(this._spawnCoin, this);
+        this.collectedCoin = this.game.add.group();
+    }
+
+    if (CONST_CRATES) {
+        this.crates = this.game.add.group();
+        data.crates.forEach(this._spawnCrate, this);
+    }
+
+    //spawn sawblades + bases
+    if (CONST_SAWBLADES) {
+        this.sawblades = this.game.add.group();
+        data.sawblades.forEach(this._spawnSawblade, this);
+        this.sawbladesBases = this.game.add.group();
+    }
+
+    //spawn all deco
+    if (CONST_DECO) {
+        console.log(data);
+        this.deco = this.game.add.group();
+        data.deco.forEach(this._spawnDeco, this);
     }
 
 
-    // spawn the rest of the platforms
-    this.platforms = this.game.add.group();
-    data.platforms.forEach(this._spawnPlatform, this);
-
-    this.fakePlatforms = this.game.add.group();
-    data.fakePlatforms.forEach(this._spawnFakePlatform, this);
-
-    if (CONST_P2_PHYSICS) var platformCollisionGroup = game.physics.p2.createCollisionGroup();
 
     // spawn hero and enemies
     this._spawnCharacters({hero: data.hero, enemies: data.enemies});
@@ -1139,6 +1146,7 @@ Crowdjump.Game._loadLevel = function (data) {
     this.flags = this.game.add.group();
     data.flags.forEach(this._spawnFlag, this);
 
+    if (CONST_P2_PHYSICS) var platformCollisionGroup = game.physics.p2.createCollisionGroup();
 
     if (CONST_SHOWLEVEL) {
         showlevel = this.game.add.text(20, 10, 'Level ' + level, {font: '25px Arial', fill: '#4352ff'});
@@ -1580,22 +1588,22 @@ Crowdjump.Game._newSpawns = function (data) {
 Crowdjump.Game._newCannonballs = function (seconds) {
     if (CONST_CANNONS) {
         // spawn cannonballs for each cannon
-        var firerate = (CONST_CANNON_FIRERATE / 1000) * (1/pu_timeslow);
-        next_cannon_fire = seconds + firerate ;
+        var firerate = (CONST_CANNON_FIRERATE / 1000) * (1 / pu_timeslow);
+        next_cannon_fire = seconds + firerate;
         this.cannons.forEach(function (cannon) {
             this.sfx.cannonfire.play();
 
             var cannonball = cannonballs.getFirstDead();
 
-            var ygoal = 0;
+            var xgoal = 0;
             if (cannon.key == 'cannonRight') {
-                ygoal = sizex;
+                xgoal = sizex;
                 cannonball.reset(cannon.position.x + 82, cannon.position.y + 5);
             } else {
                 cannonball.reset(cannon.position.x - 28, cannon.position.y + 5);
             }
 
-            this.game.physics.arcade.moveToXY(cannonball, ygoal, cannon.position.y, (CONST_CANNON_BULLETSPEED * pu_timeslow));
+            this.game.physics.arcade.moveToXY(cannonball, xgoal, cannon.position.y, (CONST_CANNON_BULLETSPEED * pu_timeslow));
 
         }, this);
     }
@@ -1648,6 +1656,15 @@ Crowdjump.Game._spawnPowerup = function (powerup) {
     }
 
     sprite.body.allowGravity = false;
+};
+
+Crowdjump.Game._spawnDeco = function (deco) {
+    let sprite = this.deco.create(deco.x, deco.y, deco.image);
+    // sprite.anchor.set(0.5);
+
+    this.game.physics.enable(sprite);
+    sprite.body.allowGravity = false;
+
 };
 
 Crowdjump.Game.powerup_lavaorb = function () {
@@ -1758,10 +1775,13 @@ Crowdjump.Game._killEnemy = function (enemy, bounce) {
         this.hero.bounce("", "", 0.6);
         this.sfx.stomp.play();
     }
+    if (enemy.coinDrop > 0) {
+        this.enemyDropsCoin(enemy.coinDrop, enemy.body.position.x, enemy.body.position.y);
+    }
     enemy.die();
     game.enemiesDefeatedCount++;
 
-}
+};
 
 Crowdjump.Game._onHeroVsLava = function (hero, platform) {
     // game over -> restart the game
@@ -1868,7 +1888,7 @@ Crowdjump.Game._onHeroVsCoin = function (hero, coin) {
     game.coinPickupCount++;
 
     if (CONST_COIN_ANIMATE) this.coinIcon.animations.play('rotate');
-    if(game.coinPickupCount % 30 == 0) this.increaseLives();
+    if (game.coinPickupCount % 30 == 0) this.increaseLives();
 };
 
 Crowdjump.Game._onHeroVsEasteregg = function (hero, easteregg) {
@@ -2168,11 +2188,11 @@ Crowdjump.Game.fire_Bullet = function () {
 
 };
 
-Crowdjump.Game.slowCannonball = function(cannonball){
+Crowdjump.Game.slowCannonball = function (cannonball) {
     cannonball.body.velocity.x *= pu_timeslow;
 };
 
-Crowdjump.Game.slowSpider = function(spider){
+Crowdjump.Game.slowSpider = function (spider) {
     spider.body.velocity.x *= pu_timeslow;
 };
 
@@ -2190,7 +2210,7 @@ Crowdjump.Game.killHero = function (reason) {
 
     lives -= 1;
 
-    log("you died because of " + reason, lives +" lives left");
+    log("you died because of " + reason, lives + " lives left");
 
     if (CONST_REPLAY_LEVEL) {
         time_last_level_or_restart = this.game.time.totalElapsedSeconds().toFixed(3);
@@ -2236,11 +2256,11 @@ Crowdjump.Game.killHero = function (reason) {
 
 };
 
-Crowdjump.Game.increaseLives = function(amount){
+Crowdjump.Game.increaseLives = function (amount) {
 
     this.sfx.levelup.play();
     if (amount != undefined) lives += amount;
-    else lives ++;
+    else lives++;
 };
 
 Crowdjump.Game.showMessage = function (message, time, fill, font) {
@@ -2288,6 +2308,40 @@ Crowdjump.Game.restart = function () {
 
     this.state.restart();
     this.game.time.reset();
+};
+
+Crowdjump.Game.enemyDropsCoin = function (coins, enemyXPos, enemyYPos) {
+    game.time.events.add(Phaser.Timer.SECOND * 0.97, function () {
+        var xPosArr = [];
+        var coinYPos = enemyYPos - 12;
+        switch (coins) {
+            case 1:
+                xPosArr.push(enemyXPos);break;
+            case 2:
+                xPosArr.push(enemyXPos-16);
+                xPosArr.push(enemyXPos+16);
+                break;
+            case 3:
+                xPosArr.push(enemyXPos-16);
+                xPosArr.push(enemyXPos);
+                xPosArr.push(enemyXPos+16);
+                break;
+            case 4:
+                xPosArr.push(enemyXPos-24);
+                xPosArr.push(enemyXPos-8);
+                xPosArr.push(enemyXPos+8);
+                xPosArr.push(enemyXPos+24);
+                break;
+        }
+        for (var i = 0; i < coins; i++) {
+            var object = {};
+            object.x = xPosArr[i];
+            object.y = coinYPos;
+        this._spawnCoin(object);
+
+        }
+    }, this);
+
 };
 
 Crowdjump.Game.toggleMute = function () {

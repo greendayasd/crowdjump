@@ -176,12 +176,8 @@
 	],
 	"hero":
 		{"image": "hero", "x": 294, "y": 1176, "angle":0, "scalex":1, "scaley":1},
-	"deco": [
-		{"image": "deco:stone2", "x": 1428, "y": 378, "angle":0, "scalex":1, "scaley":1, "type":"stone2"},
-		{"image": "deco:bush1", "x": 966, "y": 546, "angle":0, "scalex":1, "scaley":1, "type":"bush1"},
-		{"image": "deco:bush2", "x": 42, "y": 546, "angle":0, "scalex":1, "scaley":1, "type":"bush2"},
-		{"image": "deco:tree1", "x": 1302, "y": 378, "angle":0, "scalex":1, "scaley":1, "type":"tree1"},
-		{"image": "deco:tree1", "x": 630, "y": 1638, "angle":0, "scalex":1, "scaley":1, "type":"tree1"}
+	"decorations": [
+
 	],
 	"size": {"x": 1806, "y": 1902}
 }
