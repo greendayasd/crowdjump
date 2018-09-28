@@ -188,7 +188,7 @@ Hero.prototype.jump = function () {
     var jump_speed = CONST_JUMP_SPEED;
     if (pu_permjumpboost) jump_speed = jump_speed * CONST_POWERUPS_PERMJUMPBOOST;
 
-    if (first_moved == -1 && CONST_TIME_WHEN_MOVED) first_moved = game.time.totalElapsedSeconds().toFixed(3);
+    Crowdjump.Game.firstMoved();
 
     if (CONST_P2_PHYSICS) {
         canJump = true;
@@ -287,7 +287,7 @@ function Spider(game, x, y) {
     // physic properties
     this.game.physics.enable(this);
     this.body.collideWorldBounds = true;
-    this.body.velocity.x = CONST_SPIDER_SPEED;
+    // this.body.velocity.x = CONST_SPIDER_SPEED;
     this.coinDrop = CONST_SPIDER_COINS;
 
 
@@ -476,7 +476,7 @@ Crowdjump.Game.create = function () {
         );
         this.stars.fixedToCamera = true;
 
-        this.moon = this.game.add.tileSprite(CONST_CANVAS_X/2 +160,42,42,
+        this.moon = this.game.add.tileSprite(CONST_CANVAS_X / 2 + 160, 42, 42,
             this.game.cache.getImage('deco:moon').height,
             'deco:moon'
         );
@@ -1042,9 +1042,16 @@ Crowdjump.Game._movePlatforms = function (platform) {
 }
 
 Crowdjump.Game._countMovementInput = function () {
-    if (first_moved == -1 && CONST_TIME_WHEN_MOVED) first_moved = game.time.totalElapsedSeconds().toFixed(3);
+    this.firstMoved();
     game.movement_inputs += 1;
-}
+};
+
+Crowdjump.Game.firstMoved = function () {
+    if (first_moved == -1 && CONST_TIME_WHEN_MOVED) {
+        first_moved = game.time.totalElapsedSeconds().toFixed(3);
+        this.startSpiders();
+    }
+};
 
 Crowdjump.Game._loadLevel = function (data) {
 
@@ -1135,7 +1142,6 @@ Crowdjump.Game._loadLevel = function (data) {
         this.deco = this.game.add.group();
         data.deco.forEach(this._spawnDeco, this);
     }
-
 
 
     // spawn hero and enemies
@@ -2195,6 +2201,12 @@ Crowdjump.Game.slowSpider = function (spider) {
     spider.body.velocity.x *= pu_timeslow;
 };
 
+Crowdjump.Game.startSpiders = function () {
+    this.spiders.forEach(function (spider) {
+        spider.body.velocity.x = CONST_SPIDER_SPEED
+    }, this);
+};
+
 Crowdjump.Game.killHero = function (reason) {
     if (death) return; //else you can die twice!
     death = true;
@@ -2315,28 +2327,29 @@ Crowdjump.Game.enemyDropsCoin = function (coins, enemyXPos, enemyYPos) {
         var coinYPos = enemyYPos - 12;
         switch (coins) {
             case 1:
-                xPosArr.push(enemyXPos);break;
+                xPosArr.push(enemyXPos);
+                break;
             case 2:
-                xPosArr.push(enemyXPos-16);
-                xPosArr.push(enemyXPos+16);
+                xPosArr.push(enemyXPos - 16);
+                xPosArr.push(enemyXPos + 16);
                 break;
             case 3:
-                xPosArr.push(enemyXPos-16);
+                xPosArr.push(enemyXPos - 16);
                 xPosArr.push(enemyXPos);
-                xPosArr.push(enemyXPos+16);
+                xPosArr.push(enemyXPos + 16);
                 break;
             case 4:
-                xPosArr.push(enemyXPos-24);
-                xPosArr.push(enemyXPos-8);
-                xPosArr.push(enemyXPos+8);
-                xPosArr.push(enemyXPos+24);
+                xPosArr.push(enemyXPos - 24);
+                xPosArr.push(enemyXPos - 8);
+                xPosArr.push(enemyXPos + 8);
+                xPosArr.push(enemyXPos + 24);
                 break;
         }
         for (var i = 0; i < coins; i++) {
             var object = {};
             object.x = xPosArr[i];
             object.y = coinYPos;
-        this._spawnCoin(object);
+            this._spawnCoin(object);
 
         }
     }, this);
