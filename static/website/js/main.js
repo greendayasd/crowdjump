@@ -83,6 +83,7 @@ const CONST_CHARACTER_COUNT = 4;
 
 const CONST_COLOR = false;
 const CONST_BACKGROUNDIMAGE = true;
+const CONST_DAY_AND_NIGHT = true;
 const CONST_DECO = true;
 
 const CONST_SHOWLEVEL = false;

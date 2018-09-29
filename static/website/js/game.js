@@ -55,7 +55,8 @@ Crowdjump.Game = function (game) {
     var timeeggs = 0;
 
     var sizex = 960;
-    var sizey = 600
+    var sizey = 600;
+    var day = false;
 }
 
 Crowdjump.Game = {};
@@ -424,6 +425,7 @@ Crowdjump.Game.init = function (data) {
 
     sizex = 960;
     sizey = 600;
+    day = false;
 
     try {
         if (level == 0 && (lives == undefined || lives <= 0)) lives = CONST_HERO_LIVES;
@@ -464,47 +466,145 @@ Crowdjump.Game.create = function () {
     };
 
 
-    //Background
+    //Background for Day and Night
     if (CONST_BACKGROUNDIMAGE) {
-        this.game.stage.backgroundColor = '#545d8f';
+        var now = new Date();
+        var hour = now.getHours();
+        var cloud1x = (CONST_CANVAS_X / 2) + 166;
+        var cloud2x = (CONST_CANVAS_X / 2) - 33;
+        var cloud3x = (CONST_CANVAS_X / 2) - 252;
+        var moonSunx = (CONST_CANVAS_X / 2) + 160;
+        var cloud1y = 23;
+        var cloud2y = 48;
+        var cloud3y = 78;
+        var moonSuny = 22;
 
-        this.stars = this.game.add.tileSprite(0,
-            this.game.height - this.game.cache.getImage('stars').height,
-            this.game.width,
-            this.game.cache.getImage('stars').height,
-            'stars'
-        );
-        this.stars.fixedToCamera = true;
+        day = (hour >= 6 && hour < 18);
 
-        this.moon = this.game.add.tileSprite(CONST_CANVAS_X / 2 + 160, 42, 42,
-            this.game.cache.getImage('deco:moon').height,
-            'deco:moon'
-        );
-        this.moon.fixedToCamera = true;
+        if (day && CONST_DAY_AND_NIGHT) {
+            this.game.stage.backgroundColor = '#545d8f';
 
-        this.hillsBack = this.game.add.tileSprite(0,
-            this.game.height - this.game.cache.getImage('hillsBack').height,
-            this.game.width,
-            this.game.cache.getImage('hillsBack').height,
-            'hillsBack'
-        );
-        this.hillsBack.fixedToCamera = true;
+            this.sky = this.game.add.tileSprite(0,
+                this.game.height - this.game.cache.getImage('sky_day').height,
+                this.game.width,
+                this.game.cache.getImage('sky_day').height,
+                'sky_day'
+            );
+            this.sky.fixedToCamera = true;
 
-        this.hillsMiddle = this.game.add.tileSprite(0,
-            this.game.height - this.game.cache.getImage('hillsMiddle').height,
-            this.game.width,
-            this.game.cache.getImage('hillsMiddle').height,
-            'hillsMiddle'
-        );
-        this.hillsMiddle.fixedToCamera = true;
+            this.moonSun = this.game.add.tileSprite(moonSunx, moonSuny, 42,
+                this.game.cache.getImage('sun').height,
+                'sun'
+            );
+            this.moonSun.fixedToCamera = true;
 
-        this.hillsFore = this.game.add.tileSprite(0,
-            this.game.height - this.game.cache.getImage('hillsFore').height,
-            this.game.width,
-            this.game.cache.getImage('hillsFore').height,
-            'hillsFore'
-        );
-        this.hillsFore.fixedToCamera = true;
+            this.clouds1 = this.game.add.tileSprite(cloud1x, cloud1y,
+                this.game.cache.getImage('cloud1_day').width,
+                this.game.cache.getImage('cloud1_day').height,
+                'cloud1_day'
+            );
+            this.clouds1.fixedToCamera = true;
+
+            this.clouds2 = this.game.add.tileSprite(cloud2x, cloud2y,
+                this.game.cache.getImage('cloud2_day').width,
+                this.game.cache.getImage('cloud2_day').height,
+                'cloud2_day'
+            );
+            this.clouds2.fixedToCamera = true;
+
+            this.clouds3 = this.game.add.tileSprite(cloud3x, cloud3y,
+                this.game.cache.getImage('cloud3_day').width,
+                this.game.cache.getImage('cloud3_day').height,
+                'cloud3_day'
+            );
+            this.clouds3.fixedToCamera = true;
+
+            this.hillsBack = this.game.add.tileSprite(0,
+                this.game.height - this.game.cache.getImage('hillsBack_day').height,
+                this.game.width,
+                this.game.cache.getImage('hillsBack_day').height,
+                'hillsBack_day'
+            );
+            this.hillsBack.fixedToCamera = true;
+
+            this.hillsMiddle = this.game.add.tileSprite(0,
+                this.game.height - this.game.cache.getImage('hillsMiddle_day').height,
+                this.game.width,
+                this.game.cache.getImage('hillsMiddle_day').height,
+                'hillsMiddle_day'
+            );
+            this.hillsMiddle.fixedToCamera = true;
+
+            this.hillsFore = this.game.add.tileSprite(0,
+                this.game.height - this.game.cache.getImage('hillsFore_day').height,
+                this.game.width,
+                this.game.cache.getImage('hillsFore_day').height,
+                'hillsFore_day'
+            );
+            this.hillsFore.fixedToCamera = true;
+
+        } else {
+            this.game.stage.backgroundColor = '#545d8f';
+
+            this.sky = this.game.add.tileSprite(0,
+                this.game.height - this.game.cache.getImage('sky').height,
+                this.game.width,
+                this.game.cache.getImage('sky').height,
+                'sky'
+            );
+            this.sky.fixedToCamera = true;
+
+            this.moonSun = this.game.add.tileSprite(moonSunx, moonSuny, 42,
+                this.game.cache.getImage('moon').height,
+                'moon'
+            );
+            this.moonSun.fixedToCamera = true;
+
+            this.clouds1 = this.game.add.tileSprite(cloud1x, cloud1y,
+                this.game.cache.getImage('cloud1_night').width,
+                this.game.cache.getImage('cloud1_night').height,
+                'cloud1_night'
+            );
+            this.clouds1.fixedToCamera = true;
+
+            this.clouds2 = this.game.add.tileSprite(cloud2x, cloud2y,
+                this.game.cache.getImage('cloud2_night').width,
+                this.game.cache.getImage('cloud2_night').height,
+                'cloud2_night'
+            );
+            this.clouds2.fixedToCamera = true;
+
+            this.clouds3 = this.game.add.tileSprite(cloud3x, cloud3y,
+                this.game.cache.getImage('cloud3_night').width,
+                this.game.cache.getImage('cloud3_night').height,
+                'cloud3_night'
+            );
+            this.clouds3.fixedToCamera = true;
+
+            this.hillsBack = this.game.add.tileSprite(0,
+                this.game.height - this.game.cache.getImage('hillsBack').height,
+                this.game.width,
+                this.game.cache.getImage('hillsBack').height,
+                'hillsBack'
+            );
+            this.hillsBack.fixedToCamera = true;
+
+            this.hillsMiddle = this.game.add.tileSprite(0,
+                this.game.height - this.game.cache.getImage('hillsMiddle').height,
+                this.game.width,
+                this.game.cache.getImage('hillsMiddle').height,
+                'hillsMiddle'
+            );
+            this.hillsMiddle.fixedToCamera = true;
+
+            this.hillsFore = this.game.add.tileSprite(0,
+                this.game.height - this.game.cache.getImage('hillsFore').height,
+                this.game.width,
+                this.game.cache.getImage('hillsFore').height,
+                'hillsFore'
+            );
+            this.hillsFore.fixedToCamera = true;
+        }
     }
     else {
         var c = Phaser.Color.getRandomColor(255, 255, 255);
@@ -615,7 +715,7 @@ Crowdjump.Game.create = function () {
 Crowdjump.Game.update = function () {
 
     if (CONST_BACKGROUNDIMAGE) {
-        // this.stars.tilePosition.x = game.camera.x*-0.02;
+        // this.sky.tilePosition.x = game.camera.x*-0.02;
         this.hillsBack.tilePosition.x = game.camera.x * -0.02;
         this.hillsMiddle.tilePosition.x = game.camera.x * -0.1 + 300;
         this.hillsFore.tilePosition.x = game.camera.x * -0.2 + 150;
@@ -1664,7 +1764,10 @@ Crowdjump.Game._spawnPowerup = function (powerup) {
 };
 
 Crowdjump.Game._spawnDeco = function (deco) {
-    let sprite = this.deco.create(deco.x, deco.y, deco.image);
+    var daytime = '_night';
+    if (CONST_DAY_AND_NIGHT && day) daytime = '_day';
+
+    let sprite = this.deco.create(deco.x, deco.y, deco.image + daytime);
     // sprite.anchor.set(0.5);
 
     this.game.physics.enable(sprite);

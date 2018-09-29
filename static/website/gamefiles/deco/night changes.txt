@@ -1,0 +1,2 @@
+stone/bush night: helligkeit/kontrast: helligkeit -68 , kontrast -36 
+tree: farbton/(sättigung: Sättigung 86, helligkeit -34

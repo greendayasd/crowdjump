@@ -323,6 +323,7 @@
                                 General13: survey["General13"],
                                 General14: survey["General14"],
                                 General15: survey["General15"],
+                                General16: survey["General16"],
                             }).then(function (result) {
                                 Questionnaire.increase_surveycount(cookie["username"], 11);
                                 window.location.href = '/surveyPostFinished';

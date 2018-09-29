@@ -1265,6 +1265,7 @@
                         "Too many ideas were implemented each cycle.",
                         "More ideas should be implemented each cycle.",
                         "The amount of ideas to choose from was overwhelming.",
+                        "I prefered new ideas over old ones"
                     ]);
                     $scope.sur9q0Choices = $scope.sur9q0ChoicesOG[0];
                     $scope.sur9q0Ordering = $scope.sur9q0ChoicesOG[1];

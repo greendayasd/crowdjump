@@ -104,11 +104,11 @@ Crowdjump.Preloader.prototype = {
         this.load.image('grass:6x1', tiles + 'grass_6x1.png');
         this.load.image('grass:8x1', tiles + 'grass_8x1.png');
 
-        if (CONST_BUTTONS_AND_GATES){
-            this.load.spritesheet('spawnBlue:1x1', tiles + 'spawnBlue_1x1.png',42,42);
-            this.load.spritesheet('spawnBlue:2x1', tiles + 'spawnBlue_2x1.png',84,42);
-            this.load.spritesheet('spawnRed:1x1', tiles + 'spawnRed_1x1.png',42,42);
-            this.load.spritesheet('spawnRed:2x1', tiles + 'spawnRed_2x1.png',84,42);
+        if (CONST_BUTTONS_AND_GATES) {
+            this.load.spritesheet('spawnBlue:1x1', tiles + 'spawnBlue_1x1.png', 42, 42);
+            this.load.spritesheet('spawnBlue:2x1', tiles + 'spawnBlue_2x1.png', 84, 42);
+            this.load.spritesheet('spawnRed:1x1', tiles + 'spawnRed_1x1.png', 42, 42);
+            this.load.spritesheet('spawnRed:2x1', tiles + 'spawnRed_2x1.png', 84, 42);
         }
 
         if (CONST_SLIPPERYPLATFORMS) {
@@ -186,7 +186,7 @@ Crowdjump.Preloader.prototype = {
                 this.load.spritesheet('icon:coin', collectibles + 'coin_animated.png', 38, 38);
             } else {
                 this.load.image('coin', collectibles + 'coin_icon.png');
-            this.load.image('icon:coin', collectibles + 'coin_icon.png');
+                this.load.image('icon:coin', collectibles + 'coin_icon.png');
             }
         }
 
@@ -210,24 +210,48 @@ Crowdjump.Preloader.prototype = {
         }
 
 
-
         //deco
-        if (CONST_DECO){
-            this.load.image('deco:stone1', deco + 'deco_stone1.png');
-            this.load.image('deco:stone2', deco + 'deco_stone2.png');
-            this.load.image('deco:bush1', deco + 'deco_bush1.png');
-            this.load.image('deco:bush2', deco + 'deco_bush2.png');
-            this.load.image('deco:bush3', deco + 'deco_bush3.png');
-            this.load.image('deco:tree1', deco + 'deco_tree1.png');
-            this.load.image('deco:moon', deco + 'deco_moon.png');
+        if (CONST_DECO) {
+            this.load.image('deco:stone1_day', deco + 'deco_stone1_day.png');
+            this.load.image('deco:stone2_day', deco + 'deco_stone2_day.png');
+            this.load.image('deco:bush1_day', deco + 'deco_bush1_day.png');
+            this.load.image('deco:bush2_day', deco + 'deco_bush2_day.png');
+            this.load.image('deco:bush3_day', deco + 'deco_bush3_day.png');
+            this.load.image('deco:tree1_day', deco + 'deco_tree1_day.png');
+
+            this.load.image('deco:stone1_night', deco + 'deco_stone1_night.png');
+            this.load.image('deco:stone2_night', deco + 'deco_stone2_night.png');
+            this.load.image('deco:bush1_night', deco + 'deco_bush1_night.png');
+            this.load.image('deco:bush2_night', deco + 'deco_bush2_night.png');
+            this.load.image('deco:bush3_night', deco + 'deco_bush3_night.png');
+            this.load.image('deco:tree1_night', deco + 'deco_tree1_night.png');
         }
 
         //misc
         if (CONST_BACKGROUNDIMAGE) {
-            this.load.image('stars', misc + 'stars.png');
+            this.load.image('sky', misc + 'sky.png');
             this.load.image('hillsBack', misc + 'hillsBack.png');
             this.load.image('hillsMiddle', misc + 'hillsMiddle.png');
             this.load.image('hillsFore', misc + 'hillsFore.png');
+
+            this.load.image('cloud1_night', misc + 'deco_night_cloud1.png');
+            this.load.image('cloud2_night', misc + 'deco_night_cloud2.png');
+            this.load.image('cloud3_night', misc + 'deco_night_cloud3.png');
+
+            this.load.image('moon', misc + 'moon.png');
+
+            if (CONST_DAY_AND_NIGHT) {
+                this.load.image('sky_day', misc + 'sky_day.png');
+                this.load.image('hillsBack_day', misc + 'hillsBack_day.png');
+                this.load.image('hillsMiddle_day', misc + 'hillsMiddle_day.png');
+                this.load.image('hillsFore_day', misc + 'hillsFore_day.png');
+
+                this.load.image('cloud1_day', misc + 'deco_day_cloud1.png');
+                this.load.image('cloud2_day', misc + 'deco_day_cloud2.png');
+                this.load.image('cloud3_day', misc + 'deco_day_cloud3.png');
+
+                this.load.image('sun', misc + 'sun.png');
+            }
         }
         // this.load.image('flag', misc + 'flag_new.png');
         this.load.spritesheet('flag', misc + 'flag.png', 42, 66);
@@ -250,7 +274,8 @@ Crowdjump.Preloader.prototype = {
         //audio
         this.load.audio('sfx:jump', audio + 'jump.wav');
         this.load.audio('sfx:flag', audio + 'flag.wav');
-        if (CONST_COINS) this.load.audio('sfx:coin', audio + 'coin.wav'); this.load.audio('sfx:levelup', audio + 'levelup.wav');
+        if (CONST_COINS) this.load.audio('sfx:coin', audio + 'coin.wav');
+        this.load.audio('sfx:levelup', audio + 'levelup.wav');
         if (CONST_POWERUPS) this.load.audio('sfx:powerup', audio + 'powerup.mp3');
         if (CONST_EASTEREGGS) this.load.audio('sfx:easteregg', audio + 'easteregg.wav');
         if (CONST_ENEMIES) this.load.audio('sfx:stomp', audio + 'stomp.wav');

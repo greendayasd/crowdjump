@@ -151,12 +151,13 @@
 
     <script type="text/javascript">
         var isonfocus = true;
-        var versionnumber = 28;
+        var versionnumber = 30;
         var versionlabel = versionnumber < 10 ? '0.0' + versionnumber : '0.' + versionnumber;
-        var nextVote = moment('29-09-2018 19:00:00', 'DD-MM-YYYY HH:mm:ss').unix();
+        var nextVote = moment('30-09-2018 09:00:00', 'DD-MM-YYYY HH:mm:ss').unix();
         var winner7days = 'SSnake95';
-        var wins7days = 5;
+        var wins7days = 4;
 
+        //28 triggerfinger
         //26 ganon
         //24 snake
         //22 ganon
@@ -169,10 +170,10 @@
 
         window.onblur = function () {
             isonfocus = false;
-        }
+        };
         window.onfocus = function () {
             isonfocus = true;
-        }
+        };
 
 
         var getUsername = function () {
@@ -186,7 +187,7 @@
                 return getCookie('identifier');
             }
 
-        }
+        };
 
         function deleteCookie(name) {
             document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -194,7 +195,7 @@
 
         var deleteIdentifier = function () {
             deleteCookie('identifier');
-        }
+        };
 
         var setSessionIdentifier = function () {
             var username = getUsername();
