@@ -12,6 +12,10 @@
         var cookie = Authentication.getAuthenticatedAccount();
         $scope.winner = winner7days;
         $scope.wins = wins7days;
+        $scope.winnerEasy = winner7daysEasy;
+        $scope.winsEasy = wins7daysEasy;
+        $scope.winnerHard = winner7daysHard;
+        $scope.winsHard = wins7daysHard;
 
 
         $scope.version = versionlabel;

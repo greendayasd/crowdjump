@@ -59,7 +59,7 @@ class GameInfoViewSet(viewsets.ModelViewSet):
     queryset = GameInfo.objects.order_by('-version', 'highscore')
     serializer_class = GameInfoSerializer
     filter_backends = [DjangoFilterBackend]
-    filter_fields = ['highscore', 'version', 'user', 'id']
+    filter_fields = ['highscore', 'version', 'user', 'id', 'difficulty']
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:

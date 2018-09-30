@@ -129,8 +129,12 @@ def CreateGamedata(request):
             return JsonResponse({}, safe=False)
 
     except:
-        gameinfo = GameInfo(user_id=userid, version_id=v.id)
-        gameinfo.save()
+        gameinfo0 = GameInfo(user_id=userid, version_id=v.id, difficulty=0)
+        gameinfo0.save()
+        gameinfo1 = GameInfo(user_id=userid, version_id=v.id, difficulty=1)
+        gameinfo1.save()
+        gameinfo2 = GameInfo(user_id=userid, version_id=v.id, difficulty=2)
+        gameinfo2.save()
 
     try:
         acc = Account.objects.filter(id=userid)[0]
@@ -231,62 +235,71 @@ def GetAllTrackingData(request):
         return JsonResponse('{"failure":"' + res[:-2] + '"}', safe=False)
 
 
-def AntiCheat(status, level, timeneeded, jumps, movement_inputs, enemies_killed, coins_collected, eastereggs_found,
+def AntiCheat(status, difficulty, level, timeneeded, jumps, movement_inputs, enemies_killed, coins_collected, eastereggs_found,
               special_name):
     # Anticheat
     cheated = 'cheat_'
 
-    # time
-    if (status == 'completed'):
-        if (int(level) == 1 and int(timeneeded) < 7500
-                or int(level) == 2 and int(timeneeded) < 4000
-                or int(level) == 3 and int(timeneeded) < 4000
-                or int(level) == 4 and int(timeneeded) < 4000):
-            cheated += '_time'
 
-    # jumps
-    if (status == 'completed'):
-        if (int(level) == 1 and int(jumps) < 8
-                or int(level) == 2 and int(jumps) < 4
-                or int(level) == 3 and int(jumps) < 4 #in 4 theoretisch möglich
-                or int(level) == 4 and int(jumps) < 3):
-            cheated += '_jumps'
+    if (difficulty == '0'):
+        print("Todo")
 
-    # movement
-    if (status == 'completed'):
-        if (int(level) == 1 and int(movement_inputs) < 1
-                or int(level) == 2 and int(movement_inputs) < 1
-                or int(level) == 3 and int(movement_inputs) < 3
-                or int(level) == 4 and int(movement_inputs) < 1):
-            cheated += '_movementInputs'
+    if (difficulty == '1'):
+        # time
+        if (status == 'completed'):
+            if (int(level) == 1 and int(timeneeded) < 7500
+                    or int(level) == 2 and int(timeneeded) < 4000
+                    or int(level) == 3 and int(timeneeded) < 4000
+                    or int(level) == 4 and int(timeneeded) < 4000):
+                cheated += '_time'
 
-    # enemies killed
-    if (int(level) == 1 and int(enemies_killed) > 6
-            or int(level) == 2 and int(enemies_killed) > 10
-            or int(level) == 3 and int(enemies_killed) > 21
-            or int(level) == 4 and int(enemies_killed) > 1):
-        cheated += '_enemiesKilled'
+        # jumps
+        if (status == 'completed'):
+            if (int(level) == 1 and int(jumps) < 8
+                    or int(level) == 2 and int(jumps) < 4
+                    or int(level) == 3 and int(jumps) < 4 #in 4 theoretisch möglich
+                    or int(level) == 4 and int(jumps) < 3):
+                cheated += '_jumps'
 
-    # coins (+10 per coin easteregg)
-    if (int(level) == 1 and int(coins_collected) > 80
-            or int(level) == 2 and int(coins_collected) > 6
-            or int(level) == 3 and int(coins_collected) > 7
-            or int(level) == 4 and int(coins_collected) > 1):
-        cheated += '_coinsCollected'
+        # movement
+        if (status == 'completed'):
+            if (int(level) == 1 and int(movement_inputs) < 1
+                    or int(level) == 2 and int(movement_inputs) < 1
+                    or int(level) == 3 and int(movement_inputs) < 3
+                    or int(level) == 4 and int(movement_inputs) < 1):
+                cheated += '_movementInputs'
 
-    # eastereggs
-    if (int(level) == 1 and int(eastereggs_found) > 4
-            or int(level) == 2 and int(eastereggs_found) > 2
-            or int(level) == 3 and int(eastereggs_found) > 2
-            or int(level) == 4 and int(eastereggs_found) > 1):
-        cheated += '_eastereggsFound'
+        # enemies killed
+        if (int(level) == 1 and int(enemies_killed) > 6
+                or int(level) == 2 and int(enemies_killed) > 10
+                or int(level) == 3 and int(enemies_killed) > 21
+                or int(level) == 4 and int(enemies_killed) > 1):
+            cheated += '_enemiesKilled'
 
-    # specialname
-    if (int(level) == 1 and int(special_name) > 2
-            or int(level) == 2 and int(special_name) > 1
-            or int(level) == 3 and int(special_name) > 1
-            or int(level) == 4 and int(special_name) > 1):
-        cheated += '_specialName'
+        # coins (+10 per coin easteregg)
+        if (int(level) == 1 and int(coins_collected) > 80
+                or int(level) == 2 and int(coins_collected) > 6
+                or int(level) == 3 and int(coins_collected) > 7
+                or int(level) == 4 and int(coins_collected) > 1):
+            cheated += '_coinsCollected'
+
+        # eastereggs
+        if (int(level) == 1 and int(eastereggs_found) > 4
+                or int(level) == 2 and int(eastereggs_found) > 2
+                or int(level) == 3 and int(eastereggs_found) > 2
+                or int(level) == 4 and int(eastereggs_found) > 1):
+            cheated += '_eastereggsFound'
+
+        # specialname
+        if (int(level) == 1 and int(special_name) > 2
+                or int(level) == 2 and int(special_name) > 1
+                or int(level) == 3 and int(special_name) > 1
+                or int(level) == 4 and int(special_name) > 1):
+            cheated += '_specialName'
+
+    if (difficulty == '2'):
+        print("Todo")
+
 
     if cheated != 'cheat_':
         return cheated
@@ -322,6 +335,7 @@ def SendGameData(request):
 
     level = request.GET.get('level')
     status = request.GET.get('status')
+    difficulty = request.GET.get('difficulty')
     timeneeded = request.GET.get('time')
     jumps = request.GET.get('jumps')
     movement_inputs = request.GET.get('movement_inputs')
@@ -335,14 +349,16 @@ def SendGameData(request):
     character = request.GET.get('character')
     powerups = request.GET.get('powerups')
     overall_powerups = request.GET.get('overall_powerups')
+    highscore = request.GET.get('highscore')
+
 
 
     if math.isnan(float(level)):
         level = '-1'
         print(level)
 
+    print(highscore)
     try:
-        highscore = request.GET.get('highscore')
         if highscore == 'none':
             highscore = -1
         else:
@@ -364,13 +380,14 @@ def SendGameData(request):
     else:
         newstatus = 'd'
 
-    status = AntiCheat(status, level, timeneeded, jumps, movement_inputs, enemies_killed, coins_collected,
+    status = AntiCheat(status, difficulty, level, timeneeded, jumps, movement_inputs, enemies_killed, coins_collected,
                        eastereggs_found, special_name)
 
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
     data = '{"timestamp":"' + st + \
            '", "level":"' + level + \
+           '", "difficuly":"' + difficulty + \
            '", "status":"' + status + \
            '", "time":"' + timeneeded + \
            '", "jumps":"' + jumps + \
@@ -406,10 +423,12 @@ def SendGameData(request):
 
     if DBChange:
         try:
-            acc = GameInfo.objects.filter(user_id=request.user.id, version_id=v.id)[0]
+            acc = GameInfo.objects.filter(user_id=request.user.id, version_id=v.id, difficulty=int(difficulty))[0]
 
         except:
-            return JsonResponse('{"success":"no gamedata"}', safe=False)
+            CreateGamedata(request)
+            acc = GameInfo.objects.filter(user_id=request.user.id, version_id=v.id, difficulty=int(difficulty))[0]
+            # return JsonResponse('{"success":"no gamedata"}', safe=False)
 
         acc.coins_collected = max(acc.coins_collected, int(overall_coins))
         acc.overall_coins += int(coins_collected)
@@ -471,6 +490,21 @@ def ChangeCharacter(request):
 
     acc = Account.objects.filter(id=userid)[0]
     acc.character = character
+    acc.save()
+
+    return JsonResponse('{"success":"true"}', safe=False)
+
+
+def ChangeDifficulty(request):
+    if request.user.is_authenticated:
+        userid = request.user.id
+    else:
+        return JsonResponse('{"success":"' + 'user' + '"}', safe=False)
+
+    difficulty = request.GET.get('difficulty')
+
+    acc = Account.objects.filter(id=userid)[0]
+    acc.difficulty = difficulty
     acc.save()
 
     return JsonResponse('{"success":"true"}', safe=False)

@@ -617,9 +617,9 @@ Crowdjump.Game.create = function () {
     time_zhonya_cooldown = 0;
     selected_level += 0;
     if (selected_level >= 0) {
-        level_data = this.game.cache.getJSON(`level:${selected_level}`);
+        level_data = this.game.cache.getJSON(`level:${selected_level}:${game.difficulty}`);
     } else {
-        level_data = this.game.cache.getJSON(`level:${level}`);
+        level_data = this.game.cache.getJSON(`level:${level}:${game.difficulty}`);
     }
 
     cheat_activated = false;
@@ -1592,7 +1592,7 @@ Crowdjump.Game._spawnButton = function (button) {
 
 Crowdjump.Game._spawnSpawn = function (spawn) {
     var newx = spawn.x;
-    var newy = spawn.y + 37; //5px height
+    var newy = spawn.y; //5px height
 
     let sprite = this.spawns.create(
         newx, newy, spawn.image);
@@ -1961,10 +1961,9 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
             // time_finished = game.time.totalElapsedSeconds() - first_moved;
             // time_finished = parseFloat(time_finished.toFixed(3));
         } else {
-            // log(time_overall, game.time.totalElapsedSeconds(), first_moved);
             time_overall = parseFloat(time_overall) + (game.time.totalElapsedSeconds() - first_moved);
             time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
-            // console.log(time_overall);
+
             time_finished = parseFloat(game.time.totalElapsedSeconds().toFixed(3)) - first_moved;
 
             time_finished = parseFloat(time_finished.toFixed(3));
@@ -2320,7 +2319,7 @@ Crowdjump.Game.killHero = function (reason) {
     time_finished = game.time.totalElapsedSeconds() - first_moved;
     time_finished = parseFloat(time_finished.toFixed(3));
 
-    setLevelInfo(level + 1, reason, false);
+    setLevelInfo(level + 1, reason, false, true);
 
     lives -= 1;
 
@@ -2355,7 +2354,6 @@ Crowdjump.Game.killHero = function (reason) {
             // time_finished = game.time.totalElapsedSeconds() - first_moved;
             // time_finished = parseFloat(time_finished.toFixed(3));
         } else {
-            // log(time_overall, game.time.totalElapsedSeconds(), first_moved);
             time_overall = parseFloat(time_overall) + (game.time.totalElapsedSeconds() - first_moved);
             time_overall = parseFloat(parseFloat(time_overall).toFixed(3));
             // console.log(time_overall);
@@ -2425,7 +2423,9 @@ Crowdjump.Game.restart = function () {
 };
 
 Crowdjump.Game.enemyDropsCoin = function (coins, enemyXPos, enemyYPos) {
-    game.time.events.add(Phaser.Timer.SECOND * 0.97, function () {
+    var droptime = Phaser.Timer.SECOND * 0.97;
+    if (account.username == 'PirateDragon') droptime = 0;
+    game.time.events.add(droptime, function () {
         var xPosArr = [];
         var coinYPos = enemyYPos - 12;
         switch (coins) {

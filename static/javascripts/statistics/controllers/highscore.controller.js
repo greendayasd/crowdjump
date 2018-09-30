@@ -13,6 +13,11 @@
         $scope.versions = [];
         $scope.currentVersion = '';
         $scope.lastData = '';
+        $scope.difficulties = [];
+        $scope.difficulties.push({"id": 0, "label": "easy"});
+        $scope.difficulties.push({"id": 1, "label": "normal"});
+        $scope.difficulties.push({"id": 2, "label": "hard"});
+        $scope.difficulty = 1;
 
         // Safari 3.0+ "[object HTMLElementConstructor]"
         var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) {
@@ -28,7 +33,7 @@
 
 
         function activate() {
-            Statistics.top(topcut, versionnumber).then(statisticsSuccessFn, statisticsErrorFn);
+            Statistics.top(topcut, versionnumber, $scope.difficulty).then(statisticsSuccessFn, statisticsErrorFn);
             get_versions();
 
             $scope.$on('statistics.created', function (event, statistics) {
@@ -94,7 +99,7 @@
         function receive_highscore(data) {
             if ($scope.currentVersion != versionnumber) {
                 $scope.lastData = data;
-                $scope.getVersionHighscore(versionnumber, true);
+                $scope.getVersionHighscore(versionnumber, difficulty, true);
             }
             else ($scope.updateHighscore(data));
         }
@@ -137,11 +142,11 @@
             }
         };
 
-        $scope.getVersionHighscore = function (version, receiveScore) {
+        $scope.getVersionHighscore = function (version, difficulty, receiveScore) {
+            $scope.difficulty = difficulty.id;
             $scope.currentVersion = version;
 
-
-            Statistics.top(topcut, version).then(statisticsSuccessFn, statisticsErrorFn);
+            Statistics.top(topcut, version, difficulty.id).then(statisticsSuccessFn, statisticsErrorFn);
 
             function statisticsSuccessFn(data, status, headers, config) {
                 $scope.statistics = data.data["results"];
@@ -163,8 +168,8 @@
             function historySuccessFn(data, status, headers, config) {
                 $scope.versions = data.data;
                 $scope.versions_max = data.data;
-                // $scope.versions.unshift({id: -1, label: "all"});
-                $scope.newestVersion = $scope.versions[0];
+
+
                 for (var i = $scope.versions.length - 1; i >= 0; i--) {
                     switch ($scope.versions[i].id) {
                         case 4:
@@ -191,6 +196,11 @@
                             $scope.versions.splice(i, 1);
                             break;
                     }
+
+                    //set to first
+                    $scope.newestVersion = $scope.versions[0];
+                    //set to normal
+                    $scope.difficulty = $scope.difficulties[1];
                 }
 
 

@@ -73,7 +73,7 @@ class GameInfoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = GameInfo
         fields = (
-            'id', 'user', 'version', 'rounds_started', 'rounds_won', 'enemies_killed', 'coins_collected', 'highscore',
+            'id', 'user', 'version', 'difficulty', 'rounds_started', 'rounds_won', 'enemies_killed', 'coins_collected', 'highscore',
             'jumps', 'deaths', 'restarts', 'movement_inputs', 'time_spent_game', 'eastereggs_found', "special_name",
             'highest_level')
 

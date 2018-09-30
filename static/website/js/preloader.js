@@ -49,15 +49,17 @@ Crowdjump.Preloader.prototype = {
         // alle Level laden
         var test = false;
         if (test) {
-            this.load.json('level:0', level + 'level1.json');
-            this.load.json('level:1', level + 'level2.json');
+            this.load.json('level:0:2', level + 'level3_2.json');
+            // this.load.json('level:1', level + 'level3_2.json');
 
         } else {
-            for (var i = 0; i < CONST_LEVEL; i++) {
-                var levelname = 'level';
-                levelname += i + '';
+            for (var dif = 0; dif < CONST_DIFFICULTIES; dif++) {
+                for (var i = 0; i < CONST_LEVEL; i++) {
+                    var levelname = 'level';
+                    levelname += i + '';
 
-                this.load.json('level:' + i, level + levelname + '.json?v=1');
+                    this.load.json('level:' + i + ':' + dif, level + levelname + '_' + dif + '.json?v=1');
+                }
             }
         }
 
@@ -109,6 +111,14 @@ Crowdjump.Preloader.prototype = {
             this.load.spritesheet('spawnBlue:2x1', tiles + 'spawnBlue_2x1.png', 84, 42);
             this.load.spritesheet('spawnRed:1x1', tiles + 'spawnRed_1x1.png', 42, 42);
             this.load.spritesheet('spawnRed:2x1', tiles + 'spawnRed_2x1.png', 84, 42);
+            this.load.spritesheet('spawnGreen:1x1', tiles + 'spawnGreen_1x1.png', 42, 42);
+            this.load.spritesheet('spawnGreen:2x1', tiles + 'spawnGreen_2x1.png', 84, 42);
+            this.load.spritesheet('spawnPurple:1x1', tiles + 'spawnPurple_1x1.png', 42, 42);
+            this.load.spritesheet('spawnPurple:2x1', tiles + 'spawnPurple_2x1.png', 84, 42);
+            this.load.spritesheet('spawnYellow:1x1', tiles + 'spawnYellow_1x1.png', 42, 42);
+            this.load.spritesheet('spawnYellow:2x1', tiles + 'spawnYellow_2x1.png', 84, 42);
+            this.load.spritesheet('spawnCyan:1x1', tiles + 'spawnCyan_1x1.png', 42, 42);
+            this.load.spritesheet('spawnCyan:2x1', tiles + 'spawnCyan_2x1.png', 84, 42);
         }
 
         if (CONST_SLIPPERYPLATFORMS) {
@@ -262,13 +272,19 @@ Crowdjump.Preloader.prototype = {
         if (CONST_CANNONS) this.load.image('cannonball', misc + 'cannonball.png');
 
         if (CONST_BUTTONS_AND_GATES) {
-            this.load.spritesheet('buttonRed', misc + 'button_red.png', 42, 5);
-            this.load.spritesheet('buttonBlue', misc + 'button_blue.png', 42, 5);
-            this.load.spritesheet('buttonGreen', misc + 'button_green.png', 42, 5);
+            this.load.spritesheet('button:red', misc + 'button_red.png', 42, 5);
+            this.load.spritesheet('button:blue', misc + 'button_blue.png', 42, 5);
+            this.load.spritesheet('button:green', misc + 'button_green.png', 42, 5);
+            this.load.spritesheet('button:purple', misc + 'button_purple.png', 42, 5);
+            this.load.spritesheet('button:yellow', misc + 'button_yellow.png', 42, 5);
+            this.load.spritesheet('button:cyan', misc + 'button_cyan.png', 42, 5);
 
-            this.load.spritesheet('gateRed', misc + 'gate_red.png', 42, 84);
-            this.load.spritesheet('gateBlue', misc + 'gate_blue.png', 42, 84);
-            this.load.spritesheet('gateGreen', misc + 'gate_green.png', 42, 84);
+            this.load.spritesheet('gate:red', misc + 'gate_red.png', 42, 84);
+            this.load.spritesheet('gate:blue', misc + 'gate_blue.png', 42, 84);
+            this.load.spritesheet('gate:green', misc + 'gate_green.png', 42, 84);
+            this.load.spritesheet('gate:purple', misc + 'gate_purple.png', 42, 84);
+            this.load.spritesheet('gate:yellow', misc + 'gate_yellow.png', 42, 84);
+            this.load.spritesheet('gate:cyan', misc + 'gate_cyan.png', 42, 84);
         }
 
         //audio
@@ -315,11 +331,13 @@ Crowdjump.Preloader.prototype = {
 
             game.authenticated = true;
             if (game.gameInfo == '' || game.gameInfo == undefined) game.authenticated = false;
-            else if (account.uploaded_character != '' && account.uploaded_character != null) {
-                game.load.image(getFileName(account.uploaded_character), account.uploaded_character);
-                game.load.start();
+            else {
+                game.difficulty = account.difficulty;
+                if (account.uploaded_character != '' && account.uploaded_character != null) {
+                    game.load.image(getFileName(account.uploaded_character), account.uploaded_character);
+                    game.load.start();
+                }
             }
-
 
             if (CONST_LEVELSELECTION || CONST_CHARACTERSELECTION) {
                 this.state.start('Startmenu');

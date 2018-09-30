@@ -144,6 +144,33 @@
                 function historySuccessFn(data, status, headers, config) {
                     $scope.versions = data.data;
                     $scope.newestVersion = $scope.versions[0];
+                    for (var i = $scope.versions.length - 1; i >= 0; i--) {
+                        switch ($scope.versions[i].id) {
+                            case 4:
+                            case 5:
+                            case 8:
+                            case 9:
+                            case 11:
+                            case 13:
+                            case 15:
+                            case 17:
+                            case 19:
+                            case 21:
+                            case 23:
+                            case 25:
+                            case 27:
+                            case 29:
+                            case 31:
+                            case 33:
+                            case 35:
+                            case 37:
+                            case 39:
+                            case 41:
+                            case 43:
+                                $scope.versions.splice(i, 1);
+                                break;
+                        }
+                    }
 
                 }
 
@@ -773,12 +800,10 @@
             $scope.level_json = function () {
                 var data = $scope.csv.replaceAll("this.add.sprite", "");
 
-                //remove first 35 lines
-                // data.split("\n").slice(37).join("\n");
-                // console.log(data);
+                //remove first 37 or so lines
                 var lines = data.split('\n');
-                lines.splice(0, 35);
-                lines.splice(lines.length-7, lines.length-1);
+                lines.splice(0, 37);
+                lines.splice(lines.length - 7, lines.length - 1);
                 data = lines.join('\n');
 
 
@@ -875,7 +900,7 @@
                     var split = image.split(":");
                     var type = split[1];
                     var fulltype = ', "type":"' + split[1] + '"';
-                    var standartOptions = ', "angle":' + angle +  ', "scalex":' + scalex + ', "scaley":' + scaley;
+                    var standartOptions = ', "angle":' + angle + ', "scalex":' + scalex + ', "scaley":' + scaley;
                     var endline = '},\n';
 
                     maxX = Math.max(maxX, line[0]);
@@ -942,16 +967,22 @@
 
                     if (image.startsWith("button")) {
                         var default_buttonnr = 0;
-                        if (image.startsWith("buttonBlue")) default_buttonnr = 1;
-                        if (image.startsWith("buttonGreen")) default_buttonnr = 2;
+                        if (image.startsWith("button:blue")) default_buttonnr = 1;
+                        if (image.startsWith("button:green")) default_buttonnr = 2;
+                        if (image.startsWith("button:purple")) default_buttonnr = 3;
+                        if (image.startsWith("button:yellow")) default_buttonnr = 4;
+                        if (image.startsWith("button:cyan")) default_buttonnr = 5;
                         buttons += line + ', "buttonnr":' + default_buttonnr + endline;
                         continue;
                     }
 
                     if (image.startsWith("gate")) {
                         var default_buttonnr = 0;
-                        if (image.startsWith("gateBlue")) default_buttonnr = 1;
-                        if (image.startsWith("gateGreen")) default_buttonnr = 2;
+                        if (image.startsWith("gate:blue")) default_buttonnr = 1;
+                        if (image.startsWith("gate:green")) default_buttonnr = 2;
+                        if (image.startsWith("gate:purple")) default_buttonnr = 3;
+                        if (image.startsWith("gate:yellow")) default_buttonnr = 4;
+                        if (image.startsWith("gate:cyan")) default_buttonnr = 5;
                         gates += line + ', "needs_buttonnr":' + default_buttonnr + endline;
                         continue;
                     }
@@ -959,6 +990,10 @@
                     if (image.startsWith("spawn")) {
                         var default_buttonnr = 0;
                         if (image.startsWith("spawnBlue")) default_buttonnr = 1;
+                        if (image.startsWith("spawnGreen")) default_buttonnr = 2;
+                        if (image.startsWith("spawnPurple")) default_buttonnr = 3;
+                        if (image.startsWith("spawnYellow")) default_buttonnr = 4;
+                        if (image.startsWith("spawnCyan")) default_buttonnr = 5;
                         spawns += line + ', "p_types": "' + type + '", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0' + ', "needs_buttonnr":' + default_buttonnr + endline;
                         continue;
                     }

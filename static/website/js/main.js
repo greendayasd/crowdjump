@@ -95,19 +95,21 @@ const CONST_MUTE = true;
 const CONST_PAUSE = false;
 const CONST_LEVELMUSIC = true;
 
-const CONST_CREDITS = true;
 const CONST_LEVELSELECTION = true;
 const CONST_CHARACTERSELECTION = true;
+const CONST_OPTIONMENU = true;
+const CONST_CREDITS = true;
 
 const CONST_CANVAS_X = 960;
 const CONST_CANVAS_Y = 600;
 const CONST_WORLD_CENTER_X = CONST_CANVAS_X / 2;
 const CONST_WORLD_CENTER_Y = CONST_CANVAS_Y / 2;
-const CONST_LEVEL = 3;
+const CONST_LEVEL = 4;
 
 const NUMBERS_STR = '0123456789X -';
 
-var DIFFICULTY = Object.freeze({"easy": 1, "normal": 2, "hard": 3})
+const CONST_DIFFICULTIES = 3;
+var DIFFICULTY = Object.freeze({"easy": 0, "normal": 1, "hard": 2})
 var version = '';
 
 var game;
@@ -124,8 +126,6 @@ var eastereggs_last_level = 0;
 var powerups_last_level = 0;
 var specialname_last_level = 0;
 
-
-var difficulty = DIFFICULTY.normal;
 var selected_level = -1;
 
 var time_finished = 0; //Synchronisation von DB und tracking
@@ -133,6 +133,11 @@ var time_finished = 0; //Synchronisation von DB und tracking
 var time_overall = 0;
 var time_last_level_or_restart = 0;
 var music;
+
+const fontColor = '#dbdbdb';
+const fontBackgroundColor = '#121835';
+const fontColorSelected = '#000000';
+const fontBackGroundColorSelected = '#3692ff';
 
 
 function csrfSafeMethod(method) {
@@ -148,6 +153,7 @@ window.createGame = function (canvas, scope) {
         powerupPickupCount: 0,
         eastereggPickupCount: 0,
         character: 0,
+        difficulty: DIFFICULTY.normal,
         specialName: 0,
         enemiesDefeatedCount: 0,
         timeElapsed: 0,
@@ -226,7 +232,7 @@ window.createGame = function (canvas, scope) {
 }
 
 
-function setLevelInfo(level, status, isHighscore) {
+function setLevelInfo(level, status, isHighscore, dontResetFirstMoved) {
     var username = getUsername();
     var time = time_finished;
     var final_time = ((time - time_last_level) * 1000).toFixed(0);
@@ -240,6 +246,7 @@ function setLevelInfo(level, status, isHighscore) {
         "version": version,
         "level": level,
         "status": status,
+        "difficulty": game.difficulty,
         "time": final_time,
         "jumps": game.jumps - jumps_last_level,
         "movement_inputs": game.movement_inputs - movementinputs_last_level,
@@ -276,7 +283,7 @@ function setLevelInfo(level, status, isHighscore) {
         }
     });
 
-    if (level >= CONST_LEVEL) {
+    if (level >= CONST_LEVEL && !dontResetFirstMoved) {
         //reset after setLevelInfo
         first_moved = 0;
         time_finished = 0;
@@ -334,6 +341,24 @@ function changeCharacter() {
     });
 }
 
+function changeDifficulty() {
+    var data = {
+        "difficulty": game.difficulty
+    };
+
+    $.ajax({
+        url: '/changeDifficulty/',
+        data: data,
+        success: function (data) {
+            account["difficulty"] = game.difficulty;
+            setCookie("authenticatedAccount", JSON.stringify(account), 365);
+        },
+        error: function (data) {
+            log("error change Difficulty", data);
+        }
+    });
+}
+
 function setInfoLastLevel() {
     time_last_level = game.time.totalElapsedSeconds().toFixed(3);
     jumps_last_level = game.jumps;
@@ -384,6 +409,7 @@ function loadStates() {
     game.state.add('LevelSelection', Crowdjump.LevelSelection);
     game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
     game.state.add('Credits', Crowdjump.Credits);
+    game.state.add('Options', Crowdjump.Options);
     game.state.start('Boot');
 }
 

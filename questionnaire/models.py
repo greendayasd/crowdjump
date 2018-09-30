@@ -117,6 +117,39 @@ class postSurvey(models.Model):
     SPGQ19 = models.TextField(default='', null=True, blank=True)
     SPGQ20 = models.TextField(default='', null=True, blank=True)
 
+
+    #newSite 3 Gamex
+
+
+    GAM00 = models.TextField(default='', null=True, blank=True)
+    GAM01 = models.TextField(default='', null=True, blank=True)
+    GAM02 = models.TextField(default='', null=True, blank=True)
+    GAM03 = models.TextField(default='', null=True, blank=True)
+    GAM04 = models.TextField(default='', null=True, blank=True)
+    GAM05 = models.TextField(default='', null=True, blank=True)
+    GAM06 = models.TextField(default='', null=True, blank=True)
+    GAM07 = models.TextField(default='', null=True, blank=True)
+    GAM08 = models.TextField(default='', null=True, blank=True)
+    GAM09 = models.TextField(default='', null=True, blank=True)
+    GAM10 = models.TextField(default='', null=True, blank=True)
+    GAM11 = models.TextField(default='', null=True, blank=True)
+    GAM12 = models.TextField(default='', null=True, blank=True)
+    GAM13 = models.TextField(default='', null=True, blank=True)
+    GAM14 = models.TextField(default='', null=True, blank=True)
+    GAM15 = models.TextField(default='', null=True, blank=True)
+    GAM16 = models.TextField(default='', null=True, blank=True)
+    GAM17 = models.TextField(default='', null=True, blank=True)
+    GAM18 = models.TextField(default='', null=True, blank=True)
+    GAM19 = models.TextField(default='', null=True, blank=True)
+    GAM20 = models.TextField(default='', null=True, blank=True)
+    GAM21 = models.TextField(default='', null=True, blank=True)
+    GAM22 = models.TextField(default='', null=True, blank=True)
+    GAM23 = models.TextField(default='', null=True, blank=True)
+    GAM24 = models.TextField(default='', null=True, blank=True)
+    GAM25 = models.TextField(default='', null=True, blank=True)
+    GAM26 = models.TextField(default='', null=True, blank=True)
+
+
     #site4 KIM / IMI
     KIM00 = models.TextField(default='', null=True, blank=True)
     KIM01 = models.TextField(default='', null=True, blank=True)
@@ -156,6 +189,12 @@ class postSurvey(models.Model):
     General08 = models.TextField(default='', null=True, blank=True)
     General09 = models.TextField(default='', null=True, blank=True)
     General10 = models.TextField(default='', null=True, blank=True)
+    General11 = models.TextField(default='', null=True, blank=True)
+    General12 = models.TextField(default='', null=True, blank=True)
+    General13 = models.TextField(default='', null=True, blank=True)
+    General14 = models.TextField(default='', null=True, blank=True)
+    General15 = models.TextField(default='', null=True, blank=True)
+    General16 = models.TextField(default='', null=True, blank=True)
 
 
     def __str__(self):

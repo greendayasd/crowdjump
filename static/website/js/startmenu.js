@@ -14,10 +14,10 @@ Crowdjump.Menu.prototype = {
         levelmusic = game.add.audio('sfx:levelmusic', 1, true);
 
         logo = this.add.sprite(CONST_WORLD_CENTER_X,
-            CONST_WORLD_CENTER_Y - 80, 'logo');
+            CONST_WORLD_CENTER_Y - 100, 'logo');
         logo.anchor.set(0.5);
         //+40 with level selection, font 40
-        startGame = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 40, "Play", {
+        startGame = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 10, "Play", {
             font: "50px Arial",
             fill: '#dbdbdb'
         });
@@ -29,7 +29,7 @@ Crowdjump.Menu.prototype = {
         key1.onDown.add(this.phasergame, this);
 
         if (CONST_CHARACTERSELECTION) {
-            selectCharacter = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 120, "Select Character", {
+            selectCharacter = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 90, "Select Character", {
                 font: "40px Arial",
                 fill: '#dbdbdb'
             });
@@ -43,7 +43,7 @@ Crowdjump.Menu.prototype = {
 
         if (CONST_LEVELSELECTION && game.gameInfo != undefined) {
             if (game.gameInfo.highest_level > 0) {
-                selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 170, "Select Level", {
+                selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 140, "Select Level", {
                     font: "40px Arial",
                     fill: '#dbdbdb'
                 });
@@ -58,7 +58,20 @@ Crowdjump.Menu.prototype = {
 
 
         if (CONST_CREDITS) {
-            credits = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 220, "Credits", {
+            credits = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 190, "Options", {
+                font: "40px Arial",
+                fill: '#dbdbdb'
+            });
+            credits.anchor.set(0.5);
+            credits.inputEnabled = true;
+            credits.events.onInputDown.add(this.options, this);
+
+            key4 = game.input.keyboard.addKey(Phaser.Keyboard.FOUR);
+            key4.onDown.add(this.options, this);
+        }
+
+        if (CONST_CREDITS) {
+            credits = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 250, "Credits", {
                 font: "40px Arial",
                 fill: '#dbdbdb'
             });
@@ -66,8 +79,8 @@ Crowdjump.Menu.prototype = {
             credits.inputEnabled = true;
             credits.events.onInputDown.add(this.credits, this);
 
-            key4 = game.input.keyboard.addKey(Phaser.Keyboard.FOUR);
-            key4.onDown.add(this.credits, this);
+            key5 = game.input.keyboard.addKey(Phaser.Keyboard.FIVE);
+            key5.onDown.add(this.credits, this);
         }
 
 
@@ -91,6 +104,10 @@ Crowdjump.Menu.prototype = {
 
     characterSelection: function () {
         game.state.start('CharacterSelection');
+    },
+
+    options: function () {
+        game.state.start('Options');
     },
 
     credits: function () {

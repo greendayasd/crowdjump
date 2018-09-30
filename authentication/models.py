@@ -76,6 +76,8 @@ class Account(AbstractBaseUser):
 
     versionlabel = models.CharField(max_length=40, blank=True, default='0.01')
 
+    difficulty = models.IntegerField(default=1)
+
     character = models.CharField(max_length=40, blank=True)
     uploaded_character = models.ImageField(upload_to=character_upload, storage=OverwriteStorage(), null=True,
                                            validators=[validate_character_size])
@@ -134,6 +136,9 @@ class GameInfo(models.Model):
     eastereggs_found = models.IntegerField(default=0)
     special_name = models.IntegerField(default=0)
     powerups = models.IntegerField(default=0)
+
+
+    difficulty = models.IntegerField(default=0)
 
     overall_coins = models.IntegerField(default=0)
     overall_eastereggs = models.IntegerField(default=0)
