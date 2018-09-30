@@ -17,7 +17,7 @@ Crowdjump.Endscreen.prototype = {
     create: function () {
         this.game.stage.backgroundColor = '#1948cd';
         var scoreText = '';
-
+        lives = CONST_HERO_LIVES;
 
         if (CONST_TIME) {
 

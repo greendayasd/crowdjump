@@ -72,12 +72,13 @@
             return function (a, b) {
                 return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
             }
-        }
+        };
 
         $scope.sort_all = function () {
             $scope.statistics.sort(sort_by("highscore", false, parseInt));
 
-        }
+        };
+
         var ws_scheme = 'wss'; //window.location.protocol == "https:" ? "wss" : "ws";
         var port = ':8001';
         if (window.location.host == "localhost:8000") {
@@ -97,9 +98,11 @@
         };
 
         function receive_highscore(data) {
-            if ($scope.currentVersion != versionnumber) {
+            var difficulty = parseInt(data["difficulty"]);
+
+            if ($scope.currentVersion != versionnumber || difficulty != $scope.difficulty.id) {
                 $scope.lastData = data;
-                $scope.getVersionHighscore(versionnumber, difficulty, true);
+                $scope.getVersionHighscore(versionnumber, $scope.difficulties[difficulty], true);
             }
             else ($scope.updateHighscore(data));
         }
@@ -143,7 +146,7 @@
         };
 
         $scope.getVersionHighscore = function (version, difficulty, receiveScore) {
-            $scope.difficulty = difficulty.id;
+            $scope.difficulty = difficulty;
             $scope.currentVersion = version;
 
             Statistics.top(topcut, version, difficulty.id).then(statisticsSuccessFn, statisticsErrorFn);

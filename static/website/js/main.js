@@ -303,6 +303,7 @@ function resetStats() {
     game.deaths = 0;
     game.restarts = 0;
     game.specialName = 0;
+    game
 }
 
 function increase_versionlabel(cookie_increase) {
