@@ -116,7 +116,7 @@
                 var statistics = '';
                 var today = new Date();
                 var firstVersion = new Date(2018, 9, 14);
-                var amountVersions = today.getDate() - firstVersion.getDate();
+                var amountVersions = (today.getDate()+30 - firstVersion.getDate())%30;
                 var header = form_csv('id', 'username', 'register_version', 'ideas', 'ideavotes', 'versions_played (of ' + amountVersions + ')', 'activeAnd', 'activeOr', 'last_online');
 
                 var playedIdea80 = 0;
@@ -215,6 +215,7 @@
                         var g = acc.gameinfos[gcount];
                         var gdate = convertJSDate(g.version.created_at);
                         var version = dateToArrayPos(gdate);
+                        // log(gdate,version);
                         dailyList[version][accPos]["rounds_started"] = g.rounds_started;
                         dailyList[version][accPos]["rounds_won"] = g.rounds_won;
 
@@ -348,31 +349,31 @@
                             version_day = '0.26';
                             break;
                         case 14:
-                            version_day = '0.30';
+                            version_day = '0.28';
                             break;
                         case 15:
-                            version_day = '0.32';
+                            version_day = '0.30';
                             break;
                         case 16:
-                            version_day = '0.34';
+                            version_day = '0.32';
                             break;
                         case 17:
-                            version_day = '0.36';
+                            version_day = '0.34';
                             break;
                         case 18:
-                            version_day = '0.38';
+                            version_day = '0.36';
                             break;
                         case 19:
-                            version_day = '0.40';
+                            version_day = '0.38';
                             break;
                         case 20:
-                            version_day = '0.42';
+                            version_day = '0.40';
                             break;
                         case 21:
-                            version_day = '0.44';
+                            version_day = '0.42';
                             break;
                         case 22:
-                            version_day = '0.45';
+                            version_day = '0.44';
                             break;
                     }
                     version_day = 'v' + version_day + date;
@@ -395,7 +396,8 @@
                 var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2), time[0], time[1], time[2]);
                 if (jsDate.getDate() == 14) return (jsDate.getDate() + 1);
                 if (time[0] >= 19) {
-                    return (jsDate.getDate() + 1) % 30;
+                    if (jsDate.getDate() == 30) return 1;
+                    return (jsDate.getDate() + 1);
                 } else {
                     return jsDate.getDate();
                 }
@@ -416,7 +418,7 @@
 
             function dateToArrayPos(date) {
                 if (date <= 30 && date >= 14) return date - 15;
-                else return date + 16;
+                else return date + 15;
             }
 
             $scope.createFile = function (text, name, type, elementname) {

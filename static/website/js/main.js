@@ -383,9 +383,10 @@ function backToMainMenu() {
     if (game.state.current == "Game") {
         time_finished = game.time.totalElapsedSeconds() - first_moved;
         time_finished = parseFloat(time_finished.toFixed(3));
+        setLevelInfo(this.level + 1, "back to start menu");
         if (first_moved == 0) time_finished = 0;
     }
-    if (game.state.current != "Endscreen") setLevelInfo(this.level + 1, "back to start menu");
+    // if (game.state.current != "Endscreen")
 
     // updateInfo(false);
     this.game.time.reset();
