@@ -396,7 +396,7 @@
                 var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2), time[0], time[1], time[2]);
                 if (jsDate.getDate() == 14) return (jsDate.getDate() + 1);
                 if (time[0] >= 19) {
-                    return jsDate.getDate() + 1;
+                    return (jsDate.getDate() + 1) % 30;
                 } else {
                     return jsDate.getDate();
                 }

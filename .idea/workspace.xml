@@ -313,8 +313,8 @@
       <file leaf-file-name="data.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2682">
-              <caret line="418" column="41" selection-start-line="418" selection-start-column="41" selection-end-line="418" selection-end-column="41" />
+            <state relative-caret-position="438">
+              <caret line="398" column="54" selection-start-line="398" selection-start-column="54" selection-end-line="398" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -536,9 +536,9 @@
       <path value="$PROJECT_DIR$/static/bower_components/underscore/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="110" />
-    <option name="y" value="-16" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="264" />
+    <option name="y" value="-12" />
     <option name="width" value="1156" />
     <option name="height" value="1061" />
   </component>
@@ -1554,8 +1554,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2682">
-          <caret line="418" column="41" selection-start-line="418" selection-start-column="41" selection-end-line="418" selection-end-column="41" />
+        <state relative-caret-position="438">
+          <caret line="398" column="54" selection-start-line="398" selection-start-column="54" selection-end-line="398" selection-end-column="54" />
         </state>
       </provider>
     </entry>
