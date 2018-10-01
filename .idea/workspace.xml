@@ -6,20 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/winner_shoutout.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/winner_shoutout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/website/js/preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/preloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level1_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level1_0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level1_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level1_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level1_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level1_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level4_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level4_0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level4_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level4_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level4_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level4_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/javascripts.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -501,23 +488,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="preloader.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="preloader.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="213" column="29" selection-start-line="213" selection-start-column="29" selection-end-line="213" selection-end-column="39" />
+            <state relative-caret-position="476">
+              <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
               <folding>
                 <element signature="e#73#114#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="level4_0.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/website/level/level4_0.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="899">
-              <caret line="162" column="1" selection-start-line="162" selection-start-column="1" selection-end-line="162" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -552,8 +530,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+            <state relative-caret-position="-14">
+              <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -663,7 +641,6 @@
         <option value="$PROJECT_DIR$/static/website/level/level1_1.json" />
         <option value="$PROJECT_DIR$/static/website/level/level1_2.json" />
         <option value="$PROJECT_DIR$/static/website/js/endscreen.js" />
-        <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
         <option value="$PROJECT_DIR$/static/website/js/game.js" />
         <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/templates/layout/winner_shoutout.html" />
@@ -673,6 +650,7 @@
         <option value="$PROJECT_DIR$/authentication/views.py" />
         <option value="$PROJECT_DIR$/static/website/level/level4_1.json" />
         <option value="$PROJECT_DIR$/static/website/level/level4_0.json" />
+        <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
       </list>
     </option>
   </component>
@@ -2037,13 +2015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/level/level4_1.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="831">
@@ -2051,20 +2022,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="213" column="29" selection-start-line="213" selection-start-column="29" selection-end-line="213" selection-end-column="39" />
-          <folding>
-            <element signature="e#73#114#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/level/level4_0.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="899">
           <caret line="162" column="1" selection-start-line="162" selection-start-column="1" selection-end-line="162" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-14">
+          <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+          <folding>
+            <element signature="e#73#114#0" />
+          </folding>
         </state>
       </provider>
     </entry>
