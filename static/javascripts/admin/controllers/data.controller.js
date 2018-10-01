@@ -215,7 +215,6 @@
                         var g = acc.gameinfos[gcount];
                         var gdate = convertJSDate(g.version.created_at);
                         var version = dateToArrayPos(gdate);
-                        log(version, gdate);
                         dailyList[version][accPos]["rounds_started"] = g.rounds_started;
                         dailyList[version][accPos]["rounds_won"] = g.rounds_won;
 
