@@ -152,12 +152,15 @@ window.createGame = function (canvas, scope) {
         coinPickupCount: 0,
         powerupPickupCount: 0,
         eastereggPickupCount: 0,
+        highest_level: 0,
         character: 0,
         difficulty: DIFFICULTY.normal,
         specialName: 0,
         enemiesDefeatedCount: 0,
         timeElapsed: 0,
-        gameInfo: {},
+        gameInfoEasy: {},
+        gameInfoNormal: {},
+        gameInfoHard: {},
         csrftoken: '',
         jumps: 0,
         movement_inputs: 0,
@@ -185,6 +188,7 @@ window.createGame = function (canvas, scope) {
     if (account == '' || account == null || account == undefined) {
         console.log("account not found");
         game.character = 'c' + 0;
+        game.highest_level = 0;
         loadStates();
         return '';
     }
@@ -201,7 +205,10 @@ window.createGame = function (canvas, scope) {
     var path = '/api/v1/gameinfo/?format=json&user__username=' + username + '&version__label=' + version;
 
     jQuery.get(path, function (data) {
-        game.gameInfo = data[0];
+        game.gameInfoEasy = data[0];
+        game.gameInfoNormal = data[1];
+        game.gameInfoHard = data[2];
+        game.highest_level = Math.max(game.gameInfoEasy.highest_level, game.gameInfoNormal.highest_level, game.gameInfoHard.highest_level);
         loadStates();
     });
 
@@ -237,10 +244,6 @@ function setLevelInfo(level, status, isHighscore, dontResetFirstMoved) {
     var time = time_finished;
     var final_time = ((time - time_last_level) * 1000).toFixed(0);
 
-    if (status == 'completed' && game.gameInfo != undefined){
-        game.gameInfo.highest_level = Math.max(game.gameInfo.highest_level,level);
-    }
-
     var data = {
         "username": username,
         "version": version,
@@ -264,7 +267,18 @@ function setLevelInfo(level, status, isHighscore, dontResetFirstMoved) {
 
     // isHighscore = true;
     if (isHighscore) {
-        data['highscore'] = game.gameInfo["highscore"];
+
+        switch (game.difficulty) {
+            case DIFFICULTY.easy:
+                data['highscore'] = game.gameInfoEasy["highscore"];
+                break;
+            case DIFFICULTY.normal:
+                data['highscore'] = game.gameInfoNormal["highscore"];
+                break;
+            case DIFFICULTY.hard:
+                data['highscore'] = game.gameInfoHard["highscore"];
+                break;
+        }
         resetStats();
     }
 
@@ -303,7 +317,6 @@ function resetStats() {
     game.deaths = 0;
     game.restarts = 0;
     game.specialName = 0;
-    game
 }
 
 function increase_versionlabel(cookie_increase) {

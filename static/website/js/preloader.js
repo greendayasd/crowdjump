@@ -330,7 +330,7 @@ Crowdjump.Preloader.prototype = {
             text.setText('');
 
             game.authenticated = true;
-            if (game.gameInfo == '' || game.gameInfo == undefined) {
+            if (game.gameInfoEasy == '' || game.gameInfoEasy == undefined) {
                 game.authenticated = false;
                 game.difficulty = DIFFICULTY.normal;
             }

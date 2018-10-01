@@ -384,8 +384,17 @@ Crowdjump.Game.init = function (data) {
         level = 0;
     }
     if (level == 0 && game.authenticated) {
-        game.gameInfo["rounds_started"] = game.gameInfo["rounds_started"] + 1;
-        // console.error("started " + game.gameInfo["rounds_started"]);
+        switch (game.difficulty) {
+            case DIFFICULTY.easy:
+                game.gameInfoEasy["rounds_started"] = game.gameInfoEasy["rounds_started"] + 1;
+                break;
+            case DIFFICULTY.normal:
+                game.gameInfoNormal["rounds_started"] = game.gameInfoNormal["rounds_started"] + 1;
+                break;
+            case DIFFICULTY.hard:
+                game.gameInfoHard["rounds_started"] = game.gameInfoHard["rounds_started"] + 1;
+                break;
+        }
     }
     first_moved = -1;
     second_jump = true;
@@ -1939,6 +1948,9 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
 
     //dont set time_finished in the last level to avoid double time in last frame
 
+
+    game.highest_level = Math.max(game.highest_level, level+1);
+
     //manually selected level
     if (selected_level >= 0) {
         time_finished = game.time.totalElapsedSeconds() - first_moved;
@@ -2424,7 +2436,7 @@ Crowdjump.Game.restart = function () {
 
 Crowdjump.Game.enemyDropsCoin = function (coins, enemyXPos, enemyYPos) {
     var droptime = Phaser.Timer.SECOND * 0.97;
-    if (account.username == 'PirateDragon') droptime = 0;
+    if (account != null) if (account.username == 'PirateDragon') droptime = 0;
     game.time.events.add(droptime, function () {
         var xPosArr = [];
         var coinYPos = enemyYPos - 12;

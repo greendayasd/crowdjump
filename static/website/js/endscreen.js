@@ -17,6 +17,8 @@ Crowdjump.Endscreen.prototype = {
     create: function () {
         this.game.stage.backgroundColor = '#1948cd';
         var scoreText = '';
+        var highscore = 0;
+
         lives = CONST_HERO_LIVES;
 
         if (CONST_TIME) {
@@ -33,10 +35,29 @@ Crowdjump.Endscreen.prototype = {
             scoreText = "Congratulations, you beat level " + (selected_level + 1) + " in " + time_score + " seconds!";
         } else {
             if (game.authenticated) {
-                if (game.gameInfo["highscore"] == null || game.gameInfo["highscore"] == 0 || game.gameInfo["highscore"] == NaN || isNaN(game.gameInfo["highscore"])) {
-                    game.gameInfo["highscore"] = -1;
+
+
+                switch (game.difficulty) {
+                    case DIFFICULTY.easy:
+                        if (game.gameInfoEasy["highscore"] == null || game.gameInfoEasy["highscore"] == 0 || game.gameInfoEasy["highscore"] == NaN || isNaN(game.gameInfoEasy["highscore"])) {
+                            highscore = -1;
+                        }
+                        old_time = (game.gameInfoEasy["highscore"] + 0);
+                        break;
+                    case DIFFICULTY.normal:
+                        if (game.gameInfoNormal["highscore"] == null || game.gameInfoNormal["highscore"] == 0 || game.gameInfoNormal["highscore"] == NaN || isNaN(game.gameInfoNormal["highscore"])) {
+                            highscore = -1;
+                        }
+                        old_time = (game.gameInfoNormal["highscore"] + 0);
+                        break;
+                    case DIFFICULTY.hard:
+                        if (game.gameInfoHard["highscore"] == null || game.gameInfoHard["highscore"] == 0 || game.gameInfoHard["highscore"] == NaN || isNaN(game.gameInfoHard["highscore"])) {
+                            highscore = -1;
+                        }
+                        old_time = (game.gameInfoHard["highscore"] + 0);
+                        break;
                 }
-                old_time = (game.gameInfo["highscore"] + 0);
+
             }
             // console.error("old_time " + old_time);
             // console.error("new_time " + time_score);
@@ -49,12 +70,12 @@ Crowdjump.Endscreen.prototype = {
                 else if (old_time == -1) {
                     highscore_text += 'This is a new highscore!';
                     isHighscore = true;
-                    game.gameInfo["highscore"] = time_score * 1000;
+                    highscore = time_score * 1000;
                 } else {
                     if (old_time > time_score * 1000) {
                         highscore_text += 'This is a new highscore, your previous highscore was ' + (old_time / 1000) + ' seconds!';
                         isHighscore = true;
-                        game.gameInfo["highscore"] = time_score * 1000;
+                        highscore = time_score * 1000;
                     } else {
                         highscore_text += 'Your highscore is ' + (old_time / 1000) + ' seconds!';
                     }
@@ -64,6 +85,20 @@ Crowdjump.Endscreen.prototype = {
 
             scoreText = "Congratulations, you beat the game in " + time_score + " seconds!" + highscore_text;
         }
+
+
+        switch (game.difficulty) {
+            case DIFFICULTY.easy:
+                game.gameInfoEasy["highscore"] = highscore;
+                break;
+            case DIFFICULTY.normal:
+                game.gameInfoNormal["highscore"] = highscore;
+                break;
+            case DIFFICULTY.hard:
+                game.gameInfoHard["highscore"] = highscore;
+                break;
+        }
+
         score = this.add.text(CONST_WORLD_CENTER_X, 60, scoreText, {fill: '#dbdbdb', align: "center"});
         score.anchor.set(0.5);
 
@@ -126,7 +161,17 @@ function setInfo(isHighscore) {
     if (selected_level >= 0) setLevelInfo(selected_level + 1, "completed_training", false);
     else {
         if (game.authenticated) {
-            game.gameInfo["rounds_won"] = game.gameInfo["rounds_won"] + 1;
+            switch (game.difficulty) {
+                case DIFFICULTY.easy:
+                    game.gameInfoEasy["rounds_won"] = game.gameInfoEasy["rounds_won"] + 1;
+                    break;
+                case DIFFICULTY.normal:
+                    game.gameInfoNormal["rounds_won"] = game.gameInfoNormal["rounds_won"] + 1;
+                    break;
+                case DIFFICULTY.hard:
+                    game.gameInfoHard["rounds_won"] = game.gameInfoHard["rounds_won"] + 1;
+                    break;
+            }
         }
         setLevelInfo(level + 1, "completed", isHighscore);
     }

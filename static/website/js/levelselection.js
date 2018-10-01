@@ -12,7 +12,8 @@ Crowdjump.LevelSelection.prototype = {
             border_horizontal = 170,
             border_vertical = 70;
         group = this.game.add.group();
-        for (var i = 0; i < game.gameInfo.highest_level; i++) {
+
+        for (var i = 0; i < game.highest_level; i++) {
             text[i] = this.add.text(0, 0, "Level" + (i + 1), {
                 font: "35px Arial",
                 fill: '#dbdbdb',
