@@ -1,8 +1,10 @@
 <div class="container-fluid" ng-controller="NavbarController as vm">
     <div class=" text-center" style="text-align: center">
-        <p class="text-center" style="text-align: center">The current "Master of Masters" with {{ wins }} wins in the
+        <p class="text-center" style="text-align: center">The current "Master of Masters" with <b>{{ wins }}</b> wins on normal in the
             last 7 days
-            is {{ winner }}!<br>
+            is <b>{{ winner }}</b>!<br>
+            The "Master of Masters" for the easy difficulty is <b>{{ winnerEasy }}</b> with <b>{{ winsEasy }}</b> wins. <br>
+            For the hard difficulty the "Master of Masters" is <b>{{ winnerHard }}</b> with <b>{{ winsHard }}</b> wins! <br><br>
             If you want to be the new Master of Crowdjump,
             <a href="game">try to beat the record! </a></p>
     </div>

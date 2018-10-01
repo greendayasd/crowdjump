@@ -47,10 +47,11 @@ Crowdjump.Preloader.prototype = {
 
 
         // alle Level laden
-        var test = false;
+        var test = true;
         if (test) {
-            this.load.json('level:0:2', level + 'level3_2.json');
-            // this.load.json('level:1', level + 'level3_2.json');
+            this.load.json('level:0:0', level + 'level4_0.json');
+            this.load.json('level:0:1', level + 'level4_1.json');
+            this.load.json('level:0:2', level + 'level4_2.json');
 
         } else {
             for (var dif = 0; dif < CONST_DIFFICULTIES; dif++) {
@@ -128,12 +129,18 @@ Crowdjump.Preloader.prototype = {
         }
 
         if (CONST_LAVA) {
-            this.load.image('lava:1x1', tiles + 'lava_1x1.png');
-            this.load.image('lava:2x1', tiles + 'lava_2x1.png');
             this.load.image('lavabase:1x1', tiles + 'lavabase_1x1.png');
             this.load.image('lavabase:2x2', tiles + 'lavabase_2x2.png');
             this.load.image('fakelavabase:1x1', tiles + 'fakelavabase_1x1.png');
-            this.load.image('fakelava:1x1', tiles + 'fakelava_1x1.png');
+            if (CONST_ANIMATE_LAVA) {
+                this.load.spritesheet('lava:1x1', tiles + 'lava_1x1_animated.png', 42, 38);
+                this.load.spritesheet('lava:2x1', tiles + 'lava_2x1_animated.png', 84, 38);
+                this.load.spritesheet('fakelava:1x1', tiles + 'lava_1x1_animated.png', 42, 38);
+            } else {
+                this.load.image('lava:1x1', tiles + 'lava_1x1.png');
+                this.load.image('lava:2x1', tiles + 'lava_2x1.png');
+                this.load.image('fakelava:1x1', tiles + 'fakelava_1x1.png');
+            }
         }
 
         if (CONST_LAVASWITCHINGPLATFORM) {
@@ -185,6 +192,7 @@ Crowdjump.Preloader.prototype = {
             this.load.image('powerup:throughwalls', collectibles + 'powerup_throughwalls.png');
             this.load.image('powerup:permjumpboost', collectibles + 'powerup_permjumpboost.png');
             this.load.image('powerup:time', collectibles + 'powerup_time.png');
+            this.load.image('powerup:doublejump', collectibles + 'powerup_doublejump.png');
             // this.load.image('powerup:lavaorb', collectibles + 'powerup_lavaorb.png');
             // this.load.image('powerup:jumpboost', collectibles + 'powerup_jumpboost.png');
             // this.load.image('powerup:zhonyas', collectibles + 'powerup_zhonyas.png');

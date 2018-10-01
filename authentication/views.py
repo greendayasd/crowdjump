@@ -331,7 +331,7 @@ def SendGameData(request):
     if version != correct_version:
         return JsonResponse('{"success":"wrong_version"}', safe=False)
 
-    levelcount = 4
+    levelcount = 5
 
     level = request.GET.get('level')
     status = request.GET.get('status')

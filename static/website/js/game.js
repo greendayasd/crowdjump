@@ -30,6 +30,7 @@ Crowdjump.Game = function (game) {
 
     var pu_lavaorb = false;
     var pu_jumpboost = false;
+    var pu_doublejump = false;
     var pu_permjumpboost = false;
     var pu_throughwalls = false;
     var pu_timeslow = 1;
@@ -224,7 +225,7 @@ Hero.prototype.jump = function () {
         jumpTimer = 1;
         game.jumps++;
     } else {
-        if (second_jump && CONST_DOUBLE_JUMP) {
+        if (second_jump && (CONST_DOUBLE_JUMP || pu_doublejump)) {
             if (pu_jumpboost) {
                 this.body.velocity.y = -(1.1 * jump_speed);
                 pu_jumpboost = false;
@@ -361,7 +362,7 @@ Crowdjump.Game.init = function (data) {
     this.keys.up.onDown.add(jump, this);
     this.keys.space.onDown.add(jump, this);
 
-    this.keys.esc.onDown.add(backToMainMenu);
+    this.keys.esc.onDown.add(this.mainMenu);
 
     this.wasd = {};
     if (CONST_WASD_CONTROLS) {
@@ -407,6 +408,7 @@ Crowdjump.Game.init = function (data) {
     pu_jumpboost = false;
     pu_permjumpboost = false;
     pu_lavaorb = false;
+    pu_doublejump = false;
     pu_throughwalls = false;
     pu_timeslow = 1;
 
@@ -1417,7 +1419,16 @@ Crowdjump.Game._spawnFakePlatform = function (platform) {
     var newx = platform.x;
     var newy = platform.y;
 
+    if (platform.image == "fakelava:1x1" && CONST_ANIMATE_LAVA){
+        newy += 4;
+    }
+
     sprite = this.fakePlatforms.create(newx, newy, platform.image);
+
+    if (platform.image == "fakelava:1x1" && CONST_ANIMATE_LAVA){
+        sprite.animations.add('animate_lava', [0,1,2,3,4,5,6,7], 5, true);
+        sprite.animations.play('animate_lava');
+    }
 
 };
 
@@ -1459,6 +1470,14 @@ Crowdjump.Game._spawnLava = function (lava) {
     }
     sprite.body.allowGravity = false;
     sprite.body.immovable = true;
+
+
+    if (CONST_ANIMATE_LAVA){
+        newy += 4;
+        sprite.animations.add('animate_lava', [0,1,2,3,4,5,6,7], 5, true);
+        sprite.animations.play('animate_lava');
+
+    }
 };
 
 Crowdjump.Game._spawnSpikes = function (spike) {
@@ -1472,8 +1491,18 @@ Crowdjump.Game._spawnSpikes = function (spike) {
         newy += height / 2;
     }
 
-    //4 pixel down because of collision
-    newy += 4;
+    //4 pixel away because of collision
+    switch (spike.image){
+        case 'spikes:1x1':
+            newy +=4;
+            break;
+        case 'spikesLeft:1x1':
+            newx-=4;
+            break;
+        case 'spikesRight:1x1':
+            newx +=4;
+            break;
+    }
 
     let sprite = this.spikes.create(
         newx, newy, spike.image);
@@ -1809,6 +1838,11 @@ Crowdjump.Game.powerup_time = function () {
     this.showPowerupMessage('Slooooow');
 }
 
+Crowdjump.Game.powerup_doublejump = function () {
+    pu_doublejump = true;
+    this.showPowerupMessage('Double Jump!');
+}
+
 Crowdjump.Game._spawnEasteregg = function (easteregg) {
     //+21, 42x42 tile
     if (easteregg == undefined) return;
@@ -2055,6 +2089,9 @@ Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
             break;
         case "powerup:time":
             this.powerup_time();
+            break;
+        case "powerup:doublejump":
+            this.powerup_doublejump();
             break;
         default:
             console.log(powerup.key);
@@ -2512,3 +2549,8 @@ Crowdjump.Game.togglePause = function () {
 Crowdjump.Game.toggleFPS = function () {
     show_fps = !show_fps;
 };
+
+Crowdjump.Game.mainMenu = function () {
+    lives=CONST_HERO_LIVES;
+    backToMainMenu();
+}

@@ -105,7 +105,7 @@ const CONST_CANVAS_X = 960;
 const CONST_CANVAS_Y = 600;
 const CONST_WORLD_CENTER_X = CONST_CANVAS_X / 2;
 const CONST_WORLD_CENTER_Y = CONST_CANVAS_Y / 2;
-const CONST_LEVEL = 4;
+const CONST_LEVEL = 5;
 
 const NUMBERS_STR = '0123456789X -';
 
@@ -206,7 +206,6 @@ window.createGame = function (canvas, scope) {
     var path = '/api/v1/gameinfo/?format=json&user__username=' + username + '&version__label=' + version;
 
     jQuery.get(path, function (data) {
-        console.log(data);
 
         //random order
         switch (data[0].difficulty){
@@ -431,6 +430,7 @@ function backToMainMenu() {
     if (game.state.current == "Game") {
         time_finished = game.time.totalElapsedSeconds() - first_moved;
         time_finished = parseFloat(time_finished.toFixed(3));
+        Crowdjump.Game.lives = CONST_HERO_LIVES;
         setLevelInfo(this.level + 1, "back to start menu");
         if (first_moved == 0) time_finished = 0;
     }

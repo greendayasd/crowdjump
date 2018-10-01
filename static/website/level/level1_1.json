@@ -166,7 +166,8 @@
 		{"image": "invisible_wall", "x": 2646, "y": 798, "angle":0, "scalex":1, "scaley":1}
 	],
 	"flags": [
-		{"image": "flag", "x": 3780, "y": 84, "angle":0, "scalex":1, "scaley":1}
+		{"image": "flag", "x": 3780, "y": 84, "angle":0, "scalex":1, "scaley":1},
+		{"image": "flag", "x": 84, "y": 0, "angle":0, "scalex":1, "scaley":1}
 	],
 	"hero":
 		{"image": "hero", "x": 42, "y": 798, "angle":0, "scalex":1, "scaley":1},
