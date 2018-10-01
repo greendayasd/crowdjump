@@ -7,8 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level3_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level3_0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level3_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level3_1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/javascripts.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,7 +39,7 @@
       <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
+            <state relative-caret-position="17">
               <caret line="430" column="62" selection-start-line="430" selection-start-column="62" selection-end-line="430" selection-end-column="62" />
               <folding>
                 <element signature="e#34#114#0" />
@@ -256,26 +255,17 @@
                 <element signature="e#44032#44153#0" />
                 <element signature="e#44383#46086#0" />
                 <element signature="e#44393#46080#0" />
-                <element signature="e#44425#44836#0" />
                 <element signature="e#44487#44813#0" />
                 <element signature="e#44532#44607#0" />
                 <element signature="e#44648#44672#0" />
                 <element signature="e#44678#44701#0" />
-                <element signature="e#44849#45167#0" />
                 <element signature="e#44911#45144#0" />
                 <element signature="e#44956#45032#0" />
-                <element signature="e#45180#45278#0" />
                 <element signature="e#45236#45255#0" />
-                <element signature="e#45291#45393#0" />
                 <element signature="e#45351#45370#0" />
-                <element signature="e#45406#45566#0" />
                 <element signature="e#45474#45543#0" />
-                <element signature="e#45579#45737#0" />
                 <element signature="e#45638#45714#0" />
-                <element signature="e#45750#45909#0" />
                 <element signature="e#45809#45886#0" />
-                <element signature="e#45922#45962#0" />
-                <element signature="e#45975#46070#0" />
                 <element signature="e#46113#46690#0" />
                 <element signature="e#46150#46684#0" />
                 <element signature="e#46529#46587#0" />
@@ -290,7 +280,6 @@
                 <element signature="e#47594#48391#0" />
                 <element signature="e#47668#47877#0" />
                 <element signature="e#47942#48060#0" />
-                <element signature="e#47997#48054#0" />
                 <element signature="e#48172#48262#0" />
                 <element signature="e#48268#48317#0" />
                 <element signature="e#48441#49311#0" />
@@ -303,10 +292,6 @@
                 <element signature="e#49858#49948#0" />
                 <element signature="e#49954#50003#0" />
                 <element signature="e#50128#50921#0" />
-                <element signature="e#50164#50316#0" />
-                <element signature="e#50325#50515#0" />
-                <element signature="e#50524#50715#0" />
-                <element signature="e#50724#50915#0" />
                 <element signature="e#51035#51705#0" />
                 <element signature="e#51114#51327#0" />
                 <element signature="e#51430#51520#0" />
@@ -320,17 +305,17 @@
       <file leaf-file-name="highscore.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
+            <state relative-caret-position="2499">
               <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="level3_2.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/website/level/level3_2.json">
+      <file leaf-file-name="data.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="831">
-              <caret line="110" column="1" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
+            <state relative-caret-position="17">
+              <caret line="86" column="21" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -366,11 +351,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4386">
               <caret line="258" column="36" selection-start-line="258" selection-start-column="36" selection-end-line="258" selection-end-column="36" />
-              <folding>
-                <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#2;n#div#0;n#!!top" />
-                <element signature="n#div#4;n#div#0;n#!!top" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -384,11 +364,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2924">
-              <caret line="172" column="18" selection-start-line="172" selection-start-column="18" selection-end-line="172" selection-end-column="18" />
+            <state relative-caret-position="510">
+              <caret line="156" column="43" selection-start-line="156" selection-start-column="43" selection-end-line="156" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -506,7 +486,6 @@
         <option value="$PROJECT_DIR$/ideas/views.py" />
         <option value="$PROJECT_DIR$/static/javascripts/statistics/services/statistics.service.js" />
         <option value="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" />
-        <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" />
         <option value="$PROJECT_DIR$/static/website/level/level0_0.json" />
         <option value="$PROJECT_DIR$/static/website/level/level0_1.json" />
@@ -526,6 +505,7 @@
         <option value="$PROJECT_DIR$/static/website/level/level3_0.json" />
         <option value="$PROJECT_DIR$/static/website/level/level3_1.json" />
         <option value="$PROJECT_DIR$/static/website/level/level3_2.json" />
+        <option value="$PROJECT_DIR$/templates/javascripts.html" />
       </list>
     </option>
   </component>
@@ -931,7 +911,7 @@
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.32776618" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="15" sideWeight="0.49946696" weight="0.33716077" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49920255" visible="true" weight="0.15778251" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49920255" visible="true" weight="0.15938166" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32949877" />
       <window_info anchor="right" id="SciView" order="4" />
@@ -1091,13 +1071,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="364" column="34" selection-start-line="364" selection-start-column="34" selection-end-line="364" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/levelselection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
@@ -1253,13 +1226,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2924">
-          <caret line="172" column="18" selection-start-line="172" selection-start-column="18" selection-end-line="172" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5185">
@@ -1278,11 +1244,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4386">
           <caret line="258" column="36" selection-start-line="258" selection-start-column="36" selection-end-line="258" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#2;n#div#0;n#!!top" />
-            <element signature="n#div#4;n#div#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1293,9 +1254,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/level/level3_0.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="831">
+          <caret line="111" column="1" selection-start-line="111" selection-start-column="1" selection-end-line="111" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/level/level3_1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1853">
+          <caret line="109" column="1" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/level/level3_2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="831">
+          <caret line="110" column="1" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2499">
+          <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="86" column="21" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
+        <state relative-caret-position="17">
           <caret line="430" column="62" selection-start-line="430" selection-start-column="62" selection-end-line="430" selection-end-column="62" />
           <folding>
             <element signature="e#34#114#0" />
@@ -1511,26 +1507,17 @@
             <element signature="e#44032#44153#0" />
             <element signature="e#44383#46086#0" />
             <element signature="e#44393#46080#0" />
-            <element signature="e#44425#44836#0" />
             <element signature="e#44487#44813#0" />
             <element signature="e#44532#44607#0" />
             <element signature="e#44648#44672#0" />
             <element signature="e#44678#44701#0" />
-            <element signature="e#44849#45167#0" />
             <element signature="e#44911#45144#0" />
             <element signature="e#44956#45032#0" />
-            <element signature="e#45180#45278#0" />
             <element signature="e#45236#45255#0" />
-            <element signature="e#45291#45393#0" />
             <element signature="e#45351#45370#0" />
-            <element signature="e#45406#45566#0" />
             <element signature="e#45474#45543#0" />
-            <element signature="e#45579#45737#0" />
             <element signature="e#45638#45714#0" />
-            <element signature="e#45750#45909#0" />
             <element signature="e#45809#45886#0" />
-            <element signature="e#45922#45962#0" />
-            <element signature="e#45975#46070#0" />
             <element signature="e#46113#46690#0" />
             <element signature="e#46150#46684#0" />
             <element signature="e#46529#46587#0" />
@@ -1545,7 +1532,6 @@
             <element signature="e#47594#48391#0" />
             <element signature="e#47668#47877#0" />
             <element signature="e#47942#48060#0" />
-            <element signature="e#47997#48054#0" />
             <element signature="e#48172#48262#0" />
             <element signature="e#48268#48317#0" />
             <element signature="e#48441#49311#0" />
@@ -1558,10 +1544,6 @@
             <element signature="e#49858#49948#0" />
             <element signature="e#49954#50003#0" />
             <element signature="e#50128#50921#0" />
-            <element signature="e#50164#50316#0" />
-            <element signature="e#50325#50515#0" />
-            <element signature="e#50524#50715#0" />
-            <element signature="e#50724#50915#0" />
             <element signature="e#51035#51705#0" />
             <element signature="e#51114#51327#0" />
             <element signature="e#51430#51520#0" />
@@ -1571,31 +1553,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/level/level3_0.json">
+    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="831">
-          <caret line="111" column="1" selection-start-line="111" selection-start-column="1" selection-end-line="111" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/level/level3_1.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="109" column="1" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/level/level3_2.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="831">
-          <caret line="110" column="1" selection-start-line="110" selection-start-column="1" selection-end-line="110" selection-end-column="1" />
+        <state relative-caret-position="510">
+          <caret line="156" column="43" selection-start-line="156" selection-start-column="43" selection-end-line="156" selection-end-column="43" />
         </state>
       </provider>
     </entry>
