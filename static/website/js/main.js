@@ -78,6 +78,7 @@ const CONST_MAGAZINE = 10;
 const CONST_SHOOT_IN_ZHONYA = false;
 
 const CONST_ANIMATE_CHARACTER = false;
+const CONST_ANIMATE_LAVA = true;
 const CONST_ANIMATE_CONVEYOR = false;
 const CONST_CHARACTER_COUNT = 4;
 
@@ -205,9 +206,43 @@ window.createGame = function (canvas, scope) {
     var path = '/api/v1/gameinfo/?format=json&user__username=' + username + '&version__label=' + version;
 
     jQuery.get(path, function (data) {
-        game.gameInfoEasy = data[0];
-        game.gameInfoNormal = data[1];
-        game.gameInfoHard = data[2];
+        console.log(data);
+
+        //random order
+        switch (data[0].difficulty){
+            case DIFFICULTY.easy:
+                game.gameInfoEasy = data[0];
+                break;
+            case DIFFICULTY.normal:
+                game.gameInfoNormal = data[0];
+                break;
+            case DIFFICULTY.hard:
+                game.gameInfoHard = data[0];
+                break;
+        }
+        switch (data[1].difficulty){
+            case DIFFICULTY.easy:
+                game.gameInfoEasy = data[1];
+                break;
+            case DIFFICULTY.normal:
+                game.gameInfoNormal = data[1];
+                break;
+            case DIFFICULTY.hard:
+                game.gameInfoHard = data[1];
+                break;
+        }
+        switch (data[2].difficulty){
+            case DIFFICULTY.easy:
+                game.gameInfoEasy = data[2];
+                break;
+            case DIFFICULTY.normal:
+                game.gameInfoNormal = data[2];
+                break;
+            case DIFFICULTY.hard:
+                game.gameInfoHard = data[2];
+                break;
+        }
+
         game.highest_level = Math.max(game.gameInfoEasy.highest_level, game.gameInfoNormal.highest_level, game.gameInfoHard.highest_level);
         loadStates();
     });

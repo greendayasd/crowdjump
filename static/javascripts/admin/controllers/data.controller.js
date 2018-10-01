@@ -116,7 +116,7 @@
                 var statistics = '';
                 var today = new Date();
                 var firstVersion = new Date(2018, 9, 14);
-                var amountVersions = (today.getDate()+30 - firstVersion.getDate())%30;
+                var amountVersions = (today.getDate() + 30 - firstVersion.getDate()) % 30;
                 var header = form_csv('id', 'username', 'register_version', 'ideas', 'ideavotes', 'versions_played (of ' + amountVersions + ')', 'activeAnd', 'activeOr', 'last_online');
 
                 var playedIdea80 = 0;
@@ -430,67 +430,82 @@
 
             $scope.get_json_sum = function () {
                 var data = JSON.parse('[' + $scope.stats + ']');
-                var rounds_won = 0,
-                    enemies_killed = 0,
-                    coins_collected = 0,
-                    highscore = 999999,
-                    time_spend_game = 0,
-                    jumps = 0,
-                    restarts = 0,
-                    deaths = 0,
-                    highest_level = 0,
-                    movement_inputs = 0,
-                    eastereggs_found = 0,
-                    special_name = 0,
-                    overall_coins = 0,
-                    overall_eastereggs = 0,
-                    overall_powerups = 0,
-                    powerups = 0;
+                var difficulty = [0, 1, 2],
+                    rounds_started = [0, 0, 0],
+                    rounds_won = [0, 0, 0],
+                    enemies_killed = [0, 0, 0],
+                    coins_collected = [0, 0, 0],
+                    highscore = [999999, 999999, 999999],
+                    time_spend_game = [0, 0, 0],
+                    jumps = [0, 0, 0],
+                    restarts = [0, 0, 0],
+                    deaths = [0, 0, 0],
+                    highest_level = [0, 0, 0],
+                    movement_inputs = [0, 0, 0],
+                    eastereggs_found = [0, 0, 0],
+                    special_name = [0, 0, 0],
+                    overall_coins = [0, 0, 0],
+                    overall_eastereggs = [0, 0, 0],
+                    overall_powerups = [0, 0, 0],
+                    powerups = [0, 0, 0];
 
                 for (var i = 0; i < data.length; i++) {
                     var g = data[i];
-                    enemies_killed += parseInt(g.enemies_killed);
-                    time_spend_game += parseInt(g.time);
-                    jumps += parseInt(g.jumps);
-                    movement_inputs += parseInt(g.movement_inputs);
-                    coins_collected = Math.max(coins_collected, parseInt(g.coins_collected));
-                    eastereggs_found = Math.max(eastereggs_found, parseInt(g.eastereggs_found));
-                    special_name = Math.max(special_name, parseInt(g.special_name));
-                    powerups = Math.max(powerups, parseInt(g.powerups));
-                    overall_coins += g.coins_collected;
-                    overall_eastereggs += g.eastereggs_found;
-                    overall_powerups += g.powerups;
+                    var d = parseInt(g.difficulty);
+                    enemies_killed[d] += parseInt(g.enemies_killed);
+                    time_spend_game[d] += parseInt(g.time);
+                    jumps[d] += parseInt(g.jumps);
+                    movement_inputs[d] += parseInt(g.movement_inputs);
+                    coins_collected[d] = Math.max(coins_collected[d], parseInt(g.coins_collected));
+                    eastereggs_found[d] = Math.max(eastereggs_found[d], parseInt(g.eastereggs_found));
+                    special_name[d] = Math.max(special_name[d], parseInt(g.special_name));
+                    powerups[d] = Math.max(powerups[d], parseInt(g.powerups));
+                    overall_coins[d] += g.coins_collected;
+                    overall_eastereggs[d] += g.eastereggs_found;
+                    overall_powerups[d] += g.powerups;
+
+                    if (g.level == '1') rounds_started[i]++;
+
                     switch (g.status) {
                         case "completed":
-                            rounds_won++;
-                            highest_level = Math.max(highest_level, parseInt(g.level));
-                            highscore = Math.min(highscore, (parseInt(g.time) - (parseInt(g.coins_collected) * 500)));
+                            rounds_won[d]++;
+                            highest_level[d] = Math.max(highest_level[d], parseInt(g.level));
                             break;
                         case "restart":
-                            restarts++;
+                            restarts[d]++;
                             break;
                         case "back to start menu":
                             break;
                         default:
-                            deaths++;
+                            deaths[d]++;
                     }
 
                 }
-                $scope.csv = "rounds_started: " + data.length + '\n' +
-                    "rounds_won: " + rounds_won + '\n' +
-                    "enemies_killed: " + enemies_killed + '\n' +
-                    "coins_collected: " + coins_collected + '\n' +
-                    "time_spend_game: " + time_spend_game + '\n' +
-                    "highscore: " + highscore + '\n' +
-                    "jumps: " + jumps + '\n' +
-                    "restarts: " + restarts + '\n' +
-                    "deaths: " + deaths + '\n' +
-                    "highest_level: " + highest_level + '\n' +
-                    "movement_inputs:" + movement_inputs + '\n' +
-                    "eastereggs_found: " + eastereggs_found + '\n' +
-                    "special_name: " + special_name;
-                $scope.csv += '\n' + wrapForDB(data.length, rounds_won, enemies_killed, coins_collected, highscore, time_spend_game, jumps, restarts, '', deaths, highest_level, movement_inputs, eastereggs_found, special_name);
+                $scope.csv = '';
+                var db = '';
 
+                for (var dif = 0; dif < 3; dif++) {
+                    $scope.csv += "difficulty: " + difficulty[dif] + '\n'+
+                        "rounds_started: " + rounds_started[dif] + '\n' +
+                        "rounds_won: " + rounds_won[dif] + '\n' +
+                        "enemies_killed: " + enemies_killed[dif] + '\n' +
+                        "coins_collected: " + coins_collected[dif] + '\n' +
+                        "time_spend_game: " + time_spend_game[dif] + '\n' +
+                        "highscore: " + highscore[dif] + '\n' +
+                        "jumps: " + jumps[dif] + '\n' +
+                        "restarts: " + restarts[dif] + '\n' +
+                        "deaths: " + deaths[dif] + '\n' +
+                        "highest_level: " + highest_level[dif] + '\n' +
+                        "movement_inputs:" + movement_inputs[dif] + '\n' +
+                        "eastereggs_found: " + eastereggs_found[dif] + '\n' +
+                        "special_name: " + special_name[dif] +
+                        "overall_coins: " + overall_coins[dif] +
+                        "overall_eastereggs: " + overall_eastereggs[dif] +
+                        "overall_powerups: " + overall_powerups[dif] +'\n\n';
+                        db += wrapForDB(rounds_started[dif], rounds_won[dif], enemies_killed[dif], coins_collected[dif], highscore[dif], time_spend_game[dif], jumps[dif], restarts[dif], '', deaths[dif], highest_level[dif], movement_inputs[dif], eastereggs_found[dif], special_name[dif]) + '\n';
+
+                }
+                $scope.csv = db + '\n' + $scope.csv;
             }
 
         }

@@ -36,7 +36,6 @@ Crowdjump.Endscreen.prototype = {
         } else {
             if (game.authenticated) {
 
-
                 switch (game.difficulty) {
                     case DIFFICULTY.easy:
                         if (game.gameInfoEasy["highscore"] == null || game.gameInfoEasy["highscore"] == 0 || game.gameInfoEasy["highscore"] == NaN || isNaN(game.gameInfoEasy["highscore"])) {

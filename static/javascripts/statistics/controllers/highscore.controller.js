@@ -132,6 +132,7 @@
                     $scope.statistics[i].eastereggs_found = Math.max($scope.statistics[i].eastereggs_found, eastereggs);
                     $scope.sort_all();
                     $scope.$apply();
+                    setNameColor();
                     return;
                 }
             }
@@ -142,6 +143,7 @@
                 if ($scope.statistics.length > topcut) {
                     $scope.statistics.pop();
                 }
+                setNameColor();
             }
         };
 
