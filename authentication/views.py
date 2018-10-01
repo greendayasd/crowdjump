@@ -387,7 +387,7 @@ def SendGameData(request):
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
     data = '{"timestamp":"' + st + \
            '", "level":"' + level + \
-           '", "difficuly":"' + difficulty + \
+           '", "difficulty":"' + difficulty + \
            '", "status":"' + status + \
            '", "time":"' + timeneeded + \
            '", "jumps":"' + jumps + \
