@@ -416,7 +416,7 @@
             }
 
             function dateToArrayPos(date) {
-                if (date <= 30) return date - 15;
+                if (date <= 30 && date >= 14) return date - 15;
                 else return date + 16;
             }
 
