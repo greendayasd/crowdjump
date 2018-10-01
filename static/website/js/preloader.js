@@ -330,8 +330,12 @@ Crowdjump.Preloader.prototype = {
             text.setText('');
 
             game.authenticated = true;
-            if (game.gameInfo == '' || game.gameInfo == undefined) game.authenticated = false;
-            else {
+            if (game.gameInfo == '' || game.gameInfo == undefined) {
+                game.authenticated = false;
+                game.difficulty = DIFFICULTY.normal;
+            }
+        else
+            {
                 game.difficulty = account.difficulty;
                 if (account.uploaded_character != '' && account.uploaded_character != null) {
                     game.load.image(getFileName(account.uploaded_character), account.uploaded_character);
