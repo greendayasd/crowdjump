@@ -22,15 +22,15 @@ def mail_new_version(request):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     folder_path = os.path.join(BASE_DIR, 'Screenshots')
 
-    screenshot_path = os.path.join(folder_path, '030.JPG')
+    screenshot_path = os.path.join(folder_path, '036.JPG')
 
 
 
-    version = 'version 0.30'
-    subject = 'Crowdjump got a new look!'
+    version = 'version 0.36'
+    subject = 'Crowdjump got colorful!'
     message1 = 'Hello '
-    message2 = ',<br>check out the new features of Crowdjump ' + version + '! There are '
-    feature = "new deco elements, an explanation of all items and it's day or night in the game, depending on when you play!"
+    message2 = ',<br>check out the newest features of Crowdjump ' + version + '! '
+    feature = "Now all black platforms got replace by stones or grass! Also there is now a back button on the the gameover- and end-screen!"
     message3 = '<br>To play the game, vote for ideas or submit your own, visit  '
     html_content = '<a href="https://www.crowdjump.win">Crowdjump.win :)</a>'
     unsubscribe = '<br><br><a href="https://www.crowdjump.win/unsubscribe">Click here if you dont want to get this newsletter anymore</a>'

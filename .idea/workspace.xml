@@ -6,52 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/fakeground_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/fakeground_1x2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/grass_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/grass_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/grass_4x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/grass_6x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/grass_8x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_10x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_12x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_1x10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_1x12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_1x2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_1x3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_1x4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_1x6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_1x8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_20x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_2x2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_4x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_4x2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_5x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_6x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/ground_8x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnBlue_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnBlue_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnCyan_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnCyan_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnGreen_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnGreen_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnPurple_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnPurple_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnRed_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnRed_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnYellow_1x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/gamefiles/tiles/spawnYellow_2x1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/endscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/endscreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/gameover.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/gameover.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/levelselection.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/levelselection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/preloader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crowdjump/mailFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crowdjump/mailFunctions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/javascripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/javascripts.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,11 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="492" column="48" selection-start-line="492" selection-start-column="48" selection-end-line="492" selection-end-column="48" />
+            <state relative-caret-position="152">
+              <caret line="454" column="24" lean-forward="true" selection-start-line="454" selection-start-column="24" selection-end-line="454" selection-end-column="24" />
               <folding>
                 <element signature="e#34#114#0" />
                 <element signature="e#240#1392#0" />
@@ -491,6 +446,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="mailFunctions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Crowdjump/mailFunctions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="levelselection.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/levelselection.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -538,6 +502,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="676">
               <caret line="134" column="21" selection-start-line="134" selection-start-column="21" selection-end-line="134" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="javascripts.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="154" column="30" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -618,7 +591,6 @@
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" />
         <option value="$PROJECT_DIR$/static/website/level/level1.json" />
-        <option value="$PROJECT_DIR$/Crowdjump/mailFunctions.py" />
         <option value="$PROJECT_DIR$/authentication/models.py" />
         <option value="$PROJECT_DIR$/authentication/serializers.py" />
         <option value="$PROJECT_DIR$/Crowdjump/urls.py" />
@@ -654,9 +626,10 @@
         <option value="$PROJECT_DIR$/static/website/js/levelselection.js" />
         <option value="$PROJECT_DIR$/static/website/js/gameover.js" />
         <option value="$PROJECT_DIR$/static/website/js/endscreen.js" />
-        <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
         <option value="$PROJECT_DIR$/static/website/js/game.js" />
+        <option value="$PROJECT_DIR$/Crowdjump/mailFunctions.py" />
+        <option value="$PROJECT_DIR$/templates/javascripts.html" />
       </list>
     </option>
   </component>
@@ -1162,13 +1135,6 @@
     <entry file="file://$PROJECT_DIR$/static/templates/layout/admin.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Crowdjump/mailFunctions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="49" selection-start-line="49" selection-end-line="53" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-922">
@@ -1578,13 +1544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="153" column="29" lean-forward="true" selection-start-line="153" selection-start-column="29" selection-end-line="153" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/level/level4_1.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1545">
@@ -1608,8 +1567,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="492" column="48" selection-start-line="492" selection-start-column="48" selection-end-line="492" selection-end-column="48" />
+        <state relative-caret-position="152">
+          <caret line="454" column="24" lean-forward="true" selection-start-line="454" selection-start-column="24" selection-end-line="454" selection-end-column="24" />
           <folding>
             <element signature="e#34#114#0" />
             <element signature="e#240#1392#0" />
@@ -2011,6 +1970,20 @@
             <element signature="e#79149#79189#0" />
             <element signature="e#79233#79262#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crowdjump/mailFunctions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="154" column="30" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
         </state>
       </provider>
     </entry>
