@@ -28,7 +28,7 @@ Crowdjump.LevelSelection.prototype = {
             texts[i].events.onInputDown.add(this.startlevel, this)
 
             if (i < 10){
-                var keycode = i + '';
+                var keycode = i+1 + '';
                 var key = game.input.keyboard.addKey(keycode.charCodeAt(0));
                 key.level = i;
                 key.onDown.add(this.startlevel, this);
