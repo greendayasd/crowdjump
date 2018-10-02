@@ -19,7 +19,12 @@ Crowdjump.Preloader.prototype = {
         var files = '/static/website/gamefiles/';
         var fonts = files + 'fonts/';
         var characters = files + 'characters/';
+
         var tiles = files + 'tiles/';
+        var grounds = tiles + 'ground/';
+        var spawns = tiles + 'spawn/';
+        var grass = tiles + 'grass/';
+
         var collectibles = files + 'collectibles/';
         var obstacles = files + 'obstacles/';
         var bases = files + 'bases/';
@@ -78,48 +83,48 @@ Crowdjump.Preloader.prototype = {
         }
 
         //tiles
-        this.load.image('ground', tiles + 'ground.png');
-        this.load.image('ground:1x1', tiles + 'ground_1x1.png');
-        this.load.image('ground:1x2', tiles + 'ground_1x2.png');
-        this.load.image('ground:1x3', tiles + 'ground_1x3.png');
-        this.load.image('ground:1x4', tiles + 'ground_1x4.png');
-        this.load.image('ground:1x6', tiles + 'ground_1x6.png');
-        this.load.image('ground:1x8', tiles + 'ground_1x8.png');
-        this.load.image('ground:1x10', tiles + 'ground_1x10.png');
-        this.load.image('ground:1x12', tiles + 'ground_1x12.png');
-        this.load.image('ground:2x1', tiles + 'ground_2x1.png');
-        this.load.image('ground:2x2', tiles + 'ground_2x2.png');
-        this.load.image('ground:4x1', tiles + 'ground_4x1.png');
-        this.load.image('ground:4x2', tiles + 'ground_4x2.png');
-        this.load.image('ground:5x1', tiles + 'ground_5x1.png');
-        this.load.image('ground:6x1', tiles + 'ground_6x1.png');
-        this.load.image('ground:8x1', tiles + 'ground_8x1.png');
-        this.load.image('ground:10x1', tiles + 'ground_10x1.png');
-        this.load.image('ground:12x1', tiles + 'ground_12x1.png');
-        this.load.image('ground:20x1', tiles + 'ground_20x1.png');
+        this.load.image('ground', grounds + 'ground.png');
+        this.load.image('ground:1x1', grounds + 'ground_1x1.png');
+        this.load.image('ground:1x2', grounds + 'ground_1x2.png');
+        this.load.image('ground:1x3', grounds + 'ground_1x3.png');
+        this.load.image('ground:1x4', grounds + 'ground_1x4.png');
+        this.load.image('ground:1x6', grounds + 'ground_1x6.png');
+        this.load.image('ground:1x8', grounds + 'ground_1x8.png');
+        this.load.image('ground:1x10', grounds + 'ground_1x10.png');
+        this.load.image('ground:1x12', grounds + 'ground_1x12.png');
+        this.load.image('ground:2x1', grounds + 'ground_2x1.png');
+        this.load.image('ground:2x2', grounds + 'ground_2x2.png');
+        this.load.image('ground:4x1', grounds + 'ground_4x1.png');
+        this.load.image('ground:4x2', grounds + 'ground_4x2.png');
+        this.load.image('ground:5x1', grounds + 'ground_5x1.png');
+        this.load.image('ground:6x1', grounds + 'ground_6x1.png');
+        this.load.image('ground:8x1', grounds + 'ground_8x1.png');
+        this.load.image('ground:10x1', grounds + 'ground_10x1.png');
+        this.load.image('ground:12x1', grounds + 'ground_12x1.png');
+        this.load.image('ground:20x1', grounds + 'ground_20x1.png');
 
-        this.load.image('fakeground:1x1', tiles + 'fakeground_1x1.png');
-        this.load.image('fakeground:1x2', tiles + 'fakeground_1x2.png');
+        this.load.image('fakeground:1x1', grounds + 'ground_1x1.png');
+        this.load.image('fakeground:1x2', grounds + 'ground_1x2.png');
 
-        this.load.image('grass:1x1', tiles + 'grass_1x1.png');
-        this.load.image('grass:2x1', tiles + 'grass_2x1.png');
-        this.load.image('grass:4x1', tiles + 'grass_4x1.png');
-        this.load.image('grass:6x1', tiles + 'grass_6x1.png');
-        this.load.image('grass:8x1', tiles + 'grass_8x1.png');
+        this.load.image('grass:1x1', grass + 'grass_1x1.png');
+        this.load.image('grass:2x1', grass + 'grass_2x1.png');
+        this.load.image('grass:4x1', grass + 'grass_4x1.png');
+        this.load.image('grass:6x1', grass + 'grass_6x1.png');
+        this.load.image('grass:8x1', grass + 'grass_8x1.png');
 
         if (CONST_BUTTONS_AND_GATES) {
-            this.load.spritesheet('spawnBlue:1x1', tiles + 'spawnBlue_1x1.png', 42, 42);
-            this.load.spritesheet('spawnBlue:2x1', tiles + 'spawnBlue_2x1.png', 84, 42);
-            this.load.spritesheet('spawnRed:1x1', tiles + 'spawnRed_1x1.png', 42, 42);
-            this.load.spritesheet('spawnRed:2x1', tiles + 'spawnRed_2x1.png', 84, 42);
-            this.load.spritesheet('spawnGreen:1x1', tiles + 'spawnGreen_1x1.png', 42, 42);
-            this.load.spritesheet('spawnGreen:2x1', tiles + 'spawnGreen_2x1.png', 84, 42);
-            this.load.spritesheet('spawnPurple:1x1', tiles + 'spawnPurple_1x1.png', 42, 42);
-            this.load.spritesheet('spawnPurple:2x1', tiles + 'spawnPurple_2x1.png', 84, 42);
-            this.load.spritesheet('spawnYellow:1x1', tiles + 'spawnYellow_1x1.png', 42, 42);
-            this.load.spritesheet('spawnYellow:2x1', tiles + 'spawnYellow_2x1.png', 84, 42);
-            this.load.spritesheet('spawnCyan:1x1', tiles + 'spawnCyan_1x1.png', 42, 42);
-            this.load.spritesheet('spawnCyan:2x1', tiles + 'spawnCyan_2x1.png', 84, 42);
+            this.load.spritesheet('spawnBlue:1x1', spawns + 'spawnBlue_1x1.png', 42, 42);
+            this.load.spritesheet('spawnBlue:2x1', spawns + 'spawnBlue_2x1.png', 84, 42);
+            this.load.spritesheet('spawnRed:1x1', spawns + 'spawnRed_1x1.png', 42, 42);
+            this.load.spritesheet('spawnRed:2x1', spawns + 'spawnRed_2x1.png', 84, 42);
+            this.load.spritesheet('spawnGreen:1x1', spawns + 'spawnGreen_1x1.png', 42, 42);
+            this.load.spritesheet('spawnGreen:2x1', spawns + 'spawnGreen_2x1.png', 84, 42);
+            this.load.spritesheet('spawnPurple:1x1', spawns + 'spawnPurple_1x1.png', 42, 42);
+            this.load.spritesheet('spawnPurple:2x1', spawns + 'spawnPurple_2x1.png', 84, 42);
+            this.load.spritesheet('spawnYellow:1x1', spawns + 'spawnYellow_1x1.png', 42, 42);
+            this.load.spritesheet('spawnYellow:2x1', spawns + 'spawnYellow_2x1.png', 84, 42);
+            this.load.spritesheet('spawnCyan:1x1', spawns + 'spawnCyan_1x1.png', 42, 42);
+            this.load.spritesheet('spawnCyan:2x1', spawns + 'spawnCyan_2x1.png', 84, 42);
         }
 
         if (CONST_SLIPPERYPLATFORMS) {

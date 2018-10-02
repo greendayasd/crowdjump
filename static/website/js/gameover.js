@@ -21,12 +21,19 @@ Crowdjump.Gameover.prototype = {
         death.fixedToCamera = true;
 
         replay = this.add.text(CONST_WORLD_CENTER_X,
-            CONST_WORLD_CENTER_Y -40, 'Try again?', {font:"35px Arial", fill: '#dbdbdb'});
+            CONST_WORLD_CENTER_Y -80, 'Try again?', {font:"35px Arial", fill: '#dbdbdb'});
         replay.anchor.set(0.5, -5);
         replay.inputEnabled = true;
         replay.events.onInputDown.add(this.replay, this);
         replay.fixedToCamera = true;
 
+        backToMenu = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 240, "Back to menu", {
+            font: "32px Arial",
+            fill: '#dbdbdb'
+        });
+        backToMenu.anchor.set(0.5);
+        backToMenu.inputEnabled = true;
+        backToMenu.events.onInputDown.add(backToMainMenu, this);
 
         this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.replay, this);
         this.input.keyboard.addKey(Phaser.KeyCode.ESC).onDown.add(backToMainMenu);

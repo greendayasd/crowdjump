@@ -117,6 +117,7 @@
             var highscore = parseInt(data["highscore"]);
             var eastereggs = parseInt(data["overall_eastereggs"]);
             var coins = parseInt(data["overall_coins"]);
+            var special_name = parseInt(data["special_name"]);
 
             if (highscore == -1) {
                 console.error(data + '\n' + $scope.statistics);
@@ -130,6 +131,7 @@
                     $scope.statistics[i].highscore = highscore;
                     $scope.statistics[i].coins_collected = Math.max($scope.statistics[i].coins_collected, coins);
                     $scope.statistics[i].eastereggs_found = Math.max($scope.statistics[i].eastereggs_found, eastereggs);
+                    $scope.statistics[i].special_name = Math.max($scope.statistics[i].special_name, special_name);
                     $scope.sort_all();
                     $scope.$apply();
                     setNameColor();

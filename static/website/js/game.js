@@ -490,7 +490,7 @@ Crowdjump.Game.create = function () {
         var cloud3y = 78;
         var moonSuny = 22;
 
-        day = (hour >= 6 && hour < 18);
+        day = ((hour >= 6 && hour < 18) || false);
 
         if (day && CONST_DAY_AND_NIGHT) {
             this.game.stage.backgroundColor = '#545d8f';
