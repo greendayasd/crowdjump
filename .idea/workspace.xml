@@ -5,36 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html" line="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/characterselection.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/characterselection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/credits.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/credits.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/endscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/endscreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/gameover.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/gameover.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/levelselection.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/levelselection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/preloader.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/preloader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/js/startmenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/startmenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level0_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level0_0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level0_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level0_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level0_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level0_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level1_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level1_0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level1_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level1_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level1_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level1_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level2_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level2_0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level2_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level2_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level2_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level2_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level3_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level3_0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level3_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level3_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level3_2.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level3_2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level4_0.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level4_0.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/website/level/level4_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level4_1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/javascripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/javascripts.html" afterDir="false" />
-    </list>
+    <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -569,11 +540,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="level4_2.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="level4_2.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/level/level4_2.json">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="167" column="70" lean-forward="true" selection-start-line="167" selection-start-column="70" selection-end-line="167" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="level1_2.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/website/level/level1_2.json">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="574">
-              <caret line="187" column="1" selection-start-line="187" selection-start-column="1" selection-end-line="187" selection-end-column="1" />
+              <caret line="194" column="1" selection-start-line="194" selection-start-column="1" selection-end-line="194" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -615,7 +595,7 @@
       <find>wasd</find>
       <find>drop</find>
       <find>data.saw</find>
-      <find />
+      <find>sfx ?</find>
       <find>animations.add</find>
       <find>spawnEne</find>
       <find>CONST_ENE</find>
@@ -683,7 +663,6 @@
         <option value="$PROJECT_DIR$/static/website/level/level1_0.json" />
         <option value="$PROJECT_DIR$/static/website/js/game.js" />
         <option value="$PROJECT_DIR$/static/website/level/level1_1.json" />
-        <option value="$PROJECT_DIR$/static/website/level/level1_2.json" />
         <option value="$PROJECT_DIR$/static/website/level/level2_0.json" />
         <option value="$PROJECT_DIR$/static/website/level/level2_1.json" />
         <option value="$PROJECT_DIR$/static/website/level/level2_2.json" />
@@ -693,6 +672,7 @@
         <option value="$PROJECT_DIR$/static/website/level/level4_0.json" />
         <option value="$PROJECT_DIR$/static/website/level/level4_1.json" />
         <option value="$PROJECT_DIR$/static/website/level/level4_2.json" />
+        <option value="$PROJECT_DIR$/static/website/level/level1_2.json" />
       </list>
     </option>
   </component>
@@ -1103,7 +1083,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32881" />
@@ -1545,13 +1525,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="574">
           <caret line="189" column="1" selection-start-line="189" selection-start-column="1" selection-end-line="189" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/level/level1_2.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="195" column="1" selection-start-line="195" selection-start-column="1" selection-end-line="195" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -2041,8 +2014,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/website/level/level4_2.json">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="167" column="70" lean-forward="true" selection-start-line="167" selection-start-column="70" selection-end-line="167" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/level/level1_2.json">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="574">
-          <caret line="187" column="1" selection-start-line="187" selection-start-column="1" selection-end-line="187" selection-end-column="1" />
+          <caret line="194" column="1" selection-start-line="194" selection-start-column="1" selection-end-line="194" selection-end-column="1" />
         </state>
       </provider>
     </entry>
