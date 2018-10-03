@@ -81,7 +81,8 @@
 		{"image": "ground:2x1", "x": 1680, "y": 588, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:2x1", "x": 1890, "y": 420, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:2x1", "x": 1806, "y": 504, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:2x1", "x": 84, "y": 882, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
+		{"image": "ground:2x1", "x": 84, "y": 882, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 126, "y": 1008, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
 	],
 	"fallingPlatforms": [
 
@@ -164,7 +165,8 @@
 		{"image": "coin:icon", "x": 2898, "y": 1260, "angle":0, "scalex":1, "scaley":1},
 		{"image": "coin:icon", "x": 2940, "y": 1344, "angle":0, "scalex":1, "scaley":1},
 		{"image": "coin:icon", "x": 2898, "y": 1344, "angle":0, "scalex":1, "scaley":1},
-		{"image": "coin:icon", "x": 2856, "y": 1344, "angle":0, "scalex":1, "scaley":1}
+		{"image": "coin:icon", "x": 2856, "y": 1344, "angle":0, "scalex":1, "scaley":1},
+		{"image": "coin:icon", "x": 126, "y": 966, "angle":0, "scalex":1, "scaley":1}
 	],
 	"powerups": [
 		{"image": "powerup:permjumpboost", "x": 84, "y": 1050, "angle":0, "scalex":1, "scaley":1, "type":"permjumpboost"},
@@ -175,6 +177,9 @@
 		{"image": "easteregg:movementspeed", "x": 1092, "y": 1470, "angle":0, "scalex":1, "scaley":1, "type":"movementspeed"},
 		{"image": "easteregg:money", "x": 2604, "y": 1344, "angle":0, "scalex":1, "scaley":1, "type":"money"},
 		{"image": "easteregg:specialname", "x": 2982, "y": 42, "angle":0, "scalex":1, "scaley":1, "type":"specialname"}
+	],
+	"mystery": [
+		{"image": "mystery:questionmark", "x": 84, "y": 1008, "angle":0, "scalex":1, "scaley":1, "types":"moreEnemies,moreCoins", "uses":30}
 	],
 	"lava": [
 		{"image": "lava:2x1", "x": 1386, "y": 1386, "angle":0, "scalex":1, "scaley":1},

@@ -78,5 +78,45 @@ Crowdjump.CharacterSelection.prototype = {
     },
     uploadFile: function () {
 
+    },
+    update: function () {
+        if (CONST_CONTROLLER) {
+            // Controls
+            if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_LEFT) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
+            }
+            else if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_RIGHT) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
+            }
+
+            if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_UP) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
+            }
+            else if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_DOWN) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
+            }
+
+            if (pad1.justPressed(Phaser.Gamepad.XBOX360_A)) {
+            }
+
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_B)) {
+                backToMainMenu();
+            }
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_X)) {
+            }
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_Y)) {
+            }
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_START)) {
+                backToMainMenu();
+            }
+
+            if (pad1.connected) {
+                var rightStickX = pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X);
+                var rightStickY = pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_Y);
+
+                if (rightStickX) {
+                }
+
+                if (rightStickY) {
+                }
+            }
+        }
+
     }
-}
+};

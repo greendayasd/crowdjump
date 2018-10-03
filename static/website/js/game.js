@@ -49,6 +49,7 @@ Crowdjump.Game = function (game) {
     var death;
     var bullets_left = CONST_MAGAZINE;
 
+
     var tween = null;
 
     var show_fps = false;
@@ -327,6 +328,7 @@ Spider.prototype.die = function () {
 
 //executed per LEVEL
 Crowdjump.Game.init = function (data) {
+    jumpButton = null;
     this.game.renderer.renderSession.roundPixels = true;
 
     this.keys = this.game.input.keyboard.addKeys({
@@ -375,8 +377,10 @@ Crowdjump.Game.init = function (data) {
         };
         this.wasd.left.onDown.add(this._countMovementInput, this);
         this.wasd.right.onDown.add(this._countMovementInput, this);
-
     }
+    if (CONST_CONTROLLER) {
+    }
+
 
     if (typeof  data !== 'undefined') {
         level = data.level;
@@ -473,7 +477,8 @@ Crowdjump.Game.create = function () {
         open_gate: this.game.add.audio('sfx:open_gate'),
         press_button: this.game.add.audio('sfx:press_button'),
         spawn_platform: this.game.add.audio('sfx:spawn_platform'),
-        levelup: this.game.add.audio('sfx:levelup')
+        levelup: this.game.add.audio('sfx:levelup'),
+        mystery: this.game.add.audio('sfx:mystery'),
     };
 
 
@@ -1000,6 +1005,10 @@ Crowdjump.Game._handleCollisions = function () {
         this.game.physics.arcade.collide(this.hero, this.gates);
     }
 
+    if (CONST_MYSTERYBOX) {
+        this.game.physics.arcade.collide(this.hero, this.mystery, this._onHeroVsMysterybox, null, this);
+    }
+
     if (!CONST_ZHONYA || !zhonya_activated || CONST_KILL_IN_ZHONYA) {
         this.game.physics.arcade.overlap(this.hero, this.spiders,
             this._onHeroVsEnemy, null, this);
@@ -1141,6 +1150,50 @@ Crowdjump.Game._handleInput = function () {
         }
 
     }
+
+    if (CONST_CONTROLLER) {
+        if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_LEFT) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
+            this.hero.move(-1);
+        }
+        else if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_RIGHT) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
+            this.hero.move(1);
+        } else {
+            this.hero.move(0);
+        }
+
+        if (pad1.justPressed(Phaser.Gamepad.XBOX360_A) || pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_UP) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
+            this.hero.jump();
+        }
+        else if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_DOWN) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
+        }
+
+        if (pad1.justPressed(Phaser.Gamepad.XBOX360_START)) {
+            this.mainMenu();
+        }
+        if (pad1.justPressed(Phaser.Gamepad.XBOX360_BACK, CONST_CONTROLLER_PRESSDURATION)) {
+            this.toggleMute();
+        }
+        if (pad1.justPressed(Phaser.Gamepad.XBOX360_RIGHT_BUMPER, CONST_CONTROLLER_PRESSDURATION)) {
+            console.log("cheat");
+            this.toggleCheat();
+        }
+
+        if (pad1.justPressed(Phaser.Gamepad.XBOX360_B)) {
+            this.restart();
+        }
+
+        if (pad1.connected) {
+            var rightStickX = pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X);
+            var rightStickY = pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_Y);
+
+            if (rightStickX) {
+            }
+
+            if (rightStickY) {
+            }
+
+        }
+    }
 };
 
 Crowdjump.Game._movePlatforms = function (platform) {
@@ -1246,6 +1299,11 @@ Crowdjump.Game._loadLevel = function (data) {
         this.sawblades = this.game.add.group();
         data.sawblades.forEach(this._spawnSawblade, this);
         this.sawbladesBases = this.game.add.group();
+    }
+
+    if (CONST_MYSTERYBOX) {
+        this.mystery = this.game.add.group();
+        data.mystery.forEach(this._spawnMystery, this);
     }
 
     //spawn all deco
@@ -1419,14 +1477,14 @@ Crowdjump.Game._spawnFakePlatform = function (platform) {
     var newx = platform.x;
     var newy = platform.y;
 
-    if (platform.image == "fakelava:1x1" && CONST_ANIMATE_LAVA){
+    if (platform.image == "fakelava:1x1" && CONST_ANIMATE_LAVA) {
         newy += 4;
     }
 
     sprite = this.fakePlatforms.create(newx, newy, platform.image);
 
-    if (platform.image == "fakelava:1x1" && CONST_ANIMATE_LAVA){
-        sprite.animations.add('animate_lava', [0,1,2,3,4,5,6,7], 5, true);
+    if (platform.image == "fakelava:1x1" && CONST_ANIMATE_LAVA) {
+        sprite.animations.add('animate_lava', [0, 1, 2, 3, 4, 5, 6, 7], 5, true);
         sprite.animations.play('animate_lava');
     }
 
@@ -1472,9 +1530,9 @@ Crowdjump.Game._spawnLava = function (lava) {
     sprite.body.immovable = true;
 
 
-    if (CONST_ANIMATE_LAVA){
+    if (CONST_ANIMATE_LAVA) {
         newy += 4;
-        sprite.animations.add('animate_lava', [0,1,2,3,4,5,6,7], 5, true);
+        sprite.animations.add('animate_lava', [0, 1, 2, 3, 4, 5, 6, 7], 5, true);
         sprite.animations.play('animate_lava');
 
     }
@@ -1492,15 +1550,15 @@ Crowdjump.Game._spawnSpikes = function (spike) {
     }
 
     //4 pixel away because of collision
-    switch (spike.image){
+    switch (spike.image) {
         case 'spikes:1x1':
-            newy +=4;
+            newy += 4;
             break;
         case 'spikesLeft:1x1':
-            newx-=4;
+            newx -= 4;
             break;
         case 'spikesRight:1x1':
-            newx +=4;
+            newx += 4;
             break;
     }
 
@@ -1625,6 +1683,84 @@ Crowdjump.Game._spawnButton = function (button) {
     sprite.body.checkCollision.left = false;
     sprite.pressed = false;
     sprite.buttonnr = button.buttonnr;
+
+};
+
+Crowdjump.Game._spawnMystery = function (mystery) {
+    var newx = mystery.x;
+    var newy = mystery.y;
+
+    let sprite = this.mystery.create(
+        newx, newy, mystery.image);
+
+
+    //see Ref Random Items
+    var powerupList = ["pu_permjump", "pu_throughwalls", "pu_time", "pu_doublejump"];
+    var eastereggList = ["ea_time", "ea_specialname", "ea_money", "ea_movementspeed"];
+    var coinList = ["coin"];
+    var moreCoinsList = ["coin","coin2","coin3","coin4","coin5","coin6","coin7","coin8","coin9","coin10",];
+    var weaponsList = [];
+    var enemyList = ["spider"];
+    var moreEnemiesList = ["spider", "spider2", "spider3", "spider4", "spider5"];
+
+    var collectibleList = powerupList.concat(eastereggList, coinList);
+    var noEnemies = powerupList.concat(eastereggList, coinList);
+    var allList = powerupList.concat(eastereggList, coinList, enemyList);
+
+    var itemList = [];
+    var types = mystery.types.split(",");
+
+    for (var i = 0; i < types.length; i++) {
+        switch (types[i]) {
+            case 'all':
+                itemList = itemList.concat(allList);
+                break;
+            case 'noEnemies':
+                itemList = itemList.concat(noEnemies);
+                break;
+            case 'moreEnemies':
+                itemList = itemList.concat(moreEnemiesList);
+                break;
+            case 'collectibles':
+                itemList = itemList.concat(collectibleList);
+                break;
+            case 'powerups':
+                itemList = itemList.concat(powerupList);
+                break;
+            case 'eastereggs':
+                itemList = itemList.concat(eastereggList);
+                break;
+            case 'coins':
+                itemList = itemList.concat(coinList);
+                break;
+            case 'moreCoins':
+                itemList = itemList.concat(moreCoinsList);
+                break;
+            case 'enemies':
+                itemList = itemList.concat(enemyList);
+                break;
+            case 'weapons':
+                itemList = itemList.concat(weaponsList);
+                break;
+            default:
+                itemList.push(types[i]);
+        }
+    }
+
+    var uniqueItems = [];
+    $.each(itemList, function (i, el) {
+        if ($.inArray(el, uniqueItems) === -1) uniqueItems.push(el);
+    });
+
+
+    this.game.physics.enable(sprite);
+
+    sprite.animations.add('activate', [1, 2, 3, 4, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 3, 0], 30);
+    sprite.animations.add('activateLast', [1, 2, 3, 4, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5], 30);
+    sprite.body.allowGravity = false;
+    sprite.body.immovable = true;
+    sprite.uses = mystery.uses;
+    sprite.items = uniqueItems;
 
 };
 
@@ -1801,6 +1937,21 @@ Crowdjump.Game._spawnPowerup = function (powerup) {
     sprite.body.allowGravity = false;
 };
 
+Crowdjump.Game._spawnEasteregg = function (easteregg) {
+    //+21, 42x42 tile
+    if (easteregg == undefined) return;
+    let sprite = this.eastereggs.create(easteregg.x + 21, easteregg.y + 21, easteregg.image);
+    sprite.anchor.set(0.5, 0.5);
+
+    if (CONST_P2_PHYSICS) {
+        this.game.physics.p2.enable(sprite);
+    } else {
+        this.game.physics.enable(sprite);
+    }
+
+    sprite.body.allowGravity = false;
+};
+
 Crowdjump.Game._spawnDeco = function (deco) {
     var daytime = '_night';
     if (CONST_DAY_AND_NIGHT && day) daytime = '_day';
@@ -1842,21 +1993,6 @@ Crowdjump.Game.powerup_doublejump = function () {
     pu_doublejump = true;
     this.showPowerupMessage('Double Jump!');
 }
-
-Crowdjump.Game._spawnEasteregg = function (easteregg) {
-    //+21, 42x42 tile
-    if (easteregg == undefined) return;
-    let sprite = this.eastereggs.create(easteregg.x + 21, easteregg.y + 21, easteregg.image);
-    sprite.anchor.set(0.5, 0.5);
-
-    if (CONST_P2_PHYSICS) {
-        this.game.physics.p2.enable(sprite);
-    } else {
-        this.game.physics.enable(sprite);
-    }
-
-    sprite.body.allowGravity = false;
-};
 
 Crowdjump.Game.easteregg_time = function () {
     timeeggs += CONST_EASTEREGGS_TIME_TIMESECONDS;
@@ -1983,7 +2119,7 @@ Crowdjump.Game._onHeroVsFlag = function (hero, flag) {
     //dont set time_finished in the last level to avoid double time in last frame
 
 
-    game.highest_level = Math.max(game.highest_level, level+1);
+    game.highest_level = Math.max(game.highest_level, level + 1);
 
     //manually selected level
     if (selected_level >= 0) {
@@ -2115,6 +2251,110 @@ Crowdjump.Game._onHeroVsButton = function (hero, button) {
         this.sfx.press_button.play();
         this.checkButtonPress(button.buttonnr);
         button.pressed = true;
+    }
+};
+
+Crowdjump.Game._onHeroVsMysterybox = function (hero, mystery) {
+    if (mystery.uses > 0 && mystery.body.touching.down) {
+        var animationTime = Phaser.Timer.SECOND * 0.6;
+        if (mystery.uses <= 1) mystery.animations.play("activateLast");
+        else mystery.animations.play("activate");
+
+        this.sfx.mystery.play();
+        var rand = Math.floor(Math.random() * mystery.items.length);
+
+        var oXPos = mystery.body.position.x;
+        var oYPos = mystery.body.position.y - 42; //spawn on top of box
+
+        game.time.events.add(animationTime, function () {
+
+            //Ref Random Items
+            switch (mystery.items[rand]) {
+                case 'coin':
+                case 'coin2':
+                case 'coin3':
+                case 'coin4':
+                case 'coin5':
+                case 'coin6':
+                case 'coin7':
+                case 'coin8':
+                case 'coin9':
+                case 'coin10':
+                    var object = {};
+                    object.x = oXPos;
+                    object.y = oYPos;
+                    this._spawnCoin(object);
+                    break;
+                case 'pu_permjump':
+                    var object = {};
+                    object.x = oXPos;
+                    object.y = oYPos;
+                    object.image = "powerup:permjumpboost";
+                    this._spawnPowerup(object);
+                    break;
+                case 'pu_throughwalls':
+                    var object = {};
+                    object.x = oXPos;
+                    object.y = oYPos;
+                    object.image = "powerup:throughwalls";
+                    this._spawnPowerup(object);
+                    break;
+                case 'pu_time':
+                    var object = {};
+                    object.x = oXPos;
+                    object.y = oYPos;
+                    object.image = "powerup:time";
+                    this._spawnPowerup(object);
+                    break;
+                case 'pu_doublejump':
+                    var object = {};
+                    object.x = oXPos;
+                    object.y = oYPos;
+                    object.image = "powerup:doublejump";
+                    this._spawnPowerup(object);
+                    break;
+                case 'ea_time':
+                    var object = {};
+                    object.x = oXPos;
+                    object.y = oYPos;
+                    object.image = "easteregg:time";
+                    this._spawnEasteregg(object);
+                    break;
+                case 'ea_specialname':
+                    var object = {};
+                    object.x = oXPos;
+                    object.y = oYPos;
+                    object.image = "easteregg:specialname";
+                    this._spawnEasteregg(object);
+                    break;
+                case 'ea_money':
+                    var object = {};
+                    object.x = oXPos;
+                    object.y = oYPos;
+                    object.image = "easteregg:money";
+                    this._spawnEasteregg(object);
+                    break;
+                case 'ea_movementspeed':
+                    var object = {};
+                    object.x = oXPos;
+                    object.y = oYPos;
+                    object.image = "easteregg:movementspeed";
+                    this._spawnEasteregg(object);
+                    break;
+                case "spider":
+                case "spider2":
+                case "spider3":
+                case "spider4":
+                case "spider5":
+                    let spriteSpider = new Spider(this.game, oXPos, oYPos);
+                    // sprite.anchor.set(0.5,0.5);
+                    spriteSpider.body.velocity.x = CONST_SPIDER_SPEED
+                    this.spiders.add(spriteSpider);
+                    break;
+
+            }
+        }, this);
+        mystery.uses--;
     }
 };
 
@@ -2551,6 +2791,6 @@ Crowdjump.Game.toggleFPS = function () {
 };
 
 Crowdjump.Game.mainMenu = function () {
-    lives=CONST_HERO_LIVES;
+    lives = CONST_HERO_LIVES;
     backToMainMenu();
 }

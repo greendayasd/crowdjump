@@ -99,6 +99,9 @@
 		{"image": "easteregg:time", "x": 1344, "y": 882, "angle":0, "scalex":1, "scaley":1, "type":"time"},
 		{"image": "easteregg:specialname", "x": 0, "y": 756, "angle":0, "scalex":1, "scaley":1, "type":"specialname"}
 	],
+	"mystery": [
+		{"image": "mystery:questionmark", "x": 630, "y": 756, "angle":0, "scalex":1, "scaley":1, "types":"powerups,coins,moreEnemies", "uses":2}
+	],
 	"lava": [
 		{"image": "lava:1x1", "x": 1260, "y": 756, "angle":0, "scalex":1, "scaley":1},
 		{"image": "lava:1x1", "x": 1302, "y": 756, "angle":0, "scalex":1, "scaley":1},

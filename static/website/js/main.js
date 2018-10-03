@@ -45,6 +45,7 @@ const CONST_EASTEREGGS_MOVEMENTSPEED = 100;
 
 const CONST_CRATES = false;
 const CONST_BUTTONS_AND_GATES = true;
+const CONST_MYSTERYBOX = true
 
 const CONST_ENEMIES = true;
 const CONST_KILL_ENEMIES = true;
@@ -59,7 +60,6 @@ const CONST_BUBBLE = true;
 
 const CONST_WALK = false;
 const CONST_SPRINT = false;
-const CONST_WASD_CONTROLS = true;
 
 const CONST_DOUBLE_JUMP = false;
 const CONST_WALL_JUMP = false;
@@ -87,6 +87,10 @@ const CONST_BACKGROUNDIMAGE = true;
 const CONST_DAY_AND_NIGHT = true;
 const CONST_DECO = true;
 
+const CONST_WASD_CONTROLS = true;
+const CONST_CONTROLLER = false;
+const CONST_CONTROLLER_PRESSDURATION = 25; //ms in which button presses are registered, has to be small to avoid multiple activations
+
 const CONST_SHOWLEVEL = false;
 const CONST_FPS = true;
 const CONST_P2_PHYSICS = false;
@@ -97,6 +101,8 @@ const CONST_PAUSE = false;
 const CONST_LEVELMUSIC = true;
 
 const CONST_LEVELSELECTION = true;
+const CONST_PLAY_REACHED_LEVEL = true; //you don't have to beat a level to practice it
+
 const CONST_CHARACTERSELECTION = true;
 const CONST_OPTIONMENU = true;
 const CONST_CREDITS = true;
@@ -117,6 +123,10 @@ var game;
 var highscoreSocket;
 var account;
 
+//controller
+var jumpButton = null;
+
+
 //info from last level
 var time_last_level = 0;
 var jumps_last_level = 0;
@@ -134,6 +144,7 @@ var time_finished = 0; //Synchronisation von DB und tracking
 var time_overall = 0;
 var time_last_level_or_restart = 0;
 var music;
+var pad1;
 
 const fontColor = '#dbdbdb';
 const fontBackgroundColor = '#121835';
@@ -208,7 +219,7 @@ window.createGame = function (canvas, scope) {
     jQuery.get(path, function (data) {
 
         //random order
-        switch (data[0].difficulty){
+        switch (data[0].difficulty) {
             case DIFFICULTY.easy:
                 game.gameInfoEasy = data[0];
                 break;
@@ -219,7 +230,7 @@ window.createGame = function (canvas, scope) {
                 game.gameInfoHard = data[0];
                 break;
         }
-        switch (data[1].difficulty){
+        switch (data[1].difficulty) {
             case DIFFICULTY.easy:
                 game.gameInfoEasy = data[1];
                 break;
@@ -230,7 +241,7 @@ window.createGame = function (canvas, scope) {
                 game.gameInfoHard = data[1];
                 break;
         }
-        switch (data[2].difficulty){
+        switch (data[2].difficulty) {
             case DIFFICULTY.easy:
                 game.gameInfoEasy = data[2];
                 break;
@@ -460,6 +471,10 @@ function loadStates() {
     game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
     game.state.add('Credits', Crowdjump.Credits);
     game.state.add('Options', Crowdjump.Options);
+    if (CONST_CONTROLLER) {
+        game.input.gamepad.start();
+        pad1 = game.input.gamepad.pad1;
+    }
     game.state.start('Boot');
 }
 

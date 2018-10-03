@@ -38,7 +38,9 @@ Crowdjump.Preloader.prototype = {
         var audio = '/static/website/audio/';
         var images = '/static/website/images/';
 
+        //
         //Ui
+        //
         this.load.image('logo', images + 'logo.png');
         // this.load.image('play', images + 'play.png');
         // this.load.image('select_level', images + 'select_level.png');
@@ -69,10 +71,14 @@ Crowdjump.Preloader.prototype = {
             }
         }
 
+        //
         //fonts
+        //
         this.load.image('font:numbers', fonts + 'numbers.png');
 
+        //
         //characters
+        //
         if (CONST_ANIMATE_CHARACTER) {
             this.load.spritesheet('hero', characters + 'zhonya template2.png', 34, 42);
         }
@@ -82,7 +88,9 @@ Crowdjump.Preloader.prototype = {
             }
         }
 
+        //
         //tiles
+        //
         this.load.image('ground', grounds + 'ground.png');
         this.load.image('ground:1x1', grounds + 'ground_1x1.png');
         this.load.image('ground:1x2', grounds + 'ground_1x2.png');
@@ -184,8 +192,9 @@ Crowdjump.Preloader.prototype = {
             }
         }
 
-
+        //
         //collectibles
+        //
         if (CONST_EASTEREGGS) {
             this.load.image('easteregg:specialname', collectibles + 'easteregg_specialname.png');
             this.load.image('easteregg:time', collectibles + 'easteregg_time.png');
@@ -213,27 +222,33 @@ Crowdjump.Preloader.prototype = {
             }
         }
 
-
+        //
         //obstacles
+        //
         if (CONST_SPIKES) {
             this.load.image('spikes:1x1', obstacles + 'spikes_1x1.png');
             this.load.image('spikesLeft:1x1', obstacles + 'spikesLeft_1x1.png');
             this.load.image('spikesRight:1x1', obstacles + 'spikesRight_1x1.png');
         }
 
+        //
         //enemies
+        //
         if (CONST_ENEMIES) {
             this.load.spritesheet('spider', enemies + 'spider2.png', 42, 30);
         }
 
+        //
         //Cannons
+        //
         if (CONST_CANNONS) {
             this.load.image('cannonLeft', cannons + 'cannonLeft.png');
             this.load.image('cannonRight', cannons + 'cannonRight.png');
         }
 
-
+        //
         //deco
+        //
         if (CONST_DECO) {
             this.load.image('deco:stone1_day', deco + 'deco_stone1_day.png');
             this.load.image('deco:stone2_day', deco + 'deco_stone2_day.png');
@@ -250,7 +265,9 @@ Crowdjump.Preloader.prototype = {
             this.load.image('deco:tree1_night', deco + 'deco_tree1_night.png');
         }
 
+        //
         //misc
+        //
         if (CONST_BACKGROUNDIMAGE) {
             this.load.image('sky', misc + 'sky.png');
             this.load.image('hillsBack', misc + 'hillsBack.png');
@@ -284,6 +301,8 @@ Crowdjump.Preloader.prototype = {
         if (CONST_SHOOTING) this.load.image('bullet', misc + 'bullet.png');
         if (CONST_CANNONS) this.load.image('cannonball', misc + 'cannonball.png');
 
+        if (CONST_MYSTERYBOX) this.load.spritesheet('mystery:questionmark', misc + 'mystery_questionmark.png', 42, 42);
+
         if (CONST_BUTTONS_AND_GATES) {
             this.load.spritesheet('button:red', misc + 'button_red.png', 42, 5);
             this.load.spritesheet('button:blue', misc + 'button_blue.png', 42, 5);
@@ -300,7 +319,10 @@ Crowdjump.Preloader.prototype = {
             this.load.spritesheet('gate:cyan', misc + 'gate_cyan.png', 42, 84);
         }
 
+
+        //
         //audio
+        //
         this.load.audio('sfx:jump', audio + 'jump.wav');
         this.load.audio('sfx:flag', audio + 'flag.wav');
         if (CONST_COINS) this.load.audio('sfx:coin', audio + 'coin.wav');
@@ -312,6 +334,8 @@ Crowdjump.Preloader.prototype = {
         if (CONST_SHOOTING) this.load.audio('sfx:shoot', audio + 'shoot.mp3');
         if (CONST_CANNONS) this.load.audio('sfx:cannon_fire', audio + 'cannon_fire.wav');
         if (CONST_MAGAZINE > 0) this.load.audio('sfx:empty_magazine', audio + 'empty_magazine.wav');
+
+        if (CONST_MYSTERYBOX) this.load.audio('sfx:mystery', audio + 'mystery.ogg');
 
         if (CONST_BUTTONS_AND_GATES) {
             this.load.audio('sfx:open_gate', audio + 'open_gate.wav');

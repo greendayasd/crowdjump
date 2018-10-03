@@ -28,14 +28,14 @@ Crowdjump.Options.prototype = {
         font = new Object;
         previousDifficulty = game.difficulty;
 
-        font.fontSize=fontSize;
-        font.fill=fontColor;
+        font.fontSize = fontSize;
+        font.fill = fontColor;
         font.backgroundColor = fontBackgroundColor;
         font.font = "Arial";
 
         fontSelected = new Object;
-        fontSelected.fontSize=fontSize;
-        fontSelected.fill=fontColorSelected;
+        fontSelected.fontSize = fontSize;
+        fontSelected.fill = fontColorSelected;
         fontSelected.backgroundColor = fontBackGroundColorSelected;
         fontSelected.font = "Arial";
 
@@ -48,16 +48,16 @@ Crowdjump.Options.prototype = {
 
         difficulty1 = this.add.text(marginX + (1 * marginRight) + 134, marginY, "Easy", font);
         difficulty1.inputEnabled = true;
-        difficulty1.events.onInputDown.add(this.selectDifficulty, {dif : DIFFICULTY.easy});
+        difficulty1.events.onInputDown.add(this.selectDifficulty, {dif: DIFFICULTY.easy});
 
         difficulty2 = this.add.text(marginX + (2 * marginRight) + 200, marginY, "Normal", font);
         difficulty2.inputEnabled = true;
-        difficulty2.events.onInputDown.add(this.selectDifficulty, {dif : DIFFICULTY.normal});
+        difficulty2.events.onInputDown.add(this.selectDifficulty, {dif: DIFFICULTY.normal});
         // difficulty2.setStyle()
 
         difficulty3 = this.add.text(marginX + (3 * marginRight) + 300, marginY, "Hard", font);
         difficulty3.inputEnabled = true;
-        difficulty3.events.onInputDown.add(this.selectDifficulty, {dif : DIFFICULTY.hard});
+        difficulty3.events.onInputDown.add(this.selectDifficulty, {dif: DIFFICULTY.hard});
 
         backToMenu = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 220, "Back", {
             font: "40px Arial",
@@ -85,7 +85,7 @@ Crowdjump.Options.prototype = {
     changeDifficultySelectedColor: function () {
 
         //change selected difficulty
-        switch (previousDifficulty){
+        switch (previousDifficulty) {
             case DIFFICULTY.easy:
                 difficulty1.setStyle(font);
                 break;
@@ -98,7 +98,7 @@ Crowdjump.Options.prototype = {
         }
 
         //change selected difficulty
-        switch (game.difficulty){
+        switch (game.difficulty) {
             case DIFFICULTY.easy:
                 difficulty1.setStyle(fontSelected);
                 break;
@@ -109,5 +109,45 @@ Crowdjump.Options.prototype = {
                 difficulty3.setStyle(fontSelected);
                 break;
         }
+    },
+    update: function () {
+        if (CONST_CONTROLLER) {
+            // Controls
+            if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_LEFT) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
+            }
+            else if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_RIGHT) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
+            }
+
+            if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_UP) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
+            }
+            else if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_DOWN) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
+            }
+
+            if (pad1.justPressed(Phaser.Gamepad.XBOX360_A)) {
+            }
+
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_B)) {
+                backToMainMenu();
+            }
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_X)) {
+            }
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_Y)) {
+            }
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_START)) {
+                backToMainMenu();
+            }
+
+            if (pad1.connected) {
+                var rightStickX = pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X);
+                var rightStickY = pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_Y);
+
+                if (rightStickX) {
+                }
+
+                if (rightStickY) {
+                }
+            }
+        }
+
     }
-}
+};

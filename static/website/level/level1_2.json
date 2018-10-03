@@ -66,7 +66,8 @@
 		{"image": "grass:2x1", "x": 2478, "y": 210, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "invisible:1x4", "x": 2520, "y": 966, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 4620, "y": 672, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "grass:2x1", "x": 1680, "y": 756, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
+		{"image": "grass:2x1", "x": 1680, "y": 756, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 0, "y": 672, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
 	],
 	"fallingPlatforms": [
 
@@ -85,7 +86,9 @@
 		{"image": "button:green", "x": 840, "y": 714, "angle":0, "scalex":1, "scaley":1, "buttonnr":2}
 	],
 	"gates": [
-		{"image": "gate:green", "x": 2520, "y": 882, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":2}
+		{"image": "gate:green", "x": 2520, "y": 882, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":2},
+		{"image": "gate:green", "x": 42, "y": 588, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":2},
+		{"image": "gate:green", "x": 42, "y": 504, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":2}
 	],
 	"spawns": [
 		{"image": "spawnBlue:1x1", "x": 3822, "y": 252, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":1},
@@ -118,6 +121,9 @@
 	"eastereggs": [
 		{"image": "easteregg:movementspeed", "x": 2394, "y": 1134, "angle":0, "scalex":1, "scaley":1, "type":"movementspeed"},
 		{"image": "easteregg:specialname", "x": 1848, "y": 42, "angle":0, "scalex":1, "scaley":1, "type":"specialname"}
+	],
+	"mystery": [
+		{"image": "mystery:questionmark", "x": 0, "y": 462, "angle":0, "scalex":1, "scaley":1, "types":"powerups,moreEnemies", "uses":1}
 	],
 	"lava": [
 		{"image": "lava:1x1", "x": 1974, "y": 840, "angle":0, "scalex":1, "scaley":1},

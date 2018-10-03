@@ -41,7 +41,9 @@ Crowdjump.Menu.prototype = {
             key2.onDown.add(this.characterSelection, this);
         }
 
-        if (CONST_LEVELSELECTION && game.highest_level > 0) {
+        var highestLevel = game.highest_level;
+        if (CONST_PLAY_REACHED_LEVEL) highestLevel++;
+        if (CONST_LEVELSELECTION && highestLevel > 0) {
             selectLevel = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 140, "Select Level", {
                 font: "40px Arial",
                 fill: '#dbdbdb'
@@ -56,7 +58,7 @@ Crowdjump.Menu.prototype = {
         }
 
 
-        if (CONST_CREDITS) {
+        if (CONST_OPTIONMENU) {
             credits = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 190, "Options", {
                 font: "40px Arial",
                 fill: '#dbdbdb'
@@ -83,9 +85,10 @@ Crowdjump.Menu.prototype = {
         }
 
 
-        var instructionText = "The goal is simple: Control the alien by using the arrow keys \n" +
-            "to move (or space to jump) to get to the flag.\n" +
-            "If you get stuck, you can reset the game pressing R.";
+
+        // var instructionText = "The goal is simple: Control the alien by using the arrow keys \n" +
+        //     "to move (or space to jump) to get to the flag.\n" +
+        //     "If you get stuck, you can reset the game pressing R.";
 
         // instruction = this.add.text(this.world.centerX,
         //                         this.world.centerY + 160, instructionText, {fill: '#ffffff'});
@@ -115,5 +118,47 @@ Crowdjump.Menu.prototype = {
 
     endscreen: function () {
 
+    },
+
+
+    update: function () {
+        if (CONST_CONTROLLER) {
+            // Controls
+            if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_LEFT) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
+            }
+            else if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_RIGHT) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
+            }
+
+            if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_UP) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) < -0.1) {
+            }
+            else if (pad1.isDown(Phaser.Gamepad.XBOX360_DPAD_DOWN) || pad1.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_Y) > 0.1) {
+            }
+
+            if (pad1.justPressed(Phaser.Gamepad.XBOX360_A)) {
+                startGameRoutine();
+            }
+
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_B)) {
+            }
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_X)) {
+            }
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_Y)) {
+            }
+            if (pad1.justReleased(Phaser.Gamepad.XBOX360_START)) {
+            }
+
+            if (pad1.connected) {
+                var rightStickX = pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_X);
+                var rightStickY = pad1.axis(Phaser.Gamepad.XBOX360_STICK_RIGHT_Y);
+
+                if (rightStickX) {
+                }
+
+                if (rightStickY) {
+                }
+            }
+        }
+
     }
-}
+
+};

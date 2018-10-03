@@ -31,7 +31,6 @@
 		{"image": "grass:2x1", "x": 1596, "y": 1176, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 1638, "y": 1050, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:20x1", "x": 1890, "y": 1386, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:5x1", "x": 546, "y": 1260, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x3", "x": 504, "y": 1260, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:12x1", "x": 882, "y": 1386, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:6x1", "x": 1470, "y": 1386, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
@@ -78,7 +77,8 @@
 		{"image": "invisible:1x1", "x": 0, "y": 546, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:2x1", "x": 0, "y": 588, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x6", "x": 630, "y": 210, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "invisible:4x1", "x": 630, "y": 1512, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
+		{"image": "invisible:4x1", "x": 630, "y": 1512, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "ground:4x1", "x": 588, "y": 1260, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
 	],
 	"fallingPlatforms": [
 
@@ -162,14 +162,17 @@
 	],
 	"powerups": [
 		{"image": "powerup:permjumpboost", "x": 84, "y": 1050, "angle":0, "scalex":1, "scaley":1, "type":"permjumpboost"},
-		{"image": "powerup:throughwalls", "x": 924, "y": 1344, "angle":0, "scalex":1, "scaley":1, "type":"throughwalls"},
-		{"image": "powerup:time", "x": 588, "y": 1344, "angle":0, "scalex":1, "scaley":1, "type":"time"}
+		{"image": "powerup:throughwalls", "x": 924, "y": 1344, "angle":0, "scalex":1, "scaley":1, "type":"throughwalls"}
 	],
 	"eastereggs": [
 		{"image": "easteregg:specialname", "x": 0, "y": 0, "angle":0, "scalex":1, "scaley":1, "type":"specialname"},
 		{"image": "easteregg:movementspeed", "x": 1092, "y": 1470, "angle":0, "scalex":1, "scaley":1, "type":"movementspeed"},
 		{"image": "easteregg:money", "x": 2604, "y": 1344, "angle":0, "scalex":1, "scaley":1, "type":"money"},
 		{"image": "easteregg:specialname", "x": 2982, "y": 42, "angle":0, "scalex":1, "scaley":1, "type":"specialname"}
+	],
+	"mystery": [
+		{"image": "mystery:questionmark", "x": 546, "y": 1260, "angle":0, "scalex":1, "scaley":1, "types":"powerups,coins", "uses":1},
+		{"image": "mystery:questionmark", "x": 1638, "y": 924, "angle":0, "scalex":1, "scaley":1, "types":"coins", "uses":10}
 	],
 	"lava": [
 		{"image": "lava:2x1", "x": 1386, "y": 1386, "angle":0, "scalex":1, "scaley":1},

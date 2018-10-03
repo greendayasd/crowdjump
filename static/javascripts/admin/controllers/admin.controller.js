@@ -865,6 +865,7 @@
                 var buttons = '';
                 var gates = '';
                 var spawns = '';
+                var mystery = '';
 
                 var maxX = 918;
                 var maxY = 588;
@@ -872,6 +873,7 @@
                 for (var i = 0; i < objects.length; i++) {
                     var line = objects[i];
                     var angle = 0.0;
+                    var data = ''
                     var scalex = 1.0;
                     var scaley = 1.0;
                     //multiple arguments
@@ -882,10 +884,16 @@
 
                         for (var count = 1; count < argumentArr.length; count++) {
                             var def = argumentArr[count].split('.')[1];
+                            if (def == undefined) continue;
+                            if (def.startsWith("data")) {
+                                data = argumentArr[count].split(' ')[2];
+                                // data = data.substring(0, data.length - 2);
+                                data += '}';
+                                data = JSON.parse(data);
+                            }
                             if (def.startsWith("angle")) {
                                 angle = argumentArr[count].split(' ')[2];
                                 angle = angle.substring(0, angle.length - 2);
-                                log(angle);
                             }
                             if (def.startsWith("scale")) {
                                 var scales = argumentArr[count].split("[")[1];
@@ -942,6 +950,17 @@
                         eastereggs += line + fulltype + endline;
                         continue;
                     }
+                    if (image.startsWith("mystery")) {
+                        var defaultMysteryType = '';
+                        if (data.types == undefined) defaultMysteryType = 'noEnemies';
+                        else defaultMysteryType = data.types;
+
+                        var defaultUses = 1;
+                        if (data.uses != undefined) defaultUses = data.uses;
+                        mystery += line + ', "types":"' + defaultMysteryType + '", "uses":' + defaultUses + endline;
+                        continue;
+                    }
+
                     if (image.startsWith("deco")) {
                         deco += line + fulltype + endline;
                         continue;
@@ -967,11 +986,13 @@
 
                     if (image.startsWith("button")) {
                         var default_buttonnr = 0;
-                        if (image.startsWith("button:blue")) default_buttonnr = 1;
-                        if (image.startsWith("button:green")) default_buttonnr = 2;
-                        if (image.startsWith("button:purple")) default_buttonnr = 3;
-                        if (image.startsWith("button:yellow")) default_buttonnr = 4;
-                        if (image.startsWith("button:cyan")) default_buttonnr = 5;
+                        if (data.buttonnr == undefined) {
+                            if (image.startsWith("button:blue")) default_buttonnr = 1;
+                            if (image.startsWith("button:green")) default_buttonnr = 2;
+                            if (image.startsWith("button:purple")) default_buttonnr = 3;
+                            if (image.startsWith("button:yellow")) default_buttonnr = 4;
+                            if (image.startsWith("button:cyan")) default_buttonnr = 5;
+                        }
                         buttons += line + ', "buttonnr":' + default_buttonnr + endline;
                         continue;
                     }
@@ -1045,6 +1066,7 @@
                 coins = wrapJsonLevel(coins, "coins");
                 powerups = wrapJsonLevel(powerups, "powerups");
                 eastereggs = wrapJsonLevel(eastereggs, "eastereggs");
+                mystery = wrapJsonLevel(mystery, "mystery");
 
                 lava = wrapJsonLevel(lava, "lava");
                 spikes = wrapJsonLevel(spikes, "spikes");
@@ -1061,7 +1083,7 @@
 
                 $scope.csv = '{\n' + platforms + falling_platforms + fakeplatforms;
                 $scope.csv += crates + buttons + gates + spawns;
-                $scope.csv += coins + powerups + eastereggs;
+                $scope.csv += coins + powerups + eastereggs + mystery;
                 $scope.csv += lava + spikes + sawblades + cannons;
                 $scope.csv += enemies + enemy_walls;
                 $scope.csv += flags + hero + deco + worldsize + '\n}';
