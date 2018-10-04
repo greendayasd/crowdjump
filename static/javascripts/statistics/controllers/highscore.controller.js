@@ -18,30 +18,7 @@
         $scope.difficulties.push({"id": 1, "label": "normal"});
         $scope.difficulties.push({"id": 2, "label": "hard"});
         $scope.difficulty = 1;
-        $scope.didyouknow = '';
 
-
-        $scope.getDidYouKnow = function () {
-            var amountOfSlogans = 3;
-            var rand = Math.floor(Math.random() * amountOfSlogans);
-            var data = {
-                "random": rand
-            };
-            $.ajax({
-                url: '/didyouknow/',
-                cache: false,
-                data: data,
-                success: function (data_new) {
-                    $scope.didyouknow = "Did you know? " + JSON.parse(data_new).result;
-                    console.log($scope.didyouknow);
-                },
-                error: function (data) {
-                    // console.log("time:" + time + ' . ' + data);
-                }
-            });
-
-
-        };
 
         // Safari 3.0+ "[object HTMLElementConstructor]"
         var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) {
@@ -54,7 +31,6 @@
 
         var topcut = 10;
         activate();
-        $scope.getDidYouKnow();
 
 
         function activate() {
