@@ -483,11 +483,13 @@ def DidYouKnow(request):
     ideas = Idea.objects.filter(deleted=0).count()
     ideavotes = IdeaVote.objects.exclude(vote=0).count()
     comments = Comment.objects.filter(deleted=0).count()
+    roundsPlayedObject = GameInfo.objects.all().aggregate(Sum('rounds_started'))
+    rounds_played = (int)(roundsPlayedObject["rounds_started__sum"])
 
     #fuck the missing switch statement in python
     if random == 0:
         gi = GameInfo.objects.all().aggregate(Sum('enemies_killed'))
-        enemies_sum = (int)(gi["enemies_killed__sum"] / datetimedif.days)
+        enemies_sum = '%.2f' % (gi["enemies_killed__sum"] / datetimedif.days)
         res = 'Every day around ' + str(enemies_sum) + ' enemies are killed!'
     elif random == 1:
         gi = GameInfo.objects.all().aggregate(Sum('overall_coins'))
@@ -516,16 +518,45 @@ def DidYouKnow(request):
         res = 'There are ' + str(comments) + ' comments under ideas, remember to comment yourself to improve the ideas!'
 
     elif random == 9:
-        gi = GameInfo.objects.all().aggregate(Sum('rounds_started'))
-        rounds_played = (int)(gi["rounds_started__sum"])
         res = 'A total of ' + str(rounds_played) + ' rounds were played!'
 
-    # elif random == 10:
-    # elif random == 11:
-    # elif random == 12:
-    # elif random == 13:
-    # elif random == 14:
-    # elif random == 15:
+    elif random == 10:
+        gi = GameInfo.objects.all().aggregate(Max('coins_collected'))
+        max_coins = (int)(gi["coins_collected__max"])
+        res = 'The maximum coins ever found in a single run were ' + str(max_coins) + '!'
+    elif random == 11:
+        gi = GameInfo.objects.all().aggregate(Max('enemies_killed'))
+        enemies_killed = (int)(gi["enemies_killed__max"])
+        res = 'A maximum of ' + str(enemies_killed) + ' enemies were killed in one version by a single user!'
+    elif random == 12:
+        gi = GameInfo.objects.all().aggregate(Sum('deaths'))
+        deaths = (int)(gi["deaths__sum"])
+        res = 'In total players died ' + str(deaths) + ' times trying to beat the game!'
+    elif random == 13:
+        gi = GameInfo.objects.all().aggregate(Sum('overall_powerups'))
+        overall_powerups = '%.2f' % (gi["overall_powerups__sum"] / rounds_played)
+        res = 'On average ' + str(overall_powerups) + ' powerups were used each round!'
+
+    elif random == 14:
+        gi = GameInfo.objects.all().aggregate(Sum('time_spent_game'))
+        seconds = (int)(gi["time_spent_game__sum"]/1000)
+
+        days, remainder = divmod(seconds, 86400)
+        hours, remainder = divmod(remainder, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        time_spent_game = '{:02} days {:02} hours {:02} minutes and {:02} seconds'.format(int(days), int(hours), int(minutes), int(seconds))
+        res = 'The overall time spent on the game is ' + str(time_spent_game) + '! Keep up the good work!'
+
+    elif random == 15:
+        gi = GameInfo.objects.all().aggregate(Max('time_spent_game'))
+        seconds = (int)(gi["time_spent_game__max"]/1000)
+
+        days, remainder = divmod(seconds, 86400)
+        hours, remainder = divmod(remainder, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        time_spent_game = '{:02} days {:02} hours {:02} minutes and {:02} seconds'.format(int(days), int(hours), int(minutes), int(seconds))
+        res = 'The maximum time a single user played a version was ' + str(time_spent_game) + '!'
+
     # elif random == 16:
     # elif random == 17:
     # elif random == 18:
