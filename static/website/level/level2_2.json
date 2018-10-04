@@ -135,8 +135,7 @@
 		{"image": "spikesRight:1x1", "x": 1722, "y": 672, "angle":0, "scalex":1, "scaley":1},
 		{"image": "spikesRight:1x1", "x": 1722, "y": 546, "angle":0, "scalex":1, "scaley":1},
 		{"image": "spikesRight:1x1", "x": 1722, "y": 504, "angle":0, "scalex":1, "scaley":1},
-		{"image": "spikes:1x1", "x": 1596, "y": 420, "angle":0, "scalex":1, "scaley":1},
-		{"image": "spikes:1x1", "x": 1470, "y": 126, "angle":0, "scalex":1, "scaley":1}
+		{"image": "spikes:1x1", "x": 1596, "y": 420, "angle":0, "scalex":1, "scaley":1}
 	],
 	"sawblades": [
 

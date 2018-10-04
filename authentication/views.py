@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status, permissions, viewsets, views
 from django.http import JsonResponse, HttpResponseForbidden, HttpResponseRedirect
 from website.models import Version
-from ideas.models import Idea, IdeaVote
+from ideas.models import Idea, IdeaVote, Comment
 from authentication.forms import ImageUploadForm
 from django.shortcuts import render
 from django.contrib.staticfiles.templatetags.staticfiles import static
@@ -482,19 +482,20 @@ def DidYouKnow(request):
     users = Account.objects.count()
     ideas = Idea.objects.filter(deleted=0).count()
     ideavotes = IdeaVote.objects.exclude(vote=0).count()
+    comments = Comment.objects.filter(deleted=0).count()
 
     #fuck the missing switch statement in python
     if random == 0:
-        gi = GameInfo.objects.all().aggregate(Max('enemies_killed'))
-        enemies_max = (int)(gi["enemies_killed__max"] / datetimedif.days)
-        res = 'Every day around ' + str(enemies_max) + ' enemies are killed!'
+        gi = GameInfo.objects.all().aggregate(Sum('enemies_killed'))
+        enemies_sum = (int)(gi["enemies_killed__sum"] / datetimedif.days)
+        res = 'Every day around ' + str(enemies_sum) + ' enemies are killed!'
     elif random == 1:
-        gi = GameInfo.objects.all().aggregate(Max('overall_coins'))
-        overall_coins = gi["overall_coins__max"]
+        gi = GameInfo.objects.all().aggregate(Sum('overall_coins'))
+        overall_coins = gi["overall_coins__sum"]
         res = 'There were ' + str(overall_coins) + ' coins collected in total!'
     elif random == 2:
-        gi = GameInfo.objects.all().aggregate(Max('overall_powerups'))
-        overall_powerups = gi["overall_powerups__max"]
+        gi = GameInfo.objects.all().aggregate(Sum('overall_powerups'))
+        overall_powerups = gi["overall_powerups__sum"]
         res = 'A total of ' + str(overall_powerups) + ' powerups have been collected!'
     elif random == 3:
         avg_ideas = int(ideas/users)
@@ -508,9 +509,17 @@ def DidYouKnow(request):
     elif random == 6:
         characters_uploaded = Account.objects.exclude(uploaded_character='').count()
         res = 'Only ' + str(characters_uploaded) + ' people uploaded their own character, try it out yourself below the game!'
-    # elif random == 7:
-    # elif random == 8:
-    # elif random == 9:
+    elif random == 7:
+        ideas_left = Idea.objects.filter(implemented=0, deleted=0, feasible=1).count()
+        res = 'There are still ' + str(ideas_left) + ' ideas left you can vote for!'
+    elif random == 8:
+        res = 'There are ' + str(comments) + ' comments under ideas, remember to comment yourself to improve the ideas!'
+
+    elif random == 9:
+        gi = GameInfo.objects.all().aggregate(Sum('rounds_started'))
+        rounds_played = (int)(gi["rounds_started__sum"])
+        res = 'A total of ' + str(rounds_played) + ' rounds were played!'
+
     # elif random == 10:
     # elif random == 11:
     # elif random == 12:
