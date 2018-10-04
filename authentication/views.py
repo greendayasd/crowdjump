@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status, permissions, viewsets, views
 from django.http import JsonResponse, HttpResponseForbidden, HttpResponseRedirect
 from website.models import Version
+from ideas.models import Idea, IdeaVote
 from authentication.forms import ImageUploadForm
 from django.shortcuts import render
 from django.contrib.staticfiles.templatetags.staticfiles import static
@@ -478,6 +479,9 @@ def DidYouKnow(request):
     datetimefirst = datetimefirst.replace(hour=19)
     datetimenow = datetime.datetime.now()
     datetimedif = datetimenow - datetimefirst
+    users = Account.objects.count()
+    ideas = Idea.objects.filter(deleted=0).count()
+    ideavotes = IdeaVote.objects.exclude(vote=0).count()
 
     #fuck the missing switch statement in python
     if random == 0:
@@ -492,10 +496,18 @@ def DidYouKnow(request):
         gi = GameInfo.objects.all().aggregate(Max('overall_powerups'))
         overall_powerups = gi["overall_powerups__max"]
         res = 'A total of ' + str(overall_powerups) + ' powerups have been collected!'
-    # elif random == 3:
-    # elif random == 4:
-    # elif random == 5:
-    # elif random == 6:
+    elif random == 3:
+        avg_ideas = int(ideas/users)
+        res = 'Every user published an average of ' + str(avg_ideas) + ' ideas!'
+    elif random == 4:
+        upvotes = IdeaVote.objects.filter(vote=1).count()
+        res = 'You upvoted your favourite ideas ' + str(upvotes) + ' times!'
+    elif random == 5:
+        downvotes = IdeaVote.objects.filter(vote=-1).count()
+        res = str(downvotes) + ' times you downvoted ideas! Remember to look at them again after the game changed a bit!'
+    elif random == 6:
+        characters_uploaded = Account.objects.exclude(uploaded_character='').count()
+        res = 'Only ' + str(characters_uploaded) + ' people uploaded their own character, try it out yourself below the game!'
     # elif random == 7:
     # elif random == 8:
     # elif random == 9:
