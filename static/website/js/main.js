@@ -432,6 +432,11 @@ function setInfoLastLevel() {
 
 function startGameRoutine() {
     this.game.time.reset();
+    last_second = 0;
+    first_moved = 0;
+    time_finished = 0;
+    time_overall = 0;
+    time_last_level_or_restart = 0;
     resetStats();
     levelmusic.play();
     game.state.start('Game');
