@@ -2457,7 +2457,7 @@ Crowdjump.Game.updateTimer = function () {
 Crowdjump.Game._spawnFlag = function (flagspawn) {
     //old flag 20,45
     //new flag 21,42
-    this.flag = this.flags.create(flagspawn.x + 20, flagspawn.y + 45, 'flag');
+    this.flag = this.flags.create(flagspawn.x + 21, flagspawn.y + 42, 'flag');
     this.flag.anchor.setTo(0.5, 1);
     this.game.physics.enable(this.flag);
     this.flag.body.allowGravity = false;

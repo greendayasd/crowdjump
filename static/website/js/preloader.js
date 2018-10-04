@@ -293,15 +293,15 @@ Crowdjump.Preloader.prototype = {
                 this.load.image('sun', misc + 'sun.png');
             }
         }
-        // this.load.image('flag', misc + 'flag_new.png');
-        this.load.spritesheet('flag', misc + 'flag.png', 42, 66);
+        this.load.image('flag', misc + 'flag.png');
+        // this.load.spritesheet('flag', misc + 'flag.png', 42, 66);
         this.load.image('icon:heart', misc + 'heart.png');
 
         if (CONST_CRATES) this.load.image('crate', misc + 'crate.png');
         if (CONST_SHOOTING) this.load.image('bullet', misc + 'bullet.png');
         if (CONST_CANNONS) this.load.image('cannonball', misc + 'cannonball.png');
 
-        if (CONST_MYSTERYBOX) this.load.spritesheet('mystery:questionmark', misc + 'mystery_questionmark.png', 42, 42);
+        if (CONST_MYSTERYBOX) this.load.spritesheet('mystery:questionmark', misc + 'mystery_questionmark.png', 42, 42   );
 
         if (CONST_BUTTONS_AND_GATES) {
             this.load.spritesheet('button:red', misc + 'button_red.png', 42, 5);

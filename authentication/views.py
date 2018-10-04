@@ -12,6 +12,7 @@ from django.shortcuts import render
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.views.decorators.csrf import csrf_exempt
 import math
+from django.db.models import Sum, Avg, Max, Min, FloatField, Count, Q
 
 class AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
@@ -468,6 +469,49 @@ def SendGameData(request):
         acc.save()
 
     return JsonResponse('{"success":"true"}', safe=False)
+
+
+def DidYouKnow(request):
+    random = int(request.GET.get('random'))
+    res = ''
+    datetimefirst = datetime.datetime.strptime('2018-09-14', "%Y-%m-%d")
+    datetimefirst = datetimefirst.replace(hour=19)
+    datetimenow = datetime.datetime.now()
+    datetimedif = datetimenow - datetimefirst
+
+    #fuck the missing switch statement in python
+    if random == 0:
+        gi = GameInfo.objects.all().aggregate(Max('enemies_killed'))
+        enemies_max = (int)(gi["enemies_killed__max"] / datetimedif.days)
+        res = 'Every day around ' + str(enemies_max) + ' enemies are killed!'
+    elif random == 1:
+        gi = GameInfo.objects.all().aggregate(Max('overall_coins'))
+        overall_coins = gi["overall_coins__max"]
+        res = 'There were ' + str(overall_coins) + ' coins collected in total!'
+    elif random == 2:
+        gi = GameInfo.objects.all().aggregate(Max('overall_powerups'))
+        overall_powerups = gi["overall_powerups__max"]
+        res = 'A total of ' + str(overall_powerups) + ' powerups have been collected!'
+    # elif random == 3:
+    # elif random == 4:
+    # elif random == 5:
+    # elif random == 6:
+    # elif random == 7:
+    # elif random == 8:
+    # elif random == 9:
+    # elif random == 10:
+    # elif random == 11:
+    # elif random == 12:
+    # elif random == 13:
+    # elif random == 14:
+    # elif random == 15:
+    # elif random == 16:
+    # elif random == 17:
+    # elif random == 18:
+    # elif random == 19:
+    # elif random == 20:
+
+    return JsonResponse('{"result":"' + res + '"}', safe=False)
 
 
 def GetWinnerOfXDays(request):

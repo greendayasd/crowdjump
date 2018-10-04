@@ -78,9 +78,13 @@
 <div class="container">
     <div class="row" ng-show="false">
         <div class="col-md-12">
-
+            <h4 class="text-center" style="color:blue">Level 5 will be available in the next version!</h4><br>
         </div>
-        <h4 class="text-center" style="color:blue">Level 5 will be available in the next version!</h4><br>
+    </div>
+    <div class="row" ng-show="true"  ng-controller="HighscoreController as vm">
+        <div class="col-md-12">
+            <h4 class="text-center" style="color:#1673ff">{{ didyouknow }}</h4>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-12" id="gameCanvas">
@@ -88,7 +92,6 @@
         </div>
 
     </div>
-    <br>
     <div class="row">
         <div class="col-md-12" id="instructions">
 
