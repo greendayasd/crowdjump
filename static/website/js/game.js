@@ -479,6 +479,9 @@ Crowdjump.Game.create = function () {
         spawn_platform: this.game.add.audio('sfx:spawn_platform'),
         levelup: this.game.add.audio('sfx:levelup'),
         mystery: this.game.add.audio('sfx:mystery'),
+        teleport: this.game.add.audio('sfx:teleport'),
+        explosion: this.game.add.audio('sfx:explosion'),
+
     };
 
 
@@ -1009,6 +1012,9 @@ Crowdjump.Game._handleCollisions = function () {
         this.game.physics.arcade.collide(this.hero, this.mystery, this._onHeroVsMysterybox, null, this);
     }
 
+    if (CONST_TELEPORTER) this.game.physics.arcade.overlap(this.hero, this.teleporter, this._onHeroVsTeleporter,
+        null, this);
+
     if (!CONST_ZHONYA || !zhonya_activated || CONST_KILL_IN_ZHONYA) {
         this.game.physics.arcade.overlap(this.hero, this.spiders,
             this._onHeroVsEnemy, null, this);
@@ -1304,6 +1310,11 @@ Crowdjump.Game._loadLevel = function (data) {
     if (CONST_MYSTERYBOX) {
         this.mystery = this.game.add.group();
         data.mystery.forEach(this._spawnMystery, this);
+    }
+
+    if (CONST_TELEPORTER) {
+        this.teleporter = this.game.add.group();
+        data.teleporter.forEach(this._spawnTeleporter, this);
     }
 
     //spawn all deco
@@ -1698,7 +1709,7 @@ Crowdjump.Game._spawnMystery = function (mystery) {
     var powerupList = ["pu_permjump", "pu_throughwalls", "pu_time", "pu_doublejump"];
     var eastereggList = ["ea_time", "ea_specialname", "ea_money", "ea_movementspeed"];
     var coinList = ["coin"];
-    var moreCoinsList = ["coin","coin2","coin3","coin4","coin5","coin6","coin7","coin8","coin9","coin10",];
+    var moreCoinsList = ["coin", "coin2", "coin3", "coin4", "coin5", "coin6", "coin7", "coin8", "coin9", "coin10",];
     var weaponsList = [];
     var enemyList = ["spider"];
     var moreEnemiesList = ["spider", "spider2", "spider3", "spider4", "spider5"];
@@ -1935,6 +1946,10 @@ Crowdjump.Game._spawnPowerup = function (powerup) {
     }
 
     sprite.body.allowGravity = false;
+    if (CONST_ANIMATE_POWERUPS) {
+        sprite.animations.add('explode', [0, 1, 2, 3, 4, 5, 6, 7], 20);
+        sprite.animations._anims.explode.killOnComplete = true;
+    }
 };
 
 Crowdjump.Game._spawnEasteregg = function (easteregg) {
@@ -1962,6 +1977,32 @@ Crowdjump.Game._spawnDeco = function (deco) {
     this.game.physics.enable(sprite);
     sprite.body.allowGravity = false;
 
+};
+
+Crowdjump.Game._spawnFlag = function (flagspawn) {
+    //old flag 20,45
+    //new flag 21,42
+    this.flag = this.flags.create(flagspawn.x + 21, flagspawn.y + 42, 'flag');
+    this.flag.anchor.setTo(0.5, 1);
+    this.game.physics.enable(this.flag);
+    this.flag.body.allowGravity = false;
+};
+
+Crowdjump.Game._spawnTeleporter = function (teleporter) {
+
+    let sprite = this.teleporter.create(teleporter.x, teleporter.y, teleporter.image);
+    // sprite.anchor.set(0.5, 0.5);
+
+    this.game.physics.enable(sprite);
+    sprite.body.allowGravity = false;
+    sprite.activated = true;
+
+    if (CONST_ANIMATE_TELEPORTER) {
+        sprite.animations.add('activate', [0, 1, 2, 3, 4, 5, 6, 7, 8], 8, true);
+        sprite.animations.add('stop', [9]);
+        sprite.animations.play('activate');
+    }
+    sprite.exploding = false;
 };
 
 Crowdjump.Game.powerup_lavaorb = function () {
@@ -2208,35 +2249,46 @@ Crowdjump.Game._onHeroVsEasteregg = function (hero, easteregg) {
 }
 
 Crowdjump.Game._onHeroVsPowerup = function (hero, powerup) {
-    this.sfx.powerup.play();
+    if (!powerup.exploding) {
+        powerup.exploding = true;
 
-    switch (powerup.key) {
-        case "powerup:lavaorb":
-            this.powerup_lavaorb();
-            break;
-        case "powerup:jumpboost":
-            this.powerup_jumpboost();
-            break;
-        case "powerup:throughwalls":
-            this.powerup_throughwalls();
-            break;
-        case "powerup:permjumpboost":
-            this.powerup_permjumpboost();
-            break;
-        case "powerup:time":
-            this.powerup_time();
-            break;
-        case "powerup:doublejump":
-            this.powerup_doublejump();
-            break;
-        default:
-            console.log(powerup.key);
-        //do nothing
+
+        switch (powerup.key) {
+            case "powerup:lavaorb":
+                this.powerup_lavaorb();
+                break;
+            case "powerup:jumpboost":
+                this.powerup_jumpboost();
+                break;
+            case "powerup:throughwalls":
+                this.powerup_throughwalls();
+                break;
+            case "powerup:permjumpboost":
+                this.powerup_permjumpboost();
+                break;
+            case "powerup:time":
+                this.powerup_time();
+                break;
+            case "powerup:doublejump":
+                this.powerup_doublejump();
+                break;
+            default:
+                console.log(powerup.key);
+            //do nothing
+        }
+
+        if (!CONST_ANIMATE_POWERUPS) {
+            powerup.kill();
+            this.sfx.powerup.play();
+        }
+        else {
+            powerup.animations._anims.explode.play();
+            this.sfx.explosion.play();
+        }
+
+        game.powerupPickupCount++;
+
     }
-
-    powerup.kill();
-
-    game.powerupPickupCount++;
 };
 
 Crowdjump.Game._onHeroVsCannonball = function (hero, cannonball) {
@@ -2358,6 +2410,38 @@ Crowdjump.Game._onHeroVsMysterybox = function (hero, mystery) {
     }
 };
 
+Crowdjump.Game._onHeroVsTeleporter = function (hero, teleporter) {
+    if (teleporter.activated && Math.abs(hero.position.x - teleporter.position.x) < 36) {
+        teleporter.animations.play("stop");
+        teleporter.activated = false;
+        this.sfx.teleport.play();
+        var newTp;
+
+        //random teleport: list with length, randomize
+        for (let i = 0; i < this.teleporter.length; i++) {
+            newTp = this.teleporter.children[i];
+            if (newTp.position.x != teleporter.position.x || newTp.position.y != teleporter.position.y) {
+                newTp.animations.play("stop");
+                newTp.activated = false;
+                hero.position.x = newTp.position.x;
+                hero.position.y = newTp.position.y - 21;
+                break;
+
+            }
+        }
+
+        let cooldown = Phaser.Timer.SECOND * 2;
+
+        game.time.events.add(cooldown, function () {
+            teleporter.animations.play("activate");
+            teleporter.activated = true;
+            newTp.animations.play("activate");
+            newTp.activated = true;
+
+        }, this);
+    }
+};
+
 Crowdjump.Game._onBulletVsPlatform = function (bullet, platform) {
     bullet.reset();
 };
@@ -2452,15 +2536,6 @@ Crowdjump.Game.updateTimer = function () {
 
     game.timeElapsed = this.game.time.totalElapsedSeconds().toFixed(3);
 
-};
-
-Crowdjump.Game._spawnFlag = function (flagspawn) {
-    //old flag 20,45
-    //new flag 21,42
-    this.flag = this.flags.create(flagspawn.x + 21, flagspawn.y + 42, 'flag');
-    this.flag.anchor.setTo(0.5, 1);
-    this.game.physics.enable(this.flag);
-    this.flag.body.allowGravity = false;
 };
 
 Crowdjump.Game._activateSprint = function () {

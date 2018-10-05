@@ -22,30 +22,33 @@ def mail_new_version(request):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     folder_path = os.path.join(BASE_DIR, 'Screenshots')
 
-    screenshot_path = os.path.join(folder_path, '036.JPG')
+    screenshot_path = os.path.join(folder_path, '040.JPG')
 
 
 
-    version = 'version 0.36'
-    subject = 'Crowdjump got colorful!'
+    version = 'version 0.40'
+    subject = 'Mystery Blocks and random statistics!'
     message1 = 'Hello '
-    message2 = ',<br>check out the newest features of Crowdjump ' + version + '! '
-    feature = "Now all black platforms got replace by stones or grass! Also there is now a back button on the the gameover- and end-screen!"
+    message2 = ',<br>'
+    feature = "Jump against the mystery blocks to get a random item, check out random stats about the game and even more features await you in Crowdjump " + version + '!'
     message3 = '<br>To play the game, vote for ideas or submit your own, visit  '
     html_content = '<a href="https://www.crowdjump.win">Crowdjump.win :)</a>'
     unsubscribe = '<br><br><a href="https://www.crowdjump.win/unsubscribe">Click here if you dont want to get this newsletter anymore</a>'
     fromMail = 'crowdjump@gmail.com'
 
-    for user in models.Account.objects.all():
-        if not user.email_notification:
-            print(user.username)
-            continue
+    try:
+        for user in models.Account.objects.all():
+            if not user.email_notification:
+                print(user.username)
+                continue
 
-        final_message = message1 + user.username + message2 + feature + message3 + html_content + unsubscribe
-        msg = EmailMultiAlternatives(subject, '', fromMail, [user.email])
-        msg.attach_alternative(final_message, "text/html")
-        msg.attach(logo_data(screenshot_path))
-        msg.send()
+            final_message = message1 + user.username + message2 + feature + message3 + html_content + unsubscribe
+            msg = EmailMultiAlternatives(subject, '', fromMail, [user.email])
+            msg.attach_alternative(final_message, "text/html")
+            # msg.attach(logo_data(screenshot_path))
+            msg.send()
+    except:
+        print("error while sending the mail")
 
     # final_message = message1 + 'admin' + message2 + feature + message3 + html_content + unsubscribe
     # msg = EmailMultiAlternatives(subject, '', fromMail, ['freshkd2@web.de'])

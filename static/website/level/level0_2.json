@@ -181,6 +181,9 @@
 	"mystery": [
 		{"image": "mystery:questionmark", "x": 84, "y": 1008, "angle":0, "scalex":1, "scaley":1, "types":"moreEnemies,moreCoins", "uses":30}
 	],
+	"teleporter": [
+
+	],
 	"lava": [
 		{"image": "lava:2x1", "x": 1386, "y": 1386, "angle":0, "scalex":1, "scaley":1},
 		{"image": "lava:2x1", "x": 1428, "y": 630, "angle":0, "scalex":1, "scaley":1},

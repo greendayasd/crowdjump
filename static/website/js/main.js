@@ -56,6 +56,8 @@ const CONST_CANNONS = true;
 const CONST_CANNON_FIRERATE = 3000;
 const CONST_CANNON_BULLETSPEED = 300;
 
+const CONST_TELEPORTER = true;
+
 const CONST_BUBBLE = true;
 
 const CONST_WALK = false;
@@ -80,6 +82,8 @@ const CONST_SHOOT_IN_ZHONYA = false;
 const CONST_ANIMATE_CHARACTER = false;
 const CONST_ANIMATE_LAVA = true;
 const CONST_ANIMATE_CONVEYOR = false;
+const CONST_ANIMATE_POWERUPS = true;
+const CONST_ANIMATE_TELEPORTER = true;
 const CONST_CHARACTER_COUNT = 4;
 
 const CONST_COLOR = false;

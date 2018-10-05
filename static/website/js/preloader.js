@@ -32,6 +32,7 @@ Crowdjump.Preloader.prototype = {
         var cannons = files + 'cannons/';
         var deco = files + 'deco/';
         var misc = files + 'misc/';
+        var teleporter = files + 'teleporter/';
 
 
         var level = '/static/website/level/';
@@ -203,15 +204,25 @@ Crowdjump.Preloader.prototype = {
         }
 
         if (CONST_POWERUPS) {
-            this.load.image('powerup:throughwalls', collectibles + 'powerup_throughwalls.png');
-            this.load.image('powerup:permjumpboost', collectibles + 'powerup_permjumpboost.png');
-            this.load.image('powerup:time', collectibles + 'powerup_time.png');
-            this.load.image('powerup:doublejump', collectibles + 'powerup_doublejump.png');
-            // this.load.image('powerup:lavaorb', collectibles + 'powerup_lavaorb.png');
-            // this.load.image('powerup:jumpboost', collectibles + 'powerup_jumpboost.png');
-            // this.load.image('powerup:zhonyas', collectibles + 'powerup_zhonyas.png');
-        }
+            if (CONST_ANIMATE_POWERUPS) {
+                this.load.spritesheet('powerup:throughwalls', collectibles + 'powerup_throughwalls_animated.png', 38, 38);
+                this.load.spritesheet('powerup:permjumpboost', collectibles + 'powerup_permjumpboost_animated.png', 38, 38);
+                this.load.spritesheet('powerup:time', collectibles + 'powerup_time_animated.png', 38, 38);
+                this.load.spritesheet('powerup:doublejump', collectibles + 'powerup_doublejump_animated.png', 38, 38);
+                // this.load.spritesheet('powerup:lavaorb', collectibles + 'powerup_lavaorb_animated.png', 38, 38);
+                // this.load.spritesheet('powerup:jumpboost', collectibles + 'powerup_jumpboost_animated.png', 38, 38);
+                // this.load.spritesheet('powerup:zhonyas', collectibles + 'powerup_zhonyas_animated.png', 38, 38);
 
+            } else {
+                this.load.image('powerup:throughwalls', collectibles + 'powerup_throughwalls.png');
+                this.load.image('powerup:permjumpboost', collectibles + 'powerup_permjumpboost.png');
+                this.load.image('powerup:time', collectibles + 'powerup_time.png');
+                this.load.image('powerup:doublejump', collectibles + 'powerup_doublejump.png');
+                // this.load.image('powerup:lavaorb', collectibles + 'powerup_lavaorb.png');
+                // this.load.image('powerup:jumpboost', collectibles + 'powerup_jumpboost.png');
+                // this.load.image('powerup:zhonyas', collectibles + 'powerup_zhonyas.png');}
+            }
+        }
         if (CONST_COINS) {
             if (CONST_COIN_ANIMATE) {
                 this.load.spritesheet('coin', collectibles + 'coin_animated.png', 38, 38);
@@ -301,7 +312,7 @@ Crowdjump.Preloader.prototype = {
         if (CONST_SHOOTING) this.load.image('bullet', misc + 'bullet.png');
         if (CONST_CANNONS) this.load.image('cannonball', misc + 'cannonball.png');
 
-        if (CONST_MYSTERYBOX) this.load.spritesheet('mystery:questionmark', misc + 'mystery_questionmark.png', 42, 42   );
+        if (CONST_MYSTERYBOX) this.load.spritesheet('mystery:questionmark', misc + 'mystery_questionmark.png', 42, 42);
 
         if (CONST_BUTTONS_AND_GATES) {
             this.load.spritesheet('button:red', misc + 'button_red.png', 42, 5);
@@ -319,12 +330,16 @@ Crowdjump.Preloader.prototype = {
             this.load.spritesheet('gate:cyan', misc + 'gate_cyan.png', 42, 84);
         }
 
+        if (CONST_TELEPORTER) {
+            this.load.spritesheet('teleporter:blue', teleporter + 'teleporter_blue.png', 42, 84);
+        }
 
         //
         //audio
         //
         this.load.audio('sfx:jump', audio + 'jump.wav');
         this.load.audio('sfx:flag', audio + 'flag.wav');
+        this.load.audio('sfx:explosion', audio + 'explosion.wav');
         if (CONST_COINS) this.load.audio('sfx:coin', audio + 'coin.wav');
         this.load.audio('sfx:levelup', audio + 'levelup.wav');
         if (CONST_POWERUPS) this.load.audio('sfx:powerup', audio + 'powerup.mp3');
@@ -336,6 +351,7 @@ Crowdjump.Preloader.prototype = {
         if (CONST_MAGAZINE > 0) this.load.audio('sfx:empty_magazine', audio + 'empty_magazine.wav');
 
         if (CONST_MYSTERYBOX) this.load.audio('sfx:mystery', audio + 'mystery.ogg');
+        if (CONST_TELEPORTER) this.load.audio('sfx:teleport', audio + 'teleport.wav');
 
         if (CONST_BUTTONS_AND_GATES) {
             this.load.audio('sfx:open_gate', audio + 'open_gate.wav');
@@ -353,14 +369,17 @@ Crowdjump.Preloader.prototype = {
 
 
     },
+
     loadStart: function () {
         if (game.state.current != "Preloader") return;
         text = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y - 30, 'Loading. . . ');
         text.anchor.set(0.5);
     },
+
     loadComplete: function () {
         this.ready = true;
     },
+
     update: function () {
         if (this.ready === true) {
             this.ready = false;
@@ -371,8 +390,7 @@ Crowdjump.Preloader.prototype = {
                 game.authenticated = false;
                 game.difficulty = DIFFICULTY.normal;
             }
-        else
-            {
+            else {
                 game.difficulty = account.difficulty;
                 if (account.uploaded_character != '' && account.uploaded_character != null) {
                     game.load.image(getFileName(account.uploaded_character), account.uploaded_character);

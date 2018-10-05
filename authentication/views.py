@@ -504,10 +504,10 @@ def DidYouKnow(request):
         res = 'Every user published an average of ' + str(avg_ideas) + ' ideas!'
     elif random == 4:
         upvotes = IdeaVote.objects.filter(vote=1).count()
-        res = 'You upvoted your favourite ideas ' + str(upvotes) + ' times!'
+        res = 'Your favourite ideas were upvoted a total of ' + str(upvotes) + ' times!'
     elif random == 5:
         downvotes = IdeaVote.objects.filter(vote=-1).count()
-        res = str(downvotes) + ' times you downvoted ideas! Remember to look at them again after the game changed a bit!'
+        res = str(downvotes) + ' times ideas were downvoted! Remember to look at them again after the game changed a bit!'
     elif random == 6:
         characters_uploaded = Account.objects.exclude(uploaded_character='').count()
         res = 'Only ' + str(characters_uploaded) + ' people uploaded their own character, try it out yourself below the game!'

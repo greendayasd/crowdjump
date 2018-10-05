@@ -866,6 +866,7 @@
                 var gates = '';
                 var spawns = '';
                 var mystery = '';
+                var teleporter = '';
 
                 var maxX = 918;
                 var maxY = 588;
@@ -958,6 +959,14 @@
                         var defaultUses = 1;
                         if (data.uses != undefined) defaultUses = data.uses;
                         mystery += line + ', "types":"' + defaultMysteryType + '", "uses":' + defaultUses + endline;
+                        continue;
+                    }
+
+                    if (image.startsWith("teleporter")) {
+                        var defaultTeleportKey = 0;
+                        if (data.teleportkey != undefined) defaultTeleportKey = data.teleportkey;
+
+                        teleporter += line + ', "teleportkey":' + defaultTeleportKey + endline;
                         continue;
                     }
 
@@ -1067,6 +1076,7 @@
                 powerups = wrapJsonLevel(powerups, "powerups");
                 eastereggs = wrapJsonLevel(eastereggs, "eastereggs");
                 mystery = wrapJsonLevel(mystery, "mystery");
+                teleporter = wrapJsonLevel(teleporter, "teleporter");
 
                 lava = wrapJsonLevel(lava, "lava");
                 spikes = wrapJsonLevel(spikes, "spikes");
@@ -1083,7 +1093,7 @@
 
                 $scope.csv = '{\n' + platforms + falling_platforms + fakeplatforms;
                 $scope.csv += crates + buttons + gates + spawns;
-                $scope.csv += coins + powerups + eastereggs + mystery;
+                $scope.csv += coins + powerups + eastereggs + mystery + teleporter;
                 $scope.csv += lava + spikes + sawblades + cannons;
                 $scope.csv += enemies + enemy_walls;
                 $scope.csv += flags + hero + deco + worldsize + '\n}';

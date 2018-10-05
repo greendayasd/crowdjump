@@ -124,6 +124,9 @@
 	"mystery": [
 		{"image": "mystery:questionmark", "x": 0, "y": 462, "angle":0, "scalex":1, "scaley":1, "types":"powerups,moreEnemies", "uses":1}
 	],
+	"teleporter": [
+
+	],
 	"lava": [
 		{"image": "lava:1x1", "x": 1974, "y": 840, "angle":0, "scalex":1, "scaley":1},
 		{"image": "lava:2x1", "x": 2016, "y": 840, "angle":0, "scalex":1, "scaley":1},

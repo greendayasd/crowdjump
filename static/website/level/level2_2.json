@@ -96,6 +96,9 @@
 	"mystery": [
 
 	],
+	"teleporter": [
+
+	],
 	"lava": [
 		{"image": "lava:1x1", "x": 336, "y": 1848, "angle":0, "scalex":1, "scaley":1},
 		{"image": "lava:1x1", "x": 420, "y": 1848, "angle":0, "scalex":1, "scaley":1},

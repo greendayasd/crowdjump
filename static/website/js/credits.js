@@ -10,7 +10,8 @@ Crowdjump.Credits.prototype = {
         audio = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y -200, "Levelmusic: Overgrown Labyrinth by Visager, licensed under a Attribution-ShareAlike License.\n" +
             "Buttonsound: Button_04 by distillerystudio, licensed under Attribution 3.0 Unported. \n" +
             "Gatesound: Chain_Door_Squeak_Open_001 by JoelAudio, licensed under Attribution 3.0 Unported. \n" +
-            "Levelup: Jingle Achievement 00 by LittleRobotSoundFactory, licensed under Attribution 3.0 Unported.", {
+            "Levelup: Jingle Achievement 00 by LittleRobotSoundFactory, licensed under Attribution 3.0 Unported. \n" +
+            "Teleport: teleport by Sergenious, licensed under Attribution 3.0 Unported.", {
             font: "20px Arial",
             fill: '#dbdbdb'
         });

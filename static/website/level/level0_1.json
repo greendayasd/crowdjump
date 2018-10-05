@@ -65,7 +65,6 @@
 		{"image": "invisible:2x1", "x": 2940, "y": 126, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 1932, "y": 924, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:6x1", "x": 252, "y": 756, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "invisible:1x1", "x": 0, "y": 504, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "invisible:1x1", "x": 0, "y": 378, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "invisible:1x1", "x": 0, "y": 210, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "invisible:1x1", "x": 0, "y": 84, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
@@ -78,7 +77,8 @@
 		{"image": "ground:2x1", "x": 0, "y": 588, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x6", "x": 630, "y": 210, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "invisible:4x1", "x": 630, "y": 1512, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:4x1", "x": 588, "y": 1260, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
+		{"image": "ground:4x1", "x": 588, "y": 1260, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 42, "y": 462, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
 	],
 	"fallingPlatforms": [
 
@@ -176,6 +176,10 @@
 	"mystery": [
 		{"image": "mystery:questionmark", "x": 546, "y": 1260, "angle":0, "scalex":1, "scaley":1, "types":"powerups,coins", "uses":1},
 		{"image": "mystery:questionmark", "x": 1680, "y": 504, "angle":0, "scalex":1, "scaley":1, "types":"enemies,moreCoins", "uses":10}
+	],
+	"teleporter": [
+		{"image": "teleporter:blue", "x": 714, "y": 336, "angle":0, "scalex":1, "scaley":1, "teleportkey":0},
+		{"image": "teleporter:blue", "x": 42, "y": 378, "angle":0, "scalex":1, "scaley":1, "teleportkey":0}
 	],
 	"lava": [
 		{"image": "lava:2x1", "x": 1386, "y": 1386, "angle":0, "scalex":1, "scaley":1},
