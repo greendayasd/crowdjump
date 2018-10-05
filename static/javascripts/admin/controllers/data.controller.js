@@ -302,7 +302,7 @@
                     var list = dailyList[d];
                     var version_day = '';
                     var date = ' bis ';
-                    if (d >= 16) date += d - 16 + '.10';
+                    if (d >= 16) date += d - 15 + '.10';
                     else date += d + 15 + '.09';
                     date += ' 19:00';
                     switch (d) {
