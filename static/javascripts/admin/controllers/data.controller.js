@@ -460,9 +460,9 @@
                     eastereggs_found[d] = Math.max(eastereggs_found[d], parseInt(g.eastereggs_found));
                     special_name[d] = Math.max(special_name[d], parseInt(g.special_name));
                     powerups[d] = Math.max(powerups[d], parseInt(g.powerups));
-                    overall_coins[d] += g.coins_collected;
-                    overall_eastereggs[d] += g.eastereggs_found;
-                    overall_powerups[d] += g.powerups;
+                    overall_coins[d] += parseInt(g.coins_collected);
+                    overall_eastereggs[d] += parseInt(g.eastereggs_found);
+                    overall_powerups[d] += parseInt(g.powerups);
 
                     if (g.level == '1') rounds_started[i]++;
 
@@ -498,9 +498,9 @@
                         "highest_level: " + highest_level[dif] + '\n' +
                         "movement_inputs:" + movement_inputs[dif] + '\n' +
                         "eastereggs_found: " + eastereggs_found[dif] + '\n' +
-                        "special_name: " + special_name[dif] +
-                        "overall_coins: " + overall_coins[dif] +
-                        "overall_eastereggs: " + overall_eastereggs[dif] +
+                        "special_name: " + special_name[dif] + '\n' +
+                        "overall_coins: " + overall_coins[dif] + '\n' +
+                        "overall_eastereggs: " + overall_eastereggs[dif] + '\n' +
                         "overall_powerups: " + overall_powerups[dif] +'\n\n';
                         db += wrapForDB(rounds_started[dif], rounds_won[dif], enemies_killed[dif], coins_collected[dif], highscore[dif], time_spend_game[dif], jumps[dif], restarts[dif], '', deaths[dif], highest_level[dif], movement_inputs[dif], eastereggs_found[dif], special_name[dif]) + '\n';
 

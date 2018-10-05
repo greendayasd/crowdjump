@@ -557,8 +557,16 @@ def DidYouKnow(request):
         time_spent_game = '{:02} days {:02} hours {:02} minutes and {:02} seconds'.format(int(days), int(hours), int(minutes), int(seconds))
         res = 'The maximum time a single user played a version was ' + str(time_spent_game) + '!'
 
-    # elif random == 16:
-    # elif random == 17:
+    elif random == 16:
+        gi = GameInfo.objects.all().aggregate(Sum('jumps'))
+        overall_powerups = '%.2f' % (gi["jumps__sum"] / rounds_played)
+        res = 'On average players jump ' + str(overall_powerups) + ' times each round!'
+
+    elif random == 17:
+        gi = GameInfo.objects.all().aggregate(Sum('movement_inpus'))
+        overall_powerups = '%.2f' % (gi["jumps__sum"] / rounds_played)
+        res = 'Across all games the poor alien changes direction ' + str(overall_powerups) + ' timer per minute!'
+
     # elif random == 18:
     # elif random == 19:
     # elif random == 20:

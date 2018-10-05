@@ -12,7 +12,7 @@
         $scope.didyouknow = '';
 
         $scope.getDidYouKnow = function () {
-            var amountOfSlogans = 16;
+            var amountOfSlogans = 17;
             var rand = Math.floor(Math.random() * amountOfSlogans);
             var data = {
                 "random": rand
