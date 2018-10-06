@@ -68,6 +68,11 @@
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/profile.html'
 
+        }).when('/bugreports', {
+            controller: 'BugreportController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/layout/bugreport.html'
+
 
         }).when('/data', {
             controller: 'DataController',

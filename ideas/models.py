@@ -130,3 +130,21 @@ class CommentVote(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Bugreport(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='bugreport')
+    version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='bugreport'
+                                , default=get_latest_version())
+
+    request_text = models.CharField(max_length=50)
+    description = models.CharField(max_length=500)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    fixed = models.BooleanField(default=False)
+
+    deleted = models.BooleanField(default=False)
+
+    admin_comment = models.CharField(max_length=50, null=True, default='')

@@ -392,6 +392,9 @@ Crowdjump.Preloader.prototype = {
             }
             else {
                 game.difficulty = account.difficulty;
+                game.muted = account.muted;
+                if (game.muted) this.game.sound.mute = true;
+
                 if (account.uploaded_character != '' && account.uploaded_character != null) {
                     game.load.image(getFileName(account.uploaded_character), account.uploaded_character);
                     game.load.start();

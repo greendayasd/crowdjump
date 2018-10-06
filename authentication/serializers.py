@@ -14,7 +14,7 @@ class AccountSerializer(serializers.ModelSerializer):
         fields = ('id', 'email', 'username', 'created_at', 'updated_at',
                   'first_name', 'last_name', 'tagline', 'password', 'email_notification',
                   'confirm_password', 'vote_weight', 'vote_multiplier', 'survey_status', 'versionlabel', 'difficulty',
-                  'character', 'uploaded_character')
+                  'character', 'uploaded_character', 'muted')
         read_only_fields = ('created_at', 'updated_at')
 
         def create(self, validated_data):

@@ -2826,11 +2826,14 @@ Crowdjump.Game.enemyDropsCoin = function (coins, enemyXPos, enemyYPos) {
 Crowdjump.Game.toggleMute = function () {
     if (this.game.sound.mute) {
         this.game.sound.mute = false;
+        game.muted = false;
         this.showImage('unmute', 1500);
     } else {
         this.game.sound.mute = true;
+        game.muted = true;
         this.showImage('mute', 1500);
     }
+    changeMuted();
 };
 
 Crowdjump.Game.stopMusic = function () {

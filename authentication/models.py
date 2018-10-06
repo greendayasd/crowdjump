@@ -77,6 +77,8 @@ class Account(AbstractBaseUser):
     versionlabel = models.CharField(max_length=40, blank=True, default='0.01')
 
     difficulty = models.IntegerField(default=1)
+    muted = models.IntegerField(default=0)
+
 
     character = models.CharField(max_length=40, blank=True)
     uploaded_character = models.ImageField(upload_to=character_upload, storage=OverwriteStorage(), null=True,

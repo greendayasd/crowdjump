@@ -614,6 +614,21 @@ def ChangeDifficulty(request):
     return JsonResponse('{"success":"true"}', safe=False)
 
 
+def ChangeMuted(request):
+    if request.user.is_authenticated:
+        userid = request.user.id
+    else:
+        return JsonResponse('{"success":"' + 'user' + '"}', safe=False)
+
+    muted = request.GET.get('muted')
+
+    acc = Account.objects.filter(id=userid)[0]
+    acc.muted = muted
+    acc.save()
+
+    return JsonResponse('{"success":"true"}', safe=False)
+
+
 @csrf_exempt
 def UploadCharacter(request):
     if request.user.is_authenticated:

@@ -1,0 +1,141 @@
+<script type="text/javascript">
+    tracksite();
+</script>
+
+<div ng-controller="QuestionnaireController as vm">
+</div>
+<div class="container">
+
+    <h1> Current Bugs </h1>
+    <h4>
+        You found any bugs? Report them here!<br><br>
+    </h4>
+
+    <div ng-controller="IndexController as vm" ng-show="!vm.isAuthenticated">
+        <div class="alert alert-info">
+            <strong>
+                <a style="font-size: 28px" style="margin-top: 45px" href="/login?next={{ request.path }}">Login to submit bugs!</a>
+            </strong>
+        </div>
+    </div>
+
+    <div ng-controller="BugreportController as vm">
+        <!--<button class="btn btn-primary" ng-click="test()">Test</button> -->
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            View
+            <select ng-model="selector.config"
+                    ng-options="template.value for template in selector.configs track by template.name"
+                    ng-change="setItemsPerPage(selector.config.value)"
+            >
+            </select>
+            records at a time. <br>
+            <hr>
+            <h3>Search/Filter</h3>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Version min</th>
+                    <th scope="col">Version max</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td class="col-sm-2"><input class="col-sm-12" ng-model="search.request_text"></td>
+                    <td class="col-sm-2"><input class="col-sm-12" ng-model="search.description"></td>
+                    <td class="col-sm-2"><input class="col-sm-12" ng-model="search.user.username"></td>
+                    <td class="col-sm-2">
+                        <select ng-model="oldestVersion"
+                                ng-options="template.label for template in versions track by template.id"
+                                ng-change="versionFilterMin(oldestVersion.id)"
+                        >
+                        </select>
+                    </td>
+                    <td class="col-sm-2">
+                        <select ng-model="newestVersion"
+                                ng-options="template.label for template in versions_max track by template.id"
+                                ng-change="versionFilterMax(newestVersion.id)"
+                        >
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="btn-group mr-4" data-toggle="buttons">
+                <button class="btn btn-primary" ng-click="orderOldest()">Oldest First</button>
+                <button class="btn btn-primary" ng-click="orderNewest()">Newest First</button>
+            </div>
+            <br><br>
+            <div class="btn-group mr-4" data-toggle="buttons">
+                <label type="button" class="btn btn-primary" ng-model="search.fixed" uib-btn-checkbox
+                       btn-checkbox-true="1" btn-checkbox-false="0"> Already Fixed
+                </label>
+                <button class="btn btn-primary" ng-click="filterReset()">Reset Filter</button>
+
+            </div>
+
+            <br><br>
+            <div ng-repeat="bugreport in filterData = (bugreports | filter : customFilter) | limitTo:itemsPerPage:itemsPerPage*(currentPage-1) "
+                 id="searchObjResults">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="well"  style="margin-bottom: 5px">
+                            <div class="idea">
+                                <div class="idea__time">
+                                    Bug: <span style="color:Blue">{{ bugreport.id }} </span> <br>
+                                    created at {{ bugreport.created_at | date : "dd.MM.y HH:mm" }} on Version <span
+                                        style="color:Blue"> {{ bugreport.version.label }}</span><br>
+                                </div>
+                                <div class="idea__meta">
+                                    User: {{ bugreport.user.username }}
+                                </div>
+                                <br>
+                                <div class="idea__content">
+                                    <b><h4>{{ bugreport.request_text }}</b> <span style="color:#2e8020; font-weight: bold"
+                                                                  ng-if="bugreport.fixed == true"> (already fixed) </span></h5>
+                                    <b>Description</b><br>
+                                    {{ bugreport.description }} <br>
+                                </div>
+                                <div class="idea__admin_comment">
+
+                                    {{ bugreport.admin_comment }}
+                                </div>
+
+                                <div class="idea__delete" ng-if="bugreport.user.username == username2">
+                                    <br>
+                                    <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-delete-idea"
+                                       ng-click="vm.openDialogDeleteBugreport(bugreport.id)">
+                                        Delete this bug report
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            </div>
+
+            <ul uib-pagination total-items="filterData.length" ng-model="currentPage" max-size="maxSize"
+                class="pagination-sm" id="pagination"
+                boundary-links="true" rotate="false" items-per-page="itemsPerPage"></ul>
+        </div>
+    </div>
+    <div ng-controller="IndexController as vm" ng-show="vm.isAuthenticated">
+        <a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-idea"
+           ng-dialog-controller="NewBugreportController as vm"
+           href="javascript:void(0)"
+           ng-dialog="/static/templates/ideas/new-bugreport.html">
+            Submit a new Bugreport
+        </a>
+    </div>
+
+</div>
+
+
+<br> <br> <br>

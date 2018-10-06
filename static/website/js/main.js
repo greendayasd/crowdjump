@@ -171,6 +171,7 @@ window.createGame = function (canvas, scope) {
         highest_level: 0,
         character: 0,
         difficulty: DIFFICULTY.normal,
+        muted: 0,
         specialName: 0,
         enemiesDefeatedCount: 0,
         timeElapsed: 0,
@@ -299,6 +300,7 @@ function setLevelInfo(level, status, isHighscore, dontResetFirstMoved) {
         "level": level,
         "status": status,
         "difficulty": game.difficulty,
+        "muted": game.muted,
         "time": final_time,
         "jumps": game.jumps - jumps_last_level,
         "movement_inputs": game.movement_inputs - movementinputs_last_level,
@@ -418,6 +420,32 @@ function changeDifficulty() {
         },
         error: function (data) {
             log("error change Difficulty", data);
+        }
+    });
+}
+
+function changeMuted() {
+    var data;
+
+    if (game.muted) {
+        data = {
+            "muted": 1
+        };
+    } else{
+        data = {
+            "muted": 0
+        };
+
+    }
+    $.ajax({
+        url: '/changeMuted/',
+        data: data,
+        success: function (data) {
+            account["muted"] = game.muted;
+            setCookie("authenticatedAccount", JSON.stringify(account), 365);
+        },
+        error: function (data) {
+            log("error change Muted", data);
         }
     });
 }

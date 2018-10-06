@@ -8,6 +8,13 @@ class IsCreaterOfIdea(permissions.BasePermission):
         return False
 
 
+class IsCreaterOfBugreport(permissions.BasePermission):
+    def has_object_permission(self, request, view, bugreport):
+        if request.user:
+            return bugreport.user == request.user
+        return False
+
+
 class IsOwnerOfInfo(permissions.BasePermission):
     def has_object_permission(self, request, view, gameinfo):
         if request.user:

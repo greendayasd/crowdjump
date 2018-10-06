@@ -3,10 +3,10 @@ from rest_framework.response import Response
 from website.models import Version
 from website.serializers import VersionSerializer
 
-from ideas.models import Idea, CommentVote, IdeaVote, Comment
-from ideas.permissions import IsCreaterOfIdea, IsOwnerOfInfo
+from ideas.models import Idea, CommentVote, IdeaVote, Comment, Bugreport
+from ideas.permissions import IsCreaterOfIdea, IsOwnerOfInfo, IsCreaterOfBugreport
 from ideas.serializers import IdeaSerializer, IdeaVotingPermissionSerializer, GameInfoSerializer, CommentSerializer, \
-    IdeaVoteSerializer
+    IdeaVoteSerializer, BugreportSerializer
 from django.http import JsonResponse
 
 from authentication.models import GameInfo, Account
@@ -184,3 +184,20 @@ def Vote(request):
     i.save()
 
     return JsonResponse('{"upvotes":"' + str(i.upvotes) + '", "downvotes":"' + str(i.downvotes) + '"}', safe=False)
+
+
+class BugreportViewSet(viewsets.ModelViewSet):
+    queryset = Bugreport.objects.order_by('-created_at')
+    serializer_class = BugreportSerializer
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['fixed', 'deleted', 'version', 'user', 'id']
+
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+        return (permissions.IsAuthenticated(), IsCreaterOfBugreport(),)
+
+    def perform_create(self, serializer):
+        instance = serializer.save(user=self.request.user)
+        print()
+        return super(BugreportViewSet, self).perform_create(serializer)

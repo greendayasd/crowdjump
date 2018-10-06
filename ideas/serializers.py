@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from authentication.serializers import AccountSerializerPrivate, AccountSerializer
 from website.serializers import VersionSerializer
-from ideas.models import Idea, CommentVote, IdeaVote, Comment
+from ideas.models import Idea, CommentVote, IdeaVote, Comment, Bugreport
 from authentication.models import GameInfo, WebsiteInfo, Version
 
 
@@ -150,3 +150,24 @@ class WebsiteInfoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = WebsiteInfo
         fields = '__all__'
+
+
+class BugreportSerializer(serializers.ModelSerializer):
+    user = AccountSerializerPrivate(read_only=True, required=False)
+    # votes = serializers.HyperlinkedIdentityField('vote', lookup_field='username')
+
+    version = VersionSerializer(read_only=True, required=False)
+
+    class Meta:
+        model = Bugreport
+
+        fields = ('id', 'user', 'version', 'request_text', 'description',
+                  'created_at', 'updated_at', 'fixed', 'admin_comment',
+                  'deleted')
+
+        read_only_fields = ('id', 'created_at', 'updated_at')
+
+    def get_validation_exclusions(self, *args, **kwargs):
+        exclusions = super(BugreportSerializer, self).get_validation_exclusions()
+
+        return exclusions + ['user']

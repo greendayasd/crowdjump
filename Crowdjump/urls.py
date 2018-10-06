@@ -5,14 +5,14 @@ from website import views
 from rest_framework_nested import routers
 from website.views import IndexView, HistoryViewSet, IdeasView, GameViewSet, GameInfoView, GameView, AdminView
 from ideas.views import IdeaViewSet, IdeaVotePermissionViewSet, AccountIdeasViewSet, AccountGameInfoViewSet, \
-    GameInfoViewSet, CommentViewSet, IdeaVoteViewSet, Vote
+    GameInfoViewSet, CommentViewSet, IdeaVoteViewSet, Vote, BugreportViewSet
 from chat.views import room, index, ChatMessageViewSet
 from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet
 from Crowdjump.mailFunctions import mail_new_version
 
 from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData, GetTrackingData, \
     GetAllTrackingData, TransferData, SendGameData, GetGameData, GetAllGameDataUser, GetAllGameData, GetAllUserGame, \
-    Unsubscribe, CreateGamedata, ChangeCharacter, ChangeDifficulty, UploadCharacter, RefreshAccount, DidYouKnow
+    Unsubscribe, CreateGamedata, ChangeCharacter, ChangeDifficulty, ChangeMuted, UploadCharacter, RefreshAccount, DidYouKnow
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
@@ -22,6 +22,7 @@ from Crowdjump import settings
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 router.register(r'ideas', IdeaViewSet)
+router.register(r'bugreports', BugreportViewSet)
 router.register(r'ideasvoting', IdeaVotePermissionViewSet)
 router.register(r'gameinfo', GameInfoViewSet)
 router.register(r'history', HistoryViewSet)
@@ -48,6 +49,7 @@ urlpatterns = [
 
     # redirects
     url(r'^ideas/$', IndexView.as_view()),
+    url(r'^bugreports/$', IndexView.as_view()),
     url(r'^game/$', IndexView.as_view()),
     url(r'^game2/$', IndexView.as_view()),
     url(r'^history/$', IndexView.as_view()),
@@ -99,6 +101,7 @@ urlpatterns = [
     url(r'^createGamedata/$', CreateGamedata, name='createGamedata'),
     url(r'^changeCharacter/$', ChangeCharacter, name='changeCharacter'),
     url(r'^changeDifficulty/$', ChangeDifficulty, name='changeDifficulty'),
+    url(r'^changeMuted/$', ChangeMuted, name='changeMuted'),
     url(r'^uploadCharacter/$', UploadCharacter, name='uploadCharacter'),
     url(r'^refreshAccount/$', RefreshAccount, name='refreshAccount'),
     url(r'^didyouknow/$', DidYouKnow, name='didyouknow'),

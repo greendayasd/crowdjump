@@ -24,13 +24,13 @@ def mail_new_version(request):
 
     screenshot_path = os.path.join(folder_path, '040.JPG')
 
-
-
-    version = 'version 0.40'
-    subject = 'Mystery Blocks and random statistics!'
+    version = 'version 0.44'
+    subject = 'The temporary last version of Crowdjump is online!'
     message1 = 'Hello '
     message2 = ',<br>'
-    feature = "Jump against the mystery blocks to get a random item, check out random stats about the game and even more features await you in Crowdjump " + version + '!'
+    feature = "with new features like teleporter, a bug report page and more Crowdjump " + version + ' will be the last version of this study.' \
+              ' Thank you very much for participating, you helped a lot! The site will still be available if you want to play, ideas may still be implemented in the future, but not as part of this study.<br>' \
+              'If you have time, please fill out the short questionnaire on the site :)'
     message3 = '<br>To play the game, vote for ideas or submit your own, visit  '
     html_content = '<a href="https://www.crowdjump.win">Crowdjump.win :)</a>'
     unsubscribe = '<br><br><a href="https://www.crowdjump.win/unsubscribe">Click here if you dont want to get this newsletter anymore</a>'
@@ -53,7 +53,7 @@ def mail_new_version(request):
     # final_message = message1 + 'admin' + message2 + feature + message3 + html_content + unsubscribe
     # msg = EmailMultiAlternatives(subject, '', fromMail, ['freshkd2@web.de'])
     # msg.attach_alternative(final_message, "text/html")
-    # msg.attach(logo_data(screenshot_path))
+    # # msg.attach(logo_data(screenshot_path))
     # msg.send()
 
     return 'Mail send'
