@@ -62,12 +62,12 @@
 
 	],
 	"buttons": [
-		{"image": "buttonRed", "x": 798, "y": 1050, "angle":0, "scalex":1, "scaley":1, "buttonnr":0},
-		{"image": "buttonBlue", "x": 1302, "y": 672, "angle":0, "scalex":1, "scaley":1, "buttonnr":1}
+		{"image": "button:red", "x": 798, "y": 1050, "angle":0, "scalex":1, "scaley":1, "buttonnr":0},
+		{"image": "button:blue", "x": 1302, "y": 672, "angle":0, "scalex":1, "scaley":1, "buttonnr":1}
 	],
 	"gates": [
-		{"image": "gateBlue", "x": 1512, "y": 0, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":1},
-		{"image": "gateBlue", "x": 1638, "y": 0, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":1}
+		{"image": "gate:blue", "x": 1512, "y": 0, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":1},
+		{"image": "gate:blue", "x": 1638, "y": 0, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":1}
 	],
 	"spawns": [
 		{"image": "spawnRed:1x1", "x": 1260, "y": 252, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":0}

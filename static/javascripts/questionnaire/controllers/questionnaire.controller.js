@@ -1184,7 +1184,7 @@
                     $scope.sur7q0Choices = $scope.sur7q0ChoicesOG[0];
                     $scope.sur7q0Ordering = $scope.sur7q0ChoicesOG[1];
 
-                    $scope.sur7q0Scale = ["not at all true", , , "somewhat true", , , "very true"]
+                    // $scope.sur7q0Scale = ["not at all true", , , "somewhat true", , , "very true"]
                     $scope.survey[7][0] = {
                         survey: 7,
                         nr: 0,

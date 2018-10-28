@@ -451,7 +451,7 @@ def SendGameData(request):
         if newstatus == 'c':
             acc.highest_level = max(acc.highest_level, int(level))
 
-        if newstatus == 'c' and level == levelcount:
+        if newstatus == 'c' and int(level) == levelcount:
             acc.rounds_won += 1
         if newstatus == 'r':
             acc.restarts += 1
@@ -783,16 +783,18 @@ def GetAllGameData(request):
                 try:
                     checkJson = json.loads('[' + check[:-2] + ']')
                 except:
-                    print("failure2")
+                    print(filename)
                     return JsonResponse(
                         '{"path":"' + folder_path + '\\' + filename + '"' + ',"failure":"' + check + '"}', safe=False)
                 res += check
 
     try:
         arrData = json.loads('[' + res[:-2] + ']')
-    except:
-        print("failure")
+    except Exception as e:
+        print(res[:-2])
+        print(e)
         return JsonResponse('{"failure":"' + res[:-2] + '"}', safe=False)
+    print("success " + version)
     return JsonResponse(arrData, safe=False)
 
 

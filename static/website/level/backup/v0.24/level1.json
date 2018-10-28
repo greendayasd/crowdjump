@@ -81,17 +81,17 @@
 
 	],
 	"buttons": [
-		{"image": "buttonBlue", "x": 4746, "y": 798, "angle":0, "scalex":1, "scaley":1, "buttonnr":1},
-		{"image": "buttonRed", "x": 2478, "y": 168, "angle":0, "scalex":1, "scaley":1, "buttonnr":0}
+		{"image": "button:blue", "x": 4746, "y": 798, "angle":0, "scalex":1, "scaley":1, "buttonnr":1},
+		{"image": "button:red", "x": 2478, "y": 168, "angle":0, "scalex":1, "scaley":1, "buttonnr":0}
 	],
 	"gates": [
 
 	],
 	"spawns": [
-		{"image": "spawnBlue:1x1", "x": 3864, "y": 252, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":1},
-		{"image": "spawnRed:1x1", "x": 3906, "y": 378, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":0},
-		{"image": "spawnRed:2x1", "x": 3948, "y": 504, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":0},
-		{"image": "spawnBlue:2x1", "x": 3990, "y": 630, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":1}
+		{"image": "spawn:blue:1x1", "x": 3864, "y": 252, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":1},
+		{"image": "spawn:red:1x1", "x": 3906, "y": 378, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":0},
+		{"image": "spawn:red:2x1", "x": 3948, "y": 504, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":0},
+		{"image": "spawn:blue:2x1", "x": 3990, "y": 630, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":1}
 	],
 	"coins": [
 		{"image": "coin", "x": 210, "y": 672, "angle":0, "scalex":1, "scaley":1},

@@ -81,8 +81,8 @@
 
 	],
 	"buttons": [
-		{"image": "buttonBlue", "x": 4746, "y": 798, "angle":0, "scalex":1, "scaley":1, "buttonnr":1},
-		{"image": "buttonRed", "x": 2478, "y": 168, "angle":0, "scalex":1, "scaley":1, "buttonnr":0}
+		{"image": "button:blue", "x": 4746, "y": 798, "angle":0, "scalex":1, "scaley":1, "buttonnr":1},
+		{"image": "button:red", "x": 2478, "y": 168, "angle":0, "scalex":1, "scaley":1, "buttonnr":0}
 	],
 	"gates": [
 

@@ -12,12 +12,12 @@
 
 </head>
 
-<body class="ng-scope" style="height: 100%; min-height: 100%;">
+<body class="ng-scope" style="height: 50%; min-height: 50%;">
 
 {% include 'javascripts.html' %}
 {% include 'navbar.html' %}
 <div class="container text-center" ng-controller="QuestionnaireController as vm" ng-show="vm.surveystatus == 3" style="text-align: center">
-    <div class="row">
+    <div class="row"  ng-show="false">
         <div class="col-lg-12 col-centered">
             <div class="well">
                 Thank you for participating! :) If you have time, please consider filling out
@@ -32,7 +32,7 @@
     </div>
 </div>
 <div class="container text-center" ng-controller="QuestionnaireController as vm" ng-show="vm.surveystatus == 11" style="text-align: center">
-    <div class="row">
+    <div class="row" ng-show="false">
         <div class="col-lg-12 col-centered">
             <div class="well">
                 <div class="btn-group">
@@ -55,7 +55,7 @@
 <div class="wrapper" style="height: 100%; min-height: 100%;">
     {#<div class="wrapper" style="">#}
 
-    <div class="ng-scope" id="content" style=" width: 100%">
+    <div class="ng-scope" id="content" style=" width: 100%; min-height: 50%">
 
         <div ng-view>
         </div>

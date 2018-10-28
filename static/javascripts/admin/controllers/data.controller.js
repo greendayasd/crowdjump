@@ -130,7 +130,7 @@
 
                 var dailyList = [];
                 var accidToLocationJson = {};
-                for (var a = 0; a < 21; a++) {
+                for (var a = 0; a < 23; a++) {
                     //days
                     var dayArray = [];
                     dailyList.push(dayArray);
@@ -144,8 +144,10 @@
                         //day -> user -> data
                         var accjson = {
                             "username": $scope.accounts[us].username,
+                            "id": $scope.accounts[us].id,
                             "ideas": 0,
-                            "ideavotes": 0,
+                            "upvotes": 0,
+                            "downvotes": 0,
                             "rounds_started": 0,
                             "rounds_won": 0,
                             "comments": 0
@@ -203,6 +205,9 @@
 
                     //filter accounts
                     switch (acc.id) {
+                        case 32:
+                            accPos = accidToLocationJson[27];
+                            break;
                         case 1:
                         case 21:
                         case 22:
@@ -240,8 +245,11 @@
                         var vote = acc.ideavotes[vcount];
                         var vdate = convertJSDate(vote.created_at);
                         var version = dateToArrayPos(vdate);
+                        // log(vdate,version);
 
-                        dailyList[version][accPos]["ideavotes"]++;
+                        // log(vote);
+                        if (vote.vote >= 1) dailyList[version][accPos]["upvotes"]++;
+                        if (vote.vote <= -1) dailyList[version][accPos]["downvotes"]++;
 
                         if (last_online - convertJSDateFull(vote.created_at) < 0) last_online = convertJSDateFull(vote.created_at);
 
@@ -261,8 +269,8 @@
                     }
 
                     //intersect and union
-                    var datesAnd = new Set([...datesIdeas].filter(x=> datesOr.has(x)));
-                    var datesOr = new Set([...datesOr,...datesIdeas]);
+                    var datesAnd = new Set([...datesIdeas].filter(x => datesOr.has(x)));
+                    var datesOr = new Set([...datesOr, ...datesIdeas]);
                     // var datesAnd = new Set([...datesIdeas].filter(x=> datesOr.has(x)));
                     // var datesOr = new Set([...datesOr,...datesIdeas]);
 
@@ -296,7 +304,8 @@
 
                 setTimeout($scope.createFile($scope.csv, 'user stats ' + today.getDate() + '-' + (today.getMonth() + 1) + '.csv', 'text/csv', 'dlcsv'));
 
-                $scope.daily = 'version, user, ideas, votes, rounds started, rounds_won, comments\n';
+                $scope.daily = 'version, user, upvotes, downvotes\n';
+                // $scope.daily = 'version, user, ideas, votes, rounds started, rounds_won, comments\n';
 
                 for (var d = 0; d < dailyList.length; d++) {
                     var list = dailyList[d];
@@ -377,10 +386,23 @@
                             break;
                     }
                     version_day = 'v' + version_day + date;
+                    $scope.daily +=version_day + '\n';
                     for (var u = 0; u < list.length; u++) {
                         var user = list[u];
+                        switch (user.id) {
+                            case 1:
+                            case 13:
+                            case 16:
+                            case 21:
+                            case 22:
+                            case 23:
+                            case 30:
+                            case 32:
+                                continue;
+                        }
                         if (user.ideas == 0 && user.ideavotes == 0 && user.rounds_started == 0) continue;
-                        else $scope.daily += form_csv(version_day, user.username, user.ideas, user.ideavotes, user.rounds_started, user.rounds_won, user.comments);
+                        else $scope.daily += user.upvotes + '\t' +  user.downvotes + '\n';
+                        // else $scope.daily += form_csv(version_day, user.username, user.ideas, user.ideavotes, user.rounds_started, user.rounds_won, user.comments);
                     }
                     $scope.daily += '\n'
                 }
@@ -394,6 +416,7 @@
                 var beforehours = afterDate[1].split(".");
                 var time = beforehours[0].split(":");
                 var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2), time[0], time[1], time[2]);
+                if (jsDate.getMonth() >= 9 && jsDate.getDate() >= 6) return 6;
                 if (jsDate.getDate() == 14) return (jsDate.getDate() + 1);
                 if (time[0] >= 19) {
                     if (jsDate.getDate() == 30) return 1;
@@ -429,6 +452,7 @@
             }
 
             $scope.get_json_sum = function () {
+                console.log($scope.stats);
                 var data = JSON.parse('[' + $scope.stats + ']');
                 var difficulty = [0, 1, 2],
                     rounds_started = [0, 0, 0],
@@ -451,7 +475,8 @@
 
                 for (var i = 0; i < data.length; i++) {
                     var g = data[i];
-                    var d = parseInt(g.difficulty);
+                    var d;
+                    (g.difficulty == undefined) ? d = 1 : d = parseInt(g.difficulty);
                     enemies_killed[d] += parseInt(g.enemies_killed);
                     time_spend_game[d] += parseInt(g.time);
                     jumps[d] += parseInt(g.jumps);
@@ -485,7 +510,7 @@
                 var db = '';
 
                 for (var dif = 0; dif < 3; dif++) {
-                    $scope.csv += "difficulty: " + difficulty[dif] + '\n'+
+                    $scope.csv += "difficulty: " + difficulty[dif] + '\n' +
                         "rounds_started: " + rounds_started[dif] + '\n' +
                         "rounds_won: " + rounds_won[dif] + '\n' +
                         "enemies_killed: " + enemies_killed[dif] + '\n' +
@@ -501,8 +526,8 @@
                         "special_name: " + special_name[dif] + '\n' +
                         "overall_coins: " + overall_coins[dif] + '\n' +
                         "overall_eastereggs: " + overall_eastereggs[dif] + '\n' +
-                        "overall_powerups: " + overall_powerups[dif] +'\n\n';
-                        db += wrapForDB(rounds_started[dif], rounds_won[dif], enemies_killed[dif], coins_collected[dif], highscore[dif], time_spend_game[dif], jumps[dif], restarts[dif], '', deaths[dif], highest_level[dif], movement_inputs[dif], eastereggs_found[dif], special_name[dif]) + '\n';
+                        "overall_powerups: " + overall_powerups[dif] + '\n\n';
+                    db += wrapForDB(rounds_started[dif], rounds_won[dif], enemies_killed[dif], coins_collected[dif], highscore[dif], time_spend_game[dif], jumps[dif], restarts[dif], '', deaths[dif], highest_level[dif], movement_inputs[dif], eastereggs_found[dif], special_name[dif]) + '\n';
 
                 }
                 $scope.csv = db + '\n' + $scope.csv;

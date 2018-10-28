@@ -15,8 +15,8 @@ Crowdjump.LevelSelection.prototype = {
         group = this.game.add.group();
         texts = [];
         keys = [];
-        var highestLevel = Math.min(game.highest_level-1, CONST_LEVEL);
-        if (CONST_PLAY_REACHED_LEVEL) highestLevel++;
+        var highestLevel = Math.min(game.highest_level, CONST_LEVEL);
+        if (CONST_PLAY_REACHED_LEVEL) highestLevel = Math.min(highestLevel+1,CONST_LEVEL);
 
         for (var i = 0; i < highestLevel; i++) {
             texts[i] = this.add.text(0, 0, "Level" + (i + 1), {

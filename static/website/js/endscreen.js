@@ -130,14 +130,15 @@ Crowdjump.Endscreen.prototype = {
         replay.inputEnabled = true;
         replay.events.onInputDown.add(this.replay, this);
 
-
-        backToMenu = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 260, "Back to menu", {
-            font: "32px Arial",
-            fill: '#dbdbdb'
-        });
-        backToMenu.anchor.set(0.5);
-        backToMenu.inputEnabled = true;
-        backToMenu.events.onInputDown.add(backToMainMenu, this);
+        if (CONST_BACKBUTTON) {
+            backToMenu = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 260, "Back to menu", {
+                font: "32px Arial",
+                fill: '#dbdbdb'
+            });
+            backToMenu.anchor.set(0.5);
+            backToMenu.inputEnabled = true;
+            backToMenu.events.onInputDown.add(backToMainMenu, this);
+        }
 
         this.input.keyboard.addKey(Phaser.KeyCode.R).onUp.add(this.replay, this);
         this.input.keyboard.addKey(Phaser.KeyCode.ESC).onDown.add(backToMainMenu);

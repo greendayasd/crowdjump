@@ -21,6 +21,7 @@ Crowdjump.Preloader.prototype = {
         var characters = files + 'characters/';
 
         var tiles = files + 'tiles/';
+        var old = tiles + 'old/';
         var grounds = tiles + 'ground/';
         var spawns = tiles + 'spawn/';
         var grass = tiles + 'grass/';
@@ -61,7 +62,7 @@ Crowdjump.Preloader.prototype = {
             this.load.json('level:0:1', level + 'level4_1.json');
             this.load.json('level:0:2', level + 'level4_2.json');
 
-        } else {
+        } else if (CONST_MULTIPLE_DIFFICULTIES) {
             for (var dif = 0; dif < CONST_DIFFICULTIES; dif++) {
                 for (var i = 0; i < CONST_LEVEL; i++) {
                     var levelname = 'level';
@@ -70,6 +71,13 @@ Crowdjump.Preloader.prototype = {
                     this.load.json('level:' + i + ':' + dif, level + levelname + '_' + dif + '.json?v=1');
                 }
             }
+        } else {
+            for (var i = 0; i < CONST_LEVEL; i++) {
+                var levelname = 'level';
+                levelname += i + '';
+                this.load.json('level:' + i, level + levelname + '.json?v=1');
+            }
+
         }
 
         //
@@ -92,6 +100,10 @@ Crowdjump.Preloader.prototype = {
         //
         //tiles
         //
+        if (!CONST_NEW_BLOCKS) {
+            grounds = old;
+            grass = old;
+        }
         this.load.image('ground', grounds + 'ground.png');
         this.load.image('ground:1x1', grounds + 'ground_1x1.png');
         this.load.image('ground:1x2', grounds + 'ground_1x2.png');
@@ -304,8 +316,8 @@ Crowdjump.Preloader.prototype = {
                 this.load.image('sun', misc + 'sun.png');
             }
         }
-        this.load.image('flag', misc + 'flag.png');
-        // this.load.spritesheet('flag', misc + 'flag.png', 42, 66);
+        if (CONST_NEWFLAG) this.load.image('flag', misc + 'flag.png');
+        else this.load.spritesheet('flag', misc + 'alt/flag.png', 42, 66);
         this.load.image('icon:heart', misc + 'heart.png');
 
         if (CONST_CRATES) this.load.image('crate', misc + 'crate.png');
@@ -404,7 +416,7 @@ Crowdjump.Preloader.prototype = {
             if (CONST_LEVELSELECTION || CONST_CHARACTERSELECTION) {
                 this.state.start('Startmenu');
             } else {
-                levelmusic.play();
+                if (CONST_LEVELMUSIC) levelmusic.play();
                 this.state.start('Game');
             }
         }

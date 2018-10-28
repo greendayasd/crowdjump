@@ -69,6 +69,7 @@
 
             function historySuccessFn(data, status, headers, config) {
                 $scope.history = data.data;
+                $scope.history.splice(1,1);
                 $scope.viewby = 20;
                 $scope.totalItems = $scope.history.length;
                 $scope.currentPage = 1;

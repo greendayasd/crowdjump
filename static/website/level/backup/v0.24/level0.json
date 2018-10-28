@@ -92,23 +92,23 @@
 
 	],
 	"buttons": [
-		{"image": "buttonBlue", "x": 1260, "y": 1344, "angle":0, "scalex":1, "scaley":1, "buttonnr":1},
-		{"image": "buttonRed", "x": 42, "y": 1134, "angle":0, "scalex":1, "scaley":1, "buttonnr":0}
+		{"image": "button:blue", "x": 1260, "y": 1344, "angle":0, "scalex":1, "scaley":1, "buttonnr":1},
+		{"image": "button:red", "x": 42, "y": 1134, "angle":0, "scalex":1, "scaley":1, "buttonnr":0}
 	],
 	"gates": [
-		{"image": "gateBlue", "x": 630, "y": 462, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":1},
-		{"image": "gateRed", "x": 1932, "y": 840, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
-		{"image": "gateRed", "x": 1890, "y": 840, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
-		{"image": "gateRed", "x": 1848, "y": 840, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
-		{"image": "gateRed", "x": 1806, "y": 840, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
-		{"image": "gateRed", "x": 1764, "y": 714, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
-		{"image": "gateRed", "x": 1764, "y": 630, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
-		{"image": "gateRed", "x": 1764, "y": 546, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
-		{"image": "gateRed", "x": 1764, "y": 798, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
-		{"image": "gateRed", "x": 1848, "y": 546, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
-		{"image": "gateRed", "x": 1806, "y": 546, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
-		{"image": "gateRed", "x": 1890, "y": 546, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
-		{"image": "gateRed", "x": 1932, "y": 546, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0}
+		{"image": "gate:blue", "x": 630, "y": 462, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":1},
+		{"image": "gate:red", "x": 1932, "y": 840, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
+		{"image": "gate:red", "x": 1890, "y": 840, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
+		{"image": "gate:red", "x": 1848, "y": 840, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
+		{"image": "gate:red", "x": 1806, "y": 840, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
+		{"image": "gate:red", "x": 1764, "y": 714, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
+		{"image": "gate:red", "x": 1764, "y": 630, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
+		{"image": "gate:red", "x": 1764, "y": 546, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
+		{"image": "gate:red", "x": 1764, "y": 798, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
+		{"image": "gate:red", "x": 1848, "y": 546, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
+		{"image": "gate:red", "x": 1806, "y": 546, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
+		{"image": "gate:red", "x": 1890, "y": 546, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0},
+		{"image": "gate:red", "x": 1932, "y": 546, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0}
 	],
 	"spawns": [
 

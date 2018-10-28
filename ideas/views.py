@@ -26,7 +26,7 @@ class IdeaViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         instance = serializer.save(user=self.request.user)
-        print()
+        print(self.request.user)
         return super(IdeaViewSet, self).perform_create(serializer)
 
 

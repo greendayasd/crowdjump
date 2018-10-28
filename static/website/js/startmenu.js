@@ -54,11 +54,10 @@ Crowdjump.Menu.prototype = {
 
             key3 = game.input.keyboard.addKey(Phaser.Keyboard.THREE);
             key3.onDown.add(this.levelSelection, this);
-
         }
 
 
-        if (CONST_OPTIONMENU) {
+        if (CONST_OPTIONMENU && (CONST_MULTIPLE_DIFFICULTIES)) {
             credits = this.add.text(CONST_WORLD_CENTER_X, CONST_WORLD_CENTER_Y + 190, "Options", {
                 font: "40px Arial",
                 fill: '#dbdbdb'

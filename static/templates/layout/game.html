@@ -81,7 +81,7 @@
             <h4 class="text-center" style="color:blue">Level 5 will be available in the next version!</h4><br>
         </div>
     </div>
-    <div class="row" ng-show="true"  ng-controller="DidyouknowController as vm">
+    <div class="row" ng-show="false"  ng-controller="DidyouknowController as vm"> <!-- v39-->
         <div class="col-md-12">
             <h4 class="text-center" style="color:#1673ff">{{ didyouknow }}</h4>
         </div>
@@ -96,13 +96,13 @@
         <div class="col-md-12" id="instructions">
 
             <h4 class="text-center" id="instructions" style="color: white; padding-right: 3%;">
-                The goal is simple: Control the alien by using the <b>arrow keys</b> or <b>WASD</b>
+                The goal is simple: Control the alien by using the <b>arrow keys</b><!-- or <b>WASD</b> v14-->
                 to move (or <b>space</b> to jump) to get to the flag. <br>
-                To activate a colored mechanism, you first have to find a button with the same color.<br>
+                <!--To activate a colored mechanism, you first have to find a button with the same color.<br> v21-->
                 If you get stuck, you can reset the game pressing <b>R</b>.
                 Press <b>Escape</b> to get back to the main menu. <br>
-                To mute or unmute the game, press <b>M</b>.
-                <!---You can press F to go invincible for a short time! <br>
+                <!--To mute or unmute the game, press <b>M</b>. v6-->
+                <!--You can press F to go invincible for a short time! <br>
                 Use the mouse to aim and the left mouse button to shoot bullets! -->
             </h4>
 
@@ -114,7 +114,7 @@
             </div>
         </div>
     </div>
-    <div class="row" ng-show="true">
+    <div class="row" ng-show="false"> <!-- v30-->
 
         <p style="margin-top: 10px">
             Explanations for
@@ -187,7 +187,7 @@
                         </td>
                         <td>While jumping you can go through walls.</td>
                     </tr>
-                    <tr>
+                    <tr ng-show="false"> <!-- v31-->
                         <td><img class="img-fluid"
                                  src="/static/website/gamefiles/collectibles/powerup_doublejump.png" alt="Crowdjump">
                         </td>
@@ -211,7 +211,7 @@
                         </td>
                         <td>If you touch a button with the same color, a platform will spawn here.</td>
                     </tr>
-                    <tr>
+                    <tr ng-show="false"><!-- v41-->
                         <td><img class="img-fluid"
                                  src="/static/website/gamefiles/teleporter/teleporter_example.png" alt="Crowdjump">
                         </td>
@@ -223,7 +223,7 @@
                         </td>
                         <td>An Easteregg! these have different, secret effects, can you find them all?</td>
                     </tr>
-                    <tr>
+                    <tr ng-show="false"> <!-- v38-->
                         <td><img class="img-fluid"
                                  src="/static/website/gamefiles/misc/mystery_question_example.png" alt="Crowdjump">
                         </td>
@@ -255,7 +255,7 @@
     </div>
 
 
-    <div class="row" ng-controller="IndexController as vm" ng-show="vm.isAuthenticated">
+    <div class="row" ng-controller="IndexController as vm" ng-show="vm.isAuthenticated && false"> <!-- v7 -->
         <br>
         <h4 style="color:black;margin-left: 0px">Here you can upload your own skin (.png, max 34x42px, 20kb). Just post
             your
@@ -277,16 +277,16 @@
     </div>
 
 
-    <div class="row" ng-show="true">
+    <div class="row" ng-show="false"> <!-- v3-->
 
         <span ng-controller="HighscoreController as vm" id="scoreboard">
             <br>
             <h3>Here are the Top 10 players in version <select ng-model="newestVersion"
                                                                ng-options="template.label for template in versions_max track by template.id"
-                                                               ng-change="getVersionHighscore(newestVersion.id, difficulty)"></select> for difficulty
+                                                               ng-change="getVersionHighscore(newestVersion.id, difficulty)"></select> <!--for difficulty
                                                         <select ng-model="difficulty"
                                                                ng-options="template.label for template in difficulties track by template.id"
-                                                               ng-change="getVersionHighscore(newestVersion.id, difficulty)"></select>!
+                                                               ng-change="getVersionHighscore(newestVersion.id, difficulty)"></select> v32-->!
             </h3>
             <table class="table table-striped table-hover">
                 <thead class="thead-dark">

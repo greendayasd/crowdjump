@@ -32,16 +32,16 @@
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li></li>
-                {% verbatim %} <li style="text-align: center;padding-top:10px;margin:0"><span class="nav-link" style="text-align: center;padding:0;margin:0"><a class="fa fa-trophy" style="font-size:30px;color:red;text-align: center;padding:0;margin:0"
+                <!-- {% verbatim %} <li style="text-align: center;padding-top:10px;margin:0"><span class="nav-link" style="text-align: center;padding:0;margin:0"><a class="fa fa-trophy" style="font-size:30px;color:red;text-align: center;padding:0;margin:0"
                        href="javascript:void(0)"
                        ng-dialog="/static/templates/layout/winner_shoutout.html">{{ winner }}</a><a class="fa fa-trophy" style="font-size:30px;color:red;text-align: center;padding:0;margin:0"></a></span></li>{% endverbatim %}
                 {% verbatim %} <li ng-show="false"><a class="nav-link"
                        href="javascript:void(0)"
-                       ng-dialog="/static/templates/layout/countdowninfo.html">{{ clock }}</a></li>{% endverbatim %}
+                       ng-dialog="/static/templates/layout/countdowninfo.html">{{ clock }}</a></li>{% endverbatim %}v19-->
                 <li><a class="nav-link" href="game">Game</a></li>
                 <li><a class="nav-link" href="ideas">Ideas</a></li>
                 <li><a class="nav-link" href="history">History</a></li>
-                <li><a class="nav-link" href="bugreports">Bugreport</a></li>
+               <!--  <li><a class="nav-link" href="bugreports" ng-show="false">Bugreport</a></li> v43-->
                 {% if user.is_authenticated %}
                     {#                    <li><a class="nav-link" href="chat/lobby">Chat</a></li>#}
                     {% if user.username == 'admin' %}

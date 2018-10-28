@@ -19,7 +19,6 @@
 		{"image": "grass:1x1", "x": 1302, "y": 504, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 1260, "y": 336, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:6x1", "x": 1680, "y": 840, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "invisible:1x1", "x": 1848, "y": 588, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "invisible:1x1", "x": 1848, "y": 420, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "invisible:1x1", "x": 1848, "y": 252, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "invisible:1x1", "x": 1848, "y": 84, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
@@ -62,13 +61,12 @@
 		{"image": "ground:1x1", "x": 4368, "y": 798, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x1", "x": 4452, "y": 798, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:10x1", "x": 4368, "y": 840, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "grass:1x1", "x": 4662, "y": 714, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 4746, "y": 588, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "grass:1x1", "x": 4662, "y": 504, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:2x1", "x": 2436, "y": 378, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:2x1", "x": 2478, "y": 210, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 0, "y": 672, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "invisible:1x4", "x": 2520, "y": 966, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
+		{"image": "invisible:1x4", "x": 2520, "y": 966, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
+		{"image": "grass:1x1", "x": 4620, "y": 672, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
 	],
 	"fallingPlatforms": [
 
@@ -88,31 +86,50 @@
 	],
 	"gates": [
 		{"image": "gate:green", "x": 42, "y": 588, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":2},
-		{"image": "gate:green", "x": 2520, "y": 882, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":2}
+		{"image": "gate:green", "x": 2520, "y": 882, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":2},
+		{"image": "gate:green", "x": 42, "y": 504, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":2}
 	],
 	"spawns": [
-		{"image": "spawnBlue:1x1", "x": 3864, "y": 252, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":1},
+		{"image": "spawnBlue:1x1", "x": 3822, "y": 252, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":1},
 		{"image": "spawnRed:1x1", "x": 3906, "y": 378, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":0},
 		{"image": "spawnRed:2x1", "x": 3948, "y": 504, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":0},
 		{"image": "spawnBlue:2x1", "x": 3990, "y": 630, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":1},
 		{"image": "spawnBlue:1x1", "x": 3570, "y": 588, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":1},
-		{"image": "spawnBlue:2x1", "x": 3570, "y": 714, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":1}
+		{"image": "spawnBlue:2x1", "x": 3570, "y": 714, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":1},
+		{"image": "spawnGreen:2x1", "x": 2394, "y": 210, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":2},
+		{"image": "spawnGreen:1x1", "x": 2646, "y": 378, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":2},
+		{"image": "spawnGreen:1x1", "x": 2772, "y": 378, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":2},
+		{"image": "spawnGreen:2x1", "x": 2562, "y": 210, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":2},
+		{"image": "spawnGreen:2x1", "x": 2646, "y": 210, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":2},
+		{"image": "spawnGreen:2x1", "x": 4662, "y": 714, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":2},
+		{"image": "spawnGreen:2x1", "x": 4578, "y": 504, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":2},
+		{"image": "spawnGreen:1x1", "x": 3864, "y": 336, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":2},
+		{"image": "spawnGreen:2x1", "x": 3906, "y": 462, "angle":0, "scalex":1, "scaley":1, "p_types": "2x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0, "needs_buttonnr":2}
 	],
 	"coins": [
-		{"image": "coin", "x": 210, "y": 672, "angle":0, "scalex":1, "scaley":1},
-		{"image": "coin", "x": 504, "y": 672, "angle":0, "scalex":1, "scaley":1},
-		{"image": "coin", "x": 420, "y": 672, "angle":0, "scalex":1, "scaley":1},
-		{"image": "coin", "x": 462, "y": 546, "angle":0, "scalex":1, "scaley":1},
-		{"image": "coin", "x": 2268, "y": 672, "angle":0, "scalex":1, "scaley":1},
-		{"image": "coin", "x": 2856, "y": 546, "angle":0, "scalex":1, "scaley":1}
+		{"image": "coin:icon", "x": 210, "y": 672, "angle":0, "scalex":1, "scaley":1},
+		{"image": "coin:icon", "x": 504, "y": 672, "angle":0, "scalex":1, "scaley":1},
+		{"image": "coin:icon", "x": 420, "y": 672, "angle":0, "scalex":1, "scaley":1},
+		{"image": "coin:icon", "x": 462, "y": 546, "angle":0, "scalex":1, "scaley":1},
+		{"image": "coin:icon", "x": 2268, "y": 672, "angle":0, "scalex":1, "scaley":1},
+		{"image": "coin:icon", "x": 2856, "y": 546, "angle":0, "scalex":1, "scaley":1},
+		{"image": "coin:icon", "x": 1344, "y": 798, "angle":0, "scalex":1, "scaley":1},
+		{"image": "coin:icon", "x": 1386, "y": 798, "angle":0, "scalex":1, "scaley":1},
+		{"image": "coin:icon", "x": 2352, "y": 798, "angle":0, "scalex":1, "scaley":1},
+		{"image": "coin:icon", "x": 2310, "y": 798, "angle":0, "scalex":1, "scaley":1}
 	],
 	"powerups": [
-		{"image": "powerup:permjumpboost", "x": 1260, "y": 294, "angle":0, "scalex":1, "scaley":1, "type":"permjumpboost"},
-		{"image": "powerup:time", "x": 0, "y": 630, "angle":0, "scalex":1, "scaley":1, "type":"time"}
+		{"image": "powerup:permjumpboost", "x": 1260, "y": 294, "angle":0, "scalex":1, "scaley":1, "type":"permjumpboost"}
 	],
 	"eastereggs": [
 		{"image": "easteregg:movementspeed", "x": 2394, "y": 1134, "angle":0, "scalex":1, "scaley":1, "type":"movementspeed"},
 		{"image": "easteregg:specialname", "x": 1848, "y": 42, "angle":0, "scalex":1, "scaley":1, "type":"specialname"}
+	],
+	"mystery": [
+		{"image": "mystery:questionmark", "x": 0, "y": 462, "angle":0, "scalex":1, "scaley":1, "types":"powerups,enemies", "uses":1}
+	],
+	"teleporter": [
+
 	],
 	"lava": [
 		{"image": "lava:1x1", "x": 1974, "y": 840, "angle":0, "scalex":1, "scaley":1},
@@ -135,7 +152,6 @@
 		{"image": "cannonLeft", "x": 3024, "y": 630, "angle":0, "scalex":1, "scaley":1, "ballpos":"0"}
 	],
 	"enemies": [
-		{"image": "enemy:spider", "x": 378, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"spider"},
 		{"image": "enemy:spider", "x": 630, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"spider"},
 		{"image": "enemy:spider", "x": 1428, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"spider"},
 		{"image": "enemy:spider", "x": 1512, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"spider"},
@@ -144,7 +160,8 @@
 		{"image": "enemy:spider", "x": 3738, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"spider"},
 		{"image": "enemy:spider", "x": 3864, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"spider"},
 		{"image": "enemy:spider", "x": 4074, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"spider"},
-		{"image": "enemy:spider", "x": 3948, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"spider"}
+		{"image": "enemy:spider", "x": 3948, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"spider"},
+		{"image": "enemy:spider", "x": 294, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"spider"}
 	],
 	"enemyWalls": [
 		{"image": "invisible_wall", "x": 420, "y": 798, "angle":0, "scalex":1, "scaley":1},
@@ -154,7 +171,8 @@
 		{"image": "invisible_wall", "x": 2646, "y": 798, "angle":0, "scalex":1, "scaley":1}
 	],
 	"flags": [
-		{"image": "flag", "x": 3780, "y": 84, "angle":0, "scalex":1, "scaley":1}
+		{"image": "flag", "x": 3780, "y": 84, "angle":0, "scalex":1, "scaley":1},
+		{"image": "flag", "x": 84, "y": 0, "angle":0, "scalex":1, "scaley":1}
 	],
 	"hero":
 		{"image": "hero", "x": 42, "y": 798, "angle":0, "scalex":1, "scaley":1},

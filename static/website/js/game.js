@@ -401,7 +401,10 @@ Crowdjump.Game.init = function (data) {
                 break;
         }
     }
-    first_moved = -1;
+
+    if (CONST_TIME_WHEN_MOVED) first_moved = -1;
+    else first_moved = 0;
+
     second_jump = true;
     hero_on_wall = false;
     hero_on_ice = false;
@@ -498,7 +501,7 @@ Crowdjump.Game.create = function () {
         var cloud3y = 78;
         var moonSuny = 22;
 
-        day = ((hour >= 6 && hour < 18) || false);
+        day = ((hour >= 6 && hour < 18) || true);
 
         if (day && CONST_DAY_AND_NIGHT) {
             this.game.stage.backgroundColor = '#545d8f';
@@ -635,23 +638,31 @@ Crowdjump.Game.create = function () {
     time_zhonya_activated = 0;
     time_zhonya_cooldown = 0;
     selected_level += 0;
-    if (selected_level >= 0) {
-        level_data = this.game.cache.getJSON(`level:${selected_level}:${game.difficulty}`);
+    if (CONST_MULTIPLE_DIFFICULTIES) {
+        if (selected_level >= 0) {
+            level_data = this.game.cache.getJSON(`level:${selected_level}:${game.difficulty}`);
+        } else {
+            level_data = this.game.cache.getJSON(`level:${level}:${game.difficulty}`);
+        }
     } else {
-        level_data = this.game.cache.getJSON(`level:${level}:${game.difficulty}`);
+        if (selected_level >= 0) {
+            level_data = this.game.cache.getJSON(`level:${selected_level}`);
+        } else {
+            level_data = this.game.cache.getJSON(`level:${level}`);
+        }
     }
 
     cheat_activated = false;
     cheat_possible = false
     if (account != null) {
-        cheat_possible = (CONST_CHEAT && account.username == 'admin')
+        cheat_possible = (CONST_CHEAT && (account.username == 'admin' || account.username == 'User'))
     }
 
     this._loadLevel(level_data);
 
     this._createHud();
     this._createTimerHud();
-    this._createLivesHud();
+    if (CONST_HERO_LIVES) this._createLivesHud();
 
     if (CONST_FPS) {
         game.time.advancedTiming = true;
@@ -761,7 +772,7 @@ Crowdjump.Game.update = function () {
         if (time_overall != 0) {
 
         }
-    } else if (first_moved > 0) {
+    } else if (first_moved >= 0) {
         // seconds = Math.floor(game.time.totalElapsedSeconds().toFixed(3) - first_moved) + time_finished;
         var seconds_this_level = parseFloat(game.time.totalElapsedSeconds().toFixed(3)) - first_moved - (timeeggs);
         seconds = ((seconds_this_level / 1) + parseFloat(time_overall)).toFixed(3);
@@ -775,7 +786,7 @@ Crowdjump.Game.update = function () {
         if (level_data.repeats) {
             this._newSpawns({spiders: level_data.repeat_spiders});
         }
-        if (CONST_CANNONS && seconds > next_cannon_fire) {
+        if (CONST_CANNONS && seconds > next_cannon_fire && first_moved >= 0) {
             this._newCannonballs(seconds);
         }
     }
@@ -1217,7 +1228,7 @@ Crowdjump.Game._countMovementInput = function () {
 };
 
 Crowdjump.Game.firstMoved = function () {
-    if (first_moved == -1 && CONST_TIME_WHEN_MOVED) {
+    if (first_moved == -1) {
         first_moved = game.time.totalElapsedSeconds().toFixed(3);
         this.startSpiders();
     }
@@ -1234,10 +1245,20 @@ Crowdjump.Game._loadLevel = function (data) {
 
     // spawn the rest of the platforms
     this.platforms = this.game.add.group();
-    data.platforms.forEach(this._spawnPlatform, this);
+    try {
+        data.platforms.forEach(this._spawnPlatform, this);
+    }
+    catch (e) {
+        console.log("Platform data not found in level.")
+    }
 
     this.fakePlatforms = this.game.add.group();
-    data.fakePlatforms.forEach(this._spawnFakePlatform, this);
+    try {
+        data.fakePlatforms.forEach(this._spawnFakePlatform, this);
+    }
+    catch (e) {
+        console.log("Fake Platform data not found in level.")
+    }
 
     if (CONST_MOVINGPLATFORMS) {
         this.movingPlatforms = this.game.add.group();
@@ -1247,89 +1268,174 @@ Crowdjump.Game._loadLevel = function (data) {
         this.spiders = this.game.add.group();
 
         this.enemyWalls = this.game.add.group();
-        data.enemyWalls.forEach(this._spawnEnemyWall, this);
+        try {
+            data.enemyWalls.forEach(this._spawnEnemyWall, this);
+        }
+        catch (e) {
+            console.log("Enemy walls data not found in level.")
+        }
 
     }
 
     if (CONST_LAVA) {
         this.lava = this.game.add.group();
-        data.lava.forEach(this._spawnLava, this);
+        try {
+            data.lava.forEach(this._spawnLava, this);
+        }
+        catch (e) {
+            console.log("Lava data not found in level.")
+        }
     }
 
     //spawn spikes and similar
     if (CONST_SPIKES) {
         this.spikes = this.game.add.group();
-        data.spikes.forEach(this._spawnSpikes, this);
+        try {
+            data.spikes.forEach(this._spawnSpikes, this);
+        }
+        catch (e) {
+            console.log("Spikes data not found in level.")
+        }
     }
 
     //spawn Buttons, gates, spawnable platforms
     if (CONST_BUTTONS_AND_GATES) {
         this.buttons = this.game.add.group();
-        data.buttons.forEach(this._spawnButton, this);
+        try {
+            data.buttons.forEach(this._spawnButton, this);
+        }
+        catch (e) {
+            console.log("Buttons data not found in level.")
+        }
         this.gates = this.game.add.group();
-        data.gates.forEach(this._spawnGate, this);
+        try {
+            data.gates.forEach(this._spawnGate, this);
+        }
+        catch (e) {
+            console.log("Gates data not found in level.")
+        }
 
         this.spawns = this.game.add.group();
-        data.spawns.forEach(this._spawnSpawn, this);
+        try {
+            data.spawns.forEach(this._spawnSpawn, this);
+        }
+        catch (e) {
+            console.log("Spawns data not found in level.")
+        }
 
     }
 
     if (CONST_CANNONS) {
         this.cannons = this.game.add.group();
-        data.cannons.forEach(this._spawnCannon, this);
+        try {
+            data.cannons.forEach(this._spawnCannon, this);
+        }
+        catch (e) {
+            console.log("Cannons data not found in level.")
+        }
     }
 
     if (CONST_POWERUPS) {
         this.powerups = this.game.add.group();
-        data.powerups.forEach(this._spawnPowerup, this);
+        try {
+            data.powerups.forEach(this._spawnPowerup, this);
+        }
+        catch (e) {
+            console.log("Powerups data not found in level.")
+        }
     }
 
     if (CONST_EASTEREGGS) {
         this.eastereggs = this.game.add.group();
-        data.eastereggs.forEach(this._spawnEasteregg, this);
+        try {
+            data.eastereggs.forEach(this._spawnEasteregg, this);
+        }
+        catch (e) {
+            console.log("Eastereggs data not found in level.")
+        }
     }
 
     if (CONST_COINS) {
         this.coins = this.game.add.group();
-        data.coins.forEach(this._spawnCoin, this);
+        try {
+            data.coins.forEach(this._spawnCoin, this);
+        }
+        catch (e) {
+            console.log("Coins data not found in level.")
+        }
         this.collectedCoin = this.game.add.group();
     }
 
     if (CONST_CRATES) {
         this.crates = this.game.add.group();
-        data.crates.forEach(this._spawnCrate, this);
+        try {
+            data.crates.forEach(this._spawnCrate, this);
+        }
+        catch (e) {
+            console.log("Crates data not found in level.")
+        }
     }
 
     //spawn sawblades + bases
     if (CONST_SAWBLADES) {
         this.sawblades = this.game.add.group();
-        data.sawblades.forEach(this._spawnSawblade, this);
+        try {
+            data.sawblades.forEach(this._spawnSawblade, this);
+        }
+        catch (e) {
+            console.log("Sawblades data not found in level.")
+        }
         this.sawbladesBases = this.game.add.group();
     }
 
     if (CONST_MYSTERYBOX) {
         this.mystery = this.game.add.group();
-        data.mystery.forEach(this._spawnMystery, this);
+        try {
+            data.mystery.forEach(this._spawnMystery, this);
+        }
+        catch (e) {
+            console.log("Mystery data not found in level.")
+        }
     }
 
     if (CONST_TELEPORTER) {
         this.teleporter = this.game.add.group();
-        data.teleporter.forEach(this._spawnTeleporter, this);
+        try {
+            data.teleporter.forEach(this._spawnTeleporter, this);
+        }
+        catch (e) {
+            console.log("Teleporter data not found in level.")
+        }
     }
 
     //spawn all deco
     if (CONST_DECO) {
         this.deco = this.game.add.group();
-        data.deco.forEach(this._spawnDeco, this);
+        try {
+            data.deco.forEach(this._spawnDeco, this);
+        }
+        catch (e) {
+            console.log("Deco data not found in level.")
+        }
     }
 
 
     // spawn hero and enemies
-    this._spawnCharacters({hero: data.hero, enemies: data.enemies});
+    try {
+        this._spawnCharacters({hero: data.hero, enemies: data.enemies});
+    }
+    catch (e) {
+        console.log("Character data not found in level.")
+    }
 
     //+30/+45 for correction
     this.flags = this.game.add.group();
-    data.flags.forEach(this._spawnFlag, this);
+    try {
+        data.flags.forEach(this._spawnFlag, this);
+    }
+    catch (e) {
+        console.log("Flag data not found in level.")
+    }
 
     if (CONST_P2_PHYSICS) var platformCollisionGroup = game.physics.p2.createCollisionGroup();
 
@@ -2559,7 +2665,7 @@ Crowdjump.Game._deactivateWalk = function () {
 Crowdjump.Game.paused = function () {
     if (CONST_PAUSE) {
         // this.pausedIndicator.exists = true;
-        if (first_moved > 0) {
+        if (first_moved >= 0) {
         }
         game.elapsedTime = this.game.time;
         this.world.alpha = 0.5;
@@ -2571,7 +2677,7 @@ Crowdjump.Game.paused = function () {
 Crowdjump.Game.resumed = function () {
     if (CONST_PAUSE) {
         // this.pausedIndicator.exists = false;
-        if (first_moved > 0) {
+        if (first_moved >= 0) {
             pause_time += this.game.time.pauseDuration;
         }
         this.world.alpha = 1;
@@ -2701,7 +2807,7 @@ Crowdjump.Game.killHero = function (reason) {
         game.timeElapsed = 0;
 
         last_second = 0;
-        first_moved = 0;
+        first_moved = -1;
         time_finished = 0;
         time_overall = 0;
         time_last_level_or_restart = 0;
@@ -2766,14 +2872,14 @@ Crowdjump.Game.showPowerupMessage = function (message) {
 Crowdjump.Game.restart = function () {
     time_finished = game.time.totalElapsedSeconds() - first_moved;
     time_finished = parseFloat(time_finished.toFixed(3));
-    if (first_moved == 0) time_finished = 0;
+    if (first_moved <= 0) time_finished = 0;
 
 
     setLevelInfo(level + 1, "restart", false);
     // updateInfo(false);
 
     last_second = 0;
-    first_moved = 0;
+    first_moved = -1;
     time_finished = 0;
     time_overall = 0;
     time_last_level_or_restart = 0;

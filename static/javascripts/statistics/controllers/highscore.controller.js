@@ -34,7 +34,7 @@
 
 
         function activate() {
-            Statistics.top(topcut, versionnumber, $scope.difficulty).then(statisticsSuccessFn, statisticsErrorFn);
+            Statistics.top(topcut, 7, $scope.difficulty).then(statisticsSuccessFn, statisticsErrorFn);
             get_versions();
 
             $scope.$on('statistics.created', function (event, statistics) {
@@ -201,6 +201,26 @@
                         case 39:
                         case 41:
                         case 43:
+                        // case 44:
+                        // case 42:
+                        // case 40:
+                        // case 38:
+                        // case 36:
+                        // case 34:
+                        // case 32:
+                        // case 30:
+                        // case 28:
+                        // case 26:
+                        // case 24:
+                        // case 22:
+                        // case 20:
+                        // case 18:
+                        // case 16:
+                        // case 14:
+                        // case 12:
+                        // case 10:
+                        // case 7:
+                        // case 6:
                             $scope.versions.splice(i, 1);
                             break;
                     }

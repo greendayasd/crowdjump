@@ -25,12 +25,10 @@ def mail_new_version(request):
     screenshot_path = os.path.join(folder_path, '040.JPG')
 
     version = 'version 0.44'
-    subject = 'The temporary last version of Crowdjump is online!'
+    subject = 'View the crowdjump development on YouTube!'
     message1 = 'Hello '
     message2 = ',<br>'
-    feature = "with new features like teleporter, a bug report page and more Crowdjump " + version + ' will be the last version of this study.' \
-              ' Thank you very much for participating, you helped a lot! The site will still be available if you want to play, ideas may still be implemented in the future, but not as part of this study.<br>' \
-              'If you have time, please fill out the short questionnaire on the site :)'
+    feature = "you can now view a short clip about the development of Crowdjump, if you finished the short survey!"
     message3 = '<br>To play the game, vote for ideas or submit your own, visit  '
     html_content = '<a href="https://www.crowdjump.win">Crowdjump.win :)</a>'
     unsubscribe = '<br><br><a href="https://www.crowdjump.win/unsubscribe">Click here if you dont want to get this newsletter anymore</a>'
