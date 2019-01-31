@@ -246,58 +246,65 @@ def AntiCheat(status, difficulty, level, timeneeded, jumps, movement_inputs, ene
     if (difficulty == '0'):
         print("Todo")
 
-    if (difficulty == '1'):
+    if difficulty == '1':
         # time
-        if (status == 'completed'):
+        if status == 'completed':
             if (int(level) == 1 and int(timeneeded) < 7500
                     or int(level) == 2 and int(timeneeded) < 4000
                     or int(level) == 3 and int(timeneeded) < 4000
-                    or int(level) == 4 and int(timeneeded) < 4000):
-                cheated += '_time'
+                    or int(level) == 4 and int(timeneeded) < 4000
+                    or int(level) == 5 and int(timeneeded) < 4000):
+                cheated += '_time:' + timeneeded
 
         # jumps
-        if (status == 'completed'):
+        if status == 'completed':
             if (int(level) == 1 and int(jumps) < 8
-                    or int(level) == 2 and int(jumps) < 4
-                    or int(level) == 3 and int(jumps) < 4 #in 4 theoretisch möglich
-                    or int(level) == 4 and int(jumps) < 3):
-                cheated += '_jumps'
+                    or int(level) == 2 and int(jumps) < 14
+                    or int(level) == 3 and int(jumps) < 4
+                    or int(level) == 4 and int(jumps) < 19
+                    or int(level) == 5 and int(jumps) < 7):
+                cheated += '_jumps:' + jumps
 
         # movement
-        if (status == 'completed'):
-            if (int(level) == 1 and int(movement_inputs) < 1
-                    or int(level) == 2 and int(movement_inputs) < 1
+        if status == 'completed':
+            if (int(level) == 1 and int(movement_inputs) < 4
+                    or int(level) == 2 and int(movement_inputs) < 3
                     or int(level) == 3 and int(movement_inputs) < 3
-                    or int(level) == 4 and int(movement_inputs) < 1):
-                cheated += '_movementInputs'
+                    or int(level) == 4 and int(movement_inputs) < 9
+                    or int(level) == 5 and int(movement_inputs) < 2):
+                cheated += '_movementInputs:' + movement_inputs
 
         # enemies killed
         if (int(level) == 1 and int(enemies_killed) > 6
                 or int(level) == 2 and int(enemies_killed) > 10
                 or int(level) == 3 and int(enemies_killed) > 21
-                or int(level) == 4 and int(enemies_killed) > 1):
-            cheated += '_enemiesKilled'
+                or int(level) == 4 and int(enemies_killed) > 0
+                or int(level) == 5 and int(enemies_killed) > 6):
+            cheated += '_enemiesKilled:' + enemies_killed
 
         # coins (+10 per coin easteregg)
         if (int(level) == 1 and int(coins_collected) > 80
                 or int(level) == 2 and int(coins_collected) > 6
                 or int(level) == 3 and int(coins_collected) > 7
-                or int(level) == 4 and int(coins_collected) > 1):
-            cheated += '_coinsCollected'
+                or int(level) == 4 and int(coins_collected) > 1
+                or int(level) == 5 and int(coins_collected) > 1):
+            cheated += '_coinsCollected:' + coins_collected
 
         # eastereggs
         if (int(level) == 1 and int(eastereggs_found) > 4
                 or int(level) == 2 and int(eastereggs_found) > 2
                 or int(level) == 3 and int(eastereggs_found) > 2
-                or int(level) == 4 and int(eastereggs_found) > 1):
-            cheated += '_eastereggsFound'
+                or int(level) == 4 and int(eastereggs_found) > 1
+                or int(level) == 5 and int(eastereggs_found) > 1):
+            cheated += '_eastereggsFound:' + eastereggs_found
 
         # specialname
         if (int(level) == 1 and int(special_name) > 2
                 or int(level) == 2 and int(special_name) > 1
                 or int(level) == 3 and int(special_name) > 1
-                or int(level) == 4 and int(special_name) > 1):
-            cheated += '_specialName'
+                or int(level) == 4 and int(special_name) > 1
+                or int(level) == 5 and int(special_name) > 1):
+            cheated += '_specialName:' + special_name
 
     if (difficulty == '2'):
         print("Todo")

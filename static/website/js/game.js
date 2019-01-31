@@ -1335,7 +1335,7 @@ Crowdjump.Game._loadLevel = function (data) {
         }
     }
 
-    if (CONST_POWERUPS) {
+    if (CONST_POWERUPS || CONST_POWERUPS_V25) {
         this.powerups = this.game.add.group();
         try {
             data.powerups.forEach(this._spawnPowerup, this);
@@ -1984,7 +1984,7 @@ Crowdjump.Game._newSpawns = function (data) {
 Crowdjump.Game._newCannonballs = function (seconds) {
     if (CONST_CANNONS) {
         // spawn cannonballs for each cannon
-        var firerate = (CONST_CANNON_FIRERATE / 1000) * (1 / pu_timeslow);
+        var firerate = (CONST_CANNON_DEFAULT_FIRERATE / 1000) * (1 / pu_timeslow);
         next_cannon_fire = seconds + firerate;
         this.cannons.forEach(function (cannon) {
             this.sfx.cannonfire.play();
@@ -1999,7 +1999,7 @@ Crowdjump.Game._newCannonballs = function (seconds) {
                 cannonball.reset(cannon.position.x - 28, cannon.position.y + 5);
             }
 
-            this.game.physics.arcade.moveToXY(cannonball, xgoal, cannon.position.y, (CONST_CANNON_BULLETSPEED * pu_timeslow));
+            this.game.physics.arcade.moveToXY(cannonball, xgoal, cannon.position.y, (CONST_CANNON_DEFAULT_BULLETSPEED * pu_timeslow));
 
         }, this);
     }
@@ -2043,6 +2043,9 @@ Crowdjump.Game._spawnCoin = function (coin) {
 Crowdjump.Game._spawnPowerup = function (powerup) {
     //+21, 38x38 tile
     let sprite = this.powerups.create(powerup.x + 21, powerup.y + 21, powerup.image);
+
+    //todo if image = erste 3 && !powerup return; if image = time && !powerup_v25 return;
+
     sprite.anchor.set(0.5, 0.5);
 
     if (CONST_P2_PHYSICS) {

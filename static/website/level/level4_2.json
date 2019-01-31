@@ -99,12 +99,12 @@
 		{"image": "coin:icon", "x": 924, "y": 336, "angle":0, "scalex":1, "scaley":1}
 	],
 	"powerups": [
-		{"image": "powerup:doublejump", "x": 1554, "y": 378, "angle":0, "scalex":1, "scaley":1, "type":"doublejump"}
+		{"image": "powerup:doublejump", "x": 1554, "y": 378, "angle":0, "scalex":1, "scaley":1, "type":"doublejump", "parameters":""}
 	],
 	"eastereggs": [
-		{"image": "easteregg:specialname", "x": 0, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"specialname"},
-		{"image": "easteregg:time", "x": 1344, "y": 882, "angle":0, "scalex":1, "scaley":1, "type":"time"},
-		{"image": "easteregg:specialname", "x": 0, "y": 756, "angle":0, "scalex":1, "scaley":1, "type":"specialname"}
+		{"image": "easteregg:specialname", "x": 0, "y": 798, "angle":0, "scalex":1, "scaley":1, "type":"specialname", "parameters":""},
+		{"image": "easteregg:time", "x": 1344, "y": 882, "angle":0, "scalex":1, "scaley":1, "type":"time", "parameters":"0.5"},
+		{"image": "easteregg:specialname", "x": 0, "y": 756, "angle":0, "scalex":1, "scaley":1, "type":"specialname", "parameters":""}
 	],
 	"mystery": [
 		{"image": "mystery:questionmark", "x": 630, "y": 756, "angle":0, "scalex":1, "scaley":1, "types":"pu_permjump,ea_specialname,moreEnemies", "uses":3}

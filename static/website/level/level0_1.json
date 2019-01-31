@@ -17,7 +17,6 @@
 		{"image": "ground:1x2", "x": 714, "y": 1302, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x2", "x": 672, "y": 1176, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x1", "x": 630, "y": 1218, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:1x1", "x": 546, "y": 1260, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:4x1", "x": 1176, "y": 966, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 1470, "y": 882, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 1596, "y": 798, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
@@ -81,17 +80,11 @@
 		{"image": "ground:4x1", "x": 588, "y": 1260, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 42, "y": 462, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
 	],
-	"fallingPlatforms": [
-
-	],
 	"fakePlatforms": [
 		{"image": "fakeground:1x1", "x": 840, "y": 1386, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "fakeground:1x2", "x": 840, "y": 1302, "angle":0, "scalex":1, "scaley":1, "p_types": "1x2", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "fakeground:1x2", "x": 1974, "y": 378, "angle":0, "scalex":1, "scaley":1, "p_types": "1x2", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "fakeground:1x1", "x": 882, "y": 1302, "angle":0, "scalex":1, "scaley":1, "p_types": "1x1", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0}
-	],
-	"crates": [
-
 	],
 	"buttons": [
 		{"image": "button:blue", "x": 1260, "y": 1344, "angle":0, "scalex":1, "scaley":1, "buttonnr":1},
@@ -113,6 +106,12 @@
 		{"image": "gate:red", "x": 1932, "y": 546, "angle":0, "scalex":1, "scaley":1, "needs_buttonnr":0}
 	],
 	"spawns": [
+
+	],
+	"fallingPlatforms": [
+
+	],
+	"crates": [
 
 	],
 	"coins": [

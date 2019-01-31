@@ -17,6 +17,7 @@
             var activate_comments = true;
             var last_idea_id = 34;
             var last_idea_id2 = 41;
+            $scope.currently_implementing = [];
 
             get_ideavotes();
             get_Comments();
@@ -156,8 +157,8 @@
             }
 
             $scope.isAuthenticated = Authentication.isAuthenticated();
+            $scope.showVotes = true;
             $scope.ideas = [];
-            $scope.currently_implementing = [];
             $scope.versions = [];
             $scope.comments = [];
 

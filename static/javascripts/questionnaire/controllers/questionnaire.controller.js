@@ -413,7 +413,7 @@
 
             var english = true;
 
-            if (false) {
+            if (!english) {
                 $scope.exChoices = [choice, "< 18", "18 - 26", "26 - 39", "> 40"];
                 $scope.exDoubleChoices = [["A: Ich bin sehr schlecht in Videospielen", "B: Ich bin sehr gut in Videospielen"],
                     ["A: Nur das Design eines Produktes is wichtig ", "B: Nur die Funktion eines Produktes ist wichtig"]];
@@ -1005,7 +1005,7 @@
 
                 } //PostSurvey0 Nur zum Speichern
 
-                if (false) {
+                if (true) {
                     $scope.sur5q0ChoicesOG = randomize(["I felt challenged",
                         "I felt pressured",
                         "I felt frustrated",
@@ -1065,7 +1065,7 @@
 
                 } //PostSurvey2 GEQ
 
-                if (false) {
+                if (true) {
                     $scope.sur6q0ChoicesOG = randomize(["I found it enjoyable to be with the other(s)",
                         "I felt schadenfreude (malicious delight)",
                         "I envied the other(s)",
@@ -1113,7 +1113,7 @@
 
                 } //PostSurvey3 SPGQ
 
-                if (true) {
+                if (false) {
                     $scope.sur6q0ChoicesOG = randomize(["Playing the game was fun.",
                     "I liked playing the game.",
                     "I enjoyed playing the game very much.",

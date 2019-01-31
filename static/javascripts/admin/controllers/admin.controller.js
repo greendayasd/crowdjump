@@ -910,6 +910,7 @@
                     var type = split[1];
                     var fulltype = ', "type":"' + split[1] + '"';
                     var standartOptions = ', "angle":' + angle + ', "scalex":' + scalex + ', "scaley":' + scaley;
+                    var parameters = ""; //todo
                     var endline = '},\n';
 
                     maxX = Math.max(maxX, line[0]);

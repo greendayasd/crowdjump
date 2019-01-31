@@ -34,30 +34,38 @@ const CONST_COIN_TIME_REDUCTION = 500; //ms
 const CONST_COIN_SHOW_TIMEREDUCTION = true; //v13
 const CONST_COIN_ANIMATE = true; //v24
 
-const CONST_POWERUPS = true; //v9
-const CONST_POWERUPS_JUMPBOOST = 1.4;
-const CONST_POWERUPS_PERMJUMPBOOST = 1.25;
-const CONST_POWERUPS_TIMESLOW = 0.5;
-
-const CONST_EASTEREGGS = true; //v4
-const CONST_EASTEREGGS_MONEY_COINAMOUNT = 10;
-const CONST_EASTEREGGS_TIME_TIMESECONDS = 5;
-const CONST_EASTEREGGS_MOVEMENTSPEED = 100;
 
 const CONST_CRATES = false;
 const CONST_BUTTONS_AND_GATES = true; //v21
-const CONST_MYSTERYBOX = false; //v38
+const CONST_MYSTERYBOX = true; //v38
 
 const CONST_ENEMIES = true; //v12
 const CONST_KILL_ENEMIES = true;
 const CONST_SPIDER_SPEED = 100;
 const CONST_SPIDER_COINS = 1; //v28
 
-const CONST_CANNONS = true; //v20
-const CONST_CANNON_FIRERATE = 3000;
-const CONST_CANNON_BULLETSPEED = 300;
+//Eastereggs v4
+const CONST_EASTEREGGS                  = true;
+const CONST_EASTEREGGS_MONEY_COINAMOUNT = 10;   //coin drop amount
+const CONST_EASTEREGGS_TIME_TIMESECONDS = 5;    //time reduction in seconds
+const CONST_EASTEREGGS_MOVEMENTSPEED    = 100;  //ms increase in px per second
 
-const CONST_TELEPORTER = false; //v41
+//Powerups v9
+const CONST_POWERUPS                    = true;
+const CONST_POWERUPS_JUMPBOOST          = 1.4;  //height multiplier
+const CONST_POWERUPS_PERMJUMPBOOST      = 1.25; //height multiplier
+//Timeslow v25
+const CONST_POWERUPS_V25                = true;
+const CONST_POWERUPS_TIMESLOW           = 0.5;  //time multiplier
+
+//Cannons v20
+const CONST_CANNONS                     = true;
+const CONST_CANNON_DEFAULT_FIRERATE     = 3000; //in ms
+const CONST_CANNON_DEFAULT_BULLETSPEED  = 300;  //px per second
+
+//Teleporter v41
+const CONST_TELEPORTER                  = true;
+
 
 const CONST_WALK = false;
 const CONST_SPRINT = false;
@@ -71,32 +79,32 @@ const CONST_KILL_IN_ZHONYA = false;
 const CONST_ZHONYA_DURATION = 2;
 const CONST_ZHONYA_COOLDOWN = 4;
 
-const CONST_SHOOTING = false;
-const CONST_FIRERATE = 500;
-const CONST_BULLETSPEED = 800;
-const CONST_BULLETDROP = false;
-const CONST_MAGAZINE = 10;
-const CONST_SHOOT_IN_ZHONYA = false;
 
 const CONST_ANIMATE_CHARACTER = false;
-const CONST_ANIMATE_LAVA = false; //v34
-const CONST_ANIMATE_CONVEYOR = false;
-const CONST_ANIMATE_POWERUPS = false; //v42
+const CONST_ANIMATE_LAVA = true; //v34
 const CONST_ANIMATE_TELEPORTER = false; //v41
-const CONST_CHARACTER_COUNT = 4; //v7
+const CONST_ANIMATE_POWERUPS = false; //v42
+const CONST_ANIMATE_CONVEYOR = false;
 
 const CONST_COLOR = false;
-const CONST_NEW_BLOCKS = false;
+const CONST_NEW_BLOCKS = true; //v35
 const CONST_BACKGROUNDIMAGE = true; //v16
-const CONST_DAY_AND_NIGHT = false; //v29
+const CONST_DAY_AND_NIGHT = true; //v29
 const CONST_DECO = true; //v27
-const CONST_NEWFLAG = false; //v40
+const CONST_NEWFLAG = true; //v40
 
 const CONST_WASD_CONTROLS = true; //v14
 const CONST_CONTROLLER = false;
 const CONST_CONTROLLER_PRESSDURATION = 25; //ms in which button presses are registered, has to be small to avoid multiple activations
 
 const CONST_BUBBLE = true;
+
+const CONST_SHOOTING = false;
+const CONST_FIRERATE = 500;
+const CONST_BULLETSPEED = 800;
+const CONST_BULLETDROP = false;
+const CONST_MAGAZINE = 10;
+const CONST_SHOOT_IN_ZHONYA = false;
 
 const CONST_SHOWLEVEL = false;
 const CONST_FPS = true;
@@ -105,13 +113,14 @@ const CONST_DEBUG = false;
 const CONST_CHEAT = true;
 const CONST_MUTE = true; //v6
 const CONST_PAUSE = false;
-const CONST_BACKBUTTON = false; //v36
-const CONST_LEVELMUSIC = false; //v15
+const CONST_BACKBUTTON = true; //v36
+const CONST_LEVELMUSIC = true; //v15
 
 const CONST_LEVELSELECTION = true; //v26
-const CONST_PLAY_REACHED_LEVEL = false; //you don't have to beat a level to practice it //v37
+const CONST_PLAY_REACHED_LEVEL = true; //you don't have to beat a level to practice it //v37
 
 const CONST_CHARACTERSELECTION = true; //v7
+const CONST_CHARACTER_COUNT = 4; //v7
 const CONST_OPTIONMENU = true; //v32
 const CONST_CREDITS = true; //v15 mit Backgroundmusic
 
@@ -119,12 +128,12 @@ const CONST_CANVAS_X = 960;
 const CONST_CANVAS_Y = 600;
 const CONST_WORLD_CENTER_X = CONST_CANVAS_X / 2;
 const CONST_WORLD_CENTER_Y = CONST_CANVAS_Y / 2;
-const CONST_LEVEL = 1; //v17 -> 3 //v31 -> 5
+const CONST_LEVEL = 5; //v17 -> 3 //v31 -> 5
 
 const NUMBERS_STR = '0123456789X -';
 
-const CONST_MULTIPLE_DIFFICULTIES = false; //v32
-const CONST_DIFFICULTIES = 1; //v32
+const CONST_MULTIPLE_DIFFICULTIES = true; //v32
+const CONST_DIFFICULTIES = 3; //v32
 var DIFFICULTY = Object.freeze({"easy": 0, "normal": 1, "hard": 2})
 var version = '';
 

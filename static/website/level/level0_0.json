@@ -17,7 +17,6 @@
 		{"image": "ground:1x2", "x": 714, "y": 1302, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x2", "x": 672, "y": 1176, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "ground:1x1", "x": 630, "y": 1218, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
-		{"image": "ground:1x1", "x": 546, "y": 1260, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:4x1", "x": 1176, "y": 966, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 1470, "y": 882, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
 		{"image": "grass:1x1", "x": 1596, "y": 798, "angle":0, "scalex":1, "scaley":1, "p_types": "", "xmove": 0, "ymove": 0, "minx": 0, "miny": 0, "maxx": 0, "maxy": 0},
