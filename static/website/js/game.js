@@ -662,7 +662,7 @@ Crowdjump.Game.create = function () {
 
     this._createHud();
     this._createTimerHud();
-    if (CONST_HERO_LIVES) this._createLivesHud();
+    this._createLivesHud();
 
     if (CONST_FPS) {
         game.time.advancedTiming = true;
@@ -2615,7 +2615,7 @@ Crowdjump.Game._createLivesHud = function () {
     livesRemainingImg.anchor.set(0, 0.5);
 
     this.livesHud = this.game.add.group();
-    if (CONST_HERO_LIVES > 1) {
+    if (CONST_HERO_LIVES > 1 && CONST_MORE_LIVES) {
         this.livesHud.add(livesRemainingImg);
         this.livesHud.add(heartIcon);
     }

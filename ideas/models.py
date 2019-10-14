@@ -133,7 +133,7 @@ class CommentVote(models.Model):
 
 
 class Bugreport(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='bugreport')
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='bugr3eport')
     version = models.ForeignKey(Version, on_delete=models.DO_NOTHING, related_name='bugreport'
                                 , default=get_latest_version())
 

@@ -9,16 +9,16 @@ const CONST_ACCELERATION = 2000; //for slippery
 const CONST_MAX_SPEED = 1000;
 const CONST_MOVE_SPEED = 200; //200 normal
 const CONST_HERO_WEIGHT = 100;
-const CONST_MORE_LIVES = true; //v23
+const CONST_MORE_LIVES = false; //v23
 const CONST_HERO_LIVES = 3; //v23
 const CONST_REPLAY_LEVEL = false;
 const CONST_SAVE_LEVEL_TIME = false;
 
 const CONST_TIME = true;
-const CONST_TIME_WHEN_MOVED = true; //v2
+const CONST_TIME_WHEN_MOVED = false; //v2
 
-const CONST_LAVA = true; //v8
-const CONST_SPIKES = true; //v8
+const CONST_LAVA = false; //v8
+const CONST_SPIKES = false; //v8
 const CONST_SAWBLADES = false;
 const CONST_LAVASWITCHINGPLATFORM = false;
 const CONST_SLIPPERYPLATFORMS = false;
@@ -29,15 +29,15 @@ const CONST_SLIDEPLATFORMS = false;
 const CONST_FALLINGPLATFORMS = false;
 const CONST_CONVEYORPLATFORMS = false;
 
-const CONST_COINS = true; //v5
+const CONST_COINS = false; //v5
 const CONST_COIN_TIME_REDUCTION = 500; //ms
-const CONST_COIN_SHOW_TIMEREDUCTION = true; //v13
-const CONST_COIN_ANIMATE = true; //v24
+const CONST_COIN_SHOW_TIMEREDUCTION = false; //v13
+const CONST_COIN_ANIMATE = false; //v24
 
 
 const CONST_CRATES = false;
-const CONST_BUTTONS_AND_GATES = true; //v21
-const CONST_MYSTERYBOX = true; //v38
+const CONST_BUTTONS_AND_GATES = false; //v21
+const CONST_MYSTERYBOX = false; //v38
 
 const CONST_ENEMIES = true; //v12
 const CONST_KILL_ENEMIES = true;
@@ -45,26 +45,27 @@ const CONST_SPIDER_SPEED = 100;
 const CONST_SPIDER_COINS = 1; //v28
 
 //Eastereggs v4
-const CONST_EASTEREGGS                  = true;
+const CONST_EASTEREGGS                  = false;
 const CONST_EASTEREGGS_MONEY_COINAMOUNT = 10;   //coin drop amount
 const CONST_EASTEREGGS_TIME_TIMESECONDS = 5;    //time reduction in seconds
 const CONST_EASTEREGGS_MOVEMENTSPEED    = 100;  //ms increase in px per second
 
 //Powerups v9
-const CONST_POWERUPS                    = true;
+const CONST_POWERUPS                    = false;
 const CONST_POWERUPS_JUMPBOOST          = 1.4;  //height multiplier
 const CONST_POWERUPS_PERMJUMPBOOST      = 1.25; //height multiplier
-//Timeslow v25
-const CONST_POWERUPS_V25                = true;
-const CONST_POWERUPS_TIMESLOW           = 0.5;  //time multiplier
 
 //Cannons v20
-const CONST_CANNONS                     = true;
+const CONST_CANNONS                     = false;
 const CONST_CANNON_DEFAULT_FIRERATE     = 3000; //in ms
 const CONST_CANNON_DEFAULT_BULLETSPEED  = 300;  //px per second
 
+//Timeslow v25
+const CONST_POWERUPS_V25                = false;
+const CONST_POWERUPS_TIMESLOW           = 0.5;  //time multiplier
+
 //Teleporter v41
-const CONST_TELEPORTER                  = true;
+const CONST_TELEPORTER                  = false;
 
 
 const CONST_WALK = false;
@@ -81,23 +82,23 @@ const CONST_ZHONYA_COOLDOWN = 4;
 
 
 const CONST_ANIMATE_CHARACTER = false;
-const CONST_ANIMATE_LAVA = true; //v34
+const CONST_ANIMATE_CONVEYOR = false;
+const CONST_ANIMATE_LAVA = false; //v34
 const CONST_ANIMATE_TELEPORTER = false; //v41
 const CONST_ANIMATE_POWERUPS = false; //v42
-const CONST_ANIMATE_CONVEYOR = false;
 
 const CONST_COLOR = false;
-const CONST_NEW_BLOCKS = true; //v35
-const CONST_BACKGROUNDIMAGE = true; //v16
-const CONST_DAY_AND_NIGHT = true; //v29
-const CONST_DECO = true; //v27
-const CONST_NEWFLAG = true; //v40
+const CONST_BACKGROUNDIMAGE = false; //v16
+const CONST_DECO = false; //v27
+const CONST_DAY_AND_NIGHT = false; //v29
+const CONST_NEW_BLOCKS = false; //v35
+const CONST_NEWFLAG = false; //v40
 
-const CONST_WASD_CONTROLS = true; //v14
+const CONST_WASD_CONTROLS = false; //v14
 const CONST_CONTROLLER = false;
 const CONST_CONTROLLER_PRESSDURATION = 25; //ms in which button presses are registered, has to be small to avoid multiple activations
 
-const CONST_BUBBLE = true;
+const CONST_BUBBLE = false;
 
 const CONST_SHOOTING = false;
 const CONST_FIRERATE = 500;
@@ -111,28 +112,28 @@ const CONST_FPS = true;
 const CONST_P2_PHYSICS = false;
 const CONST_DEBUG = false;
 const CONST_CHEAT = true;
-const CONST_MUTE = true; //v6
 const CONST_PAUSE = false;
-const CONST_BACKBUTTON = true; //v36
-const CONST_LEVELMUSIC = true; //v15
+const CONST_MUTE = false; //v6
+const CONST_LEVELMUSIC = false; //v15
+const CONST_BACKBUTTON = false; //v36
 
-const CONST_LEVELSELECTION = true; //v26
-const CONST_PLAY_REACHED_LEVEL = true; //you don't have to beat a level to practice it //v37
+const CONST_LEVELSELECTION = false; //v26
+const CONST_PLAY_REACHED_LEVEL = false; //you don't have to beat a level to practice it //v37
 
-const CONST_CHARACTERSELECTION = true; //v7
+const CONST_CHARACTERSELECTION = false; //v7
 const CONST_CHARACTER_COUNT = 4; //v7
-const CONST_OPTIONMENU = true; //v32
-const CONST_CREDITS = true; //v15 mit Backgroundmusic
+const CONST_CREDITS = false; //v15 mit Backgroundmusic
+const CONST_OPTIONMENU = false; //v32
 
 const CONST_CANVAS_X = 960;
 const CONST_CANVAS_Y = 600;
 const CONST_WORLD_CENTER_X = CONST_CANVAS_X / 2;
 const CONST_WORLD_CENTER_Y = CONST_CANVAS_Y / 2;
-const CONST_LEVEL = 5; //v17 -> 3 //v31 -> 5
+const CONST_LEVEL = 1; //v17 -> 3 //v31 -> 5
 
 const NUMBERS_STR = '0123456789X -';
 
-const CONST_MULTIPLE_DIFFICULTIES = true; //v32
+const CONST_MULTIPLE_DIFFICULTIES = false; //v32
 const CONST_DIFFICULTIES = 3; //v32
 var DIFFICULTY = Object.freeze({"easy": 0, "normal": 1, "hard": 2})
 var version = '';

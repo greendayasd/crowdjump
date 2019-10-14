@@ -642,7 +642,7 @@
                         error: false,
                         activatedBy: new Set(),
                     };
-                    $scope.sur1q2Choices = [choice, "0 - 5", "5 - 10", "10 - 15", "15 - 20", "25+"];
+                    $scope.sur1q2Choices = [choice, "0 - 5", "5 - 10", "10 - 15", "15 - 20", "20-25", "25+"];
                     $scope.survey[1][2] = {
                         survey: 1,
                         nr: 2,
@@ -1249,7 +1249,7 @@
                 } //PostSurvey5 SUS
 
                 if (true) {
-                    $scope.sur9q0ChoicesOG = randomize(["I liked the idea of Crowdjump.",
+/*                    $scope.sur9q0ChoicesOG = randomize(["I liked the idea of Crowdjump.",
                         "I liked to submit new ideas.",
                         "The game developed in a positive direction.",
                         "The website developed in a positive direction.",
@@ -1266,6 +1266,21 @@
                         "More ideas should be implemented each cycle.",
                         "The amount of ideas to choose from was overwhelming.",
                         "I prefered new ideas over old ones"
+                    ]);*/
+                    $scope.sur9q0ChoicesOG = randomize(["I liked the idea of Crowdjump.",
+                        "The game developed in a positive direction.",
+                        "The website developed in a positive direction.",
+                        "The implemented features met my wishes for Crowdjump.",
+                        "I formed a community with other players.",
+                        "There were too many bugs.",
+                        "The performance of the game was good.",
+                        "Too many ideas were implemented each cycle.",
+                        "I would like to submit my own ideas for the game.",
+                        "I would like to submit my own ideas for the website.",
+                        "Players should decide, which idea is implemented next.",
+                        "I wished for some features to be implemented which were missing.",
+                        "I liked the implemented features.",
+                        "More ideas should be implemented each cycle."
                     ]);
                     $scope.sur9q0Choices = $scope.sur9q0ChoicesOG[0];
                     $scope.sur9q0Ordering = $scope.sur9q0ChoicesOG[1];
@@ -1273,7 +1288,7 @@
                         survey: 9,
                         nr: 0,
                         type: 'scale',
-                        text: 'Please rate the following statements regarding your experience with Crowdjump on a scale from "not at" to "extremely". ',
+                        text: 'Please rate the following statements regarding your experience with Crowdjump on a scale from "not at all" to "extremely". ',
                         required: true,
                         startVisible: true,
                         visible: true,

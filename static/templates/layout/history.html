@@ -6,15 +6,15 @@
 
     <h1> Previous Versions and Patchnotes </h1>
     <h4>
-        Here you can find the features that got implemented, as well as the user who submitted the idea. <br>
+        Here you can find the features that got implemented <br> <!--, as well as the user who submitted the idea. <br>-->
         If you click on an entry, you get additional information about the state of the project at the time of the
         version. <br>
-        You want your own special feature? Submit your own on
+        <!--You want your own special feature? Submit your own on
         <div class="btn-group">
             <a href="ideas" class="btn btn-info">
                 <i aria-hidden="true"></i> Ideas
             </a>.
-        </div>
+        </div>-->
         <br><br>
     </h4>
 </div>
@@ -26,7 +26,7 @@
         <tr>
             <th scope="col">Version</th>
             <th scope="col">Change</th>
-            <th scope="col">Submitter</th>
+            <!--<th scope="col">Submitter</th>-->
             <th scope="col">Date</th>
         </tr>
         </thead>
@@ -35,7 +35,7 @@
             data-ng-click="selectTableRow($index)">
             <td>{{ change.label }}</td>
             <td>{{ change.change }}</td>
-            <td>{{ change.submitter.username }}</td>
+            <!--<td>{{ change.submitter.username }}</td>-->
             <td>{{ change.created_at | date : "dd.MM.y HH:mm" }}</td>
         </tr>
         <tr data-ng-switch-when="true">
@@ -54,7 +54,7 @@
                     <tr>
                         <td>{{ change.features_website }}</td>
                     </tr>
-                    <tr ng-show="change.idea != undefined">
+                    <!--<tr ng-show="change.idea != undefined">
                         <td></td>
                     </tr>
                     <tr ng-show="change.idea != undefined">
@@ -65,7 +65,7 @@
                     </tr>
                     <tr ng-show="change.idea != undefined">
                         <td>{{ change.idea.description }}</td>
-                    </tr>
+                    </tr>-->
                     </tbody>
                 </table>
             </td>
