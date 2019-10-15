@@ -29,9 +29,9 @@ def mail_new_version(request):
     message1 = 'Hello '
     message2 = ',<br>'
     feature = "you can now view a short clip about the development of Crowdjump, if you finished the short survey!"
-    message3 = '<br>To play the game, vote for ideas or submit your own, visit  '
-    html_content = '<a href="https://www.crowdjump.win">Crowdjump.win :)</a>'
-    unsubscribe = '<br><br><a href="https://www.crowdjump.win/unsubscribe">Click here if you dont want to get this newsletter anymore</a>'
+    message3 = '<br>To play the game, visit  '
+    html_content = '<a href="https://www.crowdjump.de">Crowdjump.de :)</a>'
+    unsubscribe = '<br><br><a href="https://www.crowdjump.de/unsubscribe">Click here if you dont want to get this newsletter anymore</a>'
     fromMail = 'crowdjump@gmail.com'
 
     try:
