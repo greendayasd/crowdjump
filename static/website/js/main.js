@@ -228,7 +228,7 @@ window.createGame = function (canvas, scope) {
 
     var username = account["username"];
 
-    if (account["versionlabel"] != versionlabel) {
+    if (account["versionlabel"] != "versionlabel") {
         increase_versionlabel(username, true);
     } else {
     }

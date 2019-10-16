@@ -113,7 +113,7 @@ Crowdjump.Endscreen.prototype = {
             coin_text.anchor.set(0.5);
 
         }
-        var additionalIdeaInfo = "Do you want to improve the game or the website?";
+        var additionalIdeaInfo = ""; //"Do you want to improve the game or the website?";
         info = this.add.text(CONST_WORLD_CENTER_X, 155, additionalIdeaInfo, {fill: '#dbdbdb'});
         info.anchor.set(0.5);
 
