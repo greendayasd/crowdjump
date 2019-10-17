@@ -97,6 +97,7 @@
                             survey["PlayPBN_bool"] = cont[19];
                             survey["LikePBN_7scale"] = cont[20];
                             survey["IdeaPBN_bool"] = cont[21];
+                            survey["Job_text"] = cont[22];
 
                             Questionnaire.increase_surveycount(cookie["username"], 2);
                             $http.patch('/api/v1/presurvey/' + survey_id + '/', {
@@ -122,6 +123,7 @@
                                 PlayPBN_bool: survey["PlayPBN_bool"],
                                 LikePBN_7scale: survey["LikePBN_7scale"],
                                 IdeaPBN_bool: survey["IdeaPBN_bool"],
+                                Job: survey["Job_text"],
                             }).then(function (result) {
                                 window.location.href = '/survey' + 2;
                                 return result;

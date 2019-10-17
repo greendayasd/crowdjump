@@ -10,6 +10,7 @@ class preSurvey(models.Model):
     #site1
     Age_Combobox = models.TextField(default='', null=True, blank=True)
     Gender_Combobox = models.TextField(default='', null=True, blank=True)
+    Job = models.TextField(default='', null=True, blank=True)
     HoursPCWeek_Combobox = models.TextField(default='', null=True, blank=True)
     VideogamesWeek_Combobox = models.TextField(default='', null=True, blank=True)
     ImportantAspect_Checkbox = models.TextField(default='', null=True, blank=True)

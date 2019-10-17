@@ -642,6 +642,22 @@
                         error: false,
                         activatedBy: new Set(),
                     };
+                    $scope.survey[1][18] = {
+                        survey: 1,
+                        nr: 18,
+                        type: 'bigtext',
+                        text: 'Job',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
                     $scope.sur1q2Choices = [choice, "0 - 5", "5 - 10", "10 - 15", "15 - 20", "20-25", "25+"];
                     $scope.survey[1][2] = {
                         survey: 1,
