@@ -88,12 +88,21 @@ Crowdjump.Endscreen.prototype = {
 
         switch (game.difficulty) {
             case DIFFICULTY.easy:
+                if (game.gameInfoEasy == undefined){
+                     game.gameInfoEasy = {};
+                }
                 game.gameInfoEasy["highscore"] = highscore;
                 break;
             case DIFFICULTY.normal:
+                if (game.gameInfoNormal == undefined){
+                     game.gameInfoNormal = {};
+                }
                 game.gameInfoNormal["highscore"] = highscore;
                 break;
             case DIFFICULTY.hard:
+                if (game.gameInfoHard == undefined){
+                     game.gameInfoHard = {};
+                }
                 game.gameInfoHard["highscore"] = highscore;
                 break;
         }

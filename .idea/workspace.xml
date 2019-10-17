@@ -7,16 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/authentication/migrations/0035_auto_20191016_1842.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ideas/migrations/0026_auto_20191016_1842.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/questionnaire/migrations/0011_presurvey_job.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/questionnaire/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/questionnaire/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/layout/idea_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/idea_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/statistics/controllers/didyouknow.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/statistics/controllers/didyouknow.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/surveyPreFinished.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/questionnaire/surveyPreFinished.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/website/js/endscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/js/endscreen.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,29 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/endscreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="115" column="39" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/questionnaire/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/templates/layout/history.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="52" column="25" lean-forward="true" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
+            <state relative-caret-position="536">
+              <caret line="103" column="38" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -87,11 +60,38 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="225" column="5" lean-forward="true" selection-start-line="225" selection-start-column="5" selection-end-line="225" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/didyouknow.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="366">
+              <caret line="410" column="80" lean-forward="true" selection-start-line="410" selection-start-column="80" selection-end-line="410" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="59">
-              <caret line="1283" column="60" lean-forward="true" selection-start-line="1283" selection-start-column="60" selection-end-line="1283" selection-end-column="60" />
+              <caret line="1283" column="60" selection-start-line="1283" selection-start-column="60" selection-end-line="1283" selection-end-column="60" />
               <folding>
                 <element signature="e#16417#17082#0" />
                 <element signature="e#17119#17787#0" />
@@ -108,49 +108,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="96" selection-start-line="16" selection-start-column="96" selection-end-line="16" selection-end-column="96" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/surveyPostFinished.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/surveyPreFinished.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey1.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="527">
               <caret line="31" column="24" lean-forward="true" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey1.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="710">
-              <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-408">
-              <caret line="99" column="56" selection-start-line="99" selection-start-column="56" selection-end-line="99" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/services/ideas.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="28" column="60" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -169,7 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>34</find>
       <find>animate</find>
       <find>32</find>
       <find>23</find>
@@ -199,6 +182,7 @@
       <find>crowdjump.win</find>
       <find>allowed_ho</find>
       <find>&quot;could not get ideas&quot;</find>
+      <find>did you kno</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -219,14 +203,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Crowdjump/urls.py" />
-        <option value="$PROJECT_DIR$/authentication/serializers.py" />
         <option value="$PROJECT_DIR$/authentication/models.py" />
         <option value="$PROJECT_DIR$/static/javascripts/admin/controllers/data.controller.js" />
         <option value="$PROJECT_DIR$/static/stylesheets/survey.css" />
         <option value="$PROJECT_DIR$/static/website/js/gameover.js" />
         <option value="$PROJECT_DIR$/static/website/js/startmenu.js" />
-        <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
         <option value="$PROJECT_DIR$/static/website/js/levelselection.js" />
         <option value="$PROJECT_DIR$/static/templates/layout/winner_shoutout.html" />
         <option value="$PROJECT_DIR$/static/website/level/level0.json" />
@@ -259,8 +240,6 @@
         <option value="$PROJECT_DIR$/Crowdjump/mailFunctions.py" />
         <option value="$PROJECT_DIR$/Crowdjump/settings.py" />
         <option value="$PROJECT_DIR$/templates/navbar.html" />
-        <option value="$PROJECT_DIR$/static/website/js/main.js" />
-        <option value="$PROJECT_DIR$/static/website/js/endscreen.js" />
         <option value="$PROJECT_DIR$/static/templates/layout/history.html" />
         <option value="$PROJECT_DIR$/static/javascripts/ideas/services/ideas.service.js" />
         <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
@@ -270,6 +249,11 @@
         <option value="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" />
         <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
+        <option value="$PROJECT_DIR$/static/website/js/main.js" />
+        <option value="$PROJECT_DIR$/static/website/js/endscreen.js" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/surveyPreFinished.html" />
+        <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/didyouknow.controller.js" />
       </list>
     </option>
   </component>
@@ -285,10 +269,10 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-359" />
-    <option name="y" value="15" />
-    <option name="width" value="3385" />
-    <option name="height" value="1915" />
+    <option name="x" value="-1897" />
+    <option name="y" value="-12" />
+    <option name="width" value="1934" />
+    <option name="height" value="1094" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -574,7 +558,7 @@
       <workItem from="1569924591425" duration="10870000" />
       <workItem from="1570275350452" duration="5368000" />
       <workItem from="1571055203963" duration="7258000" />
-      <workItem from="1571136008281" duration="18984000" />
+      <workItem from="1571136008281" duration="20501000" />
     </task>
     <task id="LOCAL-00001" summary="Setup">
       <created>1517228576565</created>
@@ -636,7 +620,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68159000" />
+    <option name="totallyTimeSpent" value="69676000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -648,9 +632,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2208" height="1248" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49920255" visible="true" weight="0.095348835" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49920255" visible="true" weight="0.10927505" />
       <window_info id="Structure" order="1" sideWeight="0.50079745" side_tool="true" weight="0.23400854" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -664,7 +649,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.3271028" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="manage.py@Crowdjump" order="11" sideWeight="0.4968017" visible="true" weight="0.22291853" />
+      <window_info active="true" anchor="bottom" id="manage.py@Crowdjump" order="11" sideWeight="0.4968017" visible="true" weight="0.25856698" />
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49840087" weight="0.32881" />
       <window_info anchor="bottom" id="REST Client" order="13" />
       <window_info anchor="bottom" id="TypeScript" order="14" />
@@ -729,6 +714,12 @@
           <url>file://$PROJECT_DIR$/website/models.py</url>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/static/website/js/main.js</url>
+          <line>198</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint suspend="NONE" type="python-exception">
@@ -740,23 +731,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/website/js/boot.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/layout/admin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="111" selection-start-line="18" selection-start-column="111" selection-end-line="18" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/startmenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" column="55" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey2.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -879,13 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6749">
-          <caret line="397" column="29" selection-start-line="397" selection-start-column="29" selection-end-line="397" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/mail/mail_content.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -927,13 +894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
           <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="96" selection-start-line="16" selection-start-column="96" selection-end-line="16" selection-end-column="96" />
         </state>
       </provider>
     </entry>
@@ -988,13 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="231" column="46" selection-start-line="231" selection-start-column="46" selection-end-line="231" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
@@ -1020,13 +973,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="52" column="25" lean-forward="true" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/endscreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="115" column="39" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -1085,7 +1031,7 @@
     <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="59">
-          <caret line="1283" column="60" lean-forward="true" selection-start-line="1283" selection-start-column="60" selection-end-line="1283" selection-end-column="60" />
+          <caret line="1283" column="60" selection-start-line="1283" selection-start-column="60" selection-end-line="1283" selection-end-column="60" />
           <folding>
             <element signature="e#16417#17082#0" />
             <element signature="e#17119#17787#0" />
@@ -1097,6 +1043,51 @@
             <element signature="e#21958#22977#0" />
             <element signature="e#23281#24020#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/endscreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="103" column="38" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="96" selection-start-line="16" selection-start-column="96" selection-end-line="16" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/surveyPostFinished.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/surveyPreFinished.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="225" column="5" lean-forward="true" selection-start-line="225" selection-start-column="5" selection-end-line="225" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/didyouknow.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="410" column="80" lean-forward="true" selection-start-line="410" selection-start-column="80" selection-end-line="410" selection-end-column="80" />
         </state>
       </provider>
     </entry>

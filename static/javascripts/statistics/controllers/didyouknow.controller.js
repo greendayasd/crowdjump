@@ -23,7 +23,7 @@
                 data: data,
                 success: function (data_new) {
                     $scope.didyouknow = "Did you know? " + JSON.parse(data_new).result;
-                    console.log($scope.didyouknow);
+                    //console.log($scope.didyouknow);
                 },
                 error: function (data) {
                     // console.log("time:" + time + ' . ' + data);
