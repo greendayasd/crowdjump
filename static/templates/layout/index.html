@@ -7,12 +7,26 @@
     <div class="container">
         <img class="img-fluid" src="/static/website/images/logo.png" alt="Crowdjump">
         <h1>Welcome to Crowdjump!</h1>
-        <div ng-controller="HistoryController as vm">
+        <div ng-controller="HistoryController as vm" ng-show="false">
             <h3> Version {{ versionLabel }} </h3>
         </div>
     </div>
 </div>
+<font size = "5">
 <div class="container">
+    Thank you for visiting crowdjump! <br>
+    In crowdjump you can experience the design progress of a video game and maybe even decide the further development! <br>
+    If you want to participate in upcoming studies, fill out the
+        <div class="btn-group">
+            <a href="https://forms.gle/fByhn33hFifSoV3h9" class="btn btn-info">
+                <i aria-hidden="true"></i> following form!
+            </a>
+        </div>
+
+</div>
+</font>
+
+<div class="container" ng-show="false">
 
     <!-- <div class="container-well" style="align-content: center">
         <div class="btn-group" ng-controller="QuestionnaireController as vm" ng-show="vm.surveystatus == 3">

@@ -30,7 +30,7 @@
                        ng-dialog="/static/templates/questionnaire/legalnotice.html">Legal Notice</a></li>
 
             </ul>
-            <ul class="nav navbar-nav pull-right">
+            <ul class="nav navbar-nav pull-right" ng-show="false">
                 <li></li>
                 <!-- {% verbatim %} <li style="text-align: center;padding-top:10px;margin:0"><span class="nav-link" style="text-align: center;padding:0;margin:0"><a class="fa fa-trophy" style="font-size:30px;color:red;text-align: center;padding:0;margin:0"
                        href="javascript:void(0)"
@@ -47,6 +47,7 @@
                     {% if user.username == 'admin' %}
                         <li><a class="nav-link" href="admin">Admin</a></li>
                         <li><a class="nav-link" href="data">Data</a></li>
+                        <li><a class="nav-link" href="bgg">Bgg</a></li>
                     {% else %}
                     <li>
                         <a class="no-hover">Welcome, {{ user.username }}</a>

@@ -82,6 +82,10 @@
             controller: 'AdminController',
             controllerAs: 'vm',
             templateUrl: '/static/templates/layout/admin.html'
+        }).when('/bgg', {
+            controller: 'BggController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/layout/bgg.html'
 
 
             //surveys
