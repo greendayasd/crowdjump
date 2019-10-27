@@ -1021,7 +1021,7 @@
 
                 } //PostSurvey0 Nur zum Speichern
 
-                if (true) {
+                if (false) {
                     $scope.sur5q0ChoicesOG = randomize(["I felt challenged",
                         "I felt pressured",
                         "I felt frustrated",
@@ -1081,7 +1081,7 @@
 
                 } //PostSurvey2 GEQ
 
-                if (true) {
+                if (false) {
                     $scope.sur6q0ChoicesOG = randomize(["I found it enjoyable to be with the other(s)",
                         "I felt schadenfreude (malicious delight)",
                         "I envied the other(s)",
@@ -1129,7 +1129,7 @@
 
                 } //PostSurvey3 SPGQ
 
-                if (false) {
+                if (true) {
                     $scope.sur6q0ChoicesOG = randomize(["Playing the game was fun.",
                     "I liked playing the game.",
                     "I enjoyed playing the game very much.",
