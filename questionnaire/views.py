@@ -41,7 +41,7 @@ class RegistrationFormViewSet(viewsets.ModelViewSet):
     queryset = registrationForm.objects
     serializer_class = RegistrationFormSerializer
     filter_backends = [DjangoFilterBackend]
-    filter_fields = ['id']
+    filter_fields = ['id', "csrf"]
 
 
     def perform_create(self, serializer):

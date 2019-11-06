@@ -68,35 +68,42 @@
                 ).then(function (result) {
                     if (result["data"]["count"] > 0) {
                         var form = result["data"]["results"][0];
-                        formID = form["id"];
-                        form["email"] = cont[0];
-                        form["alreadyParticipated_bool"] = cont[1];
-                        form["interestedInDevelopment_bool"] = cont[2];
-                        form["influenceOverDevelopment_bool"] = cont[3];
-                        $http.patch('/api/v1/registrationForm/' + formID + '/', {
-                            email: form["email"],
-                            alreadyParticipated_bool: form["alreadyParticipated_bool"],
-                            interestedInDevelopment_bool: form["interestedInDevelopment_bool"],
-                            influenceOverDevelopment_bool: form["influenceOverDevelopment_bool"]
 
-                        }).then(function (result) {
-                            setCookie("survey_status", 101);
-                            window.location.href = '/registrationFormFinished';
-                            return result;
-                        }).catch(function (error) {
-                            alert("Please use a valid email address!");
+                        if (site == 0) {
 
-                            console.log(error);
-                            return "failure";
-                        });
+                        }
+                        if (site == 1) {
+                            formID = form["id"];
+                            form["email"] = cont[0];
+                            form["alreadyParticipated_bool"] = cont[1];
+                            form["interestedInDevelopment_bool"] = cont[2];
+                            form["influenceOverDevelopment_bool"] = cont[3];
+                            $http.patch('/api/v1/registrationForm/' + formID + '/', {
+                                email: form["email"],
+                                alreadyParticipated_bool: form["alreadyParticipated_bool"],
+                                interestedInDevelopment_bool: form["interestedInDevelopment_bool"],
+                                influenceOverDevelopment_bool: form["influenceOverDevelopment_bool"]
+
+                            }).then(function (result) {
+                                setCookie("survey_status", 101);
+                                window.location.href = '/registrationFormFinished';
+                                return result;
+                            }).catch(function (error) {
+                                alert("Please use a valid email address!");
+
+                                console.log(error);
+                                return "failure";
+                            });
+
+                        }
 
                     } else {
                         // console.log(csrftoken);
-                        $http.post('/api/v1/registrationFormQ/', {
+                        $http.post('/api/v1/registrationForm/', {
                             csrf: csrftoken
                         }).then(function (result) {
                             setCookie("survey_status", 100);
-                            window.location.href = '/registrationForm';
+                            window.location.href = '/registrationFormQ';
                             return result;
                         }).catch(function (error) {
                             console.log(error);

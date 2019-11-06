@@ -159,7 +159,7 @@
 
                 } else if ((vm.surveystatus == 99 || vm.surveystatus == 100) && checked) {
                     content = $scope.getContent(vm.surveystatus);
-                    Questionnaire.post_Form(vm.surveystatus, content);
+                    Questionnaire.post_Form(vm.surveystatus-99, content);
 
                 } else if (vm.surveystatus != 3 && vm.surveystatus != 11) {
                     alert("Please answer all required questions first!");
