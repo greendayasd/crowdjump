@@ -1,4 +1,5 @@
 <script type="text/javascript">
+    tracksite();
 </script>
 <div class="outerframe container" id="outerframeContainer" style="margin-top: 60px;">
     <div class="row" id="main-row">
@@ -6,17 +7,12 @@
             <div class="row survey-welcome">
                 <div class="col-sm-12 ">
                     <p class="surveywelcome">
-                        Welcome and thank you for participating in this study! The completion of this survey will take
-                        about 5 minutes.<br>
-                        You can cancel the survey anytime, but to use the Crowdjump website, please fill out this survey
-                        first.<br><br>
-
-                        Crowdjump is part of study of the DFKI where users play an online game on this website <br>
-                        which will evolve over time as more and more features are implemented. <br><br>
-
-                        The questions from the survey are used to get the motivation for playing and social interaction.<br>
-
-                        If you have further questions, feel free to contact s9nsbrau[at]stud.uni-saarland.de.
+                        Thank you for visiting Crowdjump! <br>
+                        In this follow-up study to the well received original Crowdjump you can experience
+                        the design progress of a video game and maybe even decide the further development
+                        while helping with a student project! <br>
+                        If you want to participate in upcoming studies (when they start in a few weeks),
+                        fill out the following form!
                     </p>
                 </div>
             </div>
@@ -25,13 +21,14 @@
 
                 <div class="question-item answer-item checkbox-item form-group  checkbox">
                     <label>
-                        <input class="checkbox" type="checkbox" ng-model="survey[0][0].selected"
-                               ng-click="checkconditions(survey[0][0])" style="margin-left: -20px">
+                        <input class="checkbox" type="checkbox" ng-model="survey[99][0].selected"
+                               ng-click="checkconditions(survey[99][0])" style="margin-left: -20px">
                         I have read the <a
                             ng-dialog-controller="PrivacyController as vm"
                             href="javascript:void(0)"
                             ng-dialog="/static/templates/questionnaire/privacy.html">Privacy Policy</a> and agree, that
-                        my information can be used for research purposes.
+                        my email-address can be used to contact me and my information can be used for research
+                        purposes.
                     </label>
                 </div>
             </div>
@@ -46,10 +43,12 @@
                     href="javascript:void(0)"
                     ng-dialog="/static/templates/questionnaire/privacy.html">Privacy Policy
             </button>
+
+
             <div class="row" id="nextTo1">
                 <div class="col-xs-6 save-all text-right">
                     <button type="" id="movenextbtn" value="movenext" name="movenext" accesskey="n"
-                            class="submit button btn btn-lg  btn-primary" ng-click="submit(2)">Next
+                            class="submit button btn btn-lg  btn-primary" ng-click="submit(100)">Next
                     </button>
                 </div>
             </div>

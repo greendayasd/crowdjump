@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from questionnaire.models import preSurvey, postSurvey
+from questionnaire.models import preSurvey, postSurvey, registrationForm
 from authentication.serializers import AccountSerializerPrivate
 
 
@@ -20,6 +20,16 @@ class PostSurveySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = postSurvey
+
+        fields = "__all__"
+
+        read_only_fields = ['id']
+
+
+class RegistrationFormSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = registrationForm
 
         fields = "__all__"
 

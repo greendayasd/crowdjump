@@ -14,17 +14,24 @@
 
         function Questionnaire($http, $cookies) {
             var Questionnaire = {
+                all_forms: all_forms,
                 all_pre: all_pre,
                 all_post: all_post,
                 increase_surveycount: increase_surveycount,
+                post_Form: post_Form,
                 post_preSite: post_preSite,
                 post_postSite: post_postSite,
+                get_form: get_form,
                 get_pre: get_pre,
                 get_post: get_post,
             };
 
             return Questionnaire;
 
+
+            function all_forms() {
+                return $http.get('/api/v1/forms/');
+            }
 
             function all_pre() {
                 return $http.get('/api/v1/presurvey/');
@@ -52,6 +59,62 @@
                     var msg = 'Could not get to next survey'
                     // console.log(msg + '\n' + data);
                 }
+            }
+
+            function post_Form(site, cont) {
+                var formID;
+                var csrftoken = getCookie("csrftoken");
+                $http.get('/api/v1/registrationForm/?csrf=' + csrftoken + '&limit=1'
+                ).then(function (result) {
+                    if (result["data"]["count"] > 0) {
+                        var form = result["data"]["results"][0];
+                        formID = form["id"];
+                        form["email"] = cont[0];
+                        form["alreadyParticipated_bool"] = cont[1];
+                        form["interestedInDevelopment_bool"] = cont[2];
+                        form["influenceOverDevelopment_bool"] = cont[3];
+                        $http.patch('/api/v1/registrationForm/' + formID + '/', {
+                            email: form["email"],
+                            alreadyParticipated_bool: form["alreadyParticipated_bool"],
+                            interestedInDevelopment_bool: form["interestedInDevelopment_bool"],
+                            influenceOverDevelopment_bool: form["influenceOverDevelopment_bool"]
+
+                        }).then(function (result) {
+                            setCookie("survey_status", 101);
+                            window.location.href = '/registrationFormFinished';
+                            return result;
+                        }).catch(function (error) {
+                            alert("Please use a valid email address!");
+
+                            console.log(error);
+                            return "failure";
+                        });
+
+                    } else {
+                        // console.log(csrftoken);
+                        $http.post('/api/v1/registrationFormQ/', {
+                            csrf: csrftoken
+                        }).then(function (result) {
+                            setCookie("survey_status", 100);
+                            window.location.href = '/registrationForm';
+                            return result;
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    }
+
+                }).catch(function (error) {
+                    $http.post('/api/v1/registrationForm/', {
+                        csrf: csrftoken,
+                    }).then(function (result) {
+                        window.location.href = '/registrationFormFinished';
+                        return result;
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                });
+
+
             }
 
             function post_preSite(user_id, site, cont, cookie) {
@@ -163,6 +226,7 @@
                             });
                         }
                     } else {
+                        Questionnaire.increase_surveycount(cookie["username"], 1);
                         // console.log("post");
                         $http.post('/api/v1/presurvey/', {
                             site0: null,
@@ -256,21 +320,35 @@
                             for (var i = 0; i < cont.length; i++) {
                                 var n;
                                 i < 10 ? n = '0' + i : n = i + '';
-                                survey["KIM" + n] = cont[i];
+                                survey["IMI" + n] = cont[i];
                             }
                             $http.patch('/api/v1/postsurvey/' + survey_id + '/', {
-                                KIM00: survey["KIM00"],
-                                KIM01: survey["KIM01"],
-                                KIM02: survey["KIM02"],
-                                KIM03: survey["KIM03"],
-                                KIM04: survey["KIM04"],
-                                KIM05: survey["KIM05"],
-                                KIM06: survey["KIM06"],
-                                KIM07: survey["KIM07"],
-                                KIM08: survey["KIM08"],
-                                KIM09: survey["KIM09"],
-                                KIM10: survey["KIM10"],
-                                KIM11: survey["KIM11"]
+                                IMI00: survey["IMI00"],
+                                IMI01: survey["IMI01"],
+                                IMI02: survey["IMI02"],
+                                IMI03: survey["IMI03"],
+                                IMI04: survey["IMI04"],
+                                IMI05: survey["IMI05"],
+                                IMI06: survey["IMI06"],
+                                IMI07: survey["IMI07"],
+                                IMI08: survey["IMI08"],
+                                IMI09: survey["IMI09"],
+                                IMI10: survey["IMI10"],
+                                IMI11: survey["IMI11"],
+                                IMI12: survey["IMI12"],
+                                IMI13: survey["IMI13"],
+                                IMI14: survey["IMI14"],
+                                IMI15: survey["IMI15"],
+                                IMI16: survey["IMI16"],
+                                IMI17: survey["IMI17"],
+                                IMI18: survey["IMI18"],
+                                IMI19: survey["IMI19"],
+                                IMI20: survey["IMI20"],
+                                IMI21: survey["IMI21"],
+                                IMI22: survey["IMI22"],
+                                IMI23: survey["IMI23"],
+                                IMI24: survey["IMI24"],
+                                IMI25: survey["IMI25"]
                             }).then(function (result) {
                                 Questionnaire.increase_surveycount(cookie["username"], 9);
                                 window.location.href = '/postsurvey' + 5;
@@ -358,6 +436,11 @@
                 });
 
 
+            }
+
+            function get_form(email) {
+                var res = $http.get('/api/v1/registrationForm/?email=' + email + '&limit=1');
+                return res["results"];
             }
 
             function get_pre(user_id) {

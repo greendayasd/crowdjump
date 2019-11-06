@@ -2,12 +2,28 @@ from django.db import models
 from authentication.models import Account
 
 
+class registrationForm(models.Model):
+    csrf = models.TextField(default='', null=True)
+
+    # site1
+    email = models.EmailField(default='', null=True, blank=True)
+    alreadyParticipated_bool = models.TextField(default='', null=True, blank=True)
+    interestedInDevelopment_bool = models.TextField(default='', null=True, blank=True)
+    influenceOverDevelopment_bool = models.TextField(default='', null=True, blank=True)
+
+    def __str__(self):
+        return self.email
+
+    def __unicode__(self):
+        return '{0}'.format(self.email)
+
+
 class preSurvey(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='questionnairePre',
                              null=True)  # nur zwischengespeichert
     site0 = models.TextField(default='', null=True)
 
-    #site1
+    # site1
     Age_Combobox = models.TextField(default='', null=True, blank=True)
     Gender_Combobox = models.TextField(default='', null=True, blank=True)
     Job = models.TextField(default='', null=True, blank=True)
@@ -32,8 +48,7 @@ class preSurvey(models.Model):
     LikePBN_7scale = models.TextField(default='', null=True, blank=True)
     IdeaPBN_bool = models.TextField(default='', null=True, blank=True)
 
-
-    #site2
+    # site2
     ABSurvey0 = models.TextField(default='', null=True, blank=True)
     ABSurvey1 = models.TextField(default='', null=True, blank=True)
     ABSurvey2 = models.TextField(default='', null=True, blank=True)
@@ -57,10 +72,9 @@ class postSurvey(models.Model):
                              null=True)  # nur zwischengespeichert
     site0 = models.TextField(default='', null=True)
 
-    #site1
+    # site1
 
-
-    #site2 GEQ
+    # site2 GEQ
     GEQ00 = models.TextField(default='', null=True, blank=True)
     GEQ01 = models.TextField(default='', null=True, blank=True)
     GEQ02 = models.TextField(default='', null=True, blank=True)
@@ -95,7 +109,7 @@ class postSurvey(models.Model):
     GEQ31 = models.TextField(default='', null=True, blank=True)
     GEQ32 = models.TextField(default='', null=True, blank=True)
 
-    #site3 SPGQ
+    # site3 SPGQ
     SPGQ00 = models.TextField(default='', null=True, blank=True)
     SPGQ01 = models.TextField(default='', null=True, blank=True)
     SPGQ02 = models.TextField(default='', null=True, blank=True)
@@ -118,9 +132,7 @@ class postSurvey(models.Model):
     SPGQ19 = models.TextField(default='', null=True, blank=True)
     SPGQ20 = models.TextField(default='', null=True, blank=True)
 
-
-    #newSite 3 Gamex
-
+    # newSite 3 Gamex
 
     GAM00 = models.TextField(default='', null=True, blank=True)
     GAM01 = models.TextField(default='', null=True, blank=True)
@@ -150,8 +162,7 @@ class postSurvey(models.Model):
     GAM25 = models.TextField(default='', null=True, blank=True)
     GAM26 = models.TextField(default='', null=True, blank=True)
 
-
-    #site4 KIM / IMI
+    # OLD site4 KIM / IMI
     KIM00 = models.TextField(default='', null=True, blank=True)
     KIM01 = models.TextField(default='', null=True, blank=True)
     KIM02 = models.TextField(default='', null=True, blank=True)
@@ -165,8 +176,36 @@ class postSurvey(models.Model):
     KIM10 = models.TextField(default='', null=True, blank=True)
     KIM11 = models.TextField(default='', null=True, blank=True)
 
+    # IMI NEW
 
-    #site5 SUS
+    IMI00 = models.TextField(default='', null=True, blank=True)
+    IMI01 = models.TextField(default='', null=True, blank=True)
+    IMI02 = models.TextField(default='', null=True, blank=True)
+    IMI03 = models.TextField(default='', null=True, blank=True)
+    IMI04 = models.TextField(default='', null=True, blank=True)
+    IMI05 = models.TextField(default='', null=True, blank=True)
+    IMI06 = models.TextField(default='', null=True, blank=True)
+    IMI07 = models.TextField(default='', null=True, blank=True)
+    IMI08 = models.TextField(default='', null=True, blank=True)
+    IMI09 = models.TextField(default='', null=True, blank=True)
+    IMI10 = models.TextField(default='', null=True, blank=True)
+    IMI11 = models.TextField(default='', null=True, blank=True)
+    IMI12 = models.TextField(default='', null=True, blank=True)
+    IMI13 = models.TextField(default='', null=True, blank=True)
+    IMI14 = models.TextField(default='', null=True, blank=True)
+    IMI15 = models.TextField(default='', null=True, blank=True)
+    IMI16 = models.TextField(default='', null=True, blank=True)
+    IMI17 = models.TextField(default='', null=True, blank=True)
+    IMI18 = models.TextField(default='', null=True, blank=True)
+    IMI19 = models.TextField(default='', null=True, blank=True)
+    IMI20 = models.TextField(default='', null=True, blank=True)
+    IMI21 = models.TextField(default='', null=True, blank=True)
+    IMI22 = models.TextField(default='', null=True, blank=True)
+    IMI23 = models.TextField(default='', null=True, blank=True)
+    IMI24 = models.TextField(default='', null=True, blank=True)
+    IMI25 = models.TextField(default='', null=True, blank=True)
+
+    # site5 SUS
     SUS00 = models.TextField(default='', null=True, blank=True)
     SUS01 = models.TextField(default='', null=True, blank=True)
     SUS02 = models.TextField(default='', null=True, blank=True)
@@ -178,7 +217,7 @@ class postSurvey(models.Model):
     SUS08 = models.TextField(default='', null=True, blank=True)
     SUS09 = models.TextField(default='', null=True, blank=True)
 
-    #site6 general
+    # site6 general
     General00 = models.TextField(default='', null=True, blank=True)
     General01 = models.TextField(default='', null=True, blank=True)
     General02 = models.TextField(default='', null=True, blank=True)
@@ -196,7 +235,6 @@ class postSurvey(models.Model):
     General14 = models.TextField(default='', null=True, blank=True)
     General15 = models.TextField(default='', null=True, blank=True)
     General16 = models.TextField(default='', null=True, blank=True)
-
 
     def __str__(self):
         return self.site0

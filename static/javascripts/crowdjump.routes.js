@@ -89,6 +89,18 @@
 
 
             //surveys
+        }).when('/registrationFormPre', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/registrationFormPre.html'
+        }).when('/registrationFormQ', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/registrationForm.html'
+        }).when('/registrationFormFinished', {
+            controller: 'QuestionnaireController',
+            controllerAs: 'vm',
+            templateUrl: '/static/templates/questionnaire/registrationFormFinished.html'
         }).when('/survey0', {
             controller: 'QuestionnaireController',
             controllerAs: 'vm',

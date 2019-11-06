@@ -13,7 +13,6 @@
             vm.cookie = Authentication.getAuthenticatedAccount();
             vm.url = window.location.pathname;
 
-
             $scope.test = function () {
                 console.log(vm.url);
             }
@@ -36,8 +35,7 @@
                     || navigator.userAgent.match(/Windows Phone/i)
                 ) {
                     return true;
-                }
-                else {
+                } else {
                     return false;
                 }
             }
@@ -58,16 +56,47 @@
                 return;
             }
 
-            if (!vm.isAuthenticated) {
+            if (!vm.isAuthenticated && vm.surveystatus < 99) {
+                console.log("not authenticated for survey");
                 return;
             }
 
+            if (vm.cookie == undefined) {
+                var s_s = getCookie("survey_status");
+                if (s_s == undefined || s_s == "") {
+                    setCookie("survey_status", 99);
+                    s_s = 99;
+                }
+                vm.surveystatus = s_s;
 
-            // console.log(vm.url);
-            vm.surveystatus = vm.cookie["survey_status"];
+            } else {
+                vm.surveystatus = vm.cookie["survey_status"];
+            }
+
             var post_surveystatus = vm.surveystatus - 4;
+
+
+            if ((vm.surveystatus == 99)&& !vm.url.includes("registrationFormPre") && !vm.url.includes("mobile")) {
+
+                if (ismobile) {
+                    window.location.href = '/mobile';
+                    return;
+                }
+                window.location.href = '/registrationFormPre';
+                return;
+            }
+            if (vm.surveystatus == 100 && !vm.url.includes("registrationFormQ") && !vm.url.includes("mobile")) {
+
+                if (ismobile) {
+                    window.location.href = '/mobile';
+                    return;
+                }
+                window.location.href = '/registrationFormQ';
+                return;
+            }
+
             // console.log(vm.surveystatus);
-            if (vm.surveystatus < 3 && !vm.url.includes("survey" + vm.surveystatus) && !vm.url.includes("mobile")) {
+            if (vm.surveystatus > 0 && vm.surveystatus < 3 && !vm.url.includes("survey" + vm.surveystatus) && !vm.url.includes("mobile")) {
 
                 if (ismobile) {
                     window.location.href = '/mobile';
@@ -75,8 +104,7 @@
                 }
                 window.location.href = '/survey' + vm.surveystatus;
                 return;
-            }
-            else if (vm.surveystatus > 3 && vm.surveystatus < 11 && !vm.url.includes("postsurvey" + post_surveystatus) && !vm.url.includes("mobile")) {
+            } else if (vm.surveystatus > 3 && vm.surveystatus < 11 && !vm.url.includes("postsurvey" + post_surveystatus) && !vm.url.includes("mobile")) {
 
                 if (ismobile) {
                     window.location.href = '/mobile';
@@ -84,12 +112,11 @@
                 }
                 window.location.href = 'postsurvey' + post_surveystatus;
                 return;
-            }
-            else if ((vm.surveystatus == 3 || vm.surveystatus == 3) && vm.url.includes("survey") && !vm.url.includes("surveyPreFinished") && !vm.url.includes("mobile")) {
+            } else if ((vm.surveystatus == 3 || vm.surveystatus == 3) && vm.url.includes("survey") && !vm.url.includes("surveyPreFinished") && !vm.url.includes("mobile")) {
                 window.location.href = '/';
             }
 
-            if(vm.url.includes("game2")){
+            if (vm.url.includes("game2")) {
                 refreshAccount();
             }
 
@@ -100,13 +127,13 @@
 
 
             $scope.submit = function (next_survey) {
-
+                log(next_survey);
                 var content = {};
                 var post_check = vm.surveystatus;
                 var next_survey_id = next_survey;
                 var dontAdvance = false; //test only, always false
 
-                if (vm.surveystatus >= 3) {
+                if (vm.surveystatus >= 3 && vm.surveystatus < 99) {
 
                     post_check = vm.surveystatus - 1;
                     next_survey_id += 4;
@@ -123,13 +150,16 @@
                     // };
                     // }, 3000);
 
-                } else if (vm.surveystatus == 4  && checked) {
+                } else if (vm.surveystatus == 4 && checked) {
                     Questionnaire.post_postSite(vm.cookie["id"], 0, '', vm.cookie);
 
-                }
-                else if (checked) {
+                } else if (vm.surveystatus < 99 && checked) {
                     content = $scope.getContent(post_check);
                     Questionnaire.post_postSite(vm.cookie["id"], post_check - 3, content, vm.cookie);
+
+                } else if ((vm.surveystatus == 99 || vm.surveystatus == 100) && checked) {
+                    content = $scope.getContent(vm.surveystatus);
+                    Questionnaire.post_Form(vm.surveystatus, content);
 
                 } else if (vm.surveystatus != 3 && vm.surveystatus != 11) {
                     alert("Please answer all required questions first!");
@@ -289,7 +319,7 @@
                     }
                 }
 
-                if (q.type === "text" || q.type === "bigtext") {
+                if (q.type === "text" || q.type === "bigtext" || q.type === "email") {
                     // console.log("text");
                     if (q.value.length < q.minLength) {
                         q.checked = false;
@@ -340,7 +370,7 @@
                 survey["visible"] = (survey["startVisible"] || activations.size > 0);
             }
 
-            $scope.setPost = function (){
+            $scope.setPost = function () {
                 Questionnaire.increase_surveycount(vm.cookie["username"], 4);
                 window.location.href = '/postsurvey0';
 
@@ -406,14 +436,16 @@
             var scale5de = ["stimmt gar nicht", "stimmt wenig", "stimmt teils-teils", "stimmt ziemlich", "stimmt völlig"]
             var scale7 = ["not at all", , , , , , "very much"];
             var scale7Gamex = ["strongly disagree", , , , , , "strongly agree"];
+            var scale7IMI = ["1 not at all true", "2", "3", "4 somewhat true", "5", "6", "7 very true"];
             var scale7de = ["überhaupt nicht", , , , , , "sehr"];
             var scale7AB = ["A", , , , , , "B"];
+            var choicesYesNo = ["No", "Yes"];
 
             $scope.survey = [];
 
             var english = true;
 
-            if (!english) {
+            if (false) {
                 $scope.exChoices = [choice, "< 18", "18 - 26", "26 - 39", "> 40"];
                 $scope.exDoubleChoices = [["A: Ich bin sehr schlecht in Videospielen", "B: Ich bin sehr gut in Videospielen"],
                     ["A: Nur das Design eines Produktes is wichtig ", "B: Nur die Funktion eines Produktes ist wichtig"]];
@@ -578,6 +610,113 @@
                     selected: [{}]
                 };
             } //Examples
+
+            //RegistrationForm
+            $scope.survey[99] = [];
+            $scope.survey[100] = [];
+
+
+            if (true) {
+                $scope.sur99q0Choices = [""];
+                $scope.survey[99][0] = {
+                    survey: 99,
+                    nr: 0,
+                    type: 'check1',
+                    text: '',
+                    required: true,
+                    startVisible: true,
+                    visible: true,
+                    choices: $scope.sur99q0Choices,
+                    freeChoice: '',
+                    activate: [],
+                    showImage: false,
+                    imageURL: '',
+                    imageWidth: 1100,
+                    value: '',
+                    checked: false,
+                    error: false,
+                    activatedBy: new Set(),
+                    selected: {}
+                };
+
+            } //RegistrationFormPre Nur zum Speichern
+
+            if (true) {
+                $scope.survey[100][0] = {
+                    survey: 100,
+                    nr: 0,
+                    type: 'email',
+                    text: 'Email address',
+                    required: true,
+                    startVisible: true,
+                    visible: true,
+                    minLength: 1,
+                    activate: [],
+                    showImage: false,
+                    imageURL: '',
+                    imageWidth: 1100,
+                    value: '',
+                    checked: false,
+                    error: false,
+                    activatedBy: new Set(),
+                };
+                $scope.survey[100][1] = {
+                    survey: 100,
+                    nr: 1,
+                    type: 'radio',
+                    text: 'Have you participated in a previous iteration of crowdjump?',
+                    required: true,
+                    startVisible: true,
+                    visible: true,
+                    choices: choicesYesNo,
+                    activate: [],
+                    showImage: false,
+                    imageURL: '',
+                    imageWidth: 1100,
+                    value: '-1',
+                    checked: false,
+                    error: false,
+                    activatedBy: new Set(),
+                };
+                $scope.survey[100][2] = {
+                    survey: 100,
+                    nr: 2,
+                    type: 'radio',
+                    text: 'Are you interested in seeing the development of a videogame?',
+                    required: true,
+                    startVisible: true,
+                    visible: true,
+                    choices: choicesYesNo,
+                    activate: [],
+                    showImage: false,
+                    imageURL: '',
+                    imageWidth: 1100,
+                    value: '-1',
+                    checked: false,
+                    error: false,
+                    activatedBy: new Set(),
+                };
+                $scope.survey[100][3] = {
+                    survey: 100,
+                    nr: 3,
+                    type: 'radio',
+                    text: 'Would you like to have influence over the development?',
+                    required: true,
+                    startVisible: true,
+                    visible: true,
+                    choices: choicesYesNo,
+                    activate: [],
+                    showImage: false,
+                    imageURL: '',
+                    imageWidth: 1100,
+                    value: '-1',
+                    checked: false,
+                    error: false,
+                    activatedBy: new Set(),
+                };
+
+            } //RegistrationForm
+
             //Pre Survey
             $scope.survey[0] = [];
             $scope.survey[1] = [];
@@ -906,7 +1045,7 @@
                         error: false,
                         activatedBy: new Set(),
                     };
-                    $scope.sur1q16Choices = ['How did you like "PleaseBeNice?"'];
+                    $scope.sur1q16Choices = ['How did you like "PleaseBeNice"?'];
                     $scope.survey[1][16] = {
                         survey: 1,
                         nr: 16,
@@ -933,6 +1072,76 @@
                         nr: 17,
                         type: 'radio',
                         text: 'Did one of your ideas get implemented?',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][19] = {
+                        survey: 1,
+                        nr: 19,
+                        type: 'radio',
+                        text: 'Have you heard of "Crowdjump" before?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [{v: 1, s: 1, nr: 20}, {v: 1, s: 1, nr: 21}, {v: 1, s: 1, nr: 22}],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.survey[1][20] = {
+                        survey: 1,
+                        nr: 20,
+                        type: 'radio',
+                        text: 'Did you play "Crowdjump" yourself?',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                    };
+                    $scope.sur1q17Choices = ['How did you like "Crowdjump"?'];
+                    $scope.survey[1][21] = {
+                        survey: 1,
+                        nr: 21,
+                        type: 'scale',
+                        text: '',
+                        required: true,
+                        startVisible: false,
+                        visible: false,
+                        choices: $scope.sur1q17Choices,
+                        scale: scale7,
+                        nrscales: 7,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        imageURL: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
+                    $scope.survey[1][22] = {
+                        survey: 1,
+                        nr: 22,
+                        type: 'radio',
+                        text: 'Did one of your "Crowdjump" ideas get implemented?',
                         required: true,
                         startVisible: false,
                         visible: false,
@@ -1131,32 +1340,32 @@
 
                 if (true) {
                     $scope.sur6q0ChoicesOG = randomize(["Playing the game was fun.",
-                    "I liked playing the game.",
-                    "I enjoyed playing the game very much.",
-                    "My game experience was pleasurable.",
-                    "I think playing the game is very entertaining.",
-                    "I would play this game for its own sake, not only when being asked to.",
-                    "Playing the game made me forget where I am.",
-                    "I forgot about my immediate surroundings while I played the game.",
-                    "After playing the game, I felt like coming back to the \"real world \" after a journey.",
-                    "Playing the game \" got me away from it all \".",
-                    "While playing the game I was completely oblivious to everything around me.",
-                    "While playing the game I lost track of time.",
-                    "Playing the game sparked my imagination.",
-                    "While playing the game I felt creative.",
-                    "While playing the game I felt that I could explore things.",
-                    "While playing the game I felt adventurous.",
-                    "While playing the game I felt activated.",
-                    "While playing the game I felt jittery.",
-                    "While playing the game I felt frenzied.",
-                    "While playing the game I felt excited.",
-                    "While playing the game I felt upset.",
-                    "While playing the game I felt hostile.",
-                    "While playing the game I felt frustrated.",
-                    "While playing the game I had the feeling of being in charge.",
-                    "While playing the game I felt influential.",
-                    "While playing the game I felt autonomous.",
-                    "While playing the game I felt confident."]);
+                        "I liked playing the game.",
+                        "I enjoyed playing the game very much.",
+                        "My game experience was pleasurable.",
+                        "I think playing the game is very entertaining.",
+                        "I would play this game for its own sake, not only when being asked to.",
+                        "Playing the game made me forget where I am.",
+                        "I forgot about my immediate surroundings while I played the game.",
+                        "After playing the game, I felt like coming back to the \"real world \" after a journey.",
+                        "Playing the game \" got me away from it all \".",
+                        "While playing the game I was completely oblivious to everything around me.",
+                        "While playing the game I lost track of time.",
+                        "Playing the game sparked my imagination.",
+                        "While playing the game I felt creative.",
+                        "While playing the game I felt that I could explore things.",
+                        "While playing the game I felt adventurous.",
+                        "While playing the game I felt activated.",
+                        "While playing the game I felt jittery.",
+                        "While playing the game I felt frenzied.",
+                        "While playing the game I felt excited.",
+                        "While playing the game I felt upset.",
+                        "While playing the game I felt hostile.",
+                        "While playing the game I felt frustrated.",
+                        "While playing the game I had the feeling of being in charge.",
+                        "While playing the game I felt influential.",
+                        "While playing the game I felt autonomous.",
+                        "While playing the game I felt confident."]);
                     $scope.sur6q0Choices = $scope.sur6q0ChoicesOG[0];
                     $scope.sur6q0Ordering = $scope.sur6q0ChoicesOG[1];
                     $scope.survey[6][0] = {
@@ -1184,7 +1393,7 @@
 
                 } //PostSurvey new 2/3 GAMEX
 
-                if (true) {
+                if (false) {
                     $scope.sur7q0ChoicesOG = randomize(["I believe I had some choice about doing this activity.",
                         "I thought Crowdjump was quite enjoyable.",
                         "I am satisfied with my performance at Crowdjump.",
@@ -1223,7 +1432,62 @@
                         selected: [{}]
                     };
 
-                } //PostSurvey4 KIM / IMI
+                } //ALT!!!! PostSurvey4 KIM / IMI
+
+                if (true) {
+                    $scope.sur7q0ChoicesOG = randomize(["I enjoyed doing this activity very much.",
+                        "This activity was fun to do.",
+                        "I thought this was a boring activity.",
+                        "This activity did not hold my attention at all.",
+                        "I would describe this activity as very interesting.",
+                        "I thought this activity was quite enjoyable.",
+                        "While I was doing this activity, I was thinking about how much I enjoyed it.",
+                        "I think I am pretty good at this activity.",
+                        "I think I did pretty well at this activity, compared to other students.",
+                        "After working at this activity for a while, I felt pretty competent.",
+                        "I am satisfied with my performance at this task.",
+                        "I was pretty skilled at this activity.",
+                        "This was an activity that I couldn't do very well.",
+                        "I did not feel nervous at all while doing this.",
+                        "I felt very tense while doing this activity.",
+                        "I was very relaxed in doing these.",
+                        "I was anxious while working on this task.",
+                        "I felt pressured while doing these.",
+                        "I believe I had some choice about doing this activity.",
+                        "I felt like it was not my own choice to do this task.",
+                        "I didn't really have a choice about doing this task.",
+                        "I felt like I had to do this.",
+                        "I did this activity because I had no choice.",
+                        "I did this activity because I wanted to.",
+                        "I did this activity because I had to.",
+                    ]);
+                    $scope.sur7q0Choices = $scope.sur7q0ChoicesOG[0];
+                    $scope.sur7q0Ordering = $scope.sur7q0ChoicesOG[1];
+
+                    // $scope.sur7q0Scale = ["not at all true", , , "somewhat true", , , "very true"]
+                    $scope.survey[7][0] = {
+                        survey: 7,
+                        nr: 0,
+                        type: 'scale',
+                        text: 'For each of the following statements, please indicate how true it is for you, using the following scale. ',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        choices: $scope.sur7q0Choices,
+                        ordering: $scope.sur7q0Ordering,
+                        scale: scale7IMI,
+                        nrscales: 7,
+                        freeChoice: '',
+                        activate: [],
+                        value: '',
+                        showImage: false,
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
+                        selected: [{}]
+                    };
+
+                } //PostSurvey4 IMI NEW
 
                 if (true) {
                     $scope.sur8q0Scale = ["Strongly disagree", "", "", "", "Strongly agree"]
@@ -1265,24 +1529,24 @@
                 } //PostSurvey5 SUS
 
                 if (true) {
-/*                    $scope.sur9q0ChoicesOG = randomize(["I liked the idea of Crowdjump.",
-                        "I liked to submit new ideas.",
-                        "The game developed in a positive direction.",
-                        "The website developed in a positive direction.",
-                        "The process of choosing the ideas developed in a positive direction.",
-                        "After each submission cycle the features were implemented as requested.",
-                        "The implemented features met my wishes for Crowdjump.",
-                        "I formed a community with other players.",
-                        "Other players interfered with the development.",
-                        "The other players and I worked as a team.",
-                        "My opinion was not heard.",
-                        "There were too many bugs.",
-                        "The performance of the game was good.",
-                        "Too many ideas were implemented each cycle.",
-                        "More ideas should be implemented each cycle.",
-                        "The amount of ideas to choose from was overwhelming.",
-                        "I prefered new ideas over old ones"
-                    ]);*/
+                    /*                    $scope.sur9q0ChoicesOG = randomize(["I liked the idea of Crowdjump.",
+                                            "I liked to submit new ideas.",
+                                            "The game developed in a positive direction.",
+                                            "The website developed in a positive direction.",
+                                            "The process of choosing the ideas developed in a positive direction.",
+                                            "After each submission cycle the features were implemented as requested.",
+                                            "The implemented features met my wishes for Crowdjump.",
+                                            "I formed a community with other players.",
+                                            "Other players interfered with the development.",
+                                            "The other players and I worked as a team.",
+                                            "My opinion was not heard.",
+                                            "There were too many bugs.",
+                                            "The performance of the game was good.",
+                                            "Too many ideas were implemented each cycle.",
+                                            "More ideas should be implemented each cycle.",
+                                            "The amount of ideas to choose from was overwhelming.",
+                                            "I prefered new ideas over old ones"
+                                        ]);*/
                     $scope.sur9q0ChoicesOG = randomize(["I liked the idea of Crowdjump.",
                         "The game developed in a positive direction.",
                         "The website developed in a positive direction.",
@@ -1290,13 +1554,14 @@
                         "I formed a community with other players.",
                         "There were too many bugs.",
                         "The performance of the game was good.",
-                        "Too many ideas were implemented each cycle.",
-                        "I would like to submit my own ideas for the game.",
-                        "I would like to submit my own ideas for the website.",
-                        "Players should decide, which idea is implemented next.",
+                        "Too many features were implemented each day.",
+                        "I would like to submit my own features for the game.",
+                        "I would like to submit my own features for the website.",
+                        "Players should decide, which features are implemented next.",
                         "I wished for some features to be implemented which were missing.",
                         "I liked the implemented features.",
-                        "More ideas should be implemented each cycle."
+                        "More features should be implemented each day.",
+                        "Assuming that all players could provide feature suggestions, which kind of mechanism could you imagine for developers to know which of the suggestions should be implemented next?"
                     ]);
                     $scope.sur9q0Choices = $scope.sur9q0ChoicesOG[0];
                     $scope.sur9q0Ordering = $scope.sur9q0ChoicesOG[1];
@@ -1686,22 +1951,22 @@
                         nr: 0,
                         type: 'scale',
                         text: 'Manche der nachfolgenden Fragen in der Umfrage sind auf englisch. Um deine Antworten auf diese Fragen besser einschätzen zu können, beantworte bitte die nachfolgenden Fragen.\n' +
-                        '\n' +
-                        'Zuerst, wähle unten den Text, welcher deiner Meinung nach deine Lesefähigkeiten in Englisch am Besten beschreibt.\n' +
-                        '\n' +
-                        '\n' +
-                        '\n' +
-                        'A1: I can understand familiar names, words and very simple sentences, for example on notices and posters or in catalogues.\n' +
-                        '\n' +
-                        'A2: I can read very short, simple texts. I can find specific, predictable information in simple everyday material such as advertisements, prospectuses, menus and timetables and I can understand short simple personal letters.\n' +
-                        '\n' +
-                        'B1: I can understand texts that consist mainly of high frequency everyday or job-related language. I can understand the description of events, feelings and wishes in personal letters.\n' +
-                        '\n' +
-                        'B2: I can read articles and reports concerned with contemporary problems in which the writers adopt particular attitudes or viewpoints. I can understand contemporary literary prose\n' +
-                        '\n' +
-                        'C1: I can understand long and complex factual and literary texts, appreciating distinctions of style. I can understand specialised articles and longer technical instructions, even when they do not relate to my field.\n' +
-                        '\n' +
-                        'C2: I can read with ease virtually all forms of the written language, including abstract, structurally or linguistically complex texts such as manuals, specialised articles and literary works. ',
+                            '\n' +
+                            'Zuerst, wähle unten den Text, welcher deiner Meinung nach deine Lesefähigkeiten in Englisch am Besten beschreibt.\n' +
+                            '\n' +
+                            '\n' +
+                            '\n' +
+                            'A1: I can understand familiar names, words and very simple sentences, for example on notices and posters or in catalogues.\n' +
+                            '\n' +
+                            'A2: I can read very short, simple texts. I can find specific, predictable information in simple everyday material such as advertisements, prospectuses, menus and timetables and I can understand short simple personal letters.\n' +
+                            '\n' +
+                            'B1: I can understand texts that consist mainly of high frequency everyday or job-related language. I can understand the description of events, feelings and wishes in personal letters.\n' +
+                            '\n' +
+                            'B2: I can read articles and reports concerned with contemporary problems in which the writers adopt particular attitudes or viewpoints. I can understand contemporary literary prose\n' +
+                            '\n' +
+                            'C1: I can understand long and complex factual and literary texts, appreciating distinctions of style. I can understand specialised articles and longer technical instructions, even when they do not relate to my field.\n' +
+                            '\n' +
+                            'C2: I can read with ease virtually all forms of the written language, including abstract, structurally or linguistically complex texts such as manuals, specialised articles and literary works. ',
                         required: true,
                         startVisible: true,
                         visible: true,
@@ -1732,8 +1997,8 @@
                         nr: 1,
                         type: 'radiolist',
                         text: 'Answer the following 10 questions\n' +
-                        '\n' +
-                        '1) Did you ……… anywhere interesting last weekend? ',
+                            '\n' +
+                            '1) Did you ……… anywhere interesting last weekend? ',
                         required: true,
                         startVisible: true,
                         visible: true,

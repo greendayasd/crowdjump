@@ -1,8 +1,9 @@
 from rest_framework import permissions, viewsets
 from rest_framework.response import Response
 from url_filter.integrations.drf import DjangoFilterBackend
-from .serializers import PreSurveySerializer, PostSurveySerializer
-from .models import preSurvey, postSurvey
+from .serializers import PreSurveySerializer, PostSurveySerializer, RegistrationFormSerializer
+from .models import preSurvey, postSurvey, registrationForm
+
 
 class PreSurveyViewSet(viewsets.ModelViewSet):
     queryset = preSurvey.objects
@@ -19,6 +20,7 @@ class PreSurveyViewSet(viewsets.ModelViewSet):
         instance = serializer.save(user=self.request.user)
         return super(PreSurveyViewSet, self).perform_create(serializer)
 
+
 class PostSurveyViewSet(viewsets.ModelViewSet):
     queryset = postSurvey.objects
     serializer_class = PostSurveySerializer
@@ -33,3 +35,15 @@ class PostSurveyViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         instance = serializer.save(user=self.request.user)
         return super(PostSurveyViewSet, self).perform_create(serializer)
+
+
+class RegistrationFormViewSet(viewsets.ModelViewSet):
+    queryset = registrationForm.objects
+    serializer_class = RegistrationFormSerializer
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['id']
+
+
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        return super(RegistrationFormViewSet, self).perform_create(serializer)

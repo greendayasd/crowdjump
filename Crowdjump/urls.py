@@ -7,7 +7,7 @@ from website.views import IndexView, HistoryViewSet, IdeasView, GameViewSet, Gam
 from ideas.views import IdeaViewSet, IdeaVotePermissionViewSet, AccountIdeasViewSet, AccountGameInfoViewSet, \
     GameInfoViewSet, CommentViewSet, IdeaVoteViewSet, Vote, BugreportViewSet
 from chat.views import room, index, ChatMessageViewSet
-from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet
+from questionnaire.views import PreSurveyViewSet, PostSurveyViewSet, RegistrationFormViewSet
 from Crowdjump.mailFunctions import mail_new_version
 
 from authentication.views import AccountViewSet, LoginView, LogoutView, SendTrackingData, GetTrackingData, \
@@ -31,6 +31,7 @@ router.register(r'ideavotes', IdeaVoteViewSet)
 router.register(r'chatmessages', ChatMessageViewSet)
 router.register(r'presurvey', PreSurveyViewSet)
 router.register(r'postsurvey', PostSurveyViewSet)
+router.register(r'registrationForm', RegistrationFormViewSet)
 
 mainrouter = routers.SimpleRouter()
 mainrouter.register(r'game', GameViewSet)
@@ -61,6 +62,9 @@ urlpatterns = [
     url(r'^data/$', AdminView.as_view()),
     url(r'^profile/$', IndexView.as_view()),
 
+    url(r'^registrationFormPre/$', IndexView.as_view()),
+    url(r'^registrationFormQ/$', IndexView.as_view()),
+    url(r'^registrationFormFinished/$', IndexView.as_view()),
     url(r'^survey0/$', IndexView.as_view()),
     url(r'^survey1/$', IndexView.as_view()),
     url(r'^survey2/$', IndexView.as_view()),
