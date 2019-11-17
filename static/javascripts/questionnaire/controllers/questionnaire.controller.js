@@ -380,11 +380,15 @@
                 return new Array(num);
             }
 
-            function randomize(array) {
+            function randomize(array, random = true) {
                 var currentIndex = array.length, temporaryValue, randomIndex;
                 var ordering = [];
+
                 for (var i = 0; i < array.length; i++) {
                     ordering.push(i);
+                }
+                if (!random) {
+                    return [array, ordering];
                 }
 
                 // While there remain elements to shuffle...
@@ -1173,7 +1177,7 @@
                         survey: 2,
                         nr: 0,
                         type: 'doublescale',
-                        text: 'Please choose whether you lean more towards A or B',
+                        text: 'Please choose whether you lean more towards A or B:',
                         required: true,
                         startVisible: true,
                         visible: true,
@@ -1365,7 +1369,7 @@
                         "While playing the game I had the feeling of being in charge.",
                         "While playing the game I felt influential.",
                         "While playing the game I felt autonomous.",
-                        "While playing the game I felt confident."]);
+                        "While playing the game I felt confident."], false);
                     $scope.sur6q0Choices = $scope.sur6q0ChoicesOG[0];
                     $scope.sur6q0Ordering = $scope.sur6q0ChoicesOG[1];
                     $scope.survey[6][0] = {
@@ -1435,31 +1439,39 @@
                 } //ALT!!!! PostSurvey4 KIM / IMI
 
                 if (true) {
-                    $scope.sur7q0ChoicesOG = randomize(["I enjoyed doing this activity very much.",
-                        "This activity was fun to do.",
-                        "I thought this was a boring activity.",
-                        "This activity did not hold my attention at all.",
-                        "I would describe this activity as very interesting.",
-                        "I thought this activity was quite enjoyable.",
-                        "While I was doing this activity, I was thinking about how much I enjoyed it.",
-                        "I think I am pretty good at this activity.",
-                        "I think I did pretty well at this activity, compared to other students.",
-                        "After working at this activity for a while, I felt pretty competent.",
-                        "I am satisfied with my performance at this task.",
-                        "I was pretty skilled at this activity.",
-                        "This was an activity that I couldn't do very well.",
-                        "I did not feel nervous at all while doing this.",
-                        "I felt very tense while doing this activity.",
-                        "I was very relaxed in doing these.",
-                        "I was anxious while working on this task.",
-                        "I felt pressured while doing these.",
-                        "I believe I had some choice about doing this activity.",
-                        "I felt like it was not my own choice to do this task.",
-                        "I didn't really have a choice about doing this task.",
-                        "I felt like I had to do this.",
-                        "I did this activity because I had no choice.",
-                        "I did this activity because I wanted to.",
-                        "I did this activity because I had to.",
+                    $scope.sur7q0ChoicesOG = randomize(["I enjoyed playing Crowdjump very much.",
+                        "Playing Crowdjump was fun to do.",
+                        "I thought Crowdjump was a boring activity.",
+                        "Crowdjump did not hold my attention at all.",
+                        "I would describe Crowdjump as very interesting.",
+                        "I thought Crowdjump was quite enjoyable.",
+                        "While I was playing Crowdjump, I was thinking about how much I enjoyed it.",
+                        "I think I am pretty good at playing Crowdjump.",
+                        "I think I did pretty well at playing Crowdjump, compared to other students.",
+                        "After working with Crowdjump for a while, I felt pretty competent.",
+                        "I am satisfied with my performance at Crowdjump.",
+                        "I was pretty skilled at playing Crowdjump.",
+                        "Playing Crowdjump was an activity that I couldn't do very well.",
+                        "I did not feel nervous at all while playing Crowdjump.",
+                        "I felt very tense while playing Crowdjump.",
+                        "I was very relaxed while playing Crowdjump.",
+                        "I was anxious while playing Crowdjump.",
+                        "I felt pressured while playing Crowdjump.",
+                        "I believe I had some choice about playing Crowdjump.",
+                        "I felt like it was not my own choice to play Crowdjump.",
+                        "I didn't really have a choice about playing Crowdjump.",
+                        "I felt like I had to play Crowdjump.",
+                        "I did play Crowdjump because I had no choice.",
+                        "I did play Crowdjump because I wanted to.",
+                        "I did play Crowdjump because I had to.",
+                        "I felt really distant to the other players.",
+                        "I really doubt that other players and I would ever be friends.",
+                        "I felt like I could really trust the other players.",
+                        "I'd like to have a chance to interact with the other players more often.",
+                        "I'd really prefer not to interact with the other players in the future.",
+                        "I don't feel like I could really trust the other players.",
+                        "It is likely that the other players and I could become friends if we interacted a lot.",
+                        "I feel close to the other players."
                     ]);
                     $scope.sur7q0Choices = $scope.sur7q0ChoicesOG[0];
                     $scope.sur7q0Ordering = $scope.sur7q0ChoicesOG[1];
@@ -1469,7 +1481,7 @@
                         survey: 7,
                         nr: 0,
                         type: 'scale',
-                        text: 'For each of the following statements, please indicate how true it is for you, using the following scale. ',
+                        text: 'For each of the following statements, please indicate how true it is for you, using the following scale: ',
                         required: true,
                         startVisible: true,
                         visible: true,
@@ -1501,7 +1513,7 @@
                         "I found the system very cumbersome to use.",
                         "I felt very confident using the system.",
                         "I needed to learn a lot of things before I could get going with this system."
-                    ]);
+                    ], false);
                     $scope.sur8q0Choices = $scope.sur8q0ChoicesOG[0];
                     $scope.sur8q0Ordering = $scope.sur8q0ChoicesOG[1];
                     $scope.survey[8][0] = {
@@ -1545,7 +1557,7 @@
                                             "Too many ideas were implemented each cycle.",
                                             "More ideas should be implemented each cycle.",
                                             "The amount of ideas to choose from was overwhelming.",
-                                            "I prefered new ideas over old ones"
+                                            "I prefered new ideas over old ones."
                                         ]);*/
                     $scope.sur9q0ChoicesOG = randomize(["I liked the idea of Crowdjump.",
                         "The game developed in a positive direction.",
@@ -1569,7 +1581,7 @@
                         survey: 9,
                         nr: 0,
                         type: 'scale',
-                        text: 'Please rate the following statements regarding your experience with Crowdjump on a scale from "not at all" to "extremely". ',
+                            text: 'Please rate the following statements regarding your experience with Crowdjump on a scale from "not at all" to "extremely". ',
                         required: true,
                         startVisible: true,
                         visible: true,
