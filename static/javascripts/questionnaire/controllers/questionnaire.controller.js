@@ -1369,7 +1369,7 @@
                         "While playing the game I had the feeling of being in charge.",
                         "While playing the game I felt influential.",
                         "While playing the game I felt autonomous.",
-                        "While playing the game I felt confident."], false);
+                        "While playing the game I felt confident."]);
                     $scope.sur6q0Choices = $scope.sur6q0ChoicesOG[0];
                     $scope.sur6q0Ordering = $scope.sur6q0ChoicesOG[1];
                     $scope.survey[6][0] = {
@@ -1447,7 +1447,7 @@
                         "I thought Crowdjump was quite enjoyable.",
                         "While I was playing Crowdjump, I was thinking about how much I enjoyed it.",
                         "I think I am pretty good at playing Crowdjump.",
-                        "I think I did pretty well at playing Crowdjump, compared to other students.",
+                        "I think I did pretty well at playing Crowdjump, compared to other players.",
                         "After working with Crowdjump for a while, I felt pretty competent.",
                         "I am satisfied with my performance at Crowdjump.",
                         "I was pretty skilled at playing Crowdjump.",
