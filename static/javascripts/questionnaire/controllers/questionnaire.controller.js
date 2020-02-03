@@ -63,11 +63,12 @@
 
             if (vm.cookie == undefined) {
                 var s_s = getCookie("survey_status");
-                if (s_s == undefined || s_s == "") {
-                    setCookie("survey_status", 99);
-                    s_s = 99;
+                if (s_s == undefined || s_s == "" || s_s==99) {
+                    setCookie("survey_status", 0);
+                    s_s = 0;
                 }
                 vm.surveystatus = s_s;
+
 
             } else {
                 vm.surveystatus = vm.cookie["survey_status"];
@@ -1573,7 +1574,7 @@
                         "I wished for some features to be implemented which were missing.",
                         "I liked the implemented features.",
                         "More features should be implemented each day.",
-                        "Assuming that all players could provide feature suggestions, which kind of mechanism could you imagine for developers to know which of the suggestions should be implemented next?"
+                        "Assuming that all players could provide feature suggestions, which kind of mechanism could you imagine for developers to know which of the suggestions should be implemented next?",
                     ]);
                     $scope.sur9q0Choices = $scope.sur9q0ChoicesOG[0];
                     $scope.sur9q0Ordering = $scope.sur9q0ChoicesOG[1];
@@ -1597,6 +1598,22 @@
                         error: false,
                         activatedBy: new Set(),
                         selected: [{}]
+                    };
+                    $scope.survey[9][1] = {
+                        survey: 9,
+                        nr: 1,
+                        type: 'radio',
+                        text: 'Have you participated in an other crowdjump study before this one?',
+                        required: true,
+                        startVisible: true,
+                        visible: true,
+                        activate: [],
+                        showImage: false,
+                        imageURL: '',
+                        value: '',
+                        checked: false,
+                        error: false,
+                        activatedBy: new Set(),
                     };
 
                 } //PostSurvey6
