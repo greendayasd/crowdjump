@@ -60,7 +60,6 @@
                 console.log("not authenticated for survey");
                 return;
             } else {
-                log("authenticated");
             }
 
             if (vm.cookie == undefined) {
