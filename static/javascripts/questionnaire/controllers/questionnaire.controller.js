@@ -59,6 +59,8 @@
             if (!vm.isAuthenticated && vm.surveystatus < 99) {
                 console.log("not authenticated for survey");
                 return;
+            } else {
+                log("authenticated");
             }
 
             if (vm.cookie == undefined) {
@@ -97,7 +99,7 @@
             }
 
             // console.log(vm.surveystatus);
-            if (vm.surveystatus > 0 && vm.surveystatus < 3 && !vm.url.includes("survey" + vm.surveystatus) && !vm.url.includes("mobile")) {
+            if (vm.isAuthenticated && vm.surveystatus >= 0 && vm.surveystatus < 3 && !vm.url.includes("survey" + vm.surveystatus) && !vm.url.includes("mobile")) {
 
                 if (ismobile) {
                     window.location.href = '/mobile';
@@ -171,18 +173,19 @@
                 if (dontAdvance) return;
                 // console.log(next_survey_id);
                 vm.surveystatus = next_survey_id;
-                // Questionnaire.increase_surveycount(vm.cookie["username"], next_survey_id);
-                // if (vm.surveystatus < 3) {
-                //     window.location.href = '/survey' + next_survey;
-                // } else if (vm.surveystatus == 3) {
-                //     window.location.href = '/surveyPreFinished';
-                //
-                // } else if (vm.surveystatus < 11) {
-                //     window.location.href = '/postsurvey' + next_survey;
-                //
-                // } else {
-                //     window.location.href = '/surveyPostFinished';
-                // }
+                Questionnaire.increase_surveycount(vm.cookie["username"], next_survey_id);
+                if (vm.surveystatus < 3) {
+                    log("test2");
+                    window.location.href = '/survey' + next_survey;
+                } else if (vm.surveystatus == 3) {
+                    window.location.href = '/surveyPreFinished';
+
+                } else if (vm.surveystatus < 11) {
+                    window.location.href = '/postsurvey' + next_survey;
+
+                } else {
+                    window.location.href = '/surveyPostFinished';
+                }
             }
 
             //false when error
