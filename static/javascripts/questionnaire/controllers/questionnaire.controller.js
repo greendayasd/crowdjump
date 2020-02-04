@@ -1090,9 +1090,9 @@
                         error: false,
                         activatedBy: new Set(),
                     };
-                    $scope.survey[1][18] = {
+                    $scope.survey[1][19] = {
                         survey: 1,
-                        nr: 18,
+                        nr: 19,
                         type: 'radio',
                         text: 'Have you heard of "Crowdjump" before?',
                         required: true,
@@ -1106,9 +1106,9 @@
                         error: false,
                         activatedBy: new Set(),
                     };
-                    $scope.survey[1][19] = {
+                    $scope.survey[1][20] = {
                         survey: 1,
-                        nr: 19,
+                        nr: 20,
                         type: 'radio',
                         text: 'Did you play "Crowdjump" yourself?',
                         required: true,
@@ -1123,9 +1123,9 @@
                         activatedBy: new Set(),
                     };
                     $scope.sur1q17Choices = ['How did you like "Crowdjump"?'];
-                    $scope.survey[1][20] = {
+                    $scope.survey[1][21] = {
                         survey: 1,
-                        nr: 20,
+                        nr: 21,
                         type: 'scale',
                         text: '',
                         required: true,
@@ -1144,9 +1144,9 @@
                         activatedBy: new Set(),
                         selected: [{}]
                     };
-                    $scope.survey[1][21] = {
+                    $scope.survey[1][22] = {
                         survey: 1,
-                        nr: 21,
+                        nr: 22,
                         type: 'radio',
                         text: 'Did one of your "Crowdjump" ideas get implemented?',
                         required: true,
