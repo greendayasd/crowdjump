@@ -47,7 +47,10 @@ Crowdjump.Endscreen.prototype = {
                         if (game.gameInfoNormal["highscore"] == null || game.gameInfoNormal["highscore"] == 0 || game.gameInfoNormal["highscore"] == NaN || isNaN(game.gameInfoNormal["highscore"])) {
                             highscore = -1;
                         }
+
                         old_time = (game.gameInfoNormal["highscore"] + 0);
+
+                        log(old_time);
                         break;
                     case DIFFICULTY.hard:
                         if (game.gameInfoHard["highscore"] == null || game.gameInfoHard["highscore"] == 0 || game.gameInfoHard["highscore"] == NaN || isNaN(game.gameInfoHard["highscore"])) {
@@ -85,28 +88,28 @@ Crowdjump.Endscreen.prototype = {
             scoreText = "Congratulations, you beat the game in " + time_score + " seconds!" + highscore_text;
         }
 
-
-        switch (game.difficulty) {
-            case DIFFICULTY.easy:
-                if (game.gameInfoEasy == undefined){
-                     game.gameInfoEasy = {};
-                }
-                game.gameInfoEasy["highscore"] = highscore;
-                break;
-            case DIFFICULTY.normal:
-                if (game.gameInfoNormal == undefined){
-                     game.gameInfoNormal = {};
-                }
-                game.gameInfoNormal["highscore"] = highscore;
-                break;
-            case DIFFICULTY.hard:
-                if (game.gameInfoHard == undefined){
-                     game.gameInfoHard = {};
-                }
-                game.gameInfoHard["highscore"] = highscore;
-                break;
+        if (isHighscore){
+            switch (game.difficulty) {
+                case DIFFICULTY.easy:
+                    if (game.gameInfoEasy == undefined){
+                         game.gameInfoEasy = {};
+                    }
+                    game.gameInfoEasy["highscore"] = highscore;
+                    break;
+                case DIFFICULTY.normal:
+                    if (game.gameInfoNormal == undefined){
+                         game.gameInfoNormal = {};
+                    }
+                    game.gameInfoNormal["highscore"] = highscore;
+                    break;
+                case DIFFICULTY.hard:
+                    if (game.gameInfoHard == undefined){
+                         game.gameInfoHard = {};
+                    }
+                    game.gameInfoHard["highscore"] = highscore;
+                    break;
+            }
         }
-
         score = this.add.text(CONST_WORLD_CENTER_X, 60, scoreText, {fill: '#dbdbdb', align: "center"});
         score.anchor.set(0.5);
 

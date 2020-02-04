@@ -15,7 +15,7 @@ const CONST_REPLAY_LEVEL = false;
 const CONST_SAVE_LEVEL_TIME = false;
 
 const CONST_TIME = true;
-const CONST_TIME_WHEN_MOVED = false; //v2
+const CONST_TIME_WHEN_MOVED = true; //v2
 
 const CONST_LAVA = false; //v8
 const CONST_SPIKES = false; //v8

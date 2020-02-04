@@ -34,8 +34,8 @@
 
 
         function activate() {
-            Statistics.top(topcut, 7, $scope.difficulty).then(statisticsSuccessFn, statisticsErrorFn);
             get_versions();
+            Statistics.top(topcut, $scope.newestVersion, $scope.difficulty).then(statisticsSuccessFn, statisticsErrorFn);
 
             $scope.$on('statistics.created', function (event, statistics) {
                 $scope.history.unshift(statistics);
@@ -152,12 +152,14 @@
 
         $scope.getVersionHighscore = function (version, difficulty, receiveScore) {
             $scope.difficulty = difficulty;
+            log($scope.difficulty);
             $scope.currentVersion = version;
 
             Statistics.top(topcut, version, difficulty.id).then(statisticsSuccessFn, statisticsErrorFn);
 
             function statisticsSuccessFn(data, status, headers, config) {
                 $scope.statistics = data.data["results"];
+                log(data);
 
                 if (receiveScore) $scope.updateHighscore($scope.lastData);
                 setNameColor();
@@ -176,7 +178,6 @@
             function historySuccessFn(data, status, headers, config) {
                 $scope.versions = data.data;
                 $scope.versions_max = data.data;
-
 
                 for (var i = $scope.versions.length - 1; i >= 0; i--) {
                     switch ($scope.versions[i].id) {
