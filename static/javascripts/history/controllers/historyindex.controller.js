@@ -68,14 +68,14 @@
             });
 
             function historySuccessFn(data, status, headers, config) {
-                $scope.history_tmp = data.data;
-                for (var i = $scope.history_tmp.length-1 ; i >=0; i--) {
-                    log($scope.history_tmp[i].id, versionnumber);
-                        if ($scope.history_tmp[i].id <=versionnumber) {
-                            $scope.history.push($scope.history_tmp[i]);
-                            log($scope.history);
-                        }
-                    }
+                $scope.history = data.data;
+                // for (var i = $scope.history_tmp.length-1 ; i >=0; i--) {
+                //     log($scope.history_tmp[i].id, versionnumber);
+                //         if ($scope.history_tmp[i].id <=versionnumber) {
+                //             $scope.history.push($scope.history_tmp[i]);
+                //             log($scope.history);
+                //         }
+                //     }
 
                 //$scope.history.splice(1,1);
                 $scope.viewby = 20;
