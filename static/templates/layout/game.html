@@ -76,6 +76,11 @@
 
 <!-- <div class="container" style="background-color: #2c21cb"> -->
 <div class="container">
+    <div class="row" ng-show="true">
+        <div class="col-md-12">
+            <h4 class="text-center" style="color:blue">If the game is black, please press STRG + F5 to refresh the page! </h4><br>
+        </div>
+    </div>
     <div class="row" ng-show="false">
         <div class="col-md-12">
             <h4 class="text-center" style="color:blue">Level 5 will be available in the next version!</h4><br>
@@ -277,7 +282,7 @@
     </div>
 
 
-    <div class="row" ng-show="false"> <!-- v3-->
+    <div class="row" ng-show="true"> <!-- v3-->
 
         <span ng-controller="HighscoreController as vm" id="scoreboard">
             <br>
