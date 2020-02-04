@@ -6,7 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +52,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
@@ -76,8 +76,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
+            <state relative-caret-position="323">
               <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -210,7 +219,6 @@
         <option value="$PROJECT_DIR$/static/templates/questionnaire/legalnotice.html" />
         <option value="$PROJECT_DIR$/static/stylesheets/survey.css" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" />
-        <option value="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" />
         <option value="$PROJECT_DIR$/templates/stylesheets.html" />
         <option value="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" />
         <option value="$PROJECT_DIR$/questionnaire/serializers.py" />
@@ -233,6 +241,7 @@
         <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" />
       </list>
     </option>
   </component>
@@ -247,7 +256,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="917" />
     <option name="y" value="-9" />
     <option name="width" value="1696" />
@@ -576,7 +585,7 @@
       <workItem from="1579371008868" duration="56000" />
       <workItem from="1579794334954" duration="1098000" />
       <workItem from="1580652778327" duration="4885000" />
-      <workItem from="1580738619872" duration="8020000" />
+      <workItem from="1580738619872" duration="9384000" />
     </task>
     <task id="LOCAL-00001" summary="Setup">
       <created>1517228576565</created>
@@ -638,7 +647,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177702000" />
+    <option name="totallyTimeSpent" value="179066000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -650,7 +659,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2208" height="1248" extended-state="7" />
+    <frame x="-7" y="-7" width="2208" height="1248" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49920255" visible="true" weight="0.16" />
@@ -930,13 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="79" selection-start-line="28" selection-start-column="79" selection-end-line="28" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -1053,13 +1055,6 @@
         <state relative-caret-position="-153" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
@@ -1083,6 +1078,20 @@
             <element signature="e#61087#64945#0" />
             <element signature="e#64995#67157#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
         </state>
       </provider>
     </entry>
