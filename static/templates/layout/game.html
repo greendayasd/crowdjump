@@ -282,7 +282,7 @@
     </div>
 
 
-    <div class="row" ng-show="false"> <!-- v3-->
+    <div class="row" ng-show="true"> <!-- v3-->
 
         <span ng-controller="HighscoreController as vm" id="scoreboard">
             <br>
@@ -313,9 +313,9 @@
                         {{$index + 1}}</td>
                     <td ng-style=stat.color>{{ stat.user.username }}</td>
                     <td>{{ stat.highscore / 1000 | number:3}}</td>
-                    <!--<td>{{ stat.highest_level}}</td>-->
-                    <td>{{ stat.coins_collected }}</td>
-                    <td>{{ stat.eastereggs_found }}</td>
+                    <!--<td>{{ stat.highest_level}}</td>  v17-->
+                    <!--<td>{{ stat.coins_collected }}</td>  v5-->
+                    <!--<td>{{ stat.eastereggs_found }}</td>  v4-->
                 </tr>
 
                 </tbody>

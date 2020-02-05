@@ -35,25 +35,6 @@
 
         function activate() {
             get_versions();
-            Statistics.top(topcut, $scope.newestVersion, $scope.difficulty).then(statisticsSuccessFn, statisticsErrorFn);
-
-            $scope.$on('statistics.created', function (event, statistics) {
-                $scope.history.unshift(statistics);
-            });
-
-            $scope.$on('statistics.created.error', function () {
-                $scope.history.shift();
-            });
-
-            function statisticsSuccessFn(data, status, headers, config) {
-                $scope.statistics = data.data["results"];
-                setNameColor();
-
-            }
-
-            function statisticsErrorFn(data, status, headers, config) {
-                console.error(data.error);
-            }
         }
 
 
@@ -232,6 +213,25 @@
                     $scope.difficulty = $scope.difficulties[1];
                 }
 
+            Statistics.top(topcut, $scope.newestVersion.id, $scope.difficulty).then(statisticsSuccessFn, statisticsErrorFn);
+
+            $scope.$on('statistics.created', function (event, statistics) {
+                $scope.history.unshift(statistics);
+            });
+
+            $scope.$on('statistics.created.error', function () {
+                $scope.history.shift();
+            });
+
+            function statisticsSuccessFn(data, status, headers, config) {
+                $scope.statistics = data.data["results"];
+                setNameColor();
+
+            }
+
+            function statisticsErrorFn(data, status, headers, config) {
+                console.error(data.error);
+            }
 
             }
 

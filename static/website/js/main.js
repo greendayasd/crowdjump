@@ -236,45 +236,55 @@ window.createGame = function (canvas, scope) {
 
     var path = '/api/v1/gameinfo/?format=json&user__username=' + username + '&version__label=' + version;
 
+    loadStatesWithoutStart();
+
     jQuery.get(path, function (data) {
+        log (data);
 
-        //random order
-        switch (data[0].difficulty) {
-            case DIFFICULTY.easy:
-                game.gameInfoEasy = data[0];
-                break;
-            case DIFFICULTY.normal:
-                game.gameInfoNormal = data[0];
-                break;
-            case DIFFICULTY.hard:
-                game.gameInfoHard = data[0];
-                break;
-        }
-        switch (data[1].difficulty) {
-            case DIFFICULTY.easy:
-                game.gameInfoEasy = data[1];
-                break;
-            case DIFFICULTY.normal:
-                game.gameInfoNormal = data[1];
-                break;
-            case DIFFICULTY.hard:
-                game.gameInfoHard = data[1];
-                break;
-        }
-        switch (data[2].difficulty) {
-            case DIFFICULTY.easy:
-                game.gameInfoEasy = data[2];
-                break;
-            case DIFFICULTY.normal:
-                game.gameInfoNormal = data[2];
-                break;
-            case DIFFICULTY.hard:
-                game.gameInfoHard = data[2];
-                break;
-        }
+        if (data == undefined || data.length == 0){
+            //just created
+            window.location.href = '/game';
 
-        game.highest_level = Math.max(game.gameInfoEasy.highest_level, game.gameInfoNormal.highest_level, game.gameInfoHard.highest_level);
-        loadStates();
+        } else {
+
+            //random order
+            switch (data[0].difficulty) {
+                case DIFFICULTY.easy:
+                    game.gameInfoEasy = data[0];
+                    break;
+                case DIFFICULTY.normal:
+                    game.gameInfoNormal = data[0];
+                    break;
+                case DIFFICULTY.hard:
+                    game.gameInfoHard = data[0];
+                    break;
+            }
+            switch (data[1].difficulty) {
+                case DIFFICULTY.easy:
+                    game.gameInfoEasy = data[1];
+                    break;
+                case DIFFICULTY.normal:
+                    game.gameInfoNormal = data[1];
+                    break;
+                case DIFFICULTY.hard:
+                    game.gameInfoHard = data[1];
+                    break;
+            }
+            switch (data[2].difficulty) {
+                case DIFFICULTY.easy:
+                    game.gameInfoEasy = data[2];
+                    break;
+                case DIFFICULTY.normal:
+                    game.gameInfoNormal = data[2];
+                    break;
+                case DIFFICULTY.hard:
+                    game.gameInfoHard = data[2];
+                    break;
+            }
+
+            game.highest_level = Math.max(game.gameInfoEasy.highest_level, game.gameInfoNormal.highest_level, game.gameInfoHard.highest_level);
+            game.state.start('Boot');
+        }
     });
 
 
@@ -529,6 +539,26 @@ function loadStates() {
     }
     game.state.start('Boot');
 }
+
+function loadStatesWithoutStart() {
+    resetStats();
+
+    game.state.add('Boot', Crowdjump.Boot);
+    game.state.add('Preloader', Crowdjump.Preloader);
+    game.state.add('Startmenu', Crowdjump.Menu);
+    game.state.add('Game', Crowdjump.Game);
+    game.state.add('Endscreen', Crowdjump.Endscreen);
+    game.state.add('Gameover', Crowdjump.Gameover);
+    game.state.add('LevelSelection', Crowdjump.LevelSelection);
+    game.state.add('CharacterSelection', Crowdjump.CharacterSelection);
+    game.state.add('Credits', Crowdjump.Credits);
+    game.state.add('Options', Crowdjump.Options);
+    if (CONST_CONTROLLER) {
+        game.input.gamepad.start();
+        pad1 = game.input.gamepad.pad1;
+    }
+}
+
 
 function getFileName(filename) {
     return (/[/]/.exec(filename)) ? /[^/]+$/.exec(filename)[0] : undefined;
