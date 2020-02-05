@@ -6,9 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="127" column="22" selection-start-line="127" selection-start-column="22" selection-end-line="127" selection-end-column="22" />
+            <state relative-caret-position="624">
+              <caret line="124" column="13" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -62,7 +60,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="510">
               <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
             </state>
           </provider>
@@ -80,8 +78,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="161" column="90" lean-forward="true" selection-start-line="161" selection-start-column="90" selection-end-line="161" selection-end-column="90" />
+            <state relative-caret-position="244">
+              <caret line="1162" column="27" lean-forward="true" selection-start-line="1162" selection-start-column="27" selection-end-line="1162" selection-end-column="27" />
               <folding>
                 <element signature="e#989#1558#0" />
                 <element signature="e#1594#1796#0" />
@@ -90,6 +88,7 @@
                 <element signature="e#24791#25559#0" />
                 <element signature="e#25623#28338#0" />
                 <element signature="e#28543#29395#0" />
+                <element signature="e#43994#44021#0" />
               </folding>
             </state>
           </provider>
@@ -145,7 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>serializer</find>
       <find>static/lib/bootstrap3.3.7min/bootstrap.min.css.map</find>
       <find>bootstrap3.3.7min</find>
       <find>lastpage</find>
@@ -175,6 +173,7 @@
       <find>version_</find>
       <find>append_to_file</find>
       <find>submit</find>
+      <find>have you he</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -238,7 +237,6 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/website/js/endscreen.js" />
         <option value="$PROJECT_DIR$/static/javascripts/history/controllers/historyindex.controller.js" />
-        <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
         <option value="$PROJECT_DIR$/templates/javascripts.html" />
         <option value="$PROJECT_DIR$/static/templates/layout/game.html" />
         <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
@@ -246,6 +244,7 @@
         <option value="$PROJECT_DIR$/static/templates/questionnaire/survey1.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/survey2.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/survey0.html" />
+        <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
       </list>
     </option>
   </component>
@@ -561,7 +560,7 @@
       <workItem from="1579794334954" duration="1098000" />
       <workItem from="1580652778327" duration="4885000" />
       <workItem from="1580738619872" duration="23114000" />
-      <workItem from="1580914912703" duration="4443000" />
+      <workItem from="1580914912703" duration="5196000" />
     </task>
     <task id="LOCAL-00001" summary="Setup">
       <created>1517228576565</created>
@@ -623,7 +622,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197239000" />
+    <option name="totallyTimeSpent" value="197992000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1008,24 +1007,17 @@
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/postsurvey5.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="124" column="13" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="88" selection-start-line="16" selection-start-column="88" selection-end-line="16" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="127" column="22" selection-start-line="127" selection-start-column="22" selection-end-line="127" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1036,10 +1028,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="161" column="90" lean-forward="true" selection-start-line="161" selection-start-column="90" selection-end-line="161" selection-end-column="90" />
+        <state relative-caret-position="244">
+          <caret line="1162" column="27" lean-forward="true" selection-start-line="1162" selection-start-column="27" selection-end-line="1162" selection-end-column="27" />
           <folding>
             <element signature="e#989#1558#0" />
             <element signature="e#1594#1796#0" />
@@ -1048,6 +1047,7 @@
             <element signature="e#24791#25559#0" />
             <element signature="e#25623#28338#0" />
             <element signature="e#28543#29395#0" />
+            <element signature="e#43994#44021#0" />
           </folding>
         </state>
       </provider>
