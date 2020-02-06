@@ -129,7 +129,10 @@
 
 
             $scope.submit = function (next_survey) {
-                log(next_survey);
+                if (next_survey == undefined){
+                    return;
+                }
+
                 var content = {};
                 var post_check = vm.surveystatus;
                 var next_survey_id = next_survey;
@@ -173,18 +176,18 @@
                 // console.log(next_survey_id);
                 vm.surveystatus = next_survey_id;
                 Questionnaire.increase_surveycount(vm.cookie["username"], next_survey_id);
-                if (vm.surveystatus < 3) {
-                    log("test2");
-                    window.location.href = '/survey' + next_survey;
-                } else if (vm.surveystatus == 3) {
-                    window.location.href = '/surveyPreFinished';
-
-                } else if (vm.surveystatus < 11) {
-                    window.location.href = '/postsurvey' + next_survey;
-
-                } else {
-                    window.location.href = '/surveyPostFinished';
-                }
+                // if (vm.surveystatus < 3) {
+                //     log("test2");
+                //     window.location.href = '/survey' + next_survey;
+                // } else if (vm.surveystatus == 3) {
+                //     window.location.href = '/surveyPreFinished';
+                //
+                // } else if (vm.surveystatus < 11) {
+                //     window.location.href = '/postsurvey' + next_survey;
+                //
+                // } else {
+                //     window.location.href = '/surveyPostFinished';
+                // }
             }
 
             //false when error

@@ -239,7 +239,6 @@ window.createGame = function (canvas, scope) {
     loadStatesWithoutStart();
 
     jQuery.get(path, function (data) {
-        log (data);
 
         if (data == undefined || data.length == 0){
             //just created
