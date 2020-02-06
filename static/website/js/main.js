@@ -29,7 +29,7 @@ const CONST_SLIDEPLATFORMS = false;
 const CONST_FALLINGPLATFORMS = false;
 const CONST_CONVEYORPLATFORMS = false;
 
-const CONST_COINS = false; //v5
+const CONST_COINS = true; //v5
 const CONST_COIN_TIME_REDUCTION = 500; //ms
 const CONST_COIN_SHOW_TIMEREDUCTION = false; //v13
 const CONST_COIN_ANIMATE = false; //v24
@@ -45,7 +45,7 @@ const CONST_SPIDER_SPEED = 100;
 const CONST_SPIDER_COINS = 1; //v28
 
 //Eastereggs v4
-const CONST_EASTEREGGS                  = false;
+const CONST_EASTEREGGS                  = true;
 const CONST_EASTEREGGS_MONEY_COINAMOUNT = 10;   //coin drop amount
 const CONST_EASTEREGGS_TIME_TIMESECONDS = 5;    //time reduction in seconds
 const CONST_EASTEREGGS_MOVEMENTSPEED    = 100;  //ms increase in px per second
@@ -113,7 +113,7 @@ const CONST_P2_PHYSICS = false;
 const CONST_DEBUG = false;
 const CONST_CHEAT = true;
 const CONST_PAUSE = false;
-const CONST_MUTE = false; //v6
+const CONST_MUTE = true; //v6
 const CONST_LEVELMUSIC = false; //v15
 const CONST_BACKBUTTON = false; //v36
 

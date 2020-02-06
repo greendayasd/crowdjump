@@ -106,7 +106,7 @@
                 <!--To activate a colored mechanism, you first have to find a button with the same color.<br> v21-->
                 If you get stuck, you can reset the game pressing <b>R</b>.
                 Press <b>Escape</b> to get back to the main menu. <br>
-                <!--To mute or unmute the game, press <b>M</b>. v6-->
+                To mute or unmute the game, press <b>M</b>.
                 <!--You can press F to go invincible for a short time! <br>
                 Use the mouse to aim and the left mouse button to shoot bullets! -->
             </h4>
@@ -300,8 +300,8 @@
                     <th scope="col">User</th>
                     <th scope="col">Time in seconds</th>
                     <!--<th scope="col">Highest Level</th>  v17-->
-                    <!--<th scope="col">max Coins this version</th> v5-->
-                    <!--<th scope="col">max Eastereggs this version</th>  v4-->
+                    <th scope="col">max Coins this version</th>
+                    <th scope="col">max Eastereggs this version</th>
                 </tr>
                 </thead>
                 <tbody ng-repeat="stat in statistics">
@@ -314,8 +314,8 @@
                     <td ng-style=stat.color>{{ stat.user.username }}</td>
                     <td>{{ stat.highscore / 1000 | number:3}}</td>
                     <!--<td>{{ stat.highest_level}}</td>  v17-->
-                    <!--<td>{{ stat.coins_collected }}</td>  v5-->
-                    <!--<td>{{ stat.eastereggs_found }}</td>  v4-->
+                    <td>{{ stat.coins_collected }}</td>
+                    <td>{{ stat.eastereggs_found }}</td>
                 </tr>
 
                 </tbody>
