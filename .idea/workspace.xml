@@ -60,7 +60,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3145">
+            <state relative-caret-position="-2278">
               <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
             </state>
           </provider>
@@ -87,8 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39">
-              <caret line="165" column="37" lean-forward="true" selection-start-line="165" selection-start-column="37" selection-end-line="165" selection-end-column="37" />
+            <state relative-caret-position="238">
+              <caret line="54" column="64" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -97,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="50" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
+              <caret line="1" column="60" selection-start-line="1" selection-start-column="60" selection-end-line="1" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -125,7 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lastpage</find>
       <find>[&quot;lastpage&quot;]</find>
       <find>tracking</find>
       <find>window.location.href</find>
@@ -155,6 +154,7 @@
       <find>like</find>
       <find>submit</find>
       <find>alert</find>
+      <find>level</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -497,7 +497,7 @@
       <workItem from="1580652778327" duration="4885000" />
       <workItem from="1580738619872" duration="23114000" />
       <workItem from="1580914912703" duration="7526000" />
-      <workItem from="1580992795045" duration="6383000" />
+      <workItem from="1580992795045" duration="6931000" />
     </task>
     <task id="LOCAL-00001" summary="Setup">
       <created>1517228576565</created>
@@ -559,7 +559,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206705000" />
+    <option name="totallyTimeSpent" value="207253000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -951,13 +951,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3145">
-          <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -967,15 +960,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="165" column="37" lean-forward="true" selection-start-line="165" selection-start-column="37" selection-end-line="165" selection-end-column="37" />
+        <state relative-caret-position="238">
+          <caret line="54" column="64" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2278">
+          <caret line="115" column="23" selection-start-line="115" selection-start-column="23" selection-end-line="115" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="50" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
+          <caret line="1" column="60" selection-start-line="1" selection-start-column="60" selection-end-line="1" selection-end-column="60" />
         </state>
       </provider>
     </entry>
