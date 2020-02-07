@@ -240,50 +240,57 @@ window.createGame = function (canvas, scope) {
 
     jQuery.get(path, function (data) {
 
+
+        //random order
         if (data == undefined || data.length == 0){
             //just created
             window.location.href = '/game';
 
-        } else {
-
-            //random order
-            switch (data[0].difficulty) {
-                case DIFFICULTY.easy:
-                    game.gameInfoEasy = data[0];
-                    break;
-                case DIFFICULTY.normal:
-                    game.gameInfoNormal = data[0];
-                    break;
-                case DIFFICULTY.hard:
-                    game.gameInfoHard = data[0];
-                    break;
-            }
-            switch (data[1].difficulty) {
-                case DIFFICULTY.easy:
-                    game.gameInfoEasy = data[1];
-                    break;
-                case DIFFICULTY.normal:
-                    game.gameInfoNormal = data[1];
-                    break;
-                case DIFFICULTY.hard:
-                    game.gameInfoHard = data[1];
-                    break;
-            }
-            switch (data[2].difficulty) {
-                case DIFFICULTY.easy:
-                    game.gameInfoEasy = data[2];
-                    break;
-                case DIFFICULTY.normal:
-                    game.gameInfoNormal = data[2];
-                    break;
-                case DIFFICULTY.hard:
-                    game.gameInfoHard = data[2];
-                    break;
-            }
-
-            game.highest_level = Math.max(game.gameInfoEasy.highest_level, game.gameInfoNormal.highest_level, game.gameInfoHard.highest_level);
-            game.state.start('Boot');
         }
+
+        if (data[0] == undefined || data[1] == undefined ||data[2] == undefined || data.length == 0){
+            //just created
+            window.location.href = '/game';
+
+        }
+
+        switch (data[0].difficulty) {
+            case DIFFICULTY.easy:
+                game.gameInfoEasy = data[0];
+                break;
+            case DIFFICULTY.normal:
+                game.gameInfoNormal = data[0];
+                break;
+            case DIFFICULTY.hard:
+                game.gameInfoHard = data[0];
+                break;
+        }
+        switch (data[1].difficulty) {
+            case DIFFICULTY.easy:
+                game.gameInfoEasy = data[1];
+                break;
+            case DIFFICULTY.normal:
+                game.gameInfoNormal = data[1];
+                break;
+            case DIFFICULTY.hard:
+                game.gameInfoHard = data[1];
+                break;
+        }
+        switch (data[2].difficulty) {
+            case DIFFICULTY.easy:
+                game.gameInfoEasy = data[2];
+                break;
+            case DIFFICULTY.normal:
+                game.gameInfoNormal = data[2];
+                break;
+            case DIFFICULTY.hard:
+                game.gameInfoHard = data[2];
+                break;
+        }
+
+        game.highest_level = Math.max(game.gameInfoEasy.highest_level, game.gameInfoNormal.highest_level, game.gameInfoHard.highest_level);
+        game.state.start('Boot');
+
     });
 
 
