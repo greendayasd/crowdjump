@@ -657,7 +657,7 @@ def UploadCharacter(request):
 
             # change cookie
             print("test2")
-            return HttpResponseRedirect('/game2')
+            return HttpResponseRedirect('/game')
         return HttpResponseRedirect('/game')
     else:
         return HttpResponseForbidden('allowed only via POST')

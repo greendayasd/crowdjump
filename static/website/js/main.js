@@ -120,7 +120,7 @@ const CONST_BACKBUTTON = false; //v36
 const CONST_LEVELSELECTION = false; //v26
 const CONST_PLAY_REACHED_LEVEL = false; //you don't have to beat a level to practice it //v37
 
-const CONST_CHARACTERSELECTION = false; //v7
+const CONST_CHARACTERSELECTION = true; //v7
 const CONST_CHARACTER_COUNT = 4; //v7
 const CONST_CREDITS = false; //v15 mit Backgroundmusic
 const CONST_OPTIONMENU = false; //v32
