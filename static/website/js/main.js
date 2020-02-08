@@ -10,15 +10,15 @@ const CONST_MAX_SPEED = 1000;
 const CONST_MOVE_SPEED = 200; //200 normal
 const CONST_HERO_WEIGHT = 100;
 const CONST_MORE_LIVES = false; //v23
-const CONST_HERO_LIVES = 3; //v23
-const CONST_REPLAY_LEVEL = false;
-const CONST_SAVE_LEVEL_TIME = false;
+const CONST_HERO_LIVES = 1; //v23
+const CONST_REPLAY_LEVEL = false; ///!!!!!
+const CONST_SAVE_LEVEL_TIME = false; //!!!!!
 
 const CONST_TIME = true;
 const CONST_TIME_WHEN_MOVED = true; //v2
 
-const CONST_LAVA = false; //v8
-const CONST_SPIKES = false; //v8
+const CONST_LAVA = true; //v8
+const CONST_SPIKES = true; //v8
 const CONST_SAWBLADES = false;
 const CONST_LAVASWITCHINGPLATFORM = false;
 const CONST_SLIPPERYPLATFORMS = false;
@@ -51,7 +51,7 @@ const CONST_EASTEREGGS_TIME_TIMESECONDS = 5;    //time reduction in seconds
 const CONST_EASTEREGGS_MOVEMENTSPEED    = 100;  //ms increase in px per second
 
 //Powerups v9
-const CONST_POWERUPS                    = false;
+const CONST_POWERUPS                    = true;
 const CONST_POWERUPS_JUMPBOOST          = 1.4;  //height multiplier
 const CONST_POWERUPS_PERMJUMPBOOST      = 1.25; //height multiplier
 
