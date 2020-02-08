@@ -168,7 +168,6 @@
                         case 11:
                         case 13:
                         case 15:
-                        case 17:
                         case 19:
                         case 21:
                         case 23:

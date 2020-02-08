@@ -6,7 +6,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="158" column="70" selection-start-line="158" selection-start-column="70" selection-end-line="158" selection-end-column="70" />
+            <state relative-caret-position="451">
+              <caret line="159" column="44" lean-forward="true" selection-start-line="159" selection-start-column="44" selection-end-line="159" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -535,7 +534,7 @@
       <workItem from="1580914912703" duration="7526000" />
       <workItem from="1580992795045" duration="6931000" />
       <workItem from="1581092472657" duration="4277000" />
-      <workItem from="1581201752512" duration="2809000" />
+      <workItem from="1581201752512" duration="2873000" />
     </task>
     <task id="LOCAL-00001" summary="Setup">
       <created>1517228576565</created>
@@ -597,7 +596,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="215640000" />
+    <option name="totallyTimeSpent" value="215704000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1027,8 +1026,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="158" column="70" selection-start-line="158" selection-start-column="70" selection-end-line="158" selection-end-column="70" />
+        <state relative-caret-position="451">
+          <caret line="159" column="44" lean-forward="true" selection-start-line="159" selection-start-column="44" selection-end-line="159" selection-end-column="44" />
         </state>
       </provider>
     </entry>
