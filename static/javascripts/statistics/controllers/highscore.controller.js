@@ -165,7 +165,6 @@
                         case 4:
                         case 5:
                         case 8:
-                        case 9:
                         case 11:
                         case 13:
                         case 15:
