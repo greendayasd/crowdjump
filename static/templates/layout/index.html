@@ -1,9 +1,9 @@
 <script type="text/javascript">
     tracksite();
 </script>
-<div ng-controller="QuestionnaireController as vm">
+<div ng-controller="QuestionnaireController as vm" ng-show="false">
 </div>
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid" ng-show="false">
     <div class="container">
         <img class="img-fluid" src="/static/website/images/logo.png" alt="Crowdjump">
         <h1>Welcome to Crowdjump!</h1>
@@ -44,14 +44,23 @@
         </div>
     </div> -->
 
+<<<<<<< HEAD
     <h4> Everyday new features are implemented in Crowdjump the game as well as on the website! Be sure to check the progress regularly!<br>
         <br><br>
+=======
+    <h4 ng-show="true"> Due to a recent hacking attack, the study is taken offline. While some passwords have been changed,
+        all passwords were safely encrypted in PBKDF2-SHA256. There was no sign that hackers got to read any information,
+        only writing was observed.
     </h4>
 
+    <h4 ng-show="false"> Crowdjump is a bachelor thesis in which you can submit your ideas to improve a simple game to your likings!<br><br>
+        The goal of the thesis is to observe how a game is designed bottom-up with a crowd and how the decision
+        finding<br>
+        process is made. <br><br><br>
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
+    </h4>
 
-    <h4>
-
-
+    <h4 ng ng-show="false">
         The game itself can be found at
         <div class="btn-group">
             <a href="game" class="btn btn-info">

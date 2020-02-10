@@ -3,11 +3,20 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/static/javascripts/questionnaire/services/questionnaire.service.js" line="29" />
     <bookmark url="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html" line="0" />
+    <bookmark url="file://$PROJECT_DIR$/templates/navbar.html" line="66" mnemonic="7" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac283824-f7ed-4e09-bcf8-4320f1cf6c33" name="Default" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/static/website/level/level0.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/website/level/level0.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/javascripts.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/javascripts.html" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crowdjump/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crowdjump/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/templates/layout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/templates/layout/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +45,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="202">
@@ -45,11 +55,18 @@
                 <element signature="e#1594#1796#0" />
                 <element signature="e#1923#2046#0" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44166">
+              <caret line="2598" column="22" selection-start-line="2598" selection-start-column="22" selection-end-line="2598" selection-end-column="22" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/static/website/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="748">
@@ -63,71 +80,136 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-187">
               <caret line="262" column="41" selection-start-line="262" selection-start-column="41" selection-end-line="262" selection-end-column="41" />
+=======
+        <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="235" column="46" selection-start-line="235" selection-start-column="46" selection-end-line="235" selection-end-column="46" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/static/website/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1">
               <caret line="2598" column="22" selection-start-line="2598" selection-start-column="22" selection-end-line="2598" selection-end-column="22" />
+=======
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-986">
+              <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+              <folding>
+                <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/javascripts.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1">
               <caret line="178" column="21" lean-forward="true" selection-start-line="178" selection-start-column="21" selection-end-line="178" selection-end-column="21" />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="503">
+              <caret line="80" column="4" lean-forward="true" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="451">
               <caret line="159" column="44" lean-forward="true" selection-start-line="159" selection-start-column="44" selection-end-line="159" selection-end-column="44" />
+=======
+        <entry file="file://$PROJECT_DIR$/templates/navbar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/layout/history.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="98">
               <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/templates/layout/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/static/javascripts/history/controllers/historyindex.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="578">
               <caret line="70" column="26" lean-forward="true" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+=======
+        <entry file="file://$PROJECT_DIR$/authentication/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="82" column="4" selection-start-line="82" selection-start-column="4" selection-end-line="82" selection-end-column="4" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/website/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-107">
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
+=======
+        <entry file="file://$PROJECT_DIR$/Crowdjump/routing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/static/javascripts/history/services/history.service.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
               <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+=======
+        <entry file="file://$PROJECT_DIR$/static/javascripts/history/controllers/historyindex.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1190">
+              <caret line="70" column="26" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
             </state>
           </provider>
         </entry>
@@ -146,6 +228,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< HEAD
       <find>customF</find>
       <find>newestVersion</find>
       <find>thank you</find>
@@ -168,6 +251,33 @@
       <find>game2</find>
       <find>refre</find>
       <find>v8</find>
+=======
+      <find>lives</find>
+      <find>27</find>
+      <find>day</find>
+      <find>31</find>
+      <find>opto</find>
+      <find>26</find>
+      <find>34</find>
+      <find>animate</find>
+      <find>32</find>
+      <find>23</find>
+      <find>poweru</find>
+      <find>v5</find>
+      <find>enemi</find>
+      <find>da</find>
+      <find>44</find>
+      <find>CONST_TIME</find>
+      <find>time</find>
+      <find>firstMoved</find>
+      <find>first_moved</find>
+      <find />
+      <find>this.data</find>
+      <find>isau</find>
+      <find>curren</find>
+      <find>currently</find>
+      <find>canvas</find>
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
       <find>cheat</find>
       <find>const_sa</find>
       <find>death</find>
@@ -202,8 +312,21 @@
         <option value="$PROJECT_DIR$/static/templates/layout/admin.html" />
         <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" />
         <option value="$PROJECT_DIR$/ideas/models.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/static/website/js/credits.js" />
         <option value="$PROJECT_DIR$/static/website/js/game.js" />
+=======
+        <option value="$PROJECT_DIR$/ideas/routing.py" />
+        <option value="$PROJECT_DIR$/ideas/consumers.py" />
+        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/new-bugreport.controller.js" />
+        <option value="$PROJECT_DIR$/static/javascripts/ideas/services/bugreports.service.js" />
+        <option value="$PROJECT_DIR$/static/templates/layout/bugreport.html" />
+        <option value="$PROJECT_DIR$/static/javascripts/crowdjump.routes.js" />
+        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/bugreport.controller.js" />
+        <option value="$PROJECT_DIR$/static/templates/ideas/new-bugreport.html" />
+        <option value="$PROJECT_DIR$/authentication/serializers.py" />
+        <option value="$PROJECT_DIR$/authentication/models.py" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
         <option value="$PROJECT_DIR$/Crowdjump/mailFunctions.py" />
         <option value="$PROJECT_DIR$/static/templates/layout/history.html" />
         <option value="$PROJECT_DIR$/static/javascripts/ideas/services/ideas.service.js" />
@@ -240,13 +363,49 @@
         <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/website/js/preloader.js" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/static/website/js/levelselection.js" />
+        <option value="$PROJECT_DIR$/static/templates/layout/winner_shoutout.html" />
+        <option value="$PROJECT_DIR$/static/website/level/level0.json" />
+        <option value="$PROJECT_DIR$/static/website/level/level1.json" />
+        <option value="$PROJECT_DIR$/static/website/level/level2.json" />
+        <option value="$PROJECT_DIR$/static/website/level/level0_0.json" />
+        <option value="$PROJECT_DIR$/static/website/level/level0_2.json" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
         <option value="$PROJECT_DIR$/static/templates/layout/game.html" />
         <option value="$PROJECT_DIR$/authentication/views.py" />
         <option value="$PROJECT_DIR$/static/website/js/main.js" />
         <option value="$PROJECT_DIR$/static/javascripts/history/services/history.service.js" />
         <option value="$PROJECT_DIR$/static/javascripts/history/controllers/historyindex.controller.js" />
         <option value="$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/templates/javascripts.html" />
+=======
+        <option value="$PROJECT_DIR$/static/javascripts/layout/controllers/navbar.controller.js" />
+        <option value="$PROJECT_DIR$/templates/javascripts.html" />
+        <option value="$PROJECT_DIR$/Crowdjump/settings.py" />
+        <option value="$PROJECT_DIR$/ideas/serializers.py" />
+        <option value="$PROJECT_DIR$/ideas/views.py" />
+        <option value="$PROJECT_DIR$/static/javascripts/history/controllers/history.controller.js" />
+        <option value="$PROJECT_DIR$/static/javascripts/history/controllers/historyindex.controller.js" />
+        <option value="$PROJECT_DIR$/static/templates/layout/idea_index.html" />
+        <option value="$PROJECT_DIR$/static/javascripts/ideas/controllers/ideasindex.controller.js" />
+        <option value="$PROJECT_DIR$/static/website/js/main.js" />
+        <option value="$PROJECT_DIR$/static/website/js/game.js" />
+        <option value="$PROJECT_DIR$/static/website/level/level0_1.json" />
+        <option value="$PROJECT_DIR$/static/javascripts/admin/controllers/admin.controller.js" />
+        <option value="$PROJECT_DIR$/static/website/level/level4_2.json" />
+        <option value="$PROJECT_DIR$/authentication/views.py" />
+        <option value="$PROJECT_DIR$/static/templates/layout/admin.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey0.html" />
+        <option value="$PROJECT_DIR$/static/templates/questionnaire/postsurvey1.html" />
+        <option value="$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js" />
+        <option value="$PROJECT_DIR$/Crowdjump/urls.py" />
+        <option value="$PROJECT_DIR$/templates/navbar.html" />
+        <option value="$PROJECT_DIR$/static/templates/layout/index.html" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
       </list>
     </option>
   </component>
@@ -261,9 +420,15 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds">
     <option name="x" value="4424" />
     <option name="y" value="52" />
+=======
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1163" />
+    <option name="y" value="-12" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
     <option name="width" value="552" />
     <option name="height" value="312" />
   </component>
@@ -289,7 +454,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -333,6 +497,39 @@
               <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="javascripts" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+              <item name="statistics" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="authentication" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
+            </path>
+            <path>
+              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+              <item name="statistics" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="authentication" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+=======
+              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
+              <item name="authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
+              <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
               <item name="statistics" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -347,6 +544,7 @@
               <item name="crowdjump" type="b2602c69:ProjectViewProjectNode" />
               <item name="crowdjump" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -383,6 +581,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -473,10 +672,17 @@
       <method v="2" />
     </configuration>
     <list>
+<<<<<<< HEAD
       <item itemvalue="Django server.Crowdjump" />
       <item itemvalue="JavaScript Debug.index.html" />
       <item itemvalue="JavaScript Debug.login.html" />
       <item itemvalue="Python.views" />
+=======
+      <item itemvalue="JavaScript Debug.index.html" />
+      <item itemvalue="JavaScript Debug.login.html" />
+      <item itemvalue="Python.views" />
+      <item itemvalue="Django server.Crowdjump" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
     </list>
     <recent_temporary>
       <list>
@@ -597,7 +803,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="218917000" />
+=======
+    <option name="totallyTimeSpent" value="1760000" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -609,6 +819,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="4424" y="52" width="552" height="312" extended-state="0" />
     <editor active="true" />
     <layout>
@@ -617,6 +828,16 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.29632947" />
+=======
+    <frame x="-1928" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49920255" visible="true" weight="0.20469083" />
+      <window_info id="Structure" order="1" sideWeight="0.50079745" side_tool="true" weight="0.23400854" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.29766187" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39572737" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -624,9 +845,15 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32881" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50319827" side_tool="true" weight="0.3455115" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Python Console" order="9" weight="0.3271028" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="manage.py@Crowdjump" order="11" sideWeight="0.4968017" visible="true" weight="0.8324022" />
+=======
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.32776618" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="manage.py@Crowdjump" order="11" sideWeight="0.4968017" visible="true" weight="0.3811007" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
       <window_info anchor="bottom" id="Version Control" order="12" sideWeight="0.49840087" weight="0.32881" />
       <window_info anchor="bottom" id="REST Client" order="13" />
       <window_info anchor="bottom" id="TypeScript" order="14" />
@@ -665,6 +892,7 @@
           <url>file://$PROJECT_DIR$/website/models.py</url>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+<<<<<<< HEAD
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/questionnaire/models.py</url>
           <line>17</line>
@@ -674,6 +902,12 @@
           <url>file://$PROJECT_DIR$/static/website/js/main.js</url>
           <line>198</line>
           <option name="timeStamp" value="8" />
+=======
+        <line-breakpoint enabled="true" type="django-line">
+          <url>file://$PROJECT_DIR$/templates/navbar.html</url>
+          <line>44</line>
+          <option name="timeStamp" value="11" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -686,6 +920,7 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/registrationForm.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -742,6 +977,9 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/ideas/services/votes.service.js">
+=======
+    <entry file="file://$PROJECT_DIR$/Crowdjump/settings.py">
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="44" column="45" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="45" />
@@ -798,6 +1036,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/static/templates/layout/idea_index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -809,6 +1048,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2074">
           <caret line="122" column="26" selection-start-line="122" selection-start-column="26" selection-end-line="122" selection-end-column="26" />
+=======
+    <entry file="file://$PROJECT_DIR$/static/javascripts/history/controllers/historyindex.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="70" column="26" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
         </state>
       </provider>
     </entry>
@@ -849,8 +1094,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/survey0.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="986">
           <caret line="58" column="92" selection-start-line="58" selection-start-column="92" selection-end-line="58" selection-end-column="92" />
+=======
+        <state relative-caret-position="334">
+          <caret line="235" column="46" selection-start-line="235" selection-start-column="46" selection-end-line="235" selection-end-column="46" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
         </state>
       </provider>
     </entry>
@@ -929,6 +1179,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/authentication/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10710">
@@ -937,6 +1188,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/javascripts/questionnaire/controllers/questionnaire.controller.js">
+=======
+    <entry file="file://$PROJECT_DIR$/static/website/js/boot.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/website/js/preloader.js">
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="121" column="21" selection-start-line="121" selection-start-column="16" selection-end-line="121" selection-end-column="21" />
@@ -985,6 +1242,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/layout/history.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="98">
           <caret line="21" column="51" lean-forward="true" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
         </state>
@@ -1001,6 +1259,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="451">
           <caret line="159" column="44" lean-forward="true" selection-start-line="159" selection-start-column="44" selection-end-line="159" selection-end-column="44" />
+=======
+        <state relative-caret-position="44166">
+          <caret line="2598" column="22" selection-start-line="2598" selection-start-column="22" selection-end-line="2598" selection-end-column="22" />
+>>>>>>> 0f807a6eafd9b74cbe228e679ca3744d4b3bca06
         </state>
       </provider>
     </entry>
@@ -1029,6 +1291,101 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1">
           <caret line="178" column="21" lean-forward="true" selection-start-line="178" selection-start-column="21" selection-end-line="178" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/lib/angular-1.3.1/angular-mocks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="243" column="5" selection-start-line="243" selection-start-column="5" selection-end-line="243" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/questionnaire/legalnotice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crowdjump/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="80" column="4" lean-forward="true" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/statistics/controllers/highscore.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2992">
+          <caret line="176" column="44" selection-start-line="176" selection-start-column="44" selection-end-line="176" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/javascripts/history/services/history.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/authentication/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="82" column="4" selection-start-line="82" selection-start-column="4" selection-end-line="82" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="32" column="66" selection-start-line="32" selection-start-column="66" selection-end-line="32" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-986">
+          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="21" column="51" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Crowdjump/routing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/templates/layout/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
         </state>
       </provider>
     </entry>
