@@ -47,7 +47,7 @@ pytz==2017.3
 pywin32==223
 rcssmin==1.0.6
 redis==2.10.6
-requests==2.18.4
+requests==2.20.0
 requests-oauthlib==0.8.0
 rjsmin==1.0.12
 six==1.11.0
@@ -115,7 +115,7 @@ pytz==2017.3
 pywin32==223
 rcssmin==1.0.6
 redis==2.10.6
-requests==2.18.4
+requests==2.20.0
 requests-oauthlib==0.8.0
 rjsmin==1.0.12
 six==1.11.0
