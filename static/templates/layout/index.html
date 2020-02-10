@@ -1,9 +1,9 @@
 <script type="text/javascript">
     tracksite();
 </script>
-<div ng-controller="QuestionnaireController as vm">
+<div ng-controller="QuestionnaireController as vm" ng-show="false">
 </div>
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid"  ng-show="false">
     <div class="container">
         <img class="img-fluid" src="/static/website/images/logo.png" alt="Crowdjump">
         <h1>Welcome to Crowdjump!</h1>
@@ -12,7 +12,7 @@
         </div>
     </div>
 </div>
-<font size = "5">
+<font size = "5"  ng-show="false">
 <div class="container">
     Thank you for visiting Crowdjump! <br>
     In this follow-up study to the well received original Crowdjump you can experience the design progress of a video game and maybe even decide the further development while helping with a student project! <br>
@@ -33,6 +33,13 @@
 </div>
 </font>
 
+<div class="container">
+    <h4 ng-show="true"> We needed to take the study offline, as there were signs of external data alteration. While some passwords were not working anymore,
+        all passwords were safely stored salted and hashed. There was no sign that hackers got to read any information.<br>
+        We still recommend you change the password for services where you have used the same password as in Crowdjump.<br>
+        Thank you for everyone already participating in crowdjump!
+    </h4>
+</div>
 <div class="container" ng-show="false">
 
     <!-- <div class="container-well" style="align-content: center">
@@ -44,14 +51,9 @@
         </div>
     </div> -->
 
-    <h4 ng-show="false"> Everyday new features are implemented in Crowdjump the game as well as on the website! Be sure to check the progress regularly!<br>
+    <h4> Everyday new features are implemented in Crowdjump the game as well as on the website! Be sure to check the progress regularly!<br>
         <br><br>
 
-    <h4 ng-show="true"> We needed to take the study offline, as there were signs of external data alteration. While some passwords were not working anymore,
-        all passwords were safely stored salted and hashed. There was no sign that hackers got to read any information.<br>
-        We still recommend you change the password for services where you have used the same password as in Crowdjump.<br>
-        Thank you for everyone already participating in crowdjump!
-    </h4>
 
 
     <h4>
