@@ -27,7 +27,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'crowdjump.de', '185.170.112.100', 'testserver', 'www.crowdjump.de']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'crowdjump.de', '185.170.112.100', 'testserver', 'www.crowdjump.de', '*']
 CSRF_TRUSTED_ORIGINS = ['localhost', '127.0.0.1', 'crowdjump.de', '185.170.112.100', 'testserver', 'www.crowdjump.de']
 
 # Application definition
