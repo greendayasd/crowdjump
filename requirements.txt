@@ -54,7 +54,7 @@ six==1.11.0
 sorl-thumbnail==12.4.1
 static3==0.7.0
 surlex==0.2.0
-Twisted==17.9.0
+Twisted==19.7.0
 txaio==2.8.2
 typing==3.6.4
 unicodecsv==0.14.1
@@ -122,7 +122,7 @@ six==1.11.0
 sorl-thumbnail==12.4.1
 static3==0.7.0
 surlex==0.2.0
-Twisted==17.9.0
+Twisted==19.7.0
 txaio==2.8.2
 typing==3.6.4
 unicodecsv==0.14.1
